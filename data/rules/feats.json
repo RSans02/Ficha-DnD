@@ -1,0 +1,3139 @@
+[
+  {
+    "id": "feat-acechador",
+    "name": "Acechador",
+    "source": {
+      "page": 433,
+      "endPage": 433,
+      "title": "Dotes"
+    },
+    "description": "Acechador Requisito: Destreza 13 o superior Eres un experto en ocultarte en las sombras. Ganas los siguientes beneficios: • Puedes intentar esconderte cuando estás en penumbra de la criatura de la cual te estás ocultando. • Cuando estás escondido de una criatura y fallas con un arma a distancia, hacer el ataque no delatará tu posición. • La luz tenue no supone una desventaja para tus tiradas de Sabiduría (Percepción) si estas se basan en la vista.",
+    "prerequisiteText": "Destreza 13 o superior",
+    "prerequisites": [
+      {
+        "type": "minimum_ability",
+        "ability": "dex",
+        "minimum": 13
+      }
+    ],
+    "effects": [],
+    "choices": [],
+    "automationNotes": [
+      "Efectos conservados íntegramente como texto; requieren aplicación manual cuando sean condicionales o no estén estructurados."
+    ]
+  },
+  {
+    "id": "feat-actor",
+    "name": "Actor",
+    "source": {
+      "page": 433,
+      "endPage": 433,
+      "title": "Dotes"
+    },
+    "description": "Actor Eres experimentado en la imitación y en el arte del drama. Ganas los siguientes beneficios: • Incrementa tu puntuación de Carisma en 1, hasta un máximo de 20. • Tienes ventaja en las tiradas de Carisma (Engañar) y Carisma (Interpretar) cuando intentas hacerte pasar por otra persona. • Puedes imitar el habla de otra persona o los sonidos hechos por otras criaturas. Debes haber oído a la persona hablar, o haber escuchado a la criatura haber hecho el sonido, por al menos un minuto. Una tirada exitosa de Sabiduría (Averiguar Intenciones) contra tu tirada de Carisma (Engañar) permite a alguien o algo que escucha determinar que el efecto es falso.",
+    "prerequisiteText": "",
+    "prerequisites": [],
+    "effects": [
+      {
+        "type": "ability_bonus",
+        "ability": "cha",
+        "value": 1
+      }
+    ],
+    "choices": [],
+    "automationNotes": []
+  },
+  {
+    "id": "feat-adepto-de-lo-oculto-tasha",
+    "name": "Adepto de lo Oculto (Tasha)",
+    "source": {
+      "page": 433,
+      "endPage": 433,
+      "title": "Dotes"
+    },
+    "description": "Adepto de lo Oculto (Tasha) Requisito: función Lanzamiento de hechizos o Magia de pacto. Estudiando conocimientos ocultos, has desbloqueado poder misterioso dentro de ti: aprendes una opción de Invocación sobrenatural de tu elección de la clase de brujo. Si la invocación tiene un requisito previo de cualquier tipo, solo puedes elegir esa invocación si eres un brujo que cumple con el requisito previo. Siempre que ganes un nivel, puedes reemplazar la invocación con otra de la clase de brujo.",
+    "prerequisiteText": "función Lanzamiento de hechizos o Magia de pacto.",
+    "prerequisites": [
+      {
+        "type": "spellcasting"
+      }
+    ],
+    "effects": [],
+    "choices": [],
+    "automationNotes": [
+      "Efectos conservados íntegramente como texto; requieren aplicación manual cuando sean condicionales o no estén estructurados."
+    ]
+  },
+  {
+    "id": "feat-adepto-elemental",
+    "name": "Adepto Elemental",
+    "source": {
+      "page": 433,
+      "endPage": 434,
+      "title": "Dotes"
+    },
+    "description": "Adepto Elemental Requisito: La habilidad de lanzar al menos un conjuro Cuando ganas esta dote, eliges uno de los siguientes tipos de daño: ácido, frío, fuego, relámpago o trueno. Los hechizos que lances ignoran la resistencia al daño del tipo elegido. Además, cuando realices tirada de daño por un conjuro que lances que haga daño de este tipo, puedes tratar cada 1 que salga en el dado como un 2. Puedes elegir esta dote múltiples veces. Cada vez que la elijas podrás elegir un tipo de daño diferente.",
+    "prerequisiteText": "La habilidad de lanzar al menos un conjuro",
+    "prerequisites": [
+      {
+        "type": "spellcasting"
+      }
+    ],
+    "effects": [],
+    "choices": [],
+    "automationNotes": [
+      "Efectos conservados íntegramente como texto; requieren aplicación manual cuando sean condicionales o no estén estructurados."
+    ]
+  },
+  {
+    "id": "feat-adepto-marcial",
+    "name": "Adepto Marcial",
+    "source": {
+      "page": 434,
+      "endPage": 434,
+      "title": "Dotes"
+    },
+    "description": "Adepto Marcial Tienes entrenamiento marcial que te permite llevar a cabo maniobras especiales de combate. Ganas los siguientes beneficios: • Aprendes dos maniobras de tu elección entre las disponibles en el Arquetipo del guerrero Maestro de Batalla. Si una maniobra que tú usas requiere que tu objetivo haga una tirada de salvación para resistir los efectos de la maniobra, la tirada de salvación por clase de dificultad (CD) es igual a 8 + tu bonificador de competencia + tu modificador de Fuerza o Destreza (a tu elección). • Si ya tienes dado de superioridad, ganas uno más; si no, tú tienes un dado de superioridad, que es un d6. Este dado es usado para alimentar tus maniobras. Recuperas tu superioridad gastada teniendo un descanso corto o largo.",
+    "prerequisiteText": "",
+    "prerequisites": [],
+    "effects": [],
+    "choices": [],
+    "automationNotes": [
+      "Efectos conservados íntegramente como texto; requieren aplicación manual cuando sean condicionales o no estén estructurados."
+    ]
+  },
+  {
+    "id": "feat-adepto-metamagico-tasha",
+    "name": "Adepto Metamágico (Tasha)",
+    "source": {
+      "page": 434,
+      "endPage": 434,
+      "title": "Dotes"
+    },
+    "description": "Adepto Metamágico (Tasha) Requisito: Ser Lanzador de hechizos o Magia de Pacto Has aprendido a ejercer tu voluntad en tus hechizos para alterar la forma en que funcionan: • Aprendes dos opciones de Meta magia de tu elección de la clase hechicero. Puedes usar solo una opción de metamágia en un hechizo cuando lo lanzas, a menos que la opción diga lo contrario. Cuando alcanzas un nivel que otorga la función de aumento de característica, puedes reemplazar una de tus opciones de metamágia con otra de la clase de hechicero. • Ganas 2 puntos de hechicería para gastar en metamágia (estos puntos se suman a cualquier punto de hechicería que tengas de otra fuente, pero solo se pueden usar en metamágia). Recuperas todos los puntos de hechicería gastados cuando terminas un descanso largo.",
+    "prerequisiteText": "Ser Lanzador de hechizos o Magia de Pacto",
+    "prerequisites": [
+      {
+        "type": "spellcasting"
+      }
+    ],
+    "effects": [],
+    "choices": [],
+    "automationNotes": [
+      "Efectos conservados íntegramente como texto; requieren aplicación manual cuando sean condicionales o no estén estructurados."
+    ]
+  },
+  {
+    "id": "feat-afortunado",
+    "name": "Afortunado",
+    "source": {
+      "page": 434,
+      "endPage": 434,
+      "title": "Dotes"
+    },
+    "description": "Afortunado Tienes una suerte inexplicable que parece ocurrir en el momento justo. Tienes 3 puntos de suerte. Cada vez que hagas una tirada de ataque, una tirada de habilidad, o una tirada de salvación, puedes gastar 1 punto para tirar un d20 adicional. Puedes elegir gastar uno de tus puntos de suerte después de tirar el dado, pero antes se determina el resultado. Tú eliges cuál de los dados d20 es usado para la tirada de ataque, tirada de habilidad o tirada de salvación. También puedes gastar un punto de suerte cuando un ataque es hecho contra ti. Tira un dado d20 y entonces elige si el ataque usa tu tirada de ataque o la suya. Si más de una criatura gasta un punto de suerte para influenciar en el resultado, se cancelan el uno al otro. No se tiran más dados. Recuperas tus puntos de suerte cuando terminas un descanso largo.",
+    "prerequisiteText": "",
+    "prerequisites": [],
+    "effects": [],
+    "choices": [],
+    "automationNotes": [
+      "Efectos conservados íntegramente como texto; requieren aplicación manual cuando sean condicionales o no estén estructurados."
+    ]
+  },
+  {
+    "id": "feat-agil",
+    "name": "Ágil",
+    "source": {
+      "page": 434,
+      "endPage": 434,
+      "title": "Dotes"
+    },
+    "description": "Ágil Eres extraordinariamente rápido y ágil. Ganas los siguientes beneficios: • Tu velocidad se incrementa en 10 pies. • Cuando usas la acción Carrera, el terreno difícil no te cuesta movimiento adicional en ese turno. • Cuando haces un ataque cuerpo a cuerpo contra una criatura, no provocas ataques de oportunidad de esa criatura por el resto del turno, tanto si golpeaste como si no.",
+    "prerequisiteText": "",
+    "prerequisites": [],
+    "effects": [
+      {
+        "type": "speed_bonus",
+        "value": 10
+      }
+    ],
+    "choices": [],
+    "automationNotes": []
+  },
+  {
+    "id": "feat-alborotador-de-taberna",
+    "name": "Alborotador de Taberna",
+    "source": {
+      "page": 434,
+      "endPage": 434,
+      "title": "Dotes"
+    },
+    "description": "Alborotador de Taberna Estás acostumbrado a las peleas de taberna usando cualquier arma que tengas a tu alcance. Ganas los siguientes beneficios: • Aumentas tu puntuación en Fuerza o Constitución en 1, hasta un máximo de 20. • Eres competente con armas improvisadas y golpes sin armas. • Tu puñetazo sin armas usa un d4 para el daño. • Cuando golpeas una criatura con un golpe sin armas o un arma improvisada en tu turno, puedes usar una acción adicional para intentar agarrar al objetivo.",
+    "prerequisiteText": "",
+    "prerequisites": [],
+    "effects": [],
+    "choices": [
+      {
+        "id": "feat-alborotador-de-taberna-ability",
+        "type": "choose_ability_increase",
+        "name": "Aumento de característica",
+        "amount": 1,
+        "required": true,
+        "options": [
+          {
+            "id": "str",
+            "name": "Fuerza",
+            "effects": [
+              {
+                "type": "ability_bonus",
+                "ability": "str",
+                "value": 1
+              }
+            ]
+          },
+          {
+            "id": "con",
+            "name": "Constitución",
+            "effects": [
+              {
+                "type": "ability_bonus",
+                "ability": "con",
+                "value": 1
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "automationNotes": []
+  },
+  {
+    "id": "feat-alerta",
+    "name": "Alerta",
+    "source": {
+      "page": 434,
+      "endPage": 435,
+      "title": "Dotes"
+    },
+    "description": "Alerta Como siempre estás vigilando el peligro, ganas los siguientes beneficios: • Ganas un +5 a la iniciativa. • No puedes ser sorprendido mientras estés consciente. • Otras criaturas no pueden tomar ventaja en tiradas de ataque contra ti como resultado de estar ocultos de ti.",
+    "prerequisiteText": "",
+    "prerequisites": [],
+    "effects": [
+      {
+        "type": "initiative_bonus",
+        "value": 5
+      }
+    ],
+    "choices": [],
+    "automationNotes": []
+  },
+  {
+    "id": "feat-apresador",
+    "name": "Apresador",
+    "source": {
+      "page": 435,
+      "endPage": 435,
+      "title": "Dotes"
+    },
+    "description": "Apresador Requisito: Fuerza 13 o superior. Has desarrollado las habilidades necesarias para defenderte en agarres en espacios reducidos. Ganas los siguientes beneficios: • Tienes ventaja en tiradas de ataque contra una criatura que tengas apresada. • Puedes usar tu acción para intentar detener a una criatura que estés apresando. Para hacerlo, haz otra tirada de presa. Si tienes éxito, tú y la criatura estáis detenidos hasta que termina. Criaturas que son una talla más grande que tú no se libran automáticamente en sus tiradas para escapar de tu apresamiento.",
+    "prerequisiteText": "Fuerza 13 o superior.",
+    "prerequisites": [
+      {
+        "type": "minimum_ability",
+        "ability": "str",
+        "minimum": 13
+      }
+    ],
+    "effects": [],
+    "choices": [],
+    "automationNotes": [
+      "Efectos conservados íntegramente como texto; requieren aplicación manual cuando sean condicionales o no estén estructurados."
+    ]
+  },
+  {
+    "id": "feat-artillero-tasha",
+    "name": "Artillero (Tasha)",
+    "source": {
+      "page": 435,
+      "endPage": 435,
+      "title": "Dotes"
+    },
+    "description": "Artillero (Tasha) Tienes una mano rápida y un buen ojo cuando empleas armas de fuego, lo que te otorga los siguientes beneficios: • Aumentas tu puntuación de Destreza en 1, hasta un máximo de 20. • Obtienes competencia con armas de fuego (ver \"Armas de fuego\" en la Guía del director de Juego). • ignoras la propiedad de carga de las armas de fuego. • Estar a 5 pies o menos de una criatura hostil no te impone desventaja en tus tiradas de ataque a distancia.",
+    "prerequisiteText": "",
+    "prerequisites": [],
+    "effects": [
+      {
+        "type": "ability_bonus",
+        "ability": "dex",
+        "value": 1
+      }
+    ],
+    "choices": [],
+    "automationNotes": []
+  },
+  {
+    "id": "feat-artificiero-iniciado-tasha",
+    "name": "Artificiero Iniciado (Tasha)",
+    "source": {
+      "page": 435,
+      "endPage": 435,
+      "title": "Dotes"
+    },
+    "description": "Artificiero Iniciado (Tasha) Has aprendido algo de la inventiva de un artificiero: • Aprendes un truco de tu elección de la lista de hechizos del artificiero, y aprendes un hechizo de nivel 1 de tu elección de esa lista. La inteligencia es tu capacidad de lanzamiento para estos hechizos. • Puedes lanzar el hechizo de 1er nivel de esta dote sin espacio de conjuro, y debes terminar un descanso largo antes puedes lanzarlo de esta manera otra vez. También puedes lanzar el hechizo usando cualquier espacio de hechizo que tengas. • Obtienes competencia con un tipo de herramienta de artesano de tu elección, y puede usar ese tipo de herramienta como foco de lanzamiento de hechizos para cualquier hechizo que lances que use Inteligencia.",
+    "prerequisiteText": "",
+    "prerequisites": [],
+    "effects": [],
+    "choices": [],
+    "automationNotes": [
+      "Efectos conservados íntegramente como texto; requieren aplicación manual cuando sean condicionales o no estén estructurados."
+    ]
+  },
+  {
+    "id": "feat-asesino-de-magos",
+    "name": "Asesino de Magos",
+    "source": {
+      "page": 435,
+      "endPage": 435,
+      "title": "Dotes"
+    },
+    "description": "Asesino de Magos Has practicado técnicas útiles en combate cuerpo a cuerpo contra lanzadores de conjuros, ganando los siguientes beneficios: • Cuando una criatura dentro de cinco pies a la redonda lanza un conjuro puedes usar tu reacción para hacer un ataque cuerpo a cuerpo contra esa criatura. • Cuando dañas a una criatura que se está concentrando en un conjuro, esa criatura tiene desventaja haciendo la tirada de salvación que necesita para mantener la concentración. • Tienes ventaja en tiradas de salvación contra hechizos lanzados por criaturas a cinco pies de ti.",
+    "prerequisiteText": "",
+    "prerequisites": [],
+    "effects": [],
+    "choices": [],
+    "automationNotes": [
+      "Efectos conservados íntegramente como texto; requieren aplicación manual cuando sean condicionales o no estén estructurados."
+    ]
+  },
+  {
+    "id": "feat-atacante-salvaje",
+    "name": "Atacante Salvaje",
+    "source": {
+      "page": 435,
+      "endPage": 435,
+      "title": "Dotes"
+    },
+    "description": "Atacante Salvaje Una vez por turno cuando hagas tiradas de daño por el ataque de un arma de cuerpo a cuerpo, puedes volver a tirar los dados y usar cualquiera de los dos totales.",
+    "prerequisiteText": "",
+    "prerequisites": [],
+    "effects": [],
+    "choices": [],
+    "automationNotes": [
+      "Efectos conservados íntegramente como texto; requieren aplicación manual cuando sean condicionales o no estén estructurados."
+    ]
+  },
+  {
+    "id": "feat-atleta",
+    "name": "Atleta",
+    "source": {
+      "page": 435,
+      "endPage": 435,
+      "title": "Dotes"
+    },
+    "description": "Atleta Te has sometido a un entrenamiento físico extensivo para ganar los siguientes beneficios: • Incrementa tu puntuación de Fuerza o Destreza en 1, hasta un máximo de 20. • Cuando estás tumbado, levantarte sólo usa 5 pies de tu movimiento. • Escalar no disminuye tu velocidad. • Puedes hacer un salto corriendo, alto o largo, después de haber recorrido sólo 5 pies a pie, en vez de 10 pies.",
+    "prerequisiteText": "",
+    "prerequisites": [],
+    "effects": [],
+    "choices": [
+      {
+        "id": "feat-atleta-ability",
+        "type": "choose_ability_increase",
+        "name": "Aumento de característica",
+        "amount": 1,
+        "required": true,
+        "options": [
+          {
+            "id": "str",
+            "name": "Fuerza",
+            "effects": [
+              {
+                "type": "ability_bonus",
+                "ability": "str",
+                "value": 1
+              }
+            ]
+          },
+          {
+            "id": "dex",
+            "name": "Destreza",
+            "effects": [
+              {
+                "type": "ability_bonus",
+                "ability": "dex",
+                "value": 1
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "automationNotes": []
+  },
+  {
+    "id": "feat-cargar",
+    "name": "Cargar",
+    "source": {
+      "page": 435,
+      "endPage": 436,
+      "title": "Dotes"
+    },
+    "description": "Cargar Cuando usas la acción de Carrera, puedes usar una acción adicional para hacer un ataque con arma cuerpo a cuerpo o empujar una criatura. Si te mueves al menos 10 pies en línea recta inmediatamente antes de hacer esta acción, ganas un +5 de bonificador al daño del ataque (si elegiste hacer un ataque cuerpo a cuerpo) o empujas el objetivo hasta a 10 pies lejos de ti (si elegiste empujar y tuviste éxito).",
+    "prerequisiteText": "",
+    "prerequisites": [],
+    "effects": [],
+    "choices": [],
+    "automationNotes": [
+      "Efectos conservados íntegramente como texto; requieren aplicación manual cuando sean condicionales o no estén estructurados."
+    ]
+  },
+  {
+    "id": "feat-centinela",
+    "name": "Centinela",
+    "source": {
+      "page": 436,
+      "endPage": 436,
+      "title": "Dotes"
+    },
+    "description": "Centinela Has dominado técnicas para tomar ventaja de todos los fallos en la guardia de cualquier enemigo, ganando los siguientes beneficios: • Cuando golpees una criatura con un ataque de oportunidad, la velocidad de la criatura se reduce a 0 para el resto del turno. • Criaturas en un radio de 5 pies de ti provocan ataques de oportunidad incluso si ellos hacen acción de Retirada antes de dejar tu alcance. • Cuando una criatura en un radio de 5 pies de ti hace un ataque contra otro objetivo que no eres tú (y el objetivo no tiene esta dote), puedes usar tu reacción para hacer un ataque cuerpo a cuerpo contra la criatura atacante.",
+    "prerequisiteText": "",
+    "prerequisites": [],
+    "effects": [],
+    "choices": [],
+    "automationNotes": [
+      "Efectos conservados íntegramente como texto; requieren aplicación manual cuando sean condicionales o no estén estructurados."
+    ]
+  },
+  {
+    "id": "feat-chef-tasha",
+    "name": "Chef (Tasha)",
+    "source": {
+      "page": 436,
+      "endPage": 436,
+      "title": "Dotes"
+    },
+    "description": "Chef (Tasha) El tiempo dedicado a dominar las artes culinarias ha valido la pena, otorgándole los siguientes beneficios: • Aumentas tu puntuación de Constitución o Sabiduría en 1, hasta un máximo de 20. • Adquieres competencia con los utensilios de cocina si no la tenías ya. • Como parte de un descanso corto, puede cocinar comida especial, siempre que tengas ingredientes y utensilios de cocina a mano puedes preparar suficiente de este alimento para un número de criaturas igual a 4 + tu bono de competencia. Al final del descanso corto, cualquier criatura que coma la comida y gaste uno o más Dados de Golpe para recuperar puntos de golpe recuperan 1d8 extra de puntos de golpe. • Con una hora de trabajo o cuando terminas un descanso largo, puede cocinar una cantidad de golosinas igual a tu bono de competencia. Estas delicias especiales duran 8 horas después de ser cocinadas. Una criatura puede usar una acción adicional para comer una de estas golosinas para ganar puntos de golpe temporales iguales a tu bono de competencia.",
+    "prerequisiteText": "",
+    "prerequisites": [],
+    "effects": [],
+    "choices": [
+      {
+        "id": "feat-chef-tasha-ability",
+        "type": "choose_ability_increase",
+        "name": "Aumento de característica",
+        "amount": 1,
+        "required": true,
+        "options": [
+          {
+            "id": "con",
+            "name": "Constitución",
+            "effects": [
+              {
+                "type": "ability_bonus",
+                "ability": "con",
+                "value": 1
+              }
+            ]
+          },
+          {
+            "id": "wis",
+            "name": "Sabiduría",
+            "effects": [
+              {
+                "type": "ability_bonus",
+                "ability": "wis",
+                "value": 1
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "automationNotes": []
+  },
+  {
+    "id": "feat-combatiente-montado",
+    "name": "Combatiente Montado",
+    "source": {
+      "page": 437,
+      "endPage": 437,
+      "title": "Dotes"
+    },
+    "description": "Combatiente Montado Eres un adversario peligroso de confrontar cuando estás montado. Mientras estés montado y no estés incapacitado, ganas los siguientes beneficios: • Tienes ventaja en las tiradas de ataque cuerpo a cuerpo contra cualquier criatura que no lleve montura y que sea más pequeño que tu esta. • Puedes forzar a que un ataque destinado a tu montura sea recibido por ti. • Si tu montura está sujeta a un efecto que le permita hacer una tirada de salvación para recibir la mitad de daño, en vez de eso no recibe daño si consigue la tirada de salvación, y sólo la mitad de daño si falla la tirada.",
+    "prerequisiteText": "",
+    "prerequisites": [],
+    "effects": [],
+    "choices": [],
+    "automationNotes": [
+      "Efectos conservados íntegramente como texto; requieren aplicación manual cuando sean condicionales o no estén estructurados."
+    ]
+  },
+  {
+    "id": "feat-conjurador-de-guerra",
+    "name": "Conjurador de Guerra",
+    "source": {
+      "page": 437,
+      "endPage": 437,
+      "title": "Dotes"
+    },
+    "description": "Conjurador de Guerra Requisitos: La habilidad de lanzar al menos un conjuro. Has practicado lanzando conjuros en medio del combate, aprendiendo técnicas que te garantizan los siguientes beneficios: • Tienes ventaja en las tiradas de salvación de Constitución hechas para mantener la concentración en un conjuro cuando recibes daño. • Puedes interpretar los componentes somáticos de conjuros incluso cuando tienes armas o escudo en una o dos manos. • Cuando el movimiento de una criatura hostil provoca un ataque de oportunidad para ti, puedes usar tu reacción para lanzar un conjuro a la criatura en vez de hacer un ataque de oportunidad. El conjuro debe tener un tiempo de lanzamiento de una acción y sólo puede afectar a esa criatura.",
+    "prerequisiteText": "La habilidad de lanzar al menos un conjuro.",
+    "prerequisites": [
+      {
+        "type": "spellcasting"
+      }
+    ],
+    "effects": [],
+    "choices": [],
+    "automationNotes": [
+      "Efectos conservados íntegramente como texto; requieren aplicación manual cuando sean condicionales o no estén estructurados."
+    ]
+  },
+  {
+    "id": "feat-desgarrador-tasha",
+    "name": "Desgarrador (Tasha)",
+    "source": {
+      "page": 437,
+      "endPage": 437,
+      "title": "Dotes"
+    },
+    "description": "Desgarrador (Tasha) Has aprendido dónde cortar para obtener herir gravemente a tus enemigos, lo que te otorga los siguientes beneficios: • Incrementa tu Fuerza o Destreza en 1, hasta un máximo de 20. • Una vez por turno cuando golpeas a una criatura con un ataque que inflige daño cortante, puedes reducir la velocidad del objetivo en 10 pies hasta el comienzo de tu próximo turno. • Cuando aciertas un golpe crítico que inflige daño cortante a una criatura, la hieres gravemente. Hasta el comienzo de tu próximo turno, el objetivo tiene desventaja en todas las tiradas de ataque.",
+    "prerequisiteText": "",
+    "prerequisites": [],
+    "effects": [],
+    "choices": [
+      {
+        "id": "feat-desgarrador-tasha-ability",
+        "type": "choose_ability_increase",
+        "name": "Aumento de característica",
+        "amount": 1,
+        "required": true,
+        "options": [
+          {
+            "id": "str",
+            "name": "Fuerza",
+            "effects": [
+              {
+                "type": "ability_bonus",
+                "ability": "str",
+                "value": 1
+              }
+            ]
+          },
+          {
+            "id": "dex",
+            "name": "Destreza",
+            "effects": [
+              {
+                "type": "ability_bonus",
+                "ability": "dex",
+                "value": 1
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "automationNotes": []
+  },
+  {
+    "id": "feat-destructor-tasha",
+    "name": "Destructor (Tasha)",
+    "source": {
+      "page": 437,
+      "endPage": 437,
+      "title": "Dotes"
+    },
+    "description": "Destructor (Tasha) Tienes práctica en el arte de aplastar a tus enemigos, otorgándote los siguientes beneficios: • Incrementa tu puntuación de Fuerza o Constitución en 1, hasta un máximo de 20. • Una vez por turno, cuando golpeas a una criatura con un ataque que inflige daño contundente, puedes moverlo 5 pies a un espacio desocupado, siempre que el objetivo no sea más de un tamaño más grande que tú. • Cuando logras un golpe crítico con daño contundente a una criatura, esta criatura recibe ataques con ventaja hasta el comienzo de tu próximo turno.",
+    "prerequisiteText": "",
+    "prerequisites": [],
+    "effects": [],
+    "choices": [
+      {
+        "id": "feat-destructor-tasha-ability",
+        "type": "choose_ability_increase",
+        "name": "Aumento de característica",
+        "amount": 1,
+        "required": true,
+        "options": [
+          {
+            "id": "str",
+            "name": "Fuerza",
+            "effects": [
+              {
+                "type": "ability_bonus",
+                "ability": "str",
+                "value": 1
+              }
+            ]
+          },
+          {
+            "id": "con",
+            "name": "Constitución",
+            "effects": [
+              {
+                "type": "ability_bonus",
+                "ability": "con",
+                "value": 1
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "automationNotes": []
+  },
+  {
+    "id": "feat-duelista-defensivo",
+    "name": "Duelista Defensivo",
+    "source": {
+      "page": 437,
+      "endPage": 437,
+      "title": "Dotes"
+    },
+    "description": "Duelista Defensivo Requisito: Destreza 13 o superior. Mientras blandes un arma sutil con la que eres competente y otra criatura te golpea con un ataque cuerpo a cuerpo, puedes usar tu reacción para añadir tu bonificador de competencia a tu CA por ese ataque, causando potencialmente que este falle.",
+    "prerequisiteText": "Destreza 13 o superior.",
+    "prerequisites": [
+      {
+        "type": "minimum_ability",
+        "ability": "dex",
+        "minimum": 13
+      }
+    ],
+    "effects": [],
+    "choices": [],
+    "automationNotes": [
+      "Efectos conservados íntegramente como texto; requieren aplicación manual cuando sean condicionales o no estén estructurados."
+    ]
+  },
+  {
+    "id": "feat-duro",
+    "name": "Duro",
+    "source": {
+      "page": 437,
+      "endPage": 437,
+      "title": "Dotes"
+    },
+    "description": "Duro Duro y resistente, ganas los siguientes beneficios: • Incrementas tu puntuación de Constitución en 1, hasta un máximo de 20. • Cuando tiras un dado de golpe para recuperar puntos de golpe, el número mínimo de puntos que recuperas por la tirada es igual a dos veces el modificador de tu constitución (mínimo de 2).",
+    "prerequisiteText": "",
+    "prerequisites": [],
+    "effects": [
+      {
+        "type": "ability_bonus",
+        "ability": "con",
+        "value": 1
+      }
+    ],
+    "choices": [],
+    "automationNotes": []
+  },
+  {
+    "id": "feat-envenenador-tasha",
+    "name": "Envenenador (Tasha)",
+    "source": {
+      "page": 437,
+      "endPage": 438,
+      "title": "Dotes"
+    },
+    "description": "Envenenador (Tasha) Puedes preparar venenos mortales, otorgándote los siguientes beneficios: • Cuando haces una tirada de daño que inflige daño por veneno, ignoras la resistencia al daño por veneno. • Puedes aplicar veneno a un arma o munición como una acción adicional, en lugar de una acción. • Obtienes competencia con el equipo del envenenador si no lo tenga ya. Con una hora de trabajo usando un equipo de envenenador y gastando 50 po de materiales, puede crear una serie de dosis de potente veneno igual a tu bonificador de competencia. Una vez aplicado a un arma o pieza de munición, el veneno conserva su potencia durante 1 minuto o hasta golpeas con el arma o la munición. Cuando una criatura recibe daño del arma o la munición recubierta, esa criatura debe tener éxito en una Salvación CD14 para no recibir 2d8 de daño por veneno y quedar envenenada hasta el final de tu próximo turno.",
+    "prerequisiteText": "",
+    "prerequisites": [],
+    "effects": [],
+    "choices": [],
+    "automationNotes": [
+      "Efectos conservados íntegramente como texto; requieren aplicación manual cuando sean condicionales o no estén estructurados."
+    ]
+  },
+  {
+    "id": "feat-experto-en-armadura-media",
+    "name": "Experto en Armadura Media",
+    "source": {
+      "page": 438,
+      "endPage": 438,
+      "title": "Dotes"
+    },
+    "description": "Experto en Armadura Media Requisito: Competencia con armadura media. Has practicado moviéndote con una armadura media para ganar los siguientes beneficios: • Llevar armadura media no te supone una desventaja en tus tiradas de Destreza (Sigilo). • Cuando llevas armadura media, puedes añadir 3, en vez de 2, a tu CA si tienes 16 o más en Destreza.",
+    "prerequisiteText": "Competencia con armadura media.",
+    "prerequisites": [
+      {
+        "type": "proficiency",
+        "value": "armadura media"
+      }
+    ],
+    "effects": [],
+    "choices": [],
+    "automationNotes": [
+      "Efectos conservados íntegramente como texto; requieren aplicación manual cuando sean condicionales o no estén estructurados."
+    ]
+  },
+  {
+    "id": "feat-experto-en-armadura-pesada",
+    "name": "Experto en Armadura Pesada",
+    "source": {
+      "page": 438,
+      "endPage": 438,
+      "title": "Dotes"
+    },
+    "description": "Experto en Armadura Pesada Requisito: Competente con armadura pesada. Puedes usar tu armadura para desviar golpes que matarían a otros. Ganas los siguientes beneficios: • Incrementa tu puntuación de Fuerza en 1, hasta un máximo de 20. • Mientras lleves armadura pesada, el daño contundente, perforante y cortante recibido de armas no mágicas es reducido en 3.",
+    "prerequisiteText": "Competente con armadura pesada.",
+    "prerequisites": [
+      {
+        "type": "proficiency",
+        "value": "armadura pesada"
+      }
+    ],
+    "effects": [
+      {
+        "type": "ability_bonus",
+        "ability": "str",
+        "value": 1
+      }
+    ],
+    "choices": [],
+    "automationNotes": []
+  },
+  {
+    "id": "feat-experto-en-armas",
+    "name": "Experto en Armas",
+    "source": {
+      "page": 438,
+      "endPage": 438,
+      "title": "Dotes"
+    },
+    "description": "Experto en Armas Has practicado extensivamente con una variedad de armas, ganando los siguientes beneficios: • Aumenta tu puntuación de Fuerza o Destreza en 1, hasta un máximo de 20. • Ganas competencia con cuatro armas de tu elección.",
+    "prerequisiteText": "",
+    "prerequisites": [],
+    "effects": [],
+    "choices": [
+      {
+        "id": "feat-experto-en-armas-ability",
+        "type": "choose_ability_increase",
+        "name": "Aumento de característica",
+        "amount": 1,
+        "required": true,
+        "options": [
+          {
+            "id": "str",
+            "name": "Fuerza",
+            "effects": [
+              {
+                "type": "ability_bonus",
+                "ability": "str",
+                "value": 1
+              }
+            ]
+          },
+          {
+            "id": "dex",
+            "name": "Destreza",
+            "effects": [
+              {
+                "type": "ability_bonus",
+                "ability": "dex",
+                "value": 1
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "automationNotes": []
+  },
+  {
+    "id": "feat-experto-en-armas-de-asta",
+    "name": "Experto en Armas de Asta",
+    "source": {
+      "page": 438,
+      "endPage": 438,
+      "title": "Dotes"
+    },
+    "description": "Experto en Armas de Asta Puedes mantener a tus enemigos a raya con armas de asta. Ganas los siguientes beneficios: • Cuando llevas a cabo una acción de ataque con solo una guja, alabarda o bastón, puedes usar una acción adicional para hacer un ataque cuerpo a cuerpo con el otro extremo del arma. El dado de daño del arma para este ataque es 1d4, y el ataque es daño contundente. • Mientras sostengas una guja, alabarda, pica o bastón, las otras criaturas provocan un ataque de oportunidad de ti cuando entran a tu alcance.",
+    "prerequisiteText": "",
+    "prerequisites": [],
+    "effects": [],
+    "choices": [],
+    "automationNotes": [
+      "Efectos conservados íntegramente como texto; requieren aplicación manual cuando sean condicionales o no estén estructurados."
+    ]
+  },
+  {
+    "id": "feat-experto-en-ballestas",
+    "name": "Experto en Ballestas",
+    "source": {
+      "page": 438,
+      "endPage": 438,
+      "title": "Dotes"
+    },
+    "description": "Experto en Ballestas Gracias a la extensiva práctica con la ballesta, ganas los siguientes beneficios: • Ignoras la calidad de carga de las ballestas con las que tú eres competente. • Estar a 5 pies de una criatura hostil no te causa desventaja en tus tiradas de ataque a distancia. • Cuando usas la acción de atacar y atacar con un arma de mano, puedes usar una acción adicional para atacar con una ballesta de mano cargada que sostengas.",
+    "prerequisiteText": "",
+    "prerequisites": [],
+    "effects": [],
+    "choices": [],
+    "automationNotes": [
+      "Efectos conservados íntegramente como texto; requieren aplicación manual cuando sean condicionales o no estén estructurados."
+    ]
+  },
+  {
+    "id": "feat-experto-en-escudos",
+    "name": "Experto en Escudos",
+    "source": {
+      "page": 438,
+      "endPage": 438,
+      "title": "Dotes"
+    },
+    "description": "Experto en Escudos Usas los escudos no solamente para protección, sino que también para atacar. Ganas estos beneficios cuando sostienes un escudo: • Si llevas a cabo una acción de ataque en tu turno, puedes usar una acción adicional para tratar de empujar a una criatura a 5 pies de ti con tu escudo. • Si no estás incapacitado, puedes añadir la CA de tu escudo a cualquier tirada de salvación basada en destreza contra un conjuro u otro efecto dañino dirigido sólo a ti. • Si estás sujeto a un efecto que te permite recibir sólo la mitad del daño, puedes usar tu reacción para no llevarte daño si aciertas la tirada de salvación, poniendo el escudo entre ti y el origen del efecto.",
+    "prerequisiteText": "",
+    "prerequisites": [],
+    "effects": [],
+    "choices": [],
+    "automationNotes": [
+      "Efectos conservados íntegramente como texto; requieren aplicación manual cuando sean condicionales o no estén estructurados."
+    ]
+  },
+  {
+    "id": "feat-experto-en-varias-habilidades-tasha",
+    "name": "Experto en Varias Habilidades (Tasha)",
+    "source": {
+      "page": 438,
+      "endPage": 439,
+      "title": "Dotes"
+    },
+    "description": "Experto en Varias Habilidades (Tasha) Has perfeccionado tus habilidades, otorgándote los siguientes beneficios: • Aumenta una puntuación de característica de tu elección en 1, hasta un máximo de 20. • Ganas competencia en una habilidad de tu elección. • Elije una habilidad en la que tengas competencia. Obtienes pericia con esa habilidad, lo que significa tu bonificador de competencia se duplica para cualquier prueba que haces con ella. La habilidad que elijas debe ser una que no se esté beneficiando ya de una característica, como Pericia, que duplica su bonificación de competencia.",
+    "prerequisiteText": "",
+    "prerequisites": [],
+    "effects": [],
+    "choices": [
+      {
+        "id": "feat-experto-en-varias-habilidades-tasha-ability",
+        "type": "choose_ability_increase",
+        "name": "Aumento de característica",
+        "amount": 1,
+        "required": true,
+        "options": [
+          {
+            "id": "str",
+            "name": "Fuerza",
+            "effects": [
+              {
+                "type": "ability_bonus",
+                "ability": "str",
+                "value": 1
+              }
+            ]
+          },
+          {
+            "id": "dex",
+            "name": "Destreza",
+            "effects": [
+              {
+                "type": "ability_bonus",
+                "ability": "dex",
+                "value": 1
+              }
+            ]
+          },
+          {
+            "id": "con",
+            "name": "Constitución",
+            "effects": [
+              {
+                "type": "ability_bonus",
+                "ability": "con",
+                "value": 1
+              }
+            ]
+          },
+          {
+            "id": "int",
+            "name": "Inteligencia",
+            "effects": [
+              {
+                "type": "ability_bonus",
+                "ability": "int",
+                "value": 1
+              }
+            ]
+          },
+          {
+            "id": "wis",
+            "name": "Sabiduría",
+            "effects": [
+              {
+                "type": "ability_bonus",
+                "ability": "wis",
+                "value": 1
+              }
+            ]
+          },
+          {
+            "id": "cha",
+            "name": "Carisma",
+            "effects": [
+              {
+                "type": "ability_bonus",
+                "ability": "cha",
+                "value": 1
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "id": "feat-experto-en-varias-habilidades-tasha-skill",
+        "type": "choose_skill",
+        "name": "Competencia adicional",
+        "amount": 1,
+        "required": true,
+        "options": [
+          {
+            "id": "acrobatics",
+            "name": "Acrobacias",
+            "effects": [
+              {
+                "type": "skill_proficiency",
+                "skill": "acrobatics"
+              }
+            ]
+          },
+          {
+            "id": "animal-handling",
+            "name": "Tacto Con Animales",
+            "effects": [
+              {
+                "type": "skill_proficiency",
+                "skill": "animal-handling"
+              }
+            ]
+          },
+          {
+            "id": "arcana",
+            "name": "Arcanos",
+            "effects": [
+              {
+                "type": "skill_proficiency",
+                "skill": "arcana"
+              }
+            ]
+          },
+          {
+            "id": "athletics",
+            "name": "Atletismo",
+            "effects": [
+              {
+                "type": "skill_proficiency",
+                "skill": "athletics"
+              }
+            ]
+          },
+          {
+            "id": "deception",
+            "name": "Engañar",
+            "effects": [
+              {
+                "type": "skill_proficiency",
+                "skill": "deception"
+              }
+            ]
+          },
+          {
+            "id": "history",
+            "name": "Historia",
+            "effects": [
+              {
+                "type": "skill_proficiency",
+                "skill": "history"
+              }
+            ]
+          },
+          {
+            "id": "insight",
+            "name": "Averiguar Intenciones",
+            "effects": [
+              {
+                "type": "skill_proficiency",
+                "skill": "insight"
+              }
+            ]
+          },
+          {
+            "id": "intimidation",
+            "name": "Intimidación",
+            "effects": [
+              {
+                "type": "skill_proficiency",
+                "skill": "intimidation"
+              }
+            ]
+          },
+          {
+            "id": "investigation",
+            "name": "Investigación",
+            "effects": [
+              {
+                "type": "skill_proficiency",
+                "skill": "investigation"
+              }
+            ]
+          },
+          {
+            "id": "medicine",
+            "name": "Medicina",
+            "effects": [
+              {
+                "type": "skill_proficiency",
+                "skill": "medicine"
+              }
+            ]
+          },
+          {
+            "id": "nature",
+            "name": "Naturaleza",
+            "effects": [
+              {
+                "type": "skill_proficiency",
+                "skill": "nature"
+              }
+            ]
+          },
+          {
+            "id": "perception",
+            "name": "Percepción",
+            "effects": [
+              {
+                "type": "skill_proficiency",
+                "skill": "perception"
+              }
+            ]
+          },
+          {
+            "id": "performance",
+            "name": "Interpretar",
+            "effects": [
+              {
+                "type": "skill_proficiency",
+                "skill": "performance"
+              }
+            ]
+          },
+          {
+            "id": "persuasion",
+            "name": "Persuasión",
+            "effects": [
+              {
+                "type": "skill_proficiency",
+                "skill": "persuasion"
+              }
+            ]
+          },
+          {
+            "id": "religion",
+            "name": "Religión",
+            "effects": [
+              {
+                "type": "skill_proficiency",
+                "skill": "religion"
+              }
+            ]
+          },
+          {
+            "id": "sleight-of-hand",
+            "name": "Juego De Manos",
+            "effects": [
+              {
+                "type": "skill_proficiency",
+                "skill": "sleight-of-hand"
+              }
+            ]
+          },
+          {
+            "id": "stealth",
+            "name": "Sigilo",
+            "effects": [
+              {
+                "type": "skill_proficiency",
+                "skill": "stealth"
+              }
+            ]
+          },
+          {
+            "id": "survival",
+            "name": "Supervivencia",
+            "effects": [
+              {
+                "type": "skill_proficiency",
+                "skill": "survival"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "id": "feat-experto-en-varias-habilidades-tasha-expertise",
+        "type": "choose_skill",
+        "name": "Pericia (elige una habilidad competente)",
+        "amount": 1,
+        "required": true,
+        "options": [
+          {
+            "id": "acrobatics",
+            "name": "Acrobacias",
+            "effects": [
+              {
+                "type": "skill_expertise",
+                "skill": "acrobatics"
+              }
+            ],
+            "prerequisites": [
+              {
+                "type": "skill_proficiency",
+                "value": "acrobatics"
+              }
+            ]
+          },
+          {
+            "id": "animal-handling",
+            "name": "Tacto Con Animales",
+            "effects": [
+              {
+                "type": "skill_expertise",
+                "skill": "animal-handling"
+              }
+            ],
+            "prerequisites": [
+              {
+                "type": "skill_proficiency",
+                "value": "animal-handling"
+              }
+            ]
+          },
+          {
+            "id": "arcana",
+            "name": "Arcanos",
+            "effects": [
+              {
+                "type": "skill_expertise",
+                "skill": "arcana"
+              }
+            ],
+            "prerequisites": [
+              {
+                "type": "skill_proficiency",
+                "value": "arcana"
+              }
+            ]
+          },
+          {
+            "id": "athletics",
+            "name": "Atletismo",
+            "effects": [
+              {
+                "type": "skill_expertise",
+                "skill": "athletics"
+              }
+            ],
+            "prerequisites": [
+              {
+                "type": "skill_proficiency",
+                "value": "athletics"
+              }
+            ]
+          },
+          {
+            "id": "deception",
+            "name": "Engañar",
+            "effects": [
+              {
+                "type": "skill_expertise",
+                "skill": "deception"
+              }
+            ],
+            "prerequisites": [
+              {
+                "type": "skill_proficiency",
+                "value": "deception"
+              }
+            ]
+          },
+          {
+            "id": "history",
+            "name": "Historia",
+            "effects": [
+              {
+                "type": "skill_expertise",
+                "skill": "history"
+              }
+            ],
+            "prerequisites": [
+              {
+                "type": "skill_proficiency",
+                "value": "history"
+              }
+            ]
+          },
+          {
+            "id": "insight",
+            "name": "Averiguar Intenciones",
+            "effects": [
+              {
+                "type": "skill_expertise",
+                "skill": "insight"
+              }
+            ],
+            "prerequisites": [
+              {
+                "type": "skill_proficiency",
+                "value": "insight"
+              }
+            ]
+          },
+          {
+            "id": "intimidation",
+            "name": "Intimidación",
+            "effects": [
+              {
+                "type": "skill_expertise",
+                "skill": "intimidation"
+              }
+            ],
+            "prerequisites": [
+              {
+                "type": "skill_proficiency",
+                "value": "intimidation"
+              }
+            ]
+          },
+          {
+            "id": "investigation",
+            "name": "Investigación",
+            "effects": [
+              {
+                "type": "skill_expertise",
+                "skill": "investigation"
+              }
+            ],
+            "prerequisites": [
+              {
+                "type": "skill_proficiency",
+                "value": "investigation"
+              }
+            ]
+          },
+          {
+            "id": "medicine",
+            "name": "Medicina",
+            "effects": [
+              {
+                "type": "skill_expertise",
+                "skill": "medicine"
+              }
+            ],
+            "prerequisites": [
+              {
+                "type": "skill_proficiency",
+                "value": "medicine"
+              }
+            ]
+          },
+          {
+            "id": "nature",
+            "name": "Naturaleza",
+            "effects": [
+              {
+                "type": "skill_expertise",
+                "skill": "nature"
+              }
+            ],
+            "prerequisites": [
+              {
+                "type": "skill_proficiency",
+                "value": "nature"
+              }
+            ]
+          },
+          {
+            "id": "perception",
+            "name": "Percepción",
+            "effects": [
+              {
+                "type": "skill_expertise",
+                "skill": "perception"
+              }
+            ],
+            "prerequisites": [
+              {
+                "type": "skill_proficiency",
+                "value": "perception"
+              }
+            ]
+          },
+          {
+            "id": "performance",
+            "name": "Interpretar",
+            "effects": [
+              {
+                "type": "skill_expertise",
+                "skill": "performance"
+              }
+            ],
+            "prerequisites": [
+              {
+                "type": "skill_proficiency",
+                "value": "performance"
+              }
+            ]
+          },
+          {
+            "id": "persuasion",
+            "name": "Persuasión",
+            "effects": [
+              {
+                "type": "skill_expertise",
+                "skill": "persuasion"
+              }
+            ],
+            "prerequisites": [
+              {
+                "type": "skill_proficiency",
+                "value": "persuasion"
+              }
+            ]
+          },
+          {
+            "id": "religion",
+            "name": "Religión",
+            "effects": [
+              {
+                "type": "skill_expertise",
+                "skill": "religion"
+              }
+            ],
+            "prerequisites": [
+              {
+                "type": "skill_proficiency",
+                "value": "religion"
+              }
+            ]
+          },
+          {
+            "id": "sleight-of-hand",
+            "name": "Juego De Manos",
+            "effects": [
+              {
+                "type": "skill_expertise",
+                "skill": "sleight-of-hand"
+              }
+            ],
+            "prerequisites": [
+              {
+                "type": "skill_proficiency",
+                "value": "sleight-of-hand"
+              }
+            ]
+          },
+          {
+            "id": "stealth",
+            "name": "Sigilo",
+            "effects": [
+              {
+                "type": "skill_expertise",
+                "skill": "stealth"
+              }
+            ],
+            "prerequisites": [
+              {
+                "type": "skill_proficiency",
+                "value": "stealth"
+              }
+            ]
+          },
+          {
+            "id": "survival",
+            "name": "Supervivencia",
+            "effects": [
+              {
+                "type": "skill_expertise",
+                "skill": "survival"
+              }
+            ],
+            "prerequisites": [
+              {
+                "type": "skill_proficiency",
+                "value": "survival"
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "automationNotes": []
+  },
+  {
+    "id": "feat-explorador-de-mazmorras",
+    "name": "Explorador de Mazmorras",
+    "source": {
+      "page": 439,
+      "endPage": 439,
+      "title": "Dotes"
+    },
+    "description": "Explorador de Mazmorras Estás alerta ante las trampas ocultas y las puertas secretas localizadas en muchas mazmorras, y ganas los siguientes beneficios: • Tienes ventaja en las tiradas de sabiduría (percepción) e inteligencia (investigación) para detectar la presencia de puertas ocultas. • Tienes ventaja en las tiradas de salvación para evitar o resistir trampas. • Tienes resistencia al daño hecho por trampas. Puedes buscar trampas mientras andas a paso normal, en vez de lentamente.",
+    "prerequisiteText": "",
+    "prerequisites": [],
+    "effects": [],
+    "choices": [],
+    "automationNotes": [
+      "Efectos conservados íntegramente como texto; requieren aplicación manual cuando sean condicionales o no estén estructurados."
+    ]
+  },
+  {
+    "id": "feat-francotirador",
+    "name": "Francotirador",
+    "source": {
+      "page": 439,
+      "endPage": 439,
+      "title": "Dotes"
+    },
+    "description": "Francotirador Has dominado las armas a distancia y puedes hacer disparos que otros consideran imposibles. Ganas las siguientes bonificaciones: • Atacar a larga distancia no supone desventaja en tus tiradas de arma a distancia. • Tus disparos a larga distancia ignoran objetivos medio cubiertos o cubiertos a tres cuartos. • Antes de que hagas un ataque con un arma a distancia con la que eres competente, puedes elegir un -5 de penalización en la tirada. Si el ataque tiene éxito, añades +10 al daño causado por el ataque.",
+    "prerequisiteText": "",
+    "prerequisites": [],
+    "effects": [],
+    "choices": [],
+    "automationNotes": [
+      "Efectos conservados íntegramente como texto; requieren aplicación manual cuando sean condicionales o no estén estructurados."
+    ]
+  },
+  {
+    "id": "feat-francotirador-de-conjuros",
+    "name": "Francotirador de Conjuros",
+    "source": {
+      "page": 439,
+      "endPage": 439,
+      "title": "Dotes"
+    },
+    "description": "Francotirador de Conjuros Requisito: La habilidad de lanzar al menos un conjuro. Has aprendido técnicas para mejorar tus ataques con ciertas clases de conjuros, ganando los siguientes beneficios: • Cuando lanzas un conjuro que requiere que hagas una tirada de ataque, el alcance del conjuro se dobla. • Tus conjuros a distancia ignoran que el objetivo esté medio cubierto o a tres cuartos. • Aprendes un truco que requiera una tirada de ataque. Elige un truco de la lista de conjuros del bardo, brujo, clérigo, druida, hechicero, o mago. Tu habilidad para lanzar el truco depende de la lista de conjuros que elijas: Carisma para el bardo, hechicero o brujo; Sabiduría para el clérigo o druida, o Inteligencia para el mago.",
+    "prerequisiteText": "La habilidad de lanzar al menos un conjuro.",
+    "prerequisites": [
+      {
+        "type": "spellcasting"
+      }
+    ],
+    "effects": [],
+    "choices": [],
+    "automationNotes": [
+      "Efectos conservados íntegramente como texto; requieren aplicación manual cuando sean condicionales o no estén estructurados."
+    ]
+  },
+  {
+    "id": "feat-fuertemente-acorazado",
+    "name": "Fuertemente Acorazado",
+    "source": {
+      "page": 439,
+      "endPage": 439,
+      "title": "Dotes"
+    },
+    "description": "Fuertemente Acorazado Requisito: Competente con armadura media. Has entrenado para dominar el uso de armadura pesada, ganando los siguientes beneficios: • Incrementa tu puntuación de Fuerza en 1, hasta un máximo de 20. • Ganas la competencia con armadura pesada.",
+    "prerequisiteText": "Competente con armadura media.",
+    "prerequisites": [
+      {
+        "type": "proficiency",
+        "value": "armadura media"
+      }
+    ],
+    "effects": [
+      {
+        "type": "ability_bonus",
+        "ability": "str",
+        "value": 1
+      }
+    ],
+    "choices": [],
+    "automationNotes": []
+  },
+  {
+    "id": "feat-gran-experto-en-armas",
+    "name": "Gran Experto en Armas",
+    "source": {
+      "page": 439,
+      "endPage": 439,
+      "title": "Dotes"
+    },
+    "description": "Gran Experto en Armas Has aprendido a usar el peso de un arma en tu beneficio, usándolo en su momento para dar poder a tus ataques. Ganas los siguientes beneficios: • En tu turno, cuando aciertes un golpe crítico con un arma cuerpo a cuerpo o reduzcas los puntos de golpe de una criatura a 0 con un golpe crítico, puedes hacer un ataque cuerpo a cuerpo como una acción adicional. • Antes de que tú hagas un ataque cuerpo a cuerpo con un arma pesada en la que eres competente, puedes elegir un -5 de penalización a la tirada de ataque. Si el ataque acierta, añade +10 al daño causado por el ataque.",
+    "prerequisiteText": "",
+    "prerequisites": [],
+    "effects": [],
+    "choices": [],
+    "automationNotes": [
+      "Efectos conservados íntegramente como texto; requieren aplicación manual cuando sean condicionales o no estén estructurados."
+    ]
+  },
+  {
+    "id": "feat-habilidoso",
+    "name": "Habilidoso",
+    "source": {
+      "page": 439,
+      "endPage": 439,
+      "title": "Dotes"
+    },
+    "description": "Habilidoso Ganas competencia en cualquier combinación de tres habilidades o herramientas de tu elección.",
+    "prerequisiteText": "",
+    "prerequisites": [],
+    "effects": [],
+    "choices": [],
+    "automationNotes": [
+      "Efectos conservados íntegramente como texto; requieren aplicación manual cuando sean condicionales o no estén estructurados."
+    ]
+  },
+  {
+    "id": "feat-iniciado-en-la-lucha-tasha",
+    "name": "Iniciado en la Lucha (Tasha)",
+    "source": {
+      "page": 439,
+      "endPage": 440,
+      "title": "Dotes"
+    },
+    "description": "Iniciado en la Lucha (Tasha) Requisito: Competencia con un arma marcial Tu entrenamiento marcial te ha ayudado a desarrollar un estilo particular de combate. Como resultado, aprendes una opción de estilo de combate de tu elección de la clase de Guerrero. Si ya tienes un estilo, el que elijas debe ser diferente. Cada vez que alcanzas un nivel que otorga el Aumento de Característica, puedes reemplazar el estilo de combate de esta dote con otro de la clase de guerrero que no tengas.",
+    "prerequisiteText": "Competencia con un arma marcial",
+    "prerequisites": [
+      {
+        "type": "proficiency",
+        "value": "armas marciales"
+      }
+    ],
+    "effects": [],
+    "choices": [],
+    "automationNotes": [
+      "Efectos conservados íntegramente como texto; requieren aplicación manual cuando sean condicionales o no estén estructurados."
+    ]
+  },
+  {
+    "id": "feat-iniciado-en-la-magia",
+    "name": "Iniciado en la Magia",
+    "source": {
+      "page": 440,
+      "endPage": 440,
+      "title": "Dotes"
+    },
+    "description": "Iniciado en la Magia Elige una clase: bardo, brujo, clérigo, druida, hechicero, o mago. Aprendes dos trucos de esa lista de conjuros de clase. Además, elige un hechizo de nivel 1 de esa misma lista. Tu aprendes ese hechizo y puedes lanzarlo a su nivel más bajo. Una vez lanzado, debes terminar un descanso largo antes de poder lanzarlo otra vez. La habilidad de lanzar estos hechizos depende de la clase a la que pertenezca: Carisma para el bardo, hechicero o brujo; o Inteligencia para mago.",
+    "prerequisiteText": "",
+    "prerequisites": [],
+    "effects": [],
+    "choices": [],
+    "automationNotes": [
+      "Efectos conservados íntegramente como texto; requieren aplicación manual cuando sean condicionales o no estén estructurados."
+    ]
+  },
+  {
+    "id": "feat-lider-inspirador",
+    "name": "Líder Inspirador",
+    "source": {
+      "page": 440,
+      "endPage": 440,
+      "title": "Dotes"
+    },
+    "description": "Líder Inspirador Requisito: Carisma 13 o superior. Puedes gastar 10 minutos inspirando a tus compañeros, animando sus ganas de luchar. Cuando lo hagas, elige seis criaturas amistosas (te puedes incluir entre ellas) en un radio de 30 metros a la redonda que puedan verte u oírte y que puedan entenderte. Cada una de esas criaturas gana puntos de golpe temporales equivalentes a tu nivel + tu modificador de Carisma. Una criatura no puede ganar otra vez estos puntos de golpe temporales hasta que haya terminado un descanso corto o largo.",
+    "prerequisiteText": "Carisma 13 o superior.",
+    "prerequisites": [
+      {
+        "type": "minimum_ability",
+        "ability": "cha",
+        "minimum": 13
+      }
+    ],
+    "effects": [],
+    "choices": [],
+    "automationNotes": [
+      "Efectos conservados íntegramente como texto; requieren aplicación manual cuando sean condicionales o no estén estructurados."
+    ]
+  },
+  {
+    "id": "feat-ligeramente-acorazado",
+    "name": "Ligeramente Acorazado",
+    "source": {
+      "page": 440,
+      "endPage": 440,
+      "title": "Dotes"
+    },
+    "description": "Ligeramente Acorazado Has entrenado para dominar el uso de armadura ligera, ganando los siguientes beneficios: • Incrementa tu puntuación de Fuerza o Destreza en 1, hasta un máximo de 20. • Ganas competencia con armadura ligera.",
+    "prerequisiteText": "",
+    "prerequisites": [],
+    "effects": [],
+    "choices": [
+      {
+        "id": "feat-ligeramente-acorazado-ability",
+        "type": "choose_ability_increase",
+        "name": "Aumento de característica",
+        "amount": 1,
+        "required": true,
+        "options": [
+          {
+            "id": "str",
+            "name": "Fuerza",
+            "effects": [
+              {
+                "type": "ability_bonus",
+                "ability": "str",
+                "value": 1
+              }
+            ]
+          },
+          {
+            "id": "dex",
+            "name": "Destreza",
+            "effects": [
+              {
+                "type": "ability_bonus",
+                "ability": "dex",
+                "value": 1
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "automationNotes": []
+  },
+  {
+    "id": "feat-linguista",
+    "name": "Lingüista",
+    "source": {
+      "page": 440,
+      "endPage": 440,
+      "title": "Dotes"
+    },
+    "description": "Lingüista Has estudiado códigos y lenguajes, ganando los siguientes beneficios: • Incrementa tu puntuación de Inteligencia en 1, hasta un máximo de 20. • Aprendes tres lenguajes de tu elección. • Puedes crear hábilmente escritos cifrados. Otros no pueden descifrar el código a menos que les enseñes a hacerlo, tengan éxito con una tirada de Inteligencia (CD igual a tu puntuación de Inteligencia + tu bonificador de Competencia) o usen magia para descifrarlo.",
+    "prerequisiteText": "",
+    "prerequisites": [],
+    "effects": [
+      {
+        "type": "ability_bonus",
+        "ability": "int",
+        "value": 1
+      }
+    ],
+    "choices": [],
+    "automationNotes": []
+  },
+  {
+    "id": "feat-luchador-con-dos-armas",
+    "name": "Luchador con Dos Armas",
+    "source": {
+      "page": 440,
+      "endPage": 440,
+      "title": "Dotes"
+    },
+    "description": "Luchador con Dos Armas Has dominado la lucha con dos armas, consiguiendo los siguientes beneficios: • Ganas una bonificación de +1 a la CA cuando sostienes un arma en cada mano. • Puedes usar la lucha con dos armas incluso cuando las armas a una mano que sostienes no son ligeras. • Puedes desenfundar o enfundar dos armas de una sola mano cuando normalmente podrías enfundar y desenfundar sólo una.",
+    "prerequisiteText": "",
+    "prerequisites": [],
+    "effects": [],
+    "choices": [],
+    "automationNotes": [
+      "Efectos conservados íntegramente como texto; requieren aplicación manual cuando sean condicionales o no estén estructurados."
+    ]
+  },
+  {
+    "id": "feat-mente-aguda",
+    "name": "Mente Aguda",
+    "source": {
+      "page": 440,
+      "endPage": 440,
+      "title": "Dotes"
+    },
+    "description": "Mente Aguda Tienes una mente que puede rastrear el tiempo, dirección y detalle con asombrosa precisión. Ganas los siguientes beneficios: • Incrementa tu puntuación de Inteligencia en 1, hasta un máximo de 20. • Siempre sabes dónde está el norte. • Siempre sabes el número de horas que quedan antes del amanecer o el anochecer. • Puedes recordar con precisión cualquier cosa que hayas visto u oído el mes pasado.",
+    "prerequisiteText": "",
+    "prerequisites": [],
+    "effects": [
+      {
+        "type": "ability_bonus",
+        "ability": "int",
+        "value": 1
+      }
+    ],
+    "choices": [],
+    "automationNotes": []
+  },
+  {
+    "id": "feat-moderadamente-acorazado",
+    "name": "Moderadamente Acorazado",
+    "source": {
+      "page": 440,
+      "endPage": 440,
+      "title": "Dotes"
+    },
+    "description": "Moderadamente Acorazado Requisito: Competencia con armadura ligera. Has entrenado para dominar el uso de armadura media y escudos, ganando los siguientes beneficios: Incrementa tu puntuación de Fuerza o Destreza en 1, hasta un máximo de 20. • Ganas competencia con armadura media y escudos.",
+    "prerequisiteText": "Competencia con armadura ligera.",
+    "prerequisites": [
+      {
+        "type": "proficiency",
+        "value": "armadura ligera"
+      }
+    ],
+    "effects": [],
+    "choices": [
+      {
+        "id": "feat-moderadamente-acorazado-ability",
+        "type": "choose_ability_increase",
+        "name": "Aumento de característica",
+        "amount": 1,
+        "required": true,
+        "options": [
+          {
+            "id": "str",
+            "name": "Fuerza",
+            "effects": [
+              {
+                "type": "ability_bonus",
+                "ability": "str",
+                "value": 1
+              }
+            ]
+          },
+          {
+            "id": "dex",
+            "name": "Destreza",
+            "effects": [
+              {
+                "type": "ability_bonus",
+                "ability": "dex",
+                "value": 1
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "automationNotes": []
+  },
+  {
+    "id": "feat-observador",
+    "name": "Observador",
+    "source": {
+      "page": 440,
+      "endPage": 440,
+      "title": "Dotes"
+    },
+    "description": "Observador Eres rápido observando los detalles de tu entorno, ganas los siguientes beneficios: • Incrementa tu puntuación de Inteligencia o Sabiduría en 1, hasta un máximo de 20. • Si puedes ver la boca de una criatura mientras está hablando un lenguaje que puedas entender, puedes interpretar lo que dice leyendo sus labios. • Tienes un +5 de bonificador a tus puntuaciones de Sabiduría pasiva (Percepción) e Inteligencia pasiva (Investigación).",
+    "prerequisiteText": "",
+    "prerequisites": [],
+    "effects": [
+      {
+        "type": "passive_perception_bonus",
+        "value": 5
+      },
+      {
+        "type": "passive_investigation_bonus",
+        "value": 5
+      }
+    ],
+    "choices": [
+      {
+        "id": "feat-observador-ability",
+        "type": "choose_ability_increase",
+        "name": "Aumento de característica",
+        "amount": 1,
+        "required": true,
+        "options": [
+          {
+            "id": "int",
+            "name": "Inteligencia",
+            "effects": [
+              {
+                "type": "ability_bonus",
+                "ability": "int",
+                "value": 1
+              }
+            ]
+          },
+          {
+            "id": "wis",
+            "name": "Sabiduría",
+            "effects": [
+              {
+                "type": "ability_bonus",
+                "ability": "wis",
+                "value": 1
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "automationNotes": []
+  },
+  {
+    "id": "feat-perforador-tasha",
+    "name": "Perforador (Tasha)",
+    "source": {
+      "page": 441,
+      "endPage": 441,
+      "title": "Dotes"
+    },
+    "description": "Perforador (Tasha) Has desarrollado una precisión muy aguda en combate, otorgándote los siguientes beneficios: • Incrementa tu Fuerza o Destreza en 1, a un máximo de 20. • Una vez por turno, cuando golpeas a una criatura con un ataque que inflige daño perforante, puedes volver a tirar uno de los dados de daño del ataque, debes usar la nueva tirada. • Cuando obtienes un golpe crítico que inflige daño perforante a una criatura, puedes tirar un dado adicional de daño para el golpe crítico.",
+    "prerequisiteText": "",
+    "prerequisites": [],
+    "effects": [],
+    "choices": [
+      {
+        "id": "feat-perforador-tasha-ability",
+        "type": "choose_ability_increase",
+        "name": "Aumento de característica",
+        "amount": 1,
+        "required": true,
+        "options": [
+          {
+            "id": "str",
+            "name": "Fuerza",
+            "effects": [
+              {
+                "type": "ability_bonus",
+                "ability": "str",
+                "value": 1
+              }
+            ]
+          },
+          {
+            "id": "dex",
+            "name": "Destreza",
+            "effects": [
+              {
+                "type": "ability_bonus",
+                "ability": "dex",
+                "value": 1
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "automationNotes": []
+  },
+  {
+    "id": "feat-resistente",
+    "name": "Resistente",
+    "source": {
+      "page": 441,
+      "endPage": 441,
+      "title": "Dotes"
+    },
+    "description": "Resistente Elige una puntuación de habilidad, ganas los siguientes beneficios: • Incrementas tu puntuación de habilidad en 1, hasta un máximo de 20. • Ganas competencia en tiradas de salvación usando la habilidad elegida.",
+    "prerequisiteText": "",
+    "prerequisites": [],
+    "effects": [],
+    "choices": [
+      {
+        "id": "feat-resistente-ability",
+        "type": "choose_ability_increase",
+        "name": "Característica y salvación competente",
+        "amount": 1,
+        "required": true,
+        "options": [
+          {
+            "id": "str",
+            "name": "Fuerza",
+            "effects": [
+              {
+                "type": "ability_bonus",
+                "ability": "str",
+                "value": 1
+              },
+              {
+                "type": "saving_throw_proficiency",
+                "ability": "str"
+              }
+            ]
+          },
+          {
+            "id": "dex",
+            "name": "Destreza",
+            "effects": [
+              {
+                "type": "ability_bonus",
+                "ability": "dex",
+                "value": 1
+              },
+              {
+                "type": "saving_throw_proficiency",
+                "ability": "dex"
+              }
+            ]
+          },
+          {
+            "id": "con",
+            "name": "Constitución",
+            "effects": [
+              {
+                "type": "ability_bonus",
+                "ability": "con",
+                "value": 1
+              },
+              {
+                "type": "saving_throw_proficiency",
+                "ability": "con"
+              }
+            ]
+          },
+          {
+            "id": "int",
+            "name": "Inteligencia",
+            "effects": [
+              {
+                "type": "ability_bonus",
+                "ability": "int",
+                "value": 1
+              },
+              {
+                "type": "saving_throw_proficiency",
+                "ability": "int"
+              }
+            ]
+          },
+          {
+            "id": "wis",
+            "name": "Sabiduría",
+            "effects": [
+              {
+                "type": "ability_bonus",
+                "ability": "wis",
+                "value": 1
+              },
+              {
+                "type": "saving_throw_proficiency",
+                "ability": "wis"
+              }
+            ]
+          },
+          {
+            "id": "cha",
+            "name": "Carisma",
+            "effects": [
+              {
+                "type": "ability_bonus",
+                "ability": "cha",
+                "value": 1
+              },
+              {
+                "type": "saving_throw_proficiency",
+                "ability": "cha"
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "automationNotes": []
+  },
+  {
+    "id": "feat-ritualista",
+    "name": "Ritualista",
+    "source": {
+      "page": 441,
+      "endPage": 441,
+      "title": "Dotes"
+    },
+    "description": "Ritualista Requisito: Inteligencia o Sabiduría 13 o superior. Has aprendido un número de conjuros que puedes lanzar como rituales. Estos conjuros están escritos en un libro de rituales, que debe estar en tu mano mientras lanzas uno de estos conjuros. Cuando eliges esta dote, adquieres un libro de rituales que contiene dos conjuros de nivel 1 de tu elección. Elige una de las siguientes clases: bardo, brujo, clérigo, druida, hechicero, o mago. Debes elegir tus conjuros de la lista de hechizos de esta clase, y los hechizos que elijas deben tener la etiqueta de ritual. La clase que eliges también determina tu habilidad para lanzar estos conjuros. Carisma para bardo, hechicero o brujo; Sabiduría para clérigo o druida; o Inteligencia para mago. Si consigues un conjuro en forma escrita, como un pergamino de conjuro mágico o un libro de conjuros de mago, puedes añadirlos a tu libro de rituales. El conjuro debe ser de la lista que tú elegiste, el nivel de los conjuros no puede ser mayor que la mitad de tu nivel (redondeando hacia arriba), y debe tener la etiqueta de ritual. El proceso de copiar el conjuro en tu libro de rituales lleva 2 horas por nivel del hechizo y un costo 50 po. El costo representa el gasto en materiales que necesitas mientras experimentas con el conjuro para dominarlo, así como la tinta fina que necesitas para escribirlo.",
+    "prerequisiteText": "Inteligencia o Sabiduría 13 o superior.",
+    "prerequisites": [
+      {
+        "type": "any",
+        "options": [
+          {
+            "type": "minimum_ability",
+            "ability": "int",
+            "minimum": 13
+          },
+          {
+            "type": "minimum_ability",
+            "ability": "wis",
+            "minimum": 13
+          }
+        ]
+      }
+    ],
+    "effects": [],
+    "choices": [],
+    "automationNotes": [
+      "Efectos conservados íntegramente como texto; requieren aplicación manual cuando sean condicionales o no estén estructurados."
+    ]
+  },
+  {
+    "id": "feat-sanador",
+    "name": "Sanador",
+    "source": {
+      "page": 441,
+      "endPage": 441,
+      "title": "Dotes"
+    },
+    "description": "Sanador Eres un curandero hábil, permitiéndote curar heridas rápidamente y conseguir que tus aliados vuelvan a la pelea. Consigues los siguientes beneficios. • Cuando uses un kit de sanador para estabilizar una criatura agonizante, esta criatura recupera un punto de golpe. • Como acción, puedes gastar un uso del kit de curandero en una criatura y restaurarle 1d6 + 4 puntos de golpe más una cantidad de puntos de golpe adicionales iguales al número de Dados de Golpe máximos de la criatura. La criatura no puede volver a recuperar puntos de golpe de esta dote hasta que haya tomado un descanso corto o largo.",
+    "prerequisiteText": "",
+    "prerequisites": [],
+    "effects": [],
+    "choices": [],
+    "automationNotes": [
+      "Efectos conservados íntegramente como texto; requieren aplicación manual cuando sean condicionales o no estén estructurados."
+    ]
+  },
+  {
+    "id": "feat-telepatia-tasha",
+    "name": "Telepatía (Tasha)",
+    "source": {
+      "page": 441,
+      "endPage": 441,
+      "title": "Dotes"
+    },
+    "description": "Telepatía (Tasha) Despiertas la capacidad de conectarte mentalmente con los demás, otorgándote los siguientes beneficios: • Aumentas tu inteligencia, sabiduría o carisma en 1, hasta un máximo de 20. • Puedes hablar telepáticamente con cualquier criatura que puede ver a 60 pies de ti. Tu comunicación telepática está en un idioma que conoces, y la criatura te entiende sólo si conoce ese idioma. Tu comunicación no le da a la criatura la capacidad de responderte telepáticamente. • Puedes lanzar el hechizo Detectar Pensamientos, sin gastar espacio de hechizo o componentes, y debes terminar un descanso largo antes de que puedas lanzarlo de esta manera otra vez. Tu habilidad de lanzamiento para este hechizo es la habilidad aumentada por esta dote. Si tienes espacios de hechizos de 2º nivel o superior, puedes lanzar este hechizo con ellos.",
+    "prerequisiteText": "",
+    "prerequisites": [],
+    "effects": [],
+    "choices": [
+      {
+        "id": "feat-telepatia-tasha-ability",
+        "type": "choose_ability_increase",
+        "name": "Aumento de característica",
+        "amount": 1,
+        "required": true,
+        "options": [
+          {
+            "id": "int",
+            "name": "Inteligencia",
+            "effects": [
+              {
+                "type": "ability_bonus",
+                "ability": "int",
+                "value": 1
+              }
+            ]
+          },
+          {
+            "id": "wis",
+            "name": "Sabiduría",
+            "effects": [
+              {
+                "type": "ability_bonus",
+                "ability": "wis",
+                "value": 1
+              }
+            ]
+          },
+          {
+            "id": "cha",
+            "name": "Carisma",
+            "effects": [
+              {
+                "type": "ability_bonus",
+                "ability": "cha",
+                "value": 1
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "automationNotes": []
+  },
+  {
+    "id": "feat-telequinetico-tasha",
+    "name": "Telequinético (Tasha)",
+    "source": {
+      "page": 441,
+      "endPage": 442,
+      "title": "Dotes"
+    },
+    "description": "Telequinético (Tasha) Aprendes a mover las cosas con la mente, obtienes los siguientes beneficios: • Aumentas tu inteligencia, sabiduría o carisma en 1, hasta un máximo de 20. • Aprendes el truco Mano del Mago. Puedes lanzarlo sin componentes verbales o somáticos, y puedes hacer que la mano espectral sea invisible. Si ya conoces este hechizo, su alcance aumenta en 30 pies cuando lo lanzas. Tu habilidad para lanzar este hechizo es la aumentada por esta dote. • Como acción adicional, puedes intentar empujar telequinéticamente a una criatura que puedas ver a 30 pies de ti. Cuando lo haces, el objetivo debe tener éxito en una tirada de salvación de Fuerza (CD 8 + tu bono de competencia + el modificador de de la característica que aumentaste por esta dote) o ser movido 5 pies hacia ti o lejos de ti. Una criatura puede fallar voluntariamente esta salvación.",
+    "prerequisiteText": "",
+    "prerequisites": [],
+    "effects": [],
+    "choices": [
+      {
+        "id": "feat-telequinetico-tasha-ability",
+        "type": "choose_ability_increase",
+        "name": "Aumento de característica",
+        "amount": 1,
+        "required": true,
+        "options": [
+          {
+            "id": "int",
+            "name": "Inteligencia",
+            "effects": [
+              {
+                "type": "ability_bonus",
+                "ability": "int",
+                "value": 1
+              }
+            ]
+          },
+          {
+            "id": "wis",
+            "name": "Sabiduría",
+            "effects": [
+              {
+                "type": "ability_bonus",
+                "ability": "wis",
+                "value": 1
+              }
+            ]
+          },
+          {
+            "id": "cha",
+            "name": "Carisma",
+            "effects": [
+              {
+                "type": "ability_bonus",
+                "ability": "cha",
+                "value": 1
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "automationNotes": []
+  },
+  {
+    "id": "feat-tocado-por-lo-desconocido-tasha",
+    "name": "Tocado por lo Desconocido (Tasha)",
+    "source": {
+      "page": 442,
+      "endPage": 442,
+      "title": "Dotes"
+    },
+    "description": "Tocado por lo Desconocido (Tasha) Tu exposición a la magia del Feywild te ha cambiado, otorgándote los siguientes beneficios: • Aumenta tu puntuación de inteligencia, sabiduría o carisma en 1, hasta un máximo de 20. • Aprendes el hechizo Paso Brumoso y un hechizo de nivel 1 de tu elección. El hechizo de nivel 1 debe ser de la escuela de adivinación o encantamiento. Puedes lanzar cada uno de estos hechizos sin gastar un espacio de conjuro. Una vez que lanzas cualquiera de estos hechizos de esta manera, no puedes lanzar ese hechizo de esta manera hasta que termines un descanso largo. También puedes lanzar estos hechizos usando los espacios de hechizo que tienes del nivel correspondiente. Tu capacidad para lanzar estos hechizos es la aumentada por esta dote.",
+    "prerequisiteText": "",
+    "prerequisites": [],
+    "effects": [],
+    "choices": [
+      {
+        "id": "feat-tocado-por-lo-desconocido-tasha-ability",
+        "type": "choose_ability_increase",
+        "name": "Aumento de característica",
+        "amount": 1,
+        "required": true,
+        "options": [
+          {
+            "id": "int",
+            "name": "Inteligencia",
+            "effects": [
+              {
+                "type": "ability_bonus",
+                "ability": "int",
+                "value": 1
+              }
+            ]
+          },
+          {
+            "id": "wis",
+            "name": "Sabiduría",
+            "effects": [
+              {
+                "type": "ability_bonus",
+                "ability": "wis",
+                "value": 1
+              }
+            ]
+          },
+          {
+            "id": "cha",
+            "name": "Carisma",
+            "effects": [
+              {
+                "type": "ability_bonus",
+                "ability": "cha",
+                "value": 1
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "automationNotes": []
+  },
+  {
+    "id": "feat-tocado-por-las-sombras-tasha",
+    "name": "Tocado por las Sombras (Tasha)",
+    "source": {
+      "page": 442,
+      "endPage": 442,
+      "title": "Dotes"
+    },
+    "description": "Tocado por las Sombras (Tasha) Tu exposición a la magia del Shadowfell provocó cambios en ti, otorgándote los siguientes beneficios: • Aumenta tu inteligencia, sabiduría o carisma en 1, hasta un máximo de 20. • Aprendes el hechizo Invisibilidad y un hechizo de nivel 1 a tu elección. El hechizo debe ser de la escuela de la ilusión o nigromancia. Puedes lanzar cada uno de estos hechizos sin gastar un espacio de hechizo. Una vez que lanzas cualquiera de estos hechizos de esta manera, no puedes lanzarlos de este modo de nuevo hasta terminar un descanso largo. También puedes lanzar estos hechizos usando los espacios de hechizo que tienes del nivel correspondiente. La capacidad de lanzamiento de hechizos es la habilidad aumentada por este dote.",
+    "prerequisiteText": "",
+    "prerequisites": [],
+    "effects": [],
+    "choices": [
+      {
+        "id": "feat-tocado-por-las-sombras-tasha-ability",
+        "type": "choose_ability_increase",
+        "name": "Aumento de característica",
+        "amount": 1,
+        "required": true,
+        "options": [
+          {
+            "id": "int",
+            "name": "Inteligencia",
+            "effects": [
+              {
+                "type": "ability_bonus",
+                "ability": "int",
+                "value": 1
+              }
+            ]
+          },
+          {
+            "id": "wis",
+            "name": "Sabiduría",
+            "effects": [
+              {
+                "type": "ability_bonus",
+                "ability": "wis",
+                "value": 1
+              }
+            ]
+          },
+          {
+            "id": "cha",
+            "name": "Carisma",
+            "effects": [
+              {
+                "type": "ability_bonus",
+                "ability": "cha",
+                "value": 1
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "automationNotes": []
+  },
+  {
+    "id": "feat-vigoroso",
+    "name": "Vigoroso",
+    "source": {
+      "page": 442,
+      "endPage": 442,
+      "title": "Dotes"
+    },
+    "description": "Vigoroso Tus puntos de golpe se incrementan en una cantidad igual a dos veces tu nivel cuando ganas esta característica. Cada vez que ganes un nivel más adelante tu máximo de puntos de vida se incrementan con dos puntos de golpe adicionales.",
+    "prerequisiteText": "",
+    "prerequisites": [],
+    "effects": [
+      {
+        "type": "hp_per_level",
+        "value": 2
+      }
+    ],
+    "choices": [],
+    "automationNotes": []
+  },
+  {
+    "id": "feat-constitucion-infernal",
+    "name": "Constitución Infernal",
+    "source": {
+      "page": 443,
+      "endPage": 443,
+      "title": "Dotes Raciales"
+    },
+    "description": "Constitución Infernal Requisito Previo: Tiefling La sangre diabólica corre fuerte en ti, desbloqueando una resistencia similar a la que poseen algunos demonios. Obtienes los siguientes beneficios: Aumenta tu puntaje de Constitución en 1, hasta un máximo de 20. Tienes resistencia al daño por frío y daño de veneno. Tienes ventaja en tiradas de salvación contra ser envenenado.",
+    "prerequisiteText": "Tiefling",
+    "prerequisites": [
+      {
+        "type": "source_requirement",
+        "value": "Tiefling"
+      }
+    ],
+    "effects": [
+      {
+        "type": "ability_bonus",
+        "ability": "con",
+        "value": 1
+      },
+      {
+        "type": "resistance",
+        "value": "frío"
+      },
+      {
+        "type": "resistance",
+        "value": "veneno"
+      }
+    ],
+    "choices": [],
+    "automationNotes": []
+  },
+  {
+    "id": "feat-desvanecerse",
+    "name": "Desvanecerse",
+    "source": {
+      "page": 443,
+      "endPage": 443,
+      "title": "Dotes Raciales"
+    },
+    "description": "Desvanecerse Requisito Previo: Gnomo Tu gente es inteligente, con un don para la magia de la ilusión. Has aprendido un truco mágico para desaparecer cuando sufres daño. Obtienes los siguientes beneficios: Aumenta tu puntuación de Destreza o Inteligencia en 1, a un máximo de20. Inmediatamente después de recibir daño, puedes usar una reacción para volverte invisible mágicamente hasta el final de tu siguiente turno o hasta atacar, infligir daño o forzar a alguien a realizar una tirada de salvación. Una vez que usas esta habilidad, no puedes volver a hacerlo hasta que termines un descanso corto o largo.",
+    "prerequisiteText": "Gnomo",
+    "prerequisites": [
+      {
+        "type": "source_requirement",
+        "value": "Gnomo"
+      }
+    ],
+    "effects": [],
+    "choices": [
+      {
+        "id": "feat-desvanecerse-ability",
+        "type": "choose_ability_increase",
+        "name": "Aumento de característica",
+        "amount": 1,
+        "required": true,
+        "options": [
+          {
+            "id": "dex",
+            "name": "Destreza",
+            "effects": [
+              {
+                "type": "ability_bonus",
+                "ability": "dex",
+                "value": 1
+              }
+            ]
+          },
+          {
+            "id": "int",
+            "name": "Inteligencia",
+            "effects": [
+              {
+                "type": "ability_bonus",
+                "ability": "int",
+                "value": 1
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "automationNotes": []
+  },
+  {
+    "id": "feat-elasticidad-a-gachas",
+    "name": "Elasticidad a Gachas",
+    "source": {
+      "page": 443,
+      "endPage": 443,
+      "title": "Dotes Raciales"
+    },
+    "description": "Elasticidad a Gachas Requisito Previo: Enano o una raza Pequeña Eres extraordinariamente ágil para tu raza. Obtienes los siguientes beneficios: Aumenta tu puntuación de Fuerza o Destreza en l, hasta un máximo de 20. Aumenta tu velocidad de movimiento en 5 pies. Obtienes competencia en la habilidad Acrobacia o Atletismo (tu elección). Tienes ventaja en cualquier prueba de Fuerza (Atletismo) o Destreza (Acrobacia) que hagas para escapar de ser agarrado.",
+    "prerequisiteText": "Enano o una raza Pequeña",
+    "prerequisites": [
+      {
+        "type": "source_requirement",
+        "value": "Enano o una raza Pequeña"
+      }
+    ],
+    "effects": [],
+    "choices": [
+      {
+        "id": "feat-elasticidad-a-gachas-ability",
+        "type": "choose_ability_increase",
+        "name": "Aumento de característica",
+        "amount": 1,
+        "required": true,
+        "options": [
+          {
+            "id": "str",
+            "name": "Fuerza",
+            "effects": [
+              {
+                "type": "ability_bonus",
+                "ability": "str",
+                "value": 5
+              }
+            ]
+          },
+          {
+            "id": "dex",
+            "name": "Destreza",
+            "effects": [
+              {
+                "type": "ability_bonus",
+                "ability": "dex",
+                "value": 5
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "automationNotes": []
+  },
+  {
+    "id": "feat-fortaleza-enana",
+    "name": "Fortaleza Enana",
+    "source": {
+      "page": 443,
+      "endPage": 443,
+      "title": "Dotes Raciales"
+    },
+    "description": "Fortaleza Enana Requisito Previo: Enano La sangre de héroes enanos fluye a través de tus venas. Obtienes los siguientes beneficios: Aumenta tu puntaje de Constitución en 1, a un máximo de20. Siempre que tomes la acción Esquivar en combate, puedes gastar un Dado de Vitalidad para curarte a ti mismo. Tira el dado, agrega tu modificador de Constitución y recupera una cantidad de puntos de golpe igual al total (mínimo de 1).",
+    "prerequisiteText": "Enano",
+    "prerequisites": [
+      {
+        "type": "source_requirement",
+        "value": "Enano"
+      }
+    ],
+    "effects": [
+      {
+        "type": "ability_bonus",
+        "ability": "con",
+        "value": 1
+      }
+    ],
+    "choices": [],
+    "automationNotes": []
+  },
+  {
+    "id": "feat-furia-orca",
+    "name": "Furia Orca",
+    "source": {
+      "page": 443,
+      "endPage": 443,
+      "title": "Dotes Raciales"
+    },
+    "description": "Furia Orca Requisito Previo: Semiorco Tu furia interior arde incansablemente. Obtienes los siguientes beneficios: Aumenta tu puntuación de Fuerza o Constitución en 1, hasta un máximo de 20. Cuando golpeas con un ataque con un arma simple o marcial, puedes lanzar uno de los dados de daño del arma una vez adicional y agregarlo como daño adicional del tipo de daño del arma. Una vez que usas esta habilidad, no puedes usarla de nuevo hasta que termines un descanso corto o largo. Inmediatamente después de usar tu rasgo de resiliencia incansable, puedes usar tu reacción para atacar con un arma.",
+    "prerequisiteText": "Semiorco",
+    "prerequisites": [
+      {
+        "type": "source_requirement",
+        "value": "Semiorco"
+      }
+    ],
+    "effects": [],
+    "choices": [
+      {
+        "id": "feat-furia-orca-ability",
+        "type": "choose_ability_increase",
+        "name": "Aumento de característica",
+        "amount": 1,
+        "required": true,
+        "options": [
+          {
+            "id": "str",
+            "name": "Fuerza",
+            "effects": [
+              {
+                "type": "ability_bonus",
+                "ability": "str",
+                "value": 1
+              }
+            ]
+          },
+          {
+            "id": "con",
+            "name": "Constitución",
+            "effects": [
+              {
+                "type": "ability_bonus",
+                "ability": "con",
+                "value": 1
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "automationNotes": []
+  },
+  {
+    "id": "feat-llamas-de-flegetos",
+    "name": "Llamas de Flegetos",
+    "source": {
+      "page": 443,
+      "endPage": 444,
+      "title": "Dotes Raciales"
+    },
+    "description": "Llamas de Flegetos Requisito Previo: Tiefling Aprendes a llamar al fuego del infierno para cumplir tus órdenes. Obtienes los siguientes beneficios: Aumenta tu puntuación de Inteligencia o Carisma en 1, hasta un máximo de 20. Cuando tiras daño de fuego por un conjuro que lanzas, puedes repetir cualquier tirada de 1 en los dados de daño de fuego, pero debes usar la nueva tirada, incluso si es otro 1. Siempre que lances un conjuro que cause daño de fuego, puedes provocar que las llamas te cubran hasta el final de tu siguiente turno. Las llamas no te dañan ni a ti ni a tus posesiones, y arrojan luz brillante a 30 pies y luz tenue a 30 pies adicionales. Mientras las llamas están presentes, cualquier criatura a no más de 5 pies de ti que te golpee con un ataque cuerpo a cuerpo recibe 1d4 de daño de fuego.",
+    "prerequisiteText": "Tiefling",
+    "prerequisites": [
+      {
+        "type": "source_requirement",
+        "value": "Tiefling"
+      }
+    ],
+    "effects": [],
+    "choices": [
+      {
+        "id": "feat-llamas-de-flegetos-ability",
+        "type": "choose_ability_increase",
+        "name": "Aumento de característica",
+        "amount": 1,
+        "required": true,
+        "options": [
+          {
+            "id": "int",
+            "name": "Inteligencia",
+            "effects": [
+              {
+                "type": "ability_bonus",
+                "ability": "int",
+                "value": 1
+              }
+            ]
+          },
+          {
+            "id": "cha",
+            "name": "Carisma",
+            "effects": [
+              {
+                "type": "ability_bonus",
+                "ability": "cha",
+                "value": 1
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "automationNotes": []
+  },
+  {
+    "id": "feat-magia-alta-de-drow",
+    "name": "Magia Alta de Drow",
+    "source": {
+      "page": 444,
+      "endPage": 444,
+      "title": "Dotes Raciales"
+    },
+    "description": "Magia Alta de Drow Requisito Previo: Elfo (drow) Aprendes más de la magia típica de los elfos oscuros. Aprendes el conjuro detectar magia y puedes lanzarlo a voluntad, sin gastar una ranura de conjuro. También aprendes levitar y disipar magia, cada uno de las cuales puedes lanzar una vez sin gastar una ranura de conjuro. Recuperas la habilidad de lanzar esos dos conjuros de esta manera cuando terminas un descanso largo. El carisma es tu habilidad de lanzar conjuros para los tres conjuros.",
+    "prerequisiteText": "Elfo (drow)",
+    "prerequisites": [
+      {
+        "type": "source_requirement",
+        "value": "Elfo (drow)"
+      }
+    ],
+    "effects": [],
+    "choices": [],
+    "automationNotes": [
+      "Efectos conservados íntegramente como texto; requieren aplicación manual cuando sean condicionales o no estén estructurados."
+    ]
+  },
+  {
+    "id": "feat-magia-de-elfo-del-bosque",
+    "name": "Magia de Elfo del Bosque",
+    "source": {
+      "page": 444,
+      "endPage": 444,
+      "title": "Dotes Raciales"
+    },
+    "description": "Magia de Elfo del Bosque Requisito Previo: Elfo (bosque) Aprendes la magia de los bosques primitivos, que son venerados y protegidos por tu gente. Aprendes un truco de druida de tu elección. También aprendes los conjuros zancada prodigiosa y pasar sin rastro, cada uno de los cuales puedes lanzar una vez sin gastar una ranura de conjuro. Recuperas la habilidad de lanzar estos dos conjuros de esta manera cuando terminas un descanso largo. La sabiduría es tu habilidad de lanzamiento de conjuros para los tres conjuros.",
+    "prerequisiteText": "Elfo (bosque)",
+    "prerequisites": [
+      {
+        "type": "source_requirement",
+        "value": "Elfo (bosque)"
+      }
+    ],
+    "effects": [],
+    "choices": [],
+    "automationNotes": [
+      "Efectos conservados íntegramente como texto; requieren aplicación manual cuando sean condicionales o no estén estructurados."
+    ]
+  },
+  {
+    "id": "feat-piel-de-dragon",
+    "name": "Piel de Dragon",
+    "source": {
+      "page": 444,
+      "endPage": 444,
+      "title": "Dotes Raciales"
+    },
+    "description": "Piel de Dragon Requisito Previo: Dracónido Manifiestas escamas y garras que recuerdan a tus ancestros dracónicos. Obtienes los siguientes beneficios: Aumenta tu puntuación de Fuerza, Constitución o Carisma en 1, hasta un máximo de 20. Tus escamas se endurecen. Mientras no estés usando una armadura, puedes calcular tu CA como 13 + tu modificador de Destreza. Puedes usar un escudo y aun así obtener este beneficio. Crecen garras retráctiles de las puntas de tus dedos. Extender o retraer las garras no requiere ninguna acción. Las garras son armas naturales, que puedes usar para hacer ataques desarmados. Si golpeas con ellas, infliges un daño de corte igual a 1d4 + tu modificador de Fuerza, en lugar del daño contundente normal para un golpe desarmado.",
+    "prerequisiteText": "Dracónido",
+    "prerequisites": [
+      {
+        "type": "source_requirement",
+        "value": "Dracónido"
+      }
+    ],
+    "effects": [],
+    "choices": [
+      {
+        "id": "feat-piel-de-dragon-ability",
+        "type": "choose_ability_increase",
+        "name": "Aumento de característica",
+        "amount": 1,
+        "required": true,
+        "options": [
+          {
+            "id": "str",
+            "name": "Fuerza",
+            "effects": [
+              {
+                "type": "ability_bonus",
+                "ability": "str",
+                "value": 1
+              }
+            ]
+          },
+          {
+            "id": "con",
+            "name": "Constitución",
+            "effects": [
+              {
+                "type": "ability_bonus",
+                "ability": "con",
+                "value": 1
+              }
+            ]
+          },
+          {
+            "id": "cha",
+            "name": "Carisma",
+            "effects": [
+              {
+                "type": "ability_bonus",
+                "ability": "cha",
+                "value": 1
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "automationNotes": []
+  },
+  {
+    "id": "feat-precision-elfica",
+    "name": "Precisión Élfica",
+    "source": {
+      "page": 444,
+      "endPage": 444,
+      "title": "Dotes Raciales"
+    },
+    "description": "Precisión Élfica Requisito Previo: elfo o semielfo La precisión de los elfos es legendaria, especialmente la de los arqueros elfos y los lanzadores de conjuros. Tienes puntería incomparable con ataques que dependen de la precisión en lugar de la fuerza bruta. Obtienes los siguientes beneficios: Incrementa tu Puntuación de Destreza, Inteligencia, Sabiduría o Carisma en 1, hasta un máximo de 20. Siempre que tengas ventaja en una tirada de ataque con Destreza, Inteligencia, Sabiduría o Carisma, puedes volver a tirar uno de los dados una vez.",
+    "prerequisiteText": "elfo o semielfo",
+    "prerequisites": [
+      {
+        "type": "source_requirement",
+        "value": "elfo o semielfo"
+      }
+    ],
+    "effects": [],
+    "choices": [
+      {
+        "id": "feat-precision-elfica-ability",
+        "type": "choose_ability_increase",
+        "name": "Aumento de característica",
+        "amount": 1,
+        "required": true,
+        "options": [
+          {
+            "id": "dex",
+            "name": "Destreza",
+            "effects": [
+              {
+                "type": "ability_bonus",
+                "ability": "dex",
+                "value": 1
+              }
+            ]
+          },
+          {
+            "id": "int",
+            "name": "Inteligencia",
+            "effects": [
+              {
+                "type": "ability_bonus",
+                "ability": "int",
+                "value": 1
+              }
+            ]
+          },
+          {
+            "id": "wis",
+            "name": "Sabiduría",
+            "effects": [
+              {
+                "type": "ability_bonus",
+                "ability": "wis",
+                "value": 1
+              }
+            ]
+          },
+          {
+            "id": "cha",
+            "name": "Carisma",
+            "effects": [
+              {
+                "type": "ability_bonus",
+                "ability": "cha",
+                "value": 1
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "automationNotes": []
+  },
+  {
+    "id": "feat-prodigio",
+    "name": "Prodigio",
+    "source": {
+      "page": 444,
+      "endPage": 444,
+      "title": "Dotes Raciales"
+    },
+    "description": "Prodigio Requisito previo: semielfo, semiorco o humano Tienes un don para aprender cosas nuevas. Obtienes los siguientes beneficios: Obtienes competencia en una habilidad de tu elección, una habilidad de herramienta de tu elección y fluidez en un idioma de tu elección. Elige una habilidad en la que tengas competencia. Obtienes experiencia con esa habilidad, lo que significa que tu bono de competencia se duplica para cualquier prueba de habilidad con ella. La habilidad que elijas debe ser una que no se esté beneficiando de un rasgo, como Pericia, que duplica tu bono de competencia.",
+    "prerequisiteText": "semielfo, semiorco o humano",
+    "prerequisites": [
+      {
+        "type": "source_requirement",
+        "value": "semielfo, semiorco o humano"
+      }
+    ],
+    "effects": [],
+    "choices": [],
+    "automationNotes": [
+      "Efectos conservados íntegramente como texto; requieren aplicación manual cuando sean condicionales o no estén estructurados."
+    ]
+  },
+  {
+    "id": "feat-segunda-oportunidad",
+    "name": "Segunda Oportunidad",
+    "source": {
+      "page": 444,
+      "endPage": 444,
+      "title": "Dotes Raciales"
+    },
+    "description": "Segunda Oportunidad Requisito Previo: Mediano La fortuna te favorece cuando alguien trata de golpearte. Obtienes los siguientes beneficios: Aumenta tu puntuación de Destreza, Constitución o Carisma en 1, hasta un máximo de 20. Cuando una criatura que puedes ver te golpea con una tirada de ataque, puedes usar tu reacción para forzar a esa criatura a volver a tirar. Una vez que usas esta habilidad, no puedes volver a usarla hasta que lances la iniciativa al comienzo del combate o hasta que termines un descanso corto o largo.",
+    "prerequisiteText": "Mediano",
+    "prerequisites": [
+      {
+        "type": "source_requirement",
+        "value": "Mediano"
+      }
+    ],
+    "effects": [],
+    "choices": [
+      {
+        "id": "feat-segunda-oportunidad-ability",
+        "type": "choose_ability_increase",
+        "name": "Aumento de característica",
+        "amount": 1,
+        "required": true,
+        "options": [
+          {
+            "id": "dex",
+            "name": "Destreza",
+            "effects": [
+              {
+                "type": "ability_bonus",
+                "ability": "dex",
+                "value": 1
+              }
+            ]
+          },
+          {
+            "id": "con",
+            "name": "Constitución",
+            "effects": [
+              {
+                "type": "ability_bonus",
+                "ability": "con",
+                "value": 1
+              }
+            ]
+          },
+          {
+            "id": "cha",
+            "name": "Carisma",
+            "effects": [
+              {
+                "type": "ability_bonus",
+                "ability": "cha",
+                "value": 1
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "automationNotes": []
+  },
+  {
+    "id": "feat-suerte-abundante",
+    "name": "Suerte Abundante",
+    "source": {
+      "page": 444,
+      "endPage": 445,
+      "title": "Dotes Raciales"
+    },
+    "description": "Suerte Abundante Requisito Previo: Mediano Tu gente tiene una suerte extraordinaria, que has aprendido a prestar místicamente a tus compañeros cuando los ves vacilar. No estás seguro de cómo lo haces; Sólo lo deseas, y sucede. ¡Seguramente una señal del favor de la fortuna! Cuando un aliado que puedes ver hasta 30 pies de ti, saca un 1 en el d20 para una tirada de ataque, una prueba de habilidad o una tirada de salvación, puedes usar tu reacción para permitir que el aliado vuelva a tirar el dado. El aliado debe utilizar el nuevo resultado. Cuando usas esta habilidad, no puedes usar tu rasgo racial de Afortunado antes del final de tu próximo turno.",
+    "prerequisiteText": "Mediano",
+    "prerequisites": [
+      {
+        "type": "source_requirement",
+        "value": "Mediano"
+      }
+    ],
+    "effects": [],
+    "choices": [],
+    "automationNotes": [
+      "Efectos conservados íntegramente como texto; requieren aplicación manual cuando sean condicionales o no estén estructurados."
+    ]
+  },
+  {
+    "id": "feat-teletransportacion-feerica",
+    "name": "Teletransportación Feérica",
+    "source": {
+      "page": 445,
+      "endPage": 445,
+      "title": "Dotes Raciales"
+    },
+    "description": "Teletransportación Feérica Requisito Previo: Elfo (alto) Tu estudio de la tradición de los elfos altos ha desbloqueado el poder feérico que otros pocos elfos poseen, excepto tus primos eladrines. Basándose en tu genealogía feérica, puedes caminar momentáneamente a través del Feywild para acortar tu camino de un lugar a otro. Obtienes los siguientes beneficios: Aumenta tu puntuación de Inteligencia o Carisma en 1, hasta un máximo de 20. Aprendes a hablar, leer y escribir Silvano. Aprendes el conjuro paso brumoso y puedes lanzarlo una vez sin gastar una ranura de conjuro. Recuperas la habilidad de lanzarlo de esta manera cuando terminas un descanso corto o largo. La inteligencia es tu habilidad de lanzar conjuros para este conjuro.",
+    "prerequisiteText": "Elfo (alto)",
+    "prerequisites": [
+      {
+        "type": "source_requirement",
+        "value": "Elfo (alto)"
+      }
+    ],
+    "effects": [],
+    "choices": [
+      {
+        "id": "feat-teletransportacion-feerica-ability",
+        "type": "choose_ability_increase",
+        "name": "Aumento de característica",
+        "amount": 1,
+        "required": true,
+        "options": [
+          {
+            "id": "int",
+            "name": "Inteligencia",
+            "effects": [
+              {
+                "type": "ability_bonus",
+                "ability": "int",
+                "value": 1
+              }
+            ]
+          },
+          {
+            "id": "cha",
+            "name": "Carisma",
+            "effects": [
+              {
+                "type": "ability_bonus",
+                "ability": "cha",
+                "value": 1
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "automationNotes": []
+  },
+  {
+    "id": "feat-temor-al-dragon",
+    "name": "Temor al Dragon",
+    "source": {
+      "page": 445,
+      "endPage": 445,
+      "title": "Dotes Raciales"
+    },
+    "description": "Temor al Dragon Requisito Previo: Dracónido Cuando te enojas, puedes irradiar amenaza. Obtienes los siguientes beneficios: Aumenta tu puntuación de Fuerza, Constitución o Carisma en l, hasta un máximo de 20. En lugar de exhalar energía destructiva, puedes gastar un uso de tu atributo Ataque de Aliento para rugir, obligando a cada criatura de tu elección hasta 30 pies de ti a hacer una tirada de salvación de Sabiduría (DC 8 + tu bono de competencia + tu modificador de Carisma). Un objetivo tiene éxito automáticamente en la tirada si no puede escucharte o verte. En una salvación fallida, un objetivo se asusta de ti durante 1 minuto. Si el objetivo asustado sufre algún daño, puede repetir la tirada de salvación, terminando el efecto sobre sí mismo en un éxito.",
+    "prerequisiteText": "Dracónido",
+    "prerequisites": [
+      {
+        "type": "source_requirement",
+        "value": "Dracónido"
+      }
+    ],
+    "effects": [],
+    "choices": [],
+    "automationNotes": [
+      "Efectos conservados íntegramente como texto; requieren aplicación manual cuando sean condicionales o no estén estructurados."
+    ]
+  },
+  {
+    "id": "feat-bendicion-del-dragon-cromatico",
+    "name": "Bendición del Dragon Cromático",
+    "source": {
+      "page": 446,
+      "endPage": 446,
+      "title": "Dotes Dracónicos"
+    },
+    "description": "Bendición del Dragon Cromático Has manifestado algo del poder de los dragones cromáticos, otorgándote los siguientes beneficios: Infusión cromática: Como acción adicional, puedes tocar un arma simple o marcial e infundirla con uno de los siguientes tipos de daño: ácido, frío, fuego, relámpago o veneno. Durante el siguiente minuto, el arma inflige 1d4 de daño extra del tipo elegido cuando impacta. Después de usar esta acción adicional, no puedes volver a hacerlo hasta que finalices un descanso largo. Resistencia reactiva: Cuando recibes daño por ácido, frío, fuego, rayos o veneno, puedes usar tu reacción para darte resistencia a ese tipo de daño. Puedes usar esta reacción un número de veces igual a tu bonificador de competencia, y recuperas todos los usos gastados cuando terminas un descanso largo.",
+    "prerequisiteText": "",
+    "prerequisites": [],
+    "effects": [],
+    "choices": [],
+    "automationNotes": [
+      "Efectos conservados íntegramente como texto; requieren aplicación manual cuando sean condicionales o no estén estructurados."
+    ]
+  },
+  {
+    "id": "feat-bendicion-del-dragon-gematico",
+    "name": "Bendición del Dragon Gemático",
+    "source": {
+      "page": 446,
+      "endPage": 446,
+      "title": "Dotes Dracónicos"
+    },
+    "description": "Bendición del Dragon Gemático Has manifestado algo del poder de los dragones gemáticos, otorgándote los siguientes beneficios: Aumento de puntuación de Características: Aumenta tu puntuación de Inteligencia, Sabiduría o Carisma en 1, hasta un máximo de 20. Represalia telequinética: Cuando recibes daño de una criatura que está a 10 pies de ti, puedes usar tu reacción para emanar energía telequinética. La criatura que te infligió daño debe hacer una tirada de salvación de Fuerza (la CD es igual a 8 + tu bonificador de competencia + el modificador de competencia de la puntuación aumentada por este dote). Si falla, la criatura recibe 2d8 puntos de daño por fuerza y es empujada hasta 10 pies de ti. En una salvación exitosa, la criatura recibe la mitad de daño y no es empujada. Puedes usar esta reacción un número de veces igual a tu modificador de competencia, y recuperas todos los usos gastados cuando terminas un descanso largo",
+    "prerequisiteText": "",
+    "prerequisites": [],
+    "effects": [],
+    "choices": [
+      {
+        "id": "feat-bendicion-del-dragon-gematico-ability",
+        "type": "choose_ability_increase",
+        "name": "Aumento de característica",
+        "amount": 1,
+        "required": true,
+        "options": [
+          {
+            "id": "int",
+            "name": "Inteligencia",
+            "effects": [
+              {
+                "type": "ability_bonus",
+                "ability": "int",
+                "value": 1
+              }
+            ]
+          },
+          {
+            "id": "wis",
+            "name": "Sabiduría",
+            "effects": [
+              {
+                "type": "ability_bonus",
+                "ability": "wis",
+                "value": 1
+              }
+            ]
+          },
+          {
+            "id": "cha",
+            "name": "Carisma",
+            "effects": [
+              {
+                "type": "ability_bonus",
+                "ability": "cha",
+                "value": 1
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "automationNotes": []
+  },
+  {
+    "id": "feat-bendicion-del-dragon-metalico",
+    "name": "Bendición del Dragon Metálico",
+    "source": {
+      "page": 446,
+      "endPage": 446,
+      "title": "Dotes Dracónicos"
+    },
+    "description": "Bendición del Dragon Metálico Has manifestado algo del poder de los dragones metálicos, otorgándote los siguientes beneficios: Sanación dracónica: Aprendes el hechizo curar heridas. Puedes lanzar este hechizo sin gastar un espacio de hechizo. Una vez que lanzas este hechizo de esta manera, no puedes volver a hacerlo hasta que finalices un descanso largo. También puedes lanzar este hechizo usando los espacios de hechizo que tengas. La característica de lanzamiento de hechizos del hechizo es Inteligencia, Sabiduría o Carisma cuando lo lanzas con este dote (elige cuándo obtienes el dote). Alas protectoras: Puedes manifestar alas protectoras para protegerte a ti o a otros. Cuando tú u otra criatura que puedas ver a 5 pies de ti es golpeado por una tirada de ataque, puedes usar tu reacción para manifestar alas espectrales desde tu espalda por un momento. Otorgas una bonificación a la CA del objetivo igual a tu bonificador de competencia contra esa tirada de ataque, lo que podría hacer que falle. Puedes usar esta reacción un número de veces igual a tu bonificador de competencia, y recuperas todos los usos gastados cuando terminas un descanso largo.",
+    "prerequisiteText": "",
+    "prerequisites": [],
+    "effects": [],
+    "choices": [],
+    "automationNotes": [
+      "Efectos conservados íntegramente como texto; requieren aplicación manual cuando sean condicionales o no estén estructurados."
+    ]
+  },
+  {
+    "id": "feat-cartomagico",
+    "name": "Cartomágico",
+    "source": {
+      "page": 447,
+      "endPage": 447,
+      "title": "Dote del Cartomágico"
+    },
+    "description": "Cartomágico Requisitos: personaje de nivel 4 o superior; característica de lanzador de conjuros o magia de pacto Has aprendido a canalizar tu magia a través de una baraja de cartas. Puedes usar una baraja de cartas como tu foco de lanzamiento de hechizos y obtienes los siguientes beneficios: Trucos de Cartas. Aprendes el truco Prestidigitación y puedes usarlo para crear ilusiones que duplican los efectos de la magia de escenario. Cuando uses Prestidigitación de esta manera, puedes ocultar los componentes verbales y somáticos del hechizo como una conversación común y manejo de cartas. As Oculto. Cuando termines un descanso largo, puedes elegir un hechizo de la lista de hechizos de tu clase e imbuir ese hechizo en una carta. El hechizo elegido debe tener un tiempo de lanzamiento de 1 acción y debe ser de un nivel para el cual tengas espacios de hechizos. La carta permanece imbuida con este hechizo durante 8 horas. Mientras la carta esté imbuida con el hechizo, puedes usar una acción adicional para hacer un floreo con la carta y lanzar el hechizo que contiene. La carta pierde inmediatamente su magia después de ser usada. Arte de Justin Usher",
+    "prerequisiteText": "personaje de nivel 4 o superior; característica de lanzador de conjuros o magia de pacto",
+    "prerequisites": [
+      {
+        "type": "minimum_level",
+        "minimum": 4
+      },
+      {
+        "type": "spellcasting"
+      }
+    ],
+    "effects": [],
+    "choices": [],
+    "automationNotes": [
+      "Efectos conservados íntegramente como texto; requieren aplicación manual cuando sean condicionales o no estén estructurados."
+    ]
+  },
+  {
+    "id": "feat-conflujo-mistico",
+    "name": "Conflujo Místico",
+    "source": {
+      "page": 448,
+      "endPage": 448,
+      "title": "Dotes de Tal’Dorei"
+    },
+    "description": "Conflujo Místico Posees una comprensión intuitiva de la forma en que la magia fluye y se mueve en los objetos encantados. Te sintonizas fácilmente a tales objetos y eres capaz de escuchar sus secretos. Obtienes los siguientes beneficios: • Puedes sintonizarte con hasta cuatro objetos mágicos a la vez. • Puedes lanzar el conjuro identificar sin gastar un espacio de conjuro ni componentes materiales. Debes terminar un descanso largo antes de poder hacerlo otra vez.",
+    "prerequisiteText": "",
+    "prerequisites": [],
+    "effects": [],
+    "choices": [],
+    "automationNotes": [
+      "Efectos conservados íntegramente como texto; requieren aplicación manual cuando sean condicionales o no estén estructurados."
+    ]
+  },
+  {
+    "id": "feat-cruel",
+    "name": "Cruel",
+    "source": {
+      "page": 448,
+      "endPage": 448,
+      "title": "Dotes de Tal’Dorei"
+    },
+    "description": "Cruel Los desafíos y luchas a las que te has enfrentado a lo largo de tu vida te han llevado a deleitarte infligiendo dolor y angustia a los demás. Obtienes un número de dados de crueldad igual a tu bonificador por competencia. Tus dados de crueldad son d6. Solo puedes tirar un dado de crueldad por turno y se gasta cuando lo tiras. Puedes tirar un dado de crueldad en cualquiera de las siguientes circunstancias, con el resultado indicado: • Cuando hagas daño a una criatura, gasta un dado de crueldad para infligir daño adicional a la criatura igual a la tirada. • Cuando consigas un golpe crítico, gasta un dado de crueldad para ganar puntos de golpe temporales iguales a la tirada. • Cuando hagas una tirada de Carisma (Intimidación), gasta un dado de crueldad y añade el resultado a tu tirada. Recuperas todos los dados de crueldad gastados cuando terminas un descanso largo.",
+    "prerequisiteText": "",
+    "prerequisites": [],
+    "effects": [],
+    "choices": [],
+    "automationNotes": [
+      "Efectos conservados íntegramente como texto; requieren aplicación manual cuando sean condicionales o no estén estructurados."
+    ]
+  },
+  {
+    "id": "feat-generahechizos",
+    "name": "Generahechizos",
+    "source": {
+      "page": 448,
+      "endPage": 448,
+      "title": "Dotes de Tal’Dorei"
+    },
+    "description": "Generahechizos Requisitos: personaje de nivel 11 o superior; característica de lanzador de conjuros o magia de pacto Gracias a mucha concentración, entrenamiento y dedicación, has conseguido dominar las técnicas del lanzamiento rápido de conjuros. Cuando usas tu acción adicional para lanzar un conjuro de nivel 1 o superior, también puedes usar tu acción para lanzar otro conjuro de nivel 1 o superior. Sin embargo, si lanzas dos o más conjuros en un solo turno, solo uno de ellos puede ser de nivel 3 o superior.",
+    "prerequisiteText": "personaje de nivel 11 o superior; característica de lanzador de conjuros o magia de pacto",
+    "prerequisites": [
+      {
+        "type": "minimum_level",
+        "minimum": 11
+      },
+      {
+        "type": "spellcasting"
+      }
+    ],
+    "effects": [],
+    "choices": [],
+    "automationNotes": [
+      "Efectos conservados íntegramente como texto; requieren aplicación manual cuando sean condicionales o no estén estructurados."
+    ]
+  },
+  {
+    "id": "feat-maestro-del-lanzamiento-de-armas",
+    "name": "Maestro del Lanzamiento de Armas",
+    "source": {
+      "page": 448,
+      "endPage": 448,
+      "title": "Dotes de Tal’Dorei"
+    },
+    "description": "Maestro del Lanzamiento de Armas Has perfeccionado tu capacidad para lanzar armas a la refriega, incluidas las que no están pensadas para el combate a distancia. Obtienes los siguientes beneficios: • Aumenta tu puntuación de Fuerza o Destreza en 1, hasta un máximo de 20. • Las armas cuerpo a cuerpo simples y marciales sin la propiedad arrojadiza pasan a tenerla en tu poder. Las armas a una sola mano tienen un alcance normal de 20 pies y un alcance largo de 60 pies, mientras que las armas a dos manos tienen un alcance normal de 15 pies y un alcance largo de 30 pies. • Las armas que ya tienen la propiedad arrojadiza aumentan en tus manos su alcance corto en 20 pies y su alcance largo en 40 pies. • Cuando fallas con un ataque de arma arrojadiza usando un arma ligera, el arma vuelve a tu mano como un bumerán al final de tu turno, a menos que algo impida que regrese. Puedes atrapar y guardar tantas armas como arrojes con esta técnica.",
+    "prerequisiteText": "",
+    "prerequisites": [],
+    "effects": [],
+    "choices": [
+      {
+        "id": "feat-maestro-del-lanzamiento-de-armas-ability",
+        "type": "choose_ability_increase",
+        "name": "Aumento de característica",
+        "amount": 1,
+        "required": true,
+        "options": [
+          {
+            "id": "str",
+            "name": "Fuerza",
+            "effects": [
+              {
+                "type": "ability_bonus",
+                "ability": "str",
+                "value": 1
+              }
+            ]
+          },
+          {
+            "id": "dex",
+            "name": "Destreza",
+            "effects": [
+              {
+                "type": "ability_bonus",
+                "ability": "dex",
+                "value": 1
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "automationNotes": []
+  },
+  {
+    "id": "feat-recuerdo-rapido",
+    "name": "Recuerdo Rápido",
+    "source": {
+      "page": 448,
+      "endPage": 449,
+      "title": "Dotes de Tal’Dorei"
+    },
+    "description": "Recuerdo Rápido Requisito: ser lanzador de conjuros de una clase que prepare conjuros Has desarrollado la capacidad de recordar instantáneamente un conjuro no preparado en momentos de necesidad. Como acción adicional, preparas un conjuro de primer nivel o superior con tu libro de conjuros (si eres un mago) o de tu lista de conjuros de clase (si no lo eres). Este conjuro debe ser de un nivel para el que tengas espacios de conjuro, y reemplaza otro hechizo de un nivel igual o superior que hubieras preparado antes. Una vez que usas esta dote para recordar un conjuro, no puedes volver a hacerlo hasta que completes un descanso corto o largo.",
+    "prerequisiteText": "ser lanzador de conjuros de una clase que prepare conjuros",
+    "prerequisites": [
+      {
+        "type": "spellcasting"
+      },
+      {
+        "type": "prepared_spellcasting"
+      }
+    ],
+    "effects": [],
+    "choices": [],
+    "automationNotes": [
+      "Efectos conservados íntegramente como texto; requieren aplicación manual cuando sean condicionales o no estén estructurados."
+    ]
+  },
+  {
+    "id": "feat-recuperacion-notable",
+    "name": "Recuperación Notable",
+    "source": {
+      "page": 449,
+      "endPage": 449,
+      "title": "Dotes de Tal’Dorei"
+    },
+    "description": "Recuperación Notable Tu cuerpo tiene la capacidad de recuperarse rápidamente de lesiones terribles y es sorprendentemente receptivo a la magia curativa. Obtienes los siguientes beneficios: • Aumenta tu puntuación de Constitución en 1, hasta un máximo de 20. • Cuando te estabilizas con éxito en tiradas de salvación contra muerte, recuperas puntos de golpe iguales a tu modificador por Constitución (mínimo de 1). • Cada vez que recuperas puntos de golpe como resultado de un conjuro, poción o característica de clase (pero no está dote), recuperas puntos de golpe adicionales iguales a tu modificador por Constitución (mínimo de 1).",
+    "prerequisiteText": "",
+    "prerequisites": [],
+    "effects": [
+      {
+        "type": "ability_bonus",
+        "ability": "con",
+        "value": 1
+      }
+    ],
+    "choices": [],
+    "automationNotes": []
+  },
+  {
+    "id": "feat-sacrificio-vital",
+    "name": "Sacrificio Vital",
+    "source": {
+      "page": 449,
+      "endPage": 449,
+      "title": "Dotes de Tal’Dorei"
+    },
+    "description": "Sacrificio Vital Has aprendido secretos de hemomancia que te otorgan poder esotérico a cambio de tu propia fuerza vital. Como acción adicional, puedes optar por recibir 1d6 de daño necrótico para ganar una bendición de sangre. Tu bendición de sangre dura 1 hora o hasta que se gaste. Puede gastar esta bendición para obtener uno de los siguientes beneficios: • Cuando haces una tirada de ataque, lanzas 1d6 y lo sumas al total. • Cuando impactas con un ataque o hechizo, infliges un daño necrótico adicional de 2d6. • Cuando hagas que una criatura haga una tirada de salvación de Fuerza, Destreza o Constitución, tira un d4 y réstalo al resultado. El daño que recibes para ganar un favor de sangre no puede reducirse de ninguna manera.",
+    "prerequisiteText": "",
+    "prerequisites": [],
+    "effects": [],
+    "choices": [],
+    "automationNotes": [
+      "Efectos conservados íntegramente como texto; requieren aplicación manual cuando sean condicionales o no estén estructurados."
+    ]
+  }
+]

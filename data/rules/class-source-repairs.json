@@ -1,0 +1,222 @@
+[
+  {
+    "sourceId": "source-116-arma-mejorada-203",
+    "page": 116,
+    "title": "Arma Mejorada",
+    "parent": "Infusiones de Artificiero",
+    "left": 33.0,
+    "top": 216.0,
+    "previousStartOffset": 260340,
+    "startOffset": 260340
+  },
+  {
+    "sourceId": "source-116-arma-mejorada-205",
+    "page": 116,
+    "title": "Arma Mejorada",
+    "parent": "Infusiones de Artificiero",
+    "left": 313.0,
+    "top": 556.0,
+    "previousStartOffset": 260340,
+    "startOffset": 261393
+  },
+  {
+    "sourceId": "source-130-escudo-espiritual-256",
+    "page": 130,
+    "title": "Escudo Espiritual",
+    "parent": "Senda del Guardián Ancestral",
+    "left": 33.0,
+    "top": 805.0,
+    "previousStartOffset": 301113,
+    "startOffset": 301113
+  },
+  {
+    "sourceId": "source-130-escudo-espiritual-257",
+    "page": 130,
+    "title": "Escudo Espiritual",
+    "parent": "Senda del Guardián Ancestral",
+    "left": 33.0,
+    "top": 588.0,
+    "previousStartOffset": 301113,
+    "startOffset": 301711
+  },
+  {
+    "sourceId": "source-132-presencia-fanatica-267",
+    "page": 132,
+    "title": "Presencia Fanática",
+    "parent": "Senda del Fanático",
+    "left": 33.0,
+    "top": 717.0,
+    "previousStartOffset": 308471,
+    "startOffset": 308471
+  },
+  {
+    "sourceId": "source-132-presencia-fanatica-268",
+    "page": 132,
+    "title": "Presencia Fanática",
+    "parent": "Senda del Fanático",
+    "left": 33.0,
+    "top": 530.0,
+    "previousStartOffset": 308471,
+    "startOffset": 308962
+  },
+  {
+    "sourceId": "source-165-resistencia-infernal-385",
+    "page": 165,
+    "title": "Resistencia Infernal",
+    "parent": "El Infernal",
+    "left": 313.0,
+    "top": 805.0,
+    "previousStartOffset": 412396,
+    "startOffset": 412396
+  },
+  {
+    "sourceId": "source-165-resistencia-infernal-386",
+    "page": 165,
+    "title": "Resistencia Infernal",
+    "parent": "El Infernal",
+    "left": 313.0,
+    "top": 677.0,
+    "previousStartOffset": 412396,
+    "startOffset": 412666
+  },
+  {
+    "sourceId": "source-200-lanzamiento-de-hechizos-potentes-572",
+    "page": 200,
+    "title": "Lanzamiento de Hechizos Potentes",
+    "parent": "Dominio de la Tumba",
+    "left": 33.0,
+    "top": 194.0,
+    "previousStartOffset": 516923,
+    "startOffset": 516923
+  },
+  {
+    "sourceId": "source-200-lanzamiento-de-hechizos-potentes-573",
+    "page": 200,
+    "title": "Lanzamiento de Hechizos Potentes",
+    "parent": "Dominio de la Tumba",
+    "left": 313.0,
+    "top": 805.0,
+    "previousStartOffset": 516923,
+    "startOffset": 517096
+  },
+  {
+    "sourceId": "source-241-furia-bestial-724",
+    "page": 241,
+    "title": "Furia Bestial",
+    "parent": "Señor de las Bestias",
+    "left": 33.0,
+    "top": 677.0,
+    "previousStartOffset": 635071,
+    "startOffset": 635071
+  },
+  {
+    "sourceId": "source-241-furia-bestial-725",
+    "page": 241,
+    "title": "Furia Bestial",
+    "parent": "Señor de las Bestias",
+    "left": 33.0,
+    "top": 592.0,
+    "previousStartOffset": 635071,
+    "startOffset": 635229
+  },
+  {
+    "sourceId": "source-245-defensa-sobrenatural-745",
+    "page": 245,
+    "title": "Defensa Sobrenatural",
+    "parent": "Asesino de Monstruos",
+    "left": 313.0,
+    "top": 805.0,
+    "previousStartOffset": 649188,
+    "startOffset": 649188
+  },
+  {
+    "sourceId": "source-245-defensa-sobrenatural-746",
+    "page": 245,
+    "title": "Defensa Sobrenatural",
+    "parent": "Asesino de Monstruos",
+    "left": 313.0,
+    "top": 662.0,
+    "previousStartOffset": 649188,
+    "startOffset": 649550
+  },
+  {
+    "sourceId": "source-301-fenomeno-lunar-927",
+    "page": 301,
+    "title": "Fenómeno Lunar",
+    "parent": "Hechicero de la Luna",
+    "left": 33.0,
+    "top": 805.0,
+    "previousStartOffset": 816079,
+    "startOffset": 816079
+  },
+  {
+    "sourceId": "source-301-fenomeno-lunar-929",
+    "page": 301,
+    "title": "Fenómeno Lunar",
+    "parent": "Runaestirpe",
+    "left": 313.0,
+    "top": 511.0,
+    "previousStartOffset": 816079,
+    "startOffset": 819096
+  },
+  {
+    "sourceId": "source-314-ilusiones-maleables-979",
+    "page": 314,
+    "title": "Ilusiones Maleables",
+    "parent": "Escuela de Ilusión",
+    "left": 33.0,
+    "top": 129.0,
+    "previousStartOffset": 855758,
+    "startOffset": 855758
+  },
+  {
+    "sourceId": "source-314-ilusiones-maleables-980",
+    "page": 314,
+    "title": "Ilusiones Maleables",
+    "parent": "Escuela de Ilusión",
+    "left": 313.0,
+    "top": 247.0,
+    "previousStartOffset": 855758,
+    "startOffset": 856130
+  },
+  {
+    "sourceId": "source-372-represion-vigilante-1201",
+    "page": 372,
+    "title": "Represión Vigilante",
+    "parent": "Juramento de los Vigilantes",
+    "left": 33.0,
+    "top": 397.0,
+    "previousStartOffset": 1032261,
+    "startOffset": 1032261
+  },
+  {
+    "sourceId": "source-372-represion-vigilante-1202",
+    "page": 372,
+    "title": "Represión Vigilante",
+    "parent": "Juramento de los Vigilantes",
+    "left": 313.0,
+    "top": 747.0,
+    "previousStartOffset": 1032261,
+    "startOffset": 1032735
+  },
+  {
+    "sourceId": "source-388-maniobra-elegante-1268",
+    "page": 388,
+    "title": "Maniobra Elegante",
+    "parent": "Espadachín",
+    "left": 313.0,
+    "top": 717.0,
+    "previousStartOffset": 1076675,
+    "startOffset": 1076675
+  },
+  {
+    "sourceId": "source-388-maniobra-elegante-1269",
+    "page": 388,
+    "title": "Maniobra Elegante",
+    "parent": "Espadachín",
+    "left": 313.0,
+    "top": 603.0,
+    "previousStartOffset": 1076675,
+    "startOffset": 1076907
+  }
+]

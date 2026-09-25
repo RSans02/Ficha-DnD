@@ -1,0 +1,10 @@
+import races from '@/data/rules/races.json';
+import classes from '@/data/rules/classes.json';
+import classFeatures from '@/data/rules/class-features.json';
+import racialFeatures from '@/data/rules/racial-features.json';
+import spells from '@/data/rules/spells.json';
+import feats from '@/data/rules/feats.json';
+import backgrounds from '@/data/rules/backgrounds.json';
+import equipment from '@/data/rules/equipment.json';
+import type { Catalog } from './types';
+export const catalog = { races, classes, features:[...classFeatures,...racialFeatures], spells, feats, backgrounds, equipment } as unknown as Catalog;

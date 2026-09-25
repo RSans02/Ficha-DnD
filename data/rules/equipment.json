@@ -1,0 +1,3738 @@
+[
+  {
+    "id": "equipment-armaduras-acolchada",
+    "name": "Acolchada",
+    "category": "Armaduras",
+    "source": {
+      "page": 420,
+      "endPage": 420,
+      "title": "Equipo"
+    },
+    "description": "Acolchada 5 oro 11 + modificador de Destreza - Desventaja 8 lb.",
+    "weight": 8.0,
+    "cost": "5 po",
+    "armorClass": 11,
+    "dexterityCap": null,
+    "shieldBonus": 0,
+    "armorCategory": "Armaduras ligeras",
+    "properties": [
+      "Desventaja en Sigilo"
+    ],
+    "strengthRequirement": null
+  },
+  {
+    "id": "equipment-armaduras-cuero",
+    "name": "Cuero",
+    "category": "Armaduras",
+    "source": {
+      "page": 420,
+      "endPage": 420,
+      "title": "Equipo"
+    },
+    "description": "Cuero 10 oro 11 + modificador de Destreza - - 10 ib.",
+    "weight": 10.0,
+    "cost": "10 po",
+    "armorClass": 11,
+    "dexterityCap": null,
+    "shieldBonus": 0,
+    "armorCategory": "Armaduras ligeras",
+    "properties": [],
+    "strengthRequirement": null
+  },
+  {
+    "id": "equipment-armaduras-cuero-tachonado",
+    "name": "Cuero tachonado",
+    "category": "Armaduras",
+    "source": {
+      "page": 420,
+      "endPage": 420,
+      "title": "Equipo"
+    },
+    "description": "Cuero tachonado 45 oro 12 + modificador de Destreza - - 13 lb.",
+    "weight": 13.0,
+    "cost": "45 po",
+    "armorClass": 12,
+    "dexterityCap": null,
+    "shieldBonus": 0,
+    "armorCategory": "Armaduras ligeras",
+    "properties": [],
+    "strengthRequirement": null
+  },
+  {
+    "id": "equipment-armaduras-pieles",
+    "name": "Pieles",
+    "category": "Armaduras",
+    "source": {
+      "page": 420,
+      "endPage": 420,
+      "title": "Equipo"
+    },
+    "description": "Pieles 10 oro 12 + modificador de Destreza (máximo 2) - - 12 lb.",
+    "weight": 12.0,
+    "cost": "10 po",
+    "armorClass": 12,
+    "dexterityCap": 2,
+    "shieldBonus": 0,
+    "armorCategory": "Armaduras medias",
+    "properties": [],
+    "strengthRequirement": null
+  },
+  {
+    "id": "equipment-armaduras-camisote-de-malla",
+    "name": "Camisote de malla",
+    "category": "Armaduras",
+    "source": {
+      "page": 420,
+      "endPage": 420,
+      "title": "Equipo"
+    },
+    "description": "Camisote de malla 50 oro 13 + modificador de Destreza (máximo 2) - - 20 lb.",
+    "weight": 20.0,
+    "cost": "50 po",
+    "armorClass": 13,
+    "dexterityCap": 2,
+    "shieldBonus": 0,
+    "armorCategory": "Armaduras medias",
+    "properties": [],
+    "strengthRequirement": null
+  },
+  {
+    "id": "equipment-armaduras-cota-de-escamas",
+    "name": "Cota de escamas",
+    "category": "Armaduras",
+    "source": {
+      "page": 420,
+      "endPage": 420,
+      "title": "Equipo"
+    },
+    "description": "Cota de escamas 50 oro 14 + modificador de Destreza (máximo 2) - Desventaja 45 lb.",
+    "weight": 45.0,
+    "cost": "50 po",
+    "armorClass": 14,
+    "dexterityCap": 2,
+    "shieldBonus": 0,
+    "armorCategory": "Armaduras medias",
+    "properties": [
+      "Desventaja en Sigilo"
+    ],
+    "strengthRequirement": null
+  },
+  {
+    "id": "equipment-armaduras-coraza",
+    "name": "Coraza",
+    "category": "Armaduras",
+    "source": {
+      "page": 420,
+      "endPage": 420,
+      "title": "Equipo"
+    },
+    "description": "Coraza 400 oro 14 + modificador de Destreza (máximo 2) - - 20 lb.",
+    "weight": 20.0,
+    "cost": "400 po",
+    "armorClass": 14,
+    "dexterityCap": 2,
+    "shieldBonus": 0,
+    "armorCategory": "Armaduras medias",
+    "properties": [],
+    "strengthRequirement": null
+  },
+  {
+    "id": "equipment-armaduras-placas-y-malla",
+    "name": "Placas y malla",
+    "category": "Armaduras",
+    "source": {
+      "page": 420,
+      "endPage": 420,
+      "title": "Equipo"
+    },
+    "description": "Placas y malla 750 oro 15 + modificador de Destreza (máximo 2) - Desventaja 40 lb.",
+    "weight": 40.0,
+    "cost": "750 po",
+    "armorClass": 15,
+    "dexterityCap": 2,
+    "shieldBonus": 0,
+    "armorCategory": "Armaduras medias",
+    "properties": [
+      "Desventaja en Sigilo"
+    ],
+    "strengthRequirement": null
+  },
+  {
+    "id": "equipment-armaduras-cota-de-anillas",
+    "name": "Cota de anillas",
+    "category": "Armaduras",
+    "source": {
+      "page": 420,
+      "endPage": 420,
+      "title": "Equipo"
+    },
+    "description": "Cota de anillas 30 oro 14 - Desventaja 40 lb.",
+    "weight": 40.0,
+    "cost": "30 po",
+    "armorClass": 14,
+    "dexterityCap": 0,
+    "shieldBonus": 0,
+    "armorCategory": "Armaduras pesadas",
+    "properties": [
+      "Desventaja en Sigilo"
+    ],
+    "strengthRequirement": null
+  },
+  {
+    "id": "equipment-armaduras-cota-de-malla",
+    "name": "Cota de malla",
+    "category": "Armaduras",
+    "source": {
+      "page": 420,
+      "endPage": 420,
+      "title": "Equipo"
+    },
+    "description": "Cota de malla 75 oro 16 Fue 13 Desventaja 55 lb.",
+    "weight": 55.0,
+    "cost": "75 po",
+    "armorClass": 16,
+    "dexterityCap": 0,
+    "shieldBonus": 0,
+    "armorCategory": "Armaduras pesadas",
+    "properties": [
+      "Desventaja en Sigilo",
+      "Fuerza 13"
+    ],
+    "strengthRequirement": 13
+  },
+  {
+    "id": "equipment-armaduras-laminada",
+    "name": "Laminada",
+    "category": "Armaduras",
+    "source": {
+      "page": 420,
+      "endPage": 420,
+      "title": "Equipo"
+    },
+    "description": "Laminada 200 oro 17 Fue 15 Desventaja 60 lb.",
+    "weight": 60.0,
+    "cost": "200 po",
+    "armorClass": 17,
+    "dexterityCap": 0,
+    "shieldBonus": 0,
+    "armorCategory": "Armaduras pesadas",
+    "properties": [
+      "Desventaja en Sigilo",
+      "Fuerza 15"
+    ],
+    "strengthRequirement": 15
+  },
+  {
+    "id": "equipment-armaduras-placas",
+    "name": "Placas",
+    "category": "Armaduras",
+    "source": {
+      "page": 420,
+      "endPage": 420,
+      "title": "Equipo"
+    },
+    "description": "Placas 1500 oro 18 Fue 15 Desventaja 65 lb.",
+    "weight": 65.0,
+    "cost": "1500 po",
+    "armorClass": 18,
+    "dexterityCap": 0,
+    "shieldBonus": 0,
+    "armorCategory": "Armaduras pesadas",
+    "properties": [
+      "Desventaja en Sigilo",
+      "Fuerza 15"
+    ],
+    "strengthRequirement": 15
+  },
+  {
+    "id": "equipment-armaduras-escudo",
+    "name": "Escudo",
+    "category": "Armaduras",
+    "source": {
+      "page": 420,
+      "endPage": 420,
+      "title": "Equipo"
+    },
+    "description": "Escudo 10 oro +2 - - 6 lb",
+    "weight": 6.0,
+    "cost": "10 po",
+    "armorClass": null,
+    "dexterityCap": 0,
+    "shieldBonus": 2,
+    "armorCategory": "Escudo",
+    "properties": [],
+    "strengthRequirement": null
+  },
+  {
+    "id": "equipment-armas-baston",
+    "name": "Bastón",
+    "category": "Armas",
+    "source": {
+      "page": 423,
+      "endPage": 423,
+      "title": "Equipo"
+    },
+    "description": "Bastón 2 plata 1d6 contundente 4 lb. Versátil (1d8)",
+    "weight": 4.0,
+    "cost": "2 pp",
+    "damage": "1d6",
+    "damageType": "contundente",
+    "properties": [
+      "Versátil (1d8)"
+    ],
+    "weaponCategory": "Armas simples cuerpo a cuerpo",
+    "range": "",
+    "proficiencyCategory": "simples"
+  },
+  {
+    "id": "equipment-armas-daga",
+    "name": "Daga",
+    "category": "Armas",
+    "source": {
+      "page": 423,
+      "endPage": 423,
+      "title": "Equipo"
+    },
+    "description": "Daga 2 oro 1d4 perforante 1 lb. Arrojadiza (distancia 20/60), Ligera, Sutil",
+    "weight": 1.0,
+    "cost": "2 po",
+    "damage": "1d4",
+    "damageType": "perforante",
+    "properties": [
+      "Arrojadiza (distancia 20/60)",
+      "Ligera",
+      "Sutil"
+    ],
+    "weaponCategory": "Armas simples cuerpo a cuerpo",
+    "range": "20/60",
+    "proficiencyCategory": "simples"
+  },
+  {
+    "id": "equipment-armas-garrote",
+    "name": "Garrote",
+    "category": "Armas",
+    "source": {
+      "page": 423,
+      "endPage": 423,
+      "title": "Equipo"
+    },
+    "description": "Garrote 2 plata 1d8 contundente 10 lb. A dos manos",
+    "weight": 10.0,
+    "cost": "2 pp",
+    "damage": "1d8",
+    "damageType": "contundente",
+    "properties": [
+      "A dos manos"
+    ],
+    "weaponCategory": "Armas simples cuerpo a cuerpo",
+    "range": "",
+    "proficiencyCategory": "simples"
+  },
+  {
+    "id": "equipment-armas-hacha-de-mano",
+    "name": "Hacha de mano",
+    "category": "Armas",
+    "source": {
+      "page": 423,
+      "endPage": 423,
+      "title": "Equipo"
+    },
+    "description": "Hacha de mano 5 oro 1d6 cortante 2 lb. Arrojadiza (distancia 20/60), Ligera",
+    "weight": 2.0,
+    "cost": "5 po",
+    "damage": "1d6",
+    "damageType": "cortante",
+    "properties": [
+      "Arrojadiza (distancia 20/60)",
+      "Ligera"
+    ],
+    "weaponCategory": "Armas simples cuerpo a cuerpo",
+    "range": "20/60",
+    "proficiencyCategory": "simples"
+  },
+  {
+    "id": "equipment-armas-hoz",
+    "name": "Hoz",
+    "category": "Armas",
+    "source": {
+      "page": 423,
+      "endPage": 423,
+      "title": "Equipo"
+    },
+    "description": "Hoz 1 oro 1d4 cortante 2 lb. Ligera",
+    "weight": 2.0,
+    "cost": "1 po",
+    "damage": "1d4",
+    "damageType": "cortante",
+    "properties": [
+      "Ligera"
+    ],
+    "weaponCategory": "Armas simples cuerpo a cuerpo",
+    "range": "",
+    "proficiencyCategory": "simples"
+  },
+  {
+    "id": "equipment-armas-jabalina",
+    "name": "Jabalina",
+    "category": "Armas",
+    "source": {
+      "page": 423,
+      "endPage": 423,
+      "title": "Equipo"
+    },
+    "description": "Jabalina 5 plata 1d6 perforante 2 lb. Arrojadiza (distancia 30/120)",
+    "weight": 2.0,
+    "cost": "5 pp",
+    "damage": "1d6",
+    "damageType": "perforante",
+    "properties": [
+      "Arrojadiza (distancia 30/120)"
+    ],
+    "weaponCategory": "Armas simples cuerpo a cuerpo",
+    "range": "30/120",
+    "proficiencyCategory": "simples"
+  },
+  {
+    "id": "equipment-armas-lanza",
+    "name": "Lanza",
+    "category": "Armas",
+    "source": {
+      "page": 423,
+      "endPage": 423,
+      "title": "Equipo"
+    },
+    "description": "Lanza 1 oro 1d6 perforante 3 lb. Arrojadiza (distancia 20/60), Versátil (1d8)",
+    "weight": 3.0,
+    "cost": "1 po",
+    "damage": "1d6",
+    "damageType": "perforante",
+    "properties": [
+      "Arrojadiza (distancia 20/60)",
+      "Versátil (1d8)"
+    ],
+    "weaponCategory": "Armas simples cuerpo a cuerpo",
+    "range": "20/60",
+    "proficiencyCategory": "simples"
+  },
+  {
+    "id": "equipment-armas-martillo-ligero",
+    "name": "Martillo ligero",
+    "category": "Armas",
+    "source": {
+      "page": 423,
+      "endPage": 423,
+      "title": "Equipo"
+    },
+    "description": "Martillo ligero 2 oro 1d4 contundente 2 lb. Arrojadiza (distancia 20/60), Ligera",
+    "weight": 2.0,
+    "cost": "2 po",
+    "damage": "1d4",
+    "damageType": "contundente",
+    "properties": [
+      "Arrojadiza (distancia 20/60)",
+      "Ligera"
+    ],
+    "weaponCategory": "Armas simples cuerpo a cuerpo",
+    "range": "20/60",
+    "proficiencyCategory": "simples"
+  },
+  {
+    "id": "equipment-armas-maza",
+    "name": "Maza",
+    "category": "Armas",
+    "source": {
+      "page": 423,
+      "endPage": 423,
+      "title": "Equipo"
+    },
+    "description": "Maza 5 oro 1d6 contundente 4 lb. -",
+    "weight": 4.0,
+    "cost": "5 po",
+    "damage": "1d6",
+    "damageType": "contundente",
+    "properties": [],
+    "weaponCategory": "Armas simples cuerpo a cuerpo",
+    "range": "",
+    "proficiencyCategory": "simples"
+  },
+  {
+    "id": "equipment-armas-porra",
+    "name": "Porra",
+    "category": "Armas",
+    "source": {
+      "page": 423,
+      "endPage": 423,
+      "title": "Equipo"
+    },
+    "description": "Porra 1 plata 1d4 contundente 2 lb. Ligera",
+    "weight": 2.0,
+    "cost": "1 pp",
+    "damage": "1d4",
+    "damageType": "contundente",
+    "properties": [
+      "Ligera"
+    ],
+    "weaponCategory": "Armas simples cuerpo a cuerpo",
+    "range": "",
+    "proficiencyCategory": "simples"
+  },
+  {
+    "id": "equipment-armas-arco-corto",
+    "name": "Arco corto",
+    "category": "Armas",
+    "source": {
+      "page": 423,
+      "endPage": 423,
+      "title": "Equipo"
+    },
+    "description": "Arco corto 25 oro 1d6 perforante 2 lb. A dos manos, Munición (distancia 80/320)",
+    "weight": 2.0,
+    "cost": "25 po",
+    "damage": "1d6",
+    "damageType": "perforante",
+    "properties": [
+      "A dos manos",
+      "Munición (distancia 80/320)"
+    ],
+    "weaponCategory": "Armas simples a distancia",
+    "range": "80/320",
+    "proficiencyCategory": "simples"
+  },
+  {
+    "id": "equipment-armas-ballesta-ligera",
+    "name": "Ballesta ligera",
+    "category": "Armas",
+    "source": {
+      "page": 423,
+      "endPage": 423,
+      "title": "Equipo"
+    },
+    "description": "Ballesta ligera 25 oro 1d8 perforante 5 lb. A dos manos, Munición (distancia 80/320), Carga",
+    "weight": 5.0,
+    "cost": "25 po",
+    "damage": "1d8",
+    "damageType": "perforante",
+    "properties": [
+      "A dos manos",
+      "Munición (distancia 80/320)",
+      "",
+      "Carga"
+    ],
+    "weaponCategory": "Armas simples a distancia",
+    "range": "80/320",
+    "proficiencyCategory": "simples"
+  },
+  {
+    "id": "equipment-armas-dardo",
+    "name": "Dardo",
+    "category": "Armas",
+    "source": {
+      "page": 423,
+      "endPage": 423,
+      "title": "Equipo"
+    },
+    "description": "Dardo 5 cobre 1d4 perforante 1/4 lb. Arrojadiza (distancia 20/60), Sutil",
+    "weight": 0.25,
+    "cost": "5 pc",
+    "damage": "1d4",
+    "damageType": "perforante",
+    "properties": [
+      "Arrojadiza (distancia 20/60)",
+      "Sutil"
+    ],
+    "weaponCategory": "Armas simples a distancia",
+    "range": "20/60",
+    "proficiencyCategory": "simples"
+  },
+  {
+    "id": "equipment-armas-honda",
+    "name": "Honda",
+    "category": "Armas",
+    "source": {
+      "page": 423,
+      "endPage": 423,
+      "title": "Equipo"
+    },
+    "description": "Honda 1 plata 1d4 contundente - Munición (distancia 30/120)",
+    "weight": null,
+    "cost": "1 pp",
+    "damage": "1d4",
+    "damageType": "contundente",
+    "properties": [
+      "Munición (distancia 30/120)"
+    ],
+    "weaponCategory": "Armas simples a distancia",
+    "range": "30/120",
+    "proficiencyCategory": "simples"
+  },
+  {
+    "id": "equipment-armas-alabarda",
+    "name": "Alabarda",
+    "category": "Armas",
+    "source": {
+      "page": 423,
+      "endPage": 423,
+      "title": "Equipo"
+    },
+    "description": "Alabarda 20 oro 1d10 cortante 6 lb. A dos manos, Alcance, Pesada",
+    "weight": 6.0,
+    "cost": "20 po",
+    "damage": "1d10",
+    "damageType": "cortante",
+    "properties": [
+      "A dos manos",
+      "Alcance",
+      "Pesada"
+    ],
+    "weaponCategory": "Armas marciales cuerpo a cuerpo",
+    "range": "",
+    "proficiencyCategory": "marciales"
+  },
+  {
+    "id": "equipment-armas-cimitarra",
+    "name": "Cimitarra",
+    "category": "Armas",
+    "source": {
+      "page": 423,
+      "endPage": 423,
+      "title": "Equipo"
+    },
+    "description": "Cimitarra 25 oro 1d6 cortante 3 lb. Ligera, Sutil",
+    "weight": 3.0,
+    "cost": "25 po",
+    "damage": "1d6",
+    "damageType": "cortante",
+    "properties": [
+      "Ligera",
+      "Sutil"
+    ],
+    "weaponCategory": "Armas marciales cuerpo a cuerpo",
+    "range": "",
+    "proficiencyCategory": "marciales"
+  },
+  {
+    "id": "equipment-armas-espada-corta",
+    "name": "Espada corta",
+    "category": "Armas",
+    "source": {
+      "page": 423,
+      "endPage": 423,
+      "title": "Equipo"
+    },
+    "description": "Espada corta 10 oro 1d6 perforante 2 lb. Ligera, Sutil",
+    "weight": 2.0,
+    "cost": "10 po",
+    "damage": "1d6",
+    "damageType": "perforante",
+    "properties": [
+      "Ligera",
+      "Sutil"
+    ],
+    "weaponCategory": "Armas marciales cuerpo a cuerpo",
+    "range": "",
+    "proficiencyCategory": "marciales"
+  },
+  {
+    "id": "equipment-armas-espada-larga",
+    "name": "Espada larga",
+    "category": "Armas",
+    "source": {
+      "page": 423,
+      "endPage": 423,
+      "title": "Equipo"
+    },
+    "description": "Espada larga 15 oro 1d8 cortante 3 lb. Versátil (1d10)",
+    "weight": 3.0,
+    "cost": "15 po",
+    "damage": "1d8",
+    "damageType": "cortante",
+    "properties": [
+      "Versátil (1d10)"
+    ],
+    "weaponCategory": "Armas marciales cuerpo a cuerpo",
+    "range": "",
+    "proficiencyCategory": "marciales"
+  },
+  {
+    "id": "equipment-armas-espadon",
+    "name": "Espadón",
+    "category": "Armas",
+    "source": {
+      "page": 423,
+      "endPage": 423,
+      "title": "Equipo"
+    },
+    "description": "Espadón 50 oro 2d6 cortante 6 lb. A dos manos, Pesada",
+    "weight": 6.0,
+    "cost": "50 po",
+    "damage": "2d6",
+    "damageType": "cortante",
+    "properties": [
+      "A dos manos",
+      "Pesada"
+    ],
+    "weaponCategory": "Armas marciales cuerpo a cuerpo",
+    "range": "",
+    "proficiencyCategory": "marciales"
+  },
+  {
+    "id": "equipment-armas-estoque",
+    "name": "Estoque",
+    "category": "Armas",
+    "source": {
+      "page": 423,
+      "endPage": 423,
+      "title": "Equipo"
+    },
+    "description": "Estoque 25 oro 1d8 perforante 2 lb. Sutil",
+    "weight": 2.0,
+    "cost": "25 po",
+    "damage": "1d8",
+    "damageType": "perforante",
+    "properties": [
+      "Sutil"
+    ],
+    "weaponCategory": "Armas marciales cuerpo a cuerpo",
+    "range": "",
+    "proficiencyCategory": "marciales"
+  },
+  {
+    "id": "equipment-armas-gran-hacha",
+    "name": "Gran hacha",
+    "category": "Armas",
+    "source": {
+      "page": 423,
+      "endPage": 423,
+      "title": "Equipo"
+    },
+    "description": "Gran hacha 30 oro 1d12 cortante 7 lb. A dos manos, Pesada",
+    "weight": 7.0,
+    "cost": "30 po",
+    "damage": "1d12",
+    "damageType": "cortante",
+    "properties": [
+      "A dos manos",
+      "Pesada"
+    ],
+    "weaponCategory": "Armas marciales cuerpo a cuerpo",
+    "range": "",
+    "proficiencyCategory": "marciales"
+  },
+  {
+    "id": "equipment-armas-guja",
+    "name": "Guja",
+    "category": "Armas",
+    "source": {
+      "page": 423,
+      "endPage": 423,
+      "title": "Equipo"
+    },
+    "description": "Guja 20 oro 1d10 cortante 6 lb. A dos manos, Alcance, Pesada",
+    "weight": 6.0,
+    "cost": "20 po",
+    "damage": "1d10",
+    "damageType": "cortante",
+    "properties": [
+      "A dos manos",
+      "Alcance",
+      "Pesada"
+    ],
+    "weaponCategory": "Armas marciales cuerpo a cuerpo",
+    "range": "",
+    "proficiencyCategory": "marciales"
+  },
+  {
+    "id": "equipment-armas-hacha-de-guerra",
+    "name": "Hacha de guerra",
+    "category": "Armas",
+    "source": {
+      "page": 423,
+      "endPage": 423,
+      "title": "Equipo"
+    },
+    "description": "Hacha de guerra 10 oro 1d8 cortante 4 lb. Versátil (1d10)",
+    "weight": 4.0,
+    "cost": "10 po",
+    "damage": "1d8",
+    "damageType": "cortante",
+    "properties": [
+      "Versátil (1d10)"
+    ],
+    "weaponCategory": "Armas marciales cuerpo a cuerpo",
+    "range": "",
+    "proficiencyCategory": "marciales"
+  },
+  {
+    "id": "equipment-armas-latigo",
+    "name": "Látigo",
+    "category": "Armas",
+    "source": {
+      "page": 423,
+      "endPage": 423,
+      "title": "Equipo"
+    },
+    "description": "Látigo 2 oro 1d4 cortante 3 lb. Alcance, Sutil",
+    "weight": 3.0,
+    "cost": "2 po",
+    "damage": "1d4",
+    "damageType": "cortante",
+    "properties": [
+      "Alcance",
+      "Sutil"
+    ],
+    "weaponCategory": "Armas marciales cuerpo a cuerpo",
+    "range": "",
+    "proficiencyCategory": "marciales"
+  },
+  {
+    "id": "equipment-armas-lanza-de-caballeria",
+    "name": "Lanza de caballería",
+    "category": "Armas",
+    "source": {
+      "page": 423,
+      "endPage": 423,
+      "title": "Equipo"
+    },
+    "description": "Lanza de caballería 10 oro 1d12 perforante 6 lb. Alcance, Especial",
+    "weight": 6.0,
+    "cost": "10 po",
+    "damage": "1d12",
+    "damageType": "perforante",
+    "properties": [
+      "Alcance",
+      "Especial"
+    ],
+    "weaponCategory": "Armas marciales cuerpo a cuerpo",
+    "range": "",
+    "proficiencyCategory": "marciales"
+  },
+  {
+    "id": "equipment-armas-lucero-del-alba",
+    "name": "Lucero del alba",
+    "category": "Armas",
+    "source": {
+      "page": 423,
+      "endPage": 423,
+      "title": "Equipo"
+    },
+    "description": "Lucero del alba 15 oro 1d8 perforante 4 lb. -",
+    "weight": 4.0,
+    "cost": "15 po",
+    "damage": "1d8",
+    "damageType": "perforante",
+    "properties": [],
+    "weaponCategory": "Armas marciales cuerpo a cuerpo",
+    "range": "",
+    "proficiencyCategory": "marciales"
+  },
+  {
+    "id": "equipment-armas-mangual",
+    "name": "Mangual",
+    "category": "Armas",
+    "source": {
+      "page": 423,
+      "endPage": 423,
+      "title": "Equipo"
+    },
+    "description": "Mangual 10 oro 1d8 contundente 2 lb. -",
+    "weight": 2.0,
+    "cost": "10 po",
+    "damage": "1d8",
+    "damageType": "contundente",
+    "properties": [],
+    "weaponCategory": "Armas marciales cuerpo a cuerpo",
+    "range": "",
+    "proficiencyCategory": "marciales"
+  },
+  {
+    "id": "equipment-armas-martillo-de-guerra",
+    "name": "Martillo de guerra",
+    "category": "Armas",
+    "source": {
+      "page": 423,
+      "endPage": 423,
+      "title": "Equipo"
+    },
+    "description": "Martillo de guerra 15 oro 1d8 contundente 2 lb. Versátil (1d10)",
+    "weight": 2.0,
+    "cost": "15 po",
+    "damage": "1d8",
+    "damageType": "contundente",
+    "properties": [
+      "Versátil (1d10)"
+    ],
+    "weaponCategory": "Armas marciales cuerpo a cuerpo",
+    "range": "",
+    "proficiencyCategory": "marciales"
+  },
+  {
+    "id": "equipment-armas-mazo",
+    "name": "Mazo",
+    "category": "Armas",
+    "source": {
+      "page": 423,
+      "endPage": 423,
+      "title": "Equipo"
+    },
+    "description": "Mazo 10 oro 2d6 contundente 10 lb. A dos manos, Pesada",
+    "weight": 10.0,
+    "cost": "10 po",
+    "damage": "2d6",
+    "damageType": "contundente",
+    "properties": [
+      "A dos manos",
+      "Pesada"
+    ],
+    "weaponCategory": "Armas marciales cuerpo a cuerpo",
+    "range": "",
+    "proficiencyCategory": "marciales"
+  },
+  {
+    "id": "equipment-armas-pica",
+    "name": "Pica",
+    "category": "Armas",
+    "source": {
+      "page": 423,
+      "endPage": 423,
+      "title": "Equipo"
+    },
+    "description": "Pica 5 oro 1d10 perforante 18 lb. A dos manos, Alcance, Pesada",
+    "weight": 18.0,
+    "cost": "5 po",
+    "damage": "1d10",
+    "damageType": "perforante",
+    "properties": [
+      "A dos manos",
+      "Alcance",
+      "Pesada"
+    ],
+    "weaponCategory": "Armas marciales cuerpo a cuerpo",
+    "range": "",
+    "proficiencyCategory": "marciales"
+  },
+  {
+    "id": "equipment-armas-pico-de-cuervo",
+    "name": "Pico de cuervo",
+    "category": "Armas",
+    "source": {
+      "page": 423,
+      "endPage": 423,
+      "title": "Equipo"
+    },
+    "description": "Pico de cuervo 5 oro 1d8 perforante 2 lb. -",
+    "weight": 2.0,
+    "cost": "5 po",
+    "damage": "1d8",
+    "damageType": "perforante",
+    "properties": [],
+    "weaponCategory": "Armas marciales cuerpo a cuerpo",
+    "range": "",
+    "proficiencyCategory": "marciales"
+  },
+  {
+    "id": "equipment-armas-tridente",
+    "name": "Tridente",
+    "category": "Armas",
+    "source": {
+      "page": 423,
+      "endPage": 423,
+      "title": "Equipo"
+    },
+    "description": "Tridente 5 oro 1d6 perforante 4 lb. Arrojadiza (distancia 20/60), Versátil (1d8)",
+    "weight": 4.0,
+    "cost": "5 po",
+    "damage": "1d6",
+    "damageType": "perforante",
+    "properties": [
+      "Arrojadiza (distancia 20/60)",
+      "Versátil (1d8)"
+    ],
+    "weaponCategory": "Armas marciales cuerpo a cuerpo",
+    "range": "20/60",
+    "proficiencyCategory": "marciales"
+  },
+  {
+    "id": "equipment-armas-arco-largo",
+    "name": "Arco largo",
+    "category": "Armas",
+    "source": {
+      "page": 423,
+      "endPage": 423,
+      "title": "Equipo"
+    },
+    "description": "Arco largo 50 oro 1d8 perforante 2 lb. A dos manos, Munición (distancia 150/600), Pesada",
+    "weight": 2.0,
+    "cost": "50 po",
+    "damage": "1d8",
+    "damageType": "perforante",
+    "properties": [
+      "A dos manos",
+      "Munición (distancia 150/600)",
+      "",
+      "Pesada"
+    ],
+    "weaponCategory": "Armas marciales a distancia",
+    "range": "150/600",
+    "proficiencyCategory": "marciales"
+  },
+  {
+    "id": "equipment-armas-ballesta-de-mano",
+    "name": "Ballesta de mano",
+    "category": "Armas",
+    "source": {
+      "page": 423,
+      "endPage": 423,
+      "title": "Equipo"
+    },
+    "description": "Ballesta de mano 75 oro 1d6 perforante 3 lb. Ligera, Munición (distancia 30/120), Carga",
+    "weight": 3.0,
+    "cost": "75 po",
+    "damage": "1d6",
+    "damageType": "perforante",
+    "properties": [
+      "Ligera",
+      "Munición (distancia 30/120)",
+      "Carga"
+    ],
+    "weaponCategory": "Armas marciales a distancia",
+    "range": "30/120",
+    "proficiencyCategory": "marciales"
+  },
+  {
+    "id": "equipment-armas-ballesta-pesada",
+    "name": "Ballesta pesada",
+    "category": "Armas",
+    "source": {
+      "page": 423,
+      "endPage": 423,
+      "title": "Equipo"
+    },
+    "description": "Ballesta pesada 50 oro 1d10 perforante 18 lb. A dos manos, Munición (distancia 100/400), Pesada, Carga",
+    "weight": 18.0,
+    "cost": "50 po",
+    "damage": "1d10",
+    "damageType": "perforante",
+    "properties": [
+      "A dos manos",
+      "Munición (distancia 100/400)",
+      "",
+      "Pesada",
+      "Carga"
+    ],
+    "weaponCategory": "Armas marciales a distancia",
+    "range": "100/400",
+    "proficiencyCategory": "marciales"
+  },
+  {
+    "id": "equipment-armas-cerbatana",
+    "name": "Cerbatana",
+    "category": "Armas",
+    "source": {
+      "page": 423,
+      "endPage": 423,
+      "title": "Equipo"
+    },
+    "description": "Cerbatana 10 oro 1 perforante 1 lb. Munición (distancia 25/100), Carga",
+    "weight": 1.0,
+    "cost": "10 po",
+    "damage": "1",
+    "damageType": "perforante",
+    "properties": [
+      "Munición (distancia 25/100)",
+      "Carga"
+    ],
+    "weaponCategory": "Armas marciales a distancia",
+    "range": "25/100",
+    "proficiencyCategory": "marciales"
+  },
+  {
+    "id": "equipment-armas-red",
+    "name": "Red",
+    "category": "Armas",
+    "source": {
+      "page": 423,
+      "endPage": 423,
+      "title": "Equipo"
+    },
+    "description": "Red 1 oro - 3 lb. Arrojadiza (distancia 5/15), Especial",
+    "weight": 3.0,
+    "cost": "1 po",
+    "damage": "-",
+    "damageType": "",
+    "properties": [
+      "Arrojadiza (distancia 5/15)",
+      "Especial"
+    ],
+    "weaponCategory": "Armas marciales a distancia",
+    "range": "5/15",
+    "proficiencyCategory": "marciales"
+  },
+  {
+    "id": "equipment-equipo-abaco",
+    "name": "Ábaco",
+    "category": "Equipo",
+    "source": {
+      "page": 427,
+      "endPage": 427,
+      "title": "Equipo"
+    },
+    "description": "Ábaco 2 po 2 lb",
+    "weight": 2.0,
+    "cost": "2 po",
+    "equipmentType": "Equipo de aventura",
+    "weightText": "2 lb"
+  },
+  {
+    "id": "equipment-equipo-abrojos-bolsa-de-20",
+    "name": "Abrojos (bolsa de 20)",
+    "category": "Equipo",
+    "source": {
+      "page": 427,
+      "endPage": 427,
+      "title": "Equipo"
+    },
+    "description": "Abrojos (bolsa de 20) 1 po 2 lb",
+    "weight": 2.0,
+    "cost": "1 po",
+    "equipmentType": "Equipo de aventura",
+    "weightText": "2 lb",
+    "detailReferencePages": [
+      424,
+      425,
+      426
+    ]
+  },
+  {
+    "id": "equipment-equipo-aceite-frasco",
+    "name": "Aceite (frasco)",
+    "category": "Equipo",
+    "source": {
+      "page": 427,
+      "endPage": 427,
+      "title": "Equipo"
+    },
+    "description": "Aceite (frasco) 1 pp 1 lb",
+    "weight": 1.0,
+    "cost": "1 pp",
+    "equipmentType": "Equipo de aventura",
+    "weightText": "1 lb",
+    "detailReferencePages": [
+      424,
+      425,
+      426
+    ]
+  },
+  {
+    "id": "equipment-equipo-acido-vial",
+    "name": "Ácido (vial)",
+    "category": "Equipo",
+    "source": {
+      "page": 427,
+      "endPage": 427,
+      "title": "Equipo"
+    },
+    "description": "Ácido (vial) 25 po 1 lb",
+    "weight": 1.0,
+    "cost": "25 po",
+    "equipmentType": "Equipo de aventura",
+    "weightText": "1 lb",
+    "detailReferencePages": [
+      424,
+      425,
+      426
+    ]
+  },
+  {
+    "id": "equipment-equipo-agua-bendita-frasco",
+    "name": "Agua bendita (frasco)",
+    "category": "Equipo",
+    "source": {
+      "page": 427,
+      "endPage": 427,
+      "title": "Equipo"
+    },
+    "description": "Agua bendita (frasco) 25 po 1 lb",
+    "weight": 1.0,
+    "cost": "25 po",
+    "equipmentType": "Equipo de aventura",
+    "weightText": "1 lb",
+    "detailReferencePages": [
+      424,
+      425,
+      426
+    ]
+  },
+  {
+    "id": "equipment-equipo-aljaba",
+    "name": "Aljaba",
+    "category": "Equipo",
+    "source": {
+      "page": 427,
+      "endPage": 427,
+      "title": "Equipo"
+    },
+    "description": "Aljaba 1 po 1 lb",
+    "weight": 1.0,
+    "cost": "1 po",
+    "equipmentType": "Equipo de aventura",
+    "weightText": "1 lb"
+  },
+  {
+    "id": "equipment-equipo-anillo-de-sello",
+    "name": "Anillo de sello",
+    "category": "Equipo",
+    "source": {
+      "page": 427,
+      "endPage": 427,
+      "title": "Equipo"
+    },
+    "description": "Anillo de sello 5 po –",
+    "weight": null,
+    "cost": "5 po",
+    "equipmentType": "Equipo de aventura",
+    "weightText": "–"
+  },
+  {
+    "id": "equipment-equipo-antitoxina-vial",
+    "name": "Antitoxina (vial)",
+    "category": "Equipo",
+    "source": {
+      "page": 427,
+      "endPage": 427,
+      "title": "Equipo"
+    },
+    "description": "Antitoxina (vial) 50 po –",
+    "weight": null,
+    "cost": "50 po",
+    "equipmentType": "Equipo de aventura",
+    "weightText": "–"
+  },
+  {
+    "id": "equipment-equipo-antorcha",
+    "name": "Antorcha",
+    "category": "Equipo",
+    "source": {
+      "page": 427,
+      "endPage": 427,
+      "title": "Equipo"
+    },
+    "description": "Antorcha 1 pc –",
+    "weight": null,
+    "cost": "1 pc",
+    "equipmentType": "Equipo de aventura",
+    "weightText": "–",
+    "detailReferencePages": [
+      424,
+      425,
+      426
+    ]
+  },
+  {
+    "id": "equipment-equipo-aparejo-de-pesca",
+    "name": "Aparejo de pesca",
+    "category": "Equipo",
+    "source": {
+      "page": 427,
+      "endPage": 427,
+      "title": "Equipo"
+    },
+    "description": "Aparejo de pesca 1 po 4 lb",
+    "weight": 4.0,
+    "cost": "1 po",
+    "equipmentType": "Equipo de aventura",
+    "weightText": "4 lb",
+    "detailReferencePages": [
+      424,
+      425,
+      426
+    ]
+  },
+  {
+    "id": "equipment-equipo-aparejo-de-poleas",
+    "name": "Aparejo de poleas",
+    "category": "Equipo",
+    "source": {
+      "page": 427,
+      "endPage": 427,
+      "title": "Equipo"
+    },
+    "description": "Aparejo de poleas 1 po 5 lb",
+    "weight": 5.0,
+    "cost": "1 po",
+    "equipmentType": "Equipo de aventura",
+    "weightText": "5 lb",
+    "detailReferencePages": [
+      424,
+      425,
+      426
+    ]
+  },
+  {
+    "id": "equipment-equipo-ariete-portatil",
+    "name": "Ariete portátil",
+    "category": "Equipo",
+    "source": {
+      "page": 427,
+      "endPage": 427,
+      "title": "Equipo"
+    },
+    "description": "Ariete portátil 4 po 35 lb",
+    "weight": 35.0,
+    "cost": "4 po",
+    "equipmentType": "Equipo de aventura",
+    "weightText": "35 lb",
+    "detailReferencePages": [
+      424,
+      425,
+      426
+    ]
+  },
+  {
+    "id": "equipment-equipo-balanza-de-mercader",
+    "name": "Balanza de mercader",
+    "category": "Equipo",
+    "source": {
+      "page": 427,
+      "endPage": 427,
+      "title": "Equipo"
+    },
+    "description": "Balanza de mercader 5 po 3 lb",
+    "weight": 3.0,
+    "cost": "5 po",
+    "equipmentType": "Equipo de aventura",
+    "weightText": "3 lb",
+    "detailReferencePages": [
+      424,
+      425,
+      426
+    ]
+  },
+  {
+    "id": "equipment-equipo-barril",
+    "name": "Barril",
+    "category": "Equipo",
+    "source": {
+      "page": 427,
+      "endPage": 427,
+      "title": "Equipo"
+    },
+    "description": "Barril 2 po 70 lb",
+    "weight": 70.0,
+    "cost": "2 po",
+    "equipmentType": "Equipo de aventura",
+    "weightText": "70 lb"
+  },
+  {
+    "id": "equipment-equipo-bolas-de-metal-bolsa-de-1000",
+    "name": "Bolas de metal (bolsa de 1000)",
+    "category": "Equipo",
+    "source": {
+      "page": 427,
+      "endPage": 427,
+      "title": "Equipo"
+    },
+    "description": "Bolas de metal (bolsa de 1000) 1 po 2 lb",
+    "weight": 2.0,
+    "cost": "1 po",
+    "equipmentType": "Equipo de aventura",
+    "weightText": "2 lb"
+  },
+  {
+    "id": "equipment-equipo-bolsa",
+    "name": "Bolsa",
+    "category": "Equipo",
+    "source": {
+      "page": 427,
+      "endPage": 427,
+      "title": "Equipo"
+    },
+    "description": "Bolsa 5 pp 1 lb",
+    "weight": 1.0,
+    "cost": "5 pp",
+    "equipmentType": "Equipo de aventura",
+    "weightText": "1 lb",
+    "detailReferencePages": [
+      424,
+      425,
+      426
+    ]
+  },
+  {
+    "id": "equipment-equipo-bolsa-de-componentes",
+    "name": "Bolsa de componentes",
+    "category": "Equipo",
+    "source": {
+      "page": 427,
+      "endPage": 427,
+      "title": "Equipo"
+    },
+    "description": "Bolsa de componentes 25 po 2 lb",
+    "weight": 2.0,
+    "cost": "25 po",
+    "equipmentType": "Equipo de aventura",
+    "weightText": "2 lb",
+    "detailReferencePages": [
+      424,
+      425,
+      426
+    ]
+  },
+  {
+    "id": "equipment-equipo-botella-de-cristal",
+    "name": "Botella de cristal",
+    "category": "Equipo",
+    "source": {
+      "page": 427,
+      "endPage": 427,
+      "title": "Equipo"
+    },
+    "description": "Botella de cristal 2 po 2 lb",
+    "weight": 2.0,
+    "cost": "2 po",
+    "equipmentType": "Equipo de aventura",
+    "weightText": "2 lb"
+  },
+  {
+    "id": "equipment-equipo-cadena-10-pies",
+    "name": "Cadena (10 pies)",
+    "category": "Equipo",
+    "source": {
+      "page": 427,
+      "endPage": 427,
+      "title": "Equipo"
+    },
+    "description": "Cadena (10 pies) 5 po 10 lb",
+    "weight": 10.0,
+    "cost": "5 po",
+    "equipmentType": "Equipo de aventura",
+    "weightText": "10 lb",
+    "detailReferencePages": [
+      424,
+      425,
+      426
+    ]
+  },
+  {
+    "id": "equipment-equipo-campana",
+    "name": "Campana",
+    "category": "Equipo",
+    "source": {
+      "page": 427,
+      "endPage": 427,
+      "title": "Equipo"
+    },
+    "description": "Campana 1 po –",
+    "weight": null,
+    "cost": "1 po",
+    "equipmentType": "Equipo de aventura",
+    "weightText": "–"
+  },
+  {
+    "id": "equipment-equipo-catalejo",
+    "name": "Catalejo",
+    "category": "Equipo",
+    "source": {
+      "page": 427,
+      "endPage": 427,
+      "title": "Equipo"
+    },
+    "description": "Catalejo 1000 po 1 lb",
+    "weight": 1.0,
+    "cost": "1000 po",
+    "equipmentType": "Equipo de aventura",
+    "weightText": "1 lb",
+    "detailReferencePages": [
+      424,
+      425,
+      426
+    ]
+  },
+  {
+    "id": "equipment-equipo-cerradura",
+    "name": "Cerradura",
+    "category": "Equipo",
+    "source": {
+      "page": 427,
+      "endPage": 427,
+      "title": "Equipo"
+    },
+    "description": "Cerradura 10 po 1 lb",
+    "weight": 1.0,
+    "cost": "10 po",
+    "equipmentType": "Equipo de aventura",
+    "weightText": "1 lb",
+    "detailReferencePages": [
+      424,
+      425,
+      426
+    ]
+  },
+  {
+    "id": "equipment-equipo-cesto",
+    "name": "Cesto",
+    "category": "Equipo",
+    "source": {
+      "page": 427,
+      "endPage": 427,
+      "title": "Equipo"
+    },
+    "description": "Cesto 4 pp 2 lb",
+    "weight": 2.0,
+    "cost": "4 pp",
+    "equipmentType": "Equipo de aventura",
+    "weightText": "2 lb"
+  },
+  {
+    "id": "equipment-equipo-cofre",
+    "name": "Cofre",
+    "category": "Equipo",
+    "source": {
+      "page": 427,
+      "endPage": 427,
+      "title": "Equipo"
+    },
+    "description": "Cofre 5 po 25 lb",
+    "weight": 25.0,
+    "cost": "5 po",
+    "equipmentType": "Equipo de aventura",
+    "weightText": "25 lb"
+  },
+  {
+    "id": "equipment-equipo-cubo",
+    "name": "Cubo",
+    "category": "Equipo",
+    "source": {
+      "page": 427,
+      "endPage": 427,
+      "title": "Equipo"
+    },
+    "description": "Cubo 5 pc 2 lb",
+    "weight": 2.0,
+    "cost": "5 pc",
+    "equipmentType": "Equipo de aventura",
+    "weightText": "2 lb"
+  },
+  {
+    "id": "equipment-equipo-cuerda-de-canamo-50-pies",
+    "name": "Cuerda de cáñamo (50 pies)",
+    "category": "Equipo",
+    "source": {
+      "page": 427,
+      "endPage": 427,
+      "title": "Equipo"
+    },
+    "description": "Cuerda de cáñamo (50 pies) 1 po 10 lb",
+    "weight": 10.0,
+    "cost": "1 po",
+    "equipmentType": "Equipo de aventura",
+    "weightText": "10 lb"
+  },
+  {
+    "id": "equipment-equipo-cuerda-de-seda-50-pies",
+    "name": "Cuerda de seda (50 pies)",
+    "category": "Equipo",
+    "source": {
+      "page": 427,
+      "endPage": 427,
+      "title": "Equipo"
+    },
+    "description": "Cuerda de seda (50 pies) 10 po 5 lb",
+    "weight": 5.0,
+    "cost": "10 po",
+    "equipmentType": "Equipo de aventura",
+    "weightText": "5 lb"
+  },
+  {
+    "id": "equipment-equipo-escalera-10-pies",
+    "name": "Escalera (10 pies)",
+    "category": "Equipo",
+    "source": {
+      "page": 427,
+      "endPage": 427,
+      "title": "Equipo"
+    },
+    "description": "Escalera (10 pies) 1 pp 25 lb",
+    "weight": 25.0,
+    "cost": "1 pp",
+    "equipmentType": "Equipo de aventura",
+    "weightText": "25 lb"
+  },
+  {
+    "id": "equipment-equipo-espejo-de-acero",
+    "name": "Espejo de acero",
+    "category": "Equipo",
+    "source": {
+      "page": 427,
+      "endPage": 427,
+      "title": "Equipo"
+    },
+    "description": "Espejo de acero 5 po 1/2 lb",
+    "weight": 0.5,
+    "cost": "5 po",
+    "equipmentType": "Equipo de aventura",
+    "weightText": "1/2 lb"
+  },
+  {
+    "id": "equipment-equipo-esposas",
+    "name": "Esposas",
+    "category": "Equipo",
+    "source": {
+      "page": 427,
+      "endPage": 427,
+      "title": "Equipo"
+    },
+    "description": "Esposas 2 po 6 lb",
+    "weight": 6.0,
+    "cost": "2 po",
+    "equipmentType": "Equipo de aventura",
+    "weightText": "6 lb"
+  },
+  {
+    "id": "equipment-equipo-estuche-para-mapas-o-pergaminos",
+    "name": "Estuche para mapas o pergaminos",
+    "category": "Equipo",
+    "source": {
+      "page": 427,
+      "endPage": 427,
+      "title": "Equipo"
+    },
+    "description": "Estuche para mapas o pergaminos 1 po 1 lb",
+    "weight": 1.0,
+    "cost": "1 po",
+    "equipmentType": "Equipo de aventura",
+    "weightText": "1 lb"
+  },
+  {
+    "id": "equipment-equipo-estuche-para-virotes-de-ballesta",
+    "name": "Estuche para virotes de ballesta",
+    "category": "Equipo",
+    "source": {
+      "page": 427,
+      "endPage": 427,
+      "title": "Equipo"
+    },
+    "description": "Estuche para virotes de ballesta 1 po 1 lb",
+    "weight": 1.0,
+    "cost": "1 po",
+    "equipmentType": "Equipo de aventura",
+    "weightText": "1 lb"
+  },
+  {
+    "id": "equipment-equipo-fiambrera",
+    "name": "Fiambrera",
+    "category": "Equipo",
+    "source": {
+      "page": 427,
+      "endPage": 427,
+      "title": "Equipo"
+    },
+    "description": "Fiambrera 2 pp 1 lb",
+    "weight": 1.0,
+    "cost": "2 pp",
+    "equipmentType": "Equipo de aventura",
+    "weightText": "1 lb"
+  },
+  {
+    "id": "equipment-equipo-baston",
+    "name": "Bastón",
+    "category": "Equipo",
+    "source": {
+      "page": 427,
+      "endPage": 427,
+      "title": "Equipo"
+    },
+    "description": "Bastón 5 po 4 lb",
+    "weight": 4.0,
+    "cost": "5 po",
+    "equipmentType": "Foco arcano",
+    "weightText": "4 lb"
+  },
+  {
+    "id": "equipment-equipo-cetro",
+    "name": "Cetro",
+    "category": "Equipo",
+    "source": {
+      "page": 427,
+      "endPage": 427,
+      "title": "Equipo"
+    },
+    "description": "Cetro 10 po 2 lb",
+    "weight": 2.0,
+    "cost": "10 po",
+    "equipmentType": "Foco arcano",
+    "weightText": "2 lb"
+  },
+  {
+    "id": "equipment-equipo-cristal",
+    "name": "Cristal",
+    "category": "Equipo",
+    "source": {
+      "page": 427,
+      "endPage": 427,
+      "title": "Equipo"
+    },
+    "description": "Cristal 10 po 1 lb",
+    "weight": 1.0,
+    "cost": "10 po",
+    "equipmentType": "Foco arcano",
+    "weightText": "1 lb"
+  },
+  {
+    "id": "equipment-equipo-orbe",
+    "name": "Orbe",
+    "category": "Equipo",
+    "source": {
+      "page": 427,
+      "endPage": 427,
+      "title": "Equipo"
+    },
+    "description": "Orbe 20 po 3 lb",
+    "weight": 3.0,
+    "cost": "20 po",
+    "equipmentType": "Foco arcano",
+    "weightText": "3 lb"
+  },
+  {
+    "id": "equipment-equipo-varita",
+    "name": "Varita",
+    "category": "Equipo",
+    "source": {
+      "page": 427,
+      "endPage": 427,
+      "title": "Equipo"
+    },
+    "description": "Varita 10 po 1 lb",
+    "weight": 1.0,
+    "cost": "10 po",
+    "equipmentType": "Foco arcano",
+    "weightText": "1 lb"
+  },
+  {
+    "id": "equipment-equipo-baston-de-madera",
+    "name": "Bastón de madera",
+    "category": "Equipo",
+    "source": {
+      "page": 427,
+      "endPage": 427,
+      "title": "Equipo"
+    },
+    "description": "Bastón de madera 5 po 4 lb",
+    "weight": 4.0,
+    "cost": "5 po",
+    "equipmentType": "Foco druídico",
+    "weightText": "4 lb"
+  },
+  {
+    "id": "equipment-equipo-ramo-de-muerdago",
+    "name": "Ramo de muérdago",
+    "category": "Equipo",
+    "source": {
+      "page": 427,
+      "endPage": 427,
+      "title": "Equipo"
+    },
+    "description": "Ramo de muérdago 1 po –",
+    "weight": null,
+    "cost": "1 po",
+    "equipmentType": "Foco druídico",
+    "weightText": "–"
+  },
+  {
+    "id": "equipment-equipo-totem",
+    "name": "Tótem",
+    "category": "Equipo",
+    "source": {
+      "page": 427,
+      "endPage": 427,
+      "title": "Equipo"
+    },
+    "description": "Tótem 1 po –",
+    "weight": null,
+    "cost": "1 po",
+    "equipmentType": "Foco druídico",
+    "weightText": "–"
+  },
+  {
+    "id": "equipment-equipo-varita-de-tejo",
+    "name": "Varita de tejo",
+    "category": "Equipo",
+    "source": {
+      "page": 427,
+      "endPage": 427,
+      "title": "Equipo"
+    },
+    "description": "Varita de tejo 10 po 1 lb",
+    "weight": 1.0,
+    "cost": "10 po",
+    "equipmentType": "Foco druídico",
+    "weightText": "1 lb"
+  },
+  {
+    "id": "equipment-equipo-frasco-o-jarra-de-metal",
+    "name": "Frasco o jarra de metal",
+    "category": "Equipo",
+    "source": {
+      "page": 427,
+      "endPage": 427,
+      "title": "Equipo"
+    },
+    "description": "Frasco o jarra de metal 2 pc 1 lb",
+    "weight": 1.0,
+    "cost": "2 pc",
+    "equipmentType": "Equipo de aventura",
+    "weightText": "1 lb"
+  },
+  {
+    "id": "equipment-equipo-fuego-de-alquimista-frasco",
+    "name": "Fuego de alquimista (frasco)",
+    "category": "Equipo",
+    "source": {
+      "page": 427,
+      "endPage": 427,
+      "title": "Equipo"
+    },
+    "description": "Fuego de alquimista (frasco) 50 po 1 lb",
+    "weight": 1.0,
+    "cost": "50 po",
+    "equipmentType": "Equipo de aventura",
+    "weightText": "1 lb",
+    "detailReferencePages": [
+      424,
+      425,
+      426
+    ]
+  },
+  {
+    "id": "equipment-equipo-garfio-de-escalada",
+    "name": "Garfio de escalada",
+    "category": "Equipo",
+    "source": {
+      "page": 427,
+      "endPage": 427,
+      "title": "Equipo"
+    },
+    "description": "Garfio de escalada 2 po 4 lb",
+    "weight": 4.0,
+    "cost": "2 po",
+    "equipmentType": "Equipo de aventura",
+    "weightText": "4 lb"
+  },
+  {
+    "id": "equipment-equipo-jabon",
+    "name": "Jabón",
+    "category": "Equipo",
+    "source": {
+      "page": 427,
+      "endPage": 427,
+      "title": "Equipo"
+    },
+    "description": "Jabón 2 pc –",
+    "weight": null,
+    "cost": "2 pc",
+    "equipmentType": "Equipo de aventura",
+    "weightText": "–"
+  },
+  {
+    "id": "equipment-equipo-jarro-o-jarra",
+    "name": "Jarro o jarra",
+    "category": "Equipo",
+    "source": {
+      "page": 427,
+      "endPage": 427,
+      "title": "Equipo"
+    },
+    "description": "Jarro o jarra 2 pc 4 lb",
+    "weight": 4.0,
+    "cost": "2 pc",
+    "equipmentType": "Equipo de aventura",
+    "weightText": "4 lb"
+  },
+  {
+    "id": "equipment-equipo-kit-de-escalada",
+    "name": "Kit de escalada",
+    "category": "Equipo",
+    "source": {
+      "page": 427,
+      "endPage": 427,
+      "title": "Equipo"
+    },
+    "description": "Kit de escalada 25 po 12 lb",
+    "weight": 12.0,
+    "cost": "25 po",
+    "equipmentType": "Equipo de aventura",
+    "weightText": "12 lb",
+    "detailReferencePages": [
+      424,
+      425,
+      426
+    ]
+  },
+  {
+    "id": "equipment-equipo-kit-de-sanador",
+    "name": "Kit de sanador",
+    "category": "Equipo",
+    "source": {
+      "page": 427,
+      "endPage": 427,
+      "title": "Equipo"
+    },
+    "description": "Kit de sanador 2 po 3 lb",
+    "weight": 3.0,
+    "cost": "2 po",
+    "equipmentType": "Equipo de aventura",
+    "weightText": "3 lb"
+  },
+  {
+    "id": "equipment-equipo-lacre",
+    "name": "Lacre",
+    "category": "Equipo",
+    "source": {
+      "page": 427,
+      "endPage": 427,
+      "title": "Equipo"
+    },
+    "description": "Lacre 5 pp –",
+    "weight": null,
+    "cost": "5 pp",
+    "equipmentType": "Equipo de aventura",
+    "weightText": "–"
+  },
+  {
+    "id": "equipment-equipo-lampara",
+    "name": "Lámpara",
+    "category": "Equipo",
+    "source": {
+      "page": 427,
+      "endPage": 427,
+      "title": "Equipo"
+    },
+    "description": "Lámpara 5 pp 1 lb",
+    "weight": 1.0,
+    "cost": "5 pp",
+    "equipmentType": "Equipo de aventura",
+    "weightText": "1 lb",
+    "detailReferencePages": [
+      424,
+      425,
+      426
+    ]
+  },
+  {
+    "id": "equipment-equipo-lata-de-yesca",
+    "name": "Lata de yesca",
+    "category": "Equipo",
+    "source": {
+      "page": 427,
+      "endPage": 427,
+      "title": "Equipo"
+    },
+    "description": "Lata de yesca 5 pp 1 lb",
+    "weight": 1.0,
+    "cost": "5 pp",
+    "equipmentType": "Equipo de aventura",
+    "weightText": "1 lb"
+  },
+  {
+    "id": "equipment-equipo-lente-de-aumento",
+    "name": "Lente de aumento",
+    "category": "Equipo",
+    "source": {
+      "page": 427,
+      "endPage": 427,
+      "title": "Equipo"
+    },
+    "description": "Lente de aumento 100 po –",
+    "weight": null,
+    "cost": "100 po",
+    "equipmentType": "Equipo de aventura",
+    "weightText": "–"
+  },
+  {
+    "id": "equipment-equipo-libro",
+    "name": "Libro",
+    "category": "Equipo",
+    "source": {
+      "page": 427,
+      "endPage": 427,
+      "title": "Equipo"
+    },
+    "description": "Libro 25 po 5 lb",
+    "weight": 5.0,
+    "cost": "25 po",
+    "equipmentType": "Equipo de aventura",
+    "weightText": "5 lb",
+    "detailReferencePages": [
+      424,
+      425,
+      426
+    ]
+  },
+  {
+    "id": "equipment-equipo-libro-de-conjuros",
+    "name": "Libro de conjuros",
+    "category": "Equipo",
+    "source": {
+      "page": 427,
+      "endPage": 427,
+      "title": "Equipo"
+    },
+    "description": "Libro de conjuros 50 po 3 lb",
+    "weight": 3.0,
+    "cost": "50 po",
+    "equipmentType": "Equipo de aventura",
+    "weightText": "3 lb",
+    "detailReferencePages": [
+      424,
+      425,
+      426
+    ]
+  },
+  {
+    "id": "equipment-equipo-linterna-con-capuchon",
+    "name": "Linterna con capuchón",
+    "category": "Equipo",
+    "source": {
+      "page": 427,
+      "endPage": 427,
+      "title": "Equipo"
+    },
+    "description": "Linterna con capuchón 5 po 2 lb",
+    "weight": 2.0,
+    "cost": "5 po",
+    "equipmentType": "Equipo de aventura",
+    "weightText": "2 lb"
+  },
+  {
+    "id": "equipment-equipo-linterna-de-ojo-de-buey",
+    "name": "Linterna de ojo de buey",
+    "category": "Equipo",
+    "source": {
+      "page": 427,
+      "endPage": 427,
+      "title": "Equipo"
+    },
+    "description": "Linterna de ojo de buey 10 po 2 lb",
+    "weight": 2.0,
+    "cost": "10 po",
+    "equipmentType": "Equipo de aventura",
+    "weightText": "2 lb"
+  },
+  {
+    "id": "equipment-equipo-manta",
+    "name": "Manta",
+    "category": "Equipo",
+    "source": {
+      "page": 427,
+      "endPage": 427,
+      "title": "Equipo"
+    },
+    "description": "Manta 5 pp 3 lb",
+    "weight": 3.0,
+    "cost": "5 pp",
+    "equipmentType": "Equipo de aventura",
+    "weightText": "3 lb"
+  },
+  {
+    "id": "equipment-equipo-martillo",
+    "name": "Martillo",
+    "category": "Equipo",
+    "source": {
+      "page": 427,
+      "endPage": 427,
+      "title": "Equipo"
+    },
+    "description": "Martillo 1 po 3 lb",
+    "weight": 3.0,
+    "cost": "1 po",
+    "equipmentType": "Equipo de aventura",
+    "weightText": "3 lb"
+  },
+  {
+    "id": "equipment-equipo-mazo",
+    "name": "Mazo",
+    "category": "Equipo",
+    "source": {
+      "page": 427,
+      "endPage": 427,
+      "title": "Equipo"
+    },
+    "description": "Mazo 2 po 10 lb",
+    "weight": 10.0,
+    "cost": "2 po",
+    "equipmentType": "Equipo de aventura",
+    "weightText": "10 lb"
+  },
+  {
+    "id": "equipment-equipo-mochila",
+    "name": "Mochila",
+    "category": "Equipo",
+    "source": {
+      "page": 427,
+      "endPage": 427,
+      "title": "Equipo"
+    },
+    "description": "Mochila 2 po 5 lb",
+    "weight": 5.0,
+    "cost": "2 po",
+    "equipmentType": "Equipo de aventura",
+    "weightText": "5 lb"
+  },
+  {
+    "id": "equipment-equipo-agujas-de-cerbatanas-50",
+    "name": "Agujas de cerbatanas (50)",
+    "category": "Equipo",
+    "source": {
+      "page": 427,
+      "endPage": 427,
+      "title": "Equipo"
+    },
+    "description": "Agujas de cerbatanas (50) 1 po 1 lb",
+    "weight": 1.0,
+    "cost": "1 po",
+    "equipmentType": "Munición",
+    "weightText": "1 lb"
+  },
+  {
+    "id": "equipment-equipo-balas-para-honda-20",
+    "name": "Balas para honda (20)",
+    "category": "Equipo",
+    "source": {
+      "page": 427,
+      "endPage": 427,
+      "title": "Equipo"
+    },
+    "description": "Balas para honda (20) 4 pc 1 1/2 lb",
+    "weight": 1.5,
+    "cost": "4 pc",
+    "equipmentType": "Munición",
+    "weightText": "1 1/2 lb"
+  },
+  {
+    "id": "equipment-equipo-flechas-20",
+    "name": "Flechas (20)",
+    "category": "Equipo",
+    "source": {
+      "page": 427,
+      "endPage": 427,
+      "title": "Equipo"
+    },
+    "description": "Flechas (20) 1 po 1 lb",
+    "weight": 1.0,
+    "cost": "1 po",
+    "equipmentType": "Munición",
+    "weightText": "1 lb",
+    "detailReferencePages": [
+      424,
+      425,
+      426
+    ]
+  },
+  {
+    "id": "equipment-equipo-virotes-de-ballesta-20",
+    "name": "Virotes de ballesta (20)",
+    "category": "Equipo",
+    "source": {
+      "page": 427,
+      "endPage": 427,
+      "title": "Equipo"
+    },
+    "description": "Virotes de ballesta (20) 1 po 1 1/2 lb",
+    "weight": 1.5,
+    "cost": "1 po",
+    "equipmentType": "Munición",
+    "weightText": "1 1/2 lb",
+    "detailReferencePages": [
+      424,
+      425,
+      426
+    ]
+  },
+  {
+    "id": "equipment-equipo-odre",
+    "name": "Odre",
+    "category": "Equipo",
+    "source": {
+      "page": 427,
+      "endPage": 427,
+      "title": "Equipo"
+    },
+    "description": "Odre 2 pp 5 lb (lleno)",
+    "weight": 5.0,
+    "cost": "2 pp",
+    "equipmentType": "Equipo de aventura",
+    "weightText": "5 lb (lleno)"
+  },
+  {
+    "id": "equipment-equipo-olla-de-hierro",
+    "name": "Olla de hierro",
+    "category": "Equipo",
+    "source": {
+      "page": 427,
+      "endPage": 427,
+      "title": "Equipo"
+    },
+    "description": "Olla de hierro 2 pc 10 lb",
+    "weight": 10.0,
+    "cost": "2 pc",
+    "equipmentType": "Equipo de aventura",
+    "weightText": "10 lb"
+  },
+  {
+    "id": "equipment-equipo-pala",
+    "name": "Pala",
+    "category": "Equipo",
+    "source": {
+      "page": 427,
+      "endPage": 427,
+      "title": "Equipo"
+    },
+    "description": "Pala 2 po 5 lb",
+    "weight": 5.0,
+    "cost": "2 po",
+    "equipmentType": "Equipo de aventura",
+    "weightText": "5 lb"
+  },
+  {
+    "id": "equipment-equipo-palanca",
+    "name": "Palanca",
+    "category": "Equipo",
+    "source": {
+      "page": 427,
+      "endPage": 427,
+      "title": "Equipo"
+    },
+    "description": "Palanca 2 po 5 lb",
+    "weight": 5.0,
+    "cost": "2 po",
+    "equipmentType": "Equipo de aventura",
+    "weightText": "5 lb"
+  },
+  {
+    "id": "equipment-equipo-papel-una-hoja",
+    "name": "Papel (una hoja)",
+    "category": "Equipo",
+    "source": {
+      "page": 427,
+      "endPage": 427,
+      "title": "Equipo"
+    },
+    "description": "Papel (una hoja) 2 pp –",
+    "weight": null,
+    "cost": "2 pp",
+    "equipmentType": "Equipo de aventura",
+    "weightText": "–"
+  },
+  {
+    "id": "equipment-equipo-perfume-vial",
+    "name": "Perfume (vial)",
+    "category": "Equipo",
+    "source": {
+      "page": 427,
+      "endPage": 427,
+      "title": "Equipo"
+    },
+    "description": "Perfume (vial) 5 po –",
+    "weight": null,
+    "cost": "5 po",
+    "equipmentType": "Equipo de aventura",
+    "weightText": "–"
+  },
+  {
+    "id": "equipment-equipo-pergamino-una-hoja",
+    "name": "Pergamino (una hoja)",
+    "category": "Equipo",
+    "source": {
+      "page": 427,
+      "endPage": 427,
+      "title": "Equipo"
+    },
+    "description": "Pergamino (una hoja) 1 pp –",
+    "weight": null,
+    "cost": "1 pp",
+    "equipmentType": "Equipo de aventura",
+    "weightText": "–"
+  },
+  {
+    "id": "equipment-equipo-pertiga-10-pies",
+    "name": "Pértiga (10 pies)",
+    "category": "Equipo",
+    "source": {
+      "page": 427,
+      "endPage": 427,
+      "title": "Equipo"
+    },
+    "description": "Pértiga (10 pies) 5 pc 7 lb",
+    "weight": 7.0,
+    "cost": "5 pc",
+    "equipmentType": "Equipo de aventura",
+    "weightText": "7 lb"
+  },
+  {
+    "id": "equipment-equipo-pico-de-minero",
+    "name": "Pico de minero",
+    "category": "Equipo",
+    "source": {
+      "page": 427,
+      "endPage": 427,
+      "title": "Equipo"
+    },
+    "description": "Pico de minero 2 po 10 lb",
+    "weight": 10.0,
+    "cost": "2 po",
+    "equipmentType": "Equipo de aventura",
+    "weightText": "10 lb"
+  },
+  {
+    "id": "equipment-equipo-piedra-de-afilar",
+    "name": "Piedra de afilar",
+    "category": "Equipo",
+    "source": {
+      "page": 427,
+      "endPage": 427,
+      "title": "Equipo"
+    },
+    "description": "Piedra de afilar 1 pc 1 lb",
+    "weight": 1.0,
+    "cost": "1 pc",
+    "equipmentType": "Equipo de aventura",
+    "weightText": "1 lb"
+  },
+  {
+    "id": "equipment-equipo-piquetas-de-hierro-10",
+    "name": "Piquetas de hierro (10)",
+    "category": "Equipo",
+    "source": {
+      "page": 427,
+      "endPage": 427,
+      "title": "Equipo"
+    },
+    "description": "Piquetas de hierro (10) 1 po 5 lb",
+    "weight": 5.0,
+    "cost": "1 po",
+    "equipmentType": "Equipo de aventura",
+    "weightText": "5 lb"
+  },
+  {
+    "id": "equipment-equipo-piton",
+    "name": "Pitón",
+    "category": "Equipo",
+    "source": {
+      "page": 427,
+      "endPage": 427,
+      "title": "Equipo"
+    },
+    "description": "Pitón 5 pc 1/4 lb",
+    "weight": 0.25,
+    "cost": "5 pc",
+    "equipmentType": "Equipo de aventura",
+    "weightText": "1/4 lb"
+  },
+  {
+    "id": "equipment-equipo-pluma-de-escritura",
+    "name": "Pluma de escritura",
+    "category": "Equipo",
+    "source": {
+      "page": 427,
+      "endPage": 427,
+      "title": "Equipo"
+    },
+    "description": "Pluma de escritura 2 pc –",
+    "weight": null,
+    "cost": "2 pc",
+    "equipmentType": "Equipo de aventura",
+    "weightText": "–"
+  },
+  {
+    "id": "equipment-equipo-pocion-de-curacion",
+    "name": "Poción de curación",
+    "category": "Equipo",
+    "source": {
+      "page": 427,
+      "endPage": 427,
+      "title": "Equipo"
+    },
+    "description": "Poción de curación 50 po 1/2 lb",
+    "weight": 0.5,
+    "cost": "50 po",
+    "equipmentType": "Equipo de aventura",
+    "weightText": "1/2 lb"
+  },
+  {
+    "id": "equipment-equipo-raciones-1-dia",
+    "name": "Raciones (1 día)",
+    "category": "Equipo",
+    "source": {
+      "page": 427,
+      "endPage": 427,
+      "title": "Equipo"
+    },
+    "description": "Raciones (1 día) 5 pp 2 lb",
+    "weight": 2.0,
+    "cost": "5 pp",
+    "equipmentType": "Equipo de aventura",
+    "weightText": "2 lb"
+  },
+  {
+    "id": "equipment-equipo-reloj-de-arena",
+    "name": "Reloj de arena",
+    "category": "Equipo",
+    "source": {
+      "page": 427,
+      "endPage": 427,
+      "title": "Equipo"
+    },
+    "description": "Reloj de arena 25 po 1 lb",
+    "weight": 1.0,
+    "cost": "25 po",
+    "equipmentType": "Equipo de aventura",
+    "weightText": "1 lb"
+  },
+  {
+    "id": "equipment-equipo-ropa-comun",
+    "name": "Ropa común",
+    "category": "Equipo",
+    "source": {
+      "page": 427,
+      "endPage": 427,
+      "title": "Equipo"
+    },
+    "description": "Ropa común 5 pp 3 lb",
+    "weight": 3.0,
+    "cost": "5 pp",
+    "equipmentType": "Equipo de aventura",
+    "weightText": "3 lb"
+  },
+  {
+    "id": "equipment-equipo-ropa-de-disfraz",
+    "name": "Ropa de disfraz",
+    "category": "Equipo",
+    "source": {
+      "page": 427,
+      "endPage": 427,
+      "title": "Equipo"
+    },
+    "description": "Ropa de disfraz 5 po 4 lb",
+    "weight": 4.0,
+    "cost": "5 po",
+    "equipmentType": "Equipo de aventura",
+    "weightText": "4 lb"
+  },
+  {
+    "id": "equipment-equipo-ropa-de-viajero",
+    "name": "Ropa de viajero",
+    "category": "Equipo",
+    "source": {
+      "page": 427,
+      "endPage": 427,
+      "title": "Equipo"
+    },
+    "description": "Ropa de viajero 2 po 4 lb",
+    "weight": 4.0,
+    "cost": "2 po",
+    "equipmentType": "Equipo de aventura",
+    "weightText": "4 lb"
+  },
+  {
+    "id": "equipment-equipo-ropa-fina",
+    "name": "Ropa fina",
+    "category": "Equipo",
+    "source": {
+      "page": 427,
+      "endPage": 427,
+      "title": "Equipo"
+    },
+    "description": "Ropa fina 5 po 6 lb",
+    "weight": 6.0,
+    "cost": "5 po",
+    "equipmentType": "Equipo de aventura",
+    "weightText": "6 lb"
+  },
+  {
+    "id": "equipment-equipo-saco",
+    "name": "Saco",
+    "category": "Equipo",
+    "source": {
+      "page": 427,
+      "endPage": 427,
+      "title": "Equipo"
+    },
+    "description": "Saco 1 pc 1/2 lb",
+    "weight": 0.5,
+    "cost": "1 pc",
+    "equipmentType": "Equipo de aventura",
+    "weightText": "1/2 lb"
+  },
+  {
+    "id": "equipment-equipo-saco-de-dormir",
+    "name": "Saco de dormir",
+    "category": "Equipo",
+    "source": {
+      "page": 427,
+      "endPage": 427,
+      "title": "Equipo"
+    },
+    "description": "Saco de dormir 1 po 7 lb",
+    "weight": 7.0,
+    "cost": "1 po",
+    "equipmentType": "Equipo de aventura",
+    "weightText": "7 lb"
+  },
+  {
+    "id": "equipment-equipo-silbato-de-senales",
+    "name": "Silbato de señales",
+    "category": "Equipo",
+    "source": {
+      "page": 427,
+      "endPage": 427,
+      "title": "Equipo"
+    },
+    "description": "Silbato de señales 5 pc –",
+    "weight": null,
+    "cost": "5 pc",
+    "equipmentType": "Equipo de aventura",
+    "weightText": "–"
+  },
+  {
+    "id": "equipment-equipo-amuleto",
+    "name": "Amuleto",
+    "category": "Equipo",
+    "source": {
+      "page": 427,
+      "endPage": 427,
+      "title": "Equipo"
+    },
+    "description": "Amuleto 5 po 1 lb",
+    "weight": 1.0,
+    "cost": "5 po",
+    "equipmentType": "Símbolo sagrado",
+    "weightText": "1 lb"
+  },
+  {
+    "id": "equipment-equipo-emblema",
+    "name": "Emblema",
+    "category": "Equipo",
+    "source": {
+      "page": 427,
+      "endPage": 427,
+      "title": "Equipo"
+    },
+    "description": "Emblema 5 po –",
+    "weight": null,
+    "cost": "5 po",
+    "equipmentType": "Símbolo sagrado",
+    "weightText": "–"
+  },
+  {
+    "id": "equipment-equipo-relicario",
+    "name": "Relicario",
+    "category": "Equipo",
+    "source": {
+      "page": 427,
+      "endPage": 427,
+      "title": "Equipo"
+    },
+    "description": "Relicario 5 po 2 lb",
+    "weight": 2.0,
+    "cost": "5 po",
+    "equipmentType": "Símbolo sagrado",
+    "weightText": "2 lb"
+  },
+  {
+    "id": "equipment-equipo-tienda-de-campana-para-dos-personas",
+    "name": "Tienda de campaña para dos personas",
+    "category": "Equipo",
+    "source": {
+      "page": 427,
+      "endPage": 427,
+      "title": "Equipo"
+    },
+    "description": "Tienda de campaña para dos personas 2 po Lb",
+    "weight": null,
+    "cost": "2 po",
+    "equipmentType": "Equipo de aventura",
+    "weightText": "Lb",
+    "automationNotes": [
+      "El PDF no especifica la cifra del peso; solo imprime «Lb»."
+    ]
+  },
+  {
+    "id": "equipment-equipo-tinta-botella-de-1-onza",
+    "name": "Tinta (botella de 1 onza)",
+    "category": "Equipo",
+    "source": {
+      "page": 427,
+      "endPage": 427,
+      "title": "Equipo"
+    },
+    "description": "Tinta (botella de 1 onza) 10 po –",
+    "weight": null,
+    "cost": "10 po",
+    "equipmentType": "Equipo de aventura",
+    "weightText": "–"
+  },
+  {
+    "id": "equipment-equipo-tiza-1-trozo",
+    "name": "Tiza (1 trozo)",
+    "category": "Equipo",
+    "source": {
+      "page": 427,
+      "endPage": 427,
+      "title": "Equipo"
+    },
+    "description": "Tiza (1 trozo) 1 pc –",
+    "weight": null,
+    "cost": "1 pc",
+    "equipmentType": "Equipo de aventura",
+    "weightText": "–"
+  },
+  {
+    "id": "equipment-equipo-trampa-de-cazador",
+    "name": "Trampa de cazador",
+    "category": "Equipo",
+    "source": {
+      "page": 427,
+      "endPage": 427,
+      "title": "Equipo"
+    },
+    "description": "Trampa de cazador 5 po 25 lb",
+    "weight": 25.0,
+    "cost": "5 po",
+    "equipmentType": "Equipo de aventura",
+    "weightText": "25 lb"
+  },
+  {
+    "id": "equipment-equipo-tunica",
+    "name": "Túnica",
+    "category": "Equipo",
+    "source": {
+      "page": 427,
+      "endPage": 427,
+      "title": "Equipo"
+    },
+    "description": "Túnica 1 po 4 lb",
+    "weight": 4.0,
+    "cost": "1 po",
+    "equipmentType": "Equipo de aventura",
+    "weightText": "4 lb"
+  },
+  {
+    "id": "equipment-equipo-vela",
+    "name": "Vela",
+    "category": "Equipo",
+    "source": {
+      "page": 427,
+      "endPage": 427,
+      "title": "Equipo"
+    },
+    "description": "Vela 1 pc –",
+    "weight": null,
+    "cost": "1 pc",
+    "equipmentType": "Equipo de aventura",
+    "weightText": "–",
+    "detailReferencePages": [
+      424,
+      425,
+      426
+    ]
+  },
+  {
+    "id": "equipment-equipo-veneno-basico-vial",
+    "name": "Veneno básico (vial)",
+    "category": "Equipo",
+    "source": {
+      "page": 427,
+      "endPage": 427,
+      "title": "Equipo"
+    },
+    "description": "Veneno básico (vial) 100 po –",
+    "weight": null,
+    "cost": "100 po",
+    "equipmentType": "Equipo de aventura",
+    "weightText": "–",
+    "detailReferencePages": [
+      424,
+      425,
+      426
+    ]
+  },
+  {
+    "id": "equipment-equipo-vial",
+    "name": "Vial",
+    "category": "Equipo",
+    "source": {
+      "page": 427,
+      "endPage": 427,
+      "title": "Equipo"
+    },
+    "description": "Vial 1 po –",
+    "weight": null,
+    "cost": "1 po",
+    "equipmentType": "Equipo de aventura",
+    "weightText": "–"
+  },
+  {
+    "id": "equipment-herramientas-herramientas-de-carpintero",
+    "name": "Herramientas de carpintero",
+    "category": "Herramientas",
+    "source": {
+      "page": 429,
+      "endPage": 429,
+      "title": "Equipo"
+    },
+    "description": "Herramientas de carpintero 8 po 6 lb.",
+    "weight": 6.0,
+    "cost": "8 po",
+    "equipmentType": "Herramientas de artesano",
+    "weightText": "6 lb."
+  },
+  {
+    "id": "equipment-herramientas-herramientas-de-cartografo",
+    "name": "Herramientas de cartógrafo",
+    "category": "Herramientas",
+    "source": {
+      "page": 429,
+      "endPage": 429,
+      "title": "Equipo"
+    },
+    "description": "Herramientas de cartógrafo 15 po 6 lb.",
+    "weight": 6.0,
+    "cost": "15 po",
+    "equipmentType": "Herramientas de artesano",
+    "weightText": "6 lb."
+  },
+  {
+    "id": "equipment-herramientas-herramientas-de-zapatero",
+    "name": "Herramientas de zapatero",
+    "category": "Herramientas",
+    "source": {
+      "page": 429,
+      "endPage": 429,
+      "title": "Equipo"
+    },
+    "description": "Herramientas de zapatero 5 po 5 lb.",
+    "weight": 5.0,
+    "cost": "5 po",
+    "equipmentType": "Herramientas de artesano",
+    "weightText": "5 lb."
+  },
+  {
+    "id": "equipment-herramientas-herramientas-de-alfarero",
+    "name": "Herramientas de alfarero",
+    "category": "Herramientas",
+    "source": {
+      "page": 429,
+      "endPage": 429,
+      "title": "Equipo"
+    },
+    "description": "Herramientas de alfarero 10 po 3 lb.",
+    "weight": 3.0,
+    "cost": "10 po",
+    "equipmentType": "Herramientas de artesano",
+    "weightText": "3 lb."
+  },
+  {
+    "id": "equipment-herramientas-herramientas-de-herrero",
+    "name": "Herramientas de herrero",
+    "category": "Herramientas",
+    "source": {
+      "page": 429,
+      "endPage": 429,
+      "title": "Equipo"
+    },
+    "description": "Herramientas de herrero 20 po 8 lb.",
+    "weight": 8.0,
+    "cost": "20 po",
+    "equipmentType": "Herramientas de artesano",
+    "weightText": "8 lb."
+  },
+  {
+    "id": "equipment-herramientas-herramientas-de-hojalatero",
+    "name": "Herramientas de hojalatero",
+    "category": "Herramientas",
+    "source": {
+      "page": 429,
+      "endPage": 429,
+      "title": "Equipo"
+    },
+    "description": "Herramientas de hojalatero 50 po 10 lb.",
+    "weight": 10.0,
+    "cost": "50 po",
+    "equipmentType": "Herramientas de artesano",
+    "weightText": "10 lb."
+  },
+  {
+    "id": "equipment-herramientas-herramientas-de-tejedor",
+    "name": "Herramientas de tejedor",
+    "category": "Herramientas",
+    "source": {
+      "page": 429,
+      "endPage": 429,
+      "title": "Equipo"
+    },
+    "description": "Herramientas de tejedor 1 po 5 lb.",
+    "weight": 5.0,
+    "cost": "1 po",
+    "equipmentType": "Herramientas de artesano",
+    "weightText": "5 lb."
+  },
+  {
+    "id": "equipment-herramientas-herramientas-de-tallista",
+    "name": "Herramientas de tallista",
+    "category": "Herramientas",
+    "source": {
+      "page": 429,
+      "endPage": 429,
+      "title": "Equipo"
+    },
+    "description": "Herramientas de tallista 1 po 5 lb.",
+    "weight": 5.0,
+    "cost": "1 po",
+    "equipmentType": "Herramientas de artesano",
+    "weightText": "5 lb."
+  },
+  {
+    "id": "equipment-herramientas-herramientas-de-soplador-de-vidrio",
+    "name": "Herramientas de soplador de vidrio",
+    "category": "Herramientas",
+    "source": {
+      "page": 429,
+      "endPage": 429,
+      "title": "Equipo"
+    },
+    "description": "Herramientas de soplador de vidrio 30 po 5 lb.",
+    "weight": 5.0,
+    "cost": "30 po",
+    "equipmentType": "Herramientas de artesano",
+    "weightText": "5 lb."
+  },
+  {
+    "id": "equipment-herramientas-herramientas-de-joyero",
+    "name": "Herramientas de joyero",
+    "category": "Herramientas",
+    "source": {
+      "page": 429,
+      "endPage": 429,
+      "title": "Equipo"
+    },
+    "description": "Herramientas de joyero 25 po 2 lb.",
+    "weight": 2.0,
+    "cost": "25 po",
+    "equipmentType": "Herramientas de artesano",
+    "weightText": "2 lb."
+  },
+  {
+    "id": "equipment-herramientas-herramientas-de-peletero",
+    "name": "Herramientas de peletero",
+    "category": "Herramientas",
+    "source": {
+      "page": 429,
+      "endPage": 429,
+      "title": "Equipo"
+    },
+    "description": "Herramientas de peletero 5 po 5 lb.",
+    "weight": 5.0,
+    "cost": "5 po",
+    "equipmentType": "Herramientas de artesano",
+    "weightText": "5 lb."
+  },
+  {
+    "id": "equipment-herramientas-herramientas-de-albanil",
+    "name": "Herramientas de albañil",
+    "category": "Herramientas",
+    "source": {
+      "page": 429,
+      "endPage": 429,
+      "title": "Equipo"
+    },
+    "description": "Herramientas de albañil 10 po 8 lb.",
+    "weight": 8.0,
+    "cost": "10 po",
+    "equipmentType": "Herramientas de artesano",
+    "weightText": "8 lb."
+  },
+  {
+    "id": "equipment-herramientas-materiales-de-pintor",
+    "name": "Materiales de pintor",
+    "category": "Herramientas",
+    "source": {
+      "page": 429,
+      "endPage": 429,
+      "title": "Equipo"
+    },
+    "description": "Materiales de pintor 10 po 5 lb.",
+    "weight": 5.0,
+    "cost": "10 po",
+    "equipmentType": "Herramientas de artesano",
+    "weightText": "5 lb."
+  },
+  {
+    "id": "equipment-herramientas-materiales-alquimicos",
+    "name": "Materiales alquímicos",
+    "category": "Herramientas",
+    "source": {
+      "page": 429,
+      "endPage": 429,
+      "title": "Equipo"
+    },
+    "description": "Materiales alquímicos 50 po 8 lb.",
+    "weight": 8.0,
+    "cost": "50 po",
+    "equipmentType": "Herramientas de artesano",
+    "weightText": "8 lb."
+  },
+  {
+    "id": "equipment-herramientas-materiales-de-cerveceria",
+    "name": "Materiales de cervecería",
+    "category": "Herramientas",
+    "source": {
+      "page": 429,
+      "endPage": 429,
+      "title": "Equipo"
+    },
+    "description": "Materiales de cervecería 20 po 9 lb.",
+    "weight": 9.0,
+    "cost": "20 po",
+    "equipmentType": "Herramientas de artesano",
+    "weightText": "9 lb."
+  },
+  {
+    "id": "equipment-herramientas-materiales-de-caligrafia",
+    "name": "Materiales de caligrafía",
+    "category": "Herramientas",
+    "source": {
+      "page": 429,
+      "endPage": 429,
+      "title": "Equipo"
+    },
+    "description": "Materiales de caligrafía 10 po 5 lb.",
+    "weight": 5.0,
+    "cost": "10 po",
+    "equipmentType": "Herramientas de artesano",
+    "weightText": "5 lb."
+  },
+  {
+    "id": "equipment-herramientas-utensilios-de-cocina",
+    "name": "Utensilios de cocina",
+    "category": "Herramientas",
+    "source": {
+      "page": 429,
+      "endPage": 429,
+      "title": "Equipo"
+    },
+    "description": "Utensilios de cocina 1 po 8 lb.",
+    "weight": 8.0,
+    "cost": "1 po",
+    "equipmentType": "Herramientas de artesano",
+    "weightText": "8 lb."
+  },
+  {
+    "id": "equipment-herramientas-herramientas-de-ladron",
+    "name": "Herramientas de ladrón",
+    "category": "Herramientas",
+    "source": {
+      "page": 429,
+      "endPage": 429,
+      "title": "Equipo"
+    },
+    "description": "Herramientas de ladrón 25 po 1 lb.",
+    "weight": 1.0,
+    "cost": "25 po",
+    "equipmentType": "Herramientas de artesano",
+    "weightText": "1 lb.",
+    "detailReferencePages": [
+      428,
+      429
+    ]
+  },
+  {
+    "id": "equipment-herramientas-herramientas-de-navegacion",
+    "name": "Herramientas de navegación",
+    "category": "Herramientas",
+    "source": {
+      "page": 429,
+      "endPage": 429,
+      "title": "Equipo"
+    },
+    "description": "Herramientas de navegación 25 po 2 lb.",
+    "weight": 2.0,
+    "cost": "25 po",
+    "equipmentType": "Herramientas de artesano",
+    "weightText": "2 lb.",
+    "detailReferencePages": [
+      428,
+      429
+    ]
+  },
+  {
+    "id": "equipment-herramientas-caramillo",
+    "name": "Caramillo",
+    "category": "Herramientas",
+    "source": {
+      "page": 429,
+      "endPage": 429,
+      "title": "Equipo"
+    },
+    "description": "Caramillo 2 po 1 lb.",
+    "weight": 1.0,
+    "cost": "2 po",
+    "equipmentType": "Instrumentos musicales",
+    "weightText": "1 lb."
+  },
+  {
+    "id": "equipment-herramientas-cuerno",
+    "name": "Cuerno",
+    "category": "Herramientas",
+    "source": {
+      "page": 429,
+      "endPage": 429,
+      "title": "Equipo"
+    },
+    "description": "Cuerno 3 po 2 lb.",
+    "weight": 2.0,
+    "cost": "3 po",
+    "equipmentType": "Instrumentos musicales",
+    "weightText": "2 lb."
+  },
+  {
+    "id": "equipment-herramientas-dulcimer",
+    "name": "Dulcimer",
+    "category": "Herramientas",
+    "source": {
+      "page": 429,
+      "endPage": 429,
+      "title": "Equipo"
+    },
+    "description": "Dulcimer 25 po 10 lb.",
+    "weight": 10.0,
+    "cost": "25 po",
+    "equipmentType": "Instrumentos musicales",
+    "weightText": "10 lb."
+  },
+  {
+    "id": "equipment-herramientas-flauta",
+    "name": "Flauta",
+    "category": "Herramientas",
+    "source": {
+      "page": 429,
+      "endPage": 429,
+      "title": "Equipo"
+    },
+    "description": "Flauta 2 po 1 lb.",
+    "weight": 1.0,
+    "cost": "2 po",
+    "equipmentType": "Instrumentos musicales",
+    "weightText": "1 lb."
+  },
+  {
+    "id": "equipment-herramientas-flauta-de-pan",
+    "name": "Flauta de pan",
+    "category": "Herramientas",
+    "source": {
+      "page": 429,
+      "endPage": 429,
+      "title": "Equipo"
+    },
+    "description": "Flauta de pan 12 po 2 lb.",
+    "weight": 2.0,
+    "cost": "12 po",
+    "equipmentType": "Instrumentos musicales",
+    "weightText": "2 lb."
+  },
+  {
+    "id": "equipment-herramientas-gaita",
+    "name": "Gaita",
+    "category": "Herramientas",
+    "source": {
+      "page": 429,
+      "endPage": 429,
+      "title": "Equipo"
+    },
+    "description": "Gaita 30 po 6 lb.",
+    "weight": 6.0,
+    "cost": "30 po",
+    "equipmentType": "Instrumentos musicales",
+    "weightText": "6 lb."
+  },
+  {
+    "id": "equipment-herramientas-laud",
+    "name": "Laúd",
+    "category": "Herramientas",
+    "source": {
+      "page": 429,
+      "endPage": 429,
+      "title": "Equipo"
+    },
+    "description": "Laúd 35 po 2 lb.",
+    "weight": 2.0,
+    "cost": "35 po",
+    "equipmentType": "Instrumentos musicales",
+    "weightText": "2 lb."
+  },
+  {
+    "id": "equipment-herramientas-lira",
+    "name": "Lira",
+    "category": "Herramientas",
+    "source": {
+      "page": 429,
+      "endPage": 429,
+      "title": "Equipo"
+    },
+    "description": "Lira 30 po 2 lb.",
+    "weight": 2.0,
+    "cost": "30 po",
+    "equipmentType": "Instrumentos musicales",
+    "weightText": "2 lb."
+  },
+  {
+    "id": "equipment-herramientas-tambor",
+    "name": "Tambor",
+    "category": "Herramientas",
+    "source": {
+      "page": 429,
+      "endPage": 429,
+      "title": "Equipo"
+    },
+    "description": "Tambor 6 po 3 lb.",
+    "weight": 3.0,
+    "cost": "6 po",
+    "equipmentType": "Instrumentos musicales",
+    "weightText": "3 lb."
+  },
+  {
+    "id": "equipment-herramientas-viola",
+    "name": "Viola",
+    "category": "Herramientas",
+    "source": {
+      "page": 429,
+      "endPage": 429,
+      "title": "Equipo"
+    },
+    "description": "Viola 30 po 1 lb.",
+    "weight": 1.0,
+    "cost": "30 po",
+    "equipmentType": "Instrumentos musicales",
+    "weightText": "1 lb."
+  },
+  {
+    "id": "equipment-herramientas-kit-de-disfraz",
+    "name": "Kit de disfraz",
+    "category": "Herramientas",
+    "source": {
+      "page": 429,
+      "endPage": 429,
+      "title": "Equipo"
+    },
+    "description": "Kit de disfraz 25 po 3 lb.",
+    "weight": 3.0,
+    "cost": "25 po",
+    "equipmentType": "Kits",
+    "weightText": "3 lb.",
+    "detailReferencePages": [
+      428,
+      429
+    ]
+  },
+  {
+    "id": "equipment-herramientas-kit-de-envenenador",
+    "name": "Kit de envenenador",
+    "category": "Herramientas",
+    "source": {
+      "page": 429,
+      "endPage": 429,
+      "title": "Equipo"
+    },
+    "description": "Kit de envenenador 50 po 2 lb.",
+    "weight": 2.0,
+    "cost": "50 po",
+    "equipmentType": "Kits",
+    "weightText": "2 lb.",
+    "detailReferencePages": [
+      428,
+      429
+    ]
+  },
+  {
+    "id": "equipment-herramientas-kit-de-falsificacion",
+    "name": "Kit de falsificación",
+    "category": "Herramientas",
+    "source": {
+      "page": 429,
+      "endPage": 429,
+      "title": "Equipo"
+    },
+    "description": "Kit de falsificación 15 po 5 lb.",
+    "weight": 5.0,
+    "cost": "15 po",
+    "equipmentType": "Kits",
+    "weightText": "5 lb.",
+    "detailReferencePages": [
+      428,
+      429
+    ]
+  },
+  {
+    "id": "equipment-herramientas-kit-de-herboristeria",
+    "name": "Kit de herboristería",
+    "category": "Herramientas",
+    "source": {
+      "page": 429,
+      "endPage": 429,
+      "title": "Equipo"
+    },
+    "description": "Kit de herboristería 5 po 3 lb.",
+    "weight": 3.0,
+    "cost": "5 po",
+    "equipmentType": "Kits",
+    "weightText": "3 lb.",
+    "detailReferencePages": [
+      428,
+      429
+    ]
+  },
+  {
+    "id": "equipment-herramientas-set-de-ajedrez-de-dragon",
+    "name": "Set de ajedrez de dragón",
+    "category": "Herramientas",
+    "source": {
+      "page": 429,
+      "endPage": 429,
+      "title": "Equipo"
+    },
+    "description": "Set de ajedrez de dragón 1 po ½ lb.",
+    "weight": 0.5,
+    "cost": "1 po",
+    "equipmentType": "Set de juego",
+    "weightText": "½ lb."
+  },
+  {
+    "id": "equipment-herramientas-set-de-baraja-de-cartas",
+    "name": "Set de baraja de cartas",
+    "category": "Herramientas",
+    "source": {
+      "page": 429,
+      "endPage": 429,
+      "title": "Equipo"
+    },
+    "description": "Set de baraja de cartas 5 pp —",
+    "weight": null,
+    "cost": "5 pp",
+    "equipmentType": "Set de juego",
+    "weightText": "—"
+  },
+  {
+    "id": "equipment-herramientas-set-de-dados",
+    "name": "Set de dados",
+    "category": "Herramientas",
+    "source": {
+      "page": 429,
+      "endPage": 429,
+      "title": "Equipo"
+    },
+    "description": "Set de dados 1 pp —",
+    "weight": null,
+    "cost": "1 pp",
+    "equipmentType": "Set de juego",
+    "weightText": "—"
+  },
+  {
+    "id": "equipment-herramientas-set-de-tres-dragones",
+    "name": "Set de tres dragones",
+    "category": "Herramientas",
+    "source": {
+      "page": 429,
+      "endPage": 429,
+      "title": "Equipo"
+    },
+    "description": "Set de tres dragones 1 po —",
+    "weight": null,
+    "cost": "1 po",
+    "equipmentType": "Set de juego",
+    "weightText": "—"
+  },
+  {
+    "id": "equipment-monturas-burro-o-mula",
+    "name": "Burro o mula",
+    "category": "Monturas",
+    "source": {
+      "page": 431,
+      "endPage": 431,
+      "title": "Equipo"
+    },
+    "description": "Burro o mula 8 po 40 pies 420 lb",
+    "weight": null,
+    "cost": "8 po",
+    "speedText": "40 pies",
+    "carryingCapacity": 420.0
+  },
+  {
+    "id": "equipment-monturas-caballo-de-guerra",
+    "name": "Caballo de guerra",
+    "category": "Monturas",
+    "source": {
+      "page": 431,
+      "endPage": 431,
+      "title": "Equipo"
+    },
+    "description": "Caballo de guerra 400 po 60 pies 540 lb",
+    "weight": null,
+    "cost": "400 po",
+    "speedText": "60 pies",
+    "carryingCapacity": 540.0
+  },
+  {
+    "id": "equipment-monturas-caballo-de-monta",
+    "name": "Caballo de monta",
+    "category": "Monturas",
+    "source": {
+      "page": 431,
+      "endPage": 431,
+      "title": "Equipo"
+    },
+    "description": "Caballo de monta 75 po 60 pies 480 lb",
+    "weight": null,
+    "cost": "75 po",
+    "speedText": "60 pies",
+    "carryingCapacity": 480.0
+  },
+  {
+    "id": "equipment-monturas-caballo-de-tiro",
+    "name": "Caballo de tiro",
+    "category": "Monturas",
+    "source": {
+      "page": 431,
+      "endPage": 431,
+      "title": "Equipo"
+    },
+    "description": "Caballo de tiro 50 po 40 pies 540 lb",
+    "weight": null,
+    "cost": "50 po",
+    "speedText": "40 pies",
+    "carryingCapacity": 540.0
+  },
+  {
+    "id": "equipment-monturas-camello",
+    "name": "Camello",
+    "category": "Monturas",
+    "source": {
+      "page": 431,
+      "endPage": 431,
+      "title": "Equipo"
+    },
+    "description": "Camello 50 po 50 pies 480 lb",
+    "weight": null,
+    "cost": "50 po",
+    "speedText": "50 pies",
+    "carryingCapacity": 480.0
+  },
+  {
+    "id": "equipment-monturas-elefante",
+    "name": "Elefante",
+    "category": "Monturas",
+    "source": {
+      "page": 431,
+      "endPage": 431,
+      "title": "Equipo"
+    },
+    "description": "Elefante 200 po 40 pies 1320 lb",
+    "weight": null,
+    "cost": "200 po",
+    "speedText": "40 pies",
+    "carryingCapacity": 1320.0
+  },
+  {
+    "id": "equipment-monturas-mastin",
+    "name": "Mastín",
+    "category": "Monturas",
+    "source": {
+      "page": 431,
+      "endPage": 431,
+      "title": "Equipo"
+    },
+    "description": "Mastín 25 po 40 pies 195 lb",
+    "weight": null,
+    "cost": "25 po",
+    "speedText": "40 pies",
+    "carryingCapacity": 195.0
+  },
+  {
+    "id": "equipment-monturas-poni",
+    "name": "Poni",
+    "category": "Monturas",
+    "source": {
+      "page": 431,
+      "endPage": 431,
+      "title": "Equipo"
+    },
+    "description": "Poni 30 po 40 pies 225 lb",
+    "weight": null,
+    "cost": "30 po",
+    "speedText": "40 pies",
+    "carryingCapacity": 225.0
+  },
+  {
+    "id": "equipment-equipo-alforjas",
+    "name": "Alforjas",
+    "category": "Equipo",
+    "source": {
+      "page": 431,
+      "endPage": 431,
+      "title": "Equipo"
+    },
+    "description": "Alforjas 4 po 8 lb",
+    "weight": 8.0,
+    "cost": "4 po"
+  },
+  {
+    "id": "equipment-equipo-bocado-y-brida",
+    "name": "Bocado y brida",
+    "category": "Equipo",
+    "source": {
+      "page": 431,
+      "endPage": 431,
+      "title": "Equipo"
+    },
+    "description": "Bocado y brida 2 po 1 lb",
+    "weight": 1.0,
+    "cost": "2 po"
+  },
+  {
+    "id": "equipment-equipo-carreta",
+    "name": "Carreta",
+    "category": "Equipo",
+    "source": {
+      "page": 431,
+      "endPage": 431,
+      "title": "Equipo"
+    },
+    "description": "Carreta 35 po 400 lb",
+    "weight": 400.0,
+    "cost": "35 po"
+  },
+  {
+    "id": "equipment-equipo-carro",
+    "name": "Carro",
+    "category": "Equipo",
+    "source": {
+      "page": 431,
+      "endPage": 431,
+      "title": "Equipo"
+    },
+    "description": "Carro 15 po 200 lb",
+    "weight": 200.0,
+    "cost": "15 po"
+  },
+  {
+    "id": "equipment-equipo-carruaje",
+    "name": "Carruaje",
+    "category": "Equipo",
+    "source": {
+      "page": 431,
+      "endPage": 431,
+      "title": "Equipo"
+    },
+    "description": "Carruaje 100 po 600 lb",
+    "weight": 600.0,
+    "cost": "100 po"
+  },
+  {
+    "id": "equipment-equipo-comida-por-dia",
+    "name": "Comida (por día)",
+    "category": "Equipo",
+    "source": {
+      "page": 431,
+      "endPage": 431,
+      "title": "Equipo"
+    },
+    "description": "Comida (por día) 5 pc 10 lb",
+    "weight": 10.0,
+    "cost": "5 pc"
+  },
+  {
+    "id": "equipment-equipo-cuadriga",
+    "name": "Cuadriga",
+    "category": "Equipo",
+    "source": {
+      "page": 431,
+      "endPage": 431,
+      "title": "Equipo"
+    },
+    "description": "Cuadriga 250 po 100 lb",
+    "weight": 100.0,
+    "cost": "250 po"
+  },
+  {
+    "id": "equipment-equipo-establo-por-dia",
+    "name": "Establo (por día)",
+    "category": "Equipo",
+    "source": {
+      "page": 431,
+      "endPage": 431,
+      "title": "Equipo"
+    },
+    "description": "Establo (por día) 5 pp –",
+    "weight": null,
+    "cost": "5 pp"
+  },
+  {
+    "id": "equipment-equipo-silla-de-montar-de-carga",
+    "name": "Silla de montar: De carga",
+    "category": "Equipo",
+    "source": {
+      "page": 431,
+      "endPage": 431,
+      "title": "Equipo"
+    },
+    "description": "De carga 5 po 15 lb",
+    "weight": 15.0,
+    "cost": "5 po"
+  },
+  {
+    "id": "equipment-equipo-silla-de-montar-de-montar",
+    "name": "Silla de montar: De montar",
+    "category": "Equipo",
+    "source": {
+      "page": 431,
+      "endPage": 431,
+      "title": "Equipo"
+    },
+    "description": "De montar 10 po 25 lb",
+    "weight": 25.0,
+    "cost": "10 po"
+  },
+  {
+    "id": "equipment-equipo-silla-de-montar-exotica",
+    "name": "Silla de montar: Exótica",
+    "category": "Equipo",
+    "source": {
+      "page": 431,
+      "endPage": 431,
+      "title": "Equipo"
+    },
+    "description": "Exótica 60 po 40 lb",
+    "weight": 40.0,
+    "cost": "60 po"
+  },
+  {
+    "id": "equipment-equipo-silla-de-montar-militar",
+    "name": "Silla de montar: Militar",
+    "category": "Equipo",
+    "source": {
+      "page": 431,
+      "endPage": 431,
+      "title": "Equipo"
+    },
+    "description": "Militar 20 po 30 lb",
+    "weight": 30.0,
+    "cost": "20 po"
+  },
+  {
+    "id": "equipment-equipo-trineo",
+    "name": "Trineo",
+    "category": "Equipo",
+    "source": {
+      "page": 431,
+      "endPage": 431,
+      "title": "Equipo"
+    },
+    "description": "Trineo 20 po 300 lb",
+    "weight": 300.0,
+    "cost": "20 po"
+  },
+  {
+    "id": "equipment-vehiculos-bote-de-remos",
+    "name": "Bote de remos",
+    "category": "Vehículos",
+    "source": {
+      "page": 431,
+      "endPage": 431,
+      "title": "Equipo"
+    },
+    "description": "Bote de remos 50 po 1,5 millas/hora",
+    "weight": null,
+    "cost": "50 po",
+    "speedText": "1,5 millas/hora"
+  },
+  {
+    "id": "equipment-vehiculos-chalupa",
+    "name": "Chalupa",
+    "category": "Vehículos",
+    "source": {
+      "page": 431,
+      "endPage": 431,
+      "title": "Equipo"
+    },
+    "description": "Chalupa 3000 po 1 milla/hora",
+    "weight": null,
+    "cost": "3000 po",
+    "speedText": "1 milla/hora"
+  },
+  {
+    "id": "equipment-vehiculos-galera",
+    "name": "Galera",
+    "category": "Vehículos",
+    "source": {
+      "page": 431,
+      "endPage": 431,
+      "title": "Equipo"
+    },
+    "description": "Galera 30.000 po 4 millas/hora",
+    "weight": null,
+    "cost": "30.000 po",
+    "speedText": "4 millas/hora"
+  },
+  {
+    "id": "equipment-vehiculos-nave-larga",
+    "name": "Nave larga",
+    "category": "Vehículos",
+    "source": {
+      "page": 431,
+      "endPage": 431,
+      "title": "Equipo"
+    },
+    "description": "Nave larga 10.000 po 3 millas/hora",
+    "weight": null,
+    "cost": "10.000 po",
+    "speedText": "3 millas/hora"
+  },
+  {
+    "id": "equipment-vehiculos-navio-de-guerra",
+    "name": "Navío de guerra",
+    "category": "Vehículos",
+    "source": {
+      "page": 431,
+      "endPage": 431,
+      "title": "Equipo"
+    },
+    "description": "Navío de guerra 25.000 po 2,5 millas/hora",
+    "weight": null,
+    "cost": "25.000 po",
+    "speedText": "2,5 millas/hora"
+  },
+  {
+    "id": "equipment-vehiculos-velero",
+    "name": "Velero",
+    "category": "Vehículos",
+    "source": {
+      "page": 431,
+      "endPage": 431,
+      "title": "Equipo"
+    },
+    "description": "Velero 10.000 po 2 millas/hora",
+    "weight": null,
+    "cost": "10.000 po",
+    "speedText": "2 millas/hora"
+  },
+  {
+    "id": "equipment-equipo-barda",
+    "name": "Barda",
+    "category": "Equipo",
+    "source": {
+      "page": 431,
+      "endPage": 431,
+      "title": "Equipo"
+    },
+    "description": "Barda ×4 ×2. El coste es cuatro veces el precio de la armadura equivalente y su peso es el doble (p430).",
+    "weight": null,
+    "cost": "×4 armadura",
+    "armorCostMultiplier": 4,
+    "armorWeightMultiplier": 2
+  },
+  {
+    "id": "equipment-paquetes-equipo-de-ladron",
+    "name": "Equipo de Ladrón",
+    "category": "Paquetes",
+    "source": {
+      "page": 432,
+      "endPage": 432,
+      "title": "Equipo"
+    },
+    "description": "Equipo de Ladrón (16 po). Incluye una mochila, una bolsa de 1000 rodamientos, 10 pies de hilo, una campana, 5 velas, una palanca, un martillo, 10 pitones, una linterna con capucha, 2 frascos de aceite, raciones para 5 días, un yesquero y un odre de agua. El paquete también tiene 50 pies de cuerda de cáñamo atada a un lado de la misma.",
+    "weight": null,
+    "cost": "16 po",
+    "contentsText": "Incluye una mochila, una bolsa de 1000 rodamientos, 10 pies de hilo, una campana, 5 velas, una palanca, un martillo, 10 pitones, una linterna con capucha, 2 frascos de aceite, raciones para 5 días, un yesquero y un odre de agua. El paquete también tiene 50 pies de cuerda de cáñamo atada a un lado de la misma."
+  },
+  {
+    "id": "equipment-paquetes-equipo-de-diplomatico",
+    "name": "Equipo de Diplomático",
+    "category": "Paquetes",
+    "source": {
+      "page": 432,
+      "endPage": 432,
+      "title": "Equipo"
+    },
+    "description": "Equipo de Diplomático (39 po). Incluye un cofre, 2 estuches de mapas y pergaminos, un conjunto de ropa fina, un frasco de tinta, una pluma, una lámpara, 2 frascos de aceite, 5 hojas de papel, un frasco de perfume, lacre, y jabón.",
+    "weight": null,
+    "cost": "39 po",
+    "contentsText": "Incluye un cofre, 2 estuches de mapas y pergaminos, un conjunto de ropa fina, un frasco de tinta, una pluma, una lámpara, 2 frascos de aceite, 5 hojas de papel, un frasco de perfume, lacre, y jabón."
+  },
+  {
+    "id": "equipment-paquetes-equipo-para-dungeons",
+    "name": "Equipo para Dungeons",
+    "category": "Paquetes",
+    "source": {
+      "page": 432,
+      "endPage": 432,
+      "title": "Equipo"
+    },
+    "description": "Equipo para Dungeons (12 po). Incluye un saco de dormir, una palanca, un martillo, 10 pitones, 10 antorchas, un yesquero, raciones para 10 días y un odre de agua. El paquete también cuenta con 50 pies de cuerda de cáñamo atada a un lado de la misma.",
+    "weight": null,
+    "cost": "12 po",
+    "contentsText": "Incluye un saco de dormir, una palanca, un martillo, 10 pitones, 10 antorchas, un yesquero, raciones para 10 días y un odre de agua. El paquete también cuenta con 50 pies de cuerda de cáñamo atada a un lado de la misma."
+  },
+  {
+    "id": "equipment-paquetes-equipo-de-actor",
+    "name": "Equipo de Actor",
+    "category": "Paquetes",
+    "source": {
+      "page": 432,
+      "endPage": 432,
+      "title": "Equipo"
+    },
+    "description": "Equipo de Actor (40 po). Incluye una mochila, un saco de dormir, 2 trajes, 5 velas, raciones para 5 días, un odre de agua y un kit de disfraz.",
+    "weight": null,
+    "cost": "40 po",
+    "contentsText": "Incluye una mochila, un saco de dormir, 2 trajes, 5 velas, raciones para 5 días, un odre de agua y un kit de disfraz."
+  },
+  {
+    "id": "equipment-paquetes-equipo-de-explorador",
+    "name": "Equipo de Explorador",
+    "category": "Paquetes",
+    "source": {
+      "page": 432,
+      "endPage": 432,
+      "title": "Equipo"
+    },
+    "description": "Equipo de Explorador (10 po). Incluye una mochila, un saco de dormir, un Equipo de cocina, un yesquero, 10 antorchas, raciones para 10 días y un odre. El paquete también cuenta con 50 pies de cuerda de cáñamo atada al lado de la misma.",
+    "weight": null,
+    "cost": "10 po",
+    "contentsText": "Incluye una mochila, un saco de dormir, un Equipo de cocina, un yesquero, 10 antorchas, raciones para 10 días y un odre. El paquete también cuenta con 50 pies de cuerda de cáñamo atada al lado de la misma."
+  },
+  {
+    "id": "equipment-paquetes-equipo-de-sacerdote",
+    "name": "Equipo de Sacerdote",
+    "category": "Paquetes",
+    "source": {
+      "page": 432,
+      "endPage": 432,
+      "title": "Equipo"
+    },
+    "description": "Equipo de Sacerdote (19 po). Incluye una mochila, una manta, 10 velas, un yesquero, una caja de limosnas, 2 `barras de incienso, un incensario, vestimentas, raciones para 2 días y un odre de agua.",
+    "weight": null,
+    "cost": "19 po",
+    "contentsText": "Incluye una mochila, una manta, 10 velas, un yesquero, una caja de limosnas, 2 `barras de incienso, un incensario, vestimentas, raciones para 2 días y un odre de agua."
+  },
+  {
+    "id": "equipment-paquetes-equipo-de-erudito",
+    "name": "Equipo de Erudito",
+    "category": "Paquetes",
+    "source": {
+      "page": 432,
+      "endPage": 432,
+      "title": "Equipo"
+    },
+    "description": "Equipo de Erudito (40 po). Incluye una mochila, un libro de conocimiento, un tintero, una pluma, 10 hojas de pergamino, una bolsa pequeña de arena y un pequeño cuchillo.",
+    "weight": null,
+    "cost": "40 po",
+    "contentsText": "Incluye una mochila, un libro de conocimiento, un tintero, una pluma, 10 hojas de pergamino, una bolsa pequeña de arena y un pequeño cuchillo."
+  }
+]

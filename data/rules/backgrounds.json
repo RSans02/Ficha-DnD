@@ -1,0 +1,1121 @@
+[
+  {
+    "id": "background-acolito",
+    "name": "Acólito",
+    "source": {
+      "page": 395,
+      "endPage": 395,
+      "title": "Trasfondos"
+    },
+    "description": "Acólito Has pasado tu vida al servicio de un templo dedicado a un dios o panteón específico. Actúas como intermediario entre el reino de lo sagrado y el mundo de los mortales, realizando ritos sagrados y ofreciendo sacrificios con el fin de conducir a los fieles a la presencia de lo divino. Esto no significa que seas un clérigo realizar ritos sagrados no es lo mismo que canalizar la energía divina. Elige un dios, un panteón de dioses o algún otro ser cuasi divino de los listados en el Apéndice B o aquellos especificados por tu DM y habla con tu DM para detallar la naturaleza de tus servicios religiosos. ¿Realizabas funciones menores en un templo, viviendo allí desde la infancia ayudando a los sacerdotes en los ritos sagrados? ¿O eras un sumo sacerdote que de pronto fue convocado para servir a su dios de una forma diferente? O tal vez eras el líder de un culto pequeño fuera de cualquier estructura establecida del templo, o incluso un grupo ocultista que sirvió a un maestro diabólico del que ahora reniegas. Competencia con Habilidades: Perspicacia, Religión. Idiomas: dos de tu elección. Equipo: un símbolo sagrado (un regalo de cuando entraste en el sacerdocio), un libro de oraciones o rueda de plegarias, 5 barritas de incienso, vestiduras, un conjunto de ropa común y una bolsa que contiene 15 po. Rasgo: Refugio de los Fieles Como acólito, mereces el respeto de aquellos que comparten tu fe y puedes realizar las ceremonias religiosas de tu deidad. Tus compañeros de aventuras y tú podéis recibir sanación gratuita y atención en un templo, santuario, u otra presencia establecida de tu fe, aunque debes proporcionar los componentes materiales necesarios para los conjuros. Aquellos que comparten tu religión te podrán proporcionar (pero sólo a ti) un estilo de vida modesto. También podrías tener vínculos con un templo específico dedicado a tu deidad o panteón y tener una residencia allí. Podría tratarse del templo que utilizas para realizar los servicios, si mantienes una buena relación con la comunidad, o un templo en el que has encontrado un nuevo hogar. Mientras estés cerca de tu templo, puedes llamar a los sacerdotes para que te asistan, siempre y cuando la ayuda que solicitas no ponga en peligro a quien la realiza y permanezcas en buena relación con tu templo.",
+    "skillProficiencies": [
+      "insight",
+      "religion"
+    ],
+    "languages": [],
+    "choices": [],
+    "featureIds": [],
+    "sourceFields": {
+      "competencia con habilidades": "Perspicacia, Religión.",
+      "idiomas": "dos de tu elección.",
+      "equipo": "un símbolo sagrado (un regalo de cuando entraste en el sacerdocio), un libro de oraciones o rueda de plegarias, 5 barritas de incienso, vestiduras, un conjunto de ropa común y una bolsa que contiene 15 po. Rasgo: Refugio de los Fieles Como acólito, mereces el respeto de aquellos que comparten tu fe y puedes realizar las ceremonias religiosas de tu deidad. Tus compañeros de aventuras y tú podéis recibir sanación gratuita y atención en un templo, santuario, u otra presencia establecida de tu fe, aunque debes proporcionar los componentes materiales necesarios para los conjuros. Aquellos que comparten tu religión te podrán proporcionar (pero sólo"
+    },
+    "automationNotes": [
+      "Equipo inicial, herramientas e idiomas elegibles se conservan en la descripción; revisa las decisiones que no tengan selector estructurado."
+    ]
+  },
+  {
+    "id": "background-artesano-gremial",
+    "name": "Artesano Gremial",
+    "source": {
+      "page": 395,
+      "endPage": 397,
+      "title": "Trasfondos"
+    },
+    "description": "Artesano Gremial Eres miembro de un gremio de artesanos, especializado en un campo particular y cercanamente asociado con otros artesanos. Eres una parte bien establecida del mundo mercantil, liberado por tu talento y riqueza de las limitaciones de la sociedad feudal. Aprendiste tus habilidades como aprendiz de un maestro, bajo el patrocinio de tu gremio, hasta que te convertiste en un maestro por tus propios medios. Competencia con Habilidades: Perspicacia, Persuasión. Competencia con Herramientas: un tipo de herramientas de artesano. Idiomas: uno de tu elección. Equipo: un set de herramientas de artesano (de tu elección), una carta de introducción de tu gremio, una muda de ropas de viaje, una bolsa que contiene 15 po. Ocupaciones de Gremio Los gremios generalmente se encuentran en ciudades lo suficientemente grandes para albergar varios artesanos que practiquen el mismo oficio. Aun así, tu gremio podría ser en su lugar una gran red de artesanos que trabajan cada uno en un pueblo distinto dentro de un reino más grande. Trabaja con tu DM para determinar la naturaleza de tu gremio. Puedes seleccionar la ocupación de tu gremio de la tabla Ocupaciones del Gremio o tirar al azar. Como miembro de tu gremio, conoces tanto las habilidades necesarias para crear objetos finalizados a partir de materias primas (reflejadas en tu competencia con un determinado tipo de herramientas de artesano) como los principios del comercio y las prácticas adecuadas para llevar adelante un negocio. La pregunta ahora es si abandonaste tu comercio por la aventura o si te tomaste el esfuerzo para entrelazar aventuras y comercio. Rasgo: Membresía de Gremio Como un miembro de un gremio establecido y respetado, tienes ciertos beneficios que te provee tu membresía. Tus compañeros de gremio te proveerán alojamiento y comida si la necesitas y pagarán por tu funeral si es necesario. En algunos pueblos y ciudades, un salón del gremio ofrece un lugar central para encontrarse con otros miembros de tu profesión, que puede ser un buen lugar para conocer potenciales patrones, aliados o empleados. Los gremios a menudo poseen gran peso político. Si eres acusado de un crimen, tu gremio te apoyará si es factible presentar una buena defensa o si tu crimen es justificable. También ganas acceso a poderosas figuras políticas a través del gremio, si tienes una buena posición dentro de él. Tales conexiones podrían requerir la donación de dinero u objetos mágicos a las arcas del gremio. Debes pagar 5 po por mes al gremio. Si te saltas tus pagas, debes pagar tus deudas para permanecer en la buena gracia del gremio. d20 Ocupaciones de Gremio 1 Alquimistas y boticarios 2 Armeros, cerrajeros y orfebres 3 Cerveceros, destiladores y vinateros 4 Calígrafos, escribas y escribanos 5 Carpinteros, techadores y yeseros 6 Cartógrafos, topógrafo y delineantes 7 Zapateros y remendones 8 Cocineros y panaderos 9 Vidrieros y sopladores de vidrio 10 Joyeros y talladores de gemas 11 Desolladores, peleteros y curtidores 12 Albañiles y canteros 13 Pintores y retratistas 14 Alfareros y azulejeros 15 Carpinteros de barcos y fabricantes de velas 16 Herreros y forjadores 17 Reparadores, estañeros y vertedores 18 Fabricantes de ruedas y vagones 19 Tejedores y tintoreros 20 Talladores, toneleros y fabricantes de arcos Variante: Mercader de Gremio En lugar de a un gremio de artesanos, podrías pertenecer a un gremio de comerciantes, mercaderes o dueños de caravanas. No creas objetos por ti mismo, pero te ganas la vida comprando y vendiendo el trabajo de otros (o las materias primas que los artesanos necesitan para practicar su oficio). Tu gremio podría ser un gran consorcio (o familia) de mercaderes con intereses en toda la región. Quizá transportabas bienes de un lugar a otro, por barco, vagón o caravana; o los comprabas de mercaderes viajeros y los vendías en tu propia tienda. En cierta forma, la vida de mercader lleva a la aventura mucho más que la de un artesano. En lugar de competencia con herramientas de artesano, podrías ser competente con herramientas de navegación, o un idioma adicional. Y en lugar de herramientas de artesano, podrías empezar con una mula y un carro.",
+    "skillProficiencies": [
+      "insight",
+      "persuasion"
+    ],
+    "languages": [],
+    "choices": [],
+    "featureIds": [],
+    "sourceFields": {
+      "competencia con habilidades": "Perspicacia, Persuasión.",
+      "competencia con herramientas": "un tipo de herramientas de artesano.",
+      "idiomas": "uno de tu elección.",
+      "equipo": "un set de herramientas de artesano (de tu elección), una carta de introducción de tu gremio, una muda de ropas de viaje, una bolsa que contiene 15 po. Ocupaciones de Gremio Los gremios generalmente se encuentran en ciudades lo suficientemente grandes para albergar varios artesanos que practiquen el mismo oficio. Aun así, tu gremio podría ser en su lugar una gran red de artesanos que trabajan cada uno en un pueblo distinto dentro de un reino más grande. Trabaja con tu DM para determinar la naturaleza de tu gremio. Puedes seleccionar la ocupación de tu gremio de la tabla Ocupaciones del Gremio o tirar al azar. Como miembro de tu gremio, conoces"
+    },
+    "automationNotes": [
+      "Equipo inicial, herramientas e idiomas elegibles se conservan en la descripción; revisa las decisiones que no tengan selector estructurado."
+    ]
+  },
+  {
+    "id": "background-mercader-de-gremio",
+    "name": "Mercader de Gremio",
+    "source": {
+      "page": 395,
+      "endPage": 397,
+      "title": "Trasfondos"
+    },
+    "description": "Variante: Mercader de Gremio En lugar de a un gremio de artesanos, podrías pertenecer a un gremio de comerciantes, mercaderes o dueños de caravanas. No creas objetos por ti mismo, pero te ganas la vida comprando y vendiendo el trabajo de otros (o las materias primas que los artesanos necesitan para practicar su oficio). Tu gremio podría ser un gran consorcio (o familia) de mercaderes con intereses en toda la región. Quizá transportabas bienes de un lugar a otro, por barco, vagón o caravana; o los comprabas de mercaderes viajeros y los vendías en tu propia tienda. En cierta forma, la vida de mercader lleva a la aventura mucho más que la de un artesano. En lugar de competencia con herramientas de artesano, podrías ser competente con herramientas de navegación, o un idioma adicional. Y en lugar de herramientas de artesano, podrías empezar con una mula y un carro.",
+    "skillProficiencies": [
+      "insight",
+      "persuasion"
+    ],
+    "languages": [],
+    "choices": [],
+    "featureIds": [],
+    "sourceFields": {
+      "competencia con habilidades": "Perspicacia, Persuasión.",
+      "competencia con herramientas": "un tipo de herramientas de artesano.",
+      "idiomas": "uno de tu elección.",
+      "equipo": "un set de herramientas de artesano (de tu elección), una carta de introducción de tu gremio, una muda de ropas de viaje, una bolsa que contiene 15 po. Ocupaciones de Gremio Los gremios generalmente se encuentran en ciudades lo suficientemente grandes para albergar varios artesanos que practiquen el mismo oficio. Aun así, tu gremio podría ser en su lugar una gran red de artesanos que trabajan cada uno en un pueblo distinto dentro de un reino más grande. Trabaja con tu DM para determinar la naturaleza de tu gremio. Puedes seleccionar la ocupación de tu gremio de la tabla Ocupaciones del Gremio o tirar al azar. Como miembro de tu gremio, conoces"
+    },
+    "automationNotes": [
+      "Equipo inicial, herramientas e idiomas elegibles se conservan en la descripción; revisa las decisiones que no tengan selector estructurado.",
+      "Variante del trasfondo Artesano Gremial. Revisa los cambios de equipo y rasgo en su descripción."
+    ],
+    "parentId": "background-artesano-gremial",
+    "version": "Variante"
+  },
+  {
+    "id": "background-artista",
+    "name": "Artista",
+    "source": {
+      "page": 397,
+      "endPage": 397,
+      "title": "Trasfondos"
+    },
+    "description": "Artista Te creces frente a una audiencia. Sabes cómo deleitarlos, entretenerlos e incluso cómo inspirarlos. Tu poesía puede agitar los corazones de los que te escuchan, despertar el dolor o la alegría, la risa o la ira. Tu música eleva sus espíritus o captura su dolor. Tus pasos de danza cautivan, tu humor es hiriente. Sea cual sea la técnica que utilizas, tu arte es tu vida. Competencia con Habilidades: Acrobacias, Interpretación. Competencia con Herramientas: kit de disfraz, un tipo de instrumento musical. Equipo: un instrumento musical (de tu elección), el favor de un admirador (una carta de amor, un mechón de pelo o una baratija), un traje y una bolsa que contiene 15 po. Especialidad Artística Un buen artista es versátil y condimenta cada actuación con una variedad de diferentes especialidades. Elige dos o tres especialidades o tira en la siguiente tabla para definir tu experiencia como artista. Rasgo: A Petición Popular Siempre puedes encontrar un lugar para actuar, por lo general en una posada o taberna, pero posiblemente en un circo, un teatro o incluso en la corte de un noble. En ese lugar, recibirás alojamiento y comida modesta o confortable (dependiendo de la calidad del establecimiento) gratuitos, siempre y cuando actúes cada noche. Además, tu actuación te convierte en algo así como una figura local. Cuando unos desconocidos te reconozcan en una ciudad en la que hayas actuado, por lo general mostrarán simpatía hacia tu persona. Variante: Gladiador Un gladiador es tan artista como cualquier juglar o artista de circo, capacitado para convertir las artes del combate en un espectáculo que la multitud pueda disfrutar. Este tipo de combate llamativo es su especialidad, aunque también podría tener algunas habilidades como saltimbanqui o actor. Al utilizar tu rasgo A Petición Popular, puedes encontrar un lugar para actuar que esté habilitado para el combate de entretenimiento, tal vez una arena de gladiadores o un club de lucha secreto. Puedes sustituir el instrumento musical del equipo por un arma barata pero poco común, como un tridente o una red.",
+    "skillProficiencies": [
+      "acrobatics",
+      "performance"
+    ],
+    "languages": [],
+    "choices": [],
+    "featureIds": [],
+    "sourceFields": {
+      "competencia con habilidades": "Acrobacias, Interpretación.",
+      "competencia con herramientas": "kit de disfraz, un tipo de instrumento musical.",
+      "equipo": "un instrumento musical (de tu elección), el favor de un admirador (una carta de amor, un mechón de pelo o una baratija), un traje y una bolsa que contiene 15 po. Especialidad Artística Un buen artista es versátil y condimenta cada actuación con una variedad de diferentes especialidades. Elige dos o tres especialidades o tira en la siguiente tabla para definir tu experiencia como artista. Rasgo: A Petición Popular Siempre puedes encontrar un lugar para actuar, por lo general en una posada o taberna, pero posiblemente en un circo, un teatro o incluso en la corte de un noble. En ese lugar, recibirás alojamiento y comida modesta o confortable (de"
+    },
+    "automationNotes": [
+      "Equipo inicial, herramientas e idiomas elegibles se conservan en la descripción; revisa las decisiones que no tengan selector estructurado."
+    ]
+  },
+  {
+    "id": "background-gladiador",
+    "name": "Gladiador",
+    "source": {
+      "page": 397,
+      "endPage": 397,
+      "title": "Trasfondos"
+    },
+    "description": "Variante: Gladiador Un gladiador es tan artista como cualquier juglar o artista de circo, capacitado para convertir las artes del combate en un espectáculo que la multitud pueda disfrutar. Este tipo de combate llamativo es su especialidad, aunque también podría tener algunas habilidades como saltimbanqui o actor. Al utilizar tu rasgo A Petición Popular, puedes encontrar un lugar para actuar que esté habilitado para el combate de entretenimiento, tal vez una arena de gladiadores o un club de lucha secreto. Puedes sustituir el instrumento musical del equipo por un arma barata pero poco común, como un tridente o una red.",
+    "skillProficiencies": [
+      "acrobatics",
+      "performance"
+    ],
+    "languages": [],
+    "choices": [],
+    "featureIds": [],
+    "sourceFields": {
+      "competencia con habilidades": "Acrobacias, Interpretación.",
+      "competencia con herramientas": "kit de disfraz, un tipo de instrumento musical.",
+      "equipo": "un instrumento musical (de tu elección), el favor de un admirador (una carta de amor, un mechón de pelo o una baratija), un traje y una bolsa que contiene 15 po. Especialidad Artística Un buen artista es versátil y condimenta cada actuación con una variedad de diferentes especialidades. Elige dos o tres especialidades o tira en la siguiente tabla para definir tu experiencia como artista. Rasgo: A Petición Popular Siempre puedes encontrar un lugar para actuar, por lo general en una posada o taberna, pero posiblemente en un circo, un teatro o incluso en la corte de un noble. En ese lugar, recibirás alojamiento y comida modesta o confortable (de"
+    },
+    "automationNotes": [
+      "Equipo inicial, herramientas e idiomas elegibles se conservan en la descripción; revisa las decisiones que no tengan selector estructurado.",
+      "Variante del trasfondo Artista. Revisa los cambios de equipo y rasgo en su descripción."
+    ],
+    "parentId": "background-artista",
+    "version": "Variante"
+  },
+  {
+    "id": "background-charlatan",
+    "name": "Charlatán",
+    "source": {
+      "page": 397,
+      "endPage": 398,
+      "title": "Trasfondos"
+    },
+    "description": "Charlatán Siempre has tenido mano con la gente. Sabes qué los motiva, puedes desentrañar los deseos de sus corazones tras apenas unos minutos de conversación, y con algunas preguntas principales puedes leer en ellos como si fueran libros para niños. Es un talento útil que estás perfectamente dispuesto a utilizar en tu favor. d10 Especialidad Artística 1 Actor 2 Bailarín 3 Tragafuegos 4 Bufón 5 Malabarista 6 Instrumentista 7 Poeta 8 Cantante 9 Narrador 10 Saltimbanqui Sabes lo que la gente quiere y se lo das, o más bien, te comprometes a dárselo. El sentido común debería apartar a la gente de las cosas que son demasiado buenas para ser verdad, pero el sentido común parece escasear cuando estás cerca. Esa botella de líquido rosa seguramente curará la indecorosa erupción, este ungüento, nada más que un poco de grasa con una pizca de polvo de plata, puede restaurar la juventud y el vigor, y hay un puente en la ciudad que resulta que está a la venta. Estas maravillas parecen inverosímiles, pero tú haces que suenen como una verdadera oportunidad. Competencia con Habilidades: Engañar, Juego de Manos. Competencia con Herramientas: kit de disfraz, kit de falsificación. Equipo: un conjunto de ropa fina, un kit de disfraz, herramientas de estafa de tu elección (diez botellas con tapón llenas con un líquido de color, unos dados cargados, una baraja de cartas marcadas, o un anillo de sello de un duque imaginario) y una bolsa con 15 po. Ardides Favoritos Cada charlatán tiene un enfoque propio que lo hace tener preferencia por unos ardides frente a otros. Elige una estafa preferida o tira en la tabla de abajo. Rasgo: Identidad Falsa Te has creado una segunda identidad que incluye documentación, citas establecidas y disfraces que te permiten asumir ese personaje. Además, puedes falsificar documentos oficiales y cartas personales, siempre y cuando hayas visto un ejemplo de la clase de documento o escritura que estás tratando de copiar.",
+    "skillProficiencies": [
+      "deception",
+      "sleight-of-hand"
+    ],
+    "languages": [],
+    "choices": [],
+    "featureIds": [],
+    "sourceFields": {
+      "competencia con habilidades": "Engañar, Juego de Manos.",
+      "competencia con herramientas": "kit de disfraz, kit de falsificación.",
+      "equipo": "un conjunto de ropa fina, un kit de disfraz, herramientas de estafa de tu elección (diez botellas con tapón llenas con un líquido de color, unos dados cargados, una baraja de cartas marcadas, o un anillo de sello de un duque imaginario) y una bolsa con 15 po. Ardides Favoritos Cada charlatán tiene un enfoque propio que lo hace tener preferencia por unos ardides frente a otros. Elige una estafa preferida o tira en la tabla de abajo. Rasgo: Identidad Falsa Te has creado una segunda identidad que incluye documentación, citas establecidas y disfraces que te permiten asumir ese personaje. Además, puedes falsificar documentos oficiales y cartas per"
+    },
+    "automationNotes": [
+      "Equipo inicial, herramientas e idiomas elegibles se conservan en la descripción; revisa las decisiones que no tengan selector estructurado."
+    ]
+  },
+  {
+    "id": "background-criminal",
+    "name": "Criminal",
+    "source": {
+      "page": 398,
+      "endPage": 399,
+      "title": "Trasfondos"
+    },
+    "description": "Criminal Eres un criminal experimentado con un historial delictivo. Has pasado mucho tiempo entre criminales y todavía tienes contactos dentro del mundo del hampa. Estas mucho más cerca que la mayoría de la gente del mundo del asesinato, el robo y la violencia que prevalece en los barrios bajos de la civilización, y has sobrevivido hasta ahora gracias a burlarte de las reglas y reglamentos de la sociedad. Competencia con Habilidades: Engañar, Sigilo. Competencia con Herramientas: set de juego (dados de hueso o cartas), herramientas de ladrón. Equipo: una barreta, un conjunto de ropa común oscura, incluyendo una capucha, y una bolsa que contiene 15 po. Especialidad Criminal Hay muchos tipos de delincuentes, y dentro de un gremio de ladrones o una organización criminal similar, los miembros individuales tienen especialidades particulares. Incluso los criminales que operan fuera de esas organizaciones tienen d6 Estafa 1 Hago trampa en los juegos de azar. 2 Falsifico monedas o documentos. 3 Me introduzco en la vida de la gente para aprovecharme de su debilidad y “asegurar” sus fortunas. 4 Cambio de identidad con tanta facilidad como cambio de ropa. 5 Hago estafas de prestidigitador en las esquinas de las calles. 6 Convenzo a la gente de que la basura sin valor bien vale su dinero duramente ganado. fuertes preferencias por ciertos tipos de delitos en detrimento de otros. Elige el papel que jugaste en tu vida criminal, o tira en la tabla de abajo. d8 Especialidad 1 Chantajista 2 Ladrón 3 Sicario 4 Matón 5 Asaltador de caminos 6 Asesino a sueldo 7 Carterista 8 Contrabandista Rasgo: Contacto Criminal Tienes un contacto de confianza que actúa como enlace con una red de delincuentes. Sabes cómo hacerles llegar mensajes y te los envíen mediante ese contacto, incluso a grandes distancias; específicamente, conoces los mensajeros locales, conductores de caravana corruptos y marineros de mala muerte que te pueden entregar mensajes. Variante: Espía Aunque tus capacidades no son muy diferentes de las de un ladrón o contrabandista, aprendiste y practicaste en un contexto muy diferente: el de un agente de espionaje. Es posible que hayas sido un agente oficialmente nombrado por la corona, o tal vez vendías secretos al mejor postor.",
+    "skillProficiencies": [
+      "deception",
+      "stealth"
+    ],
+    "languages": [],
+    "choices": [],
+    "featureIds": [],
+    "sourceFields": {
+      "competencia con habilidades": "Engañar, Sigilo.",
+      "competencia con herramientas": "set de juego (dados de hueso o cartas), herramientas de ladrón.",
+      "equipo": "una barreta, un conjunto de ropa común oscura, incluyendo una capucha, y una bolsa que contiene 15 po. Especialidad Criminal Hay muchos tipos de delincuentes, y dentro de un gremio de ladrones o una organización criminal similar, los miembros individuales tienen especialidades particulares. Incluso los criminales que operan fuera de esas organizaciones tienen d6 Estafa 1 Hago trampa en los juegos de azar. 2 Falsifico monedas o documentos. 3 Me introduzco en la vida de la gente para aprovecharme de su debilidad y “asegurar” sus fortunas. 4 Cambio de identidad con tanta facilidad como cambio de ropa. 5 Hago estafas de prestidigitador en las esq"
+    },
+    "automationNotes": [
+      "Equipo inicial, herramientas e idiomas elegibles se conservan en la descripción; revisa las decisiones que no tengan selector estructurado."
+    ]
+  },
+  {
+    "id": "background-espia",
+    "name": "Espía",
+    "source": {
+      "page": 398,
+      "endPage": 399,
+      "title": "Trasfondos"
+    },
+    "description": "Variante: Espía Aunque tus capacidades no son muy diferentes de las de un ladrón o contrabandista, aprendiste y practicaste en un contexto muy diferente: el de un agente de espionaje. Es posible que hayas sido un agente oficialmente nombrado por la corona, o tal vez vendías secretos al mejor postor.",
+    "skillProficiencies": [
+      "deception",
+      "stealth"
+    ],
+    "languages": [],
+    "choices": [],
+    "featureIds": [],
+    "sourceFields": {
+      "competencia con habilidades": "Engañar, Sigilo.",
+      "competencia con herramientas": "set de juego (dados de hueso o cartas), herramientas de ladrón.",
+      "equipo": "una barreta, un conjunto de ropa común oscura, incluyendo una capucha, y una bolsa que contiene 15 po. Especialidad Criminal Hay muchos tipos de delincuentes, y dentro de un gremio de ladrones o una organización criminal similar, los miembros individuales tienen especialidades particulares. Incluso los criminales que operan fuera de esas organizaciones tienen d6 Estafa 1 Hago trampa en los juegos de azar. 2 Falsifico monedas o documentos. 3 Me introduzco en la vida de la gente para aprovecharme de su debilidad y “asegurar” sus fortunas. 4 Cambio de identidad con tanta facilidad como cambio de ropa. 5 Hago estafas de prestidigitador en las esq"
+    },
+    "automationNotes": [
+      "Equipo inicial, herramientas e idiomas elegibles se conservan en la descripción; revisa las decisiones que no tengan selector estructurado.",
+      "Variante del trasfondo Criminal. Revisa los cambios de equipo y rasgo en su descripción."
+    ],
+    "parentId": "background-criminal",
+    "version": "Variante"
+  },
+  {
+    "id": "background-ermitano",
+    "name": "Ermitaño",
+    "source": {
+      "page": 399,
+      "endPage": 400,
+      "title": "Trasfondos"
+    },
+    "description": "Ermitaño Vivías en la reclusión ya sea en una comunidad resguardada, como un monasterio o completamente solo por una parte importante de tu vida. Durante el tiempo que pasaste lejos del clamor de la sociedad, encontraste quietud, soledad, y quizá alguna de las respuestas que buscabas. Competencia con Habilidades: Medicina, Religión. Competencia con Herramientas: kit de herboristería. Idioma: uno de tu elección. Equipo: un rollo de pergamino lleno de notas de tus estudios o plegarias, una frazada de invierno, una muda de ropa común, un kit de herboristería y una bolsa con 5 po. Vida en Reclusión ¿Cuál fue la razón para tu aislamiento y qué cambió para permitirte terminar tu soledad? Puedes trabajar con tu DM para determinar la exacta naturaleza de tu reclusión, o puedes elegir o tirar en la tabla de abajo para determinar el motivo detrás de tu reclusión. d8 Vida en Reclusión 1 Buscaba iluminación espiritual. 2 Estaba participando de un estilo de vida comunal de acuerdo con los dictados de una orden religiosa. 3 Fui exiliado por un crimen que no cometí. 4 Me retiré de la sociedad después de un evento que alteró mi vida. 5 Necesitaba un lugar tranquilo para trabajar en mi pintura, literatura, música o manifiesto. 6 Necesitaba armonizar con la naturaleza, lejos de la civilización. 7 Era el cuidador de una reliquia o ruina antigua. 8 Era un peregrino en busca de una persona, lugar o reliquia de importancia espiritual. Rasgo: Descubrimiento La reclusión pacífica de tu extendido aislamiento te dio acceso a un único y poderoso descubrimiento. La exacta naturaleza de esta revelación depende de la naturaleza de tu reclusión. Podría ser una gran verdad acerca del cosmos, las deidades, los seres poderosos de otros planos o las fuerzas de la naturaleza. Podría ser un sitio que nadie más vio nunca. Podrías haber descubierto un hecho que fue olvidado hace mucho, o desenterrado alguna reliquia del pasado que podría reescribir la historia. Podría ser información potencialmente dañina para la gente que te consignó al exilio, y he ahí la razón por la cual regresas a la sociedad. Trabaja con tu DM para determinar los detalles de tu descubrimiento y su impacto en la campaña. Otros Ermitaños Este trasfondo de ermitaño asume una reclusión contemplativa que siempre tiene espacio para la oración y el estudio. Si quieres jugar a un recluso tosco de tierras salvajes que vive de la tierra y rehúye el contacto con otras personas, mira el trasfondo del extranjero. Por el otro lado, si quieres ir en una dirección más religiosa, el acólito podría ser lo que buscas. O incluso podrías ser un charlatán, actuando como una persona sabia y sagrada y dejando que los tontos fanáticos te apoyen.",
+    "skillProficiencies": [
+      "medicine",
+      "religion"
+    ],
+    "languages": [],
+    "choices": [],
+    "featureIds": [],
+    "sourceFields": {
+      "competencia con habilidades": "Medicina, Religión.",
+      "competencia con herramientas": "kit de herboristería.",
+      "idioma": "uno de tu elección.",
+      "equipo": "un rollo de pergamino lleno de notas de tus estudios o plegarias, una frazada de invierno, una muda de ropa común, un kit de herboristería y una bolsa con 5 po. Vida en Reclusión ¿Cuál fue la razón para tu aislamiento y qué cambió para permitirte terminar tu soledad? Puedes trabajar con tu DM para determinar la exacta naturaleza de tu reclusión, o puedes elegir o tirar en la tabla de abajo para determinar el motivo detrás de tu reclusión. d8 Vida en Reclusión 1 Buscaba iluminación espiritual. 2 Estaba participando de un estilo de vida comunal de acuerdo con los dictados de una orden religiosa. 3 Fui exiliado por un crimen que no cometí. 4 Me"
+    },
+    "automationNotes": [
+      "Equipo inicial, herramientas e idiomas elegibles se conservan en la descripción; revisa las decisiones que no tengan selector estructurado."
+    ]
+  },
+  {
+    "id": "background-fronterizo",
+    "name": "Fronterizo",
+    "source": {
+      "page": 400,
+      "endPage": 401,
+      "title": "Trasfondos"
+    },
+    "description": "Fronterizo Creciste en las tierras salvajes, lejos de la civilización y del confort de la ciudad y la tecnología. Has sido testigo de la migración de rebaños grandes como bosques enteros, sobrevivido a un clima más extremo que el que cualquier habitante de la ciudad haya podido padecer y disfrutado de la soledad de ser el único ser pensante en muchas millas a la redonda. Llevas las tierras salvajes en la sangre, fueras un nómada, un explorador, un eremita, un cazador recolector o incluso un saqueador. Incluso en lugares donde no conozcas las características específicas del terreno, comprendes las formas de lo salvaje. Competencia con Habilidades: Atletismo, Supervivencia. Competencia con Herramientas: un tipo de instrumento musical. Idioma: uno de tu elección. Equipo: un bastón, una trampa de caza, un trofeo de un animal que mataste, un conjunto de ropa de viajero y una bolsa que contiene 10 po. Origen Has estado en lugares extraños y has visto cosas que otros no alcanzan a comprender. Piensa en alguna de estas tierras lejanas que has visitado y en cómo te han impactado. Puedes tirar en la siguiente tabla para determinar tu ocupación durante tu estancia en las tierras salvajes o elegir una que se adapte mejor a tu personaje. d10 Origen 1 Guardabosques 2 Trampero 3 Colono 4 Guía 5 Exiliado o paria 6 Cazarrecompensas 7 Peregrino 8 Nómada 9 Cazador-recolector 10 Saqueador Rasgo: Vagabundo Tienes una excelente memoria para los mapas y la geografía y siempre puedes recordar la disposición general del terreno, los asentamientos y otras circunstancias de entorno que te rodea. Además, puedes encontrar comida y agua fresca para ti y para otras cinco personas cada día, siempre y cuando la tierra tenga bayas, algo de caza menor, agua y cosas por el estilo.",
+    "skillProficiencies": [
+      "athletics",
+      "survival"
+    ],
+    "languages": [],
+    "choices": [],
+    "featureIds": [],
+    "sourceFields": {
+      "competencia con habilidades": "Atletismo, Supervivencia.",
+      "competencia con herramientas": "un tipo de instrumento musical.",
+      "idioma": "uno de tu elección.",
+      "equipo": "un bastón, una trampa de caza, un trofeo de un animal que mataste, un conjunto de ropa de viajero y una bolsa que contiene 10 po. Origen Has estado en lugares extraños y has visto cosas que otros no alcanzan a comprender. Piensa en alguna de estas tierras lejanas que has visitado y en cómo te han impactado. Puedes tirar en la siguiente tabla para determinar tu ocupación durante tu estancia en las tierras salvajes o elegir una que se adapte mejor a tu personaje. d10 Origen 1 Guardabosques 2 Trampero 3 Colono 4 Guía 5 Exiliado o paria 6 Cazarrecompensas 7 Peregrino 8 Nómada 9 Cazador-recolector 10 Saqueador Rasgo: Vagabundo Tienes una excelente"
+    },
+    "automationNotes": [
+      "Equipo inicial, herramientas e idiomas elegibles se conservan en la descripción; revisa las decisiones que no tengan selector estructurado."
+    ]
+  },
+  {
+    "id": "background-heroe-de-pueblo",
+    "name": "Héroe de Pueblo",
+    "source": {
+      "page": 401,
+      "endPage": 401,
+      "title": "Trasfondos"
+    },
+    "description": "Héroe de Pueblo Vienes de una clase social humilde, pero estás destinado para mucho más. Ya la gente de tu pueblo natal te considera como su campeón, y tú destino te llama a estar en contra de los tiranos y los monstruos que amenazan a la gente común en todas partes. Competencia con Habilidades: Tacto con animales, Supervivencia. Competencia con Herramientas: un tipo de herramientas de artesanos, vehículos (terrestres). Idioma: uno de tu elección. Equipo: un conjunto de herramientas de artesano (de tu elección), una pala, una olla de hierro, un conjunto de ropa común y una bolsa que contiene 10 po. Definición del Evento Antes de convertirte en un héroe has ejercido una profesión sencilla entre los campesinos, tal vez como granjero, minero, siervo, pastor, leñador, o sepulturero. Pero algo sucedió que fijo un camino diferente y que te marcó para realizar cosas más grandes. Escoge al azar o determina un acontecimiento decisivo que te marca como un héroe del pueblo. d10 Definicion de Evento 1 Me alcé en contra de los agentes de un tirano. 2 Salvé a la gente durante un desastre natural. 3 Me quedé solo contra un terrible monstruo. 4 Le robé a un mercader corrupto para ayudar a los pobres. 5 Encabecé una milicia para luchar contra un ejército invasor 6 Entré en el castillo de un tirano y robé armas para armar al pueblo. 7 Entrené al campesinado a utilizar instrumentos de la granja como armas contra los soldados de un tirano. 8 Un señor rescindió un decreto impopular después que dirigí un acto simbólico de protesta en contra de este. 9 Un celestial, un hada, o alguna criatura similar me dio una bendición o me rebeló mi origen secreto. 10 Fui reclutado en el ejército de un señor, me alcé con el liderazgo y fui elogiado por mi heroísmo. Rasgo: Hospitalidad Rústica Dado que vienes de las filas de la gente común, encajas entre ellos con facilidad. Puedes encontrar un lugar para esconderte, descansar o recuperarte entre otros comuneros, a menos que hayas demostrado ser un peligro para ellos. Te protegerán de la ley o de cualquier otra persona que te busque, aunque no arriesgarán sus vidas por ti.",
+    "skillProficiencies": [
+      "animal-handling",
+      "survival"
+    ],
+    "languages": [],
+    "choices": [],
+    "featureIds": [],
+    "sourceFields": {
+      "competencia con habilidades": "Tacto con animales, Supervivencia.",
+      "competencia con herramientas": "un tipo de herramientas de artesanos, vehículos (terrestres).",
+      "idioma": "uno de tu elección.",
+      "equipo": "un conjunto de herramientas de artesano (de tu elección), una pala, una olla de hierro, un conjunto de ropa común y una bolsa que contiene 10 po. Definición del Evento Antes de convertirte en un héroe has ejercido una profesión sencilla entre los campesinos, tal vez como granjero, minero, siervo, pastor, leñador, o sepulturero. Pero algo sucedió que fijo un camino diferente y que te marcó para realizar cosas más grandes. Escoge al azar o determina un acontecimiento decisivo que te marca como un héroe del pueblo. d10 Definicion de Evento 1 Me alcé en contra de los agentes de un tirano. 2 Salvé a la gente durante un desastre natural. 3 Me quedé"
+    },
+    "automationNotes": [
+      "Equipo inicial, herramientas e idiomas elegibles se conservan en la descripción; revisa las decisiones que no tengan selector estructurado."
+    ]
+  },
+  {
+    "id": "background-huerfano",
+    "name": "Huérfano",
+    "source": {
+      "page": 402,
+      "endPage": 402,
+      "title": "Trasfondos"
+    },
+    "description": "Huérfano Creciste en las calles solo, huérfano y pobre. No tenías a nadie que te cuidara o te proveyese, así que aprendiste a proveerte por ti mismo. Luchaste ferozmente por la comida y te mantuviste en una alerta constante por si otras almas desesperadas te robaban. Dormiste en azoteas y en callejones, expuesto a los elementos, y te sobre pusiste a enfermedades sin las ventajas de la medicina o un lugar para recuperarte. Sobreviviste contra toda posibilidad, y lo hiciste a través de la astucia, la fuerza, la velocidad, o una combinación de todas. Comienzas tu carrera de aventurero con suficiente dinero para vivir modestamente diez días. ¿Cómo conseguiste ese dinero? ¿Qué te permitió liberarte de tus desesperadas circunstancias y embarcarte en una vida mejor? Competencia con Habilidades: Juego de Manos, Sigilo. Competencia con Herramientas: kit de disfraz, herramientas de ladrón. Equipo: un pequeño cuchillo, un mapa de la ciudad en la que creciste, un ratón como mascota, un símbolo para recordar a tus padres, una muda de ropa común y una bolsa con 10po. Rasgo: Secretos de la Ciudad Conoces los patrones y flujos secretos de las ciudades, y puedes encontrar pasadizos a través de la masa urbana que otros pasarían por alto. Cuando no estás en combate, puedes viajar (junto a los compañeros que guíes) a través de dos puntos en la ciudad el doble de rápido de lo que tu velocidad te permitiría normalmente.",
+    "skillProficiencies": [
+      "sleight-of-hand",
+      "stealth"
+    ],
+    "languages": [],
+    "choices": [],
+    "featureIds": [],
+    "sourceFields": {
+      "competencia con habilidades": "Juego de Manos, Sigilo.",
+      "competencia con herramientas": "kit de disfraz, herramientas de ladrón.",
+      "equipo": "un pequeño cuchillo, un mapa de la ciudad en la que creciste, un ratón como mascota, un símbolo para recordar a tus padres, una muda de ropa común y una bolsa con 10po. Rasgo: Secretos de la Ciudad Conoces los patrones y flujos secretos de las ciudades, y puedes encontrar pasadizos a través de la masa urbana que otros pasarían por alto. Cuando no estás en combate, puedes viajar (junto a los compañeros que guíes) a través de dos puntos en la ciudad el doble de rápido de lo que tu velocidad te permitiría normalmente."
+    },
+    "automationNotes": [
+      "Equipo inicial, herramientas e idiomas elegibles se conservan en la descripción; revisa las decisiones que no tengan selector estructurado."
+    ]
+  },
+  {
+    "id": "background-marinero",
+    "name": "Marinero",
+    "source": {
+      "page": 402,
+      "endPage": 403,
+      "title": "Trasfondos"
+    },
+    "description": "Marinero Navegaste en una nave marítima por años. En ese tiempo, enfrentaste exitosamente poderosas tormentas, monstruos de las profundidades y a aquellos que quisieron hundir tu trabajo en las infinitas profundidades. Tu primer amor es la lejana línea del horizonte, pero el tiempo llegó para probarte en algo nuevo. Discute la naturaleza de la nave que usaste previamente con tu Dungeon Master. ¿Fue una nave mercante, un buque de guerra, una embarcación exploradora o un navío pirata? ¿Qué tan buena (o mala) es su reputación? ¿Qué tanto la usa la gente para viajar? ¿Todavía está navegando o está desaparecida y se la presume perdida? ¿Cuáles eran tus labores abordo contramaestre, capitán, navegante, cocinero o alguna otra posición? ¿Quiénes eran el capitán y el primero al mando? ¿Dejaste tu puesto en buenos términos o huiste? Competencia con Habilidades: Atletismo, Percepción. Competencia con Herramientas: herramientas de navegación, vehículos (acuáticos). Equipo: una barra de madera o metal (una clava), 50 pies de cuerda de seda, un amuleto de la suerte, como una pata de conejo o una piedra pequeña con un agujero en el centro (o podrías tener una baratija), una muda de ropa común y una bolsa con 10 po. Rasgo: Pasaje Marítimo Cuando lo necesites, puedes asegurar un pasaje gratis en un barco para ti y tus compañeros de aventuras. Podrías navegar en la nave en la que serviste, o en otra nave con la que tengas buenas relaciones (quizá en una cuyo capitán fue tu compañero de tripulación). Ya que estás pidiendo un favor, no puedes asegurar un calendario o una ruta que cumpla con todas tus necesidades. Tu Dungeon Master determinará cuánto toma el llegar a donde necesites ir. A cambio de tu pasaje gratuito, se espera de ti y tus compañeros que sirvan a la tripulación durante el viaje. Variante: Pirata Pasaste tu juventud bajo la influencia de un temerario pirata, un despiadado asesino que te enseñó a sobrevivir en un mundo de tiburones y salvajes. Te has permitido el saqueo en altamar y has enviado a más de un alma culpable a una tumba salada. El miedo y el derramamiento de sangre no te son ajenos, y te has ganado una desagradable reputación en muchas ciudades portuarias. Si decides que tu carrera de marinero involucró la piratería, puedes elegir el rasgo Mala Reputación en lugar del rasgo Pasaje Marítimo. Rasgo Variante: Mala Reputación Si tu personaje tiene un trasfondo de marinero, puedes seleccionar este rasgo en lugar de Pasaje Marítimo. No importa donde vayas, la gente te teme por tu reputación. Cuando estés en un asentamiento civilizado, puedes realizar crímenes menores impunemente, como negarte a pagar por la comida en una taberna o romper la puerta de las tiendas, dado que la mayoría de la gente no reportará tu actividad a las autoridades.",
+    "skillProficiencies": [
+      "athletics",
+      "perception"
+    ],
+    "languages": [],
+    "choices": [],
+    "featureIds": [],
+    "sourceFields": {
+      "competencia con habilidades": "Atletismo, Percepción.",
+      "competencia con herramientas": "herramientas de navegación, vehículos (acuáticos).",
+      "equipo": "una barra de madera o metal (una clava), 50 pies de cuerda de seda, un amuleto de la suerte, como una pata de conejo o una piedra pequeña con un agujero en el centro (o podrías tener una baratija), una muda de ropa común y una bolsa con 10 po. Rasgo: Pasaje Marítimo Cuando lo necesites, puedes asegurar un pasaje gratis en un barco para ti y tus compañeros de aventuras. Podrías navegar en la nave en la que serviste, o en otra nave con la que tengas buenas relaciones (quizá en una cuyo capitán fue tu compañero de tripulación). Ya que estás pidiendo un favor, no puedes asegurar un calendario o una ruta que cumpla con todas tus necesidades. Tu Du"
+    },
+    "automationNotes": [
+      "Equipo inicial, herramientas e idiomas elegibles se conservan en la descripción; revisa las decisiones que no tengan selector estructurado."
+    ]
+  },
+  {
+    "id": "background-pirata",
+    "name": "Pirata",
+    "source": {
+      "page": 402,
+      "endPage": 403,
+      "title": "Trasfondos"
+    },
+    "description": "Variante: Pirata Pasaste tu juventud bajo la influencia de un temerario pirata, un despiadado asesino que te enseñó a sobrevivir en un mundo de tiburones y salvajes. Te has permitido el saqueo en altamar y has enviado a más de un alma culpable a una tumba salada. El miedo y el derramamiento de sangre no te son ajenos, y te has ganado una desagradable reputación en muchas ciudades portuarias. Si decides que tu carrera de marinero involucró la piratería, puedes elegir el rasgo Mala Reputación en lugar del rasgo Pasaje Marítimo. Rasgo Variante: Mala Reputación Si tu personaje tiene un trasfondo de marinero, puedes seleccionar este rasgo en lugar de Pasaje Marítimo. No importa donde vayas, la gente te teme por tu reputación. Cuando estés en un asentamiento civilizado, puedes realizar crímenes menores impunemente, como negarte a pagar por la comida en una taberna o romper la puerta de las tiendas, dado que la mayoría de la gente no reportará tu actividad a las autoridades.",
+    "skillProficiencies": [
+      "athletics",
+      "perception"
+    ],
+    "languages": [],
+    "choices": [],
+    "featureIds": [],
+    "sourceFields": {
+      "competencia con habilidades": "Atletismo, Percepción.",
+      "competencia con herramientas": "herramientas de navegación, vehículos (acuáticos).",
+      "equipo": "una barra de madera o metal (una clava), 50 pies de cuerda de seda, un amuleto de la suerte, como una pata de conejo o una piedra pequeña con un agujero en el centro (o podrías tener una baratija), una muda de ropa común y una bolsa con 10 po. Rasgo: Pasaje Marítimo Cuando lo necesites, puedes asegurar un pasaje gratis en un barco para ti y tus compañeros de aventuras. Podrías navegar en la nave en la que serviste, o en otra nave con la que tengas buenas relaciones (quizá en una cuyo capitán fue tu compañero de tripulación). Ya que estás pidiendo un favor, no puedes asegurar un calendario o una ruta que cumpla con todas tus necesidades. Tu Du"
+    },
+    "automationNotes": [
+      "Equipo inicial, herramientas e idiomas elegibles se conservan en la descripción; revisa las decisiones que no tengan selector estructurado.",
+      "Variante del trasfondo Marinero. Revisa los cambios de equipo y rasgo en su descripción."
+    ],
+    "parentId": "background-marinero",
+    "version": "Variante"
+  },
+  {
+    "id": "background-noble",
+    "name": "Noble",
+    "source": {
+      "page": 403,
+      "endPage": 404,
+      "title": "Trasfondos"
+    },
+    "description": "Noble Entiendes de riqueza, poder y privilegio. Tienes un título nobiliario, y tu familia posee tierras, recauda impuestos y ejerce un significativo poder político. Podrías ser un mimado aristócrata desconocedor de lo que es el trabajo o la falta de comodidades, un antiguo comerciante recién elevado a la nobleza, o un canalla desheredado con un desproporcionado sentido sobre sus legítimos derechos. O podrías ser un honesto y trabajador terrateniente que se preocupa profundamente por la gente que vive y trabaja en tus tierras, muy consciente de tus responsabilidades para con ellos. Trabaja junto a tu DM para conseguir un título apropiado y determinar cuanta autoridad ese título proporciona. Un título nobiliario no se sostiene por sí solo, está conectado a la totalidad de una familia, y sea cual sea el título que tengas, será heredado por tus hijos. No solo necesitas determinar tu título nobiliario, sino que también deberías trabajar con tu DM en describir a tu familia y su influencia sobre ti. ¿Es tu familia antigua y bien establecida, o su título ha sido otorgado recientemente? ¿Cuánta influencia política tiene, y sobre qué área? ¿Qué tipo de reputación tiene tu familia entre los aristócratas de su región? ¿Cómo es la consideración que tiene la gente común? ¿Cuál es tu posición en la familia? ¿Eres el cabeza de familia? ¿Has heredado ya el título? ¿Qué sientes sobre la responsabilidad? ¿0 estas tan abajo en la línea sucesoria que lo que hagas no le importa a nadie, mientras no avergüences a la familia? ¿Qué piensa el cabeza de familia de tu carrera de aventurero? ¿Estás en buenas relaciones familiares o has sido rechazado por el resto de tu familia? ¿Tiene tu familia un escudo de armas? ¿Una insignia que puedas llevar o un anillo de sello? ¿Colores particulares que debas llevar todo el tiempo? ¿Un animal al que consideras un símbolo de tu linaje o incluso un miembro espiritual de tu familia? Estos detalles ayudan a establecer a tu familia y título como rasgos del mundo de campaña. Competencia con Habilidades: Historia, Persuasión. Competencia con Herramientas: un tipo de set de juego. Idioma: uno de tu elección. Equipo: una muda de ropas finas, un anillo con sello, un pergamino con tu genealogía, y un monedero con 25 po. Rasgo: Posición Privilegiada Gracias a tu cuna noble, la gente tiende a pensar lo mejor de ti. Eres bienvenido en la alta sociedad y la gente asume que tienes el derecho de estar donde quiera que estés. La gente común hace todo lo posible para que te sientas cómodo y evitar tu descontento, y otras personas de alta cuna te tratan como miembro de la misma esfera social. Puedes asegurar una audiencia con un noble local, si es necesario. Variante: Caballero El título de caballero es uno de los títulos nobiliarios más bajos en la mayoría de las sociedades, pero puede ser una senda hacia un estatus mayor. Si deseas ser un caballero, escoge el rasgo Seguidores (ver la barra lateral) en lugar de Posición de Privilegio. Uno de tus seguidores se reemplaza por un noble que sirve como tu escudero, ayudándote a cambio de entrenarlo en su propio camino hacia la caballería. Tus otros dos seguidores podrían ser un mozo que se ocupe de tu caballo y un sirviente que pula tu armadura (y quizá te ayude a ponértela). Como emblema de la caballerosidad y los ideales de amor cortés, podrías incluir entre tu equipo un estandarte u otro símbolo de un señor o una dama noble a quien has entregado tu corazón en una casta forma de devoción. (Esta persona podría ser tu vínculo). Rasgo Variante: Seguidores Si tu personaje tiene un trasfondo noble, podrías seleccionar este rasgo en lugar de Posición de Privilegio. Tienes el servicio de tres seguidores leales a tu familia. Estos seguidores pueden ser asistentes o mensajeros, y uno podría ser un mayordomo. Tus seguidores son gente común que puede realizar tareas rutinarias para ti, pero no lucharán por ti, no te seguirán hacia lugares obviamente peligrosos (como los dungeons), y te abandonarán si son puestos frecuentemente en peligro o abusas de ellos.",
+    "skillProficiencies": [
+      "history",
+      "persuasion"
+    ],
+    "languages": [],
+    "choices": [],
+    "featureIds": [],
+    "sourceFields": {
+      "competencia con habilidades": "Historia, Persuasión.",
+      "competencia con herramientas": "un tipo de set de juego.",
+      "idioma": "uno de tu elección.",
+      "equipo": "una muda de ropas finas, un anillo con sello, un pergamino con tu genealogía, y un monedero con 25 po. Rasgo: Posición Privilegiada Gracias a tu cuna noble, la gente tiende a pensar lo mejor de ti. Eres bienvenido en la alta sociedad y la gente asume que tienes el derecho de estar donde quiera que estés. La gente común hace todo lo posible para que te sientas cómodo y evitar tu descontento, y otras personas de alta cuna te tratan como miembro de la misma esfera social. Puedes asegurar una audiencia con un noble local, si es necesario. Variante: Caballero El título de caballero es uno de los títulos nobiliarios más bajos en la mayoría de las s"
+    },
+    "automationNotes": [
+      "Equipo inicial, herramientas e idiomas elegibles se conservan en la descripción; revisa las decisiones que no tengan selector estructurado."
+    ]
+  },
+  {
+    "id": "background-caballero",
+    "name": "Caballero",
+    "source": {
+      "page": 403,
+      "endPage": 404,
+      "title": "Trasfondos"
+    },
+    "description": "Variante: Caballero El título de caballero es uno de los títulos nobiliarios más bajos en la mayoría de las sociedades, pero puede ser una senda hacia un estatus mayor. Si deseas ser un caballero, escoge el rasgo Seguidores (ver la barra lateral) en lugar de Posición de Privilegio. Uno de tus seguidores se reemplaza por un noble que sirve como tu escudero, ayudándote a cambio de entrenarlo en su propio camino hacia la caballería. Tus otros dos seguidores podrían ser un mozo que se ocupe de tu caballo y un sirviente que pula tu armadura (y quizá te ayude a ponértela). Como emblema de la caballerosidad y los ideales de amor cortés, podrías incluir entre tu equipo un estandarte u otro símbolo de un señor o una dama noble a quien has entregado tu corazón en una casta forma de devoción. (Esta persona podría ser tu vínculo). Rasgo Variante: Seguidores Si tu personaje tiene un trasfondo noble, podrías seleccionar este rasgo en lugar de Posición de Privilegio. Tienes el servicio de tres seguidores leales a tu familia. Estos seguidores pueden ser asistentes o mensajeros, y uno podría ser un mayordomo. Tus seguidores son gente común que puede realizar tareas rutinarias para ti, pero no lucharán por ti, no te seguirán hacia lugares obviamente peligrosos (como los dungeons), y te abandonarán si son puestos frecuentemente en peligro o abusas de ellos.",
+    "skillProficiencies": [
+      "history",
+      "persuasion"
+    ],
+    "languages": [],
+    "choices": [],
+    "featureIds": [],
+    "sourceFields": {
+      "competencia con habilidades": "Historia, Persuasión.",
+      "competencia con herramientas": "un tipo de set de juego.",
+      "idioma": "uno de tu elección.",
+      "equipo": "una muda de ropas finas, un anillo con sello, un pergamino con tu genealogía, y un monedero con 25 po. Rasgo: Posición Privilegiada Gracias a tu cuna noble, la gente tiende a pensar lo mejor de ti. Eres bienvenido en la alta sociedad y la gente asume que tienes el derecho de estar donde quiera que estés. La gente común hace todo lo posible para que te sientas cómodo y evitar tu descontento, y otras personas de alta cuna te tratan como miembro de la misma esfera social. Puedes asegurar una audiencia con un noble local, si es necesario. Variante: Caballero El título de caballero es uno de los títulos nobiliarios más bajos en la mayoría de las s"
+    },
+    "automationNotes": [
+      "Equipo inicial, herramientas e idiomas elegibles se conservan en la descripción; revisa las decisiones que no tengan selector estructurado.",
+      "Variante del trasfondo Noble. Revisa los cambios de equipo y rasgo en su descripción."
+    ],
+    "parentId": "background-noble",
+    "version": "Variante"
+  },
+  {
+    "id": "background-sabio",
+    "name": "Sabio",
+    "source": {
+      "page": 404,
+      "endPage": 404,
+      "title": "Trasfondos"
+    },
+    "description": "Sabio Pasaste años aprendiendo la sabiduría del multiverso. Has rastreado manuscritos, estudiado pergaminos y escuchado a los mayores expertos en los temas que te interesan. Tus esfuerzos te han hecho un maestro en tus campos de estudio. Competencia con Habilidades: Arcano, Historia. Idioma: dos de tu elección. Equipo: un tintero, una pluma, un cuchillo pequeño, una carta de un colega muerto con una pregunta que aún no ha sido capaz de responder, una muda de ropa común y una bolsa con 10 po. Rasgo: Investigador Cuando intentas aprender o recordar un fragmento de información, si no sabes nada sobre el tema, a menudo sí sabes a dónde o de quién puedes obtenerlo. Por lo general, esta información viene de una biblioteca, scriptorium, universidad o un sabio u otra persona o criatura culta. Tu DM podría decidir que el conocimiento que buscas está oculto en un lugar lejano y casi inaccesible, o que simplemente no puede ser encontrado. Develar los secretos más profundos del multiverso puede requerir una aventura o incluso toda una campaña.",
+    "skillProficiencies": [
+      "arcana",
+      "history"
+    ],
+    "languages": [],
+    "choices": [],
+    "featureIds": [],
+    "sourceFields": {
+      "competencia con habilidades": "Arcano, Historia.",
+      "idioma": "dos de tu elección.",
+      "equipo": "un tintero, una pluma, un cuchillo pequeño, una carta de un colega muerto con una pregunta que aún no ha sido capaz de responder, una muda de ropa común y una bolsa con 10 po. Rasgo: Investigador Cuando intentas aprender o recordar un fragmento de información, si no sabes nada sobre el tema, a menudo sí sabes a dónde o de quién puedes obtenerlo. Por lo general, esta información viene de una biblioteca, scriptorium, universidad o un sabio u otra persona o criatura culta. Tu DM podría decidir que el conocimiento que buscas está oculto en un lugar lejano y casi inaccesible, o que simplemente no puede ser encontrado. Develar los secretos más prof"
+    },
+    "automationNotes": [
+      "Equipo inicial, herramientas e idiomas elegibles se conservan en la descripción; revisa las decisiones que no tengan selector estructurado."
+    ]
+  },
+  {
+    "id": "background-soldado",
+    "name": "Soldado",
+    "source": {
+      "page": 404,
+      "endPage": 405,
+      "title": "Trasfondos"
+    },
+    "description": "Soldado La guerra ha sido tu vida desde que puedes recordar. Fuiste entrenado en tu juventud en el estudio del uso de las armas y armaduras y aprendido las técnicas básicas de supervivencia, incluida la forma de mantenerte con vida en el campo de batalla. Es posible que hayas sido parte de un ejército nacional permanente o de una compañía de mercenarios, o tal vez miembro de una milicia local que saltó a la fama durante una guerra reciente. Al elegir este contexto, trabaja con tu DM para determinar de qué organización militar formabas parte, cual fue tu progreso en sus filas o si avanzaste en rango y qué tipo de experiencias tuviste durante tu carrera militar. ¿Era un ejército permanente, un grupo de guardias de una ciudad o la milicia de un pueblo? O podrías haber sido miembro del ejército privado de un noble de o de un comerciante, o pertenecido a una compañía de mercenarios. Competencia con Habilidades: Atletismo, Intimidación. Competencia con Herramientas: un tipo de set de juego, vehículos (terrestres). Equipo: una insignia con tu rango, un trofeo tomado de un enemigo caído (una daga, una hoja rota o un trozo de un estandarte), un conjunto de dados de hueso o baraja de cartas, una muda de ropa común, y una bolsa que contiene 10 po. Especialidad Durante tu tiempo como soldado, tenías un papel específico desempeñar en tu unidad o ejército. Tira un d8 o elige entre las opciones en la tabla de abajo para determinar tu rol. d8 Especialidad 1 Oficial 2 Explorador 3 Infantería 4 Caballería 5 Sanador 6 Intendente 7 Portaestandartes 8 Personal de Apoyo (cocinero, herrero, o similares) Rasgo: Rango Militar Tienes un rango militar de tu carrera como soldado. Aquellos leales a tu antigua organización militar aún reconocen tu autoridad e influencia, y se dirigirán a ti con respeto si son de un rango inferior. Puedes invocar tu rango para ejercer influencia sobre los demás soldados y requisar equipo simple o caballos para un uso temporal. Generalmente también puedes tener acceso a los campamentos y fortalezas amistosas en las que se reconozca tu rango militar.",
+    "skillProficiencies": [
+      "athletics",
+      "intimidation"
+    ],
+    "languages": [],
+    "choices": [],
+    "featureIds": [],
+    "sourceFields": {
+      "competencia con habilidades": "Atletismo, Intimidación.",
+      "competencia con herramientas": "un tipo de set de juego, vehículos (terrestres).",
+      "equipo": "una insignia con tu rango, un trofeo tomado de un enemigo caído (una daga, una hoja rota o un trozo de un estandarte), un conjunto de dados de hueso o baraja de cartas, una muda de ropa común, y una bolsa que contiene 10 po. Especialidad Durante tu tiempo como soldado, tenías un papel específico desempeñar en tu unidad o ejército. Tira un d8 o elige entre las opciones en la tabla de abajo para determinar tu rol. d8 Especialidad 1 Oficial 2 Explorador 3 Infantería 4 Caballería 5 Sanador 6 Intendente 7 Portaestandartes 8 Personal de Apoyo (cocinero, herrero, o similares) Rasgo: Rango Militar Tienes un rango militar de tu carrera como soldado. A"
+    },
+    "automationNotes": [
+      "Equipo inicial, herramientas e idiomas elegibles se conservan en la descripción; revisa las decisiones que no tengan selector estructurado."
+    ]
+  },
+  {
+    "id": "background-agente-de-una-faccion",
+    "name": "Agente de una Facción",
+    "source": {
+      "page": 406,
+      "endPage": 407,
+      "title": "Trasfondos Extras"
+    },
+    "description": "Agente de una Facción Muchas organizaciones activas en el Norte y por toda la faz de Faerun no se ven limitadas por los límites de la geografía. Estas facciones siguen sus prioridades ocultas sin preocuparse por las divisiones políticas y sus miembros actúan donde la organización lo considera necesario. Usan fisgones, chismosos, contrabandistas, mercenarios, guardianes de alíjos (que custodian reservas de riqueza o magía para que los usen los agentes de la facción), responsables de refugios y mensajeros, entre otros. En el centro de todas las facciones hay quienes no solo se ocupan de una pequeña función en la organización, sino que son su cerebro y su corazón. Como preludio de tu carrera como aventurero (y para prepararla) fuiste un agente de una facción específica de Faerun. Puede que trabajaras en público o en secreto, dependiendo de la organización y sus objetivos, así como de cuánto se solaparan sus objetivos con los tuyos. Convertirte en aventurero no significa por fuerza que renuncies a formar parte de tu facción (si bien puedes elegir hacerlo) y puede hasta mejorar tu posición en ella. Competencia con Habilidades: Perspicacia y una habilidad a tu elección de entre las de Inteligencia, Sabiduría o Carisma que sea apropiada para tu facción. Idiomas: dos de tu elección Equipo: insignia o emblema de tu facción, copia de un texto influyente para tu facción (o código de conducta para facciones encubiertas), muda de ropas comunes y una bolsa que contiene 15 po. Facciones de la Costa de la Espada Es posible que la falta de gobiernos grandes y centralizados en el Norte y a lo largo de la Costa de la Espada esté directamente ligada a la proliferación de sociedades secretas y conspiraciones en las naciones de la zona. Si tu trasfondo es ser un agente de una de las principales facciones del Norte y la Costa de la Espada, aquí tienes algunas posibilidades. Los Arpistas: Los Arpistas fueron fundados hace más de un milenio y se han disuelto y reorganizado en varias ocasiones. Siguen siendo un grupo poderoso que actúa entre bambalinas para frustrar actos malvados y promover la justicia a través del conocimiento y no por la fuerza bruta. Los agentes de los Arpistas suelen tener competencia en Investigación, lo que les convierte en expertos en fisgar y espiar. A menudo piden ayuda a otros Arpistas, bardos y posaderos solidarios, exploradores y el clero de los dioses que encajan con sus ideales. La Orden del Guantelete: Una de las potencias más recientes de Faerun es la Orden del Guantelete, que posee unas motivaciones parecidas a las de los Arpistas. Sin embargo, usan métodos de lo más distinto: quienes portan el guantelete son guerreros sagrados en una aventura virtuosa para aplastar al mal y promover la justicia. Jamás se quedan entre las sombras. Los agentes de la orden suelen tener competencia en Religión y a menudo piden ayuda a los cuerpos de seguridad que casan bien con los ideales de su grupo, así como al clero de los dioses patrones de la orden. El Enclave Esmeralda: Mantener el equilibrio del orden natural y combatir las fuerzas que lo amenazan es el doble objetivo del Enclave Esmeralda. Quienes trabajan para esa facción son maestros de la supervivencia y de vivir de la tierra. Suelen ser competentes en Naturaleza y pueden buscar ayuda de leñadores, cazadores, exploradores, tribus bárbaras, círculos druídicos y sacerdotes que veneren a los dioses de la naturaleza. La Alianza de los Lores: Por una parte, los agentes de la Alianza de los Lores representan a las ciudades y otros gobiernos que constituyen la alianza. Sin embargo, como es una facción con intereses y preocupaciones que trascienden la política y la geografía de una zona, tiene su propio equipo de individuos que trabaja en nombre de los intereses ocultos más extendidos de la organización. Se requiere que sus agentes estén bien versados en Historia. Siempre pueden contar con la ayuda de los gobiernos que forman parte de la alianza, además de la de los líderes y grupos que mantienen los ideales de la misma. Los Zhentarim: En los últimos años, los Zhentarim han ganado visibilidad en el mundo a medida que el grupo trata de mejorar su reputación entre el pueblo llano. La facción consigue empleados y asociados de toda clase social y les ofrece tareas que ayudan a los fines de la Red Negra, pero no tienen por qué ser de naturaleza criminal. Los agentes de la Red Negra a menudo deben trabajar en secreto y con frecuencia son competentes en Engaño. Buscan la ayuda de magos, mercenarios, mercaderes y clero liado con los Zhentarim. Rasgo: Refugio Como agente de una facción posees acceso a una red secreta de simpatizantes y agentes que pueden ofrecerte ayuda en tus aventuras. Conoces un conjunto de señales y contraseñas secretas que puedes usar para identificar al tipo de agentes que te pueden proveer de acceso a un refugio secreto, de alojamiento y comida, de ayuda para encontrar información. Estos agentes nunca ponen en peligro sus vidas por ti o se arriesgan a revelar sus identidades reales.",
+    "skillProficiencies": [
+      "insight"
+    ],
+    "languages": [],
+    "choices": [
+      {
+        "id": "background-agente-de-una-faccion-skills",
+        "type": "choose_skill",
+        "name": "Habilidades del trasfondo",
+        "amount": 1,
+        "options": [
+          {
+            "id": "arcana",
+            "name": "Arcano",
+            "effects": [
+              {
+                "type": "skill_proficiency",
+                "skill": "arcana"
+              }
+            ]
+          },
+          {
+            "id": "history",
+            "name": "Historia",
+            "effects": [
+              {
+                "type": "skill_proficiency",
+                "skill": "history"
+              }
+            ]
+          },
+          {
+            "id": "investigation",
+            "name": "Investigación",
+            "effects": [
+              {
+                "type": "skill_proficiency",
+                "skill": "investigation"
+              }
+            ]
+          },
+          {
+            "id": "nature",
+            "name": "Naturaleza",
+            "effects": [
+              {
+                "type": "skill_proficiency",
+                "skill": "nature"
+              }
+            ]
+          },
+          {
+            "id": "religion",
+            "name": "Religión",
+            "effects": [
+              {
+                "type": "skill_proficiency",
+                "skill": "religion"
+              }
+            ]
+          },
+          {
+            "id": "animal-handling",
+            "name": "Trato Con Animales",
+            "effects": [
+              {
+                "type": "skill_proficiency",
+                "skill": "animal-handling"
+              }
+            ]
+          },
+          {
+            "id": "medicine",
+            "name": "Medicina",
+            "effects": [
+              {
+                "type": "skill_proficiency",
+                "skill": "medicine"
+              }
+            ]
+          },
+          {
+            "id": "perception",
+            "name": "Percepción",
+            "effects": [
+              {
+                "type": "skill_proficiency",
+                "skill": "perception"
+              }
+            ]
+          },
+          {
+            "id": "survival",
+            "name": "Supervivencia",
+            "effects": [
+              {
+                "type": "skill_proficiency",
+                "skill": "survival"
+              }
+            ]
+          },
+          {
+            "id": "deception",
+            "name": "Engaño",
+            "effects": [
+              {
+                "type": "skill_proficiency",
+                "skill": "deception"
+              }
+            ]
+          },
+          {
+            "id": "intimidation",
+            "name": "Intimidación",
+            "effects": [
+              {
+                "type": "skill_proficiency",
+                "skill": "intimidation"
+              }
+            ]
+          },
+          {
+            "id": "performance",
+            "name": "Interpretación",
+            "effects": [
+              {
+                "type": "skill_proficiency",
+                "skill": "performance"
+              }
+            ]
+          },
+          {
+            "id": "persuasion",
+            "name": "Persuasión",
+            "effects": [
+              {
+                "type": "skill_proficiency",
+                "skill": "persuasion"
+              }
+            ]
+          }
+        ],
+        "required": true
+      }
+    ],
+    "featureIds": [],
+    "sourceFields": {
+      "competencia con habilidades": "Perspicacia y una habilidad a tu elección de entre las de Inteligencia, Sabiduría o Carisma que sea apropiada para tu facción.",
+      "idiomas": "dos de tu elección",
+      "equipo": "insignia o emblema de tu facción, copia de un texto influyente para tu facción (o código de conducta para facciones encubiertas), muda de ropas comunes y una bolsa que contiene 15 po. Facciones de la Costa de la Espada Es posible que la falta de gobiernos grandes y centralizados en el Norte y a lo largo de la Costa de la Espada esté directamente ligada a la proliferación de sociedades secretas y conspiraciones en las naciones de la zona. Si tu trasfondo es ser un agente de una de las principales facciones del Norte y la Costa de la Espada, aquí tienes algunas posibilidades. Los Arpistas: Los Arpistas fueron fundados hace más de un milenio y s"
+    },
+    "automationNotes": [
+      "Equipo inicial, herramientas e idiomas elegibles se conservan en la descripción; revisa las decisiones que no tengan selector estructurado."
+    ]
+  },
+  {
+    "id": "background-artesano-del-clan",
+    "name": "Artesano del Clan",
+    "source": {
+      "page": 408,
+      "endPage": 408,
+      "title": "Trasfondos Extras"
+    },
+    "description": "Artesano del Clan El Pueblo Robusto es muy conocido por su artesanía y el valor de sus manualidades. Ai te han formado en esta tradición antigua. Te has pasado años trabajando para un maestro artesano enano; has padecido largas horas de trabajo y un tratamiento desdeñoso y amargo para obtener las exquisitas habilidades que ahora posees. Es muy probable que seas un enano, pero no tiene por qué ser así. Especialmente en el Norte, los Clanes de enanos escudo hace mucho que aprendieron que solo los necios orgullosos que están más preocupados por sus egos que por su oficio dan la espalda a los aprendices prometedores, aunque sean de otras razas. Sín embargo, sino eres enano, has jurado solemnemente que nunca tendrás un aprendiz de tu oficio, pues solo los enanos pueden trasmitir las habilidades de los hijos favoritos de Moradin. Con todo, no debería serte difícil encontrar un maestro enano que esté dispuesto a recibir a aprendices en potencia que vengan recomendados por ti Competencia con Habilidades: Historia, Perspicacia. Competencias con herramientas: un tipo de herramientas de artesano. Idiomas: Enano o un idioma de tu elección si ya hablas enano. Equipo: herramientas de artesano con la que eres competente, un cincel con la marca del creador para marcar tus obras con el símbolo del clan de artesanos del que aprendiste tu habilidad, una muda de ropas de viaje y una bolsa que contiene 5po y una piedra preciosa valorada en 10 po. Rasgo: Respeto del Pueblo Robusto Si bien los artesanos de un clan son muy respetados entre los extranjeros, nadie los tiene en tan alta estima como los enanos. Siempre hay una habitación y comida gratis en cualquier lugar en el que moren los enanos escudo o enanos de oro, y los individuos de esa clase de asentamientos pueden llegar a competir para determinar quién te puede ofrecer (a ti y seguramente a tus compañeros) el mejor alojamiento y servicio.",
+    "skillProficiencies": [
+      "history",
+      "insight"
+    ],
+    "languages": [],
+    "choices": [],
+    "featureIds": [],
+    "sourceFields": {
+      "competencia con habilidades": "Historia, Perspicacia.",
+      "competencias con herramientas": "un tipo de herramientas de artesano.",
+      "idiomas": "Enano o un idioma de tu elección si ya hablas enano.",
+      "equipo": "herramientas de artesano con la que eres competente, un cincel con la marca del creador para marcar tus obras con el símbolo del clan de artesanos del que aprendiste tu habilidad, una muda de ropas de viaje y una bolsa que contiene 5po y una piedra preciosa valorada en 10 po. Rasgo: Respeto del Pueblo Robusto Si bien los artesanos de un clan son muy respetados entre los extranjeros, nadie los tiene en tan alta estima como los enanos. Siempre hay una habitación y comida gratis en cualquier lugar en el que moren los enanos escudo o enanos de oro, y los individuos de esa clase de asentamientos pueden llegar a competir para determinar quién te pu"
+    },
+    "automationNotes": [
+      "Equipo inicial, herramientas e idiomas elegibles se conservan en la descripción; revisa las decisiones que no tengan selector estructurado."
+    ]
+  },
+  {
+    "id": "background-caballero-de-la-orden",
+    "name": "Caballero de la Orden",
+    "source": {
+      "page": 408,
+      "endPage": 409,
+      "title": "Trasfondos Extras"
+    },
+    "description": "Caballero de la Orden Perteneces a una orden de caballería que ha hecho juramentos para conseguir un objetivo concreto, La naturaleza de ese fin depende de la orden en la que trabajes, pero a tu parecer es sin duda una tarea vital y honrada. Faerun tiene una gran variedad de órdenes de caballería que comparten una visión parecida en lo que respecta a sus acciones y responsabilidades. Aunque el término “caballero” conjura la imagen de guerreros de noble cuna a caballo y con armadura pesada, la mayoría de órdenes de caballería faerunenses no limitan su membresía a estos individuos. Sus metas y sus filosofías son más importantes que el equipo y el estilo de combate de sus integrantes. Por eso, la mayoría de estas órdenes no están limitadas a quienes luchan, sino que están abiertas todo tipo de personas dispuestas a combatir y morir por la causa. La caja “Órdenes de caballería de Faerun\" describe a varias órdenes que están activas en la actualidad y está pensada para ayudarte en tu decisión sobre a qué grupo le has jurado lealtad. Competencias en habilidades: Persuasión, además de otra habilidad a escoger entre Conocimiento Arcano, Historia, Naturaleza o Religión (según encaje con tu orden). Competencias con herramientas: elige un instrumento musical o un juego. Idiomas: uno de tu elección. Equipo: una muda de ropas de viaje, un estandarte o sello que representa tu papel o rango en la orden, y una bolsa con 10 po. Rasgo: Estima Caballeresca Recibes refugio y auxilio de los miembros de tu orden de caballería y de quienes simpatizan con sus objetivos. Si tu orden es religiosa, puedes conseguir ayuda de templos y otras comunidades devotas de tu deidad. Los caballeros de órdenes cívicas pueden ser auxiliados por la sociedad a la que sirven, sea un asentamiento solitario o una nación enorme. Por su parte, los caballeros de órdenes filosóficas pueden recibir ayuda de aquellos a quienes han amparado en la búsqueda de sus ideales y quienes comparten esas mismas creencias. Esta colaboración se materializa en forma de refugio y alimento, así como curación si es necesario, además de socorro en alguna que otra ocasión si se corre peligro. Por ejemplo, un grupo de ciudadanos unidos puede ayudar a un caballero en graves apuros durante un combate o quienes apoyan a la orden pueden sacar a escondidas a un caballero del pueblo cuando se le persigue injustamente.",
+    "skillProficiencies": [
+      "persuasion"
+    ],
+    "languages": [],
+    "choices": [
+      {
+        "id": "background-caballero-de-la-orden-skills",
+        "type": "choose_skill",
+        "name": "Habilidades del trasfondo",
+        "amount": 1,
+        "options": [
+          {
+            "id": "arcana",
+            "name": "Arcano",
+            "effects": [
+              {
+                "type": "skill_proficiency",
+                "skill": "arcana"
+              }
+            ]
+          },
+          {
+            "id": "history",
+            "name": "Historia",
+            "effects": [
+              {
+                "type": "skill_proficiency",
+                "skill": "history"
+              }
+            ]
+          },
+          {
+            "id": "nature",
+            "name": "Naturaleza",
+            "effects": [
+              {
+                "type": "skill_proficiency",
+                "skill": "nature"
+              }
+            ]
+          },
+          {
+            "id": "religion",
+            "name": "Religión",
+            "effects": [
+              {
+                "type": "skill_proficiency",
+                "skill": "religion"
+              }
+            ]
+          }
+        ],
+        "required": true
+      }
+    ],
+    "featureIds": [],
+    "sourceFields": {
+      "competencias en habilidades": "Persuasión, además de otra habilidad a escoger entre Conocimiento Arcano, Historia, Naturaleza o Religión (según encaje con tu orden).",
+      "competencias con herramientas": "elige un instrumento musical o un juego.",
+      "idiomas": "uno de tu elección.",
+      "equipo": "una muda de ropas de viaje, un estandarte o sello que representa tu papel o rango en la orden, y una bolsa con 10 po. Rasgo: Estima Caballeresca Recibes refugio y auxilio de los miembros de tu orden de caballería y de quienes simpatizan con sus objetivos. Si tu orden es religiosa, puedes conseguir ayuda de templos y otras comunidades devotas de tu deidad. Los caballeros de órdenes cívicas pueden ser auxiliados por la sociedad a la que sirven, sea un asentamiento solitario o una nación enorme. Por su parte, los caballeros de órdenes filosóficas pueden recibir ayuda de aquellos a quienes han amparado en la búsqueda de sus ideales y quienes comp"
+    },
+    "automationNotes": [
+      "Equipo inicial, herramientas e idiomas elegibles se conservan en la descripción; revisa las decisiones que no tengan selector estructurado."
+    ]
+  },
+  {
+    "id": "background-cazarrecompensas-urbano",
+    "name": "Cazarrecompensas Urbano",
+    "source": {
+      "page": 409,
+      "endPage": 410,
+      "title": "Trasfondos Extras"
+    },
+    "description": "Cazarrecompensas Urbano Antes de convertirte en aventurero, tu vida ya estaba llena de conflictos y emoción, pues te ganabas el sustento persiguiendo a personas a cambio de dinero. Pero, a diferencia de quienes recogen recompensas, no eres un salvaje que sigue a una presa cruzando la naturaleza. Estás relacionado con un comercio lucrativo en el lugar en el que resides, trabajo que a diario pone a prueba tus habilidades e instintos de supervivencia. Además, no estás solo como lo estaría un cazarrecompensas en la naturaleza. Habitualmente interactúas tanto con la subcultura criminal como con otros cazadores de recompensas y conservas contactos en ambos ambientes que te permiten triunfar. Quizá seas un cazador de ladrones astuto, que acecha en los tejados para capturar a uno de los muchísimos rateros de la ciudad. Puede que seas alguien con los oídos abiertos en la calle, un individuo que sabe qué se traen entre manos los gremios de ladrones y las bandas callejeras. O quizá seas un cazarrecompensas con máscara de terciopelo, alguien capaz de infiltrarse en la alta sociedad y los círculos negros para atrapar a los criminales que se aprovechan de los ricos, sean carteristas o estafadores. La comunidad en la que llevabas a cabo tus negocios tal vez fuera una de las mayores metrópolis faerunenses (como Waterdeep o Puerta de Baldur) o un lugar menos poblado (como Luskan o Yartar) Sirve cualquier lugar lo suficientemente grande como para tener un fijo continuo de presas potenciales. Como miembro de un grupo de aventureros, quizá descubras que es más complicado servira tus intereses personales cuando no encajan con los objetivos del resto. Por otra parte, puedes hacer caer a objetivos mucho más imponentes con la ayuda de tus compañeros. Competencias en habilidades: escoge dos habilidades entre Engaño, Perspicacia, Persuasión y Sigilo Competencias con herramientas: elige dos conjuntos de herramientas entre las siguientes: un juego, un instrumento musical y herramientas de ladrón. Equipo: una muda apropiada para tus deberes y una bolsa con 20 po. Rasgo: Oídos Atentos Suelos estar en contacto con personas de la clase social en la que se mueven las presas que has elegido. Estos individuos pueden estar asociados al mundo criminal, pertenecer al pueblo llano o ser miembros de la alta sociedad. Esta conexión se manifiesta en forma de un contacto en cualquier ciudad que visites alguien que te informa sobre las personas y los lugares de la zona.",
+    "skillProficiencies": [],
+    "languages": [],
+    "choices": [
+      {
+        "id": "background-cazarrecompensas-urbano-skills",
+        "type": "choose_skill",
+        "name": "Habilidades del trasfondo",
+        "amount": 2,
+        "options": [
+          {
+            "id": "deception",
+            "name": "Engaño",
+            "effects": [
+              {
+                "type": "skill_proficiency",
+                "skill": "deception"
+              }
+            ]
+          },
+          {
+            "id": "insight",
+            "name": "Perspicacia",
+            "effects": [
+              {
+                "type": "skill_proficiency",
+                "skill": "insight"
+              }
+            ]
+          },
+          {
+            "id": "persuasion",
+            "name": "Persuasión",
+            "effects": [
+              {
+                "type": "skill_proficiency",
+                "skill": "persuasion"
+              }
+            ]
+          },
+          {
+            "id": "stealth",
+            "name": "Sigilo",
+            "effects": [
+              {
+                "type": "skill_proficiency",
+                "skill": "stealth"
+              }
+            ]
+          }
+        ],
+        "required": true
+      }
+    ],
+    "featureIds": [],
+    "sourceFields": {
+      "competencias en habilidades": "escoge dos habilidades entre Engaño, Perspicacia, Persuasión y Sigilo",
+      "competencias con herramientas": "elige dos conjuntos de herramientas entre las siguientes: un juego, un instrumento musical y herramientas de ladrón.",
+      "equipo": "una muda apropiada para tus deberes y una bolsa con 20 po. Rasgo: Oídos Atentos Suelos estar en contacto con personas de la clase social en la que se mueven las presas que has elegido. Estos individuos pueden estar asociados al mundo criminal, pertenecer al pueblo llano o ser miembros de la alta sociedad. Esta conexión se manifiesta en forma de un contacto en cualquier ciudad que visites alguien que te informa sobre las personas y los lugares de la zona."
+    },
+    "automationNotes": [
+      "Equipo inicial, herramientas e idiomas elegibles se conservan en la descripción; revisa las decisiones que no tengan selector estructurado."
+    ]
+  },
+  {
+    "id": "background-cortesano",
+    "name": "Cortesano",
+    "source": {
+      "page": 410,
+      "endPage": 410,
+      "title": "Trasfondos Extras"
+    },
+    "description": "Cortesano En el pasado fuiste una figura pública de cierta importancia en una corte noble o una organización burocrática. Es tan posible que provengas de una familia de clase alta como lo contrario. Tus habilidades, no las circunstancias de tu nacimiento, podrían haberte asegurado ese puesto. Puede que seas uno de los muchos funcionarios, sirvientes y otros parásitos de la corte de Silverymoon. Tal vez hayas recorrido el bizantino, y en ocasiones desalmado, conglomerado de gremios, nobles, aventureros y sociedades secretas de Waterdeep. Quizá fuiste alguien que hacía cumplirlas leyes entre bastidores o un funcionario en Puerta de Baldur o Neverwinter. O tal vez creciste en el castillo de Daggerford o alrededor de él. Aunque ya no seas un miembro hecho y derecho del grupo que te brindó una oportunidad, tus relaciones con tus antiguos compañeros pueden suponer una ventaja. para ti y el resto de aventureros, Posiblemente hagas misiones con tus nuevos compañeros que resulten de interés para la organización que te brindó la oportunidad de tu vida. En cualquier caso, las habilidades que cultivaste mientras te dedicabas a ser cortesano te servirán como aventurero. Competencias en habilidades: Perspicacia, Persuasión. Idiomas: dos de tu elección. Equipo: una muda de ropa elegante y una bolsa con 5 po. Rasgo: Funcionario de la Corte Saber cómo funciona la burocracia te permite acceder a los registros y el funcionamiento interno de cualquier corte noble o gobierno que encuentres. Conoces a los peces gordos, a quién recurrir para los favores que necesites y qué intrigas ocupan al grupo actualmente.",
+    "skillProficiencies": [
+      "insight",
+      "persuasion"
+    ],
+    "languages": [],
+    "choices": [],
+    "featureIds": [],
+    "sourceFields": {
+      "competencias en habilidades": "Perspicacia, Persuasión.",
+      "idiomas": "dos de tu elección.",
+      "equipo": "una muda de ropa elegante y una bolsa con 5 po. Rasgo: Funcionario de la Corte Saber cómo funciona la burocracia te permite acceder a los registros y el funcionamiento interno de cualquier corte noble o gobierno que encuentres. Conoces a los peces gordos, a quién recurrir para los favores que necesites y qué intrigas ocupan al grupo actualmente."
+    },
+    "automationNotes": [
+      "Equipo inicial, herramientas e idiomas elegibles se conservan en la descripción; revisa las decisiones que no tengan selector estructurado."
+    ]
+  },
+  {
+    "id": "background-erudito-enclaustrado",
+    "name": "Erudito Enclaustrado",
+    "source": {
+      "page": 411,
+      "endPage": 411,
+      "title": "Trasfondos Extras"
+    },
+    "description": "Erudito Enclaustrado De niño eras curioso, mientras que tus compañeros de juego eran posesivos y estridentes. Durante tus años de formación, acabaste en alguno de los grandes centros de aprendizaje de Faerún, donde fuiste aprendiz y se te enseñó un conocimiento más valioso que el oro o las piedras preciosas. Ahora estás listo para dejar atrás tu hogar. No para abandonarlo, sino para buscar nuevos conocimientos e incorporarlos a sus almacenes de sabiduría. La fuente de conocimiento más conocida de Faerun es Candlekeep. La enorme biblioteca siempre necesita trabajadores y ayudantes. Algunos de ellos medran entre sus filas y consiguen papeles de más responsabilidad e importancia. Puede que seas parte de Candlekcep y estés entregado a la conservación del que probablemente sea el mayor cuerpo de conocimiento e historia del mundo, o tal vez te acogieron los académicos de la Cúpula de los Eruditos o la Casa de los Mapas de Silvergmoon y ahora te dispongas a aumentar tu conocimiento y ofrecerte como apoyo a terceros en otros lugares que busquen tu pericia. Puede que seas de los pocos que colabora en la Fortaleza del Heraldo y ayuda a catalogar y conservar los registros de información que llegan a diario de todo Faerun. Competencias en habilidades: Historia, así como otra a tu elección entre Conocimiento Arcano, Naturaleza y Religión. Idiomas: dos de tu elección. Equipo: la túnica de erudito de tu claustro, un juego de escritura (una bolsita con pluma, tinta, pergamino enrollado y un pequeño cortaplumas), un libro prestado sobre el tema de tu estudio actual y una bolsa que contiene 10 po. Rasgo: Acceso a la Biblioteca Aunque otros deben soportar entrevistas exhaustivas y pagar tasas considerables para acceder a incluso los archivos más vulgares de tu biblioteca, tú puedes acceder de forma gratuita y con facilidad a la mayoría de ella, aunque puede que tenga depósitos de conocimiento demasiado valioso, mágico o secreto como para permitir el acceso inmediato a nadie. Tienes cierto conocimiento práctico del personal de tu claustro y de su burocracia y sabes cómo moverte entre esos contactos con cierta facilidad. Además, es posible que consigas un trato preferente de las bibliotecas de los Reinos, en calidad de la cortesía profesional que se muestra a otros eruditos.",
+    "skillProficiencies": [
+      "history"
+    ],
+    "languages": [],
+    "choices": [
+      {
+        "id": "background-erudito-enclaustrado-skills",
+        "type": "choose_skill",
+        "name": "Habilidades del trasfondo",
+        "amount": 1,
+        "options": [
+          {
+            "id": "arcana",
+            "name": "Arcano",
+            "effects": [
+              {
+                "type": "skill_proficiency",
+                "skill": "arcana"
+              }
+            ]
+          },
+          {
+            "id": "nature",
+            "name": "Naturaleza",
+            "effects": [
+              {
+                "type": "skill_proficiency",
+                "skill": "nature"
+              }
+            ]
+          },
+          {
+            "id": "religion",
+            "name": "Religión",
+            "effects": [
+              {
+                "type": "skill_proficiency",
+                "skill": "religion"
+              }
+            ]
+          }
+        ],
+        "required": true
+      }
+    ],
+    "featureIds": [],
+    "sourceFields": {
+      "competencias en habilidades": "Historia, así como otra a tu elección entre Conocimiento Arcano, Naturaleza y Religión.",
+      "idiomas": "dos de tu elección.",
+      "equipo": "la túnica de erudito de tu claustro, un juego de escritura (una bolsita con pluma, tinta, pergamino enrollado y un pequeño cortaplumas), un libro prestado sobre el tema de tu estudio actual y una bolsa que contiene 10 po. Rasgo: Acceso a la Biblioteca Aunque otros deben soportar entrevistas exhaustivas y pagar tasas considerables para acceder a incluso los archivos más vulgares de tu biblioteca, tú puedes acceder de forma gratuita y con facilidad a la mayoría de ella, aunque puede que tenga depósitos de conocimiento demasiado valioso, mágico o secreto como para permitir el acceso inmediato a nadie. Tienes cierto conocimiento práctico del pers"
+    },
+    "automationNotes": [
+      "Equipo inicial, herramientas e idiomas elegibles se conservan en la descripción; revisa las decisiones que no tengan selector estructurado."
+    ]
+  },
+  {
+    "id": "background-forastero-errante",
+    "name": "Forastero Errante",
+    "source": {
+      "page": 411,
+      "endPage": 413,
+      "title": "Trasfondos Extras"
+    },
+    "description": "Forastero Errante Casi todo el pueblo llano y el resto de individuos que se pueden encontrar en a Costa de la Espada y el Norte tienen algo en común: se pasan la vida sin viajar a más de unas pocas millas desde donde nacieron. No eres como ellos. Vienes de un lugar distante, tan remoto que pocos habitantes del Norte son conscientes de su existencia. Es muy probable que, incluso sí alguien ha oído hablar de tu patria, la conozca solo de nombre y tal vez a causa de algunos relatos extravagantes. Has venido a este rincón de Faerun por razones propias que puede que quieras divulgar o no. Aunque sin duda te parecerá que ciertas costumbres de estas tierras son extrañas y desconcertantes, ten por seguro también que algunas cosas que otros dan por sentado te parecerán maravillas novedosas que jamás habías visto antes. Por la misma regla, eres alguien interesante para quienes te rodean en casi cualquier lugar al que vayas, para bien y para mal. Competencias en habilidades: Percepción, Perspicacia. Competencias con herramientas: un instrumento o juego a tu elección, probablemente procedente de tu patria. idiomas: cualquiera que elijas. Equipo: una muda de ropas de viaje, un instrumento o Juego con el que tengas competencia, mapas trazados toscamente en tu patria que muestran el lugar en el que te encuentras en Faerun, una pequeña joya que vale 10 po y está creada con el estilo de artesanía de tu lugar de origen, y una bolsa con 5 po. ¿Qué Haces Aquí? Un forastero errante puede haber iniciado un viaje por una serie de razones. Dejar atrás su patria puede haber sido un acto voluntario o involuntario. Para determinar por qué estás tan lejos de tu hogar, haz una tirada usando la tabla que se presenta a continuación o escoge una de las opciones que se te ofrecen. El apartado siguiente presenta posibles patrias de origen e incluye algunos motivos que encajan bien con cada ubicación. d6 Razón 1 Emisario 2 Exiliado 3 Fago 4 Peregrino 5 Vidente 6 Vagabundo ¿De Dónde Eres? La decisión más importante para crear un trasfondo de viajero es concretar tu patria. Los lugares que se muestran aquí están lo suficientemente lejos del Norte y la Costa de la Espada como para justificar el uso de este trasfondo. Evermeet. Estas islas élficas de leyenda están muy lejos, al oeste, y son el hogar de elfos que jamás han visitado Faerún. A menudo les parece un lugar más duro de lo que esperaban cuando empezaron a viajar. Si eres elfo, Evermeet es una elección de patria lógica, si bien no obligatoria. La mayoría de quienes emigran de Evermeet son exiliados, expulsados tras haber cometido una infracción de la ley élfica, o emisarios que vienen a Faerún con un propósito que beneficia la cultura o la sociedad de los elfos. Halruaa. La magocracia de Halruaa, Situada en los confines más lejanos del Sur Resplandeciente y cercada por montañas en todo su perímetro, es un país estrafalario para la mayoría de faerúnenses que lo conocen. Muchos han oído hablar de los extraños barcos voladores que llevan los habitantes de Halruaa y algunos conocen los rumores de que hasta el más insignificante de ellos puede practicarla magia. Los habitantes de Halruaa suelen viajar a Faerún por motivos personales, ya que su gobierno tiene una Política estricta de no intervenir sin autorización en otras naciones u organizaciones. Tal vez te exiliaron por infringir una de las muchas complejas leyes de Halruaa o puede que seas un peregrino que busca los templos de los dioses de la magia. Kara-Tur: El continente de Kara Tur, muy al este de Faerún, acoge a un pueblo con costumbres desconocidas para quienes habitan en la Costa de la Espada. Si provienes de Kara-Tur, es posible que los faerúnenses te llamen shou incluso si esa no es tu etnia real, porque es el término general que usan para todo aquel que comparte tu origen. Los habitantes de Kara Tur a veces viajan a Faerún como diplomáticos o para crear relaciones comerciales con consorcios de mercaderes prósperos. Tal vez llegaste formando parte de una de esas delegaciones y decidiste quedarte cuando acabó la misión. Mulhiorand. Casi todo lo que hay en Mulhorand es foráneo para alguien de la Costa de la Espada, desde el terreno a la arquitectura, pasando por los dioses-reyes que gobiernan esas tierras. Seguramente hayas experimentado un impacto cultural parecido cuando abandonaste tu hogar desértico y viajaste a los climas desconocidos del norte de Faerun. Los recientes acontecimientos de tu patria han provocado la abolición de la esclavitud y, en consecuencia, un aumento de la circulación entre Mulhorand y los lugares distantes de Faerun. Quienes abandonan los desiertos ardientes y las pirámides vetustas de Mulhorand a cambio de un vistazo a una nueva vida lo hacen por varios motivos. Tal vez te encuentras en el Norte para contemplar las rarezas que ofrece esta tierra húmeda o porque te has ganado muchos enemigos entre las comunidades desérticas de tu hogar. Sossal. Pocos han oído hablar de tu patria, pero muchos se hacen preguntas al verte. Los humanos de Sossal parecen estar hechos de nieve, con piel de alabastro y cabello Albo, y suelen ir vestidos de blanco. Sossal se encuentra muy a los lejos, en el noroeste, encajada contra el hielo eterno al norte y limitada en el resto de fronteras por los cientos de millas del Gran Glaciar y el Gran Mar de Hielo. Nadie en tu nación se molesta en cruzar barreras tan colosales sin un motivo convincente. Debes temer a algo realmente terrible o buscar algo de increible importancia. Zakhara. Los faerunenses que conocen el lugar tienen este dicho: “Para llegar a Zakhara, ve al sur y después sigue yendo al sur”. Por supuesto, tú recorriste una ruta igual de larga para alcanzar el Norte desde la ciudad en la que naciste. Aunque no es poco común que los habitantes de Zakhara visiten los extremos meridionales de Faerún para comerciar, pocos se alejan tanto de su hogar como tú. Tal vez viajas para descubrir qué maravillas se esconden más allá de los desiertos y las montañas de tu patria. Puede que estés peregrinando para comprender a dioses distintos de los que veneras y así apreciar mejor tus propias divinidades. El Underdark. Aunque tu hogar está físicamente más cerca de la Costa de la Espada que el resto de lugares que se han mencionado, es más antinatural. Procedes de uno de los asentamientos del Underdark y todos ellos tienen sus propias costumbres y leyes extrañas. Si eres nativo de una de las grandes ciudades o de los enclaves subterráneos, seguramente pertenezcas a la raza que ocupa ese espacio, si bien podrías haberte criado allí tras ser capturado y llevado a las profundidades en tu niñez. Si eres un auténtico nativo del Underdark, quizá has llegado a la superficie como emisario de tu pueblo o tal vez para huir al ser acusado de un comportamiento criminal, sea este cierto o no. Si no eres nativo, tu razón para abandonar tu “hogar” seguramente tenga que ver con salir de una mala situación. Rasgo: Todos se Fijan en Ti Tu acento, maneras, figuras retóricas e incluso tu apariencia te señalan como extranjero. Se te dedican miradas curiosas doquiera que vayas, lo que puede ser un engorro, pero también te brinda el interés amistoso de eruditos y otros fascinados por tierras lejanas, por no mencionar al pueblo llano, que ansía escuchar anécdotas sobre tu patria. Puedes negociar con esta atención para obtener acceso a personas y lugares que de otro modo no conseguiría, tanto para ti como para tus compañeros de aventura. Señores, nobles, estudiosos y príncipes mercantes, por mencionar solo un puñado, pueden tener interés en saber más sobre tu patria lejana y sus gentes.",
+    "skillProficiencies": [
+      "insight",
+      "perception"
+    ],
+    "languages": [],
+    "choices": [],
+    "featureIds": [],
+    "sourceFields": {
+      "competencias en habilidades": "Percepción, Perspicacia.",
+      "competencias con herramientas": "un instrumento o juego a tu elección, probablemente procedente de tu patria.",
+      "idiomas": "cualquiera que elijas.",
+      "equipo": "una muda de ropas de viaje, un instrumento o Juego con el que tengas competencia, mapas trazados toscamente en tu patria que muestran el lugar en el que te encuentras en Faerun, una pequeña joya que vale 10 po y está creada con el estilo de artesanía de tu lugar de origen, y una bolsa con 5 po. ¿Qué Haces Aquí? Un forastero errante puede haber iniciado un viaje por una serie de razones. Dejar atrás su patria puede haber sido un acto voluntario o involuntario. Para determinar por qué estás tan lejos de tu hogar, haz una tirada usando la tabla que se presenta a continuación o escoge una de las opciones que se te ofrecen. El apartado siguiente p"
+    },
+    "automationNotes": [
+      "Equipo inicial, herramientas e idiomas elegibles se conservan en la descripción; revisa las decisiones que no tengan selector estructurado."
+    ]
+  },
+  {
+    "id": "background-guardia-de-ciudad",
+    "name": "Guardia de Ciudad",
+    "source": {
+      "page": 414,
+      "endPage": 414,
+      "title": "Trasfondos Extras"
+    },
+    "description": "Guardia de Ciudad Trabajas para la comunidad en la que has crecido y eres su primera línea de defensa contra el crimen. No eres un soldado, sino alguien que dirige su mirada a posibles enemigos. En vez de eso, tu servicio a tu ciudad natal consistió en ayudar a controlar su población y proteger a sus ciudadanos de delincuentes y maleantes de toda clase. Puede que hayas formado parte de la Guardia de la Ciudad de Waterdeep, la fuerza policial armada con porras de la Ciudad de los Esplendores, que defiende al pueblo llano tanto de ladrones como de la nobleza pendenciera. O puedes haber sido uno de los valientes defensores de Silverymoon, miembro de la Guardia de Plata o incluso un miembro de la Guardia Sortílega, portador de magia. Quizá provienes de Neverwinter y has sido uno de los guardias de Wintershield la nueva fuerza que jura mantener a salvo la Ciudad de las Manos Diestras. Aunque no hayas nacido o te hayas criado en una ciudad, este trasfondo puede describir tus primeros años como miembro de un cuerpo policial. La mayoría de asentamientos de cualquier tamaño tienen agentes y fuerzas policiales. Incluso las comunidades más pequeñas cuentan con sherifís y alguaciles preparados para proteger su comunidad. Competencias en habilidades: Atletismo, Perspicacia. Idiomas: Dos de tu elección. Equipo: Uniforme como el que lleva tu unidad y que indique tu rango, un cuerno para pedir ayuda, un juego de esposas y una bolsa con 10 po. Rasgo: Ojo de Guardian Debido a tu experiencia haciendo cumplirlas leyes y lidiando con malhechores, tienes cierta intuición para entender la legislación y los criminales de una zona. Puedes encontrar sin mayores problemas el puesto fronterizo de la guardia o una organización parecida en cualquier lugar, así como los escondrijos de la actividad criminal de una comunidad con la misma facilidad, aunque es más probable que seas mejor acogido entre los guardias que entre los ladrones. Variante: Investigador Los investigadores de una comunidad, menos numerosos que los guardias o los miembros de una patrulla, poseen el deber de resolver crímenes en base a hechos. Aunque raramente se da este tipo de persona en zonas rurales, casi cualquier asentamiento de tamaño decente tiene como mínimo a uno o dos miembros de la guardia con la habilidad de investigar los lugares en los que se ha cometido un crimen y perseguir a los malhechores. Si tienes experiencia previa como investigador, posees competencia en Investigación en vez de en Atletismo.",
+    "skillProficiencies": [
+      "athletics",
+      "insight"
+    ],
+    "languages": [],
+    "choices": [],
+    "featureIds": [],
+    "sourceFields": {
+      "competencias en habilidades": "Atletismo, Perspicacia.",
+      "idiomas": "Dos de tu elección.",
+      "equipo": "Uniforme como el que lleva tu unidad y que indique tu rango, un cuerno para pedir ayuda, un juego de esposas y una bolsa con 10 po. Rasgo: Ojo de Guardian Debido a tu experiencia haciendo cumplirlas leyes y lidiando con malhechores, tienes cierta intuición para entender la legislación y los criminales de una zona. Puedes encontrar sin mayores problemas el puesto fronterizo de la guardia o una organización parecida en cualquier lugar, así como los escondrijos de la actividad criminal de una comunidad con la misma facilidad, aunque es más probable que seas mejor acogido entre los guardias que entre los ladrones. Variante: Investigador Los inves"
+    },
+    "automationNotes": [
+      "Equipo inicial, herramientas e idiomas elegibles se conservan en la descripción; revisa las decisiones que no tengan selector estructurado."
+    ]
+  },
+  {
+    "id": "background-investigador",
+    "name": "Investigador",
+    "source": {
+      "page": 414,
+      "endPage": 414,
+      "title": "Trasfondos Extras"
+    },
+    "description": "Variante: Investigador Los investigadores de una comunidad, menos numerosos que los guardias o los miembros de una patrulla, poseen el deber de resolver crímenes en base a hechos. Aunque raramente se da este tipo de persona en zonas rurales, casi cualquier asentamiento de tamaño decente tiene como mínimo a uno o dos miembros de la guardia con la habilidad de investigar los lugares en los que se ha cometido un crimen y perseguir a los malhechores. Si tienes experiencia previa como investigador, posees competencia en Investigación en vez de en Atletismo.",
+    "skillProficiencies": [
+      "investigation",
+      "insight"
+    ],
+    "languages": [],
+    "choices": [],
+    "featureIds": [],
+    "sourceFields": {
+      "competencias en habilidades": "Atletismo, Perspicacia.",
+      "idiomas": "Dos de tu elección.",
+      "equipo": "Uniforme como el que lleva tu unidad y que indique tu rango, un cuerno para pedir ayuda, un juego de esposas y una bolsa con 10 po. Rasgo: Ojo de Guardian Debido a tu experiencia haciendo cumplirlas leyes y lidiando con malhechores, tienes cierta intuición para entender la legislación y los criminales de una zona. Puedes encontrar sin mayores problemas el puesto fronterizo de la guardia o una organización parecida en cualquier lugar, así como los escondrijos de la actividad criminal de una comunidad con la misma facilidad, aunque es más probable que seas mejor acogido entre los guardias que entre los ladrones. Variante: Investigador Los inves"
+    },
+    "automationNotes": [
+      "Equipo inicial, herramientas e idiomas elegibles se conservan en la descripción; revisa las decisiones que no tengan selector estructurado.",
+      "Variante del trasfondo Guardia de Ciudad. Revisa los cambios de equipo y rasgo en su descripción."
+    ],
+    "parentId": "background-guardia-de-ciudad",
+    "version": "Variante"
+  },
+  {
+    "id": "background-heredero",
+    "name": "Heredero",
+    "source": {
+      "page": 414,
+      "endPage": 415,
+      "title": "Trasfondos Extras"
+    },
+    "description": "Heredero Has heredado algo de gran valor; no solo dinero o fortuna, sino un objeto que se te ha confiado a ti y solo a ti. Puede que esta herencia te la haya legado directamente un miembro de tu familia por derecho de nacimiento, o bien que te la haya dejado un amigo, mentor, profesor o alguien importante. La revelación de esta herencia te cambió la vida, y quizá te condujo al camino de la aventura. Sin embargo, también puede estar cargada de peligros, incluyendo a quienes codician tu tesoro y te lo quieren arrebatar, si hace falta, por la fuerza. Competencias en habilidades: Supervivencia, además de una habilidad a escoger entre Conocimiento Arcano, Historia y Religión. Competencias con herramientas: elige un instrumento musical o un juego. Idiomas: cualquiera que elijas. Equipo: tu herencia, una muda de ropas de viaje, cualquier objeto con el que tengas competencia y una bolsa con 15 po. Rasgo: Herencia Escoge o determina aleatoriamente tu herencia a partir de las posibilidades de la tabla que hay a continuación. Para definir los detalles colabora con tu Dungeon Master, ¿Por qué te es tan importante y cuál es la historia que hay tras ella? Tal vez prefieras que el DM invente esos datos como parte de juego, lo que te permite ir averiguando aspectos de tu herencia a medida que lo hace tu personaje. El Dungeon Master puede usar tu herencia como gancho para una historia. Puede hacerte cumplir misiones para destapar su historia o su naturaleza real, o bien obligarte a enfrentarte con enemigos que quieren quedársela o evitar que averigües lo que buscas. El DM también elige las propiedades de tu herencia y cómo encajan en la narración y la importancia del objeto. Por ejemplo, puede tratarse de un objeto mágico de poca trascendencia o de uno que empiece con una capacidad moderada y aumente de poder a medida que pasa el tiempo. También puede ser que la naturaleza real no sea aparente al principio y solo se revele si se dan ciertas condiciones Cuando empieces tu carrera como aventurero, puedes decidir si hablas de inmediato sobre tu herencia con tus compañeros. En vez de atraer la atención, quizá prefieras que siga siendo un secreto hasta que sepas más sobre su significado y sobre su utilidad para ti. d8 Objeto o Característica 1 Documento, como un mapa, una carta o un diario 2-3 Una bagatela 4 Una prenda de ropa 5 Una joya 6 Un libro un formulario de conocimiento arcano 7 Un relato, una canción, un poema o un secreto puesto por escrito 8 Un tatuaje u otra marca corporal",
+    "skillProficiencies": [
+      "survival"
+    ],
+    "languages": [],
+    "choices": [
+      {
+        "id": "background-heredero-skills",
+        "type": "choose_skill",
+        "name": "Habilidades del trasfondo",
+        "amount": 1,
+        "options": [
+          {
+            "id": "arcana",
+            "name": "Arcano",
+            "effects": [
+              {
+                "type": "skill_proficiency",
+                "skill": "arcana"
+              }
+            ]
+          },
+          {
+            "id": "history",
+            "name": "Historia",
+            "effects": [
+              {
+                "type": "skill_proficiency",
+                "skill": "history"
+              }
+            ]
+          },
+          {
+            "id": "religion",
+            "name": "Religión",
+            "effects": [
+              {
+                "type": "skill_proficiency",
+                "skill": "religion"
+              }
+            ]
+          }
+        ],
+        "required": true
+      }
+    ],
+    "featureIds": [],
+    "sourceFields": {
+      "competencias en habilidades": "Supervivencia, además de una habilidad a escoger entre Conocimiento Arcano, Historia y Religión.",
+      "competencias con herramientas": "elige un instrumento musical o un juego.",
+      "idiomas": "cualquiera que elijas.",
+      "equipo": "tu herencia, una muda de ropas de viaje, cualquier objeto con el que tengas competencia y una bolsa con 15 po. Rasgo: Herencia Escoge o determina aleatoriamente tu herencia a partir de las posibilidades de la tabla que hay a continuación. Para definir los detalles colabora con tu Dungeon Master, ¿Por qué te es tan importante y cuál es la historia que hay tras ella? Tal vez prefieras que el DM invente esos datos como parte de juego, lo que te permite ir averiguando aspectos de tu herencia a medida que lo hace tu personaje. El Dungeon Master puede usar tu herencia como gancho para una historia. Puede hacerte cumplir misiones para destapar su hi"
+    },
+    "automationNotes": [
+      "Equipo inicial, herramientas e idiomas elegibles se conservan en la descripción; revisa las decisiones que no tengan selector estructurado."
+    ]
+  },
+  {
+    "id": "background-mercenario-veterano",
+    "name": "Mercenario Veterano",
+    "source": {
+      "page": 415,
+      "endPage": 416,
+      "title": "Trasfondos Extras"
+    },
+    "description": "Mercenario Veterano Como mercenario que lucha en contiendas a cambio de dinero, estás muy acostumbrado a jugarte la vida por la oportunidad de ganar parte de un tesoro. Ahora estás dispuesto a matar a enemigos y a conseguir incluso mejores recompensas como aventurero. Tu experiencia te familiariza con los pormenores de la vida del mercenario y es posible que tengas relatos desgarradores de lo acontecido en el campo de batalla. Tal vez serviste en un batallón grande, como el de los Zhentaris o los soldados de Mintarn, o en un grupo menor de mercenarios (o puede que incluso en más de uno). Consulta la caja “Mercenarios del Norte\" para ver varias posibilidades. Ahora buscas algo distinto, tal vez una recompensa mayor a cambio de los riesgos que asumes o quizá la libertad de escoger tus propias actividades. Sea cual sea el motivo, dejas atrás la vida de un soldado a sueldo, pero tus habilidades son sin duda adecuadas para el combate, de modo que ahora sigues luchando, pero de otro modo. Competencias en habilidades: Atletismo, Persuasión. Competencias con herramientas: un juego, vehículos terrestres Equipo: el uniforme de tu compañía (ropas de viaje de calidad), la insignia con tu rango, las piezas de un juego que escojas y una bolsa que contiene lo que queda de tu última paga (10 po). Rasgo: Vida Mercenaria Conoces la vida mercenaria como solo puede hacerlo quien la ha vivido. Eres capaz de identificar a las compañías de mercenarios por sus emblemas y sabes un poco sobre cualquiera de ella, incluyendo los nombres y la reputación de sus comandantes y líderes, así como quién los ha contratado últimamente. Puedes hallar las tabernas y los salones donde moran los mercenarios en cualquier lugar, siempre que hables el idioma de esa zona. Encuentras el suficiente trabajo de mercenario entre aventuras como para tener un nivel de vida cómodo.",
+    "skillProficiencies": [
+      "athletics",
+      "persuasion"
+    ],
+    "languages": [],
+    "choices": [],
+    "featureIds": [],
+    "sourceFields": {
+      "competencias en habilidades": "Atletismo, Persuasión.",
+      "competencias con herramientas": "un juego, vehículos terrestres",
+      "equipo": "el uniforme de tu compañía (ropas de viaje de calidad), la insignia con tu rango, las piezas de un juego que escojas y una bolsa que contiene lo que queda de tu última paga (10 po). Rasgo: Vida Mercenaria Conoces la vida mercenaria como solo puede hacerlo quien la ha vivido. Eres capaz de identificar a las compañías de mercenarios por sus emblemas y sabes un poco sobre cualquiera de ella, incluyendo los nombres y la reputación de sus comandantes y líderes, así como quién los ha contratado últimamente. Puedes hallar las tabernas y los salones donde moran los mercenarios en cualquier lugar, siempre que hables el idioma de esa zona. Encuentras e"
+    },
+    "automationNotes": [
+      "Equipo inicial, herramientas e idiomas elegibles se conservan en la descripción; revisa las decisiones que no tengan selector estructurado."
+    ]
+  },
+  {
+    "id": "background-miembro-de-una-tribu-uthgardt",
+    "name": "Miembro de Una Tribu Uthgardt",
+    "source": {
+      "page": 416,
+      "endPage": 417,
+      "title": "Trasfondos Extras"
+    },
+    "description": "Miembro de Una Tribu Uthgardt Puede que acabes de llegar a tierras civilizadas, pero los valores de la cooperación y el trabajo en equipo para conseguir la supremacía no te son extraños. Aprendiste estos principios y mucho más siendo miembro de una tribu uthgardt. Los tuyos siempre habéis intentado preservar las antiguas costumbres. La tradición y los tabúes han mantenido fuertes a los uthgardis mientras que los reinos ajenos se hundían en el caos y la ruina. No obstante, en estas últimas generaciones, algunos grupos de las tribus tuvieron la tentación de asentarse, hacer las paces, comerciar e incluso construir pueblos. Tal vez por eso Ulhgar quiso erigir los tótems entre su pueblo, como encarnación en vida de su poder. Quizá necesitaban que les recordasen quiénes eran y de dónde venían. Los Elegidos de Uthgar devolvieron a los grupos al pasado y la mayoría de tu pueblo abandonó las blandas costumbres de la civilización Tal vez te criaste en una de las tribus que decidieron echar raíces y te sientes a la deriva, ahora que han abandonado ese camino. O quizá provienes de una parte de los uthgardis que se mantienen fieles a la tradición, pero quieres traer grandeza a tu tribu consiguiendo gestas memorables como un aventurero extraordinario. Competencias en habilidades: Atletismo, Supervivencia. Competencias con herramientas: un tipo de herramientas de artesano o un instrumento musical Idiomas: uno de tu elección. Equipo: una trampa para cazar, un símbolo de tótem o un conjunto de tatuajes que marquen tu lealtad a Uthgar y al tótem de tu tribu, una muda de ropas de viaje y una bolsa con 10 po. Rasgo: Linaje Uthgardt No solo tienes un conocimiento excelente del territorio de tu tribu, sino que también conoces el terreno y los recursos naturales del resto del Norte. Estás lo suficientemente familiarizado con cualquier zona de naturaleza salvaje como para encontrar el doble de comida y agua de la que conseguirías forrajeando. Además, puedes recurrir a la hospitalidad de tu pueblo y de los aliados de tu tribu, lo que a menudo incluye a miembros de círculos druídicos, tribus de elfos nómadas, los Arpistas y los sacerdotes devotos de los dioses del Primer Círculo.",
+    "skillProficiencies": [
+      "athletics",
+      "survival"
+    ],
+    "languages": [],
+    "choices": [],
+    "featureIds": [],
+    "sourceFields": {
+      "competencias en habilidades": "Atletismo, Supervivencia.",
+      "competencias con herramientas": "un tipo de herramientas de artesano o un instrumento musical",
+      "idiomas": "uno de tu elección.",
+      "equipo": "una trampa para cazar, un símbolo de tótem o un conjunto de tatuajes que marquen tu lealtad a Uthgar y al tótem de tu tribu, una muda de ropas de viaje y una bolsa con 10 po. Rasgo: Linaje Uthgardt No solo tienes un conocimiento excelente del territorio de tu tribu, sino que también conoces el terreno y los recursos naturales del resto del Norte. Estás lo suficientemente familiarizado con cualquier zona de naturaleza salvaje como para encontrar el doble de comida y agua de la que conseguirías forrajeando. Además, puedes recurrir a la hospitalidad de tu pueblo y de los aliados de tu tribu, lo que a menudo incluye a miembros de círculos druídic"
+    },
+    "automationNotes": [
+      "Equipo inicial, herramientas e idiomas elegibles se conservan en la descripción; revisa las decisiones que no tengan selector estructurado."
+    ]
+  },
+  {
+    "id": "background-noble-de-waterdeep",
+    "name": "Noble de Waterdeep",
+    "source": {
+      "page": 417,
+      "endPage": 417,
+      "title": "Trasfondos Extras"
+    },
+    "description": "Noble de Waterdeep Eres un vástago de uno de los grandes linajes nobles de Waterdeep. La nobleza de Waterdeep se compone de familias humanas que protegen afanosamente su privilegio y su posición en la Ciudad de los Esplendores. Tienen la reputación por todo Faerun de ser excéntricos, mimados, corruptos y, sobre todo, ricos. Tanto si eres un ejemplo perfecto que coincide con esta fama o la excepción que confirma la norma, se esperan cosas de ti cuando se sabe tu apellido y lo que significa. Probablemente, tus motivos para dedicarte a ser aventurero estén relacionados con tu linaje. ¿Eres el rebelde de la familia que prefiere recorrer mazmorras mugrientas a aburrirte en un baile, o has aceptado la espada o los conjuros de parte de tu casa para asegurarte de que tienen a alguien de prestigio que proteja su legado? Colabora con tu DM para crear al linaje del que formas parte. Hay unas setenta y cinco familias en Waterdeep y cada una cuenta con sus propios intereses económicos, especialidades y ardides. Tal vez formas parte del linaje principal de tu familia y seas candidato a convertirte en su líder en el futuro. O quizá seas uno de muchos primos, con menos prestigio, pero también menos responsabilidad. Competencias en habilidades: Historia, Persuasión. Competencias con herramientas: un tipo de instrumento musical o de juego. Idiomas: uno de tu elección. Equipo: una muda de ropas elegantes, un anillo de sellar o un broche, un pergamino que marca tu genealogía, una bota de buen zzar o de vino y un monedero con 20 po. Rasgo: Atendido Como Corresponde Mientras te encuentres en Waterdeep o en cualquier parte del Norte tu linaje se ocupa de tus necesidades diarias. Tu nombre y sello bastan para cubrir la mayoría de tus gastos. Las posadas, tabernas y salas de fiestas que frecuentas suelen estar encantadas de anotar tu deuda y enviarla factura a tu casa familiar en Waterdeep para que se les abone lo que debes. Esta ventaja te permite asumir un nivel de vida cómodo sin pagar 2 po al día por ello o bien reducir el coste del nivel de vida lujoso o aristocrático en esa cantidad. No puedes mantener un nivel de vida menos pudiente y usar la diferencia como ingresos. Este beneficio es una apertura de crédito y no una recompensa monetaria en sí.",
+    "skillProficiencies": [
+      "history",
+      "persuasion"
+    ],
+    "languages": [],
+    "choices": [],
+    "featureIds": [],
+    "sourceFields": {
+      "competencias en habilidades": "Historia, Persuasión.",
+      "competencias con herramientas": "un tipo de instrumento musical o de juego.",
+      "idiomas": "uno de tu elección.",
+      "equipo": "una muda de ropas elegantes, un anillo de sellar o un broche, un pergamino que marca tu genealogía, una bota de buen zzar o de vino y un monedero con 20 po. Rasgo: Atendido Como Corresponde Mientras te encuentres en Waterdeep o en cualquier parte del Norte tu linaje se ocupa de tus necesidades diarias. Tu nombre y sello bastan para cubrir la mayoría de tus gastos. Las posadas, tabernas y salas de fiestas que frecuentas suelen estar encantadas de anotar tu deuda y enviarla factura a tu casa familiar en Waterdeep para que se les abone lo que debes. Esta ventaja te permite asumir un nivel de vida cómodo sin pagar 2 po al día por ello o bien redu"
+    },
+    "automationNotes": [
+      "Equipo inicial, herramientas e idiomas elegibles se conservan en la descripción; revisa las decisiones que no tengan selector estructurado."
+    ]
+  }
+]

@@ -1,0 +1,338 @@
+[
+  {
+    "type": "spell-level-conflict",
+    "name": "Tormenta de Bolas de Nieve de Snilloc",
+    "page": 588,
+    "printed": 3,
+    "section": 2
+  },
+  {
+    "type": "spell-level-conflict",
+    "name": "Libertad de los Vientos",
+    "page": 632,
+    "printed": 3,
+    "section": 5
+  },
+  {
+    "type": "pdf-link-wrong-target",
+    "classId": "class-artificiero",
+    "page": 454,
+    "label": "Identificar",
+    "linkTarget": "Hechizar Persona",
+    "usedExactTitle": "Identificar"
+  },
+  {
+    "type": "pdf-link-wrong-target",
+    "classId": "class-artificiero",
+    "page": 454,
+    "label": "Santuario",
+    "linkTarget": "Saeta Guiada",
+    "usedExactTitle": "Santuario"
+  },
+  {
+    "type": "spell-list-source-alias",
+    "classId": "class-bardo",
+    "listName": "Amigos",
+    "spellName": "Amistad",
+    "page": 456
+  },
+  {
+    "type": "pdf-link-wrong-target",
+    "classId": "class-bardo",
+    "page": 456,
+    "label": "Sugestión",
+    "linkTarget": "Silencio",
+    "usedExactTitle": "Sugestión"
+  },
+  {
+    "type": "spell-list-source-alias",
+    "classId": "class-bardo",
+    "listName": "Zona de verdad",
+    "spellName": "Zona de la Verdad",
+    "page": 456
+  },
+  {
+    "type": "spell-list-source-alias",
+    "classId": "class-bardo",
+    "listName": "Círculo de teletransportación",
+    "spellName": "Circulo de Teletransporte",
+    "page": 457
+  },
+  {
+    "type": "spell-list-source-alias",
+    "classId": "class-bardo",
+    "listName": "Conocer las leyendas",
+    "spellName": "Conocimiento de Leyendas",
+    "page": 457
+  },
+  {
+    "type": "spell-list-source-alias",
+    "classId": "class-bardo",
+    "listName": "Sugestión en masa",
+    "spellName": "Sugestión de Masas",
+    "page": 457
+  },
+  {
+    "type": "spell-list-source-alias",
+    "classId": "class-brujo",
+    "listName": "Amigos",
+    "spellName": "Amistad",
+    "page": 458
+  },
+  {
+    "type": "pdf-link-wrong-target",
+    "classId": "class-brujo",
+    "page": 458,
+    "label": "Crear Hoguera",
+    "linkTarget": "Infestación",
+    "usedExactTitle": "Crear Hoguera"
+  },
+  {
+    "type": "spell-list-source-alias",
+    "classId": "class-brujo",
+    "listName": "Corona de locura",
+    "spellName": "Corona de la Locura",
+    "page": 458
+  },
+  {
+    "type": "spell-list-source-alias",
+    "classId": "class-brujo",
+    "listName": "Círculo de teletransportación",
+    "spellName": "Circulo de Teletransporte",
+    "page": 459
+  },
+  {
+    "type": "spell-list-source-alias",
+    "classId": "class-brujo",
+    "listName": "Conjurar feérico",
+    "spellName": "Conjurar ser Feérico",
+    "page": 459
+  },
+  {
+    "type": "spell-list-source-alias",
+    "classId": "class-brujo",
+    "listName": "Sugestión en masa",
+    "spellName": "Sugestión de Masas",
+    "page": 459
+  },
+  {
+    "type": "spell-list-source-alias",
+    "classId": "class-brujo",
+    "listName": "Desplazamiento entre planos",
+    "spellName": "Desplazamiento de Plano",
+    "page": 459
+  },
+  {
+    "type": "spell-list-source-alias",
+    "classId": "class-clerigo",
+    "listName": "Escudo de la fe",
+    "spellName": "Escudo de Fe",
+    "page": 460
+  },
+  {
+    "type": "spell-list-source-alias",
+    "classId": "class-clerigo",
+    "listName": "Palabra sanadora",
+    "spellName": "Palabra Curativa",
+    "page": 460
+  },
+  {
+    "type": "pdf-link-wrong-target",
+    "classId": "class-clerigo",
+    "page": 460,
+    "label": "Santuario",
+    "linkTarget": "Saeta Guiada",
+    "usedExactTitle": "Santuario"
+  },
+  {
+    "type": "spell-list-source-alias",
+    "classId": "class-clerigo",
+    "listName": "Zona de verdad",
+    "spellName": "Zona de la Verdad",
+    "page": 460
+  },
+  {
+    "type": "spell-list-source-alias",
+    "classId": "class-clerigo",
+    "listName": "Crear comida y agua",
+    "spellName": "Crear Comida y Bebida",
+    "page": 460
+  },
+  {
+    "type": "spell-list-source-alias",
+    "classId": "class-clerigo",
+    "listName": "Conocer las leyendas",
+    "spellName": "Conocimiento de Leyendas",
+    "page": 460
+  },
+  {
+    "type": "spell-list-source-alias",
+    "classId": "class-clerigo",
+    "listName": "Desplazamiento entre planos",
+    "spellName": "Desplazamiento de Plano",
+    "page": 461
+  },
+  {
+    "type": "spell-list-source-alias",
+    "classId": "class-druida",
+    "listName": "Controlar llamas",
+    "spellName": "Controlar Llama",
+    "page": 462
+  },
+  {
+    "type": "spell-list-source-alias",
+    "classId": "class-druida",
+    "listName": "Palabra sanadora",
+    "spellName": "Palabra Curativa",
+    "page": 462
+  },
+  {
+    "type": "spell-list-source-alias",
+    "classId": "class-druida",
+    "listName": "Conjurar elementales menores",
+    "spellName": "Conjurar Elementales Menor",
+    "page": 463
+  },
+  {
+    "type": "spell-list-source-alias",
+    "classId": "class-druida",
+    "listName": "Conjurar seres de los bosques",
+    "spellName": "Conjurar Seres de los Bosque",
+    "page": 463
+  },
+  {
+    "type": "spell-list-source-alias",
+    "classId": "class-druida",
+    "listName": "Conjurar feérico",
+    "spellName": "Conjurar ser Feérico",
+    "page": 463
+  },
+  {
+    "type": "spell-list-source-alias",
+    "classId": "class-druida",
+    "listName": "Desplazamiento entre planos",
+    "spellName": "Desplazamiento de Plano",
+    "page": 463
+  },
+  {
+    "type": "spell-list-source-alias",
+    "classId": "class-explorador",
+    "listName": "Vínculo de la bestia",
+    "spellName": "Vinculo Bestial",
+    "page": 465
+  },
+  {
+    "type": "spell-list-source-alias",
+    "classId": "class-explorador",
+    "listName": "Conjurar seres de los bosques",
+    "spellName": "Conjurar Seres de los Bosque",
+    "page": 465
+  },
+  {
+    "type": "spell-list-source-alias",
+    "classId": "class-hechicero",
+    "listName": "Controlar llamas",
+    "spellName": "Controlar Llama",
+    "page": 466
+  },
+  {
+    "type": "spell-list-source-alias",
+    "classId": "class-hechicero",
+    "listName": "Corona de locura",
+    "spellName": "Corona de la Locura",
+    "page": 466
+  },
+  {
+    "type": "spell-list-source-alias",
+    "classId": "class-hechicero",
+    "listName": "Círculo de teletransportación",
+    "spellName": "Circulo de Teletransporte",
+    "page": 467
+  },
+  {
+    "type": "spell-list-source-alias",
+    "classId": "class-hechicero",
+    "listName": "Sugestión en masa",
+    "spellName": "Sugestión de Masas",
+    "page": 468
+  },
+  {
+    "type": "spell-list-source-alias",
+    "classId": "class-hechicero",
+    "listName": "Desplazamiento entre planos",
+    "spellName": "Desplazamiento de Plano",
+    "page": 468
+  },
+  {
+    "type": "spell-list-source-alias",
+    "classId": "class-mago",
+    "listName": "Controlar llamas",
+    "spellName": "Controlar Llama",
+    "page": 469
+  },
+  {
+    "type": "pdf-link-wrong-target",
+    "classId": "class-mago",
+    "page": 469,
+    "label": "Identificar",
+    "linkTarget": "Hechizar Persona",
+    "usedExactTitle": "Identificar"
+  },
+  {
+    "type": "spell-list-source-alias",
+    "classId": "class-mago",
+    "listName": "Corona de locura",
+    "spellName": "Corona de la Locura",
+    "page": 469
+  },
+  {
+    "type": "pdf-link-wrong-target",
+    "classId": "class-mago",
+    "page": 469,
+    "label": "Inmovilizar persona",
+    "linkTarget": "Imagen Múltiple",
+    "usedExactTitle": "Inmovilizar Persona"
+  },
+  {
+    "type": "spell-list-source-alias",
+    "classId": "class-mago",
+    "listName": "Conjurar elementales menores",
+    "spellName": "Conjurar Elementales Menor",
+    "page": 470
+  },
+  {
+    "type": "spell-list-source-alias",
+    "classId": "class-mago",
+    "listName": "Círculo de teletransportación",
+    "spellName": "Circulo de Teletransporte",
+    "page": 471
+  },
+  {
+    "type": "spell-list-source-alias",
+    "classId": "class-mago",
+    "listName": "Conocer las leyendas",
+    "spellName": "Conocimiento de Leyendas",
+    "page": 471
+  },
+  {
+    "type": "spell-list-source-alias",
+    "classId": "class-mago",
+    "listName": "Sugestión en masa",
+    "spellName": "Sugestión de Masas",
+    "page": 471
+  },
+  {
+    "type": "spell-list-source-alias",
+    "classId": "class-mago",
+    "listName": "Desplazamiento entre planos",
+    "spellName": "Desplazamiento de Plano",
+    "page": 472
+  },
+  {
+    "type": "spell-list-source-alias",
+    "classId": "class-paladin",
+    "listName": "Crear comida y agua",
+    "spellName": "Crear Comida y Bebida",
+    "page": 473
+  }
+]

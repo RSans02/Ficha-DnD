@@ -1,0 +1,29 @@
+{
+  "sourceFile": "Manual para Casi Todo de D&D 5e (V30.03.25).pdf",
+  "sourceSha256": "607d244499a3e1cd07631ce28ec61d4f51831a8b65ca91c0dd8da4775858a288",
+  "extractedAt": "2026-09-23T22:08:54.268536+00:00",
+  "pageNumbering": "1-based physical PDF pages",
+  "extractor": "pypdf, layout text extraction",
+  "pageCount": 633,
+  "outlineCount": 2066,
+  "totalCharacters": 2707903,
+  "emptyPages": [
+    211,
+    232
+  ],
+  "shortPages": [
+    {
+      "page": 211,
+      "characters": 0
+    },
+    {
+      "page": 232,
+      "characters": 0
+    }
+  ],
+  "fallbackExtractions": [],
+  "metadata": {
+    "/Producer": "iLovePDF",
+    "/ModDate": "D:20250330180942Z"
+  }
+}

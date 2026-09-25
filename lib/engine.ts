@@ -1,0 +1,513 @@
+import { ABILITIES, SKILLS, MULTICLASS_SLOTS, MULTICLASS_PROFICIENCIES } from './constants';
+import type { Ability, Attack, Catalog, Character, Choice, ChoiceOption, DerivedCharacter, DerivedValue, Effect, Feature, Prerequisite, Source, Spell } from './types';
+
+export const abilityModifier = (score: number) => Math.floor((score - 10) / 2);
+export const totalLevel = (c: Character) => c.classes.reduce((sum, cl) => sum + cl.level, 0);
+const unique = <T,>(values: T[]) => [...new Set(values)];
+const clone = <T,>(value: T): T => structuredClone(value);
+const norm = (s: string) => s.normalize('NFD').replace(/[\u0300-\u036f]/g, '').toLowerCase();
+const skillId = (s: string) => ({ animalHandling: 'animal-handling', sleightOfHand: 'sleight-of-hand' }[s] ?? SKILLS.find(k => norm(k.name) === norm(s))?.id ?? s);
+const abilityId = (s: string) => ABILITIES.find(a => a.id === s || norm(a.label) === norm(s))?.id;
+const optionId = (o: ChoiceOption | string) => typeof o === 'string' ? o : o.id;
+const numeric = (e: Effect) => typeof e.value === 'number' && Number.isFinite(e.value) ? e.value : 0;
+const PROFICIENCY_LABELS: Record<string, string> = { light: 'Armaduras ligeras', medium: 'Armaduras medias', heavy: 'Armaduras pesadas', shield: 'Escudos', simple: 'Armas sencillas', martial: 'Armas marciales', 'thieves-tools': 'Herramientas de ladrón', 'hand-crossbow': 'Ballesta de mano', 'light-crossbow': 'Ballesta ligera', longsword: 'Espada larga', shortsword: 'Espada corta', rapier: 'Estoque', quarterstaff: 'Bastón', scimitar: 'Cimitarra', club: 'Garrote', dagger: 'Daga', dart: 'Dardo', sling: 'Honda', javelin: 'Jabalina', spear: 'Lanza', mace: 'Maza' };
+const proficiencyLabel = (name: string) => PROFICIENCY_LABELS[name] ?? name;
+const proficiencyName = (name: string) => norm(proficiencyLabel(name));
+const newId = () => globalThis.crypto?.randomUUID?.() ?? `${Date.now().toString(36)}-${Math.random().toString(36).slice(2)}`;
+
+export function createCharacter(): Character {
+  const now = new Date().toISOString();
+  return { schemaVersion: 1, id: newId(), ownerId: 'local', name: '', concept: '', portrait: '', color: '#a8463a', isDemo: false,
+    createdAt: now, updatedAt: now, raceId: '', subraceId: '', backgroundId: '', classes: [],
+    abilities: { str: 10, dex: 10, con: 10, int: 10, wis: 10, cha: 10 }, abilityIncreases: {}, skillRanks: {}, skillBonuses: {}, choices: {}, featIds: [], spellSelections: {},
+    hp: { current: 0, temp: 0, rolls: [], hitDiceUsed: {} }, resourcesSpent: {}, slotsSpent: {}, conditions: [], inspiration: false, deathSaves: { successes: 0, failures: 0 },
+    attacks: [], inventory: [], money: { pc: 0, pp: 0, pe: 0, po: 0, ppt: 0 }, biography: {}, notes: [], favorites: { spells: [], features: [] }, manualOverrides: {},
+    manual: { languages: [], senses: [], resistances: [], immunities: [], proficiencies: [], features: [] }, history: [] };
+}
+
+export function withHistory(c: Character, text: string): Character {
+  const date = new Date().toISOString();
+  return { ...c, updatedAt: date, history: [...c.history, { id: newId(), date, text }].slice(-100) };
+}
+
+function races(c: Character, catalog: Catalog) {
+  const base = catalog.races.find(r => r.id === c.raceId);
+  const sub = catalog.races.find(r => r.id === c.subraceId && r.parentId === c.raceId);
+  return sub?.replacesParent ? [sub] : [base, sub].filter(r => r != null);
+}
+
+export function selectedFeatIds(c: Character, catalog?: Catalog): string[] {
+  const originChoices = catalog ? [...races(c, catalog).flatMap(r => r.choices), ...(catalog.backgrounds.find(b => b.id === c.backgroundId)?.choices ?? [])].filter(ch => ch.type === 'choose_feat').map(ch => ch.id) : Object.keys(c.choices).filter(id => id.endsWith('.feat'));
+  const asi = Object.entries(c.choices).filter(([id]) => id.startsWith('asi.') && c.classes.some(cl => id.startsWith(`asi.${cl.classId}.`) && Number(id.split('.').at(-1)) <= cl.level)).flatMap(([, values]) => values.filter(v => v.startsWith('feat:')).map(v => v.slice(5)));
+  return unique([...c.featIds, ...asi, ...originChoices.flatMap(id => (c.choices[id] ?? []).map(value => value.replace(/^feat:/, '')))]);
+}
+
+function classData(c: Character, catalog: Catalog) {
+  return c.classes.flatMap(entry => {
+    const cls = catalog.classes.find(cl => cl.id === entry.classId);
+    if (!cls) return [];
+    const sub = cls.subclasses.find(s => s.id === entry.subclassId);
+    const casting = sub?.spellcasting ?? cls.spellcasting;
+    const progression = sub?.spellcasting && sub.progression?.length ? sub.progression : cls.progression;
+    const row = progression.find(r => r.level === entry.level);
+    const classRow = cls.progression.find(r => r.level === entry.level);
+    return [{ entry, cls, sub, casting, row, classRow }];
+  });
+}
+
+function activeFeatures(c: Character, catalog: Catalog): Feature[] {
+  const ids = new Set(races(c, catalog).flatMap(r => r.featureIds));
+  const levels = new Map<string, number>();
+  for (const { entry, cls, sub } of classData(c, catalog)) {
+    levels.set(cls.id, entry.level);
+    if (sub) levels.set(sub.id, entry.level);
+    [...cls.featureIds, ...(sub?.featureIds ?? []), ...cls.progression.filter(row => row.level <= entry.level).flatMap(row => row.featureIds)].forEach(id => ids.add(id));
+  }
+  catalog.backgrounds.find(b => b.id === c.backgroundId)?.featureIds?.forEach(id => ids.add(id));
+  const all = [...catalog.features, ...c.manual.features];
+  const active = all.filter(f => (ids.has(f.id) || c.manual.features.some(m => m.id === f.id)) && (f.level === null || f.level <= (levels.get(f.originId) ?? totalLevel(c))) && !(f as Feature & { selectionOnly?: boolean }).selectionOnly && !f.optional);
+  // Feature choices may unlock further choices. Bounded closure avoids loops in source references.
+  const seen = new Set(active.map(f => f.id));
+  for (let pass = 0; pass < 10; pass++) {
+    const choices = [...races(c, catalog).flatMap(r => r.choices), ...active.flatMap(f => f.choices ?? []), ...classData(c, catalog).flatMap(d => (d.cls.choices ?? []).filter(ch => !ch.level || ch.level <= d.entry.level)), ...catalog.feats.filter(f => selectedFeatIds(c, catalog).includes(f.id)).flatMap(f => f.choices)];
+    const selected = choices.flatMap(ch => ch.options.filter(o => c.choices[ch.id]?.includes(optionId(o))).flatMap(o => typeof o === 'string' ? [] : o.effects ?? []));
+    const unlocked = selected.filter(e => e.type === 'feature' && typeof e.featureId === 'string').map(e => all.find(f => f.id === e.featureId)).filter((f): f is Feature => !!f && !seen.has(f.id));
+    if (!unlocked.length) break;
+    unlocked.forEach(f => { active.push(f); seen.add(f.id); });
+  }
+  return active;
+}
+
+/** Every applicable choice, including completed choices, for generic UI rendering. */
+export function getAllChoices(c: Character, catalog: Catalog): Choice[] {
+  const features = activeFeatures(c, catalog);
+  const choices: Choice[] = [...races(c, catalog).flatMap(r => r.choices), ...(catalog.backgrounds.find(b => b.id === c.backgroundId)?.choices ?? []), ...features.flatMap(f => f.choices ?? []), ...catalog.feats.filter(f => selectedFeatIds(c, catalog).includes(f.id)).flatMap(f => f.choices)];
+  classData(c, catalog).forEach(({ cls, entry }, index) => {
+    choices.push(...(cls.choices ?? []).filter(ch => !ch.level || ch.level <= entry.level).map(ch => ({ ...ch, classId: cls.id, amount: typeof ch.dynamicAmountResource === 'string' ? cls.progression.find(row => row.level === entry.level)?.resources[ch.dynamicAmountResource] ?? ch.amount : ch.amount })));
+    const multiclassSkill = /bardo|explorador|picaro/.test(norm(cls.name));
+    const skillAmount = index === 0 ? cls.skillChoices.amount : multiclassSkill ? 1 : 0;
+    if (skillAmount) choices.push({ id: `skills.${cls.id}`, type: 'skills', name: `Habilidades de ${cls.name}`, amount: skillAmount, classId: cls.id, required: true, source: index === 0 ? cls.source : { page: 451 }, options: (index > 0 && /bardo/.test(norm(cls.name)) ? SKILLS.map(s => s.id) : cls.skillChoices.options).map(id => ({ id: skillId(id), name: SKILLS.find(s => s.id === skillId(id))?.name ?? id, effects: [{ type: 'skill_proficiency', skill: skillId(id) }] })) });
+    if (index > 0 && norm(cls.name) === 'bardo') choices.push({ id: `instrument.${cls.id}`, type: 'choose_tool', name: 'Instrumento musical de multiclase bardo', amount: 1, required: true, options: [], classId: cls.id, source: { page: 451 } });
+    if (cls.subclassLevel && entry.level >= cls.subclassLevel) choices.push({ id: `subclass.${cls.id}`, type: 'subclass', name: `Subclase de ${cls.name}`, amount: 1, options: cls.subclasses.map(s => ({ id: s.id, name: s.name })), classId: cls.id, required: true, source: cls.source });
+    cls.progression.filter(row => row.level <= entry.level && row.featureNames.some(name => /mejora.*caracter|aumento.*caracter/i.test(norm(name)))).forEach(row => {
+      choices.push({ id: `asi.${cls.id}.${row.level}`, type: 'asi', name: `Mejora de características · ${cls.name} ${row.level}`, amount: 2, classId: cls.id, level: row.level, required: true, source: cls.source, options: [...ABILITIES.map(a => ({ id: `ability:${a.id}`, name: `${a.label} +1` })), ...catalog.feats.map(f => ({ id: `feat:${f.id}`, name: f.name, prerequisites: f.prerequisites }))] });
+    });
+  });
+  return [...new Map(choices.filter(ch => ch.amount > 0).map(ch => {
+    let options = ch.options;
+    if (ch.type === 'choose_feat' && !options.length) options = catalog.feats.map(f => ({ id: f.id, name: f.name, description: f.description, prerequisites: f.prerequisites }));
+    if (ch.type === 'choose_cantrip' && !options.length) options = catalog.spells.filter(s => s.level === 0 && (!ch.classId || spellClassAllowed(s, ch.classId, c, catalog))).map(s => ({ id: s.id, name: s.name, effects: [{ type: 'grant_spell', spellId: s.id }] }));
+    return [ch.id, { ...ch, options }] as const;
+  })).values()];
+}
+
+function effectsFor(c: Character, catalog: Catalog, features: Feature[]) {
+  const tagged: { effect: Effect; label: string }[] = [];
+  const add = (effects: Effect[] | undefined, label: string) => effects?.filter(e => !e.level || e.level <= totalLevel(c)).forEach(effect => tagged.push({ effect, label }));
+  races(c, catalog).forEach(r => add(r.effects, r.name));
+  features.forEach(f => add(f.effects, f.name));
+  catalog.feats.filter(f => selectedFeatIds(c, catalog).includes(f.id)).forEach(f => add(f.effects, f.name));
+  getAllChoices(c, catalog).forEach(ch => {
+    (c.choices[ch.id] ?? []).forEach(id => {
+      const option = ch.options.find(o => optionId(o) === id);
+      if (option && typeof option !== 'string') add(option.effects, `${ch.name}: ${option.name}`);
+      if (ch.type === 'choose_language') tagged.push({ effect: { type: 'language', value: id }, label: ch.name });
+      if (ch.type === 'choose_tool' && !ch.options.length) tagged.push({ effect: { type: 'proficiency', value: id }, label: ch.name });
+      if (ch.type === 'asi' && id.startsWith('ability:')) {
+        const ability = abilityId(id.slice(8));
+        if (ability) tagged.push({ effect: { type: 'ability_bonus', ability, value: 1 }, label: ch.name });
+      }
+    });
+  });
+  return tagged;
+}
+
+export function deriveCharacter(c: Character, catalog: Catalog): DerivedCharacter {
+  const level = totalLevel(c), warnings: string[] = [], raceData = races(c, catalog), classes = classData(c, catalog), features = activeFeatures(c, catalog);
+  const tagged = effectsFor(c, catalog, features);
+  const effectRows = (type: string) => tagged.filter(({ effect }) => effect.type === type);
+  const value = (key: string, rows: { label: string; value: number }[], mode: DerivedValue['mode'] = 'auto', source?: Source): DerivedValue => {
+    const auto = rows.reduce((n, row) => n + row.value, 0), override = c.manualOverrides[key];
+    return Number.isFinite(override) ? { value: override, mode: 'override', breakdown: [...rows, { label: 'Sustitución manual (diferencia)', value: override - auto }], source } : { value: auto, mode, breakdown: rows, source };
+  };
+  const abilities = Object.fromEntries(ABILITIES.map(a => {
+    const bonus = raceData.reduce((sum, r) => sum + (r.abilityBonuses[a.id] ?? 0), 0) + (c.abilityIncreases[a.id] ?? 0) + effectRows('ability_bonus').filter(x => x.effect.ability === a.id).reduce((sum, x) => sum + numeric(x.effect), 0);
+    const total = c.abilities[a.id] + bonus;
+    return [a.id, { base: c.abilities[a.id], bonus, total, modifier: abilityModifier(total) }];
+  })) as DerivedCharacter['abilities'];
+  const pb = catalog.classes.flatMap(cl => cl.progression).find(row => row.level === level && row.proficiencyBonus !== null)?.proficiencyBonus ?? 0;
+  const proficiency = value('proficiency', [{ label: `Competencia por nivel total ${level}`, value: pb }], pb ? 'auto' : 'manual', classes[0]?.cls.source);
+  if (level && !pb) warnings.push('Bonificador de competencia sin fila de progresión disponible: introdúcelo manualmente.');
+  const ranks: Record<string, number> = Object.fromEntries(Object.entries(c.skillRanks).map(([id, rank]) => [skillId(id), rank]));
+  const background = catalog.backgrounds.find(b => b.id === c.backgroundId);
+  background?.skillProficiencies?.forEach(id => { ranks[skillId(id)] = Math.max(1, ranks[skillId(id)] ?? 0); });
+  tagged.forEach(({ effect: e }) => {
+    if (['skill_proficiency', 'skill_expertise', 'expertise'].includes(e.type) && (e.skill || typeof e.value === 'string')) {
+      const id = skillId(e.skill ?? String(e.value)); ranks[id] = Math.max(ranks[id] ?? 0, e.type === 'skill_proficiency' ? 1 : 2);
+    }
+  });
+  const halfProficiency = effectRows('half_proficiency_untrained').slice(0, 1).map(x => ({ label: x.label, value: Math.floor(proficiency.value / 2) }));
+  const skills = Object.fromEntries(SKILLS.map(s => [s.id, value(`skill.${s.id}`, [{ label: ABILITIES.find(a => a.id === s.ability)!.label, value: abilities[s.ability].modifier }, { label: (ranks[s.id] ?? 0) >= 2 ? 'Pericia' : 'Competencia', value: (ranks[s.id] ?? 0) * proficiency.value }, ...((ranks[s.id] ?? 0) === 0 ? halfProficiency : []), { label: 'Bonificación manual', value: c.skillBonuses[s.id] ?? 0 }, ...effectRows('skill_bonus').filter(x => skillId(x.effect.skill ?? '') === s.id).map(x => ({ label: x.label, value: numeric(x.effect) }))])]));
+  const auraBonuses = effectRows('save_ability_bonus').filter(x => x.effect.condition !== 'conscious' || !c.conditions.some(condition => norm(condition) === 'inconsciente')).map(x => ({ label: `${x.label} (personal)`, value: Math.max(typeof x.effect.minimum === 'number' ? x.effect.minimum : 0, abilities[x.effect.ability ?? 'cha'].modifier) }));
+  const saveAbilities = classes[0]?.cls.savingThrows.map(abilityId) ?? [];
+  const saves = Object.fromEntries(ABILITIES.map(a => {
+    const proficient = saveAbilities.includes(a.id) || tagged.some(x => ['save_proficiency', 'saving_throw_proficiency'].includes(x.effect.type) && (x.effect.ability === a.id || x.effect.value === a.id));
+    return [a.id, value(`save.${a.id}`, [{ label: a.label, value: abilities[a.id].modifier }, { label: 'Competencia de salvación', value: proficient ? proficiency.value : 0 }, ...auraBonuses, ...effectRows('save_bonus').filter(x => !x.effect.ability || x.effect.ability === a.id).map(x => ({ label: x.label, value: numeric(x.effect) }))])];
+  })) as DerivedCharacter['saves'];
+  const firstDie = classes[0]?.cls.hitDie ?? 0;
+  if (c.hp.rolls.length !== Math.max(0, level - 1)) warnings.push('Faltan tiradas de puntos de golpe de niveles posteriores al primero.');
+  const hpMax = value('hpMax', [{ label: 'Dado máximo del primer nivel', value: firstDie }, { label: 'PG elegidos en niveles posteriores', value: c.hp.rolls.reduce((sum, roll) => sum + roll.value, 0) }, { label: `Constitución × ${level} niveles`, value: abilities.con.modifier * level }, ...effectRows('hp_per_level').map(x => ({ label: `${x.label} × ${level} niveles`, value: numeric(x.effect) * level })), ...effectRows('hp_bonus').map(x => ({ label: x.label, value: numeric(x.effect) }))], !firstDie && level ? 'manual' : 'auto');
+  const armor = c.inventory.filter(item => item.equipped && typeof item.armorBase === 'number');
+  const shields = c.inventory.filter(item => item.equipped && typeof item.shieldBonus === 'number');
+  if (armor.length > 1) warnings.push('Hay varias armaduras equipadas: se utiliza la primera.');
+  if (shields.length > 1) warnings.push('Hay varios escudos equipados: solo se aplica el primero.');
+  // Multiclass p.452: only the first acquired Unarmored Defense feature applies.
+  const unarmored = effectRows('unarmoredDefense').sort((a, b) => {
+    const origin = (label: string) => features.find(f => f.name === label)?.originId;
+    return c.classes.findIndex(cl => cl.classId === origin(a.label)) - c.classes.findIndex(cl => cl.classId === origin(b.label));
+  })[0];
+  const unarmoredAllowed = !armor.length && unarmored && (unarmored.effect.shieldAllowed === true || !shields.length);
+  let armorRows = armor.length ? [{ label: armor[0].name, value: armor[0].armorBase! }, { label: 'Destreza aplicable', value: armor[0].dexCap === 0 ? 0 : Math.min(abilities.dex.modifier, armor[0].dexCap ?? Infinity) }] : unarmoredAllowed ? [{ label: unarmored.label, value: 10 }, ...(Array.isArray(unarmored.effect.abilities) ? unarmored.effect.abilities : []).flatMap(a => typeof a === 'string' && abilityId(a) ? [{ label: ABILITIES.find(x => x.id === abilityId(a))!.label, value: abilities[abilityId(a)!].modifier }] : [])] : [];
+  const naturalArmor = effectRows('natural_armor');
+  const ignoresWornArmor = naturalArmor.some(x => x.effect.ignoresWornArmor === true);
+  if (ignoresWornArmor && armor.length) {
+    armorRows = [];
+    warnings.push('Tu armadura natural no obtiene beneficios de una armadura equipada.');
+  }
+  let armorSource = armor.length ? { page: 419, endPage: 420 } : undefined;
+  for (const natural of naturalArmor) {
+    const rows = [{ label: natural.label, value: numeric(natural.effect) }, ...(Array.isArray(natural.effect.abilities) ? natural.effect.abilities : []).flatMap(id => typeof id === 'string' && abilityId(id) ? [{ label: ABILITIES.find(a => a.id === abilityId(id))!.label, value: abilities[abilityId(id)!].modifier }] : [])];
+    if (!armorRows.length || rows.reduce((n, row) => n + row.value, 0) > armorRows.reduce((n, row) => n + row.value, 0)) {
+      armorRows = rows;
+      const source = features.find(f => f.name === natural.label && f.effects?.some(e => e.type === 'natural_armor'))?.source;
+      armorSource = source ? { page: source.page, endPage: source.endPage ?? source.page } : undefined;
+    }
+  }
+  if (!armorRows.length && !Number.isFinite(c.manualOverrides.ac)) warnings.push('La CA sin armadura queda manual cuando no hay un rasgo que proporcione su fórmula.');
+  const ac = value('ac', [...armorRows, ...shields.slice(0, 1).map(s => ({ label: s.name, value: s.shieldBonus! })), ...effectRows('ac_bonus').map(x => ({ label: x.label, value: numeric(x.effect) })), ...(armor.length && !ignoresWornArmor ? effectRows('conditional_ac_bonus').filter(x => x.effect.condition === 'wearing-armor').map(x => ({ label: x.label, value: numeric(x.effect) })) : [])], armorRows.length ? 'auto' : 'manual', armorSource);
+  const initiative = value('initiative', [{ label: 'Destreza', value: abilities.dex.modifier }, ...halfProficiency, ...effectRows('initiative_bonus').map(x => ({ label: x.label, value: numeric(x.effect) }))]);
+  const speedBase = [...raceData].reverse().find(r => r.speed !== null)?.speed;
+  const speedEffects = [...effectRows('speed_bonus'), ...effectRows('speed')].filter(x => {
+    if (!x.effect.condition) return true;
+    if (x.effect.condition === 'not-heavy-armor') {
+      if (!armor.length) return true;
+      const equipment = catalog.equipment.find(e => e.id === armor[0].equipmentId);
+      const category = norm(equipment?.armorCategory ?? equipment?.category ?? '');
+      if (/pesada|heavy/.test(category)) return false;
+      if (/ligera|media|light|medium/.test(category)) return true;
+      warnings.push(`${x.label}: movimiento condicional requiere verificar que la armadura no sea pesada; usa una sustitución manual si procede.`);
+    }
+    return false;
+  });
+  const monkMovement = !armor.length && !shields.length ? classes.flatMap(cl => {
+    const feature = features.find(f => f.originId === cl.cls.id && f.id === 'feature-monje-movimiento-sin-armadura');
+    const bonus = cl.classRow?.resources.unarmoredMovement;
+    return feature && bonus ? [{ label: feature.name, value: bonus }] : [];
+  }) : [];
+  const speed = value('speed', [{ label: 'Velocidad racial (pies)', value: speedBase ?? 0 }, ...speedEffects.map(x => ({ label: x.label, value: numeric(x.effect) })), ...monkMovement], speedBase === undefined ? 'manual' : 'auto');
+  const passivePerception = value('passivePerception', [{ label: 'Base pasiva', value: 10 }, { label: 'Percepción', value: skills.perception.value }, ...effectRows('passive_perception_bonus').map(x => ({ label: x.label, value: numeric(x.effect) }))]);
+  const resources = features.filter(f => f.resource).map(f => {
+    const max = f.resource!.max;
+    const own = classes.find(cl => cl.cls.id === f.originId || cl.sub?.id === f.originId);
+    const featureLevel = own?.entry.level ?? level;
+    let maximum = typeof max === 'number' ? max : 'byLevel' in max ? max.byLevel[Math.max(0, featureLevel - 1)] ?? 0 : Math.max(max.min, abilities[abilityId(max.ability) ?? 'cha'].modifier);
+    const resourceKey = (f as Feature & { resourceKey?: string }).resourceKey;
+    if (resourceKey && own?.classRow?.resources[resourceKey] !== undefined) maximum = own.classRow.resources[resourceKey];
+    let recovery = f.resource!.recovery;
+    if (norm(f.name).includes('inspiracion de bardo') && own && own.entry.level >= 5 && features.some(feature => norm(feature.name).includes('fuente de inspiracion'))) recovery = 'short';
+    if (norm(f.name) === 'forma salvaje' && features.some(feature => norm(feature.name) === 'archidruida')) maximum = -1;
+    return { id: f.id, name: f.name, max: maximum, spent: c.resourcesSpent[f.id] ?? 0, recovery, source: f.source };
+  });
+  const spellcasting: DerivedCharacter['spellcasting'] = [];
+  for (const { entry, cls, casting, row } of classes) {
+    if (!casting || !row) continue;
+    const slots = [...row.slots], maxSpellLevel = slots.reduce((max, count, i) => count > 0 ? i + 1 : max, 0);
+    if (!maxSpellLevel && !(row.cantrips && row.cantrips > 0)) continue;
+    const modifier = abilities[casting.ability].modifier;
+    const preparedLimit = casting.preparedFormula ? Math.max(1, (casting.preparedFormula === 'halfLevel+ability' ? Math.floor(entry.level / 2) : entry.level) + modifier) : null;
+    spellcasting.push({ classId: cls.id, ability: casting.ability, attack: value(`spellAttack.${cls.id}`, [{ label: ABILITIES.find(a => a.id === casting.ability)!.label, value: modifier }, { label: 'Competencia', value: proficiency.value }]), dc: value(`spellDC.${cls.id}`, [{ label: 'Base', value: 8 }, { label: ABILITIES.find(a => a.id === casting.ability)!.label, value: modifier }, { label: 'Competencia', value: proficiency.value }]), maxSpellLevel, cantrips: row.cantrips, knownLimit: row.knownSpells, preparedLimit, slots, pact: casting.mode === 'pact' || casting.progression === 'pact' });
+  }
+  const casters = spellcasting.filter(s => !s.pact);
+  let slots: number[] = casters[0]?.slots ?? [];
+  if (casters.length > 1) {
+    const casterData = classes.filter(cl => casters.some(sc => sc.classId === cl.cls.id));
+    {
+      const full = casterData.filter(cl => cl.casting?.progression === 'full').reduce((n, cl) => n + cl.entry.level, 0);
+      // Artificer exception explicitly printed on p.105; the shared table is p.452.
+      const artificer = casterData.filter(cl => /artificiero/.test(norm(cl.cls.name))).reduce((n, cl) => n + Math.ceil(cl.entry.level / 2), 0);
+      const half = Math.floor(casterData.filter(cl => cl.casting?.progression === 'half' && !/artificiero/.test(norm(cl.cls.name))).reduce((n, cl) => n + cl.entry.level, 0) / 2);
+      const third = Math.floor(casterData.filter(cl => cl.casting?.progression === 'third').reduce((n, cl) => n + cl.entry.level, 0) / 3);
+      slots = [...(MULTICLASS_SLOTS[Math.min(20, full + half + third + artificer)] ?? [])];
+    }
+  }
+  slots = Array.from({ length: Math.max(slots.length, ...Object.keys(c.manualOverrides).filter(k => /^slotMax\.\d$/.test(k)).map(k => Number(k.slice(8))), 0) }, (_, i) => c.manualOverrides[`slotMax.${i + 1}`] ?? slots[i] ?? 0);
+  const pactSlots = spellcasting.filter(s => s.pact).map(s => ({ classId: s.classId, level: s.maxSpellLevel, max: s.slots[s.maxSpellLevel - 1] ?? 0 }));
+  const strings = (kind: 'languages' | 'senses' | 'resistances' | 'immunities', effect: string) => unique([...raceData.flatMap(r => r[kind]), ...c.manual[kind], ...effectRows(effect).flatMap(x => typeof x.effect.value === 'string' ? [x.effect.value] : [])]);
+  const first = classes[0]?.cls;
+  const proficiencies = unique([...(first ? [...first.armorProficiencies, ...first.weaponProficiencies, ...first.toolProficiencies] : []), ...classes.slice(1).flatMap(cl => MULTICLASS_PROFICIENCIES[norm(cl.cls.name)] ?? []), ...c.manual.proficiencies, ...effectRows('proficiency').flatMap(x => typeof x.effect.value === 'string' ? [x.effect.value] : [])].map(proficiencyLabel));
+  warnings.push(...raceData.flatMap(r => r.automationNotes ?? []), ...classes.flatMap(d => d.cls.automationNotes ?? []), ...catalog.feats.filter(f => selectedFeatIds(c, catalog).includes(f.id)).flatMap(f => f.automationNotes ?? []));
+  // Channel Divinity multiclass p.451 grants new effects, never additive uses.
+  const divinity = resources.filter(r => norm(r.name) === 'canalizar divinidad');
+  const mergedResources = divinity.length > 1 ? resources.filter(r => !divinity.slice(1).some(other => other.id === r.id)).map(r => r.id === divinity[0].id ? { ...r, max: Math.max(...divinity.map(x => x.max)), spent: Math.max(...divinity.map(x => x.spent)) } : r) : resources;
+  return { level, proficiency, abilities, saves, skills, hpMax, ac, initiative, speed, passivePerception, features, resources: mergedResources, spellcasting, slots, pactSlots, languages: unique([...strings('languages', 'language'), ...(background?.languages ?? [])]), senses: strings('senses', 'sense'), resistances: strings('resistances', 'resistance'), immunities: strings('immunities', 'immunity'), proficiencies, warnings: unique(warnings) };
+}
+
+function spellClassAllowed(spell: Spell, classId: string, c: Character, catalog: Catalog) {
+  const cls = catalog.classes.find(cl => cl.id === classId);
+  const metadata = spell as Spell & { optionalForClasses?: string[]; availableToSubclasses?: string[]; dmAccessForClasses?: string[] };
+  const optional = metadata.optionalForClasses ?? [], subclass = c.classes.find(cl => cl.classId === classId)?.subclassId;
+  const direct = spell.availableToClasses.some(id => id === classId || (cls && norm(id) === norm(cls.name)));
+  const subclassAccess = !!subclass && metadata.availableToSubclasses?.includes(subclass);
+  const dmAccess = metadata.dmAccessForClasses?.includes(classId) && c.choices[`optional-spells.${classId}`]?.includes('enabled');
+  return !!(direct || subclassAccess || dmAccess) && (!optional.includes(classId) || !!c.choices[`optional-spells.${classId}`]?.includes('enabled'));
+}
+
+/** Racial and selected feat cantrips remain separate from class known/prepared limits. */
+export function getGrantedSpells(c: Character, catalog: Catalog): Spell[] {
+  const ids = effectsFor(c, catalog, activeFeatures(c, catalog)).filter(x => ['grant_spell', 'spell'].includes(x.effect.type)).map(x => x.effect.spellId);
+  return catalog.spells.filter(spell => ids.includes(spell.id));
+}
+
+export function deriveAttack(c: Character, attack: Attack, catalog: Catalog): { attack: DerivedValue; damageBonus: number } {
+  const d = deriveCharacter(c, catalog), modifier = d.abilities[attack.ability].modifier;
+  const breakdown = [{ label: ABILITIES.find(a => a.id === attack.ability)!.label, value: modifier }, { label: 'Competencia', value: attack.proficient ? d.proficiency.value : 0 }, { label: 'Bonificación adicional manual', value: attack.bonus }];
+  const automatic = breakdown.reduce((sum, row) => sum + row.value, 0), override = c.manualOverrides[`attack.${attack.id}`];
+  const overridden = Number.isFinite(override);
+  if (overridden) breakdown.push({ label: 'Sustitución manual (diferencia)', value: override - automatic });
+  return { attack: { value: overridden ? override : automatic, mode: overridden ? 'override' : 'auto', breakdown }, damageBonus: modifier };
+}
+
+/** Source p.307–308: six at first wizard level, two per later wizard level; copying has no maximum. */
+export function spellbookMinimum(c: Character, classId: string, catalog: Catalog): number | null {
+  const data = classData(c, catalog).find(cl => cl.cls.id === classId);
+  return data?.casting?.mode === 'spellbook' && norm(data.cls.name) === 'mago' ? 6 + 2 * (data.entry.level - 1) : null;
+}
+
+export function validSpells(c: Character, classId: string, catalog: Catalog): Spell[] {
+  const casting = deriveCharacter(c, catalog).spellcasting.find(s => s.classId === classId);
+  if (!casting) return [];
+  const data = classData(c, catalog).find(cl => cl.cls.id === classId);
+  const spellClass = data?.sub?.spellcasting && !data.cls.spellcasting ? catalog.classes.find(cl => norm(cl.name) === 'mago')?.id ?? classId : classId;
+  return catalog.spells.filter(s => s.level !== null && s.level <= casting.maxSpellLevel && spellClassAllowed(s, spellClass, c, catalog));
+}
+
+export function checkPrerequisites(reqs: Prerequisite[], c: Character, catalog: Catalog): string[] {
+  if (!reqs.length) return [];
+  const d = deriveCharacter(c, catalog);
+  const check = (r: Prerequisite): string[] => {
+    switch (r.type) {
+      case 'ability': case 'minimum_ability': return r.ability && d.abilities[r.ability].total < (r.minimum ?? Number(r.value) ?? 0) ? [`Requiere ${ABILITIES.find(a => a.id === r.ability)!.label} ${r.minimum ?? r.value}.`] : [];
+      case 'any': return (r.options ?? []).some(o => !check(o).length) ? [] : [`Requiere una alternativa: ${(r.options ?? []).flatMap(check).join(' ')}`];
+      case 'all': return (r.options ?? []).flatMap(check);
+      case 'level': case 'minimum_level': return d.level < (r.minimum ?? Number(r.value)) ? [`Requiere nivel ${r.minimum ?? r.value}.`] : [];
+      case 'class': return c.classes.some(cl => (cl.classId === r.value || norm(catalog.classes.find(x => x.id === cl.classId)?.name ?? '') === norm(String(r.value))) && cl.level >= (r.minimum ?? 1)) ? [] : [`Requiere ${r.value}${r.minimum ? ` de nivel ${r.minimum}` : ''}.`];
+      case 'race': return races(c, catalog).some(x => x.id === r.value || norm(x.name) === norm(String(r.value)) || (Array.isArray(r.values) && r.values.includes(x.id))) ? [] : [`Requiere raza ${r.value ?? (Array.isArray(r.values) ? r.values.join(' / ') : '')}.`];
+      case 'spellcasting': return d.spellcasting.length || getGrantedSpells(c, catalog).length ? [] : ['Requiere capacidad de lanzar conjuros.'];
+      case 'proficiency': {
+        const words = (text: string) => norm(text).split(/\W+/).filter(w => !['de', 'con', 'en', 'la', 'las', 'los', 'el'].includes(w)).map(w => w.replace(/s$/, ''));
+        return d.proficiencies.some(p => words(String(r.value)).every(w => words(p).includes(w))) ? [] : [`Requiere competencia: ${r.value}.`];
+      }
+      case 'source_requirement': {
+        const required = norm(String(r.value)), current = races(c, catalog);
+        const has = (name: string) => current.some(race => norm(race.name).includes(name));
+        const matches = required === 'enano o una raza pequena' ? has('enano') || current.some(race => /pequen/.test(norm(race.size ?? ''))) : required === 'elfo (drow)' ? has('drow') : required === 'elfo (bosque)' ? current.some(race => /elfo.*bosque|bosque.*elfo/.test(norm(race.name))) : required === 'elfo (alto)' ? current.some(race => /alto.*elfo|elfo.*alto/.test(norm(race.name))) : required.split(/,|\s+o\s+/).some(name => has(name.trim()));
+        return matches ? [] : [`Requiere ${r.value}.`];
+      }
+      case 'feat': return selectedFeatIds(c, catalog).includes(String(r.value)) ? [] : [`Requiere dote ${r.value}.`];
+      case 'feature': return d.features.some(f => f.id === r.value) ? [] : [`Requiere rasgo ${r.value}.`];
+      case 'spell': return Object.values(c.spellSelections).some(s => s.known.includes(String(r.value)) || s.prepared.includes(String(r.value))) || getGrantedSpells(c, catalog).some(s => s.id === r.value) ? [] : [`Requiere conocer el conjuro ${r.value}.`];
+      case 'requires_manual_verification': return typeof r.verificationChoiceId === 'string' && c.choices[r.verificationChoiceId]?.includes('confirmed') ? [] : [`Requiere verificar en el manual: ${r.value ?? r.description ?? 'requisito sin estructurar'}.`];
+      // Unknown requirements must never authorize an option silently.
+      default: return [`Requisito pendiente de verificación: ${r.value ?? r.type}.`];
+    }
+  };
+  return reqs.flatMap(check);
+}
+
+function choiceSelected(c: Character, choice: Choice) {
+  return choice.type === 'subclass' ? [c.classes.find(cl => cl.classId === choice.classId)?.subclassId ?? ''].filter(Boolean) : c.choices[choice.id] ?? [];
+}
+
+function choiceErrors(c: Character, choice: Choice, catalog: Catalog): string[] {
+  const selected = choiceSelected(c, choice), errors: string[] = [], allowed = choice.options.map(optionId);
+  if (choice.type === 'asi') {
+    if (!(selected.length === 1 && selected[0].startsWith('feat:')) && !(selected.length === 2 && selected.every(id => id.startsWith('ability:')))) errors.push(`${choice.name}: elige dos aumentos de +1 o una dote.`);
+  } else {
+    if (selected.length < choice.amount && choice.required !== false) errors.push(`${choice.name}: faltan ${choice.amount - selected.length} elecciones.`);
+    if (selected.length > choice.amount) errors.push(`${choice.name}: se permiten ${choice.amount} elecciones.`);
+    if (new Set(selected).size !== selected.length) errors.push(`${choice.name}: hay elecciones repetidas.`);
+  }
+  selected.forEach(id => {
+    const freeText = !allowed.length && ['choose_language', 'choose_tool'].includes(choice.type);
+    if (!(freeText ? id.trim().length > 0 && id.length <= 200 : allowed.includes(id))) errors.push(`${choice.name}: opción no válida (${id}).`);
+    const option = choice.options.find(o => optionId(o) === id);
+    if (option && typeof option !== 'string') errors.push(...checkPrerequisites(option.prerequisites ?? [], c, catalog).map(e => `${option.name}: ${e}`));
+    if (choice.distinctFrom?.some(other => c.choices[other]?.includes(id))) errors.push(`${choice.name}: ${id} ya se ha elegido en otra selección incompatible.`);
+    if (choice.type === 'expertise') {
+      if (getAllChoices(c, catalog).some(other => other.type === 'expertise' && other.id !== choice.id && c.choices[other.id]?.includes(id))) errors.push(`${choice.name}: la pericia ${id} ya está elegida.`);
+      if (choice.requiresProficiency) {
+        const before = { ...c, choices: { ...c.choices, [choice.id]: [] } };
+        const derived = deriveCharacter(before, catalog);
+        const skill = derived.skills[skillId(id)];
+        if (skill ? !skill.breakdown.some(row => /competencia|pericia/i.test(row.label) && row.value > 0) : !derived.proficiencies.some(p => proficiencyName(p).includes(proficiencyName(id)))) errors.push(`${choice.name}: necesitas competencia previa en ${SKILLS.find(s => s.id === id)?.name ?? id}.`);
+      }
+    }
+  });
+  return errors;
+}
+
+export function getPendingChoices(c: Character, catalog: Catalog): Choice[] {
+  const pending = getAllChoices(c, catalog).filter(ch => choiceErrors(c, ch, catalog).length > 0);
+  const d = deriveCharacter(c, catalog);
+  for (const caster of d.spellcasting) {
+    const selection = c.spellSelections[caster.classId] ?? { known: [], prepared: [] };
+    const options = validSpells(c, caster.classId, catalog);
+    if (caster.cantrips !== null && selection.known.filter(id => catalog.spells.find(s => s.id === id)?.level === 0).length !== caster.cantrips) pending.push({ id: `cantrips.${caster.classId}`, type: 'cantrips', name: 'Trucos conocidos', amount: caster.cantrips, classId: caster.classId, required: true, options: options.filter(s => s.level === 0).map(s => ({ id: s.id, name: s.name })) });
+    if (caster.knownLimit !== null && selection.known.filter(id => (catalog.spells.find(s => s.id === id)?.level ?? 0) > 0).length !== caster.knownLimit) pending.push({ id: `known.${caster.classId}`, type: 'spells', name: 'Conjuros conocidos', amount: caster.knownLimit, classId: caster.classId, required: true, options: options.filter(s => s.level! > 0).map(s => ({ id: s.id, name: s.name })) });
+    const bookMinimum = spellbookMinimum(c, caster.classId, catalog);
+    if (bookMinimum !== null && selection.known.filter(id => (catalog.spells.find(s => s.id === id)?.level ?? 0) > 0).length < bookMinimum) pending.push({ id: `book.${caster.classId}`, type: 'spells', name: 'Conjuros en el libro (mínimo)', amount: bookMinimum, minimum: true, classId: caster.classId, required: true, source: { page: 307, endPage: 308 }, options: options.filter(s => s.level! > 0).map(s => ({ id: s.id, name: s.name })) });
+    if (caster.preparedLimit !== null && !selection.prepared.length && caster.preparedLimit > 0) pending.push({ id: `prepared.${caster.classId}`, type: 'prepared', name: 'Conjuros preparados', amount: caster.preparedLimit, classId: caster.classId, required: false, options: options.filter(s => s.level! > 0).map(s => ({ id: s.id, name: s.name })) });
+  }
+  return pending;
+}
+
+function multiclassErrors(c: Character, catalog: Catalog) {
+  if (c.classes.length < 2) return [];
+  const d = deriveCharacter(c, catalog), errors: string[] = [];
+  classData(c, catalog).forEach(({ cls }) => {
+    const requirements = cls.multiclassRequirements;
+    if (!requirements?.length) return;
+    if (/guerrero/.test(norm(cls.name))) {
+      if (d.abilities.str.total < 13 && d.abilities.dex.total < 13) errors.push('Multiclase guerrero: requiere Fuerza 13 o Destreza 13 (p. 450).');
+    } else requirements.forEach(r => { if (d.abilities[r.ability].total < r.minimum) errors.push(`Multiclase ${cls.name}: requiere ${ABILITIES.find(a => a.id === r.ability)!.label} ${r.minimum} (p. 450).`); });
+  });
+  return errors;
+}
+
+export function validateCharacter(c: Character, catalog: Catalog): string[] {
+  const errors: string[] = [], d = deriveCharacter(c, catalog);
+  if (!c.name.trim()) errors.push('Introduce un nombre para el personaje.');
+  const race = catalog.races.find(r => r.id === c.raceId);
+  if (!race) errors.push('Selecciona una raza o linaje válido.');
+  if (catalog.races.some(r => r.parentId === c.raceId && r.kind === 'subrace') && !c.subraceId) errors.push('Selecciona una subraza.');
+  if (c.subraceId && !catalog.races.some(r => r.id === c.subraceId && r.parentId === c.raceId)) errors.push('La subraza no pertenece a la raza elegida.');
+  if (!c.classes.length) errors.push('Selecciona una clase.');
+  if (d.level > 20 || d.level < 1) errors.push('El nivel total debe estar entre 1 y 20.');
+  if (new Set(c.classes.map(cl => cl.classId)).size !== c.classes.length) errors.push('Cada clase debe aparecer una sola vez.');
+  c.classes.forEach(cl => {
+    const cls = catalog.classes.find(x => x.id === cl.classId);
+    if (!cls) errors.push(`Clase no disponible: ${cl.classId}.`);
+    if (!Number.isInteger(cl.level) || cl.level < 1 || cl.level > 20) errors.push('Nivel de clase inválido.');
+    if (cl.subclassId && (!cls?.subclasses.some(s => s.id === cl.subclassId) || (cls.subclassLevel && cl.level < cls.subclassLevel))) errors.push(`Subclase inválida para ${cls?.name ?? cl.classId} y su nivel.`);
+  });
+  ABILITIES.forEach(a => {
+    if (!Number.isInteger(c.abilities[a.id]) || c.abilities[a.id] < 1 || c.abilities[a.id] > 30) errors.push(`${a.label}: introduce una puntuación base entre 1 y 30.`);
+    const asi = getAllChoices(c, catalog).filter(ch => ch.type === 'asi').some(ch => c.choices[ch.id]?.includes(`ability:${a.id}`));
+    if (asi && d.abilities[a.id].total > 20) errors.push(`${a.label}: una mejora de característica no puede superar 20.`);
+  });
+  if (c.hp.rolls.length !== Math.max(0, d.level - 1)) errors.push('Completa los PG de cada nivel posterior al primero.');
+  c.hp.rolls.forEach((roll, i) => {
+    const die = catalog.classes.find(cl => cl.id === roll.classId)?.hitDie;
+    if (!c.classes.some(cl => cl.classId === roll.classId) || !Number.isInteger(roll.value) || roll.value < 1 || (die && roll.value > die)) errors.push(`PG del nivel ${i + 2}: elige una tirada válida${die ? ` entre 1 y ${die}` : ''}.`);
+  });
+  c.classes.forEach((cl, i) => { if (c.hp.rolls.filter(roll => roll.classId === cl.classId).length !== cl.level - (i === 0 ? 1 : 0)) errors.push(`PG: el número de tiradas de ${catalog.classes.find(x => x.id === cl.classId)?.name ?? cl.classId} no coincide con sus niveles.`); });
+  for (const ch of getAllChoices(c, catalog)) errors.push(...choiceErrors(c, ch, catalog));
+  selectedFeatIds(c, catalog).forEach(id => { const feat = catalog.feats.find(f => f.id === id); errors.push(...(feat ? checkPrerequisites(feat.prerequisites, c, catalog).map(e => `${feat.name}: ${e}`) : [`Dote no disponible: ${id}.`])); });
+  Object.entries(c.spellSelections).forEach(([classId, selection]) => {
+    const caster = d.spellcasting.find(sc => sc.classId === classId);
+    if (!caster) { if (selection.known.length || selection.prepared.length) errors.push(`La clase ${classId} no dispone de lanzamiento de conjuros a este nivel.`); return; }
+    const valid = new Set(validSpells(c, classId, catalog).map(s => s.id));
+    unique([...selection.known, ...selection.prepared]).forEach(id => { if (!valid.has(id)) errors.push(`Conjuro no disponible para clase y nivel: ${catalog.spells.find(s => s.id === id)?.name ?? id}.`); });
+    if (new Set(selection.known).size !== selection.known.length || new Set(selection.prepared).size !== selection.prepared.length) errors.push('No se pueden repetir conjuros en una misma lista.');
+    if (selection.prepared.some(id => catalog.spells.find(s => s.id === id)?.level === 0)) errors.push('Los trucos se conocen, no se preparan.');
+    if (caster.preparedLimit !== null && selection.prepared.length > caster.preparedLimit) errors.push(`Demasiados conjuros preparados: máximo ${caster.preparedLimit}.`);
+    const mode = classData(c, catalog).find(x => x.cls.id === classId)?.casting?.mode;
+    if (mode === 'spellbook' && selection.prepared.some(id => !selection.known.includes(id))) errors.push('Solo puedes preparar conjuros presentes en tu libro.');
+  });
+  getPendingChoices(c, catalog).filter(ch => ch.type === 'cantrips' || ch.type === 'spells').forEach(ch => errors.push(`${ch.name}: selecciona ${ch.amount} para ${catalog.classes.find(cl => cl.id === ch.classId)?.name ?? ch.classId}.`));
+  return unique([...errors, ...multiclassErrors(c, catalog)]);
+}
+
+export function planLevelUp(c: Character, classId: string, catalog: Catalog): { next: Character; changes: string[]; choices: Choice[]; errors: string[] } {
+  const cls = catalog.classes.find(cl => cl.id === classId), next = clone(c), errors: string[] = [];
+  if (!cls) return { next, changes: [], choices: [], errors: ['Clase no disponible.'] };
+  if (totalLevel(c) >= 20) return { next, changes: [], choices: [], errors: ['El personaje ya ha alcanzado nivel 20.'] };
+  const entry = next.classes.find(cl => cl.classId === classId);
+  if (entry) entry.level++; else next.classes.push({ classId, level: 1 });
+  if (totalLevel(c) > 0) next.hp.rolls.push({ classId, value: 0 });
+  errors.push(...multiclassErrors(next, catalog));
+  return { next, changes: summarizeLevelUp(c, next, catalog), choices: getPendingChoices(next, catalog), errors };
+}
+
+/** Recompute the review from the actual draft, including ASIs and spell choices. */
+export function summarizeLevelUp(c: Character, next: Character, catalog: Catalog): string[] {
+  const before = deriveCharacter(c, catalog), after = deriveCharacter(next, catalog);
+  const changes = [`Nivel total ${before.level} → ${after.level}`];
+  next.classes.filter(cl => cl.level !== c.classes.find(old => old.classId === cl.classId)?.level).forEach(cl => {
+    const cls = catalog.classes.find(x => x.id === cl.classId);
+    changes.push(`${cls?.name ?? cl.classId} ${cl.level}`, `+1 dado de golpe d${cls?.hitDie ?? '?'}`);
+  });
+  ABILITIES.forEach(a => { if (before.abilities[a.id].total !== after.abilities[a.id].total) changes.push(`${a.label}: ${before.abilities[a.id].total} → ${after.abilities[a.id].total}`); });
+  if (before.hpMax.value !== after.hpMax.value) changes.push(`PG máximos: ${before.hpMax.value} → ${after.hpMax.value}`);
+  after.features.filter(f => !before.features.some(old => old.id === f.id)).forEach(f => changes.push(`Rasgo: ${f.name}`));
+  if (before.proficiency.value !== after.proficiency.value) changes.push(`Competencia +${before.proficiency.value} → +${after.proficiency.value}`);
+  if (JSON.stringify(before.slots) !== JSON.stringify(after.slots)) changes.push(`Espacios de conjuro: ${after.slots.flatMap((n, i) => n ? [`${n} de nivel ${i + 1}`] : []).join(', ')}`);
+  if (JSON.stringify(before.pactSlots) !== JSON.stringify(after.pactSlots)) after.pactSlots.forEach(p => changes.push(`Magia de pacto: ${p.max} espacios de nivel ${p.level}`));
+  after.resources.forEach(r => { const old = before.resources.find(x => x.id === r.id); if (!old || old.max !== r.max) changes.push(`${r.name}: ${old?.max ?? 0} → ${r.max} usos`); });
+  after.spellcasting.forEach(sc => { const old = before.spellcasting.find(x => x.classId === sc.classId); if (sc.cantrips !== old?.cantrips) changes.push(`Trucos: ${sc.cantrips ?? 'manual'}`); if (sc.knownLimit !== old?.knownLimit) changes.push(`Conjuros conocidos: ${sc.knownLimit ?? 'manual'}`); if (sc.preparedLimit !== old?.preparedLimit) changes.push(`Conjuros preparados: hasta ${sc.preparedLimit ?? 'manual'}`); });
+  after.spellcasting.forEach(sc => { const minimum = spellbookMinimum(next, sc.classId, catalog); if (minimum !== null && minimum !== spellbookMinimum(c, sc.classId, catalog)) changes.push(`Libro de conjuros: al menos ${minimum} hechizos de nivel 1 o superior`); });
+  return changes;
+}
+
+export function applyLevelUp(original: Character, draft: Character, catalog: Catalog): Character {
+  if (original.id !== draft.id || totalLevel(draft) !== totalLevel(original) + 1) throw new Error('La subida debe conservar el personaje y añadir exactamente un nivel.');
+  const differences = draft.classes.filter(cl => cl.level !== (original.classes.find(old => old.classId === cl.classId)?.level ?? 0));
+  if (differences.length !== 1 || differences[0].level !== (original.classes.find(cl => cl.classId === differences[0].classId)?.level ?? 0) + 1 || original.classes.some(cl => !draft.classes.some(next => next.classId === cl.classId))) throw new Error('La subida solo puede incrementar una clase.');
+  const errors = validateCharacter(draft, catalog);
+  if (errors.length) throw new Error(errors.join('\n'));
+  const previous = clone(original); delete previous.lastLevelSnapshot;
+  const next = clone(draft);
+  next.lastLevelSnapshot = JSON.stringify(previous);
+  return withHistory(next, `Subió a nivel ${totalLevel(next)} · ${catalog.classes.find(cl => cl.id === differences[0].classId)?.name ?? differences[0].classId} ${differences[0].level}`);
+}
+
+export function undoLevelUp(c: Character): Character {
+  if (!c.lastLevelSnapshot) return c;
+  let previous: Character;
+  try { previous = JSON.parse(c.lastLevelSnapshot) as Character; } catch { throw new Error('No se puede leer la instantánea de nivel.'); }
+  if (previous.schemaVersion !== 1 || previous.id !== c.id || !Array.isArray(previous.classes) || totalLevel(previous) !== totalLevel(c) - 1) throw new Error('La instantánea de nivel no es válida.');
+  delete previous.lastLevelSnapshot;
+  return withHistory(previous, 'Se deshizo la última subida de nivel.');
+}
+
+export function applyDamage(c: Character, amount: number, _catalog?: Catalog): Character {
+  if (!Number.isFinite(amount) || amount < 0) throw new Error('El daño debe ser una cantidad positiva.');
+  const next = clone(c), damage = Math.floor(amount), absorbed = Math.min(next.hp.temp, damage);
+  next.hp.temp -= absorbed; next.hp.current = Math.max(0, next.hp.current - (damage - absorbed));
+  return withHistory(next, `Recibió ${damage} puntos de daño${absorbed ? ` (${absorbed} absorbidos por PG temporales)` : ''}.`);
+}
+
+export function applyHealing(c: Character, amount: number, catalog: Catalog): Character {
+  if (!Number.isFinite(amount) || amount < 0) throw new Error('La curación debe ser una cantidad positiva.');
+  const next = clone(c); next.hp.current = Math.max(0, Math.min(deriveCharacter(c, catalog).hpMax.value, next.hp.current + Math.floor(amount)));
+  return withHistory(next, `Recibió ${Math.floor(amount)} puntos de curación.`);
+}
+
+function restTargets(c: Character, type: 'short' | 'long', catalog: Catalog) {
+  const d = deriveCharacter(c, catalog);
+  const resources = d.resources.filter(r => r.recovery !== 'manual' && (r.recovery === type || type === 'long' && r.recovery === 'short') && r.spent > 0);
+  const casters = classData(c, catalog).filter(x => x.casting?.recovery === type || type === 'long' && x.casting?.recovery === 'short');
+  const keys = unique(casters.flatMap(cl => cl.casting?.mode === 'pact' ? [`pact.${cl.cls.id}`] : d.slots.map((_, i) => String(i + 1))));
+  return { resources, keys: keys.filter(key => (c.slotsSpent[key] ?? 0) > 0) };
+}
+
+export function restPreview(c: Character, type: 'short' | 'long', catalog: Catalog): string[] {
+  const { resources, keys } = restTargets(c, type, catalog);
+  return [...resources.map(r => `${r.name}: recupera ${r.max === -1 ? r.spent : Math.min(r.spent, r.max)} usos.`), ...keys.map(key => key.startsWith('pact.') ? 'Recupera los espacios de magia de pacto.' : `Recupera los espacios de conjuro de nivel ${key}.`), 'Los PG y dados de golpe permanecen en gestión manual: no se incluye una regla general de recuperación en esta fuente.'];
+}
+
+export function applyRest(c: Character, type: 'short' | 'long', catalog: Catalog): Character {
+  const next = clone(c), { resources, keys } = restTargets(c, type, catalog);
+  resources.forEach(r => { next.resourcesSpent[r.id] = 0; }); keys.forEach(key => { next.slotsSpent[key] = 0; });
+  return withHistory(next, `Descanso ${type === 'short' ? 'corto' : 'largo'}: recuperados los recursos con regla de recuperación explícita.`);
+}

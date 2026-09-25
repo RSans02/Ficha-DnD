@@ -1,0 +1,89 @@
+{
+  "sourceFile": "Manual para Casi Todo de D&D 5e (V30.03.25).pdf",
+  "sourceSha256": "607d244499a3e1cd07631ce28ec61d4f51831a8b65ca91c0dd8da4775858a288",
+  "pages": 633,
+  "pagesExtracted": 633,
+  "blankPages": [
+    211,
+    232
+  ],
+  "outlineEntries": 2066,
+  "counts": {
+    "races": 126,
+    "rootRaces": 82,
+    "subracesAndVariants": 44,
+    "classes": 13,
+    "subclasses": 127,
+    "features": 1436,
+    "racialFeatures": 435,
+    "classFeatures": 1001,
+    "spells": 501,
+    "spellLists": 9,
+    "spellListEntries": 1317,
+    "optionalTashaRelations": 65,
+    "feats": 83,
+    "backgrounds": 31,
+    "baseBackgrounds": 25,
+    "backgroundVariants": 6,
+    "equipment": 221
+  },
+  "sourceEntityCoverage": {
+    "indexedSpells": {
+      "expected": 501,
+      "imported": 501
+    },
+    "indexedFeats": {
+      "expected": 83,
+      "imported": 83
+    },
+    "indexedBaseBackgrounds": {
+      "expected": 25,
+      "imported": 25
+    }
+  },
+  "spellHeadersComplete": 501,
+  "spellLevelConflicts": 2,
+  "unresolvedSpellListReferences": 0,
+  "featAutomation": {
+    "withEffectsOrChoices": 39,
+    "textOnly": 44
+  },
+  "equipmentCategories": {
+    "Armaduras": 13,
+    "Armas": 37,
+    "Equipo": 113,
+    "Herramientas": 37,
+    "Monturas": 8,
+    "Vehículos": 6,
+    "Paquetes": 7
+  },
+  "equipmentWeightUnit": "lb",
+  "sourceIssues": {
+    "spell-level-conflict": 2,
+    "pdf-link-wrong-target": 7,
+    "spell-list-source-alias": 38,
+    "missing-source-weight": 1
+  },
+  "limitations": [
+    "El texto completo extraído no equivale a automatización de todas sus mecánicas.",
+    "Dos hechizos tienen conflicto interno de nivel y quedan en modo manual: Tormenta de Bolas de Nieve de Snilloc (p588) y Libertad de los Vientos (p632).",
+    "Dunamancia solo tiene acceso automático documentado para Magia Cronúrgica/Gravitúrgica; otras clases requieren consentimiento del DM.",
+    "Las 65 ampliaciones opcionales de Tasha conservan su condición opcional por clase; no equivalen a acceso base.",
+    "El PDF omite reglas generales completas de compra de puntos, matriz estándar, experiencia, condiciones y descanso. No se incorporan reglas externas.",
+    "Dotes complejas, transformaciones raciales, recursos condicionales, linajes con sustituciones y parte de las elecciones de rasgos siguen siendo texto y ajuste manual.",
+    "Los 25 trasfondos y 6 variantes preservan narrativa y competencias; herramientas/idiomas/equipo elegibles no están todos convertidos en decisiones ejecutables.",
+    "El peso de Tienda de campaña para dos personas está ausente en el PDF. Los pesos numéricos de equipo se expresan en lb.",
+    "La CA especial, vuelo/nado/escalada, armas naturales y hechizos raciales no están automatizados de manera exhaustiva; consultar el rasgo y los overrides.",
+    "Las variantes agregadas de Tiefling y la ascendencia de Semielfo Variante precisan resolver las opciones y sustituciones manualmente. Sus descripciones completas permanecen accesibles.",
+    "Los efectos por nivel y requisitos de subclase no expresados inequívocamente por tablas/cabeceras permanecen explícitamente pendientes o manuales."
+  ],
+  "validation": {
+    "stableIdsUnique": true,
+    "spellClassReferencesValid": true,
+    "spellSubclassReferencesValid": true,
+    "spellListsResolved": true,
+    "raceFeatureReferencesValid": true,
+    "multiverseGenasiInheritsOnce": true,
+    "allEntityDescriptionsPresent": true
+  }
+}

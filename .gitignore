@@ -1,0 +1,13 @@
+node_modules/
+.next/
+out/
+.env*
+!.env.example
+*.tsbuildinfo
+*.log
+tmp/
+*.pdf
+data/source/pages.json
+data/source/sections.json
+data/source/outline.json
+__pycache__/

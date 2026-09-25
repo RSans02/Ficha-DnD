@@ -1,0 +1,24 @@
+{
+  "races": 126,
+  "rootRaces": 82,
+  "subracesAndVariants": 44,
+  "racialTraits": 435,
+  "sourcePages": 99,
+  "unstructuredChoices": [
+    "race-eladrin-legado",
+    "race-hobgoblin-legado",
+    "race-lizardfolk-legado",
+    "race-orco-legado",
+    "race-githyanki",
+    "race-kenku-legado",
+    "race-tabaxi-legado",
+    "race-agua",
+    "race-aire",
+    "race-tierra",
+    "race-fuego",
+    "race-leonido",
+    "race-satiros",
+    "race-minotauro-razas-de-ravnica",
+    "race-vedalken"
+  ]
+}
