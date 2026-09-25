@@ -1725,7 +1725,16 @@
     },
     "originId": "race-lizardfolk-legado",
     "level": 1,
-    "effects": [],
+    "effects": [
+      {
+        "type": "natural_armor",
+        "value": 13,
+        "abilities": [
+          "dex"
+        ],
+        "ignoresWornArmor": false
+      }
+    ],
     "choices": []
   },
   {
@@ -2453,7 +2462,16 @@
     },
     "originId": "race-locathah",
     "level": 1,
-    "effects": [],
+    "effects": [
+      {
+        "type": "natural_armor",
+        "value": 12,
+        "abilities": [
+          "dex"
+        ],
+        "ignoresWornArmor": false
+      }
+    ],
     "choices": []
   },
   {
@@ -2583,7 +2601,14 @@
     },
     "originId": "race-tortuga-legado",
     "level": 1,
-    "effects": [],
+    "effects": [
+      {
+        "type": "natural_armor",
+        "value": 17,
+        "abilities": [],
+        "ignoresWornArmor": true
+      }
+    ],
     "choices": []
   },
   {
@@ -4182,7 +4207,16 @@
     },
     "originId": "race-lizardfolk-u-hombres-lagarto",
     "level": 1,
-    "effects": [],
+    "effects": [
+      {
+        "type": "natural_armor",
+        "value": 13,
+        "abilities": [
+          "dex"
+        ],
+        "ignoresWornArmor": false
+      }
+    ],
     "choices": []
   },
   {
@@ -4507,7 +4541,14 @@
     },
     "originId": "race-tortuga",
     "level": 1,
-    "effects": [],
+    "effects": [
+      {
+        "type": "natural_armor",
+        "value": 17,
+        "abilities": [],
+        "ignoresWornArmor": true
+      }
+    ],
     "choices": []
   },
   {
@@ -4871,7 +4912,16 @@
     },
     "originId": "race-loxodon",
     "level": 1,
-    "effects": [],
+    "effects": [
+      {
+        "type": "natural_armor",
+        "value": 12,
+        "abilities": [
+          "con"
+        ],
+        "ignoresWornArmor": false
+      }
+    ],
     "choices": []
   },
   {

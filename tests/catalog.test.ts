@@ -71,6 +71,42 @@ test('real catalog: heavy-armor proficiency is recognized by Spanish feat requir
   assert(deriveCharacter(c, catalog).proficiencies.includes('Armaduras pesadas'));
 });
 
+test('real catalog: Jack of All Trades applies half proficiency only to untrained checks', () => {
+  const c = realCharacter('class-bardo', 5), d = deriveCharacter(c, catalog);
+  const trained = c.choices['skills.class-bardo'][0];
+  assert(!d.skills[trained].breakdown.some(row => row.label === 'Polivalente'));
+  const untrained = Object.values(d.skills).find(skill => skill.breakdown.some(row => row.label === 'Competencia' && row.value === 0))!;
+  assert.equal(untrained.breakdown.find(row => row.label === 'Polivalente')?.value, 1);
+  assert.equal(d.initiative.value, d.abilities.dex.modifier + 1);
+});
+
+test('real catalog: Protection Aura adds charisma to every save only while conscious', () => {
+  const c = realCharacter('class-paladin', 6);
+  c.abilities.cha = 16;
+  const awake = deriveCharacter(c, catalog);
+  for (const save of Object.values(awake.saves)) assert.equal(save.breakdown.find(row => row.label.includes('Aura de Protección'))?.value, 3);
+  c.conditions = ['Inconsciente'];
+  const unconscious = deriveCharacter(c, catalog);
+  assert.equal(awake.saves.str.value - unconscious.saves.str.value, 3);
+  c.conditions = []; c.abilities.cha = 8;
+  assert.equal(deriveCharacter(c, catalog).saves.str.breakdown.find(row => row.label.includes('Aura de Protección'))?.value, 1);
+});
+
+test('real catalog: natural armor selects one formula and adds a shield only once', () => {
+  const c = realCharacter('class-guerrero');
+  c.raceId = 'race-lizardfolk-legado';
+  let d = deriveCharacter(c, catalog);
+  assert.equal(d.ac.value, 13 + d.abilities.dex.modifier);
+  c.inventory = [{ id: 'shield', name: 'Escudo', category: 'Armaduras', quantity: 1, weight: 6, equipped: true, attuned: false, description: '', notes: '', shieldBonus: 2 }];
+  assert.equal(deriveCharacter(c, catalog).ac.value, d.ac.value + 2);
+  c.raceId = 'race-tortuga-legado';
+  c.inventory.push({ id: 'plate', name: 'Placas', category: 'Armaduras', quantity: 1, weight: 65, equipped: true, attuned: false, description: '', notes: '', armorBase: 18, dexCap: 0 });
+  assert.equal(deriveCharacter(c, catalog).ac.value, 19);
+  c.raceId = 'race-loxodon'; c.inventory = [];
+  d = deriveCharacter(c, catalog);
+  assert.equal(d.ac.value, 12 + d.abilities.con.modifier);
+});
+
 test('real catalog: barbarian fast movement recognizes light armor category', () => {
   const c = realCharacter('class-barbaro', 5);
   const leather = catalog.equipment.find(item => item.id === 'equipment-armaduras-cuero')!;

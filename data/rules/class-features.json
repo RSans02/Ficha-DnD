@@ -2427,7 +2427,11 @@
     "kind": "class",
     "optional": false,
     "selectionOnly": false,
-    "effects": [],
+    "effects": [
+      {
+        "type": "half_proficiency_untrained"
+      }
+    ],
     "choices": []
   },
   {
@@ -16878,7 +16882,14 @@
     "kind": "class",
     "optional": false,
     "selectionOnly": false,
-    "effects": [],
+    "effects": [
+      {
+        "type": "save_ability_bonus",
+        "ability": "cha",
+        "minimum": 1,
+        "condition": "conscious"
+      }
+    ],
     "choices": []
   },
   {
