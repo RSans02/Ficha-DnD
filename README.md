@@ -90,6 +90,8 @@ npm run build
 
 Estas órdenes ejecutan la comprobación de TypeScript, las pruebas de `tests/*.test.ts` y la compilación de producción. La revisión visual de escritorio/móvil y de los flujos de usuario es una comprobación adicional; estos comandos no la sustituyen.
 
+La [verificación de entrega](docs/validation.md) recoge los resultados ejecutados y el alcance de las pruebas de interfaz.
+
 ## Reproducir los catálogos
 
 La aplicación funciona con los JSON ya generados de `data/rules/`; el PDF y Python no son necesarios para ejecutarla o desplegarla. Para reconstruir la evidencia, coloca el PDF original con su nombre indicado en la raíz e instala Python con `pypdf` y `pdfplumber`. Ejecuta desde la raíz:

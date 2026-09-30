@@ -28,7 +28,7 @@ Las tablas rasterizadas de las páginas 104, 140, 159, 185, 213, 234, 281, 305 y
 
 Comprobaciones reproducibles: 13 clases, 20 niveles consecutivos por clase, unicidad de identificadores y referencias de rasgo resueltas. Los campos null indican que el dato no aplica o que el encabezado no especifica nivel; nunca se inventa un nivel.
 
-## Límites de automatización y discrepancias de la fuente
+## Notas de fuente y límites de automatización
 
 - Artificiero: Multiclase: suma la mitad de niveles de artificiero redondeada hacia arriba (p. 105). La tabla llama Ingeniería Mágica al rasgo Arreglo Mágico.
 - Bárbaro: Furia de nivel 20: usos ilimitados, representados por -1. La tabla concede Senda a nivel 10, omitido en el encabezado del rasgo. Juggernaut: Golpe Huracanado dice nivel 6 en encabezado y nivel 10 en texto; se conserva la discrepancia sin corregir el manual.

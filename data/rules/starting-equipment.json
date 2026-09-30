@@ -1,0 +1,1666 @@
+{
+  "class-artificiero": {
+    "source": {
+      "page": 104
+    },
+    "description": "Equipo Comienzas con el siguiente equipo, además del otorgado por tu trasfondo: • 2 armas simples de tu elección • Una ballesta ligera con 20 virotes • Eliges entre armadura de cuero tachonada o cota de escamas • Herramientas de ladrón y un equipo para mazmorras. Puedes en renunciar al equipo inicial, así como a los objetos que ofrece tu trasfondo, y comenzar con 5d4 x 10 Po para comprar tu equipo.",
+    "fixed": [
+      {
+        "equipmentId": "equipment-armas-ballesta-ligera",
+        "quantity": 1
+      },
+      {
+        "equipmentId": "equipment-equipo-virotes-de-ballesta-20",
+        "quantity": 1
+      },
+      {
+        "equipmentId": "equipment-herramientas-herramientas-de-ladron",
+        "quantity": 1
+      },
+      {
+        "equipmentId": "equipment-paquetes-equipo-para-dungeons",
+        "quantity": 1
+      }
+    ],
+    "groups": [
+      {
+        "id": "weapons",
+        "name": "Armas simples",
+        "options": [
+          {
+            "id": "two-simple",
+            "name": "Dos armas simples de tu elección",
+            "items": [],
+            "picks": [
+              {
+                "id": "two-simple",
+                "name": "Dos armas simples de tu elección",
+                "quantity": 2,
+                "category": "simple-weapon"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "id": "armor",
+        "name": "Armadura",
+        "options": [
+          {
+            "id": "armaduras-cuero-tachonado",
+            "name": "Cuero tachonado",
+            "items": [
+              {
+                "equipmentId": "equipment-armaduras-cuero-tachonado",
+                "quantity": 1
+              }
+            ]
+          },
+          {
+            "id": "armaduras-cota-de-escamas",
+            "name": "Cota de escamas",
+            "items": [
+              {
+                "equipmentId": "equipment-armaduras-cota-de-escamas",
+                "quantity": 1
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "goldAlternative": {
+      "diceCount": 5,
+      "dieSides": 4,
+      "multiplier": 10,
+      "text": "Renunciar al equipo inicial de clase y de trasfondo y comenzar con 5d4 × 10 po para comprar equipo."
+    },
+    "notes": [
+      "El equipo y la alternativa de oro continúan en la página 105."
+    ]
+  },
+  "class-barbaro": {
+    "source": {
+      "page": 122
+    },
+    "description": "Equipo Comienzas con el siguiente equipo, además del otorgado por tu trasfondo: • Una Gran hacha o cualquier arma marcial cuerpo a cuerpo. • Dos hachas de mano o cualquier arma simple. • Un equipo para explorador y cuatro jabalinas. Puedes en renunciar al equipo inicial, así como a los objetos que ofrece tu trasfondo, y comenzar con 2d4 x 10 Po para comprar tu equipo.",
+    "fixed": [
+      {
+        "equipmentId": "equipment-paquetes-equipo-de-explorador",
+        "quantity": 1
+      },
+      {
+        "equipmentId": "equipment-armas-jabalina",
+        "quantity": 4
+      }
+    ],
+    "groups": [
+      {
+        "id": "main-weapon",
+        "name": "Arma principal",
+        "options": [
+          {
+            "id": "armas-gran-hacha",
+            "name": "Gran hacha",
+            "items": [
+              {
+                "equipmentId": "equipment-armas-gran-hacha",
+                "quantity": 1
+              }
+            ]
+          },
+          {
+            "id": "martial-melee",
+            "name": "Cualquier arma marcial cuerpo a cuerpo",
+            "items": [],
+            "picks": [
+              {
+                "id": "martial-melee",
+                "name": "Cualquier arma marcial cuerpo a cuerpo",
+                "quantity": 1,
+                "category": "melee-martial-weapon"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "id": "other-weapons",
+        "name": "Armas adicionales",
+        "options": [
+          {
+            "id": "armas-hacha-de-mano",
+            "name": "Dos hachas de mano",
+            "items": [
+              {
+                "equipmentId": "equipment-armas-hacha-de-mano",
+                "quantity": 2
+              }
+            ]
+          },
+          {
+            "id": "simple",
+            "name": "Cualquier arma simple",
+            "items": [],
+            "picks": [
+              {
+                "id": "simple",
+                "name": "Cualquier arma simple",
+                "quantity": 1,
+                "category": "simple-weapon"
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "goldAlternative": {
+      "diceCount": 2,
+      "dieSides": 4,
+      "multiplier": 10,
+      "text": "Renunciar al equipo inicial de clase y de trasfondo y comenzar con 2d4 × 10 po para comprar equipo."
+    }
+  },
+  "class-bardo": {
+    "source": {
+      "page": 140
+    },
+    "description": "Equipo Comienzas con el siguiente equipo, además del otorgado por tu trasfondo: • Un estoque, o una espada larga o cualquier arma sencilla. • Un kit de diplomático o un equipo de actor. • Una lira o cualquier otro instrumento musical. • Armadura de cuero y una daga. Puedes en renunciar al equipo inicial, así como a los objetos que ofrece tu trasfondo, y comenzar con 5d4 x 10 Po para comprar tu equipo.",
+    "fixed": [
+      {
+        "equipmentId": "equipment-armaduras-cuero",
+        "quantity": 1
+      },
+      {
+        "equipmentId": "equipment-armas-daga",
+        "quantity": 1
+      }
+    ],
+    "groups": [
+      {
+        "id": "weapon",
+        "name": "Arma",
+        "options": [
+          {
+            "id": "armas-estoque",
+            "name": "Estoque",
+            "items": [
+              {
+                "equipmentId": "equipment-armas-estoque",
+                "quantity": 1
+              }
+            ]
+          },
+          {
+            "id": "armas-espada-larga",
+            "name": "Espada larga",
+            "items": [
+              {
+                "equipmentId": "equipment-armas-espada-larga",
+                "quantity": 1
+              }
+            ]
+          },
+          {
+            "id": "simple",
+            "name": "Cualquier arma sencilla",
+            "items": [],
+            "picks": [
+              {
+                "id": "simple",
+                "name": "Cualquier arma sencilla",
+                "quantity": 1,
+                "category": "simple-weapon"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "id": "pack",
+        "name": "Paquete de aventurero",
+        "options": [
+          {
+            "id": "paquetes-equipo-de-diplomatico",
+            "name": "Equipo de Diplomático",
+            "items": [
+              {
+                "equipmentId": "equipment-paquetes-equipo-de-diplomatico",
+                "quantity": 1
+              }
+            ]
+          },
+          {
+            "id": "paquetes-equipo-de-actor",
+            "name": "Equipo de Actor",
+            "items": [
+              {
+                "equipmentId": "equipment-paquetes-equipo-de-actor",
+                "quantity": 1
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "id": "instrument",
+        "name": "Instrumento musical",
+        "options": [
+          {
+            "id": "herramientas-lira",
+            "name": "Lira",
+            "items": [
+              {
+                "equipmentId": "equipment-herramientas-lira",
+                "quantity": 1
+              }
+            ]
+          },
+          {
+            "id": "instrument",
+            "name": "Cualquier otro instrumento musical",
+            "items": [],
+            "picks": [
+              {
+                "id": "instrument",
+                "name": "Cualquier otro instrumento musical",
+                "quantity": 1,
+                "category": "instrument"
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "goldAlternative": {
+      "diceCount": 5,
+      "dieSides": 4,
+      "multiplier": 10,
+      "text": "Renunciar al equipo inicial de clase y de trasfondo y comenzar con 5d4 × 10 po para comprar equipo."
+    }
+  },
+  "class-brujo": {
+    "source": {
+      "page": 160
+    },
+    "description": "Equipo Comienzas con el siguiente equipo, además del otorgado por tu trasfondo: • una ballesta ligera y 20 virotes o cualquier arma simple. • una bolsa de componentes de conjuros o un foco arcano. • un equipo de erudito o un equipo para dungeon. • Armadura de cuero, cualquier arma simple y dos dagas. Puedes en renunciar al equipo inicial, así como a los objetos que ofrece tu trasfondo, y comenzar con 4d4 x 10 Po para comprar tu equipo.",
+    "fixed": [
+      {
+        "equipmentId": "equipment-armaduras-cuero",
+        "quantity": 1
+      },
+      {
+        "equipmentId": "equipment-armas-daga",
+        "quantity": 2
+      }
+    ],
+    "groups": [
+      {
+        "id": "weapon",
+        "name": "Arma principal",
+        "options": [
+          {
+            "id": "crossbow",
+            "name": "Ballesta ligera y 20 virotes",
+            "items": [
+              {
+                "equipmentId": "equipment-armas-ballesta-ligera",
+                "quantity": 1
+              },
+              {
+                "equipmentId": "equipment-equipo-virotes-de-ballesta-20",
+                "quantity": 1
+              }
+            ]
+          },
+          {
+            "id": "simple",
+            "name": "Cualquier arma simple",
+            "items": [],
+            "picks": [
+              {
+                "id": "simple",
+                "name": "Cualquier arma simple",
+                "quantity": 1,
+                "category": "simple-weapon"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "id": "focus",
+        "name": "Componentes o foco arcano",
+        "options": [
+          {
+            "id": "equipo-bolsa-de-componentes",
+            "name": "Bolsa de componentes",
+            "items": [
+              {
+                "equipmentId": "equipment-equipo-bolsa-de-componentes",
+                "quantity": 1
+              }
+            ]
+          },
+          {
+            "id": "equipment-equipo-baston",
+            "name": "Foco arcano: Bastón",
+            "items": [
+              {
+                "equipmentId": "equipment-equipo-baston",
+                "quantity": 1
+              }
+            ]
+          },
+          {
+            "id": "equipment-equipo-cetro",
+            "name": "Foco arcano: Cetro",
+            "items": [
+              {
+                "equipmentId": "equipment-equipo-cetro",
+                "quantity": 1
+              }
+            ]
+          },
+          {
+            "id": "equipment-equipo-cristal",
+            "name": "Foco arcano: Cristal",
+            "items": [
+              {
+                "equipmentId": "equipment-equipo-cristal",
+                "quantity": 1
+              }
+            ]
+          },
+          {
+            "id": "equipment-equipo-orbe",
+            "name": "Foco arcano: Orbe",
+            "items": [
+              {
+                "equipmentId": "equipment-equipo-orbe",
+                "quantity": 1
+              }
+            ]
+          },
+          {
+            "id": "equipment-equipo-varita",
+            "name": "Foco arcano: Varita",
+            "items": [
+              {
+                "equipmentId": "equipment-equipo-varita",
+                "quantity": 1
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "id": "pack",
+        "name": "Paquete de aventurero",
+        "options": [
+          {
+            "id": "paquetes-equipo-de-erudito",
+            "name": "Equipo de Erudito",
+            "items": [
+              {
+                "equipmentId": "equipment-paquetes-equipo-de-erudito",
+                "quantity": 1
+              }
+            ]
+          },
+          {
+            "id": "paquetes-equipo-para-dungeons",
+            "name": "Equipo para Dungeons",
+            "items": [
+              {
+                "equipmentId": "equipment-paquetes-equipo-para-dungeons",
+                "quantity": 1
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "id": "other-weapon",
+        "name": "Arma simple adicional",
+        "options": [
+          {
+            "id": "simple",
+            "name": "Cualquier arma simple",
+            "items": [],
+            "picks": [
+              {
+                "id": "simple",
+                "name": "Cualquier arma simple",
+                "quantity": 1,
+                "category": "simple-weapon"
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "goldAlternative": {
+      "diceCount": 4,
+      "dieSides": 4,
+      "multiplier": 10,
+      "text": "Renunciar al equipo inicial de clase y de trasfondo y comenzar con 4d4 × 10 po para comprar equipo."
+    }
+  },
+  "class-clerigo": {
+    "source": {
+      "page": 185
+    },
+    "description": "Equipo Comienzas con el siguiente equipo, además del otorgado por tu trasfondo: • una maza o un martillo de guerra (si eres competente). • una cota de escamas, o armadura de cuero o cota de malla (si eres competente) • una ballesta ligera y 20 virotes o cualquier arma simple • un equipo de sacerdote o un equipo explorador • Un escudo y un símbolo sagrado Puedes en renunciar al equipo inicial, así como a los objetos que ofrece tu trasfondo, y comenzar con 5d4 x 10 Po para comprar tu equipo.",
+    "fixed": [
+      {
+        "equipmentId": "equipment-armaduras-escudo",
+        "quantity": 1
+      }
+    ],
+    "groups": [
+      {
+        "id": "weapon",
+        "name": "Arma principal",
+        "options": [
+          {
+            "id": "armas-maza",
+            "name": "Maza",
+            "items": [
+              {
+                "equipmentId": "equipment-armas-maza",
+                "quantity": 1
+              }
+            ]
+          },
+          {
+            "id": "armas-martillo-de-guerra",
+            "name": "Martillo de guerra (si eres competente)",
+            "items": [
+              {
+                "equipmentId": "equipment-armas-martillo-de-guerra",
+                "quantity": 1
+              }
+            ],
+            "requiresProficiency": [
+              "Martillo de guerra"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "armor",
+        "name": "Armadura",
+        "options": [
+          {
+            "id": "armaduras-cota-de-escamas",
+            "name": "Cota de escamas",
+            "items": [
+              {
+                "equipmentId": "equipment-armaduras-cota-de-escamas",
+                "quantity": 1
+              }
+            ]
+          },
+          {
+            "id": "armaduras-cuero",
+            "name": "Cuero",
+            "items": [
+              {
+                "equipmentId": "equipment-armaduras-cuero",
+                "quantity": 1
+              }
+            ]
+          },
+          {
+            "id": "armaduras-cota-de-malla",
+            "name": "Cota de malla (si eres competente)",
+            "items": [
+              {
+                "equipmentId": "equipment-armaduras-cota-de-malla",
+                "quantity": 1
+              }
+            ],
+            "requiresProficiency": [
+              "Armaduras pesadas"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "other-weapon",
+        "name": "Arma adicional",
+        "options": [
+          {
+            "id": "crossbow",
+            "name": "Ballesta ligera y 20 virotes",
+            "items": [
+              {
+                "equipmentId": "equipment-armas-ballesta-ligera",
+                "quantity": 1
+              },
+              {
+                "equipmentId": "equipment-equipo-virotes-de-ballesta-20",
+                "quantity": 1
+              }
+            ]
+          },
+          {
+            "id": "simple",
+            "name": "Cualquier arma simple",
+            "items": [],
+            "picks": [
+              {
+                "id": "simple",
+                "name": "Cualquier arma simple",
+                "quantity": 1,
+                "category": "simple-weapon"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "id": "pack",
+        "name": "Paquete de aventurero",
+        "options": [
+          {
+            "id": "paquetes-equipo-de-sacerdote",
+            "name": "Equipo de Sacerdote",
+            "items": [
+              {
+                "equipmentId": "equipment-paquetes-equipo-de-sacerdote",
+                "quantity": 1
+              }
+            ]
+          },
+          {
+            "id": "paquetes-equipo-de-explorador",
+            "name": "Equipo de Explorador",
+            "items": [
+              {
+                "equipmentId": "equipment-paquetes-equipo-de-explorador",
+                "quantity": 1
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "id": "holy-symbol",
+        "name": "Símbolo sagrado",
+        "options": [
+          {
+            "id": "equipment-equipo-amuleto",
+            "name": "Amuleto",
+            "items": [
+              {
+                "equipmentId": "equipment-equipo-amuleto",
+                "quantity": 1
+              }
+            ]
+          },
+          {
+            "id": "equipment-equipo-emblema",
+            "name": "Emblema",
+            "items": [
+              {
+                "equipmentId": "equipment-equipo-emblema",
+                "quantity": 1
+              }
+            ]
+          },
+          {
+            "id": "equipment-equipo-relicario",
+            "name": "Relicario",
+            "items": [
+              {
+                "equipmentId": "equipment-equipo-relicario",
+                "quantity": 1
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "goldAlternative": {
+      "diceCount": 5,
+      "dieSides": 4,
+      "multiplier": 10,
+      "text": "Renunciar al equipo inicial de clase y de trasfondo y comenzar con 5d4 × 10 po para comprar equipo."
+    },
+    "notes": [
+      "El listado y la alternativa de oro continúan en la página 186. Martillo de guerra y cota de malla requieren competencia, como especifica el manual."
+    ]
+  },
+  "class-druida": {
+    "source": {
+      "page": 214
+    },
+    "description": "Equipo Comienzas con el siguiente equipo, además del otorgado por tu trasfondo: • un escudo de madera o cualquier arma simple • una cimitarra o cualquier arma simple a distancia • armadura de cuero, un equipo de explorador y un foco druídico Puedes en renunciar al equipo inicial, así como a los objetos que ofrece tu trasfondo, y comenzar con 2d4 x 10 Po para comprar tu equipo.",
+    "fixed": [
+      {
+        "equipmentId": "equipment-armaduras-cuero",
+        "quantity": 1
+      },
+      {
+        "equipmentId": "equipment-paquetes-equipo-de-explorador",
+        "quantity": 1
+      }
+    ],
+    "groups": [
+      {
+        "id": "shield-or-weapon",
+        "name": "Escudo o arma",
+        "options": [
+          {
+            "id": "wooden-shield",
+            "name": "Escudo de madera",
+            "items": [
+              {
+                "equipmentId": "equipment-armaduras-escudo",
+                "quantity": 1,
+                "name": "Escudo de madera",
+                "description": "Escudo de madera indicado por el equipo inicial de druida; estadísticas de escudo del catálogo."
+              }
+            ]
+          },
+          {
+            "id": "simple",
+            "name": "Cualquier arma simple",
+            "items": [],
+            "picks": [
+              {
+                "id": "simple",
+                "name": "Cualquier arma simple",
+                "quantity": 1,
+                "category": "simple-weapon"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "id": "weapon",
+        "name": "Arma adicional",
+        "options": [
+          {
+            "id": "armas-cimitarra",
+            "name": "Cimitarra",
+            "items": [
+              {
+                "equipmentId": "equipment-armas-cimitarra",
+                "quantity": 1
+              }
+            ]
+          },
+          {
+            "id": "ranged-simple",
+            "name": "Cualquier arma simple a distancia",
+            "items": [],
+            "picks": [
+              {
+                "id": "ranged-simple",
+                "name": "Cualquier arma simple a distancia",
+                "quantity": 1,
+                "category": "simple-ranged-weapon"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "id": "druid-focus",
+        "name": "Foco druídico",
+        "options": [
+          {
+            "id": "equipment-equipo-baston-de-madera",
+            "name": "Bastón de madera",
+            "items": [
+              {
+                "equipmentId": "equipment-equipo-baston-de-madera",
+                "quantity": 1
+              }
+            ]
+          },
+          {
+            "id": "equipment-equipo-ramo-de-muerdago",
+            "name": "Ramo de muérdago",
+            "items": [
+              {
+                "equipmentId": "equipment-equipo-ramo-de-muerdago",
+                "quantity": 1
+              }
+            ]
+          },
+          {
+            "id": "equipment-equipo-totem",
+            "name": "Tótem",
+            "items": [
+              {
+                "equipmentId": "equipment-equipo-totem",
+                "quantity": 1
+              }
+            ]
+          },
+          {
+            "id": "equipment-equipo-varita-de-tejo",
+            "name": "Varita de tejo",
+            "items": [
+              {
+                "equipmentId": "equipment-equipo-varita-de-tejo",
+                "quantity": 1
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "goldAlternative": {
+      "diceCount": 2,
+      "dieSides": 4,
+      "multiplier": 10,
+      "text": "Renunciar al equipo inicial de clase y de trasfondo y comenzar con 2d4 × 10 po para comprar equipo."
+    },
+    "notes": [
+      "Se conserva literalmente la opción «arma simple a distancia» de la página 214."
+    ]
+  },
+  "class-explorador": {
+    "source": {
+      "page": 235
+    },
+    "description": "Equipo Comienzas con el siguiente equipo, además del otorgado por tu trasfondo: • una cota de escamas o armadura de cuero • dos espadas cortas o dos armas simples cuerpo a cuerpo. • un equipo de dungeon o un equipo de explorador. • Un arco largo y un carcaj con 20 flechas. Puedes en renunciar al equipo inicial, así como a los objetos que ofrece tu trasfondo, y comenzar con 5d4 x 10 Po para comprar tu equipo.",
+    "fixed": [
+      {
+        "equipmentId": "equipment-armas-arco-largo",
+        "quantity": 1
+      },
+      {
+        "equipmentId": "equipment-equipo-aljaba",
+        "quantity": 1
+      },
+      {
+        "equipmentId": "equipment-equipo-flechas-20",
+        "quantity": 1
+      }
+    ],
+    "groups": [
+      {
+        "id": "armor",
+        "name": "Armadura",
+        "options": [
+          {
+            "id": "armaduras-cota-de-escamas",
+            "name": "Cota de escamas",
+            "items": [
+              {
+                "equipmentId": "equipment-armaduras-cota-de-escamas",
+                "quantity": 1
+              }
+            ]
+          },
+          {
+            "id": "armaduras-cuero",
+            "name": "Cuero",
+            "items": [
+              {
+                "equipmentId": "equipment-armaduras-cuero",
+                "quantity": 1
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "id": "weapons",
+        "name": "Armas cuerpo a cuerpo",
+        "options": [
+          {
+            "id": "armas-espada-corta",
+            "name": "Dos espadas cortas",
+            "items": [
+              {
+                "equipmentId": "equipment-armas-espada-corta",
+                "quantity": 2
+              }
+            ]
+          },
+          {
+            "id": "simple-melee",
+            "name": "Dos armas simples cuerpo a cuerpo",
+            "items": [],
+            "picks": [
+              {
+                "id": "simple-melee",
+                "name": "Dos armas simples cuerpo a cuerpo",
+                "quantity": 2,
+                "category": "simple-melee-weapon"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "id": "pack",
+        "name": "Paquete de aventurero",
+        "options": [
+          {
+            "id": "paquetes-equipo-para-dungeons",
+            "name": "Equipo para Dungeons",
+            "items": [
+              {
+                "equipmentId": "equipment-paquetes-equipo-para-dungeons",
+                "quantity": 1
+              }
+            ]
+          },
+          {
+            "id": "paquetes-equipo-de-explorador",
+            "name": "Equipo de Explorador",
+            "items": [
+              {
+                "equipmentId": "equipment-paquetes-equipo-de-explorador",
+                "quantity": 1
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "goldAlternative": {
+      "diceCount": 5,
+      "dieSides": 4,
+      "multiplier": 10,
+      "text": "Renunciar al equipo inicial de clase y de trasfondo y comenzar con 5d4 × 10 po para comprar equipo."
+    }
+  },
+  "class-guerrero": {
+    "source": {
+      "page": 257
+    },
+    "description": "Equipo Comienzas con el siguiente equipo, además del otorgado por tu trasfondo: • una cota de malla o armadura de cuero, arco largo y carcaj con 20 flechas • un arma marcial y un escudo o dos armas marciales • una ballesta ligera y 20 virotes o dos hachas de mano • un equipo para dungeon o un equipo de explorador Puedes en renunciar al equipo inicial, así como a los objetos que ofrece tu trasfondo, y comenzar con 5d4 x 10 Po para comprar tu equipo.",
+    "fixed": [],
+    "groups": [
+      {
+        "id": "armor",
+        "name": "Armadura y arco",
+        "options": [
+          {
+            "id": "armaduras-cota-de-malla",
+            "name": "Cota de malla",
+            "items": [
+              {
+                "equipmentId": "equipment-armaduras-cota-de-malla",
+                "quantity": 1
+              }
+            ]
+          },
+          {
+            "id": "leather-bow",
+            "name": "Armadura de cuero, arco largo y carcaj con 20 flechas",
+            "items": [
+              {
+                "equipmentId": "equipment-armaduras-cuero",
+                "quantity": 1
+              },
+              {
+                "equipmentId": "equipment-armas-arco-largo",
+                "quantity": 1
+              },
+              {
+                "equipmentId": "equipment-equipo-aljaba",
+                "quantity": 1
+              },
+              {
+                "equipmentId": "equipment-equipo-flechas-20",
+                "quantity": 1
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "id": "martial",
+        "name": "Armas marciales y escudo",
+        "options": [
+          {
+            "id": "weapon-shield",
+            "name": "Un arma marcial y un escudo",
+            "items": [
+              {
+                "equipmentId": "equipment-armaduras-escudo",
+                "quantity": 1
+              }
+            ],
+            "picks": [
+              {
+                "id": "weapon",
+                "name": "Arma marcial",
+                "quantity": 1,
+                "category": "martial-weapon"
+              }
+            ]
+          },
+          {
+            "id": "two-weapons",
+            "name": "Dos armas marciales",
+            "items": [],
+            "picks": [
+              {
+                "id": "two-weapons",
+                "name": "Dos armas marciales",
+                "quantity": 2,
+                "category": "martial-weapon"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "id": "other-weapons",
+        "name": "Armas adicionales",
+        "options": [
+          {
+            "id": "crossbow",
+            "name": "Ballesta ligera y 20 virotes",
+            "items": [
+              {
+                "equipmentId": "equipment-armas-ballesta-ligera",
+                "quantity": 1
+              },
+              {
+                "equipmentId": "equipment-equipo-virotes-de-ballesta-20",
+                "quantity": 1
+              }
+            ]
+          },
+          {
+            "id": "armas-hacha-de-mano",
+            "name": "Dos hachas de mano",
+            "items": [
+              {
+                "equipmentId": "equipment-armas-hacha-de-mano",
+                "quantity": 2
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "id": "pack",
+        "name": "Paquete de aventurero",
+        "options": [
+          {
+            "id": "paquetes-equipo-para-dungeons",
+            "name": "Equipo para Dungeons",
+            "items": [
+              {
+                "equipmentId": "equipment-paquetes-equipo-para-dungeons",
+                "quantity": 1
+              }
+            ]
+          },
+          {
+            "id": "paquetes-equipo-de-explorador",
+            "name": "Equipo de Explorador",
+            "items": [
+              {
+                "equipmentId": "equipment-paquetes-equipo-de-explorador",
+                "quantity": 1
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "goldAlternative": {
+      "diceCount": 5,
+      "dieSides": 4,
+      "multiplier": 10,
+      "text": "Renunciar al equipo inicial de clase y de trasfondo y comenzar con 5d4 × 10 po para comprar equipo."
+    }
+  },
+  "class-hechicero": {
+    "source": {
+      "page": 282
+    },
+    "description": "Equipo Comienzas con el siguiente equipo, además del otorgado por tu trasfondo: • una ballesta ligera y 20 virotes o cualquier arma simple • una bolsa de componentes de conjuro o un foco arcano • un equipo para dungeons un equipo de explorador • Dos dagas. Puedes en renunciar al equipo inicial, así como a los objetos que ofrece tu trasfondo, y comenzar con 3d4 x 10 Po para comprar tu equipo.",
+    "fixed": [
+      {
+        "equipmentId": "equipment-armas-daga",
+        "quantity": 2
+      }
+    ],
+    "groups": [
+      {
+        "id": "weapon",
+        "name": "Arma",
+        "options": [
+          {
+            "id": "crossbow",
+            "name": "Ballesta ligera y 20 virotes",
+            "items": [
+              {
+                "equipmentId": "equipment-armas-ballesta-ligera",
+                "quantity": 1
+              },
+              {
+                "equipmentId": "equipment-equipo-virotes-de-ballesta-20",
+                "quantity": 1
+              }
+            ]
+          },
+          {
+            "id": "simple",
+            "name": "Cualquier arma simple",
+            "items": [],
+            "picks": [
+              {
+                "id": "simple",
+                "name": "Cualquier arma simple",
+                "quantity": 1,
+                "category": "simple-weapon"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "id": "focus",
+        "name": "Componentes o foco arcano",
+        "options": [
+          {
+            "id": "equipo-bolsa-de-componentes",
+            "name": "Bolsa de componentes",
+            "items": [
+              {
+                "equipmentId": "equipment-equipo-bolsa-de-componentes",
+                "quantity": 1
+              }
+            ]
+          },
+          {
+            "id": "equipment-equipo-baston",
+            "name": "Foco arcano: Bastón",
+            "items": [
+              {
+                "equipmentId": "equipment-equipo-baston",
+                "quantity": 1
+              }
+            ]
+          },
+          {
+            "id": "equipment-equipo-cetro",
+            "name": "Foco arcano: Cetro",
+            "items": [
+              {
+                "equipmentId": "equipment-equipo-cetro",
+                "quantity": 1
+              }
+            ]
+          },
+          {
+            "id": "equipment-equipo-cristal",
+            "name": "Foco arcano: Cristal",
+            "items": [
+              {
+                "equipmentId": "equipment-equipo-cristal",
+                "quantity": 1
+              }
+            ]
+          },
+          {
+            "id": "equipment-equipo-orbe",
+            "name": "Foco arcano: Orbe",
+            "items": [
+              {
+                "equipmentId": "equipment-equipo-orbe",
+                "quantity": 1
+              }
+            ]
+          },
+          {
+            "id": "equipment-equipo-varita",
+            "name": "Foco arcano: Varita",
+            "items": [
+              {
+                "equipmentId": "equipment-equipo-varita",
+                "quantity": 1
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "id": "pack",
+        "name": "Paquete de aventurero",
+        "options": [
+          {
+            "id": "paquetes-equipo-para-dungeons",
+            "name": "Equipo para Dungeons",
+            "items": [
+              {
+                "equipmentId": "equipment-paquetes-equipo-para-dungeons",
+                "quantity": 1
+              }
+            ]
+          },
+          {
+            "id": "paquetes-equipo-de-explorador",
+            "name": "Equipo de Explorador",
+            "items": [
+              {
+                "equipmentId": "equipment-paquetes-equipo-de-explorador",
+                "quantity": 1
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "goldAlternative": {
+      "diceCount": 3,
+      "dieSides": 4,
+      "multiplier": 10,
+      "text": "Renunciar al equipo inicial de clase y de trasfondo y comenzar con 3d4 × 10 po para comprar equipo."
+    },
+    "notes": [
+      "La línea de paquetes omite la conjunción en el PDF: «un equipo para dungeons un equipo de explorador». Se presenta como la elección entre ambos paquetes del listado de equipo inicial."
+    ]
+  },
+  "class-mago": {
+    "source": {
+      "page": 306
+    },
+    "description": "Equipo Comienzas con el siguiente equipo, además del otorgado por tu trasfondo: • un bastón o una daga • una bolsa de componentes de conjuro o un foco arcano • un equipo de estudioso o un equipo de explorador • Un libro de conjuros Puedes en renunciar al equipo inicial, así como a los objetos que ofrece tu trasfondo, y comenzar con 4d4 x 10 Po para comprar tu equipo.",
+    "fixed": [
+      {
+        "equipmentId": "equipment-equipo-libro-de-conjuros",
+        "quantity": 1
+      }
+    ],
+    "groups": [
+      {
+        "id": "weapon",
+        "name": "Arma",
+        "options": [
+          {
+            "id": "armas-baston",
+            "name": "Bastón",
+            "items": [
+              {
+                "equipmentId": "equipment-armas-baston",
+                "quantity": 1
+              }
+            ]
+          },
+          {
+            "id": "armas-daga",
+            "name": "Daga",
+            "items": [
+              {
+                "equipmentId": "equipment-armas-daga",
+                "quantity": 1
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "id": "focus",
+        "name": "Componentes o foco arcano",
+        "options": [
+          {
+            "id": "equipo-bolsa-de-componentes",
+            "name": "Bolsa de componentes",
+            "items": [
+              {
+                "equipmentId": "equipment-equipo-bolsa-de-componentes",
+                "quantity": 1
+              }
+            ]
+          },
+          {
+            "id": "equipment-equipo-baston",
+            "name": "Foco arcano: Bastón",
+            "items": [
+              {
+                "equipmentId": "equipment-equipo-baston",
+                "quantity": 1
+              }
+            ]
+          },
+          {
+            "id": "equipment-equipo-cetro",
+            "name": "Foco arcano: Cetro",
+            "items": [
+              {
+                "equipmentId": "equipment-equipo-cetro",
+                "quantity": 1
+              }
+            ]
+          },
+          {
+            "id": "equipment-equipo-cristal",
+            "name": "Foco arcano: Cristal",
+            "items": [
+              {
+                "equipmentId": "equipment-equipo-cristal",
+                "quantity": 1
+              }
+            ]
+          },
+          {
+            "id": "equipment-equipo-orbe",
+            "name": "Foco arcano: Orbe",
+            "items": [
+              {
+                "equipmentId": "equipment-equipo-orbe",
+                "quantity": 1
+              }
+            ]
+          },
+          {
+            "id": "equipment-equipo-varita",
+            "name": "Foco arcano: Varita",
+            "items": [
+              {
+                "equipmentId": "equipment-equipo-varita",
+                "quantity": 1
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "id": "pack",
+        "name": "Paquete de aventurero",
+        "options": [
+          {
+            "id": "paquetes-equipo-de-erudito",
+            "name": "Equipo de Erudito",
+            "items": [
+              {
+                "equipmentId": "equipment-paquetes-equipo-de-erudito",
+                "quantity": 1
+              }
+            ]
+          },
+          {
+            "id": "paquetes-equipo-de-explorador",
+            "name": "Equipo de Explorador",
+            "items": [
+              {
+                "equipmentId": "equipment-paquetes-equipo-de-explorador",
+                "quantity": 1
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "goldAlternative": {
+      "diceCount": 4,
+      "dieSides": 4,
+      "multiplier": 10,
+      "text": "Renunciar al equipo inicial de clase y de trasfondo y comenzar con 4d4 × 10 po para comprar equipo."
+    },
+    "notes": [
+      "«Equipo de estudioso» se corresponde con Equipo de Erudito en la tabla de paquetes."
+    ]
+  },
+  "class-monje": {
+    "source": {
+      "page": 330
+    },
+    "description": "Equipo Comienzas con el siguiente equipo, además del otorgado por tu trasfondo: • una espada corta o cualquier arma simple • un equipo de dungeon o un equipo de explorador • 10 dardos Puedes en renunciar al equipo inicial, así como a los objetos que ofrece tu trasfondo, y comenzar con 5d4 Po para comprar tu equipo.",
+    "fixed": [
+      {
+        "equipmentId": "equipment-armas-dardo",
+        "quantity": 10
+      }
+    ],
+    "groups": [
+      {
+        "id": "weapon",
+        "name": "Arma",
+        "options": [
+          {
+            "id": "armas-espada-corta",
+            "name": "Espada corta",
+            "items": [
+              {
+                "equipmentId": "equipment-armas-espada-corta",
+                "quantity": 1
+              }
+            ]
+          },
+          {
+            "id": "simple",
+            "name": "Cualquier arma simple",
+            "items": [],
+            "picks": [
+              {
+                "id": "simple",
+                "name": "Cualquier arma simple",
+                "quantity": 1,
+                "category": "simple-weapon"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "id": "pack",
+        "name": "Paquete de aventurero",
+        "options": [
+          {
+            "id": "paquetes-equipo-para-dungeons",
+            "name": "Equipo para Dungeons",
+            "items": [
+              {
+                "equipmentId": "equipment-paquetes-equipo-para-dungeons",
+                "quantity": 1
+              }
+            ]
+          },
+          {
+            "id": "paquetes-equipo-de-explorador",
+            "name": "Equipo de Explorador",
+            "items": [
+              {
+                "equipmentId": "equipment-paquetes-equipo-de-explorador",
+                "quantity": 1
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "goldAlternative": {
+      "diceCount": 5,
+      "dieSides": 4,
+      "multiplier": 1,
+      "text": "Renunciar al equipo inicial de clase y de trasfondo y comenzar con 5d4 po para comprar equipo."
+    },
+    "notes": [
+      "La alternativa del monje es 5d4 po, sin multiplicador × 10."
+    ]
+  },
+  "class-paladin": {
+    "source": {
+      "page": 352
+    },
+    "description": "Equipo Comienzas con el siguiente equipo, además del otorgado por tu trasfondo: • Un arma marcial y un escudo o dos armas marciales • Cinco jabalinas o cualquier arma cuerpo a cuerpo simple • Un equipo de sacerdote o un equipo de explorador • Cota de mallas y un símbolo sagrado Puedes en renunciar al equipo inicial, así como a los objetos que ofrece tu trasfondo, y comenzar con 5d4 x 10Po para comprar tu equipo.",
+    "fixed": [
+      {
+        "equipmentId": "equipment-armaduras-cota-de-malla",
+        "quantity": 1
+      }
+    ],
+    "groups": [
+      {
+        "id": "martial",
+        "name": "Armas marciales y escudo",
+        "options": [
+          {
+            "id": "weapon-shield",
+            "name": "Un arma marcial y un escudo",
+            "items": [
+              {
+                "equipmentId": "equipment-armaduras-escudo",
+                "quantity": 1
+              }
+            ],
+            "picks": [
+              {
+                "id": "weapon",
+                "name": "Arma marcial",
+                "quantity": 1,
+                "category": "martial-weapon"
+              }
+            ]
+          },
+          {
+            "id": "two-weapons",
+            "name": "Dos armas marciales",
+            "items": [],
+            "picks": [
+              {
+                "id": "two-weapons",
+                "name": "Dos armas marciales",
+                "quantity": 2,
+                "category": "martial-weapon"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "id": "other-weapon",
+        "name": "Arma adicional",
+        "options": [
+          {
+            "id": "armas-jabalina",
+            "name": "Cinco jabalinas",
+            "items": [
+              {
+                "equipmentId": "equipment-armas-jabalina",
+                "quantity": 5
+              }
+            ]
+          },
+          {
+            "id": "simple-melee",
+            "name": "Cualquier arma cuerpo a cuerpo simple",
+            "items": [],
+            "picks": [
+              {
+                "id": "simple-melee",
+                "name": "Cualquier arma cuerpo a cuerpo simple",
+                "quantity": 1,
+                "category": "simple-melee-weapon"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "id": "pack",
+        "name": "Paquete de aventurero",
+        "options": [
+          {
+            "id": "paquetes-equipo-de-sacerdote",
+            "name": "Equipo de Sacerdote",
+            "items": [
+              {
+                "equipmentId": "equipment-paquetes-equipo-de-sacerdote",
+                "quantity": 1
+              }
+            ]
+          },
+          {
+            "id": "paquetes-equipo-de-explorador",
+            "name": "Equipo de Explorador",
+            "items": [
+              {
+                "equipmentId": "equipment-paquetes-equipo-de-explorador",
+                "quantity": 1
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "id": "holy-symbol",
+        "name": "Símbolo sagrado",
+        "options": [
+          {
+            "id": "equipment-equipo-amuleto",
+            "name": "Amuleto",
+            "items": [
+              {
+                "equipmentId": "equipment-equipo-amuleto",
+                "quantity": 1
+              }
+            ]
+          },
+          {
+            "id": "equipment-equipo-emblema",
+            "name": "Emblema",
+            "items": [
+              {
+                "equipmentId": "equipment-equipo-emblema",
+                "quantity": 1
+              }
+            ]
+          },
+          {
+            "id": "equipment-equipo-relicario",
+            "name": "Relicario",
+            "items": [
+              {
+                "equipmentId": "equipment-equipo-relicario",
+                "quantity": 1
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "goldAlternative": {
+      "diceCount": 5,
+      "dieSides": 4,
+      "multiplier": 10,
+      "text": "Renunciar al equipo inicial de clase y de trasfondo y comenzar con 5d4 × 10 po para comprar equipo."
+    }
+  },
+  "class-picaro": {
+    "source": {
+      "page": 377
+    },
+    "description": "Equipo Comienzas con el siguiente equipo, además del otorgado por tu trasfondo: • un estoque o una espada corta • un arco pequeño y carcaj con 20 flechas o una espada corta • un equipo de ladrón, o un equipo para dungeons o un equipo de explorador • Armadura de cuero, dos dagas y herramientas de ladrón. Puedes en renunciar al equipo inicial, así como a los objetos que ofrece tu trasfondo, y comenzar con 4d4 x 10Po para comprar tu equipo.",
+    "fixed": [
+      {
+        "equipmentId": "equipment-armaduras-cuero",
+        "quantity": 1
+      },
+      {
+        "equipmentId": "equipment-armas-daga",
+        "quantity": 2
+      },
+      {
+        "equipmentId": "equipment-herramientas-herramientas-de-ladron",
+        "quantity": 1
+      }
+    ],
+    "groups": [
+      {
+        "id": "main-weapon",
+        "name": "Arma principal",
+        "options": [
+          {
+            "id": "armas-estoque",
+            "name": "Estoque",
+            "items": [
+              {
+                "equipmentId": "equipment-armas-estoque",
+                "quantity": 1
+              }
+            ]
+          },
+          {
+            "id": "armas-espada-corta",
+            "name": "Espada corta",
+            "items": [
+              {
+                "equipmentId": "equipment-armas-espada-corta",
+                "quantity": 1
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "id": "other-weapon",
+        "name": "Arma adicional",
+        "options": [
+          {
+            "id": "shortbow",
+            "name": "Arco pequeño y carcaj con 20 flechas",
+            "items": [
+              {
+                "equipmentId": "equipment-armas-arco-corto",
+                "quantity": 1
+              },
+              {
+                "equipmentId": "equipment-equipo-aljaba",
+                "quantity": 1
+              },
+              {
+                "equipmentId": "equipment-equipo-flechas-20",
+                "quantity": 1
+              }
+            ]
+          },
+          {
+            "id": "armas-espada-corta",
+            "name": "Espada corta",
+            "items": [
+              {
+                "equipmentId": "equipment-armas-espada-corta",
+                "quantity": 1
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "id": "pack",
+        "name": "Paquete de aventurero",
+        "options": [
+          {
+            "id": "paquetes-equipo-de-ladron",
+            "name": "Equipo de Ladrón",
+            "items": [
+              {
+                "equipmentId": "equipment-paquetes-equipo-de-ladron",
+                "quantity": 1
+              }
+            ]
+          },
+          {
+            "id": "paquetes-equipo-para-dungeons",
+            "name": "Equipo para Dungeons",
+            "items": [
+              {
+                "equipmentId": "equipment-paquetes-equipo-para-dungeons",
+                "quantity": 1
+              }
+            ]
+          },
+          {
+            "id": "paquetes-equipo-de-explorador",
+            "name": "Equipo de Explorador",
+            "items": [
+              {
+                "equipmentId": "equipment-paquetes-equipo-de-explorador",
+                "quantity": 1
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "goldAlternative": {
+      "diceCount": 4,
+      "dieSides": 4,
+      "multiplier": 10,
+      "text": "Renunciar al equipo inicial de clase y de trasfondo y comenzar con 4d4 × 10 po para comprar equipo."
+    },
+    "notes": [
+      "«Arco pequeño» se corresponde con Arco corto y «carcaj» con Aljaba en las tablas de equipo."
+    ]
+  }
+}
