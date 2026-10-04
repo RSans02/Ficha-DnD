@@ -2,7 +2,7 @@ import test from 'node:test';
 import assert from 'node:assert/strict';
 import { ABILITIES, MULTICLASS_SLOTS } from '../lib/constants';
 import { applyDamage, applyHealing, applyLevelUp, applyRest, checkPrerequisites, createCharacter, deriveAttack, deriveCharacter, getAllChoices, getGrantedSpells, getPendingChoices, longRestHitDiceRecovery, planLevelUp, restPreview, selectedFeatIds, spellbookMinimum, spendHitDie, summarizeLevelUp, undoLevelUp, validSpells, validateCharacter } from '../lib/engine';
-import { exportJSON, importJSON, LocalCharacterRepository, validateCharacterData } from '../lib/persistence';
+import { exportJSON, importJSON, LocalCharacterRepository, LocalDraftRepository, validateCharacterData } from '../lib/persistence';
 import type { Catalog, Character, CharacterClass, Feature, Race, Spell } from '../lib/types';
 
 const source = { page: 1 };
@@ -186,6 +186,30 @@ class MemoryStorage {
   setItem(key: string, value: string) { this.data.set(key, value); }
   removeItem(key: string) { this.data.delete(key); }
 }
+
+test('unfinished character drafts survive reload and remain until explicitly deleted', () => {
+  const storage = new MemoryStorage(), drafts = new LocalDraftRepository(catalog, storage), c = createCharacter();
+  drafts.save({ character: c, step: 0 });
+  const changed = { ...c, name: 'Pícaro en progreso', raceId: race.id };
+  drafts.save({ character: changed, step: 4 });
+  const reloaded = new LocalDraftRepository(catalog, storage);
+  assert.equal(reloaded.list().length, 1);
+  assert.equal(reloaded.list()[0].character.name, 'Pícaro en progreso');
+  assert.equal(reloaded.list()[0].step, 4);
+  assert.deepEqual(new LocalDraftRepository(catalog, storage, 'other-owner').list(), []);
+  reloaded.delete(c.id);
+  assert.deepEqual(drafts.list(), []);
+});
+
+test('invalid stored drafts are preserved without overwriting them', () => {
+  const storage = new MemoryStorage(), drafts = new LocalDraftRepository(catalog, storage);
+  drafts.save({ character: createCharacter(), step: 0 });
+  const [key] = storage.data.keys();
+  storage.data.set(key, '{invalid');
+  assert.throws(() => drafts.list(), /sin sobrescribir/);
+  assert.throws(() => drafts.save({ character: createCharacter(), step: 1 }), /sin sobrescribir/);
+  assert.equal(storage.getItem(key), '{invalid');
+});
 
 test('repository isolates records and demo initialization never resurrects deleted characters', async () => {
   const storage = new MemoryStorage(), repo = new LocalCharacterRepository(catalog, storage), c = character();

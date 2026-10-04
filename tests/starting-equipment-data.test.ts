@@ -47,6 +47,14 @@ test('all grants resolve to the equipment catalog and quantities count catalog u
   }
 });
 
+test('every starting pack offers a contents description before selection', () => {
+  for (const [classId, entry] of Object.entries(data)) for (const group of entry.groups.filter(group => group.id === 'pack')) for (const option of group.options) {
+    const pack = equipment.find(item => item.id === option.items[0]?.equipmentId);
+    assert.equal(pack?.category, 'Paquetes', `${classId}: ${option.name}`);
+    assert.ok(pack && 'contentsText' in pack && typeof pack.contentsText === 'string' && pack.contentsText.startsWith('Incluye'), `${classId}: ${option.name}`);
+  }
+});
+
 test('rogue choices match the manual, including fixed tools, daggers and all three packs', () => {
   const rogue = data['class-picaro'];
   assert.equal(rogue.source.page, 377);

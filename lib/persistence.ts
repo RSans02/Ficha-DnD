@@ -51,10 +51,9 @@ export function validateCharacterData(input: unknown, catalog?: Catalog, snapsho
   const c = input;
   if (c.schemaVersion !== 1) fail('schemaVersion', 'versión no compatible; se requiere 1');
   ['id', 'ownerId'].forEach(key => str(c[key], key, 150, false));
-  ['name', 'color', 'raceId', 'subraceId', 'backgroundId'].forEach(key => str(c[key], key, 200));
+  ['name', 'raceId', 'subraceId', 'backgroundId'].forEach(key => str(c[key], key, 200));
   str(c.concept, 'concept', 20_000); str(c.portrait, 'portrait', 3_000_000);
   if (typeof c.portrait === 'string' && c.portrait && !/^(https?:\/\/|data:image\/(?:png|jpe?g|webp|gif|avif);base64,|\/[^/])/i.test(c.portrait)) fail('portrait', 'usa una imagen local, data:image o una URL http(s)');
-  if (typeof c.color === 'string' && !/^#[0-9a-f]{3,8}$/i.test(c.color)) fail('color', 'color hexadecimal inválido');
   ['createdAt', 'updatedAt'].forEach(key => { str(c[key], key, 100, false); if (typeof c[key] === 'string' && !Number.isFinite(Date.parse(c[key]))) fail(key, 'fecha inválida'); });
   bool(c.isDemo, 'isDemo'); bool(c.inspiration, 'inspiration');
   if (own(c, 'exhaustionLevel')) num(c.exhaustionLevel, 'exhaustionLevel', 0, 6);
@@ -227,6 +226,49 @@ export const importCharacter = importJSON;
 export const exportCharacter = exportJSON;
 
 type LocalStore = Pick<Storage, 'getItem' | 'setItem' | 'removeItem'>;
+
+export interface CharacterDraft { character: Character; step: number }
+
+export class LocalDraftRepository {
+  private readonly key: string;
+  constructor(private readonly catalog?: Catalog, private readonly providedStorage?: LocalStore, private readonly ownerId = 'local') { this.key = `grimorio.drafts.v1.${ownerId}`; }
+  private storage(): LocalStore {
+    try { const storage = this.providedStorage ?? globalThis.localStorage; if (storage) return storage; } catch { /* browser denied storage */ }
+    throw new Error('El almacenamiento local no está disponible. Permite el almacenamiento de este sitio para guardar borradores.');
+  }
+  list(): CharacterDraft[] {
+    const raw = this.storage().getItem(this.key);
+    if (!raw) return [];
+    try {
+      const data: unknown = JSON.parse(raw);
+      if (!plain(data) || data.schemaVersion !== 1 || !Array.isArray(data.drafts) || data.drafts.length > 2000) throw new Error('Formato de borradores inválido.');
+      const drafts = data.drafts.map((entry: unknown) => {
+        if (!plain(entry) || !Number.isInteger(entry.step) || (entry.step as number) < 0 || (entry.step as number) > 9) throw new Error('Paso del borrador inválido.');
+        const errors = validateCharacterData(entry.character, this.catalog);
+        if (errors.length) throw new Error(`Borrador inválido: ${errors.slice(0, 3).join('; ')}`);
+        const character = entry.character as Character;
+        if (character.ownerId !== this.ownerId) throw new Error('El propietario del borrador no coincide.');
+        return { character, step: entry.step as number };
+      });
+      if (new Set(drafts.map(draft => draft.character.id)).size !== drafts.length) throw new Error('Identificadores de borrador repetidos.');
+      return structuredClone(drafts).sort((a, b) => b.character.updatedAt.localeCompare(a.character.updatedAt));
+    } catch (error) { throw new Error(`No se pueden leer los borradores guardados. Se han conservado sin sobrescribir. ${error instanceof Error ? error.message : ''}`); }
+  }
+  save(draft: CharacterDraft): void {
+    if (!Number.isInteger(draft.step) || draft.step < 0 || draft.step > 9) throw new Error('Paso del borrador inválido.');
+    const errors = validateCharacterData(draft.character, this.catalog);
+    if (errors.length) throw new Error(`No se pudo guardar el borrador: ${errors.slice(0, 3).join('; ')}`);
+    if (draft.character.ownerId !== this.ownerId) throw new Error('El propietario del borrador no coincide.');
+    const drafts = this.list(), index = drafts.findIndex(item => item.character.id === draft.character.id);
+    if (index < 0) drafts.push(structuredClone(draft)); else drafts[index] = structuredClone(draft);
+    this.write(drafts);
+  }
+  delete(id: string): void { this.write(this.list().filter(draft => draft.character.id !== id)); }
+  private write(drafts: CharacterDraft[]): void {
+    try { this.storage().setItem(this.key, JSON.stringify({ schemaVersion: 1, drafts })); }
+    catch (error) { throw new Error(`No se pudo guardar el borrador en este navegador. ${error instanceof Error ? error.message : ''}`); }
+  }
+}
 
 /** Only this adapter knows localStorage. Swap the repository for authenticated server storage later. */
 export class LocalCharacterRepository implements CharacterRepository {

@@ -2,7 +2,7 @@ import type { Catalog, Character } from './types';
 import { createCharacter, deriveCharacter, getAllChoices, withHistory } from './engine';
 export function createDemo(catalog:Catalog):Character {
   const c=createCharacter();
-  c.name='Elyndra Susurrolunar'; c.concept='Guardiana de los secretos olvidados'; c.isDemo=true;c.portrait='/images/elf-wizard.webp';c.color='#587065';
+  c.name='Elyndra Susurrolunar'; c.concept='Guardiana de los secretos olvidados'; c.isDemo=true;c.portrait='/images/elf-wizard.webp';
   c.raceId='race-elfo';c.subraceId='race-alto-elfo';c.classes=[{classId:'class-mago',level:3,subclassId:catalog.classes.find(x=>x.id==='class-mago')?.subclasses[0]?.id}];
   c.abilities={str:8,dex:14,con:13,int:15,wis:12,cha:10};c.hp.rolls=[{classId:'class-mago',value:4},{classId:'class-mago',value:4}];
   c.choices['skills.class-mago']=['arcana','investigation'];

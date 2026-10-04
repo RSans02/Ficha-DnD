@@ -15,7 +15,7 @@ export interface CharacterClass extends Entity { hitDie: number | null; primaryA
 export interface Spell extends Entity { level: number | null; school: string; castingTime: string; range: string; components: string; duration: string; concentration: boolean; ritual: boolean; higherLevels: string; availableToClasses: string[] }
 export interface Feat extends Entity { prerequisiteText: string; prerequisites: Prerequisite[]; effects: Effect[]; choices: Choice[] }
 export interface Background extends Entity { toolProficiencies?: string[]; skillProficiencies?: string[]; languages?: string[]; choices?: Choice[]; featureIds?: string[] }
-export interface Equipment extends Entity { weaponCategory?: string; equipmentType?: string; category?: string; weight?: number | null; cost?: string; damage?: string; damageType?: string; armorClass?: number | null; dexterityCap?: number | null; shieldBonus?: number; armorCategory?: string; properties?: string[] }
+export interface Equipment extends Entity { weaponCategory?: string; equipmentType?: string; category?: string; weight?: number | null; cost?: string; contentsText?: string; damage?: string; damageType?: string; armorClass?: number | null; dexterityCap?: number | null; shieldBonus?: number; armorCategory?: string; properties?: string[] }
 export interface Catalog { races: Race[]; classes: CharacterClass[]; features: Feature[]; spells: Spell[]; feats: Feat[]; backgrounds: Background[]; equipment: Equipment[]; startingEquipment?: Record<string, StartingEquipmentDefinition>; backgroundEquipment?: Record<string, StartingEquipmentDefinition> }
 export interface CharacterLevel { classId: string; level: number; subclassId?: string }
 export interface Attack { id: string; name: string; ability: Ability; proficient: boolean; bonus: number; damage: string; damageBonus?: number; damageType: string; range: string; notes: string; favorite: boolean }
@@ -26,7 +26,7 @@ export interface Character {
   abilityGeneration?: { method: 'manual' | 'standard' | 'point-buy' | 'rolled'; rolls?: number[][] };
   exhaustionLevel?: number;
   startingEquipment?: StartingEquipmentSelection;
-  schemaVersion: 1; id: string; ownerId: string; name: string; concept: string; portrait: string; color: string; isDemo: boolean;
+  schemaVersion: 1; id: string; ownerId: string; name: string; concept: string; portrait: string; isDemo: boolean;
   createdAt: string; updatedAt: string; raceId: string; subraceId: string; backgroundId: string; classes: CharacterLevel[];
   abilities: AbilityScores; abilityIncreases: Partial<AbilityScores>; skillRanks: Record<string, number>; skillBonuses: Record<string, number>;
   choices: Record<string, string[]>; featIds: string[]; spellSelections: Record<string, { known: string[]; prepared: string[] }>;

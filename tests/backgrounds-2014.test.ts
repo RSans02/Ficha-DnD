@@ -93,3 +93,14 @@ test('Clan language replacement only appears for an already known language and u
   c.choices['background-cazarrecompensas-urbano.choose_tool'] = ['Laúd', 'Set de dados'];
   assert.ok(!getPendingChoices(c, catalog).some(choice => choice.id === 'background-cazarrecompensas-urbano.choose_tool'));
 });
+
+test('rogue and criminal explain their automatic shared tool proficiency', () => {
+  const c = createCharacter();
+  c.classes = [{ classId: 'class-picaro', level: 1 }];
+  c.backgroundId = 'background-criminal';
+  const replacement = getAllChoices(c, catalog).find(choice => choice.id === 'replacement.background.tool.herramientas-de-ladron');
+  assert.ok(replacement);
+  assert.match(replacement.name, /Pícaro y Criminal otorgan Herramientas de ladrón/);
+  assert.equal(replacement.required, true);
+  assert.ok(replacement.options.length > 0);
+});

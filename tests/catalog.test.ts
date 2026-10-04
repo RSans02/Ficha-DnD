@@ -2,7 +2,7 @@ import test from 'node:test';
 import assert from 'node:assert/strict';
 import { catalog } from '../lib/catalog';
 import { createDemo } from '../lib/demo';
-import { checkPrerequisites, createCharacter, deriveCharacter, getAllChoices, getPendingChoices, spellbookMinimum, validSpells, validateCharacter } from '../lib/engine';
+import { checkPrerequisites, createCharacter, deriveCharacter, eligibleExpertiseOptions, getAllChoices, getPendingChoices, spellbookMinimum, validSpells, validateCharacter } from '../lib/engine';
 import type { Character, ChoiceOption } from '../lib/types';
 
 function realCharacter(classId: string, level = 1): Character {
@@ -63,6 +63,37 @@ test('real catalog: rogue expertise accepts the class-granted thieves tools', ()
   const c = realCharacter('class-picaro');
   c.choices['choice-picaro-experto-1'] = ['thieves-tools', c.choices['skills.class-picaro'][0]];
   assert.deepEqual(validateCharacter(c, catalog), []);
+});
+
+test('expertise only offers proficiencies already granted to the character', () => {
+  const c = createCharacter();
+  c.name = 'Pícaro';
+  c.raceId = 'race-humano';
+  c.classes = [{ classId: 'class-picaro', level: 1 }];
+  const expertise = getAllChoices(c, catalog).find(choice => choice.id === 'choice-picaro-experto-1')!;
+  assert.deepEqual(eligibleExpertiseOptions(c, expertise, catalog), ['thieves-tools']);
+  c.choices['skills.class-picaro'] = ['acrobatics', 'deception', 'insight', 'stealth'];
+  const eligible = eligibleExpertiseOptions(c, expertise, catalog);
+  assert(eligible.includes('acrobatics'));
+  assert(eligible.includes('thieves-tools'));
+  assert(!eligible.includes('arcana'));
+  c.choices[expertise.id] = ['arcana', 'acrobatics'];
+  assert(validateCharacter(c, catalog).some(error => error.includes('competencia previa en Conocimiento arcano')));
+});
+
+test('skill expert feat requires an existing skill proficiency too', () => {
+  const c = createCharacter();
+  c.name = 'Experto';
+  c.raceId = 'race-humano';
+  c.classes = [{ classId: 'class-picaro', level: 1 }];
+  c.featIds = ['feat-experto-en-varias-habilidades-tasha'];
+  const expertise = getAllChoices(c, catalog).find(choice => choice.id === 'feat-experto-en-varias-habilidades-tasha-expertise')!;
+  assert.deepEqual(eligibleExpertiseOptions(c, expertise, catalog), []);
+  c.choices['skills.class-picaro'] = ['acrobatics'];
+  assert(eligibleExpertiseOptions(c, expertise, catalog).includes('acrobatics'));
+  assert(!eligibleExpertiseOptions(c, expertise, catalog).includes('arcana'));
+  c.choices[expertise.id] = ['arcana'];
+  assert(validateCharacter(c, catalog).some(error => error.includes('Requiere competencia en Conocimiento arcano')));
 });
 
 test('real catalog: heavy-armor proficiency is recognized by Spanish feat requirements', () => {

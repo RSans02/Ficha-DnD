@@ -16,6 +16,8 @@ export const SKILLS: { id: string; name: string; ability: Ability }[] = [
   { id: 'religion', name: 'Religión', ability: 'int' }, { id: 'stealth', name: 'Sigilo', ability: 'dex' },
   { id: 'survival', name: 'Supervivencia', ability: 'wis' }, { id: 'animal-handling', name: 'Trato con animales', ability: 'wis' },
 ];
+export const STANDARD_LANGUAGES_2014 = ['Común', 'Enano', 'Élfico', 'Gigante', 'Gnómico', 'Goblin', 'Mediano', 'Orco'];
+export const EXOTIC_LANGUAGES_2014 = ['Abisal', 'Celestial', 'Dracónico', 'Habla profunda', 'Infernal', 'Primordial', 'Silvano', 'Infracomún'];
 export const CONDITIONS = ['Agarrado', 'Apresado', 'Asustado', 'Aturdido', 'Cegado', 'Derribado', 'Encantado', 'Envenenado', 'Incapacitado', 'Inconsciente', 'Invisible', 'Paralizado', 'Petrificado', 'Ensordecido', 'Agotamiento'];
 
 /** Competencias al añadir una clase; tabla p.451. Las habilidades se resuelven mediante Choices. */

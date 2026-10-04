@@ -1161,14 +1161,14 @@
   },
   {
     "id": "equipment-equipo-aljaba",
-    "name": "Aljaba",
+    "name": "Carcaj",
     "category": "Equipo",
     "source": {
       "page": 427,
       "endPage": 427,
       "title": "Equipo"
     },
-    "description": "Aljaba 1 po 1 lb",
+    "description": "Carcaj 1 po 1 lb",
     "weight": 1.0,
     "cost": "1 po",
     "equipmentType": "Equipo de aventura",

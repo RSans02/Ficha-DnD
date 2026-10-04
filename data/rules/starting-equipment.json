@@ -1544,7 +1544,7 @@
     "source": {
       "page": 377
     },
-    "description": "Equipo Comienzas con el siguiente equipo, además del otorgado por tu trasfondo: • un estoque o una espada corta • un arco pequeño y carcaj con 20 flechas o una espada corta • un equipo de ladrón, o un equipo para dungeons o un equipo de explorador • Armadura de cuero, dos dagas y herramientas de ladrón. Puedes en renunciar al equipo inicial, así como a los objetos que ofrece tu trasfondo, y comenzar con 4d4 x 10Po para comprar tu equipo.",
+    "description": "Equipo Comienzas con el siguiente equipo, además del otorgado por tu trasfondo: • un estoque o una espada corta • un arco corto y carcaj con 20 flechas o una espada corta • un equipo de ladrón, o un equipo para dungeons o un equipo de explorador • Armadura de cuero, dos dagas y herramientas de ladrón. Puedes en renunciar al equipo inicial, así como a los objetos que ofrece tu trasfondo, y comenzar con 4d4 x 10Po para comprar tu equipo.",
     "fixed": [
       {
         "equipmentId": "equipment-armaduras-cuero",
@@ -1592,7 +1592,7 @@
         "options": [
           {
             "id": "shortbow",
-            "name": "Arco pequeño y carcaj con 20 flechas",
+            "name": "Arco corto y carcaj con 20 flechas",
             "items": [
               {
                 "equipmentId": "equipment-armas-arco-corto",
@@ -1664,7 +1664,7 @@
       "text": "Renunciar al equipo inicial de clase y de trasfondo y comenzar con 4d4 × 10 po para comprar equipo."
     },
     "notes": [
-      "«Arco pequeño» se corresponde con Arco corto y «carcaj» con Aljaba en las tablas de equipo."
+      "Arco corto y carcaj figuran con esos nombres en las tablas de equipo."
     ]
   }
 }

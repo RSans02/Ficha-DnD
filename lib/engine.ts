@@ -18,7 +18,7 @@ const srdSource = (page: number): Source => ({ page, book: 'SRD 5.1 · 2014', ur
 
 export function createCharacter(): Character {
   const now = new Date().toISOString();
-  return { schemaVersion: 1, id: newId(), ownerId: 'local', name: '', concept: '', portrait: '', color: '#a8463a', isDemo: false,
+  return { schemaVersion: 1, id: newId(), ownerId: 'local', name: '', concept: '', portrait: '', isDemo: false,
     createdAt: now, updatedAt: now, raceId: '', subraceId: '', backgroundId: '', classes: [],
     abilities: { str: 10, dex: 10, con: 10, int: 10, wis: 10, cha: 10 }, abilityIncreases: {}, skillRanks: {}, skillBonuses: {}, choices: {}, featIds: [], spellSelections: {},
     hp: { current: 0, temp: 0, rolls: [], hitDiceUsed: {} }, resourcesSpent: {}, slotsSpent: {}, conditions: [], inspiration: false, deathSaves: { successes: 0, failures: 0 },
@@ -112,7 +112,11 @@ export function getAllChoices(c: Character, catalog: Catalog): Choice[] {
   const backgroundTools = unique([...(background?.toolProficiencies ?? []), ...(background?.choices ?? []).flatMap(ch => ch.options.flatMap(option => typeof option !== 'string' && c.choices[ch.id]?.includes(option.id) ? (option.effects ?? []).filter(e => e.type === 'proficiency').map(e => String(e.value)) : []))]);
   const duplicateTools = backgroundTools.filter(name => priorTools.has(proficiencyName(name)));
   const toolReplacementId = (name: string) => `replacement.background.tool.${norm(name).replace(/[^a-z0-9]+/g, '-')}`;
-  duplicateTools.forEach(name => choices.push({ id: toolReplacementId(name), type: 'choose_tool', name: `Competencia repetida: sustituir ${name}`, amount: 1, required: true, source: srdSource(61), distinctFrom: duplicateTools.filter(other => other !== name).map(toolReplacementId), options: catalog.equipment.filter(item => /herramientas|instrumentos|kits|set de juego/i.test(item.equipmentType ?? '') && !priorTools.has(proficiencyName(item.name)) && !backgroundTools.some(tool => proficiencyName(tool) === proficiencyName(item.name))).map(item => ({ id: item.name, name: item.name, effects: [{ type: 'proficiency', value: item.name }] })) }));
+  duplicateTools.forEach(name => {
+    const grantingClass = classData(c, catalog).find(({ cls }) => cls.toolProficiencies.some(tool => proficiencyName(tool) === proficiencyName(name)));
+    const label = grantingClass && background ? `${grantingClass.cls.name} y ${background.name} otorgan ${name}: elige otra herramienta` : `Competencia repetida: sustituir ${name}`;
+    choices.push({ id: toolReplacementId(name), type: 'choose_tool', name: label, amount: 1, required: true, source: srdSource(61), distinctFrom: duplicateTools.filter(other => other !== name).map(toolReplacementId), options: catalog.equipment.filter(item => /herramientas|instrumentos|kits|set de juego/i.test(item.equipmentType ?? '') && !priorTools.has(proficiencyName(item.name)) && !backgroundTools.some(tool => proficiencyName(tool) === proficiencyName(item.name))).map(item => ({ id: item.name, name: item.name, effects: [{ type: 'proficiency', value: item.name }] })) });
+  });
   return [...new Map(choices.filter(ch => ch.amount > 0 && (typeof ch.replacementForLanguage !== 'string' || priorLanguages.includes(norm(ch.replacementForLanguage)))).map(ch => {
     let options = ch.options;
     if (ch.type === 'choose_feat' && !options.length) options = catalog.feats.map(f => ({ id: f.id, name: f.name, description: f.description, prerequisites: f.prerequisites }));
@@ -348,6 +352,10 @@ export function checkPrerequisites(reqs: Prerequisite[], c: Character, catalog: 
         const words = (text: string) => norm(text).split(/\W+/).filter(w => !['de', 'con', 'en', 'la', 'las', 'los', 'el'].includes(w)).map(w => w.replace(/s$/, ''));
         return d.proficiencies.some(p => words(String(r.value)).every(w => words(p).includes(w))) ? [] : [`Requiere competencia: ${r.value}.`];
       }
+      case 'skill_proficiency': {
+        const skill = d.skills[skillId(String(r.value))];
+        return skill?.breakdown.some(row => /competencia|pericia/i.test(row.label) && row.value > 0) ? [] : [`Requiere competencia en ${SKILLS.find(s => s.id === r.value)?.name ?? r.value}.`];
+      }
       case 'source_requirement': {
         const required = norm(String(r.value)), current = races(c, catalog);
         const has = (name: string) => current.some(race => norm(race.name).includes(name));
@@ -369,6 +377,19 @@ function choiceSelected(c: Character, choice: Choice) {
   return choice.type === 'subclass' ? [c.classes.find(cl => cl.classId === choice.classId)?.subclassId ?? ''].filter(Boolean) : c.choices[choice.id] ?? [];
 }
 
+export function eligibleExpertiseOptions(c: Character, choice: Choice, catalog: Catalog): string[] {
+  const before = { ...c, choices: { ...c.choices, [choice.id]: [] } };
+  const derived = deriveCharacter(before, catalog);
+  const used = new Set(getAllChoices(c, catalog).filter(other => other.id !== choice.id).flatMap(other => (c.choices[other.id] ?? []).filter(id => other.type === 'expertise' || (other.options.find(option => optionId(option) === id) as ChoiceOption | undefined)?.effects?.some(effect => effect.type === 'skill_expertise'))));
+  return choice.options.map(optionId).filter(id => {
+    if (used.has(id)) return false;
+    const skill = derived.skills[skillId(id)];
+    return skill
+      ? skill.breakdown.some(row => /competencia|pericia/i.test(row.label) && row.value > 0)
+      : derived.proficiencies.some(proficiency => proficiencyName(proficiency) === proficiencyName(id));
+  });
+}
+
 function choiceErrors(c: Character, choice: Choice, catalog: Catalog): string[] {
   const selected = choiceSelected(c, choice), errors: string[] = [], allowed = choice.options.map(optionId);
   if (choice.type === 'asi') {
@@ -386,7 +407,10 @@ function choiceErrors(c: Character, choice: Choice, catalog: Catalog): string[] 
     const freeText = !allowed.length && ['choose_language', 'choose_tool'].includes(choice.type);
     if (!(freeText ? id.trim().length > 0 && id.length <= 200 : allowed.includes(id))) errors.push(`${choice.name}: opción no válida (${id}).`);
     const option = choice.options.find(o => optionId(o) === id);
-    if (option && typeof option !== 'string') errors.push(...checkPrerequisites(option.prerequisites ?? [], c, catalog).map(e => `${option.name}: ${e}`));
+    if (option && typeof option !== 'string') {
+      const checkCharacter = option.effects?.some(effect => effect.type === 'skill_expertise') ? { ...c, choices: { ...c.choices, [choice.id]: [] } } : c;
+      errors.push(...checkPrerequisites(option.prerequisites ?? [], checkCharacter, catalog).map(e => `${option.name}: ${e}`));
+    }
     if (choice.distinctFrom?.some(other => c.choices[other]?.includes(id))) errors.push(`${choice.name}: ${id} ya se ha elegido en otra selección incompatible.`);
     const selectedLanguages = choice.type === 'choose_language' ? [id] : option && typeof option !== 'string' ? (option.effects ?? []).filter(effect => effect.type === 'language').map(effect => String(effect.value)) : [];
     if (selectedLanguages.length) {
@@ -395,13 +419,9 @@ function choiceErrors(c: Character, choice: Choice, catalog: Catalog): string[] 
       selectedLanguages.forEach(language => { if (known.includes(norm(language))) errors.push(`${choice.name}: ya conoces ${language}; elige otro idioma.`); });
     }
     if (choice.type === 'expertise') {
-      if (getAllChoices(c, catalog).some(other => other.type === 'expertise' && other.id !== choice.id && c.choices[other.id]?.includes(id))) errors.push(`${choice.name}: la pericia ${id} ya está elegida.`);
-      if (choice.requiresProficiency) {
-        const before = { ...c, choices: { ...c.choices, [choice.id]: [] } };
-        const derived = deriveCharacter(before, catalog);
-        const skill = derived.skills[skillId(id)];
-        if (skill ? !skill.breakdown.some(row => /competencia|pericia/i.test(row.label) && row.value > 0) : !derived.proficiencies.some(p => proficiencyName(p).includes(proficiencyName(id)))) errors.push(`${choice.name}: necesitas competencia previa en ${SKILLS.find(s => s.id === id)?.name ?? id}.`);
-      }
+      const alreadyExpert = getAllChoices(c, catalog).some(other => other.type === 'expertise' && other.id !== choice.id && c.choices[other.id]?.includes(id));
+      if (alreadyExpert) errors.push(`${choice.name}: la pericia ${id} ya está elegida.`);
+      if (!alreadyExpert && !eligibleExpertiseOptions(c, choice, catalog).includes(id)) errors.push(`${choice.name}: necesitas competencia previa en ${SKILLS.find(s => s.id === id)?.name ?? id}.`);
     }
   });
   return errors;
