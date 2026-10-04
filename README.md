@@ -136,7 +136,7 @@ This work includes material taken from the System Reference Document 5.1 ("SRD 5
 Las correcciones de reglas, automatizaciones e interfaz son adaptaciones de esta aplicación. Esta atribución cubre el material SRD; el compendio aportado por el usuario conserva sus propias referencias.
 # Compendios homebrew
 
-En **Mis compendios** puedes crear colecciones locales de razas y subrazas, clases y subclases, rasgos, hechizos, dotes, trasfondos y equipo. Cada entrada parte de una plantilla JSON con los campos que usa el creador de personajes. Conserva el `id` generado al editarla. Para una subraza, indica `parentId` con el ID de su raza; para una subclase, añádela a `subclasses` de una clase; para conceder rasgos, crea primero la entrada en **Rasgos** y usa su ID en `featureIds`. Los hechizos deben indicar los IDs de sus clases en `availableToClasses`.
+En **Mis compendios** puedes crear colecciones locales de razas y subrazas, clases y subclases, rasgos, hechizos, dotes, trasfondos y equipo mediante formularios. Elige la raza padre de una subraza, añade subclases desde su clase y vincula rasgos y hechizos con selectores. Para conceder un rasgo propio, guárdalo primero en **Rasgos** y selecciónalo después desde la raza o clase.
 
 Los compendios se guardan en el navegador junto a los personajes y se incorporan al catálogo durante la creación y edición. Exporta el archivo de compendios además del personaje si lo vas a usar en otro dispositivo. Importar un archivo de compendios sustituye las colecciones locales, siempre que los personajes existentes sigan teniendo referencias válidas.
 
