@@ -2,7 +2,15 @@ import test from 'node:test';
 import assert from 'node:assert/strict';
 import { catalog } from '../lib/catalog';
 import { createCharacter } from '../lib/engine';
-import { applyStartingEquipment, equipmentForPick, inventorySummary, resolveStartingEquipment, startingEquipmentIssues, startingEquipmentSelection } from '../lib/equipment';
+import { applyStartingEquipment, equippedAttacks, equipmentForPick, inventorySummary, resolveStartingEquipment, startingEquipmentIssues, startingEquipmentSelection } from '../lib/equipment';
+
+test('equipped weapons and custom attacking items appear as attacks only while equipped', () => {
+  const c=createCharacter();c.classes=[{classId:'class-picaro',level:1}];
+  const dagger=catalog.equipment.find(item=>item.name==='Daga'&&item.category==='Armas')!;
+  c.inventory=[{id:'dagger',equipmentId:dagger.id,name:'Daga',category:'Armas',quantity:1,weight:1,equipped:true,attuned:false,description:'',notes:''},{id:'staff',name:'Bastón propio',category:'Objetos',quantity:1,weight:2,equipped:true,attuned:false,description:'',notes:'',attack:{ability:'str',proficient:true,bonus:1,damage:'1d8',damageType:'contundente',range:'5 pies',notes:''}}];
+  assert.deepEqual(equippedAttacks(c,catalog).map(attack=>attack.name),['Daga','Bastón propio']);
+  c.inventory[0].equipped=false;assert.deepEqual(equippedAttacks(c,catalog).map(attack=>attack.name),['Bastón propio']);
+});
 import { abilityGenerationIssues, abilityScoresFrom, pointBuyCost, rollScore, STANDARD_ARRAY } from '../lib/ability-generation';
 import { exportJSON, importJSON, validateCharacterData } from '../lib/persistence';
 
@@ -68,5 +76,6 @@ test('every class and background can resolve every equipment alternative and its
 
 test('inventory includes coin weight and the artificer-specific attunement limits',()=>{
   const c=createCharacter();c.money.po=50;assert.equal(inventorySummary(c).coinWeight,1);assert.equal(inventorySummary(c).attunementLimit,3);
+  c.inventoryOptions={coinsHaveWeight:false};assert.equal(inventorySummary(c).coinWeight,0);assert.equal(inventorySummary(c).totalWeight,inventorySummary(c).itemWeight);
   for(const [level,limit] of [[9,3],[10,4],[14,5],[18,6]]) {c.classes=[{classId:'class-artificiero',level}];assert.equal(inventorySummary(c).attunementLimit,limit);}
 });

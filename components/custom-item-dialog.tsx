@@ -2,7 +2,7 @@
 
 import { useState, type FormEvent } from 'react';
 import { Shield, Sparkles } from 'lucide-react';
-import type { InventoryItem } from '@/lib/types';
+import type { Ability, InventoryItem } from '@/lib/types';
 import { Button, Field, Modal } from '@/components/ui';
 
 const CATEGORIES: InventoryItem['category'][] = ['Armas', 'Armaduras', 'Equipo', 'Objetos'];
@@ -59,7 +59,7 @@ function ItemForm({ item, onClose, onSave }: Omit<Props, 'item' | 'title'> & { i
   };
 
   return <form className="stack" onSubmit={save}>
-    {draft.homebrew && <div className="info-box"><div className="flex"><Sparkles size={17} /><strong>Un objeto de tu propia aventura</strong></div><p>Define sus propiedades y efectos. El peso, la cantidad y la CA de armaduras o escudos se reflejan en la ficha; el resto de efectos se gestiona manualmente.</p></div>}
+    {draft.homebrew && <div className="info-box"><div className="flex"><Sparkles size={17} /><strong>Un objeto de tu propia aventura</strong></div><p>El peso, la CA y los ataques que definas se reflejan en la ficha.</p></div>}
     <div className="grid-2">
       <Field label="Nombre"><input required autoFocus maxLength={160} placeholder="Por ejemplo: Brújula de los ecos" value={draft.name} onChange={e => setDraft({ ...draft, name: e.target.value })} /></Field>
       <Field label="Categoría"><select value={draft.category} onChange={e => setDraft({ ...draft, category: e.target.value as InventoryItem['category'] })}>{CATEGORIES.map(value => <option key={value}>{value}</option>)}</select></Field>
@@ -79,6 +79,7 @@ function ItemForm({ item, onClose, onSave }: Omit<Props, 'item' | 'title'> & { i
       </div>}
       {armorKind === 'shield' && <Field label="Bonificación del escudo a la CA"><input required type="number" min={0} max={100} step={1} value={draft.shieldBonus ?? 2} onChange={e => setDraft({ ...draft, shieldBonus: Math.max(0, validNumber(e.target.valueAsNumber)) })} /></Field>}
     </div>}
+    <div className="panel stack"><label className="flex"><input type="checkbox" checked={!!draft.attack} onChange={e=>setDraft({...draft,attack:e.target.checked?{ability:'str',proficient:true,bonus:0,damage:'1d6',damageType:'',range:'Cuerpo a cuerpo',notes:''}:undefined})}/>Este objeto tiene un ataque</label>{draft.attack&&<div className="grid-2"><Field label="Dados de daño"><input value={draft.attack.damage} onChange={e=>setDraft({...draft,attack:{...draft.attack!,damage:e.target.value}})}/></Field><Field label="Tipo de daño"><input value={draft.attack.damageType} onChange={e=>setDraft({...draft,attack:{...draft.attack!,damageType:e.target.value}})}/></Field><Field label="Característica"><select value={draft.attack.ability} onChange={e=>setDraft({...draft,attack:{...draft.attack!,ability:e.target.value as Ability}})}>{[['str','Fuerza'],['dex','Destreza'],['int','Inteligencia'],['wis','Sabiduría'],['cha','Carisma']].map(([id,label])=><option key={id} value={id}>{label}</option>)}</select></Field><Field label="Bonificador adicional"><input type="number" value={draft.attack.bonus} onChange={e=>setDraft({...draft,attack:{...draft.attack!,bonus:validNumber(e.target.valueAsNumber)}})}/></Field><Field label="Alcance"><input value={draft.attack.range} onChange={e=>setDraft({...draft,attack:{...draft.attack!,range:e.target.value}})}/></Field><label className="flex"><input type="checkbox" checked={draft.attack.proficient} onChange={e=>setDraft({...draft,attack:{...draft.attack!,proficient:e.target.checked}})}/>Competente</label></div>}</div>
     <Field label="Descripción"><textarea rows={4} placeholder="Aspecto, propiedades y efectos del objeto…" value={draft.description} onChange={e => setDraft({ ...draft, description: e.target.value })} /></Field>
     <Field label="Notas personales"><textarea rows={3} placeholder="Dónde lo encontraste, cargas restantes, acuerdos con el director…" value={draft.notes} onChange={e => setDraft({ ...draft, notes: e.target.value })} /></Field>
     <div className="modal-footer"><Button type="button" onClick={onClose}>Cancelar</Button><Button type="submit" variant="primary">Guardar objeto</Button></div>

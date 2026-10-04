@@ -8,6 +8,16 @@ export interface CharacterRepository {
   delete(id: string): Promise<void>;
 }
 
+/** Keep old saved names readable after catalog terminology changes. */
+export function normalizeEquipmentLabels(character: Character): Character {
+  const names: Record<string, Record<string, string>> = {
+    'equipment-equipo-aljaba': { Aljaba: 'Carcaj' },
+    'equipment-armas-arco-corto': { 'Arco pequeño': 'Arco corto' },
+    'equipment-equipo-palanca': { Barreta: 'Palanca' },
+  };
+  return { ...character, inventory: character.inventory.map(item => ({ ...item, name: names[item.equipmentId ?? '']?.[item.name] ?? item.name })) };
+}
+
 export class CharacterImportError extends Error {
   constructor(public readonly issues: string[]) {
     super(`No se pudo importar el personaje:\n${issues.slice(0, 12).join('\n')}${issues.length > 12 ? '\n…' : ''}`);
@@ -129,11 +139,23 @@ export function validateCharacterData(input: unknown, catalog?: Catalog, snapsho
     num(item.quantity, `inventory[${i}].quantity`, 0, 1_000_000); num(item.weight, `inventory[${i}].weight`, 0, 1_000_000, false);
     bool(item.equipped, `inventory[${i}].equipped`); bool(item.attuned, `inventory[${i}].attuned`);
     if (own(item, 'homebrew')) bool(item.homebrew, `inventory[${i}].homebrew`);
+    if (own(item, 'attack') && item.attack !== undefined) {
+      const attack = object(item.attack, `inventory[${i}].attack`);
+      if (!ABILITIES.some(ability => ability.id === attack.ability)) fail(`inventory[${i}].attack.ability`, 'característica inválida');
+      ['damage', 'damageType', 'range', 'notes'].forEach(key => str(attack[key], `inventory[${i}].attack.${key}`, 500));
+      num(attack.bonus, `inventory[${i}].attack.bonus`, -100, 100); bool(attack.proficient, `inventory[${i}].attack.proficient`);
+      if (own(attack, 'damageBonus')) num(attack.damageBonus, `inventory[${i}].attack.damageBonus`, -100, 100);
+    }
     if (own(item, 'startingEquipmentOrigin')) str(item.startingEquipmentOrigin, `inventory[${i}].startingEquipmentOrigin`, 200);
     ['armorBase', 'dexCap', 'shieldBonus'].forEach(k => { if (own(item, k)) num(item[k], `inventory[${i}].${k}`, 0, 100); });
     if (own(item, 'equipmentId')) { str(item.equipmentId, `inventory[${i}].equipmentId`, 200); if (catalog && item.equipmentId && !catalog.equipment.some(e => e.id === item.equipmentId)) fail(`inventory[${i}].equipmentId`, 'equipo desconocido'); }
   });
   records(c.money, 'money', (v, path) => num(v, path, 0, 1_000_000_000, false), 50);
+  if (own(c, 'sheetSpellAttackIds')) strings(c.sheetSpellAttackIds, 'sheetSpellAttackIds', 1000, 200);
+  if (own(c, 'inventoryOptions')) {
+    const options = object(c.inventoryOptions, 'inventoryOptions');
+    bool(options.coinsHaveWeight, 'inventoryOptions.coinsHaveWeight');
+  }
   records(c.biography, 'biography', (v, path) => str(v, path, 100_000), 100);
   arr(c.notes, 'notes', 2000).forEach((v, i) => { const note = object(v, `notes[${i}]`); ['id', 'title', 'category', 'date'].forEach(k => str(note[k], `notes[${i}].${k}`, 500)); str(note.content, `notes[${i}].content`, 100_000); });
   const favorites = object(c.favorites, 'favorites');
@@ -144,6 +166,7 @@ export function validateCharacterData(input: unknown, catalog?: Catalog, snapsho
     const f = object(v, `manual.features[${i}]`); ['id', 'name', 'originId'].forEach(k => str(f[k], `manual.features[${i}].${k}`, 250)); str(f.description, `manual.features[${i}].description`, 100_000);
     const source = object(f.source, `manual.features[${i}].source`); num(source.page, `manual.features[${i}].source.page`, 0, 10_000);
     if (f.level !== null) num(f.level, `manual.features[${i}].level`, 0, 20);
+    if (own(f, 'manualCategory') && !['Raciales', 'Clase', 'Subclase', 'Dotes', 'Otros'].includes(String(f.manualCategory))) fail(`manual.features[${i}].manualCategory`, 'tipo de rasgo inválido');
     if (own(f, 'optional')) bool(f.optional, `manual.features[${i}].optional`);
     // Custom features are descriptive. Imported automation is restricted to the documented effect schema.
     if (own(f, 'effects')) arr(f.effects, `manual.features[${i}].effects`, 100).forEach((v, j) => {
@@ -213,7 +236,7 @@ export function importJSON(text: string, catalog?: Catalog): Character {
   try { value = JSON.parse(text); } catch { throw new CharacterImportError(['El archivo no contiene JSON válido.']); }
   const errors = validateCharacterData(value, catalog);
   if (errors.length) throw new CharacterImportError(errors);
-  return value as Character;
+  return normalizeEquipmentLabels(value as Character);
 }
 
 export function exportJSON(character: Character): string {
@@ -288,7 +311,7 @@ export class LocalCharacterRepository implements CharacterRepository {
         const errors = validateCharacterData(c, this.catalog);
         if (errors.length) throw new CharacterImportError(errors);
         if ((c as Character).ownerId !== this.ownerId) throw new Error('El propietario del personaje no coincide.');
-        return c as Character;
+        return normalizeEquipmentLabels(c as Character);
       });
       if (new Set(characters.map(c => c.id)).size !== characters.length) throw new Error('Identificadores de personaje repetidos.');
       return characters;
@@ -308,7 +331,7 @@ export class LocalCharacterRepository implements CharacterRepository {
     if (errors.length) throw new CharacterImportError(errors);
     if (character.ownerId !== this.ownerId) throw new Error('El propietario del personaje no coincide con el repositorio.');
     const list = this.read(), index = list.findIndex(c => c.id === character.id);
-    if (index < 0) list.push(structuredClone(character)); else list[index] = structuredClone(character);
+    if (index < 0) list.push(normalizeEquipmentLabels(structuredClone(character))); else list[index] = normalizeEquipmentLabels(structuredClone(character));
     this.write(list);
   }
   async delete(id: string): Promise<void> { this.write(this.read().filter(c => c.id !== id)); }

@@ -1,14 +1,31 @@
-import type { Catalog, Character, Equipment, EquipmentPickCategory, InventoryItem, StartingEquipmentDefinition, StartingEquipmentSelection } from './types';
+import type { Attack, Catalog, Character, Equipment, EquipmentPickCategory, InventoryItem, StartingEquipmentDefinition, StartingEquipmentSelection } from './types';
 import { deriveCharacter } from './engine';
 
 export const foldEquipment = (text: string) => text.normalize('NFD').replace(/[\u0300-\u036f]/g, '').toLocaleLowerCase('es');
 
 export function inventorySummary(c: Character) {
   const itemWeight = c.inventory.reduce((sum,item) => sum + item.quantity * item.weight,0);
-  const coinWeight = ['pc','pp','pe','po','ppt'].reduce((sum,coin) => sum + (c.money[coin] ?? 0),0) / 50;
+  const coinWeight = c.inventoryOptions?.coinsHaveWeight === false ? 0 : ['pc','pp','pe','po','ppt'].reduce((sum,coin) => sum + (c.money[coin] ?? 0),0) / 50;
   const artificer = c.classes.find(cl => cl.classId === 'class-artificiero')?.level ?? 0;
   const attunementLimit = c.manualOverrides.attunementLimit ?? (artificer >= 18 ? 6 : artificer >= 14 ? 5 : artificer >= 10 ? 4 : 3);
   return { itemWeight, coinWeight, totalWeight:itemWeight+coinWeight, attuned:c.inventory.filter(item=>item.attuned).reduce((sum,item)=>sum+item.quantity,0), attunementLimit };
+}
+
+export function equippedAttacks(c: Character, catalog: Catalog): Attack[] {
+  const derived = deriveCharacter(c, catalog);
+  const proficiencies = derived.proficiencies.map(foldEquipment);
+  return c.inventory.filter(item => item.equipped).flatMap(item => {
+    if (item.attack) return [{ ...item.attack, id: `item.${item.id}`, name: item.name, favorite: true }];
+    const weapon = catalog.equipment.find(entry => entry.id === item.equipmentId);
+    if (!weapon?.damage) return [];
+    const category = foldEquipment(weapon.weaponCategory ?? '');
+    const properties = (weapon.properties ?? []).map(foldEquipment);
+    const ranged = category.includes('distancia');
+    const finesse = properties.some(property => property.includes('sutil'));
+    const ability = ranged || (finesse && derived.abilities.dex.modifier > derived.abilities.str.modifier) ? 'dex' : 'str';
+    const proficient = proficiencies.includes(foldEquipment(weapon.name)) || category.includes('simples') && proficiencies.includes('armas sencillas') || category.includes('marciales') && proficiencies.includes('armas marciales');
+    return [{ id: `item.${item.id}`, name: item.name, ability, proficient, bonus: 0, damage: weapon.damage, damageType: weapon.damageType ?? '', range: (weapon as Equipment & {range?:string}).range || (ranged ? 'A distancia' : 'Cuerpo a cuerpo'), notes: item.notes, favorite: true }];
+  });
 }
 
 export function inventoryFromEquipment(e: Equipment, quantity = 1): InventoryItem {

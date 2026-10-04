@@ -104,17 +104,31 @@ export function getAllChoices(c: Character, catalog: Catalog): Choice[] {
   const selectedEffects = otherChoices.flatMap(ch => ch.options.flatMap(option => typeof option !== 'string' && c.choices[ch.id]?.includes(option.id) ? option.effects ?? [] : []));
   const otherEffects = [...races(c, catalog).flatMap(r => r.effects), ...features.flatMap(f => f.effects ?? []), ...catalog.feats.filter(f => selectedFeatIds(c, catalog).includes(f.id)).flatMap(f => f.effects), ...selectedEffects];
   const priorLanguages = [...races(c, catalog).flatMap(r => r.languages), ...c.manual.languages, ...otherEffects.filter(e => e.type === 'language').map(e => String(e.value)), ...otherChoices.filter(ch => ch.type === 'choose_language').flatMap(ch => c.choices[ch.id] ?? [])].map(norm);
-  const otherSkills = new Set([...Object.entries(c.skillRanks).filter(([, rank]) => rank > 0).map(([id]) => skillId(id)), ...otherEffects.filter(e => ['skill_proficiency', 'skill_expertise', 'expertise'].includes(e.type)).map(e => skillId(e.skill ?? String(e.value)))]);
+  const skillSources = new Map<string, Set<string>>();
+  const addSkillSource = (id: string, label: string) => {
+    const key = skillId(id);
+    if (!skillSources.has(key)) skillSources.set(key, new Set());
+    skillSources.get(key)!.add(label);
+  };
+  Object.entries(c.skillRanks).filter(([, rank]) => rank > 0).forEach(([id]) => addSkillSource(id, 'ajuste manual'));
+  races(c, catalog).forEach(r => r.effects.filter(e => e.type === 'skill_proficiency').forEach(e => addSkillSource(e.skill ?? String(e.value), r.name)));
+  features.forEach(f => (f.effects ?? []).filter(e => e.type === 'skill_proficiency').forEach(e => addSkillSource(e.skill ?? String(e.value), f.name)));
+  catalog.feats.filter(f => selectedFeatIds(c, catalog).includes(f.id)).forEach(f => f.effects.filter(e => e.type === 'skill_proficiency').forEach(e => addSkillSource(e.skill ?? String(e.value), f.name)));
+  otherChoices.forEach(ch => ch.options.forEach(option => {
+    if (typeof option === 'string' || !c.choices[ch.id]?.includes(option.id)) return;
+    (option.effects ?? []).filter(e => e.type === 'skill_proficiency').forEach(e => addSkillSource(e.skill ?? String(e.value), ch.classId ? catalog.classes.find(cls => cls.id === ch.classId)?.name ?? ch.name : ch.name));
+  }));
+  const otherSkills = new Set(skillSources.keys());
   const backgroundSkills = background?.skillProficiencies?.map(skillId) ?? [];
   const duplicateSkills = backgroundSkills.filter(id => otherSkills.has(id));
-  duplicateSkills.forEach(id => choices.push({ id: `replacement.background.skill.${id}`, type: 'choose_skill', name: `Competencia repetida: sustituir ${SKILLS.find(s => s.id === id)?.name ?? id}`, amount: 1, required: true, source: srdSource(61), distinctFrom: duplicateSkills.filter(other => other !== id).map(other => `replacement.background.skill.${other}`), options: SKILLS.filter(s => !otherSkills.has(s.id) && !backgroundSkills.includes(s.id)).map(s => ({ id: s.id, name: s.name, effects: [{ type: 'skill_proficiency', skill: s.id }] })) }));
+  duplicateSkills.forEach(id => choices.push({ id: `replacement.background.skill.${id}`, type: 'choose_skill', name: `Competencia repetida: ${[...skillSources.get(id)!].join(', ')} y ${background?.name ?? 'trasfondo'} otorgan ${SKILLS.find(s => s.id === id)?.name ?? id}; elige otra habilidad`, amount: 1, required: true, source: srdSource(61), distinctFrom: duplicateSkills.filter(other => other !== id).map(other => `replacement.background.skill.${other}`), options: SKILLS.filter(s => !otherSkills.has(s.id) && !backgroundSkills.includes(s.id)).map(s => ({ id: s.id, name: s.name, effects: [{ type: 'skill_proficiency', skill: s.id }] })) }));
   const priorTools = new Set([...(classData(c, catalog)[0]?.cls.toolProficiencies ?? []), ...classData(c, catalog).slice(1).flatMap(cl => MULTICLASS_PROFICIENCIES[norm(cl.cls.name)] ?? []), ...c.manual.proficiencies, ...otherEffects.filter(e => e.type === 'proficiency').map(e => String(e.value))].map(proficiencyName));
   const backgroundTools = unique([...(background?.toolProficiencies ?? []), ...(background?.choices ?? []).flatMap(ch => ch.options.flatMap(option => typeof option !== 'string' && c.choices[ch.id]?.includes(option.id) ? (option.effects ?? []).filter(e => e.type === 'proficiency').map(e => String(e.value)) : []))]);
   const duplicateTools = backgroundTools.filter(name => priorTools.has(proficiencyName(name)));
   const toolReplacementId = (name: string) => `replacement.background.tool.${norm(name).replace(/[^a-z0-9]+/g, '-')}`;
   duplicateTools.forEach(name => {
-    const grantingClass = classData(c, catalog).find(({ cls }) => cls.toolProficiencies.some(tool => proficiencyName(tool) === proficiencyName(name)));
-    const label = grantingClass && background ? `${grantingClass.cls.name} y ${background.name} otorgan ${name}: elige otra herramienta` : `Competencia repetida: sustituir ${name}`;
+    const toolSources = [...classData(c, catalog).filter(({ cls }) => cls.toolProficiencies.some(tool => proficiencyName(tool) === proficiencyName(name))).map(({ cls }) => cls.name), ...(c.manual.proficiencies.some(tool => proficiencyName(tool) === proficiencyName(name)) ? ['ajuste manual'] : []), ...otherChoices.filter(ch => ch.options.some(option => typeof option !== 'string' && c.choices[ch.id]?.includes(option.id) && (option.effects ?? []).some(e => e.type === 'proficiency' && proficiencyName(String(e.value)) === proficiencyName(name)))).map(ch => ch.classId ? catalog.classes.find(cls => cls.id === ch.classId)?.name ?? ch.name : ch.name)];
+    const label = `Competencia repetida: ${unique(toolSources).join(', ') || 'otra fuente'} y ${background?.name ?? 'trasfondo'} otorgan ${name}; elige otra herramienta`;
     choices.push({ id: toolReplacementId(name), type: 'choose_tool', name: label, amount: 1, required: true, source: srdSource(61), distinctFrom: duplicateTools.filter(other => other !== name).map(toolReplacementId), options: catalog.equipment.filter(item => /herramientas|instrumentos|kits|set de juego/i.test(item.equipmentType ?? '') && !priorTools.has(proficiencyName(item.name)) && !backgroundTools.some(tool => proficiencyName(tool) === proficiencyName(item.name))).map(item => ({ id: item.name, name: item.name, effects: [{ type: 'proficiency', value: item.name }] })) });
   });
   return [...new Map(choices.filter(ch => ch.amount > 0 && (typeof ch.replacementForLanguage !== 'string' || priorLanguages.includes(norm(ch.replacementForLanguage)))).map(ch => {
@@ -313,6 +327,18 @@ export function getGrantedSpells(c: Character, catalog: Catalog): Spell[] {
   return catalog.spells.filter(spell => ids.includes(spell.id));
 }
 
+export function isAttackSpell(spell: Spell): boolean {
+  return /(?:haz|realiza|realizar|efectúa|haces|realizas)\s+(?:un|una)\s+ataque(?:\s+\w+){0,5}\s+(?:de|con)\s+conjuro/i.test(spell.description) || /(?:haz|realiza|efectúa)\s+una\s+tirada\s+de\s+ataque\s+de\s+conjuro/i.test(spell.description);
+}
+
+/** Fixed subclass cantrips occupy one of that subclass's known-cantrip slots. */
+export function getFixedClassCantrips(c: Character, classId: string, catalog: Catalog): Spell[] {
+  const subclassId = c.classes.find(entry => entry.classId === classId)?.subclassId;
+  if (!subclassId) return [];
+  const ids = activeFeatures(c, catalog).filter(feature => feature.originId === subclassId).flatMap(feature => (feature.effects ?? []).filter(effect => effect.type === 'grant_spell').map(effect => effect.spellId));
+  return catalog.spells.filter(spell => spell.level === 0 && ids.includes(spell.id));
+}
+
 export function deriveAttack(c: Character, attack: Attack, catalog: Catalog): { attack: DerivedValue; damageBonus: number } {
   const d = deriveCharacter(c, catalog), modifier = d.abilities[attack.ability].modifier;
   const breakdown = [{ label: ABILITIES.find(a => a.id === attack.ability)!.label, value: modifier }, { label: 'Competencia', value: attack.proficient ? d.proficiency.value : 0 }, { label: 'Bonificación adicional manual', value: attack.bonus }];
@@ -433,7 +459,8 @@ export function getPendingChoices(c: Character, catalog: Catalog): Choice[] {
   for (const caster of d.spellcasting) {
     const selection = c.spellSelections[caster.classId] ?? { known: [], prepared: [] };
     const options = validSpells(c, caster.classId, catalog);
-    if (caster.cantrips !== null && selection.known.filter(id => catalog.spells.find(s => s.id === id)?.level === 0).length !== caster.cantrips) pending.push({ id: `cantrips.${caster.classId}`, type: 'cantrips', name: 'Trucos conocidos', amount: caster.cantrips, classId: caster.classId, required: true, options: options.filter(s => s.level === 0).map(s => ({ id: s.id, name: s.name })) });
+    const fixedCantrips = getFixedClassCantrips(c, caster.classId, catalog);
+    if (caster.cantrips !== null && unique([...selection.known.filter(id => catalog.spells.find(s => s.id === id)?.level === 0), ...fixedCantrips.map(s => s.id)]).length !== caster.cantrips) pending.push({ id: `cantrips.${caster.classId}`, type: 'cantrips', name: 'Trucos conocidos', amount: caster.cantrips, classId: caster.classId, required: true, options: options.filter(s => s.level === 0 && !fixedCantrips.some(fixed => fixed.id === s.id)).map(s => ({ id: s.id, name: s.name })) });
     if (caster.knownLimit !== null && selection.known.filter(id => (catalog.spells.find(s => s.id === id)?.level ?? 0) > 0).length !== caster.knownLimit) pending.push({ id: `known.${caster.classId}`, type: 'spells', name: 'Conjuros conocidos', amount: caster.knownLimit, classId: caster.classId, required: true, options: options.filter(s => s.level! > 0).map(s => ({ id: s.id, name: s.name })) });
     const bookMinimum = spellbookMinimum(c, caster.classId, catalog);
     if (bookMinimum !== null && selection.known.filter(id => (catalog.spells.find(s => s.id === id)?.level ?? 0) > 0).length < bookMinimum) pending.push({ id: `book.${caster.classId}`, type: 'spells', name: 'Conjuros en el libro (mínimo)', amount: bookMinimum, minimum: true, classId: caster.classId, required: true, source: { page: 307, endPage: 308 }, options: options.filter(s => s.level! > 0).map(s => ({ id: s.id, name: s.name })) });

@@ -1,8 +1,17 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import { ABILITIES, MULTICLASS_SLOTS } from '../lib/constants';
-import { applyDamage, applyHealing, applyLevelUp, applyRest, checkPrerequisites, createCharacter, deriveAttack, deriveCharacter, getAllChoices, getGrantedSpells, getPendingChoices, longRestHitDiceRecovery, planLevelUp, restPreview, selectedFeatIds, spellbookMinimum, spendHitDie, summarizeLevelUp, undoLevelUp, validSpells, validateCharacter } from '../lib/engine';
-import { exportJSON, importJSON, LocalCharacterRepository, LocalDraftRepository, validateCharacterData } from '../lib/persistence';
+import { applyDamage, applyHealing, applyLevelUp, applyRest, checkPrerequisites, createCharacter, deriveAttack, deriveCharacter, getAllChoices, getFixedClassCantrips, getGrantedSpells, getPendingChoices, isAttackSpell, longRestHitDiceRecovery, planLevelUp, restPreview, selectedFeatIds, spellbookMinimum, spendHitDie, summarizeLevelUp, undoLevelUp, validSpells, validateCharacter } from '../lib/engine';
+
+test('attack spell detection excludes spells that only modify another attack', () => {
+  const named=(name:string)=>rawSpells.find(spell=>spell.name===name) as unknown as Spell;
+  assert.equal(isAttackSpell(named('Descarga de Fuego')),true);
+  assert.equal(isAttackSpell(named('Impacto Certero')),false);
+});
+import rawClasses from '../data/rules/classes.json';
+import rawFeatures from '../data/rules/class-features.json';
+import rawSpells from '../data/rules/spells.json';
+import { exportJSON, importJSON, LocalCharacterRepository, LocalDraftRepository, normalizeEquipmentLabels, validateCharacterData } from '../lib/persistence';
 import type { Catalog, Character, CharacterClass, Feature, Race, Spell } from '../lib/types';
 
 const source = { page: 1 };
@@ -24,6 +33,28 @@ function caster(level = 1) {
   const c = character('class-mago', level); delete c.choices['skills.class-mago'];
   c.spellSelections['class-mago'] = { known: ['spark', ...Array.from({ length: 6 + (level - 1) * 2 }, (_, i) => `level1-${i}`)], prepared: ['level1-0'] }; return c;
 }
+
+test('Bribón Arcano gains Mano de Mago as a fixed cantrip and only chooses two others at level 3', () => {
+  const rogue=rawClasses.find(cls=>cls.id==='class-picaro') as unknown as CharacterClass;
+  const mageHand=rawSpells.find(s=>s.id==='spell-mano-de-mago') as unknown as Spell;
+  const fixture={...catalog,classes:[rogue],features:rawFeatures as unknown as Feature[],spells:[mageHand,spell('trick-one',0),spell('trick-two',0)]};
+  const c=character('class-picaro',3);c.classes[0].subclassId='subclass-picaro-bribon-arcano';c.choices['skills.class-picaro']=[];
+  assert.deepEqual(getFixedClassCantrips(c,'class-picaro',fixture).map(s=>s.id),['spell-mano-de-mago']);
+  assert.ok(getGrantedSpells(c,fixture).some(s=>s.id==='spell-mano-de-mago'));
+  c.spellSelections['class-picaro']={known:['trick-one','trick-two'],prepared:[]};
+  assert.equal(getPendingChoices(c,fixture).some(ch=>ch.id==='cantrips.class-picaro'),false);
+});
+
+test('expertise does not create a background proficiency replacement, while a real overlap names its sources', () => {
+  const rogue = classFixture('class-picaro', 'Pícaro', { skillChoices: { amount: 1, options: ['stealth'] }, choices: [{ id: 'expert', type: 'expertise', name: 'Experto (nivel 1)', amount: 1, required: true, options: [{ id: 'stealth', name: 'Sigilo', effects: [{ type: 'skill_expertise', skill: 'stealth' }] }] }] });
+  const spy = { id: 'background-spy', name: 'Espía', description: '', source, skillProficiencies: ['stealth'], toolProficiencies: [], choices: [] };
+  const fixture = { ...catalog, classes: [...catalog.classes, rogue], backgrounds: [spy] };
+  const c = character('class-picaro'); c.backgroundId = spy.id; c.choices['skills.class-picaro'] = []; c.choices.expert = ['stealth'];
+  assert.equal(getAllChoices(c, fixture).some(ch => ch.id === 'replacement.background.skill.stealth'), false);
+  assert.equal(deriveCharacter(c, fixture).skills.stealth.breakdown.find(row => row.label === 'Pericia')?.value, 4);
+  c.choices['skills.class-picaro'] = ['stealth'];
+  assert.match(getAllChoices(c, fixture).find(ch => ch.id === 'replacement.background.skill.stealth')!.name, /Pícaro y Espía otorgan Sigilo/);
+});
 
 test('CON changes retroactively recalculate every level; feat effects and trace remain separate', () => {
   const c = character('class-guerrero', 3); c.featIds = ['feat-vigoroso'];
@@ -186,6 +217,19 @@ class MemoryStorage {
   setItem(key: string, value: string) { this.data.set(key, value); }
   removeItem(key: string) { this.data.delete(key); }
 }
+
+test('old saved equipment labels display the current names without changing item IDs', () => {
+  const c = createCharacter();
+  c.inventory = [
+    { id: 'quiver', equipmentId: 'equipment-equipo-aljaba', name: 'Aljaba' },
+    { id: 'bow', equipmentId: 'equipment-armas-arco-corto', name: 'Arco pequeño' },
+    { id: 'crowbar', equipmentId: 'equipment-equipo-palanca', name: 'Barreta' },
+  ] as Character['inventory'];
+  const normalized = normalizeEquipmentLabels(c);
+  assert.deepEqual(normalized.inventory.map(item => item.name), ['Carcaj', 'Arco corto', 'Palanca']);
+  assert.deepEqual(normalized.inventory.map(item => item.equipmentId), c.inventory.map(item => item.equipmentId));
+  assert.equal(c.inventory[0].name, 'Aljaba');
+});
 
 test('unfinished character drafts survive reload and remain until explicitly deleted', () => {
   const storage = new MemoryStorage(), drafts = new LocalDraftRepository(catalog, storage), c = createCharacter();

@@ -18787,7 +18787,7 @@
     "kind": "subclass",
     "optional": false,
     "selectionOnly": false,
-    "effects": [],
+    "effects": [{ "type": "grant_spell", "spellId": "spell-mano-de-mago" }],
     "choices": []
   },
   {

@@ -6,7 +6,7 @@ export interface Effect { type: string; ability?: Ability; value?: number | stri
 export interface Prerequisite { type: string; value?: string | number; ability?: Ability; minimum?: number; options?: Prerequisite[]; [key: string]: unknown }
 export interface ChoiceOption { id: string; name: string; description?: string; effects?: Effect[]; prerequisites?: Prerequisite[] }
 export interface Choice { id: string; type: string; name: string; amount: number; options: (ChoiceOption | string)[]; source?: Source; required?: boolean; distinctFrom?: string[]; classId?: string; level?: number; [key: string]: unknown }
-export interface Feature extends Entity { originId: string; level: number | null; optional?: boolean; choices?: Choice[]; effects?: Effect[]; resource?: { max: number | { ability: string; min: number } | { byLevel: number[] }; recovery: 'short' | 'long' | 'manual' } }
+export interface Feature extends Entity { originId: string; level: number | null; manualCategory?: 'Raciales' | 'Clase' | 'Subclase' | 'Dotes' | 'Otros'; optional?: boolean; choices?: Choice[]; effects?: Effect[]; resource?: { max: number | { ability: string; min: number } | { byLevel: number[] }; recovery: 'short' | 'long' | 'manual' } }
 export interface Race extends Entity { parentId: string | null; kind: 'race' | 'subrace' | 'lineage' | 'variant'; version: string; category: string; size: string | null; speed: number | null; abilityBonuses: Partial<AbilityScores>; languages: string[]; senses: string[]; resistances: string[]; immunities: string[]; featureIds: string[]; choices: Choice[]; effects: Effect[]; replacesParent?: boolean }
 export interface Progression { level: number; proficiencyBonus: number | null; featureIds: string[]; featureNames: string[]; slots: number[]; cantrips: number | null; knownSpells: number | null; resources: Record<string, number> }
 export interface Subclass extends Entity { featureIds: string[]; spellcasting?: Spellcasting; progression?: Progression[] }
@@ -19,10 +19,12 @@ export interface Equipment extends Entity { weaponCategory?: string; equipmentTy
 export interface Catalog { races: Race[]; classes: CharacterClass[]; features: Feature[]; spells: Spell[]; feats: Feat[]; backgrounds: Background[]; equipment: Equipment[]; startingEquipment?: Record<string, StartingEquipmentDefinition>; backgroundEquipment?: Record<string, StartingEquipmentDefinition> }
 export interface CharacterLevel { classId: string; level: number; subclassId?: string }
 export interface Attack { id: string; name: string; ability: Ability; proficient: boolean; bonus: number; damage: string; damageBonus?: number; damageType: string; range: string; notes: string; favorite: boolean }
-export interface InventoryItem { homebrew?: boolean; startingEquipmentOrigin?: string; id: string; equipmentId?: string; name: string; category: 'Armas' | 'Armaduras' | 'Equipo' | 'Objetos'; quantity: number; weight: number; equipped: boolean; attuned: boolean; description: string; notes: string; armorBase?: number; dexCap?: number; shieldBonus?: number }
+export interface InventoryItem { homebrew?: boolean; startingEquipmentOrigin?: string; attack?: Omit<Attack, 'id' | 'name' | 'favorite'>; id: string; equipmentId?: string; name: string; category: 'Armas' | 'Armaduras' | 'Equipo' | 'Objetos'; quantity: number; weight: number; equipped: boolean; attuned: boolean; description: string; notes: string; armorBase?: number; dexCap?: number; shieldBonus?: number }
 export interface Note { id: string; title: string; category: string; content: string; date: string }
 export interface HistoryEntry { id: string; date: string; text: string }
 export interface Character {
+  sheetSpellAttackIds?: string[];
+  inventoryOptions?: { coinsHaveWeight: boolean };
   abilityGeneration?: { method: 'manual' | 'standard' | 'point-buy' | 'rolled'; rolls?: number[][] };
   exhaustionLevel?: number;
   startingEquipment?: StartingEquipmentSelection;

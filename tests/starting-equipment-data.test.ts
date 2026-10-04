@@ -3,6 +3,7 @@ import assert from 'node:assert/strict';
 import classes from '../data/rules/classes.json';
 import equipment from '../data/rules/equipment.json';
 import startingEquipment from '../data/rules/starting-equipment.json';
+import backgroundEquipment from '../data/rules/background-equipment.json';
 
 type Grant = { equipmentId?: string; name?: string; quantity: number };
 type Pick = { id: string; name: string; category: string; quantity: number };
@@ -68,6 +69,15 @@ test('rogue choices match the manual, including fixed tools, daggers and all thr
   assert.equal(rogue.groups[2].options.length, 3);
   assert.equal(rogue.goldAlternative.diceCount, 4);
   assert.equal(rogue.goldAlternative.multiplier, 10);
+});
+
+test('visible equipment names use carcaj, arco corto and palanca with stable IDs', () => {
+  assert.equal(equipment.find(item => item.id === 'equipment-equipo-aljaba')?.name, 'Carcaj');
+  assert.equal(data['class-picaro'].groups[1].options[0].name, 'Arco corto y carcaj con 20 flechas');
+  for (const id of ['background-criminal', 'background-espia'] as const) {
+    const grant = backgroundEquipment[id].fixed.find(item => item.equipmentId === 'equipment-equipo-palanca');
+    assert.equal(grant?.name, 'Palanca');
+  }
 });
 
 test('gold alternatives use the printed class dice; monk has no tenfold multiplier', () => {
