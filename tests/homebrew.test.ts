@@ -20,3 +20,13 @@ test('homebrew race and spell work in the creator and survive character validati
   assert(validSpells(character, spell.availableToClasses[0], merged).some(item => item.id === spell.id));
   assert.throws(() => validateBooks([book, book], catalog), /duplicado/);
 });
+
+test('homebrew class progression can be selected and calculated at level one', () => {
+  const cls = { ...template('classes'), name: 'Guardián', savingThrows: ['str', 'con'] };
+  const book: HomebrewBook = { id: 'book-class', name: 'Clases propias', entries: { classes: [cls] } };
+  const merged = mergeCatalog(catalog, validateBooks([book], catalog));
+  const character = createCharacter();
+  character.classes = [{ classId: cls.id, level: 1 }];
+  assert.equal(validateCharacterData(character, merged).length, 0);
+  assert.equal(deriveCharacter(character, merged).level, 1);
+});
