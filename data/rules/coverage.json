@@ -42,7 +42,8 @@
     }
   },
   "spellHeadersComplete": 501,
-  "spellLevelConflicts": 2,
+  "spellLevelConflicts": 0,
+  "resolvedSpellLevelConflicts": 2,
   "unresolvedSpellListReferences": 0,
   "featAutomation": {
     "withEffectsOrChoices": 39,
@@ -59,6 +60,7 @@
   },
   "equipmentWeightUnit": "lb",
   "sourceIssues": {
+    "spell-school-correction": 5,
     "spell-level-conflict": 2,
     "pdf-link-wrong-target": 7,
     "spell-list-source-alias": 38,
@@ -66,13 +68,13 @@
   },
   "limitations": [
     "El texto completo extraído no equivale a automatización de todas sus mecánicas.",
-    "Dos hechizos tienen conflicto interno de nivel y quedan en modo manual: Tormenta de Bolas de Nieve de Snilloc (p588) y Libertad de los Vientos (p632).",
+    "Se resuelven con sus publicaciones originales los niveles contradictorios de Tormenta de Bolas de Nieve de Snilloc (nivel 2) y Libertad de los Vientos (nivel 5); se conservan los valores impresos del PDF.",
     "Dunamancia solo tiene acceso automático documentado para Magia Cronúrgica/Gravitúrgica; otras clases requieren consentimiento del DM.",
     "Las 65 ampliaciones opcionales de Tasha conservan su condición opcional por clase; no equivalen a acceso base.",
     "El PDF omite reglas generales completas de compra de puntos, matriz estándar, experiencia, condiciones y descanso. No se incorporan reglas externas.",
     "Dotes complejas, transformaciones raciales, recursos condicionales, linajes con sustituciones y parte de las elecciones de rasgos siguen siendo texto y ajuste manual.",
     "Los 25 trasfondos y 6 variantes preservan narrativa y competencias; herramientas/idiomas/equipo elegibles no están todos convertidos en decisiones ejecutables.",
-    "El peso de Tienda de campaña para dos personas está ausente en el PDF. Los pesos numéricos de equipo se expresan en lb.",
+    "El peso de Tienda de campaña para dos personas, ausente en el PDF, se completa con 20 lb según SRD 5.1. Los pesos numéricos de equipo se expresan en lb.",
     "La CA especial, vuelo/nado/escalada, armas naturales y hechizos raciales no están automatizados de manera exhaustiva; consultar el rasgo y los overrides.",
     "Las variantes agregadas de Tiefling y la ascendencia de Semielfo Variante precisan resolver las opciones y sustituciones manualmente. Sus descripciones completas permanecen accesibles.",
     "Los efectos por nivel y requisitos de subclase no expresados inequívocamente por tablas/cabeceras permanecen explícitamente pendientes o manuales."

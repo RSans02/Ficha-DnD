@@ -23,3 +23,12 @@ test('the explorer pack retains its cooking kit and supplies without absorbing t
   assert(priest.description.includes('incensario'));
   assert(!priest.description.includes('Equipo de cocina'));
 });
+
+test('2014 artisan-tool choices exclude thieves and navigators tools', () => {
+  const artisanTools = equipment.filter(item => item.equipmentType === 'Herramientas de artesano');
+  assert.equal(artisanTools.length, 17);
+  assert(!artisanTools.some(item => ['equipment-herramientas-herramientas-de-ladron', 'equipment-herramientas-herramientas-de-navegacion'].includes(item.id)));
+  for (const id of ['equipment-herramientas-herramientas-de-ladron', 'equipment-herramientas-herramientas-de-navegacion']) {
+    assert.equal(equipment.find(item => item.id === id)?.equipmentType, 'Herramientas especializadas');
+  }
+});

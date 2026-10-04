@@ -6,6 +6,7 @@ import type { Catalog, Character, InventoryItem, Note } from '@/lib/types';
 import { Button, Empty, Field, Modal } from '@/components/ui';
 import { EquipmentPicker } from './equipment-picker';
 import { CustomItemDialog } from './custom-item-dialog';
+import { inventorySummary } from '@/lib/equipment';
 
 type PanelProps = { character: Character; catalog: Catalog; onChange: (character: Character) => void };
 const INVENTORY_CATEGORIES: InventoryItem['category'][] = ['Armas', 'Armaduras', 'Equipo', 'Objetos'];
@@ -24,7 +25,7 @@ export function InventoryPanel({ character, catalog, onChange }: PanelProps) {
   const [catalogDraft, setCatalogDraft] = useState<Character | null>(null);
   const [removing, setRemoving] = useState<InventoryItem | null>(null);
   const items = useMemo(() => character.inventory.filter(item => (category === 'Todas' || item.category === category) && fold(`${item.name} ${item.description} ${item.notes}`).includes(fold(query))), [character.inventory, category, query]);
-  const weight = character.inventory.reduce((total, item) => total + Math.max(0, validNumber(item.quantity)) * Math.max(0, validNumber(item.weight)), 0);
+  const summary = inventorySummary(character), weight = summary.totalWeight;
   const patchItem = (id: string, patch: Partial<InventoryItem>) => onChange({ ...character, inventory: character.inventory.map(item => item.id === id ? { ...item, ...patch } : item) });
   const create = () => setDraft({ id: crypto.randomUUID(), homebrew: true, name: '', category: category === 'Todas' ? 'Equipo' : category as InventoryItem['category'], quantity: 1, weight: 0, equipped: false, attuned: false, description: '', notes: '' });
   const saveItem = (saved: InventoryItem) => {
@@ -37,6 +38,8 @@ export function InventoryPanel({ character, catalog, onChange }: PanelProps) {
     <div className="section-heading"><div><h2>Equipo de aventura</h2><p className="subtle">Todo lo que llevas en el camino.</p></div><div className="flex wrap"><Button onClick={() => setCatalogDraft({ ...character, inventory: [] })}><BookOpen size={16} />Buscar en el manual</Button><Button variant="primary" onClick={create}><Sparkles size={16} />Crear objeto homebrew</Button></div></div>
     <section className="panel stack" aria-label="Inventario">
       <div className="between wrap"><div className="flex"><Backpack size={18} /><strong>{character.inventory.length} {character.inventory.length === 1 ? 'objeto' : 'objetos'}</strong></div><span className="flex subtle"><Weight size={16} />Peso total <strong>{decimal(weight)} lb</strong></span></div>
+      <p className="subtle">Equipo: {decimal(summary.itemWeight)} lb · Monedas: {decimal(summary.coinWeight)} lb (50 por libra). Sintonización: {summary.attuned} / {summary.attunementLimit} objetos.</p>
+      {summary.attuned>summary.attunementLimit&&<p className="error-box" role="alert">Superas tu límite de sintonización. Revisa los objetos vinculados; separa los objetos de una pila si solo uno está sintonizado.</p>}
       <div className="spell-filters"><div className="search-field"><Search size={16} /><input aria-label="Buscar en el inventario" placeholder="Buscar un objeto…" value={query} onChange={e => setQuery(e.target.value)} /></div><select aria-label="Categoría de inventario" value={category} onChange={e => setCategory(e.target.value)}><option>Todas</option>{INVENTORY_CATEGORIES.map(value => <option key={value}>{value}</option>)}</select></div>
       {items.length ? <div className="table-scroll"><table className="data-table"><thead><tr><th scope="col">Objeto</th><th scope="col">Cantidad</th><th scope="col">Peso / unidad</th><th scope="col">Equipado</th><th scope="col">Vinculado</th><th scope="col"><span className="subtle">Acciones</span></th></tr></thead><tbody>{items.map(item => <tr key={item.id}>
         <td className="name-cell"><button className="spell-name" onClick={() => setDraft({ ...item })}><strong>{item.name}</strong><small>{item.category}{item.shieldBonus !== undefined ? ` · +${item.shieldBonus} CA` : item.armorBase !== undefined ? ` · CA ${item.armorBase}` : ''}</small></button>{item.homebrew && <span className="badge gold" style={{ marginTop: 7 }}><Sparkles size={11} />Homebrew</span>}{item.notes && <p className="subtle" style={{ maxWidth: 300, marginTop: 5 }}>{item.notes}</p>}</td>

@@ -35,16 +35,19 @@ def option(id, name, items=None, picks=None):
     return value
 
 
-def pick(category, name=None):
-    return {'id': category, 'name': name or {'artisan-tool': 'Herramientas de artesano', 'instrument': 'Instrumento musical', 'gaming-set': 'Juego'}[category], 'quantity': 1, 'category': category}
+def pick(category, name=None, requires_proficiency=False):
+    value = {'id': category, 'name': name or {'artisan-tool': 'Herramientas de artesano', 'instrument': 'Instrumento musical', 'gaming-set': 'Juego'}[category], 'quantity': 1, 'category': category}
+    if requires_proficiency:
+        value['requiresProficiency'] = True
+    return value
 
 
 def group(id, name, *options):
     return {'id': id, 'name': name, 'options': list(options)}
 
 
-def choose(category, name=None):
-    return group(category, name or pick(category)['name'], option('choose', 'De tu elección', picks=[pick(category, name)]))
+def choose(category, name=None, requires_proficiency=False):
+    return group(category, name or pick(category)['name'], option('choose', 'De tu elección', picks=[pick(category, name, requires_proficiency)]))
 
 
 bag = gear('equipo-bolsa')
@@ -61,8 +64,9 @@ def add(id, page, description, fixed, groups=None, gold=0, notes=None):
 
 add('acolito', 395,
     'Un símbolo sagrado (regalo del sacerdocio), un libro de oraciones o rueda de plegarias, 5 barritas de incienso, vestiduras, ropa común y una bolsa con 15 po.',
-    [item('Símbolo sagrado', description='Regalo recibido al entrar en el sacerdocio.'), item('Barrita de incienso', 5), item('Vestiduras del sacerdocio'), common, bag],
-    [group('plegarias', 'Oraciones', option('libro', 'Libro de oraciones', [gear('equipo-libro', name='Libro de oraciones')]), option('rueda', 'Rueda de plegarias', [item('Rueda de plegarias')]))], 15)
+    [item('Barrita de incienso', 5), item('Vestiduras del sacerdocio'), common, bag],
+    [group('simbolo', 'Símbolo sagrado regalado por el sacerdocio', *[option(kind, kind.capitalize(), [gear(f'equipo-{kind}', description='Símbolo sagrado recibido como regalo al entrar en el sacerdocio.')]) for kind in ['amuleto', 'emblema', 'relicario']]),
+     group('plegarias', 'Oraciones', option('libro', 'Libro de oraciones', [gear('equipo-libro', name='Libro de oraciones')]), option('rueda', 'Rueda de plegarias', [item('Rueda de plegarias')]))], 15)
 
 add('artesano-gremial', 396,
     'Herramientas de artesano de tu elección, una carta de introducción del gremio, ropa de viaje y una bolsa con 15 po.',
@@ -85,7 +89,12 @@ add('gladiador', 397,
 
 add('charlatan', 398,
     'Ropa fina, un kit de disfraz, herramientas de estafa de tu elección y una bolsa con 15 po.',
-    [fine, gear('herramientas-kit-de-disfraz'), item('Herramientas de estafa', description='Escoge y detalla tu ardid: diez botellas con tapón llenas de líquido de color, dados cargados, cartas marcadas o un anillo de sello de un duque imaginario.'), bag], gold=15)
+    [fine, gear('herramientas-kit-de-disfraz'), bag],
+    [group('estafa', 'Herramientas de estafa',
+           option('botellas', 'Diez botellas con líquido de color', [gear('equipo-botella-de-cristal', 10, name='Botella con tapón y líquido de color')]),
+           option('dados', 'Dados cargados', [gear('herramientas-set-de-dados', name='Dados cargados')]),
+           option('cartas', 'Baraja de cartas marcadas', [gear('herramientas-set-de-baraja-de-cartas', name='Baraja de cartas marcadas')]),
+           option('sello', 'Anillo de sello de un duque imaginario', [gear('equipo-anillo-de-sello', name='Anillo de sello de un duque imaginario')]))], gold=15)
 criminal = [gear('equipo-palanca', name='Barreta'), gear('equipo-ropa-comun', name='Ropa común oscura con capucha'), bag]
 add('criminal', 398, 'Una barreta, ropa común oscura con capucha y una bolsa con 15 po.', criminal, gold=15)
 add('espia', 399, 'La variante Espía conserva el equipo del Criminal: una barreta, ropa común oscura con capucha y una bolsa con 15 po.', criminal, gold=15, notes=['Equipo base en la página 398; la variante no lo sustituye.'])
@@ -102,7 +111,7 @@ add('heroe-de-pueblo', 401,
 add('huerfano', 402,
     'Un pequeño cuchillo, un mapa de la ciudad en la que creciste, un ratón como mascota, un símbolo para recordar a tus padres, ropa común y una bolsa con 10 po.',
     [item('Pequeño cuchillo'), item('Mapa de la ciudad natal'), item('Ratón como mascota'), item('Recuerdo de tus padres'), common, bag], gold=10)
-mariner = [item('Barra de madera o metal (clava)', description='El texto del trasfondo la denomina clava; no se le asignan estadísticas de otra arma.'), gear('equipo-cuerda-de-seda-50-pies'), item('Amuleto de la suerte', description='Una pata de conejo, una piedra con un agujero o una baratija de tu elección.'), common, bag]
+mariner = [gear('armas-porra', name='Barra de madera o metal (clava)', description='La clava del trasfondo usa las estadísticas de la porra (club) de la tabla de armas de 2014.'), gear('equipo-cuerda-de-seda-50-pies'), item('Amuleto de la suerte', description='Una pata de conejo, una piedra con un agujero o una baratija de tu elección.'), common, bag]
 add('marinero', 402,
     'Una barra de madera o metal (clava), 50 pies de cuerda de seda, un amuleto de la suerte o baratija, ropa común y una bolsa con 10 po.',
     mariner, gold=10)
@@ -113,11 +122,12 @@ noble = [fine, gear('equipo-anillo-de-sello'), item('Pergamino con tu genealogí
 add('noble', 404,
     'Ropa fina, un anillo con sello, un pergamino con tu genealogía y un monedero con 25 po.', noble, gold=25)
 add('caballero', 404,
-    'Conservas el equipo del Noble. Puedes incluir un estandarte u otro símbolo de un señor o una dama a quien hayas entregado tu corazón.', noble, gold=25,
-    notes=['El estandarte o símbolo cortesano es opcional: añádelo y descríbelo si forma parte de tu historia. Los seguidores son personajes, no objetos de inventario.'])
+    'Conservas el equipo del Noble. Puedes incluir un estandarte u otro símbolo de un señor o una dama a quien hayas entregado tu corazón.', noble,
+    [group('simbolo-cortesano', 'Símbolo cortesano opcional', option('ninguno', 'Sin símbolo adicional'), option('estandarte', 'Estandarte', [item('Estandarte cortesano')]), option('otro', 'Otro símbolo cortesano', [item('Símbolo cortesano', description='Describe el símbolo del señor o la dama a quien has entregado tu corazón.')]))], gold=25,
+    notes=['Los seguidores son personajes, no objetos de inventario.'])
 add('sabio', 404,
     'Un tintero, una pluma, un cuchillo pequeño, una carta de un colega muerto con una pregunta sin resolver, ropa común y una bolsa con 10 po.',
-    [item('Tintero'), gear('equipo-pluma-de-escritura'), item('Cuchillo pequeño'), item('Carta de un colega muerto', description='Incluye una pregunta que todavía no has sido capaz de responder.'), common, bag], gold=10)
+    [gear('equipo-tinta-botella-de-1-onza', name='Tintero de tinta negra'), gear('equipo-pluma-de-escritura'), item('Cuchillo pequeño'), item('Carta de un colega muerto', description='Incluye una pregunta que todavía no has sido capaz de responder.'), common, bag], gold=10)
 add('soldado', 405,
     'Una insignia de rango, un trofeo de un enemigo caído, dados de hueso o baraja de cartas, ropa común y una bolsa con 10 po.',
     [item('Insignia de rango'), item('Trofeo de un enemigo caído', description='Una daga, una hoja rota o un trozo de estandarte; detalla el trofeo en el inventario.'), common, bag],
@@ -128,7 +138,7 @@ add('agente-de-una-faccion', 406,
     [item('Insignia o emblema de la facción'), item('Texto de la facción', description='Un texto influyente para tu facción, o su código de conducta si es encubierta.'), common, bag], gold=15)
 add('artesano-del-clan', 408,
     'Herramientas de artesano con las que seas competente, un cincel con la marca del creador, ropa de viaje y una bolsa con 5 po y una piedra preciosa valorada en 10 po.',
-    [item('Cincel con la marca del clan'), travel, bag, item('Piedra preciosa (valor: 10 po)')], [choose('artisan-tool', 'Herramientas de artesano con las que seas competente')], 5,
+    [item('Cincel con la marca del clan'), travel, bag, item('Piedra preciosa (valor: 10 po)')], [choose('artisan-tool', 'Herramientas de artesano con las que seas competente', requires_proficiency=True)], 5,
     ['Escoge herramientas en las que tengas competencia. La piedra es un objeto; no añade 10 po a tu dinero.'])
 add('caballero-de-la-orden', 409,
     'Ropa de viaje, un estandarte o sello que represente tu papel o rango en la orden y una bolsa con 10 po.',
@@ -144,7 +154,7 @@ add('erudito-enclaustrado', 411,
 add('forastero-errante', 412,
     'Ropa de viaje, un instrumento o juego con el que tengas competencia, mapas de tu patria que muestran tu ubicación en Faerun, una joya de tu lugar de origen valorada en 10 po y una bolsa con 5 po.',
     [travel, item('Mapas trazados en tu patria'), item('Joya de tu lugar de origen (valor: 10 po)'), bag],
-    [group('pasatiempo', 'Instrumento o juego con el que tengas competencia', option('instrumento', 'Instrumento musical', picks=[pick('instrument')]), option('juego', 'Juego', picks=[pick('gaming-set')]))], 5,
+    [group('pasatiempo', 'Instrumento o juego con el que tengas competencia', option('instrumento', 'Instrumento musical', picks=[pick('instrument', requires_proficiency=True)]), option('juego', 'Juego', picks=[pick('gaming-set', requires_proficiency=True)]))], 5,
     ['Escoge un instrumento o juego en el que tengas competencia. La joya es un objeto; no añade 10 po a tu dinero.'])
 guard = [item('Uniforme de la unidad con tu rango'), gear('herramientas-cuerno', name='Cuerno para pedir ayuda'), gear('equipo-esposas'), bag]
 add('guardia-de-ciudad', 414,
@@ -154,7 +164,7 @@ add('investigador', 414,
 add('heredero', 415,
     'Tu herencia, ropa de viaje, cualquier objeto con el que tengas competencia y una bolsa con 15 po.',
     [item('Herencia', description='Define su naturaleza y propiedades con tu Dungeon Master.'), travel, item('Objeto con el que tienes competencia', description='El manual no restringe su categoría: detalla el objeto elegido y comprueba su competencia.'), bag], gold=15,
-    ['La herencia y el objeto competente se pueden concretar editándolos en el inventario. No se presupone su valor, peso ni propiedades mágicas.'])
+    notes=['La herencia y el objeto competente se pueden concretar editándolos en el inventario. No se presupone su valor, peso ni propiedades mágicas.'])
 add('mercenario-veterano', 416,
     'Uniforme de tu compañía (ropas de viaje de calidad), insignia de rango, piezas de un juego a tu elección y una bolsa con lo que queda de tu última paga: 10 po.',
     [gear('equipo-ropa-de-viajero', name='Uniforme de la compañía'), item('Insignia de rango'), bag], [choose('gaming-set')], 10)

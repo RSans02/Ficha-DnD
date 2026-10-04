@@ -77,9 +77,16 @@ test('class-specific qualifications and repeated weapon picks are retained', () 
   const cleric = data['class-clerigo'];
   assert.deepEqual(cleric.groups[0].options[1].requiresProficiency, ['Martillo de guerra']);
   assert.deepEqual(cleric.groups[1].options[2].requiresProficiency, ['Armaduras pesadas']);
-  assert.equal(data['class-druida'].groups[1].options[1].picks?.[0].category, 'simple-ranged-weapon');
+  assert.equal(data['class-druida'].groups[1].options[1].picks?.[0].category, 'simple-melee-weapon');
   assert.equal(data['class-artificiero'].groups[0].options[0].picks?.[0].quantity, 2);
   assert.equal(data['class-explorador'].groups[1].options[1].picks?.[0].quantity, 2);
   assert.equal(data['class-guerrero'].groups[1].options[1].picks?.[0].quantity, 2);
   assert.equal(data['class-paladin'].groups[0].options[1].picks?.[0].quantity, 2);
+});
+
+test('2014 starting gear resolves the druid and bard PDF discrepancies without losing the original text', () => {
+  const druid = data['class-druida'];
+  assert.match(druid.groups[1].options[1].name, /cuerpo a cuerpo/);
+  assert.equal(data['class-bardo'].groups[2].options[0].items[0].equipmentId, 'equipment-herramientas-laud');
+  assert.match(druid.description, /distancia/);
 });

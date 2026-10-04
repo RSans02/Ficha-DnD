@@ -1,17 +1,63 @@
 [
   {
+    "type": "spell-school-correction",
+    "id": "spell-guia",
+    "printed": "Abjuración",
+    "resolvedSchool": "Adivinación",
+    "correctionSource": "SRD 5.1 (Spanish), p. 163",
+    "correctionUrl": "https://media.dndbeyond.com/compendium-images/srd/5.1/SRD_CC_v5.1_ES.pdf"
+  },
+  {
+    "type": "spell-school-correction",
+    "id": "spell-toque-helado",
+    "printed": "Evocación",
+    "resolvedSchool": "Nigromancia",
+    "correctionSource": "SRD 5.1 (Spanish), p. 204",
+    "correctionUrl": "https://media.dndbeyond.com/compendium-images/srd/5.1/SRD_CC_v5.1_ES.pdf"
+  },
+  {
+    "type": "spell-school-correction",
+    "id": "spell-truco-de-la-cuerda",
+    "printed": "Conjuración",
+    "resolvedSchool": "Transmutación",
+    "correctionSource": "SRD 5.1 (Spanish), p. 206",
+    "correctionUrl": "https://media.dndbeyond.com/compendium-images/srd/5.1/SRD_CC_v5.1_ES.pdf"
+  },
+  {
+    "type": "spell-school-correction",
+    "id": "spell-zona-de-la-verdad",
+    "printed": "Conjuración",
+    "resolvedSchool": "Encantamiento",
+    "correctionSource": "SRD 5.1 (Spanish), p. 208",
+    "correctionUrl": "https://media.dndbeyond.com/compendium-images/srd/5.1/SRD_CC_v5.1_ES.pdf"
+  },
+  {
+    "type": "spell-school-correction",
+    "id": "spell-curar-heridas-en-masa",
+    "printed": "Conjuración",
+    "resolvedSchool": "Evocación",
+    "correctionSource": "SRD 5.1 (Spanish), p. 145",
+    "correctionUrl": "https://media.dndbeyond.com/compendium-images/srd/5.1/SRD_CC_v5.1_ES.pdf"
+  },
+  {
     "type": "spell-level-conflict",
     "name": "Tormenta de Bolas de Nieve de Snilloc",
     "page": 588,
     "printed": 3,
-    "section": 2
+    "section": 2,
+    "resolvedLevel": 2,
+    "correctionSource": "Elemental Evil Player’s Companion, p. 22",
+    "correctionUrl": "https://media.wizards.com/2016/downloads/DND/EE-Players-Companion.pdf"
   },
   {
     "type": "spell-level-conflict",
     "name": "Libertad de los Vientos",
     "page": 632,
     "printed": 3,
-    "section": 5
+    "section": 5,
+    "resolvedLevel": 5,
+    "correctionSource": "Tal’Dorei Campaign Setting Reborn, p. 176",
+    "correctionUrl": "https://www.dndbeyond.com/spells/1343171-freedom-of-the-winds"
   },
   {
     "type": "pdf-link-wrong-target",

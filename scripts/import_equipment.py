@@ -66,7 +66,7 @@ for line in lines:
  if m:
   name,cost,currency,damage,damage_type,wt,props=m.groups()
   range_match=re.search(r"distancia\s+([\d/]+)",props,re.I)
-  add(name,"Armas",423,combined,weight=weight(wt),cost=cost+" "+{"oro":"po","plata":"pp","cobre":"pc"}[currency],damage=damage,damageType=damage_type or "",properties=[p.strip()for p in props.split(",")if p.strip()!="-"],weaponCategory=category,range=range_match.group(1)if range_match else "",proficiencyCategory="marciales"if "marciales"in category else "simples")
+  add(name,"Armas",423,combined,weight=weight(wt),cost=cost+" "+{"oro":"po","plata":"pp","cobre":"pc"}[currency],damage=damage,damageType=damage_type or "",properties=[p.strip()for p in props.split(",")if p.strip() and p.strip()!="-"],weaponCategory=category,range=range_match.group(1)if range_match else "",proficiencyCategory="marciales"if "marciales"in category else "simples")
   pending=""
  elif line in ["Carga","Pesada","Pesada, Carga"] and rows and rows[-1]["category"]=="Armas":
   rows[-1]["properties"] += [p.strip()for p in line.split(",")]
@@ -97,7 +97,12 @@ for column in source_columns:
   item=add(name,"Equipo",427,line,weight=weight(wt),cost=cost+" "+currency,equipmentType=item_group,weightText=wt)
   if wt.lower()=="lb":
    item["automationNotes"]=["El PDF no especifica la cifra del peso; solo imprime «Lb»."]
-   issues.append({"type":"missing-source-weight","id":item["id"],"page":427})
+   issue={"type":"missing-source-weight","id":item["id"],"page":427}
+   if name=="Tienda de campaña para dos personas":
+    item["weight"]=20
+    item["automationNotes"].append("Reglas 2014: peso de 20 lb, verificado en SRD 5.1 (inglés), p. 69. El valor original ausente permanece en weightText y en la descripción.")
+    issue.update({"resolvedWeight":20,"correctionSource":"SRD 5.1 (English), p. 69","correctionUrl":"https://media.dndbeyond.com/compendium-images/srd/5.1/SRD_CC_v5.1.pdf"})
+   issues.append(issue)
 
 # Tool table and transport tables have complete reading-order rows.
 tool_text=pages[428]["text"].split("Tabla de Herramientas")[-1]
@@ -108,7 +113,10 @@ for line in tool_text.splitlines():
  m=re.match(r"(.+?)\s+(\d+)\s+(po|pp|pc)\s+(.*)$",line)
  if m:
   name,cost,currency,wt=m.groups()
-  add(name,"Herramientas",429,line,weight=weight(wt),cost=cost+" "+currency,equipmentType=category,weightText=wt)
+  # These two rows follow the artisan rows without a fresh PDF heading, but
+  # are separate tool categories in 2014 (SRD 5.1 Spanish p. 72).
+  tool_category="Herramientas especializadas" if name in ["Herramientas de ladrón","Herramientas de navegación"] else category
+  add(name,"Herramientas",429,line,weight=weight(wt),cost=cost+" "+currency,equipmentType=tool_category,weightText=wt)
 
 transport=pages[430]["text"]
 for line in transport.splitlines():

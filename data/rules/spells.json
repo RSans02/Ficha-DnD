@@ -235,7 +235,7 @@
     },
     "description": "Guía Truco, Abjuración Tiempo de lanzamiento: 1 acción Alcance: Toque Componentes: V, S Duración: Concentración hasta 1 minuto Tocas una criatura voluntaria. Antes de que el conjuro finalice el objetivo puede lanzar un d4 y agregar el resultado a una prueba de característica que el elija. Puede tirar el dado antes o después de realizar su prueba de característica. El conjuro entonces finaliza.",
     "level": 0,
-    "school": "Abjuración",
+    "school": "Adivinación",
     "castingTime": "1 acción",
     "range": "Toque",
     "components": "V, S",
@@ -251,7 +251,10 @@
     "sourceBook": "Manual del Jugador",
     "printedLevel": 0,
     "sectionLevel": 0,
-    "automationNotes": [],
+    "automationNotes": [
+      "Reglas 2014: escuela Adivinación (SRD 5.1 en español, p. 163). Se corrige la escuela Abjuración impresa en el PDF y se conserva el texto original."
+    ],
+    "printedSchool": "Abjuración",
     "optionalForClasses": []
   },
   {
@@ -763,7 +766,7 @@
     },
     "description": "Toque Helado Truco, Evocación Tiempo de lanzamiento: 1 acción Alcance: 120 pies Componentes: V, S Duración: 1 asalto Creas una mano esquelética fantasmal en el lugar donde se encuentra una criatura dentro del alcance del conjuro. La mano es un ataque a distancia que abruma a la víctima con el frío de mil tumbas. En caso de impactar, el objetivo sufre 1d8 puntos de daño necrótico, y no puede recuperar Puntos de Golpe hasta el comienzo de tu siguiente turno. Hasta entonces, la mano se adhiere a su objetivo. Si impactas a un muerto viviente, también tendrá desventaja en cualquier tirada de ataque que éste realice contra ti hasta el final de tu siguiente turno. El daño de este conjuro se incrementa en 1d8 cuando alcanzas el nivel 5 (2d8), el nivel 11 (3d8) y el nivel 17 (4d8). Ver los trucos de “Xanathar” Ver los trucos de “Tasha” Lista de Hechizos",
     "level": 0,
-    "school": "Evocación",
+    "school": "Nigromancia",
     "castingTime": "1 acción",
     "range": "120 pies",
     "components": "V, S",
@@ -779,7 +782,10 @@
     "sourceBook": "Manual del Jugador",
     "printedLevel": 0,
     "sectionLevel": 0,
-    "automationNotes": [],
+    "automationNotes": [
+      "Reglas 2014: escuela Nigromancia (SRD 5.1 en español, p. 204). Se corrige la escuela Evocación impresa en el PDF y se conserva el texto original."
+    ],
+    "printedSchool": "Evocación",
     "optionalForClasses": []
   },
   {
@@ -4149,7 +4155,7 @@
     },
     "description": "Truco de la Cuerda Nivel 2, Conjuración Tiempo de lanzamiento: 1 Acción Alcance: Toque Componentes: V, S, M (maíz en polvo y un rollo de pergamino) Duración: 1 Hora Tocas una cuerda con un largo de hasta 60 pies. Un extremo de la cuerda se eleva en el aire hasta que toda la cuerda cuelga perpendicular al suelo. En el extremo superior de la cuerda, una entrada invisible se abre hacia un espacio extradimensional que dura hasta que el conjuro finalice. El espacio extradimensional puede ser alcanzado subiendo por la cuerda. El espacio puede contener hasta ocho criaturas medianas o más pequeñas. La cuerda puede ser recogida desde dentro de dicho espacio, haciendo que desparezca de la vista. Los ataques y los conjuros no pueden cruzar la entrada del espacio extradimensional ni hacia dentro ni hacia fuera, pero aquellos que se encuentren en el interior pueden mirar a través de una ventana de 3 por 5 pies (90 cm x 150 cm) cuyo centro coincide con la cuerda. Cualquier cosa dentro del espacio extradimensional cae cuando el conjuro finaliza.",
     "level": 2,
-    "school": "Conjuración",
+    "school": "Transmutación",
     "castingTime": "1 Acción",
     "range": "Toque",
     "components": "V, S, M (maíz en polvo y un rollo de pergamino)",
@@ -4164,7 +4170,10 @@
     "sourceBook": "Manual del Jugador",
     "printedLevel": 2,
     "sectionLevel": 2,
-    "automationNotes": [],
+    "automationNotes": [
+      "Reglas 2014: escuela Transmutación (SRD 5.1 en español, p. 206). Se corrige la escuela Conjuración impresa en el PDF y se conserva el texto original."
+    ],
+    "printedSchool": "Conjuración",
     "optionalForClasses": []
   },
   {
@@ -4298,7 +4307,7 @@
     },
     "description": "Zona de la Verdad Nivel 2, conjuración Tiempo de lanzamiento: 1 Acción Alcance: 60 Pies Componentes: V, S Duración: 10 minutos Creas una zona mágica que protege contra el engaño en una esfera de 15 pies (4,5 m) de radio centrado en un lugar de tu elección dentro del alcance. Hasta que el conjuro finalice, una criatura que entre en el área del conjuro por primera vez en un turno o empiece su turno allí debe realizar una tirada de salvación de Carisma. Con una salvación fracasada, la criatura no puede decir una mentira deliberada mientras esté en el radio. Tú sabes si cada criatura hace la tirada de salvación con éxito o si la falla. Una criatura afectada es consciente del conjuro y por consiguiente puede evitar responder preguntas las cuales normalmente respondería con una mentira. Una criatura puede ser evasiva en sus respuestas siempre y cuando permanezca dentro del límite de la verdad. Ver Hechizos Nivel 2 del “Xanathar” Ver Hechizos Nivel 2 de “Tasha” Lista de Hechizos",
     "level": 2,
-    "school": "Conjuración",
+    "school": "Encantamiento",
     "castingTime": "1 Acción",
     "range": "60 Pies",
     "components": "V, S",
@@ -4314,7 +4323,10 @@
     "sourceBook": "Manual del Jugador",
     "printedLevel": 2,
     "sectionLevel": 2,
-    "automationNotes": [],
+    "automationNotes": [
+      "Reglas 2014: escuela Encantamiento (SRD 5.1 en español, p. 208). Se corrige la escuela Conjuración impresa en el PDF y se conserva el texto original."
+    ],
+    "printedSchool": "Conjuración",
     "optionalForClasses": []
   },
   {
@@ -7243,7 +7255,7 @@
     },
     "description": "Curar Heridas en Masa Nivel 5, conjuración. Tiempo de lanzamiento: 1 Acción Alcance: 60 Pies Componentes: V, S Duración: Instantánea Una oleada de energía sanadora se extiende desde un punto a tu elección dentro del alcance. Elige hasta a seis criaturas en una esfera de 30 pies de radio centrada en ese punto. Cada objetivo recupera Puntos de Golpe igual a 3d8 + tu modificador de característica de lanzamiento de conjuros. El conjuro no tiene efecto sobre muertos vivientes o constructos. A niveles superiores. Cuando lanzas este hechizo usando un espacio de conjuros de nivel 6 o superior, la curación se incrementa en 1d8 por cada nivel de espacio de conjuros por encima de nivel 5.",
     "level": 5,
-    "school": "Conjuración",
+    "school": "Evocación",
     "castingTime": "1 Acción",
     "range": "60 Pies",
     "components": "V, S",
@@ -7259,7 +7271,10 @@
     "sourceBook": "Manual del Jugador",
     "printedLevel": 5,
     "sectionLevel": 5,
-    "automationNotes": [],
+    "automationNotes": [
+      "Reglas 2014: escuela Evocación (SRD 5.1 en español, p. 145). Se corrige la escuela Conjuración impresa en el PDF y se conserva el texto original."
+    ],
+    "printedSchool": "Conjuración",
     "optionalForClasses": []
   },
   {
@@ -11420,7 +11435,7 @@
       "title": "Hechizos Nivel 2 de Xanathar"
     },
     "description": "Tormenta de Bolas de Nieve de Snilloc Nivel 3, Evocación. Tiempo de lanzamiento: 1 Acción Alcance: 90 Pies Componentes: V, S, M (un trozo de hielo o una pequeña viruta de roca blanca) Duración: Instantáneo Una ráfaga de bolas de nieve mágicas brota de un punto que elijas dentro del alcance. Cada criatura en una esfera de 5 pies de radio centrada en ese punto debe hacer una tirada de salvación de Destreza. Una criatura recibe 3d6 de daño frío en una salvación fallida, o la mitad de daño en una exitosa. A niveles superiores. Cuando lances este conjuro usando una ranura del conjuro de 3° nivel o superior, el daño aumenta en 1d6 por cada nivel de ranura por encima de 2°.",
-    "level": null,
+    "level": 2,
     "school": "Evocación",
     "castingTime": "1 Acción",
     "range": "90 Pies",
@@ -11437,7 +11452,7 @@
     "printedLevel": 3,
     "sectionLevel": 2,
     "automationNotes": [
-      "Conflicto de fuente: cabecera del hechizo nivel 3, sección nivel 2. Resolver manualmente."
+      "Reglas de la edición 2014: nivel 2, verificado en Elemental Evil Player’s Companion, p. 22 (https://media.wizards.com/2016/downloads/DND/EE-Players-Companion.pdf). El PDF imprime nivel 3 en la cabecera; se conserva su texto original y se corrige el nivel efectivo."
     ],
     "optionalForClasses": []
   },
@@ -14513,7 +14528,7 @@
       "title": "Hechizo de Nivel 5 de Tal’Dorei"
     },
     "description": "Libertad de los Vientos Nivel 3, Abjuración. Tiempo de lanzamiento: 1 Acción Alcance: Personal Componentes: V, S, M (Un trozo de lona de vela) Duración: Concentración, hasta 10 minutos El viento te rodea el cuerpo, te tira del pelo y de la ropa y te levanta los pies del suelo. Obtienes una velocidad de vuelo de 60 pies. Además, tienes ventaja en las tiradas para evitar que te agarren y en las de salvación para evitar acabar apresado o paralizado. Cuando seas objetivo de un conjuro o un ataque mientras este conjuro esté activado, puedes usar una reacción para teletransportarte hasta 60 pies a un espacio desocupado que puedas ver. Si este movimiento te saca del rango del conjuro o ataque que lo ha provocado, no te afecta. El conjuro termina cuando reapareces.",
-    "level": null,
+    "level": 5,
     "school": "Abjuración",
     "castingTime": "1 Acción",
     "range": "Personal",
@@ -14527,7 +14542,7 @@
     "printedLevel": 3,
     "sectionLevel": 5,
     "automationNotes": [
-      "Conflicto de fuente: cabecera del hechizo nivel 3, sección nivel 5. Resolver manualmente."
+      "Reglas de la edición 2014: nivel 5, verificado en Tal’Dorei Campaign Setting Reborn, p. 176 (https://www.dndbeyond.com/spells/1343171-freedom-of-the-winds). El PDF imprime nivel 3 en la cabecera; se conserva su texto original y se corrige el nivel efectivo."
     ],
     "availableToSubclasses": [
       "subclass-paladin-juramento-del-mar-abierto"

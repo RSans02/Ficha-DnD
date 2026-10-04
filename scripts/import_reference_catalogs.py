@@ -1,6 +1,7 @@
 """Import all spells, spell lists, feats, backgrounds and equipment from source data.
 
-No network or external rules are used. Ambiguities are recorded, never filled in.
+Original source text is preserved. Documented 2014 spell-level corrections use
+the publisher references below; unverified ambiguities remain unresolved.
 """
 from __future__ import annotations
 
@@ -10,6 +11,7 @@ import re
 import unicodedata
 from collections import Counter
 from pathlib import Path
+from background_rules import enrich_backgrounds
 
 ROOT = Path(__file__).resolve().parents[1]
 SOURCE = ROOT / "data" / "source"
@@ -77,9 +79,19 @@ def import_spells():
         notes = []
         printed_level = level
         if level != parent_level:
-            notes.append(f"Conflicto de fuente: cabecera del hechizo nivel {level}, sección nivel {parent_level}. Resolver manualmente.")
-            ISSUES.append({"type":"spell-level-conflict","name":section["title"],"page":section["page"],"printed":level,"section":parent_level})
-            level = None
+            correction = {
+                "Tormenta de Bolas de Nieve de Snilloc": (2, "Elemental Evil Player’s Companion, p. 22", "https://media.wizards.com/2016/downloads/DND/EE-Players-Companion.pdf"),
+                "Libertad de los Vientos": (5, "Tal’Dorei Campaign Setting Reborn, p. 176", "https://www.dndbeyond.com/spells/1343171-freedom-of-the-winds"),
+            }.get(section["title"])
+            issue = {"type":"spell-level-conflict","name":section["title"],"page":section["page"],"printed":level,"section":parent_level}
+            if correction:
+                level, publication, url = correction
+                notes.append(f"Reglas de la edición 2014: nivel {level}, verificado en {publication} ({url}). El PDF imprime nivel {printed_level} en la cabecera; se conserva su texto original y se corrige el nivel efectivo.")
+                issue.update({"resolvedLevel":level,"correctionSource":publication,"correctionUrl":url})
+            else:
+                notes.append(f"Conflicto de fuente: cabecera del hechizo nivel {level}, sección nivel {parent_level}. Resolver manualmente.")
+                level = None
+            ISSUES.append(issue)
         higher = re.search(r"(?:En|A)\s+Niveles?\s+Superiores?\s*[:.]?\s*(.*)",text,re.I)
         spell = {"id":"spell-"+slug(section["title"]),"name":section["title"],"source":source(section),
                  "description":text,"level":level,"school":school,"castingTime":fields["castingTime"],
@@ -89,6 +101,19 @@ def import_spells():
                  "higherLevels":higher.group(1).strip() if higher else "", "availableToClasses":[],
                  "sourceBook":spell_source(section["page"]),"printedLevel":printed_level,"sectionLevel":parent_level,
                  "automationNotes":notes}
+        school_correction = {
+            "Guía": ("Adivinación", 163),
+            "Toque Helado": ("Nigromancia", 204),
+            "Truco de la Cuerda": ("Transmutación", 206),
+            "Zona de la Verdad": ("Encantamiento", 208),
+            "Curar Heridas en Masa": ("Evocación", 145),
+        }.get(section["title"])
+        if school_correction:
+            correct_school, srd_page = school_correction
+            spell["printedSchool"] = school
+            spell["school"] = correct_school
+            spell["automationNotes"].append(f"Reglas 2014: escuela {correct_school} (SRD 5.1 en español, p. {srd_page}). Se corrige la escuela {school} impresa en el PDF y se conserva el texto original.")
+            ISSUES.append({"type":"spell-school-correction","id":spell["id"],"printed":school,"resolvedSchool":correct_school,"correctionSource":f"SRD 5.1 (Spanish), p. {srd_page}","correctionUrl":"https://media.dndbeyond.com/compendium-images/srd/5.1/SRD_CC_v5.1_ES.pdf"})
         for key in ["school","castingTime","range","components","duration"]:
             if not spell[key]:ISSUES.append({"type":"spell-missing-header","id":spell["id"],"field":key,"page":section["page"]})
         if spell["sourceBook"]=="Dunamancia":
@@ -289,7 +314,7 @@ def import_backgrounds():
             variant={**row,"id":"background-"+slug(name),"name":name,"description":clean(section["text"][match.start():]),"parentId":row["id"],"version":"Variante","choices":[{**choice,"id":choice["id"]+"-"+slug(name)}for choice in choices],"automationNotes":row["automationNotes"]+["Variante del trasfondo "+row["name"]+". Revisa los cambios de equipo y rasgo en su descripción."]}
             if name=="Investigador":variant["skillProficiencies"]=["investigation","insight"]
             rows.append(variant)
-    return rows
+    return enrich_backgrounds(rows)
 
 
 if __name__=="__main__":

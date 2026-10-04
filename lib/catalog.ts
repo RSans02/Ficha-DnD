@@ -6,5 +6,7 @@ import spells from '@/data/rules/spells.json';
 import feats from '@/data/rules/feats.json';
 import backgrounds from '@/data/rules/backgrounds.json';
 import equipment from '@/data/rules/equipment.json';
+import startingEquipment from '@/data/rules/starting-equipment.json';
+import backgroundEquipment from '@/data/rules/background-equipment.json';
 import type { Catalog } from './types';
-export const catalog = { races, classes, features:[...classFeatures,...racialFeatures], spells, feats, backgrounds, equipment } as unknown as Catalog;
+export const catalog = { races, classes, features:[...classFeatures,...racialFeatures], spells, feats, backgrounds, equipment, startingEquipment, backgroundEquipment } as unknown as Catalog;

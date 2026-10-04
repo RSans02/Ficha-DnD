@@ -1,0 +1,1328 @@
+{
+  "background-acolito": {
+    "source": {
+      "page": 395
+    },
+    "description": "Un símbolo sagrado (regalo del sacerdocio), un libro de oraciones o rueda de plegarias, 5 barritas de incienso, vestiduras, ropa común y una bolsa con 15 po.",
+    "fixed": [
+      {
+        "name": "Barrita de incienso",
+        "quantity": 5
+      },
+      {
+        "name": "Vestiduras del sacerdocio",
+        "quantity": 1
+      },
+      {
+        "equipmentId": "equipment-equipo-ropa-comun",
+        "quantity": 1
+      },
+      {
+        "equipmentId": "equipment-equipo-bolsa",
+        "quantity": 1
+      }
+    ],
+    "groups": [
+      {
+        "id": "simbolo",
+        "name": "Símbolo sagrado regalado por el sacerdocio",
+        "options": [
+          {
+            "id": "amuleto",
+            "name": "Amuleto",
+            "items": [
+              {
+                "equipmentId": "equipment-equipo-amuleto",
+                "quantity": 1,
+                "description": "Símbolo sagrado recibido como regalo al entrar en el sacerdocio."
+              }
+            ]
+          },
+          {
+            "id": "emblema",
+            "name": "Emblema",
+            "items": [
+              {
+                "equipmentId": "equipment-equipo-emblema",
+                "quantity": 1,
+                "description": "Símbolo sagrado recibido como regalo al entrar en el sacerdocio."
+              }
+            ]
+          },
+          {
+            "id": "relicario",
+            "name": "Relicario",
+            "items": [
+              {
+                "equipmentId": "equipment-equipo-relicario",
+                "quantity": 1,
+                "description": "Símbolo sagrado recibido como regalo al entrar en el sacerdocio."
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "id": "plegarias",
+        "name": "Oraciones",
+        "options": [
+          {
+            "id": "libro",
+            "name": "Libro de oraciones",
+            "items": [
+              {
+                "equipmentId": "equipment-equipo-libro",
+                "quantity": 1,
+                "name": "Libro de oraciones"
+              }
+            ]
+          },
+          {
+            "id": "rueda",
+            "name": "Rueda de plegarias",
+            "items": [
+              {
+                "name": "Rueda de plegarias",
+                "quantity": 1
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "coins": {
+      "po": 15
+    }
+  },
+  "background-artesano-gremial": {
+    "source": {
+      "page": 396
+    },
+    "description": "Herramientas de artesano de tu elección, una carta de introducción del gremio, ropa de viaje y una bolsa con 15 po.",
+    "fixed": [
+      {
+        "name": "Carta de introducción del gremio",
+        "quantity": 1
+      },
+      {
+        "equipmentId": "equipment-equipo-ropa-de-viajero",
+        "quantity": 1
+      },
+      {
+        "equipmentId": "equipment-equipo-bolsa",
+        "quantity": 1
+      }
+    ],
+    "groups": [
+      {
+        "id": "artisan-tool",
+        "name": "Herramientas de artesano",
+        "options": [
+          {
+            "id": "choose",
+            "name": "De tu elección",
+            "items": [],
+            "picks": [
+              {
+                "id": "artisan-tool",
+                "name": "Herramientas de artesano",
+                "quantity": 1,
+                "category": "artisan-tool"
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "coins": {
+      "po": 15
+    }
+  },
+  "background-mercader-de-gremio": {
+    "source": {
+      "page": 397
+    },
+    "description": "Conservas el equipo del artesano gremial. Puedes sustituir sus herramientas de artesano por una mula y un carro.",
+    "fixed": [
+      {
+        "name": "Carta de introducción del gremio",
+        "quantity": 1
+      },
+      {
+        "equipmentId": "equipment-equipo-ropa-de-viajero",
+        "quantity": 1
+      },
+      {
+        "equipmentId": "equipment-equipo-bolsa",
+        "quantity": 1
+      }
+    ],
+    "groups": [
+      {
+        "id": "oficio",
+        "name": "Equipo del gremio",
+        "options": [
+          {
+            "id": "herramientas",
+            "name": "Herramientas de artesano",
+            "items": [],
+            "picks": [
+              {
+                "id": "artisan-tool",
+                "name": "Herramientas de artesano",
+                "quantity": 1,
+                "category": "artisan-tool"
+              }
+            ]
+          },
+          {
+            "id": "transporte",
+            "name": "Mula y carro",
+            "items": [
+              {
+                "equipmentId": "equipment-monturas-burro-o-mula",
+                "quantity": 1,
+                "name": "Mula"
+              },
+              {
+                "equipmentId": "equipment-equipo-carro",
+                "quantity": 1
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "coins": {
+      "po": 15
+    },
+    "notes": [
+      "El equipo heredado del Artesano Gremial figura en la página 396; la sustitución de esta variante, en la 397."
+    ]
+  },
+  "background-artista": {
+    "source": {
+      "page": 397
+    },
+    "description": "Un instrumento musical de tu elección, el favor de un admirador, un traje y una bolsa con 15 po.",
+    "fixed": [
+      {
+        "name": "Favor de un admirador",
+        "quantity": 1,
+        "description": "Una carta de amor, un mechón de pelo o una baratija; puedes detallar el recuerdo en el inventario."
+      },
+      {
+        "equipmentId": "equipment-equipo-ropa-de-disfraz",
+        "quantity": 1,
+        "name": "Traje de artista"
+      },
+      {
+        "equipmentId": "equipment-equipo-bolsa",
+        "quantity": 1
+      }
+    ],
+    "groups": [
+      {
+        "id": "instrument",
+        "name": "Instrumento musical",
+        "options": [
+          {
+            "id": "choose",
+            "name": "De tu elección",
+            "items": [],
+            "picks": [
+              {
+                "id": "instrument",
+                "name": "Instrumento musical",
+                "quantity": 1,
+                "category": "instrument"
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "coins": {
+      "po": 15
+    }
+  },
+  "background-gladiador": {
+    "source": {
+      "page": 397
+    },
+    "description": "Conservas el equipo del artista. Puedes sustituir su instrumento por un arma barata pero poco común, como un tridente o una red.",
+    "fixed": [
+      {
+        "name": "Favor de un admirador",
+        "quantity": 1,
+        "description": "Una carta de amor, un mechón de pelo o una baratija; puedes detallar el recuerdo en el inventario."
+      },
+      {
+        "equipmentId": "equipment-equipo-ropa-de-disfraz",
+        "quantity": 1,
+        "name": "Traje de artista"
+      },
+      {
+        "equipmentId": "equipment-equipo-bolsa",
+        "quantity": 1
+      }
+    ],
+    "groups": [
+      {
+        "id": "actuacion",
+        "name": "Instrumento o arma de espectáculo",
+        "options": [
+          {
+            "id": "instrumento",
+            "name": "Instrumento musical",
+            "items": [],
+            "picks": [
+              {
+                "id": "instrument",
+                "name": "Instrumento musical",
+                "quantity": 1,
+                "category": "instrument"
+              }
+            ]
+          },
+          {
+            "id": "tridente",
+            "name": "Tridente",
+            "items": [
+              {
+                "equipmentId": "equipment-armas-tridente",
+                "quantity": 1
+              }
+            ]
+          },
+          {
+            "id": "red",
+            "name": "Red",
+            "items": [
+              {
+                "equipmentId": "equipment-armas-red",
+                "quantity": 1
+              }
+            ]
+          },
+          {
+            "id": "otra",
+            "name": "Otra arma barata y poco común",
+            "items": [
+              {
+                "name": "Arma barata y poco común de gladiador",
+                "quantity": 1,
+                "description": "Detalla el arma elegida en el inventario; la variante exige que sea barata y poco común."
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "coins": {
+      "po": 15
+    }
+  },
+  "background-charlatan": {
+    "source": {
+      "page": 398
+    },
+    "description": "Ropa fina, un kit de disfraz, herramientas de estafa de tu elección y una bolsa con 15 po.",
+    "fixed": [
+      {
+        "equipmentId": "equipment-equipo-ropa-fina",
+        "quantity": 1
+      },
+      {
+        "equipmentId": "equipment-herramientas-kit-de-disfraz",
+        "quantity": 1
+      },
+      {
+        "equipmentId": "equipment-equipo-bolsa",
+        "quantity": 1
+      }
+    ],
+    "groups": [
+      {
+        "id": "estafa",
+        "name": "Herramientas de estafa",
+        "options": [
+          {
+            "id": "botellas",
+            "name": "Diez botellas con líquido de color",
+            "items": [
+              {
+                "equipmentId": "equipment-equipo-botella-de-cristal",
+                "quantity": 10,
+                "name": "Botella con tapón y líquido de color"
+              }
+            ]
+          },
+          {
+            "id": "dados",
+            "name": "Dados cargados",
+            "items": [
+              {
+                "equipmentId": "equipment-herramientas-set-de-dados",
+                "quantity": 1,
+                "name": "Dados cargados"
+              }
+            ]
+          },
+          {
+            "id": "cartas",
+            "name": "Baraja de cartas marcadas",
+            "items": [
+              {
+                "equipmentId": "equipment-herramientas-set-de-baraja-de-cartas",
+                "quantity": 1,
+                "name": "Baraja de cartas marcadas"
+              }
+            ]
+          },
+          {
+            "id": "sello",
+            "name": "Anillo de sello de un duque imaginario",
+            "items": [
+              {
+                "equipmentId": "equipment-equipo-anillo-de-sello",
+                "quantity": 1,
+                "name": "Anillo de sello de un duque imaginario"
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "coins": {
+      "po": 15
+    }
+  },
+  "background-criminal": {
+    "source": {
+      "page": 398
+    },
+    "description": "Una barreta, ropa común oscura con capucha y una bolsa con 15 po.",
+    "fixed": [
+      {
+        "equipmentId": "equipment-equipo-palanca",
+        "quantity": 1,
+        "name": "Barreta"
+      },
+      {
+        "equipmentId": "equipment-equipo-ropa-comun",
+        "quantity": 1,
+        "name": "Ropa común oscura con capucha"
+      },
+      {
+        "equipmentId": "equipment-equipo-bolsa",
+        "quantity": 1
+      }
+    ],
+    "groups": [],
+    "coins": {
+      "po": 15
+    }
+  },
+  "background-espia": {
+    "source": {
+      "page": 399
+    },
+    "description": "La variante Espía conserva el equipo del Criminal: una barreta, ropa común oscura con capucha y una bolsa con 15 po.",
+    "fixed": [
+      {
+        "equipmentId": "equipment-equipo-palanca",
+        "quantity": 1,
+        "name": "Barreta"
+      },
+      {
+        "equipmentId": "equipment-equipo-ropa-comun",
+        "quantity": 1,
+        "name": "Ropa común oscura con capucha"
+      },
+      {
+        "equipmentId": "equipment-equipo-bolsa",
+        "quantity": 1
+      }
+    ],
+    "groups": [],
+    "coins": {
+      "po": 15
+    },
+    "notes": [
+      "Equipo base en la página 398; la variante no lo sustituye."
+    ]
+  },
+  "background-ermitano": {
+    "source": {
+      "page": 399
+    },
+    "description": "Un rollo de pergamino con notas de tus estudios o plegarias, una frazada de invierno, ropa común, un kit de herboristería y una bolsa con 5 po.",
+    "fixed": [
+      {
+        "name": "Rollo de pergamino con estudios o plegarias",
+        "quantity": 1
+      },
+      {
+        "equipmentId": "equipment-equipo-manta",
+        "quantity": 1,
+        "name": "Frazada de invierno"
+      },
+      {
+        "equipmentId": "equipment-equipo-ropa-comun",
+        "quantity": 1
+      },
+      {
+        "equipmentId": "equipment-herramientas-kit-de-herboristeria",
+        "quantity": 1
+      },
+      {
+        "equipmentId": "equipment-equipo-bolsa",
+        "quantity": 1
+      }
+    ],
+    "groups": [],
+    "coins": {
+      "po": 5
+    }
+  },
+  "background-fronterizo": {
+    "source": {
+      "page": 401
+    },
+    "description": "Un bastón, una trampa de caza, un trofeo de un animal que mataste, ropa de viajero y una bolsa con 10 po.",
+    "fixed": [
+      {
+        "equipmentId": "equipment-armas-baston",
+        "quantity": 1
+      },
+      {
+        "equipmentId": "equipment-equipo-trampa-de-cazador",
+        "quantity": 1
+      },
+      {
+        "name": "Trofeo de un animal cazado",
+        "quantity": 1
+      },
+      {
+        "equipmentId": "equipment-equipo-ropa-de-viajero",
+        "quantity": 1
+      },
+      {
+        "equipmentId": "equipment-equipo-bolsa",
+        "quantity": 1
+      }
+    ],
+    "groups": [],
+    "coins": {
+      "po": 10
+    }
+  },
+  "background-heroe-de-pueblo": {
+    "source": {
+      "page": 401
+    },
+    "description": "Herramientas de artesano de tu elección, una pala, una olla de hierro, ropa común y una bolsa con 10 po.",
+    "fixed": [
+      {
+        "equipmentId": "equipment-equipo-pala",
+        "quantity": 1
+      },
+      {
+        "equipmentId": "equipment-equipo-olla-de-hierro",
+        "quantity": 1
+      },
+      {
+        "equipmentId": "equipment-equipo-ropa-comun",
+        "quantity": 1
+      },
+      {
+        "equipmentId": "equipment-equipo-bolsa",
+        "quantity": 1
+      }
+    ],
+    "groups": [
+      {
+        "id": "artisan-tool",
+        "name": "Herramientas de artesano",
+        "options": [
+          {
+            "id": "choose",
+            "name": "De tu elección",
+            "items": [],
+            "picks": [
+              {
+                "id": "artisan-tool",
+                "name": "Herramientas de artesano",
+                "quantity": 1,
+                "category": "artisan-tool"
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "coins": {
+      "po": 10
+    }
+  },
+  "background-huerfano": {
+    "source": {
+      "page": 402
+    },
+    "description": "Un pequeño cuchillo, un mapa de la ciudad en la que creciste, un ratón como mascota, un símbolo para recordar a tus padres, ropa común y una bolsa con 10 po.",
+    "fixed": [
+      {
+        "name": "Pequeño cuchillo",
+        "quantity": 1
+      },
+      {
+        "name": "Mapa de la ciudad natal",
+        "quantity": 1
+      },
+      {
+        "name": "Ratón como mascota",
+        "quantity": 1
+      },
+      {
+        "name": "Recuerdo de tus padres",
+        "quantity": 1
+      },
+      {
+        "equipmentId": "equipment-equipo-ropa-comun",
+        "quantity": 1
+      },
+      {
+        "equipmentId": "equipment-equipo-bolsa",
+        "quantity": 1
+      }
+    ],
+    "groups": [],
+    "coins": {
+      "po": 10
+    }
+  },
+  "background-marinero": {
+    "source": {
+      "page": 402
+    },
+    "description": "Una barra de madera o metal (clava), 50 pies de cuerda de seda, un amuleto de la suerte o baratija, ropa común y una bolsa con 10 po.",
+    "fixed": [
+      {
+        "equipmentId": "equipment-armas-porra",
+        "quantity": 1,
+        "name": "Barra de madera o metal (clava)",
+        "description": "La clava del trasfondo usa las estadísticas de la porra (club) de la tabla de armas de 2014."
+      },
+      {
+        "equipmentId": "equipment-equipo-cuerda-de-seda-50-pies",
+        "quantity": 1
+      },
+      {
+        "name": "Amuleto de la suerte",
+        "quantity": 1,
+        "description": "Una pata de conejo, una piedra con un agujero o una baratija de tu elección."
+      },
+      {
+        "equipmentId": "equipment-equipo-ropa-comun",
+        "quantity": 1
+      },
+      {
+        "equipmentId": "equipment-equipo-bolsa",
+        "quantity": 1
+      }
+    ],
+    "groups": [],
+    "coins": {
+      "po": 10
+    }
+  },
+  "background-pirata": {
+    "source": {
+      "page": 403
+    },
+    "description": "La variante Pirata conserva el equipo del Marinero: clava, 50 pies de cuerda de seda, amuleto de la suerte, ropa común y una bolsa con 10 po.",
+    "fixed": [
+      {
+        "equipmentId": "equipment-armas-porra",
+        "quantity": 1,
+        "name": "Barra de madera o metal (clava)",
+        "description": "La clava del trasfondo usa las estadísticas de la porra (club) de la tabla de armas de 2014."
+      },
+      {
+        "equipmentId": "equipment-equipo-cuerda-de-seda-50-pies",
+        "quantity": 1
+      },
+      {
+        "name": "Amuleto de la suerte",
+        "quantity": 1,
+        "description": "Una pata de conejo, una piedra con un agujero o una baratija de tu elección."
+      },
+      {
+        "equipmentId": "equipment-equipo-ropa-comun",
+        "quantity": 1
+      },
+      {
+        "equipmentId": "equipment-equipo-bolsa",
+        "quantity": 1
+      }
+    ],
+    "groups": [],
+    "coins": {
+      "po": 10
+    },
+    "notes": [
+      "Equipo base en la página 402; la variante solo ofrece un rasgo alternativo."
+    ]
+  },
+  "background-noble": {
+    "source": {
+      "page": 404
+    },
+    "description": "Ropa fina, un anillo con sello, un pergamino con tu genealogía y un monedero con 25 po.",
+    "fixed": [
+      {
+        "equipmentId": "equipment-equipo-ropa-fina",
+        "quantity": 1
+      },
+      {
+        "equipmentId": "equipment-equipo-anillo-de-sello",
+        "quantity": 1
+      },
+      {
+        "name": "Pergamino con tu genealogía",
+        "quantity": 1
+      },
+      {
+        "name": "Monedero",
+        "quantity": 1
+      }
+    ],
+    "groups": [],
+    "coins": {
+      "po": 25
+    }
+  },
+  "background-caballero": {
+    "source": {
+      "page": 404
+    },
+    "description": "Conservas el equipo del Noble. Puedes incluir un estandarte u otro símbolo de un señor o una dama a quien hayas entregado tu corazón.",
+    "fixed": [
+      {
+        "equipmentId": "equipment-equipo-ropa-fina",
+        "quantity": 1
+      },
+      {
+        "equipmentId": "equipment-equipo-anillo-de-sello",
+        "quantity": 1
+      },
+      {
+        "name": "Pergamino con tu genealogía",
+        "quantity": 1
+      },
+      {
+        "name": "Monedero",
+        "quantity": 1
+      }
+    ],
+    "groups": [
+      {
+        "id": "simbolo-cortesano",
+        "name": "Símbolo cortesano opcional",
+        "options": [
+          {
+            "id": "ninguno",
+            "name": "Sin símbolo adicional",
+            "items": []
+          },
+          {
+            "id": "estandarte",
+            "name": "Estandarte",
+            "items": [
+              {
+                "name": "Estandarte cortesano",
+                "quantity": 1
+              }
+            ]
+          },
+          {
+            "id": "otro",
+            "name": "Otro símbolo cortesano",
+            "items": [
+              {
+                "name": "Símbolo cortesano",
+                "quantity": 1,
+                "description": "Describe el símbolo del señor o la dama a quien has entregado tu corazón."
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "coins": {
+      "po": 25
+    },
+    "notes": [
+      "Los seguidores son personajes, no objetos de inventario."
+    ]
+  },
+  "background-sabio": {
+    "source": {
+      "page": 404
+    },
+    "description": "Un tintero, una pluma, un cuchillo pequeño, una carta de un colega muerto con una pregunta sin resolver, ropa común y una bolsa con 10 po.",
+    "fixed": [
+      {
+        "equipmentId": "equipment-equipo-tinta-botella-de-1-onza",
+        "quantity": 1,
+        "name": "Tintero de tinta negra"
+      },
+      {
+        "equipmentId": "equipment-equipo-pluma-de-escritura",
+        "quantity": 1
+      },
+      {
+        "name": "Cuchillo pequeño",
+        "quantity": 1
+      },
+      {
+        "name": "Carta de un colega muerto",
+        "quantity": 1,
+        "description": "Incluye una pregunta que todavía no has sido capaz de responder."
+      },
+      {
+        "equipmentId": "equipment-equipo-ropa-comun",
+        "quantity": 1
+      },
+      {
+        "equipmentId": "equipment-equipo-bolsa",
+        "quantity": 1
+      }
+    ],
+    "groups": [],
+    "coins": {
+      "po": 10
+    }
+  },
+  "background-soldado": {
+    "source": {
+      "page": 405
+    },
+    "description": "Una insignia de rango, un trofeo de un enemigo caído, dados de hueso o baraja de cartas, ropa común y una bolsa con 10 po.",
+    "fixed": [
+      {
+        "name": "Insignia de rango",
+        "quantity": 1
+      },
+      {
+        "name": "Trofeo de un enemigo caído",
+        "quantity": 1,
+        "description": "Una daga, una hoja rota o un trozo de estandarte; detalla el trofeo en el inventario."
+      },
+      {
+        "equipmentId": "equipment-equipo-ropa-comun",
+        "quantity": 1
+      },
+      {
+        "equipmentId": "equipment-equipo-bolsa",
+        "quantity": 1
+      }
+    ],
+    "groups": [
+      {
+        "id": "juego",
+        "name": "Juego de campaña",
+        "options": [
+          {
+            "id": "dados",
+            "name": "Dados de hueso",
+            "items": [
+              {
+                "equipmentId": "equipment-herramientas-set-de-dados",
+                "quantity": 1,
+                "name": "Dados de hueso"
+              }
+            ]
+          },
+          {
+            "id": "cartas",
+            "name": "Baraja de cartas",
+            "items": [
+              {
+                "equipmentId": "equipment-herramientas-set-de-baraja-de-cartas",
+                "quantity": 1
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "coins": {
+      "po": 10
+    }
+  },
+  "background-agente-de-una-faccion": {
+    "source": {
+      "page": 406
+    },
+    "description": "Insignia o emblema de la facción, una copia de un texto influyente (o código de conducta de una facción encubierta), ropa común y una bolsa con 15 po.",
+    "fixed": [
+      {
+        "name": "Insignia o emblema de la facción",
+        "quantity": 1
+      },
+      {
+        "name": "Texto de la facción",
+        "quantity": 1,
+        "description": "Un texto influyente para tu facción, o su código de conducta si es encubierta."
+      },
+      {
+        "equipmentId": "equipment-equipo-ropa-comun",
+        "quantity": 1
+      },
+      {
+        "equipmentId": "equipment-equipo-bolsa",
+        "quantity": 1
+      }
+    ],
+    "groups": [],
+    "coins": {
+      "po": 15
+    }
+  },
+  "background-artesano-del-clan": {
+    "source": {
+      "page": 408
+    },
+    "description": "Herramientas de artesano con las que seas competente, un cincel con la marca del creador, ropa de viaje y una bolsa con 5 po y una piedra preciosa valorada en 10 po.",
+    "fixed": [
+      {
+        "name": "Cincel con la marca del clan",
+        "quantity": 1
+      },
+      {
+        "equipmentId": "equipment-equipo-ropa-de-viajero",
+        "quantity": 1
+      },
+      {
+        "equipmentId": "equipment-equipo-bolsa",
+        "quantity": 1
+      },
+      {
+        "name": "Piedra preciosa (valor: 10 po)",
+        "quantity": 1
+      }
+    ],
+    "groups": [
+      {
+        "id": "artisan-tool",
+        "name": "Herramientas de artesano con las que seas competente",
+        "options": [
+          {
+            "id": "choose",
+            "name": "De tu elección",
+            "items": [],
+            "picks": [
+              {
+                "id": "artisan-tool",
+                "name": "Herramientas de artesano con las que seas competente",
+                "quantity": 1,
+                "category": "artisan-tool",
+                "requiresProficiency": true
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "coins": {
+      "po": 5
+    },
+    "notes": [
+      "Escoge herramientas en las que tengas competencia. La piedra es un objeto; no añade 10 po a tu dinero."
+    ]
+  },
+  "background-caballero-de-la-orden": {
+    "source": {
+      "page": 409
+    },
+    "description": "Ropa de viaje, un estandarte o sello que represente tu papel o rango en la orden y una bolsa con 10 po.",
+    "fixed": [
+      {
+        "equipmentId": "equipment-equipo-ropa-de-viajero",
+        "quantity": 1
+      },
+      {
+        "name": "Estandarte o sello de la orden",
+        "quantity": 1
+      },
+      {
+        "equipmentId": "equipment-equipo-bolsa",
+        "quantity": 1
+      }
+    ],
+    "groups": [],
+    "coins": {
+      "po": 10
+    }
+  },
+  "background-cazarrecompensas-urbano": {
+    "source": {
+      "page": 410
+    },
+    "description": "Una muda apropiada para tus deberes y una bolsa con 20 po.",
+    "fixed": [
+      {
+        "name": "Muda apropiada para tus deberes",
+        "quantity": 1
+      },
+      {
+        "equipmentId": "equipment-equipo-bolsa",
+        "quantity": 1
+      }
+    ],
+    "groups": [],
+    "coins": {
+      "po": 20
+    }
+  },
+  "background-cortesano": {
+    "source": {
+      "page": 410
+    },
+    "description": "Ropa elegante y una bolsa con 5 po.",
+    "fixed": [
+      {
+        "equipmentId": "equipment-equipo-ropa-fina",
+        "quantity": 1,
+        "name": "Ropa elegante"
+      },
+      {
+        "equipmentId": "equipment-equipo-bolsa",
+        "quantity": 1
+      }
+    ],
+    "groups": [],
+    "coins": {
+      "po": 5
+    }
+  },
+  "background-erudito-enclaustrado": {
+    "source": {
+      "page": 411
+    },
+    "description": "Una túnica de erudito del claustro, un juego de escritura (bolsita con pluma, tinta, pergamino enrollado y cortaplumas), un libro prestado sobre tu estudio actual y una bolsa con 10 po.",
+    "fixed": [
+      {
+        "equipmentId": "equipment-equipo-tunica",
+        "quantity": 1,
+        "name": "Túnica de erudito del claustro"
+      },
+      {
+        "name": "Juego de escritura",
+        "quantity": 1,
+        "description": "Una bolsita con pluma, tinta, pergamino enrollado y un pequeño cortaplumas."
+      },
+      {
+        "equipmentId": "equipment-equipo-libro",
+        "quantity": 1,
+        "name": "Libro prestado de tu estudio actual"
+      },
+      {
+        "equipmentId": "equipment-equipo-bolsa",
+        "quantity": 1
+      }
+    ],
+    "groups": [],
+    "coins": {
+      "po": 10
+    }
+  },
+  "background-forastero-errante": {
+    "source": {
+      "page": 412
+    },
+    "description": "Ropa de viaje, un instrumento o juego con el que tengas competencia, mapas de tu patria que muestran tu ubicación en Faerun, una joya de tu lugar de origen valorada en 10 po y una bolsa con 5 po.",
+    "fixed": [
+      {
+        "equipmentId": "equipment-equipo-ropa-de-viajero",
+        "quantity": 1
+      },
+      {
+        "name": "Mapas trazados en tu patria",
+        "quantity": 1
+      },
+      {
+        "name": "Joya de tu lugar de origen (valor: 10 po)",
+        "quantity": 1
+      },
+      {
+        "equipmentId": "equipment-equipo-bolsa",
+        "quantity": 1
+      }
+    ],
+    "groups": [
+      {
+        "id": "pasatiempo",
+        "name": "Instrumento o juego con el que tengas competencia",
+        "options": [
+          {
+            "id": "instrumento",
+            "name": "Instrumento musical",
+            "items": [],
+            "picks": [
+              {
+                "id": "instrument",
+                "name": "Instrumento musical",
+                "quantity": 1,
+                "category": "instrument",
+                "requiresProficiency": true
+              }
+            ]
+          },
+          {
+            "id": "juego",
+            "name": "Juego",
+            "items": [],
+            "picks": [
+              {
+                "id": "gaming-set",
+                "name": "Juego",
+                "quantity": 1,
+                "category": "gaming-set",
+                "requiresProficiency": true
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "coins": {
+      "po": 5
+    },
+    "notes": [
+      "Escoge un instrumento o juego en el que tengas competencia. La joya es un objeto; no añade 10 po a tu dinero."
+    ]
+  },
+  "background-guardia-de-ciudad": {
+    "source": {
+      "page": 414
+    },
+    "description": "Uniforme de la unidad que indique tu rango, un cuerno para pedir ayuda, un juego de esposas y una bolsa con 10 po.",
+    "fixed": [
+      {
+        "name": "Uniforme de la unidad con tu rango",
+        "quantity": 1
+      },
+      {
+        "equipmentId": "equipment-herramientas-cuerno",
+        "quantity": 1,
+        "name": "Cuerno para pedir ayuda"
+      },
+      {
+        "equipmentId": "equipment-equipo-esposas",
+        "quantity": 1
+      },
+      {
+        "equipmentId": "equipment-equipo-bolsa",
+        "quantity": 1
+      }
+    ],
+    "groups": [],
+    "coins": {
+      "po": 10
+    }
+  },
+  "background-investigador": {
+    "source": {
+      "page": 414
+    },
+    "description": "La variante Investigador conserva el equipo del Guardia de Ciudad: uniforme, cuerno para pedir ayuda, esposas y una bolsa con 10 po.",
+    "fixed": [
+      {
+        "name": "Uniforme de la unidad con tu rango",
+        "quantity": 1
+      },
+      {
+        "equipmentId": "equipment-herramientas-cuerno",
+        "quantity": 1,
+        "name": "Cuerno para pedir ayuda"
+      },
+      {
+        "equipmentId": "equipment-equipo-esposas",
+        "quantity": 1
+      },
+      {
+        "equipmentId": "equipment-equipo-bolsa",
+        "quantity": 1
+      }
+    ],
+    "groups": [],
+    "coins": {
+      "po": 10
+    }
+  },
+  "background-heredero": {
+    "source": {
+      "page": 415
+    },
+    "description": "Tu herencia, ropa de viaje, cualquier objeto con el que tengas competencia y una bolsa con 15 po.",
+    "fixed": [
+      {
+        "name": "Herencia",
+        "quantity": 1,
+        "description": "Define su naturaleza y propiedades con tu Dungeon Master."
+      },
+      {
+        "equipmentId": "equipment-equipo-ropa-de-viajero",
+        "quantity": 1
+      },
+      {
+        "name": "Objeto con el que tienes competencia",
+        "quantity": 1,
+        "description": "El manual no restringe su categoría: detalla el objeto elegido y comprueba su competencia."
+      },
+      {
+        "equipmentId": "equipment-equipo-bolsa",
+        "quantity": 1
+      }
+    ],
+    "groups": [],
+    "coins": {
+      "po": 15
+    },
+    "notes": [
+      "La herencia y el objeto competente se pueden concretar editándolos en el inventario. No se presupone su valor, peso ni propiedades mágicas."
+    ]
+  },
+  "background-mercenario-veterano": {
+    "source": {
+      "page": 416
+    },
+    "description": "Uniforme de tu compañía (ropas de viaje de calidad), insignia de rango, piezas de un juego a tu elección y una bolsa con lo que queda de tu última paga: 10 po.",
+    "fixed": [
+      {
+        "equipmentId": "equipment-equipo-ropa-de-viajero",
+        "quantity": 1,
+        "name": "Uniforme de la compañía"
+      },
+      {
+        "name": "Insignia de rango",
+        "quantity": 1
+      },
+      {
+        "equipmentId": "equipment-equipo-bolsa",
+        "quantity": 1
+      }
+    ],
+    "groups": [
+      {
+        "id": "gaming-set",
+        "name": "Juego",
+        "options": [
+          {
+            "id": "choose",
+            "name": "De tu elección",
+            "items": [],
+            "picks": [
+              {
+                "id": "gaming-set",
+                "name": "Juego",
+                "quantity": 1,
+                "category": "gaming-set"
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "coins": {
+      "po": 10
+    }
+  },
+  "background-miembro-de-una-tribu-uthgardt": {
+    "source": {
+      "page": 416
+    },
+    "description": "Una trampa para cazar, un símbolo de tótem o tatuajes de lealtad a Uthgar y al tótem de la tribu, ropa de viaje y una bolsa con 10 po.",
+    "fixed": [
+      {
+        "equipmentId": "equipment-equipo-trampa-de-cazador",
+        "quantity": 1
+      },
+      {
+        "name": "Símbolo de tótem o tatuajes de lealtad",
+        "quantity": 1,
+        "description": "Elige y detalla un símbolo de tótem o los tatuajes que marcan tu lealtad a Uthgar y al tótem de tu tribu."
+      },
+      {
+        "equipmentId": "equipment-equipo-ropa-de-viajero",
+        "quantity": 1
+      },
+      {
+        "equipmentId": "equipment-equipo-bolsa",
+        "quantity": 1
+      }
+    ],
+    "groups": [],
+    "coins": {
+      "po": 10
+    }
+  },
+  "background-noble-de-waterdeep": {
+    "source": {
+      "page": 417
+    },
+    "description": "Ropa elegante, un anillo de sellar o broche, un pergamino con tu genealogía, una bota de buen zzar o vino y un monedero con 20 po.",
+    "fixed": [
+      {
+        "equipmentId": "equipment-equipo-ropa-fina",
+        "quantity": 1
+      },
+      {
+        "name": "Pergamino con tu genealogía",
+        "quantity": 1
+      },
+      {
+        "name": "Bota de buen zzar o vino",
+        "quantity": 1
+      },
+      {
+        "name": "Monedero",
+        "quantity": 1
+      }
+    ],
+    "groups": [
+      {
+        "id": "sello",
+        "name": "Distintivo noble",
+        "options": [
+          {
+            "id": "anillo",
+            "name": "Anillo de sellar",
+            "items": [
+              {
+                "equipmentId": "equipment-equipo-anillo-de-sello",
+                "quantity": 1
+              }
+            ]
+          },
+          {
+            "id": "broche",
+            "name": "Broche",
+            "items": [
+              {
+                "name": "Broche",
+                "quantity": 1
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "coins": {
+      "po": 20
+    }
+  }
+}

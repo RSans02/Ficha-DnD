@@ -3,6 +3,14 @@ import { deriveCharacter } from './engine';
 
 export const foldEquipment = (text: string) => text.normalize('NFD').replace(/[\u0300-\u036f]/g, '').toLocaleLowerCase('es');
 
+export function inventorySummary(c: Character) {
+  const itemWeight = c.inventory.reduce((sum,item) => sum + item.quantity * item.weight,0);
+  const coinWeight = ['pc','pp','pe','po','ppt'].reduce((sum,coin) => sum + (c.money[coin] ?? 0),0) / 50;
+  const artificer = c.classes.find(cl => cl.classId === 'class-artificiero')?.level ?? 0;
+  const attunementLimit = c.manualOverrides.attunementLimit ?? (artificer >= 18 ? 6 : artificer >= 14 ? 5 : artificer >= 10 ? 4 : 3);
+  return { itemWeight, coinWeight, totalWeight:itemWeight+coinWeight, attuned:c.inventory.filter(item=>item.attuned).reduce((sum,item)=>sum+item.quantity,0), attunementLimit };
+}
+
 export function inventoryFromEquipment(e: Equipment, quantity = 1): InventoryItem {
   return {
     id: crypto.randomUUID(), equipmentId: e.id, name: e.name,
@@ -68,6 +76,10 @@ export function startingEquipmentIssues(c: Character, catalog: Catalog): string[
     for (const pick of option.picks ?? []) {
       const picked = state.picks[`${key}.${option.id}.${pick.id}`] ?? [], allowed = equipmentForPick(catalog.equipment, pick.category);
       if (picked.length !== pick.quantity || picked.some(item => !allowed.some(e => e.id === item))) errors.push(`${name}: elige ${pick.quantity} en «${pick.name}».`);
+      if (pick.requiresProficiency) picked.forEach((item,index) => {
+        const equipment = allowed.find(e => e.id === item);
+        if (equipment && missingEquipmentProficiencies([equipment.name],c,catalog).length && !state.verified.includes(`${key}.${option.id}.${pick.id}.${index}`)) errors.push(`${name}: confirma tu competencia con ${equipment.name}.`);
+      });
     }
   }
   return errors;

@@ -13,7 +13,21 @@
       "religion"
     ],
     "languages": [],
-    "choices": [],
+    "choices": [
+      {
+        "id": "background-acolito.choose_language",
+        "type": "choose_language",
+        "name": "Idiomas del trasfondo · Acólito",
+        "amount": 2,
+        "options": [],
+        "required": true,
+        "source": {
+          "page": 395,
+          "endPage": 395,
+          "title": "Trasfondos"
+        }
+      }
+    ],
     "featureIds": [],
     "sourceFields": {
       "competencia con habilidades": "Perspicacia, Religión.",
@@ -21,8 +35,9 @@
       "equipo": "un símbolo sagrado (un regalo de cuando entraste en el sacerdocio), un libro de oraciones o rueda de plegarias, 5 barritas de incienso, vestiduras, un conjunto de ropa común y una bolsa que contiene 15 po. Rasgo: Refugio de los Fieles Como acólito, mereces el respeto de aquellos que comparten tu fe y puedes realizar las ceremonias religiosas de tu deidad. Tus compañeros de aventuras y tú podéis recibir sanación gratuita y atención en un templo, santuario, u otra presencia establecida de tu fe, aunque debes proporcionar los componentes materiales necesarios para los conjuros. Aquellos que comparten tu religión te podrán proporcionar (pero sólo"
     },
     "automationNotes": [
-      "Equipo inicial, herramientas e idiomas elegibles se conservan en la descripción; revisa las decisiones que no tengan selector estructurado."
-    ]
+      "Las competencias fijas y las elecciones de habilidades, herramientas e idiomas están estructuradas. El equipo inicial se elige por separado; poseer un objeto no concede competencia."
+    ],
+    "toolProficiencies": []
   },
   {
     "id": "background-artesano-gremial",
@@ -38,7 +53,222 @@
       "persuasion"
     ],
     "languages": [],
-    "choices": [],
+    "choices": [
+      {
+        "id": "background-artesano-gremial.choose_language",
+        "type": "choose_language",
+        "name": "Idiomas del trasfondo · Artesano Gremial",
+        "amount": 1,
+        "options": [],
+        "required": true,
+        "source": {
+          "page": 395,
+          "endPage": 397,
+          "title": "Trasfondos"
+        }
+      },
+      {
+        "id": "background-artesano-gremial.choose_tool",
+        "type": "choose_tool",
+        "name": "Competencia con herramientas · Artesano Gremial",
+        "amount": 1,
+        "options": [
+          {
+            "id": "Herramientas de carpintero",
+            "name": "Herramientas de carpintero",
+            "effects": [
+              {
+                "type": "proficiency",
+                "value": "Herramientas de carpintero",
+                "category": "artisan"
+              }
+            ]
+          },
+          {
+            "id": "Herramientas de cartógrafo",
+            "name": "Herramientas de cartógrafo",
+            "effects": [
+              {
+                "type": "proficiency",
+                "value": "Herramientas de cartógrafo",
+                "category": "artisan"
+              }
+            ]
+          },
+          {
+            "id": "Herramientas de zapatero",
+            "name": "Herramientas de zapatero",
+            "effects": [
+              {
+                "type": "proficiency",
+                "value": "Herramientas de zapatero",
+                "category": "artisan"
+              }
+            ]
+          },
+          {
+            "id": "Herramientas de alfarero",
+            "name": "Herramientas de alfarero",
+            "effects": [
+              {
+                "type": "proficiency",
+                "value": "Herramientas de alfarero",
+                "category": "artisan"
+              }
+            ]
+          },
+          {
+            "id": "Herramientas de herrero",
+            "name": "Herramientas de herrero",
+            "effects": [
+              {
+                "type": "proficiency",
+                "value": "Herramientas de herrero",
+                "category": "artisan"
+              }
+            ]
+          },
+          {
+            "id": "Herramientas de hojalatero",
+            "name": "Herramientas de hojalatero",
+            "effects": [
+              {
+                "type": "proficiency",
+                "value": "Herramientas de hojalatero",
+                "category": "artisan"
+              }
+            ]
+          },
+          {
+            "id": "Herramientas de tejedor",
+            "name": "Herramientas de tejedor",
+            "effects": [
+              {
+                "type": "proficiency",
+                "value": "Herramientas de tejedor",
+                "category": "artisan"
+              }
+            ]
+          },
+          {
+            "id": "Herramientas de tallista",
+            "name": "Herramientas de tallista",
+            "effects": [
+              {
+                "type": "proficiency",
+                "value": "Herramientas de tallista",
+                "category": "artisan"
+              }
+            ]
+          },
+          {
+            "id": "Herramientas de soplador de vidrio",
+            "name": "Herramientas de soplador de vidrio",
+            "effects": [
+              {
+                "type": "proficiency",
+                "value": "Herramientas de soplador de vidrio",
+                "category": "artisan"
+              }
+            ]
+          },
+          {
+            "id": "Herramientas de joyero",
+            "name": "Herramientas de joyero",
+            "effects": [
+              {
+                "type": "proficiency",
+                "value": "Herramientas de joyero",
+                "category": "artisan"
+              }
+            ]
+          },
+          {
+            "id": "Herramientas de peletero",
+            "name": "Herramientas de peletero",
+            "effects": [
+              {
+                "type": "proficiency",
+                "value": "Herramientas de peletero",
+                "category": "artisan"
+              }
+            ]
+          },
+          {
+            "id": "Herramientas de albañil",
+            "name": "Herramientas de albañil",
+            "effects": [
+              {
+                "type": "proficiency",
+                "value": "Herramientas de albañil",
+                "category": "artisan"
+              }
+            ]
+          },
+          {
+            "id": "Materiales de pintor",
+            "name": "Materiales de pintor",
+            "effects": [
+              {
+                "type": "proficiency",
+                "value": "Materiales de pintor",
+                "category": "artisan"
+              }
+            ]
+          },
+          {
+            "id": "Materiales alquímicos",
+            "name": "Materiales alquímicos",
+            "effects": [
+              {
+                "type": "proficiency",
+                "value": "Materiales alquímicos",
+                "category": "artisan"
+              }
+            ]
+          },
+          {
+            "id": "Materiales de cervecería",
+            "name": "Materiales de cervecería",
+            "effects": [
+              {
+                "type": "proficiency",
+                "value": "Materiales de cervecería",
+                "category": "artisan"
+              }
+            ]
+          },
+          {
+            "id": "Materiales de caligrafía",
+            "name": "Materiales de caligrafía",
+            "effects": [
+              {
+                "type": "proficiency",
+                "value": "Materiales de caligrafía",
+                "category": "artisan"
+              }
+            ]
+          },
+          {
+            "id": "Utensilios de cocina",
+            "name": "Utensilios de cocina",
+            "effects": [
+              {
+                "type": "proficiency",
+                "value": "Utensilios de cocina",
+                "category": "artisan"
+              }
+            ]
+          }
+        ],
+        "required": true,
+        "source": {
+          "page": 395,
+          "endPage": 397,
+          "title": "Trasfondos"
+        }
+      }
+    ],
     "featureIds": [],
     "sourceFields": {
       "competencia con habilidades": "Perspicacia, Persuasión.",
@@ -47,8 +277,9 @@
       "equipo": "un set de herramientas de artesano (de tu elección), una carta de introducción de tu gremio, una muda de ropas de viaje, una bolsa que contiene 15 po. Ocupaciones de Gremio Los gremios generalmente se encuentran en ciudades lo suficientemente grandes para albergar varios artesanos que practiquen el mismo oficio. Aun así, tu gremio podría ser en su lugar una gran red de artesanos que trabajan cada uno en un pueblo distinto dentro de un reino más grande. Trabaja con tu DM para determinar la naturaleza de tu gremio. Puedes seleccionar la ocupación de tu gremio de la tabla Ocupaciones del Gremio o tirar al azar. Como miembro de tu gremio, conoces"
     },
     "automationNotes": [
-      "Equipo inicial, herramientas e idiomas elegibles se conservan en la descripción; revisa las decisiones que no tengan selector estructurado."
-    ]
+      "Las competencias fijas y las elecciones de habilidades, herramientas e idiomas están estructuradas. El equipo inicial se elige por separado; poseer un objeto no concede competencia."
+    ],
+    "toolProficiencies": []
   },
   {
     "id": "background-mercader-de-gremio",
@@ -64,7 +295,408 @@
       "persuasion"
     ],
     "languages": [],
-    "choices": [],
+    "choices": [
+      {
+        "id": "background-mercader-de-gremio.choose_language",
+        "type": "choose_language",
+        "name": "Idiomas del trasfondo · Mercader de Gremio",
+        "amount": 1,
+        "options": [],
+        "required": true,
+        "source": {
+          "page": 395,
+          "endPage": 397,
+          "title": "Trasfondos"
+        }
+      },
+      {
+        "id": "background-mercader-de-gremio.choose_proficiency",
+        "type": "choose_proficiency",
+        "name": "Herramientas del gremio o idioma adicional · Mercader de Gremio",
+        "amount": 1,
+        "options": [
+          {
+            "id": "Herramientas de carpintero",
+            "name": "Herramientas de carpintero",
+            "effects": [
+              {
+                "type": "proficiency",
+                "value": "Herramientas de carpintero",
+                "category": "artisan"
+              }
+            ]
+          },
+          {
+            "id": "Herramientas de cartógrafo",
+            "name": "Herramientas de cartógrafo",
+            "effects": [
+              {
+                "type": "proficiency",
+                "value": "Herramientas de cartógrafo",
+                "category": "artisan"
+              }
+            ]
+          },
+          {
+            "id": "Herramientas de zapatero",
+            "name": "Herramientas de zapatero",
+            "effects": [
+              {
+                "type": "proficiency",
+                "value": "Herramientas de zapatero",
+                "category": "artisan"
+              }
+            ]
+          },
+          {
+            "id": "Herramientas de alfarero",
+            "name": "Herramientas de alfarero",
+            "effects": [
+              {
+                "type": "proficiency",
+                "value": "Herramientas de alfarero",
+                "category": "artisan"
+              }
+            ]
+          },
+          {
+            "id": "Herramientas de herrero",
+            "name": "Herramientas de herrero",
+            "effects": [
+              {
+                "type": "proficiency",
+                "value": "Herramientas de herrero",
+                "category": "artisan"
+              }
+            ]
+          },
+          {
+            "id": "Herramientas de hojalatero",
+            "name": "Herramientas de hojalatero",
+            "effects": [
+              {
+                "type": "proficiency",
+                "value": "Herramientas de hojalatero",
+                "category": "artisan"
+              }
+            ]
+          },
+          {
+            "id": "Herramientas de tejedor",
+            "name": "Herramientas de tejedor",
+            "effects": [
+              {
+                "type": "proficiency",
+                "value": "Herramientas de tejedor",
+                "category": "artisan"
+              }
+            ]
+          },
+          {
+            "id": "Herramientas de tallista",
+            "name": "Herramientas de tallista",
+            "effects": [
+              {
+                "type": "proficiency",
+                "value": "Herramientas de tallista",
+                "category": "artisan"
+              }
+            ]
+          },
+          {
+            "id": "Herramientas de soplador de vidrio",
+            "name": "Herramientas de soplador de vidrio",
+            "effects": [
+              {
+                "type": "proficiency",
+                "value": "Herramientas de soplador de vidrio",
+                "category": "artisan"
+              }
+            ]
+          },
+          {
+            "id": "Herramientas de joyero",
+            "name": "Herramientas de joyero",
+            "effects": [
+              {
+                "type": "proficiency",
+                "value": "Herramientas de joyero",
+                "category": "artisan"
+              }
+            ]
+          },
+          {
+            "id": "Herramientas de peletero",
+            "name": "Herramientas de peletero",
+            "effects": [
+              {
+                "type": "proficiency",
+                "value": "Herramientas de peletero",
+                "category": "artisan"
+              }
+            ]
+          },
+          {
+            "id": "Herramientas de albañil",
+            "name": "Herramientas de albañil",
+            "effects": [
+              {
+                "type": "proficiency",
+                "value": "Herramientas de albañil",
+                "category": "artisan"
+              }
+            ]
+          },
+          {
+            "id": "Materiales de pintor",
+            "name": "Materiales de pintor",
+            "effects": [
+              {
+                "type": "proficiency",
+                "value": "Materiales de pintor",
+                "category": "artisan"
+              }
+            ]
+          },
+          {
+            "id": "Materiales alquímicos",
+            "name": "Materiales alquímicos",
+            "effects": [
+              {
+                "type": "proficiency",
+                "value": "Materiales alquímicos",
+                "category": "artisan"
+              }
+            ]
+          },
+          {
+            "id": "Materiales de cervecería",
+            "name": "Materiales de cervecería",
+            "effects": [
+              {
+                "type": "proficiency",
+                "value": "Materiales de cervecería",
+                "category": "artisan"
+              }
+            ]
+          },
+          {
+            "id": "Materiales de caligrafía",
+            "name": "Materiales de caligrafía",
+            "effects": [
+              {
+                "type": "proficiency",
+                "value": "Materiales de caligrafía",
+                "category": "artisan"
+              }
+            ]
+          },
+          {
+            "id": "Utensilios de cocina",
+            "name": "Utensilios de cocina",
+            "effects": [
+              {
+                "type": "proficiency",
+                "value": "Utensilios de cocina",
+                "category": "artisan"
+              }
+            ]
+          },
+          {
+            "id": "Herramientas de navegación",
+            "name": "Herramientas de navegación",
+            "effects": [
+              {
+                "type": "proficiency",
+                "value": "Herramientas de navegación"
+              }
+            ]
+          },
+          {
+            "id": "language:Común",
+            "name": "Idioma: Común",
+            "description": "Alternativa a la competencia con herramientas. Los idiomas exóticos necesitan permiso del DM.",
+            "effects": [
+              {
+                "type": "language",
+                "value": "Común"
+              }
+            ]
+          },
+          {
+            "id": "language:Enano",
+            "name": "Idioma: Enano",
+            "description": "Alternativa a la competencia con herramientas. Los idiomas exóticos necesitan permiso del DM.",
+            "effects": [
+              {
+                "type": "language",
+                "value": "Enano"
+              }
+            ]
+          },
+          {
+            "id": "language:Élfico",
+            "name": "Idioma: Élfico",
+            "description": "Alternativa a la competencia con herramientas. Los idiomas exóticos necesitan permiso del DM.",
+            "effects": [
+              {
+                "type": "language",
+                "value": "Élfico"
+              }
+            ]
+          },
+          {
+            "id": "language:Gigante",
+            "name": "Idioma: Gigante",
+            "description": "Alternativa a la competencia con herramientas. Los idiomas exóticos necesitan permiso del DM.",
+            "effects": [
+              {
+                "type": "language",
+                "value": "Gigante"
+              }
+            ]
+          },
+          {
+            "id": "language:Gnómico",
+            "name": "Idioma: Gnómico",
+            "description": "Alternativa a la competencia con herramientas. Los idiomas exóticos necesitan permiso del DM.",
+            "effects": [
+              {
+                "type": "language",
+                "value": "Gnómico"
+              }
+            ]
+          },
+          {
+            "id": "language:Goblin",
+            "name": "Idioma: Goblin",
+            "description": "Alternativa a la competencia con herramientas. Los idiomas exóticos necesitan permiso del DM.",
+            "effects": [
+              {
+                "type": "language",
+                "value": "Goblin"
+              }
+            ]
+          },
+          {
+            "id": "language:Mediano",
+            "name": "Idioma: Mediano",
+            "description": "Alternativa a la competencia con herramientas. Los idiomas exóticos necesitan permiso del DM.",
+            "effects": [
+              {
+                "type": "language",
+                "value": "Mediano"
+              }
+            ]
+          },
+          {
+            "id": "language:Orco",
+            "name": "Idioma: Orco",
+            "description": "Alternativa a la competencia con herramientas. Los idiomas exóticos necesitan permiso del DM.",
+            "effects": [
+              {
+                "type": "language",
+                "value": "Orco"
+              }
+            ]
+          },
+          {
+            "id": "language:Abisal",
+            "name": "Idioma: Abisal",
+            "description": "Alternativa a la competencia con herramientas. Los idiomas exóticos necesitan permiso del DM.",
+            "effects": [
+              {
+                "type": "language",
+                "value": "Abisal"
+              }
+            ]
+          },
+          {
+            "id": "language:Celestial",
+            "name": "Idioma: Celestial",
+            "description": "Alternativa a la competencia con herramientas. Los idiomas exóticos necesitan permiso del DM.",
+            "effects": [
+              {
+                "type": "language",
+                "value": "Celestial"
+              }
+            ]
+          },
+          {
+            "id": "language:Dracónico",
+            "name": "Idioma: Dracónico",
+            "description": "Alternativa a la competencia con herramientas. Los idiomas exóticos necesitan permiso del DM.",
+            "effects": [
+              {
+                "type": "language",
+                "value": "Dracónico"
+              }
+            ]
+          },
+          {
+            "id": "language:Habla de las profundidades",
+            "name": "Idioma: Habla de las profundidades",
+            "description": "Alternativa a la competencia con herramientas. Los idiomas exóticos necesitan permiso del DM.",
+            "effects": [
+              {
+                "type": "language",
+                "value": "Habla de las profundidades"
+              }
+            ]
+          },
+          {
+            "id": "language:Infernal",
+            "name": "Idioma: Infernal",
+            "description": "Alternativa a la competencia con herramientas. Los idiomas exóticos necesitan permiso del DM.",
+            "effects": [
+              {
+                "type": "language",
+                "value": "Infernal"
+              }
+            ]
+          },
+          {
+            "id": "language:Primordial",
+            "name": "Idioma: Primordial",
+            "description": "Alternativa a la competencia con herramientas. Los idiomas exóticos necesitan permiso del DM.",
+            "effects": [
+              {
+                "type": "language",
+                "value": "Primordial"
+              }
+            ]
+          },
+          {
+            "id": "language:Silvano",
+            "name": "Idioma: Silvano",
+            "description": "Alternativa a la competencia con herramientas. Los idiomas exóticos necesitan permiso del DM.",
+            "effects": [
+              {
+                "type": "language",
+                "value": "Silvano"
+              }
+            ]
+          },
+          {
+            "id": "language:Infracomún",
+            "name": "Idioma: Infracomún",
+            "description": "Alternativa a la competencia con herramientas. Los idiomas exóticos necesitan permiso del DM.",
+            "effects": [
+              {
+                "type": "language",
+                "value": "Infracomún"
+              }
+            ]
+          }
+        ],
+        "required": true,
+        "source": {
+          "page": 395,
+          "endPage": 397,
+          "title": "Trasfondos"
+        }
+      }
+    ],
     "featureIds": [],
     "sourceFields": {
       "competencia con habilidades": "Perspicacia, Persuasión.",
@@ -73,11 +705,11 @@
       "equipo": "un set de herramientas de artesano (de tu elección), una carta de introducción de tu gremio, una muda de ropas de viaje, una bolsa que contiene 15 po. Ocupaciones de Gremio Los gremios generalmente se encuentran en ciudades lo suficientemente grandes para albergar varios artesanos que practiquen el mismo oficio. Aun así, tu gremio podría ser en su lugar una gran red de artesanos que trabajan cada uno en un pueblo distinto dentro de un reino más grande. Trabaja con tu DM para determinar la naturaleza de tu gremio. Puedes seleccionar la ocupación de tu gremio de la tabla Ocupaciones del Gremio o tirar al azar. Como miembro de tu gremio, conoces"
     },
     "automationNotes": [
-      "Equipo inicial, herramientas e idiomas elegibles se conservan en la descripción; revisa las decisiones que no tengan selector estructurado.",
-      "Variante del trasfondo Artesano Gremial. Revisa los cambios de equipo y rasgo en su descripción."
+      "Las competencias fijas y las elecciones de habilidades, herramientas e idiomas están estructuradas. El equipo inicial se elige por separado; poseer un objeto no concede competencia."
     ],
     "parentId": "background-artesano-gremial",
-    "version": "Variante"
+    "version": "Variante",
+    "toolProficiencies": []
   },
   {
     "id": "background-artista",
@@ -93,7 +725,132 @@
       "performance"
     ],
     "languages": [],
-    "choices": [],
+    "choices": [
+      {
+        "id": "background-artista.choose_tool",
+        "type": "choose_tool",
+        "name": "Competencia con herramientas · Artista",
+        "amount": 1,
+        "options": [
+          {
+            "id": "Caramillo",
+            "name": "Caramillo",
+            "effects": [
+              {
+                "type": "proficiency",
+                "value": "Caramillo",
+                "category": "instrument"
+              }
+            ]
+          },
+          {
+            "id": "Cuerno",
+            "name": "Cuerno",
+            "effects": [
+              {
+                "type": "proficiency",
+                "value": "Cuerno",
+                "category": "instrument"
+              }
+            ]
+          },
+          {
+            "id": "Dulcimer",
+            "name": "Dulcimer",
+            "effects": [
+              {
+                "type": "proficiency",
+                "value": "Dulcimer",
+                "category": "instrument"
+              }
+            ]
+          },
+          {
+            "id": "Flauta",
+            "name": "Flauta",
+            "effects": [
+              {
+                "type": "proficiency",
+                "value": "Flauta",
+                "category": "instrument"
+              }
+            ]
+          },
+          {
+            "id": "Flauta de pan",
+            "name": "Flauta de pan",
+            "effects": [
+              {
+                "type": "proficiency",
+                "value": "Flauta de pan",
+                "category": "instrument"
+              }
+            ]
+          },
+          {
+            "id": "Gaita",
+            "name": "Gaita",
+            "effects": [
+              {
+                "type": "proficiency",
+                "value": "Gaita",
+                "category": "instrument"
+              }
+            ]
+          },
+          {
+            "id": "Laúd",
+            "name": "Laúd",
+            "effects": [
+              {
+                "type": "proficiency",
+                "value": "Laúd",
+                "category": "instrument"
+              }
+            ]
+          },
+          {
+            "id": "Lira",
+            "name": "Lira",
+            "effects": [
+              {
+                "type": "proficiency",
+                "value": "Lira",
+                "category": "instrument"
+              }
+            ]
+          },
+          {
+            "id": "Tambor",
+            "name": "Tambor",
+            "effects": [
+              {
+                "type": "proficiency",
+                "value": "Tambor",
+                "category": "instrument"
+              }
+            ]
+          },
+          {
+            "id": "Viola",
+            "name": "Viola",
+            "effects": [
+              {
+                "type": "proficiency",
+                "value": "Viola",
+                "category": "instrument"
+              }
+            ]
+          }
+        ],
+        "required": true,
+        "source": {
+          "page": 397,
+          "endPage": 397,
+          "title": "Trasfondos"
+        }
+      }
+    ],
     "featureIds": [],
     "sourceFields": {
       "competencia con habilidades": "Acrobacias, Interpretación.",
@@ -101,7 +858,10 @@
       "equipo": "un instrumento musical (de tu elección), el favor de un admirador (una carta de amor, un mechón de pelo o una baratija), un traje y una bolsa que contiene 15 po. Especialidad Artística Un buen artista es versátil y condimenta cada actuación con una variedad de diferentes especialidades. Elige dos o tres especialidades o tira en la siguiente tabla para definir tu experiencia como artista. Rasgo: A Petición Popular Siempre puedes encontrar un lugar para actuar, por lo general en una posada o taberna, pero posiblemente en un circo, un teatro o incluso en la corte de un noble. En ese lugar, recibirás alojamiento y comida modesta o confortable (de"
     },
     "automationNotes": [
-      "Equipo inicial, herramientas e idiomas elegibles se conservan en la descripción; revisa las decisiones que no tengan selector estructurado."
+      "Las competencias fijas y las elecciones de habilidades, herramientas e idiomas están estructuradas. El equipo inicial se elige por separado; poseer un objeto no concede competencia."
+    ],
+    "toolProficiencies": [
+      "Kit de disfraz"
     ]
   },
   {
@@ -118,7 +878,132 @@
       "performance"
     ],
     "languages": [],
-    "choices": [],
+    "choices": [
+      {
+        "id": "background-gladiador.choose_tool",
+        "type": "choose_tool",
+        "name": "Competencia con herramientas · Gladiador",
+        "amount": 1,
+        "options": [
+          {
+            "id": "Caramillo",
+            "name": "Caramillo",
+            "effects": [
+              {
+                "type": "proficiency",
+                "value": "Caramillo",
+                "category": "instrument"
+              }
+            ]
+          },
+          {
+            "id": "Cuerno",
+            "name": "Cuerno",
+            "effects": [
+              {
+                "type": "proficiency",
+                "value": "Cuerno",
+                "category": "instrument"
+              }
+            ]
+          },
+          {
+            "id": "Dulcimer",
+            "name": "Dulcimer",
+            "effects": [
+              {
+                "type": "proficiency",
+                "value": "Dulcimer",
+                "category": "instrument"
+              }
+            ]
+          },
+          {
+            "id": "Flauta",
+            "name": "Flauta",
+            "effects": [
+              {
+                "type": "proficiency",
+                "value": "Flauta",
+                "category": "instrument"
+              }
+            ]
+          },
+          {
+            "id": "Flauta de pan",
+            "name": "Flauta de pan",
+            "effects": [
+              {
+                "type": "proficiency",
+                "value": "Flauta de pan",
+                "category": "instrument"
+              }
+            ]
+          },
+          {
+            "id": "Gaita",
+            "name": "Gaita",
+            "effects": [
+              {
+                "type": "proficiency",
+                "value": "Gaita",
+                "category": "instrument"
+              }
+            ]
+          },
+          {
+            "id": "Laúd",
+            "name": "Laúd",
+            "effects": [
+              {
+                "type": "proficiency",
+                "value": "Laúd",
+                "category": "instrument"
+              }
+            ]
+          },
+          {
+            "id": "Lira",
+            "name": "Lira",
+            "effects": [
+              {
+                "type": "proficiency",
+                "value": "Lira",
+                "category": "instrument"
+              }
+            ]
+          },
+          {
+            "id": "Tambor",
+            "name": "Tambor",
+            "effects": [
+              {
+                "type": "proficiency",
+                "value": "Tambor",
+                "category": "instrument"
+              }
+            ]
+          },
+          {
+            "id": "Viola",
+            "name": "Viola",
+            "effects": [
+              {
+                "type": "proficiency",
+                "value": "Viola",
+                "category": "instrument"
+              }
+            ]
+          }
+        ],
+        "required": true,
+        "source": {
+          "page": 397,
+          "endPage": 397,
+          "title": "Trasfondos"
+        }
+      }
+    ],
     "featureIds": [],
     "sourceFields": {
       "competencia con habilidades": "Acrobacias, Interpretación.",
@@ -126,11 +1011,13 @@
       "equipo": "un instrumento musical (de tu elección), el favor de un admirador (una carta de amor, un mechón de pelo o una baratija), un traje y una bolsa que contiene 15 po. Especialidad Artística Un buen artista es versátil y condimenta cada actuación con una variedad de diferentes especialidades. Elige dos o tres especialidades o tira en la siguiente tabla para definir tu experiencia como artista. Rasgo: A Petición Popular Siempre puedes encontrar un lugar para actuar, por lo general en una posada o taberna, pero posiblemente en un circo, un teatro o incluso en la corte de un noble. En ese lugar, recibirás alojamiento y comida modesta o confortable (de"
     },
     "automationNotes": [
-      "Equipo inicial, herramientas e idiomas elegibles se conservan en la descripción; revisa las decisiones que no tengan selector estructurado.",
-      "Variante del trasfondo Artista. Revisa los cambios de equipo y rasgo en su descripción."
+      "Las competencias fijas y las elecciones de habilidades, herramientas e idiomas están estructuradas. El equipo inicial se elige por separado; poseer un objeto no concede competencia."
     ],
     "parentId": "background-artista",
-    "version": "Variante"
+    "version": "Variante",
+    "toolProficiencies": [
+      "Kit de disfraz"
+    ]
   },
   {
     "id": "background-charlatan",
@@ -154,7 +1041,11 @@
       "equipo": "un conjunto de ropa fina, un kit de disfraz, herramientas de estafa de tu elección (diez botellas con tapón llenas con un líquido de color, unos dados cargados, una baraja de cartas marcadas, o un anillo de sello de un duque imaginario) y una bolsa con 15 po. Ardides Favoritos Cada charlatán tiene un enfoque propio que lo hace tener preferencia por unos ardides frente a otros. Elige una estafa preferida o tira en la tabla de abajo. Rasgo: Identidad Falsa Te has creado una segunda identidad que incluye documentación, citas establecidas y disfraces que te permiten asumir ese personaje. Además, puedes falsificar documentos oficiales y cartas per"
     },
     "automationNotes": [
-      "Equipo inicial, herramientas e idiomas elegibles se conservan en la descripción; revisa las decisiones que no tengan selector estructurado."
+      "Las competencias fijas y las elecciones de habilidades, herramientas e idiomas están estructuradas. El equipo inicial se elige por separado; poseer un objeto no concede competencia."
+    ],
+    "toolProficiencies": [
+      "Kit de disfraz",
+      "Kit de falsificación"
     ]
   },
   {
@@ -171,7 +1062,66 @@
       "stealth"
     ],
     "languages": [],
-    "choices": [],
+    "choices": [
+      {
+        "id": "background-criminal.choose_tool",
+        "type": "choose_tool",
+        "name": "Competencia con herramientas · Criminal",
+        "amount": 1,
+        "options": [
+          {
+            "id": "Set de ajedrez de dragón",
+            "name": "Set de ajedrez de dragón",
+            "effects": [
+              {
+                "type": "proficiency",
+                "value": "Set de ajedrez de dragón",
+                "category": "game"
+              }
+            ]
+          },
+          {
+            "id": "Set de baraja de cartas",
+            "name": "Set de baraja de cartas",
+            "effects": [
+              {
+                "type": "proficiency",
+                "value": "Set de baraja de cartas",
+                "category": "game"
+              }
+            ]
+          },
+          {
+            "id": "Set de dados",
+            "name": "Set de dados",
+            "effects": [
+              {
+                "type": "proficiency",
+                "value": "Set de dados",
+                "category": "game"
+              }
+            ]
+          },
+          {
+            "id": "Set de tres dragones",
+            "name": "Set de tres dragones",
+            "effects": [
+              {
+                "type": "proficiency",
+                "value": "Set de tres dragones",
+                "category": "game"
+              }
+            ]
+          }
+        ],
+        "required": true,
+        "source": {
+          "page": 398,
+          "endPage": 399,
+          "title": "Trasfondos"
+        }
+      }
+    ],
     "featureIds": [],
     "sourceFields": {
       "competencia con habilidades": "Engañar, Sigilo.",
@@ -179,7 +1129,10 @@
       "equipo": "una barreta, un conjunto de ropa común oscura, incluyendo una capucha, y una bolsa que contiene 15 po. Especialidad Criminal Hay muchos tipos de delincuentes, y dentro de un gremio de ladrones o una organización criminal similar, los miembros individuales tienen especialidades particulares. Incluso los criminales que operan fuera de esas organizaciones tienen d6 Estafa 1 Hago trampa en los juegos de azar. 2 Falsifico monedas o documentos. 3 Me introduzco en la vida de la gente para aprovecharme de su debilidad y “asegurar” sus fortunas. 4 Cambio de identidad con tanta facilidad como cambio de ropa. 5 Hago estafas de prestidigitador en las esq"
     },
     "automationNotes": [
-      "Equipo inicial, herramientas e idiomas elegibles se conservan en la descripción; revisa las decisiones que no tengan selector estructurado."
+      "Las competencias fijas y las elecciones de habilidades, herramientas e idiomas están estructuradas. El equipo inicial se elige por separado; poseer un objeto no concede competencia."
+    ],
+    "toolProficiencies": [
+      "Herramientas de ladrón"
     ]
   },
   {
@@ -196,7 +1149,66 @@
       "stealth"
     ],
     "languages": [],
-    "choices": [],
+    "choices": [
+      {
+        "id": "background-espia.choose_tool",
+        "type": "choose_tool",
+        "name": "Competencia con herramientas · Espía",
+        "amount": 1,
+        "options": [
+          {
+            "id": "Set de ajedrez de dragón",
+            "name": "Set de ajedrez de dragón",
+            "effects": [
+              {
+                "type": "proficiency",
+                "value": "Set de ajedrez de dragón",
+                "category": "game"
+              }
+            ]
+          },
+          {
+            "id": "Set de baraja de cartas",
+            "name": "Set de baraja de cartas",
+            "effects": [
+              {
+                "type": "proficiency",
+                "value": "Set de baraja de cartas",
+                "category": "game"
+              }
+            ]
+          },
+          {
+            "id": "Set de dados",
+            "name": "Set de dados",
+            "effects": [
+              {
+                "type": "proficiency",
+                "value": "Set de dados",
+                "category": "game"
+              }
+            ]
+          },
+          {
+            "id": "Set de tres dragones",
+            "name": "Set de tres dragones",
+            "effects": [
+              {
+                "type": "proficiency",
+                "value": "Set de tres dragones",
+                "category": "game"
+              }
+            ]
+          }
+        ],
+        "required": true,
+        "source": {
+          "page": 398,
+          "endPage": 399,
+          "title": "Trasfondos"
+        }
+      }
+    ],
     "featureIds": [],
     "sourceFields": {
       "competencia con habilidades": "Engañar, Sigilo.",
@@ -204,11 +1216,13 @@
       "equipo": "una barreta, un conjunto de ropa común oscura, incluyendo una capucha, y una bolsa que contiene 15 po. Especialidad Criminal Hay muchos tipos de delincuentes, y dentro de un gremio de ladrones o una organización criminal similar, los miembros individuales tienen especialidades particulares. Incluso los criminales que operan fuera de esas organizaciones tienen d6 Estafa 1 Hago trampa en los juegos de azar. 2 Falsifico monedas o documentos. 3 Me introduzco en la vida de la gente para aprovecharme de su debilidad y “asegurar” sus fortunas. 4 Cambio de identidad con tanta facilidad como cambio de ropa. 5 Hago estafas de prestidigitador en las esq"
     },
     "automationNotes": [
-      "Equipo inicial, herramientas e idiomas elegibles se conservan en la descripción; revisa las decisiones que no tengan selector estructurado.",
-      "Variante del trasfondo Criminal. Revisa los cambios de equipo y rasgo en su descripción."
+      "Las competencias fijas y las elecciones de habilidades, herramientas e idiomas están estructuradas. El equipo inicial se elige por separado; poseer un objeto no concede competencia."
     ],
     "parentId": "background-criminal",
-    "version": "Variante"
+    "version": "Variante",
+    "toolProficiencies": [
+      "Herramientas de ladrón"
+    ]
   },
   {
     "id": "background-ermitano",
@@ -224,7 +1238,21 @@
       "religion"
     ],
     "languages": [],
-    "choices": [],
+    "choices": [
+      {
+        "id": "background-ermitano.choose_language",
+        "type": "choose_language",
+        "name": "Idiomas del trasfondo · Ermitaño",
+        "amount": 1,
+        "options": [],
+        "required": true,
+        "source": {
+          "page": 399,
+          "endPage": 400,
+          "title": "Trasfondos"
+        }
+      }
+    ],
     "featureIds": [],
     "sourceFields": {
       "competencia con habilidades": "Medicina, Religión.",
@@ -233,7 +1261,10 @@
       "equipo": "un rollo de pergamino lleno de notas de tus estudios o plegarias, una frazada de invierno, una muda de ropa común, un kit de herboristería y una bolsa con 5 po. Vida en Reclusión ¿Cuál fue la razón para tu aislamiento y qué cambió para permitirte terminar tu soledad? Puedes trabajar con tu DM para determinar la exacta naturaleza de tu reclusión, o puedes elegir o tirar en la tabla de abajo para determinar el motivo detrás de tu reclusión. d8 Vida en Reclusión 1 Buscaba iluminación espiritual. 2 Estaba participando de un estilo de vida comunal de acuerdo con los dictados de una orden religiosa. 3 Fui exiliado por un crimen que no cometí. 4 Me"
     },
     "automationNotes": [
-      "Equipo inicial, herramientas e idiomas elegibles se conservan en la descripción; revisa las decisiones que no tengan selector estructurado."
+      "Las competencias fijas y las elecciones de habilidades, herramientas e idiomas están estructuradas. El equipo inicial se elige por separado; poseer un objeto no concede competencia."
+    ],
+    "toolProficiencies": [
+      "Kit de herboristería"
     ]
   },
   {
@@ -250,7 +1281,145 @@
       "survival"
     ],
     "languages": [],
-    "choices": [],
+    "choices": [
+      {
+        "id": "background-fronterizo.choose_language",
+        "type": "choose_language",
+        "name": "Idiomas del trasfondo · Fronterizo",
+        "amount": 1,
+        "options": [],
+        "required": true,
+        "source": {
+          "page": 400,
+          "endPage": 401,
+          "title": "Trasfondos"
+        }
+      },
+      {
+        "id": "background-fronterizo.choose_tool",
+        "type": "choose_tool",
+        "name": "Competencia con herramientas · Fronterizo",
+        "amount": 1,
+        "options": [
+          {
+            "id": "Caramillo",
+            "name": "Caramillo",
+            "effects": [
+              {
+                "type": "proficiency",
+                "value": "Caramillo",
+                "category": "instrument"
+              }
+            ]
+          },
+          {
+            "id": "Cuerno",
+            "name": "Cuerno",
+            "effects": [
+              {
+                "type": "proficiency",
+                "value": "Cuerno",
+                "category": "instrument"
+              }
+            ]
+          },
+          {
+            "id": "Dulcimer",
+            "name": "Dulcimer",
+            "effects": [
+              {
+                "type": "proficiency",
+                "value": "Dulcimer",
+                "category": "instrument"
+              }
+            ]
+          },
+          {
+            "id": "Flauta",
+            "name": "Flauta",
+            "effects": [
+              {
+                "type": "proficiency",
+                "value": "Flauta",
+                "category": "instrument"
+              }
+            ]
+          },
+          {
+            "id": "Flauta de pan",
+            "name": "Flauta de pan",
+            "effects": [
+              {
+                "type": "proficiency",
+                "value": "Flauta de pan",
+                "category": "instrument"
+              }
+            ]
+          },
+          {
+            "id": "Gaita",
+            "name": "Gaita",
+            "effects": [
+              {
+                "type": "proficiency",
+                "value": "Gaita",
+                "category": "instrument"
+              }
+            ]
+          },
+          {
+            "id": "Laúd",
+            "name": "Laúd",
+            "effects": [
+              {
+                "type": "proficiency",
+                "value": "Laúd",
+                "category": "instrument"
+              }
+            ]
+          },
+          {
+            "id": "Lira",
+            "name": "Lira",
+            "effects": [
+              {
+                "type": "proficiency",
+                "value": "Lira",
+                "category": "instrument"
+              }
+            ]
+          },
+          {
+            "id": "Tambor",
+            "name": "Tambor",
+            "effects": [
+              {
+                "type": "proficiency",
+                "value": "Tambor",
+                "category": "instrument"
+              }
+            ]
+          },
+          {
+            "id": "Viola",
+            "name": "Viola",
+            "effects": [
+              {
+                "type": "proficiency",
+                "value": "Viola",
+                "category": "instrument"
+              }
+            ]
+          }
+        ],
+        "required": true,
+        "source": {
+          "page": 400,
+          "endPage": 401,
+          "title": "Trasfondos"
+        }
+      }
+    ],
     "featureIds": [],
     "sourceFields": {
       "competencia con habilidades": "Atletismo, Supervivencia.",
@@ -259,8 +1428,9 @@
       "equipo": "un bastón, una trampa de caza, un trofeo de un animal que mataste, un conjunto de ropa de viajero y una bolsa que contiene 10 po. Origen Has estado en lugares extraños y has visto cosas que otros no alcanzan a comprender. Piensa en alguna de estas tierras lejanas que has visitado y en cómo te han impactado. Puedes tirar en la siguiente tabla para determinar tu ocupación durante tu estancia en las tierras salvajes o elegir una que se adapte mejor a tu personaje. d10 Origen 1 Guardabosques 2 Trampero 3 Colono 4 Guía 5 Exiliado o paria 6 Cazarrecompensas 7 Peregrino 8 Nómada 9 Cazador-recolector 10 Saqueador Rasgo: Vagabundo Tienes una excelente"
     },
     "automationNotes": [
-      "Equipo inicial, herramientas e idiomas elegibles se conservan en la descripción; revisa las decisiones que no tengan selector estructurado."
-    ]
+      "Las competencias fijas y las elecciones de habilidades, herramientas e idiomas están estructuradas. El equipo inicial se elige por separado; poseer un objeto no concede competencia."
+    ],
+    "toolProficiencies": []
   },
   {
     "id": "background-heroe-de-pueblo",
@@ -276,7 +1446,209 @@
       "survival"
     ],
     "languages": [],
-    "choices": [],
+    "choices": [
+      {
+        "id": "background-heroe-de-pueblo.choose_tool",
+        "type": "choose_tool",
+        "name": "Competencia con herramientas · Héroe de Pueblo",
+        "amount": 1,
+        "options": [
+          {
+            "id": "Herramientas de carpintero",
+            "name": "Herramientas de carpintero",
+            "effects": [
+              {
+                "type": "proficiency",
+                "value": "Herramientas de carpintero",
+                "category": "artisan"
+              }
+            ]
+          },
+          {
+            "id": "Herramientas de cartógrafo",
+            "name": "Herramientas de cartógrafo",
+            "effects": [
+              {
+                "type": "proficiency",
+                "value": "Herramientas de cartógrafo",
+                "category": "artisan"
+              }
+            ]
+          },
+          {
+            "id": "Herramientas de zapatero",
+            "name": "Herramientas de zapatero",
+            "effects": [
+              {
+                "type": "proficiency",
+                "value": "Herramientas de zapatero",
+                "category": "artisan"
+              }
+            ]
+          },
+          {
+            "id": "Herramientas de alfarero",
+            "name": "Herramientas de alfarero",
+            "effects": [
+              {
+                "type": "proficiency",
+                "value": "Herramientas de alfarero",
+                "category": "artisan"
+              }
+            ]
+          },
+          {
+            "id": "Herramientas de herrero",
+            "name": "Herramientas de herrero",
+            "effects": [
+              {
+                "type": "proficiency",
+                "value": "Herramientas de herrero",
+                "category": "artisan"
+              }
+            ]
+          },
+          {
+            "id": "Herramientas de hojalatero",
+            "name": "Herramientas de hojalatero",
+            "effects": [
+              {
+                "type": "proficiency",
+                "value": "Herramientas de hojalatero",
+                "category": "artisan"
+              }
+            ]
+          },
+          {
+            "id": "Herramientas de tejedor",
+            "name": "Herramientas de tejedor",
+            "effects": [
+              {
+                "type": "proficiency",
+                "value": "Herramientas de tejedor",
+                "category": "artisan"
+              }
+            ]
+          },
+          {
+            "id": "Herramientas de tallista",
+            "name": "Herramientas de tallista",
+            "effects": [
+              {
+                "type": "proficiency",
+                "value": "Herramientas de tallista",
+                "category": "artisan"
+              }
+            ]
+          },
+          {
+            "id": "Herramientas de soplador de vidrio",
+            "name": "Herramientas de soplador de vidrio",
+            "effects": [
+              {
+                "type": "proficiency",
+                "value": "Herramientas de soplador de vidrio",
+                "category": "artisan"
+              }
+            ]
+          },
+          {
+            "id": "Herramientas de joyero",
+            "name": "Herramientas de joyero",
+            "effects": [
+              {
+                "type": "proficiency",
+                "value": "Herramientas de joyero",
+                "category": "artisan"
+              }
+            ]
+          },
+          {
+            "id": "Herramientas de peletero",
+            "name": "Herramientas de peletero",
+            "effects": [
+              {
+                "type": "proficiency",
+                "value": "Herramientas de peletero",
+                "category": "artisan"
+              }
+            ]
+          },
+          {
+            "id": "Herramientas de albañil",
+            "name": "Herramientas de albañil",
+            "effects": [
+              {
+                "type": "proficiency",
+                "value": "Herramientas de albañil",
+                "category": "artisan"
+              }
+            ]
+          },
+          {
+            "id": "Materiales de pintor",
+            "name": "Materiales de pintor",
+            "effects": [
+              {
+                "type": "proficiency",
+                "value": "Materiales de pintor",
+                "category": "artisan"
+              }
+            ]
+          },
+          {
+            "id": "Materiales alquímicos",
+            "name": "Materiales alquímicos",
+            "effects": [
+              {
+                "type": "proficiency",
+                "value": "Materiales alquímicos",
+                "category": "artisan"
+              }
+            ]
+          },
+          {
+            "id": "Materiales de cervecería",
+            "name": "Materiales de cervecería",
+            "effects": [
+              {
+                "type": "proficiency",
+                "value": "Materiales de cervecería",
+                "category": "artisan"
+              }
+            ]
+          },
+          {
+            "id": "Materiales de caligrafía",
+            "name": "Materiales de caligrafía",
+            "effects": [
+              {
+                "type": "proficiency",
+                "value": "Materiales de caligrafía",
+                "category": "artisan"
+              }
+            ]
+          },
+          {
+            "id": "Utensilios de cocina",
+            "name": "Utensilios de cocina",
+            "effects": [
+              {
+                "type": "proficiency",
+                "value": "Utensilios de cocina",
+                "category": "artisan"
+              }
+            ]
+          }
+        ],
+        "required": true,
+        "source": {
+          "page": 401,
+          "endPage": 401,
+          "title": "Trasfondos"
+        }
+      }
+    ],
     "featureIds": [],
     "sourceFields": {
       "competencia con habilidades": "Tacto con animales, Supervivencia.",
@@ -285,7 +1657,11 @@
       "equipo": "un conjunto de herramientas de artesano (de tu elección), una pala, una olla de hierro, un conjunto de ropa común y una bolsa que contiene 10 po. Definición del Evento Antes de convertirte en un héroe has ejercido una profesión sencilla entre los campesinos, tal vez como granjero, minero, siervo, pastor, leñador, o sepulturero. Pero algo sucedió que fijo un camino diferente y que te marcó para realizar cosas más grandes. Escoge al azar o determina un acontecimiento decisivo que te marca como un héroe del pueblo. d10 Definicion de Evento 1 Me alcé en contra de los agentes de un tirano. 2 Salvé a la gente durante un desastre natural. 3 Me quedé"
     },
     "automationNotes": [
-      "Equipo inicial, herramientas e idiomas elegibles se conservan en la descripción; revisa las decisiones que no tengan selector estructurado."
+      "Las competencias fijas y las elecciones de habilidades, herramientas e idiomas están estructuradas. El equipo inicial se elige por separado; poseer un objeto no concede competencia.",
+      "Regla base de 2014: Héroe de Pueblo no concede un idioma adicional. La línea de idioma del PDF no se aplica."
+    ],
+    "toolProficiencies": [
+      "Vehículos terrestres"
     ]
   },
   {
@@ -310,7 +1686,11 @@
       "equipo": "un pequeño cuchillo, un mapa de la ciudad en la que creciste, un ratón como mascota, un símbolo para recordar a tus padres, una muda de ropa común y una bolsa con 10po. Rasgo: Secretos de la Ciudad Conoces los patrones y flujos secretos de las ciudades, y puedes encontrar pasadizos a través de la masa urbana que otros pasarían por alto. Cuando no estás en combate, puedes viajar (junto a los compañeros que guíes) a través de dos puntos en la ciudad el doble de rápido de lo que tu velocidad te permitiría normalmente."
     },
     "automationNotes": [
-      "Equipo inicial, herramientas e idiomas elegibles se conservan en la descripción; revisa las decisiones que no tengan selector estructurado."
+      "Las competencias fijas y las elecciones de habilidades, herramientas e idiomas están estructuradas. El equipo inicial se elige por separado; poseer un objeto no concede competencia."
+    ],
+    "toolProficiencies": [
+      "Kit de disfraz",
+      "Herramientas de ladrón"
     ]
   },
   {
@@ -335,7 +1715,11 @@
       "equipo": "una barra de madera o metal (una clava), 50 pies de cuerda de seda, un amuleto de la suerte, como una pata de conejo o una piedra pequeña con un agujero en el centro (o podrías tener una baratija), una muda de ropa común y una bolsa con 10 po. Rasgo: Pasaje Marítimo Cuando lo necesites, puedes asegurar un pasaje gratis en un barco para ti y tus compañeros de aventuras. Podrías navegar en la nave en la que serviste, o en otra nave con la que tengas buenas relaciones (quizá en una cuyo capitán fue tu compañero de tripulación). Ya que estás pidiendo un favor, no puedes asegurar un calendario o una ruta que cumpla con todas tus necesidades. Tu Du"
     },
     "automationNotes": [
-      "Equipo inicial, herramientas e idiomas elegibles se conservan en la descripción; revisa las decisiones que no tengan selector estructurado."
+      "Las competencias fijas y las elecciones de habilidades, herramientas e idiomas están estructuradas. El equipo inicial se elige por separado; poseer un objeto no concede competencia."
+    ],
+    "toolProficiencies": [
+      "Herramientas de navegación",
+      "Vehículos acuáticos"
     ]
   },
   {
@@ -360,11 +1744,14 @@
       "equipo": "una barra de madera o metal (una clava), 50 pies de cuerda de seda, un amuleto de la suerte, como una pata de conejo o una piedra pequeña con un agujero en el centro (o podrías tener una baratija), una muda de ropa común y una bolsa con 10 po. Rasgo: Pasaje Marítimo Cuando lo necesites, puedes asegurar un pasaje gratis en un barco para ti y tus compañeros de aventuras. Podrías navegar en la nave en la que serviste, o en otra nave con la que tengas buenas relaciones (quizá en una cuyo capitán fue tu compañero de tripulación). Ya que estás pidiendo un favor, no puedes asegurar un calendario o una ruta que cumpla con todas tus necesidades. Tu Du"
     },
     "automationNotes": [
-      "Equipo inicial, herramientas e idiomas elegibles se conservan en la descripción; revisa las decisiones que no tengan selector estructurado.",
-      "Variante del trasfondo Marinero. Revisa los cambios de equipo y rasgo en su descripción."
+      "Las competencias fijas y las elecciones de habilidades, herramientas e idiomas están estructuradas. El equipo inicial se elige por separado; poseer un objeto no concede competencia."
     ],
     "parentId": "background-marinero",
-    "version": "Variante"
+    "version": "Variante",
+    "toolProficiencies": [
+      "Herramientas de navegación",
+      "Vehículos acuáticos"
+    ]
   },
   {
     "id": "background-noble",
@@ -380,7 +1767,79 @@
       "persuasion"
     ],
     "languages": [],
-    "choices": [],
+    "choices": [
+      {
+        "id": "background-noble.choose_language",
+        "type": "choose_language",
+        "name": "Idiomas del trasfondo · Noble",
+        "amount": 1,
+        "options": [],
+        "required": true,
+        "source": {
+          "page": 403,
+          "endPage": 404,
+          "title": "Trasfondos"
+        }
+      },
+      {
+        "id": "background-noble.choose_tool",
+        "type": "choose_tool",
+        "name": "Competencia con herramientas · Noble",
+        "amount": 1,
+        "options": [
+          {
+            "id": "Set de ajedrez de dragón",
+            "name": "Set de ajedrez de dragón",
+            "effects": [
+              {
+                "type": "proficiency",
+                "value": "Set de ajedrez de dragón",
+                "category": "game"
+              }
+            ]
+          },
+          {
+            "id": "Set de baraja de cartas",
+            "name": "Set de baraja de cartas",
+            "effects": [
+              {
+                "type": "proficiency",
+                "value": "Set de baraja de cartas",
+                "category": "game"
+              }
+            ]
+          },
+          {
+            "id": "Set de dados",
+            "name": "Set de dados",
+            "effects": [
+              {
+                "type": "proficiency",
+                "value": "Set de dados",
+                "category": "game"
+              }
+            ]
+          },
+          {
+            "id": "Set de tres dragones",
+            "name": "Set de tres dragones",
+            "effects": [
+              {
+                "type": "proficiency",
+                "value": "Set de tres dragones",
+                "category": "game"
+              }
+            ]
+          }
+        ],
+        "required": true,
+        "source": {
+          "page": 403,
+          "endPage": 404,
+          "title": "Trasfondos"
+        }
+      }
+    ],
     "featureIds": [],
     "sourceFields": {
       "competencia con habilidades": "Historia, Persuasión.",
@@ -389,8 +1848,9 @@
       "equipo": "una muda de ropas finas, un anillo con sello, un pergamino con tu genealogía, y un monedero con 25 po. Rasgo: Posición Privilegiada Gracias a tu cuna noble, la gente tiende a pensar lo mejor de ti. Eres bienvenido en la alta sociedad y la gente asume que tienes el derecho de estar donde quiera que estés. La gente común hace todo lo posible para que te sientas cómodo y evitar tu descontento, y otras personas de alta cuna te tratan como miembro de la misma esfera social. Puedes asegurar una audiencia con un noble local, si es necesario. Variante: Caballero El título de caballero es uno de los títulos nobiliarios más bajos en la mayoría de las s"
     },
     "automationNotes": [
-      "Equipo inicial, herramientas e idiomas elegibles se conservan en la descripción; revisa las decisiones que no tengan selector estructurado."
-    ]
+      "Las competencias fijas y las elecciones de habilidades, herramientas e idiomas están estructuradas. El equipo inicial se elige por separado; poseer un objeto no concede competencia."
+    ],
+    "toolProficiencies": []
   },
   {
     "id": "background-caballero",
@@ -406,7 +1866,79 @@
       "persuasion"
     ],
     "languages": [],
-    "choices": [],
+    "choices": [
+      {
+        "id": "background-caballero.choose_language",
+        "type": "choose_language",
+        "name": "Idiomas del trasfondo · Caballero",
+        "amount": 1,
+        "options": [],
+        "required": true,
+        "source": {
+          "page": 403,
+          "endPage": 404,
+          "title": "Trasfondos"
+        }
+      },
+      {
+        "id": "background-caballero.choose_tool",
+        "type": "choose_tool",
+        "name": "Competencia con herramientas · Caballero",
+        "amount": 1,
+        "options": [
+          {
+            "id": "Set de ajedrez de dragón",
+            "name": "Set de ajedrez de dragón",
+            "effects": [
+              {
+                "type": "proficiency",
+                "value": "Set de ajedrez de dragón",
+                "category": "game"
+              }
+            ]
+          },
+          {
+            "id": "Set de baraja de cartas",
+            "name": "Set de baraja de cartas",
+            "effects": [
+              {
+                "type": "proficiency",
+                "value": "Set de baraja de cartas",
+                "category": "game"
+              }
+            ]
+          },
+          {
+            "id": "Set de dados",
+            "name": "Set de dados",
+            "effects": [
+              {
+                "type": "proficiency",
+                "value": "Set de dados",
+                "category": "game"
+              }
+            ]
+          },
+          {
+            "id": "Set de tres dragones",
+            "name": "Set de tres dragones",
+            "effects": [
+              {
+                "type": "proficiency",
+                "value": "Set de tres dragones",
+                "category": "game"
+              }
+            ]
+          }
+        ],
+        "required": true,
+        "source": {
+          "page": 403,
+          "endPage": 404,
+          "title": "Trasfondos"
+        }
+      }
+    ],
     "featureIds": [],
     "sourceFields": {
       "competencia con habilidades": "Historia, Persuasión.",
@@ -415,11 +1947,11 @@
       "equipo": "una muda de ropas finas, un anillo con sello, un pergamino con tu genealogía, y un monedero con 25 po. Rasgo: Posición Privilegiada Gracias a tu cuna noble, la gente tiende a pensar lo mejor de ti. Eres bienvenido en la alta sociedad y la gente asume que tienes el derecho de estar donde quiera que estés. La gente común hace todo lo posible para que te sientas cómodo y evitar tu descontento, y otras personas de alta cuna te tratan como miembro de la misma esfera social. Puedes asegurar una audiencia con un noble local, si es necesario. Variante: Caballero El título de caballero es uno de los títulos nobiliarios más bajos en la mayoría de las s"
     },
     "automationNotes": [
-      "Equipo inicial, herramientas e idiomas elegibles se conservan en la descripción; revisa las decisiones que no tengan selector estructurado.",
-      "Variante del trasfondo Noble. Revisa los cambios de equipo y rasgo en su descripción."
+      "Las competencias fijas y las elecciones de habilidades, herramientas e idiomas están estructuradas. El equipo inicial se elige por separado; poseer un objeto no concede competencia."
     ],
     "parentId": "background-noble",
-    "version": "Variante"
+    "version": "Variante",
+    "toolProficiencies": []
   },
   {
     "id": "background-sabio",
@@ -435,7 +1967,21 @@
       "history"
     ],
     "languages": [],
-    "choices": [],
+    "choices": [
+      {
+        "id": "background-sabio.choose_language",
+        "type": "choose_language",
+        "name": "Idiomas del trasfondo · Sabio",
+        "amount": 2,
+        "options": [],
+        "required": true,
+        "source": {
+          "page": 404,
+          "endPage": 404,
+          "title": "Trasfondos"
+        }
+      }
+    ],
     "featureIds": [],
     "sourceFields": {
       "competencia con habilidades": "Arcano, Historia.",
@@ -443,8 +1989,9 @@
       "equipo": "un tintero, una pluma, un cuchillo pequeño, una carta de un colega muerto con una pregunta que aún no ha sido capaz de responder, una muda de ropa común y una bolsa con 10 po. Rasgo: Investigador Cuando intentas aprender o recordar un fragmento de información, si no sabes nada sobre el tema, a menudo sí sabes a dónde o de quién puedes obtenerlo. Por lo general, esta información viene de una biblioteca, scriptorium, universidad o un sabio u otra persona o criatura culta. Tu DM podría decidir que el conocimiento que buscas está oculto en un lugar lejano y casi inaccesible, o que simplemente no puede ser encontrado. Develar los secretos más prof"
     },
     "automationNotes": [
-      "Equipo inicial, herramientas e idiomas elegibles se conservan en la descripción; revisa las decisiones que no tengan selector estructurado."
-    ]
+      "Las competencias fijas y las elecciones de habilidades, herramientas e idiomas están estructuradas. El equipo inicial se elige por separado; poseer un objeto no concede competencia."
+    ],
+    "toolProficiencies": []
   },
   {
     "id": "background-soldado",
@@ -460,7 +2007,66 @@
       "intimidation"
     ],
     "languages": [],
-    "choices": [],
+    "choices": [
+      {
+        "id": "background-soldado.choose_tool",
+        "type": "choose_tool",
+        "name": "Competencia con herramientas · Soldado",
+        "amount": 1,
+        "options": [
+          {
+            "id": "Set de ajedrez de dragón",
+            "name": "Set de ajedrez de dragón",
+            "effects": [
+              {
+                "type": "proficiency",
+                "value": "Set de ajedrez de dragón",
+                "category": "game"
+              }
+            ]
+          },
+          {
+            "id": "Set de baraja de cartas",
+            "name": "Set de baraja de cartas",
+            "effects": [
+              {
+                "type": "proficiency",
+                "value": "Set de baraja de cartas",
+                "category": "game"
+              }
+            ]
+          },
+          {
+            "id": "Set de dados",
+            "name": "Set de dados",
+            "effects": [
+              {
+                "type": "proficiency",
+                "value": "Set de dados",
+                "category": "game"
+              }
+            ]
+          },
+          {
+            "id": "Set de tres dragones",
+            "name": "Set de tres dragones",
+            "effects": [
+              {
+                "type": "proficiency",
+                "value": "Set de tres dragones",
+                "category": "game"
+              }
+            ]
+          }
+        ],
+        "required": true,
+        "source": {
+          "page": 404,
+          "endPage": 405,
+          "title": "Trasfondos"
+        }
+      }
+    ],
     "featureIds": [],
     "sourceFields": {
       "competencia con habilidades": "Atletismo, Intimidación.",
@@ -468,7 +2074,10 @@
       "equipo": "una insignia con tu rango, un trofeo tomado de un enemigo caído (una daga, una hoja rota o un trozo de un estandarte), un conjunto de dados de hueso o baraja de cartas, una muda de ropa común, y una bolsa que contiene 10 po. Especialidad Durante tu tiempo como soldado, tenías un papel específico desempeñar en tu unidad o ejército. Tira un d8 o elige entre las opciones en la tabla de abajo para determinar tu rol. d8 Especialidad 1 Oficial 2 Explorador 3 Infantería 4 Caballería 5 Sanador 6 Intendente 7 Portaestandartes 8 Personal de Apoyo (cocinero, herrero, o similares) Rasgo: Rango Militar Tienes un rango militar de tu carrera como soldado. A"
     },
     "automationNotes": [
-      "Equipo inicial, herramientas e idiomas elegibles se conservan en la descripción; revisa las decisiones que no tengan selector estructurado."
+      "Las competencias fijas y las elecciones de habilidades, herramientas e idiomas están estructuradas. El equipo inicial se elige por separado; poseer un objeto no concede competencia."
+    ],
+    "toolProficiencies": [
+      "Vehículos terrestres"
     ]
   },
   {
@@ -623,6 +2232,19 @@
           }
         ],
         "required": true
+      },
+      {
+        "id": "background-agente-de-una-faccion.choose_language",
+        "type": "choose_language",
+        "name": "Idiomas del trasfondo · Agente de una Facción",
+        "amount": 2,
+        "options": [],
+        "required": true,
+        "source": {
+          "page": 406,
+          "endPage": 407,
+          "title": "Trasfondos Extras"
+        }
       }
     ],
     "featureIds": [],
@@ -632,8 +2254,9 @@
       "equipo": "insignia o emblema de tu facción, copia de un texto influyente para tu facción (o código de conducta para facciones encubiertas), muda de ropas comunes y una bolsa que contiene 15 po. Facciones de la Costa de la Espada Es posible que la falta de gobiernos grandes y centralizados en el Norte y a lo largo de la Costa de la Espada esté directamente ligada a la proliferación de sociedades secretas y conspiraciones en las naciones de la zona. Si tu trasfondo es ser un agente de una de las principales facciones del Norte y la Costa de la Espada, aquí tienes algunas posibilidades. Los Arpistas: Los Arpistas fueron fundados hace más de un milenio y s"
     },
     "automationNotes": [
-      "Equipo inicial, herramientas e idiomas elegibles se conservan en la descripción; revisa las decisiones que no tengan selector estructurado."
-    ]
+      "Las competencias fijas y las elecciones de habilidades, herramientas e idiomas están estructuradas. El equipo inicial se elige por separado; poseer un objeto no concede competencia."
+    ],
+    "toolProficiencies": []
   },
   {
     "id": "background-artesano-del-clan",
@@ -648,8 +2271,226 @@
       "history",
       "insight"
     ],
-    "languages": [],
-    "choices": [],
+    "languages": [
+      "Enano"
+    ],
+    "choices": [
+      {
+        "id": "background-artesano-del-clan.choose_tool",
+        "type": "choose_tool",
+        "name": "Competencia con herramientas · Artesano del Clan",
+        "amount": 1,
+        "options": [
+          {
+            "id": "Herramientas de carpintero",
+            "name": "Herramientas de carpintero",
+            "effects": [
+              {
+                "type": "proficiency",
+                "value": "Herramientas de carpintero",
+                "category": "artisan"
+              }
+            ]
+          },
+          {
+            "id": "Herramientas de cartógrafo",
+            "name": "Herramientas de cartógrafo",
+            "effects": [
+              {
+                "type": "proficiency",
+                "value": "Herramientas de cartógrafo",
+                "category": "artisan"
+              }
+            ]
+          },
+          {
+            "id": "Herramientas de zapatero",
+            "name": "Herramientas de zapatero",
+            "effects": [
+              {
+                "type": "proficiency",
+                "value": "Herramientas de zapatero",
+                "category": "artisan"
+              }
+            ]
+          },
+          {
+            "id": "Herramientas de alfarero",
+            "name": "Herramientas de alfarero",
+            "effects": [
+              {
+                "type": "proficiency",
+                "value": "Herramientas de alfarero",
+                "category": "artisan"
+              }
+            ]
+          },
+          {
+            "id": "Herramientas de herrero",
+            "name": "Herramientas de herrero",
+            "effects": [
+              {
+                "type": "proficiency",
+                "value": "Herramientas de herrero",
+                "category": "artisan"
+              }
+            ]
+          },
+          {
+            "id": "Herramientas de hojalatero",
+            "name": "Herramientas de hojalatero",
+            "effects": [
+              {
+                "type": "proficiency",
+                "value": "Herramientas de hojalatero",
+                "category": "artisan"
+              }
+            ]
+          },
+          {
+            "id": "Herramientas de tejedor",
+            "name": "Herramientas de tejedor",
+            "effects": [
+              {
+                "type": "proficiency",
+                "value": "Herramientas de tejedor",
+                "category": "artisan"
+              }
+            ]
+          },
+          {
+            "id": "Herramientas de tallista",
+            "name": "Herramientas de tallista",
+            "effects": [
+              {
+                "type": "proficiency",
+                "value": "Herramientas de tallista",
+                "category": "artisan"
+              }
+            ]
+          },
+          {
+            "id": "Herramientas de soplador de vidrio",
+            "name": "Herramientas de soplador de vidrio",
+            "effects": [
+              {
+                "type": "proficiency",
+                "value": "Herramientas de soplador de vidrio",
+                "category": "artisan"
+              }
+            ]
+          },
+          {
+            "id": "Herramientas de joyero",
+            "name": "Herramientas de joyero",
+            "effects": [
+              {
+                "type": "proficiency",
+                "value": "Herramientas de joyero",
+                "category": "artisan"
+              }
+            ]
+          },
+          {
+            "id": "Herramientas de peletero",
+            "name": "Herramientas de peletero",
+            "effects": [
+              {
+                "type": "proficiency",
+                "value": "Herramientas de peletero",
+                "category": "artisan"
+              }
+            ]
+          },
+          {
+            "id": "Herramientas de albañil",
+            "name": "Herramientas de albañil",
+            "effects": [
+              {
+                "type": "proficiency",
+                "value": "Herramientas de albañil",
+                "category": "artisan"
+              }
+            ]
+          },
+          {
+            "id": "Materiales de pintor",
+            "name": "Materiales de pintor",
+            "effects": [
+              {
+                "type": "proficiency",
+                "value": "Materiales de pintor",
+                "category": "artisan"
+              }
+            ]
+          },
+          {
+            "id": "Materiales alquímicos",
+            "name": "Materiales alquímicos",
+            "effects": [
+              {
+                "type": "proficiency",
+                "value": "Materiales alquímicos",
+                "category": "artisan"
+              }
+            ]
+          },
+          {
+            "id": "Materiales de cervecería",
+            "name": "Materiales de cervecería",
+            "effects": [
+              {
+                "type": "proficiency",
+                "value": "Materiales de cervecería",
+                "category": "artisan"
+              }
+            ]
+          },
+          {
+            "id": "Materiales de caligrafía",
+            "name": "Materiales de caligrafía",
+            "effects": [
+              {
+                "type": "proficiency",
+                "value": "Materiales de caligrafía",
+                "category": "artisan"
+              }
+            ]
+          },
+          {
+            "id": "Utensilios de cocina",
+            "name": "Utensilios de cocina",
+            "effects": [
+              {
+                "type": "proficiency",
+                "value": "Utensilios de cocina",
+                "category": "artisan"
+              }
+            ]
+          }
+        ],
+        "required": true,
+        "source": {
+          "page": 408,
+          "endPage": 408,
+          "title": "Trasfondos Extras"
+        }
+      },
+      {
+        "id": "background-artesano-del-clan.choose_language",
+        "type": "choose_language",
+        "name": "Otro idioma porque ya conoces Enano · Artesano del Clan",
+        "amount": 1,
+        "options": [],
+        "required": true,
+        "source": {
+          "page": 408,
+          "endPage": 408,
+          "title": "Trasfondos Extras"
+        },
+        "replacementForLanguage": "Enano"
+      }
+    ],
     "featureIds": [],
     "sourceFields": {
       "competencia con habilidades": "Historia, Perspicacia.",
@@ -658,8 +2499,10 @@
       "equipo": "herramientas de artesano con la que eres competente, un cincel con la marca del creador para marcar tus obras con el símbolo del clan de artesanos del que aprendiste tu habilidad, una muda de ropas de viaje y una bolsa que contiene 5po y una piedra preciosa valorada en 10 po. Rasgo: Respeto del Pueblo Robusto Si bien los artesanos de un clan son muy respetados entre los extranjeros, nadie los tiene en tan alta estima como los enanos. Siempre hay una habitación y comida gratis en cualquier lugar en el que moren los enanos escudo o enanos de oro, y los individuos de esa clase de asentamientos pueden llegar a competir para determinar quién te pu"
     },
     "automationNotes": [
-      "Equipo inicial, herramientas e idiomas elegibles se conservan en la descripción; revisa las decisiones que no tengan selector estructurado."
-    ]
+      "Las competencias fijas y las elecciones de habilidades, herramientas e idiomas están estructuradas. El equipo inicial se elige por separado; poseer un objeto no concede competencia.",
+      "Concede Enano; si otra fuente ya lo concede, permite escoger otro idioma."
+    ],
+    "toolProficiencies": []
   },
   {
     "id": "background-caballero-de-la-orden",
@@ -723,6 +2566,187 @@
           }
         ],
         "required": true
+      },
+      {
+        "id": "background-caballero-de-la-orden.choose_language",
+        "type": "choose_language",
+        "name": "Idiomas del trasfondo · Caballero de la Orden",
+        "amount": 1,
+        "options": [],
+        "required": true,
+        "source": {
+          "page": 408,
+          "endPage": 409,
+          "title": "Trasfondos Extras"
+        }
+      },
+      {
+        "id": "background-caballero-de-la-orden.choose_tool",
+        "type": "choose_tool",
+        "name": "Competencia con herramientas · Caballero de la Orden",
+        "amount": 1,
+        "options": [
+          {
+            "id": "Caramillo",
+            "name": "Caramillo",
+            "effects": [
+              {
+                "type": "proficiency",
+                "value": "Caramillo",
+                "category": "instrument"
+              }
+            ]
+          },
+          {
+            "id": "Cuerno",
+            "name": "Cuerno",
+            "effects": [
+              {
+                "type": "proficiency",
+                "value": "Cuerno",
+                "category": "instrument"
+              }
+            ]
+          },
+          {
+            "id": "Dulcimer",
+            "name": "Dulcimer",
+            "effects": [
+              {
+                "type": "proficiency",
+                "value": "Dulcimer",
+                "category": "instrument"
+              }
+            ]
+          },
+          {
+            "id": "Flauta",
+            "name": "Flauta",
+            "effects": [
+              {
+                "type": "proficiency",
+                "value": "Flauta",
+                "category": "instrument"
+              }
+            ]
+          },
+          {
+            "id": "Flauta de pan",
+            "name": "Flauta de pan",
+            "effects": [
+              {
+                "type": "proficiency",
+                "value": "Flauta de pan",
+                "category": "instrument"
+              }
+            ]
+          },
+          {
+            "id": "Gaita",
+            "name": "Gaita",
+            "effects": [
+              {
+                "type": "proficiency",
+                "value": "Gaita",
+                "category": "instrument"
+              }
+            ]
+          },
+          {
+            "id": "Laúd",
+            "name": "Laúd",
+            "effects": [
+              {
+                "type": "proficiency",
+                "value": "Laúd",
+                "category": "instrument"
+              }
+            ]
+          },
+          {
+            "id": "Lira",
+            "name": "Lira",
+            "effects": [
+              {
+                "type": "proficiency",
+                "value": "Lira",
+                "category": "instrument"
+              }
+            ]
+          },
+          {
+            "id": "Tambor",
+            "name": "Tambor",
+            "effects": [
+              {
+                "type": "proficiency",
+                "value": "Tambor",
+                "category": "instrument"
+              }
+            ]
+          },
+          {
+            "id": "Viola",
+            "name": "Viola",
+            "effects": [
+              {
+                "type": "proficiency",
+                "value": "Viola",
+                "category": "instrument"
+              }
+            ]
+          },
+          {
+            "id": "Set de ajedrez de dragón",
+            "name": "Set de ajedrez de dragón",
+            "effects": [
+              {
+                "type": "proficiency",
+                "value": "Set de ajedrez de dragón",
+                "category": "game"
+              }
+            ]
+          },
+          {
+            "id": "Set de baraja de cartas",
+            "name": "Set de baraja de cartas",
+            "effects": [
+              {
+                "type": "proficiency",
+                "value": "Set de baraja de cartas",
+                "category": "game"
+              }
+            ]
+          },
+          {
+            "id": "Set de dados",
+            "name": "Set de dados",
+            "effects": [
+              {
+                "type": "proficiency",
+                "value": "Set de dados",
+                "category": "game"
+              }
+            ]
+          },
+          {
+            "id": "Set de tres dragones",
+            "name": "Set de tres dragones",
+            "effects": [
+              {
+                "type": "proficiency",
+                "value": "Set de tres dragones",
+                "category": "game"
+              }
+            ]
+          }
+        ],
+        "required": true,
+        "source": {
+          "page": 408,
+          "endPage": 409,
+          "title": "Trasfondos Extras"
+        }
       }
     ],
     "featureIds": [],
@@ -733,8 +2757,9 @@
       "equipo": "una muda de ropas de viaje, un estandarte o sello que representa tu papel o rango en la orden, y una bolsa con 10 po. Rasgo: Estima Caballeresca Recibes refugio y auxilio de los miembros de tu orden de caballería y de quienes simpatizan con sus objetivos. Si tu orden es religiosa, puedes conseguir ayuda de templos y otras comunidades devotas de tu deidad. Los caballeros de órdenes cívicas pueden ser auxiliados por la sociedad a la que sirven, sea un asentamiento solitario o una nación enorme. Por su parte, los caballeros de órdenes filosóficas pueden recibir ayuda de aquellos a quienes han amparado en la búsqueda de sus ideales y quienes comp"
     },
     "automationNotes": [
-      "Equipo inicial, herramientas e idiomas elegibles se conservan en la descripción; revisa las decisiones que no tengan selector estructurado."
-    ]
+      "Las competencias fijas y las elecciones de habilidades, herramientas e idiomas están estructuradas. El equipo inicial se elige por separado; poseer un objeto no concede competencia."
+    ],
+    "toolProficiencies": []
   },
   {
     "id": "background-cazarrecompensas-urbano",
@@ -796,6 +2821,186 @@
           }
         ],
         "required": true
+      },
+      {
+        "id": "background-cazarrecompensas-urbano.choose_tool",
+        "type": "choose_tool",
+        "name": "Dos competencias de categorías diferentes · Cazarrecompensas Urbano",
+        "amount": 2,
+        "options": [
+          {
+            "id": "Caramillo",
+            "name": "Caramillo",
+            "effects": [
+              {
+                "type": "proficiency",
+                "value": "Caramillo",
+                "category": "instrument"
+              }
+            ]
+          },
+          {
+            "id": "Cuerno",
+            "name": "Cuerno",
+            "effects": [
+              {
+                "type": "proficiency",
+                "value": "Cuerno",
+                "category": "instrument"
+              }
+            ]
+          },
+          {
+            "id": "Dulcimer",
+            "name": "Dulcimer",
+            "effects": [
+              {
+                "type": "proficiency",
+                "value": "Dulcimer",
+                "category": "instrument"
+              }
+            ]
+          },
+          {
+            "id": "Flauta",
+            "name": "Flauta",
+            "effects": [
+              {
+                "type": "proficiency",
+                "value": "Flauta",
+                "category": "instrument"
+              }
+            ]
+          },
+          {
+            "id": "Flauta de pan",
+            "name": "Flauta de pan",
+            "effects": [
+              {
+                "type": "proficiency",
+                "value": "Flauta de pan",
+                "category": "instrument"
+              }
+            ]
+          },
+          {
+            "id": "Gaita",
+            "name": "Gaita",
+            "effects": [
+              {
+                "type": "proficiency",
+                "value": "Gaita",
+                "category": "instrument"
+              }
+            ]
+          },
+          {
+            "id": "Laúd",
+            "name": "Laúd",
+            "effects": [
+              {
+                "type": "proficiency",
+                "value": "Laúd",
+                "category": "instrument"
+              }
+            ]
+          },
+          {
+            "id": "Lira",
+            "name": "Lira",
+            "effects": [
+              {
+                "type": "proficiency",
+                "value": "Lira",
+                "category": "instrument"
+              }
+            ]
+          },
+          {
+            "id": "Tambor",
+            "name": "Tambor",
+            "effects": [
+              {
+                "type": "proficiency",
+                "value": "Tambor",
+                "category": "instrument"
+              }
+            ]
+          },
+          {
+            "id": "Viola",
+            "name": "Viola",
+            "effects": [
+              {
+                "type": "proficiency",
+                "value": "Viola",
+                "category": "instrument"
+              }
+            ]
+          },
+          {
+            "id": "Set de ajedrez de dragón",
+            "name": "Set de ajedrez de dragón",
+            "effects": [
+              {
+                "type": "proficiency",
+                "value": "Set de ajedrez de dragón",
+                "category": "game"
+              }
+            ]
+          },
+          {
+            "id": "Set de baraja de cartas",
+            "name": "Set de baraja de cartas",
+            "effects": [
+              {
+                "type": "proficiency",
+                "value": "Set de baraja de cartas",
+                "category": "game"
+              }
+            ]
+          },
+          {
+            "id": "Set de dados",
+            "name": "Set de dados",
+            "effects": [
+              {
+                "type": "proficiency",
+                "value": "Set de dados",
+                "category": "game"
+              }
+            ]
+          },
+          {
+            "id": "Set de tres dragones",
+            "name": "Set de tres dragones",
+            "effects": [
+              {
+                "type": "proficiency",
+                "value": "Set de tres dragones",
+                "category": "game"
+              }
+            ]
+          },
+          {
+            "id": "Herramientas de ladrón",
+            "name": "Herramientas de ladrón",
+            "effects": [
+              {
+                "type": "proficiency",
+                "value": "Herramientas de ladrón",
+                "category": "thieves-tools"
+              }
+            ]
+          }
+        ],
+        "required": true,
+        "source": {
+          "page": 409,
+          "endPage": 410,
+          "title": "Trasfondos Extras"
+        },
+        "distinctCategories": true
       }
     ],
     "featureIds": [],
@@ -805,8 +3010,9 @@
       "equipo": "una muda apropiada para tus deberes y una bolsa con 20 po. Rasgo: Oídos Atentos Suelos estar en contacto con personas de la clase social en la que se mueven las presas que has elegido. Estos individuos pueden estar asociados al mundo criminal, pertenecer al pueblo llano o ser miembros de la alta sociedad. Esta conexión se manifiesta en forma de un contacto en cualquier ciudad que visites alguien que te informa sobre las personas y los lugares de la zona."
     },
     "automationNotes": [
-      "Equipo inicial, herramientas e idiomas elegibles se conservan en la descripción; revisa las decisiones que no tengan selector estructurado."
-    ]
+      "Las competencias fijas y las elecciones de habilidades, herramientas e idiomas están estructuradas. El equipo inicial se elige por separado; poseer un objeto no concede competencia."
+    ],
+    "toolProficiencies": []
   },
   {
     "id": "background-cortesano",
@@ -822,7 +3028,21 @@
       "persuasion"
     ],
     "languages": [],
-    "choices": [],
+    "choices": [
+      {
+        "id": "background-cortesano.choose_language",
+        "type": "choose_language",
+        "name": "Idiomas del trasfondo · Cortesano",
+        "amount": 2,
+        "options": [],
+        "required": true,
+        "source": {
+          "page": 410,
+          "endPage": 410,
+          "title": "Trasfondos Extras"
+        }
+      }
+    ],
     "featureIds": [],
     "sourceFields": {
       "competencias en habilidades": "Perspicacia, Persuasión.",
@@ -830,8 +3050,9 @@
       "equipo": "una muda de ropa elegante y una bolsa con 5 po. Rasgo: Funcionario de la Corte Saber cómo funciona la burocracia te permite acceder a los registros y el funcionamiento interno de cualquier corte noble o gobierno que encuentres. Conoces a los peces gordos, a quién recurrir para los favores que necesites y qué intrigas ocupan al grupo actualmente."
     },
     "automationNotes": [
-      "Equipo inicial, herramientas e idiomas elegibles se conservan en la descripción; revisa las decisiones que no tengan selector estructurado."
-    ]
+      "Las competencias fijas y las elecciones de habilidades, herramientas e idiomas están estructuradas. El equipo inicial se elige por separado; poseer un objeto no concede competencia."
+    ],
+    "toolProficiencies": []
   },
   {
     "id": "background-erudito-enclaustrado",
@@ -885,6 +3106,19 @@
           }
         ],
         "required": true
+      },
+      {
+        "id": "background-erudito-enclaustrado.choose_language",
+        "type": "choose_language",
+        "name": "Idiomas del trasfondo · Erudito Enclaustrado",
+        "amount": 2,
+        "options": [],
+        "required": true,
+        "source": {
+          "page": 411,
+          "endPage": 411,
+          "title": "Trasfondos Extras"
+        }
       }
     ],
     "featureIds": [],
@@ -894,8 +3128,9 @@
       "equipo": "la túnica de erudito de tu claustro, un juego de escritura (una bolsita con pluma, tinta, pergamino enrollado y un pequeño cortaplumas), un libro prestado sobre el tema de tu estudio actual y una bolsa que contiene 10 po. Rasgo: Acceso a la Biblioteca Aunque otros deben soportar entrevistas exhaustivas y pagar tasas considerables para acceder a incluso los archivos más vulgares de tu biblioteca, tú puedes acceder de forma gratuita y con facilidad a la mayoría de ella, aunque puede que tenga depósitos de conocimiento demasiado valioso, mágico o secreto como para permitir el acceso inmediato a nadie. Tienes cierto conocimiento práctico del pers"
     },
     "automationNotes": [
-      "Equipo inicial, herramientas e idiomas elegibles se conservan en la descripción; revisa las decisiones que no tengan selector estructurado."
-    ]
+      "Las competencias fijas y las elecciones de habilidades, herramientas e idiomas están estructuradas. El equipo inicial se elige por separado; poseer un objeto no concede competencia."
+    ],
+    "toolProficiencies": []
   },
   {
     "id": "background-forastero-errante",
@@ -911,7 +3146,189 @@
       "perception"
     ],
     "languages": [],
-    "choices": [],
+    "choices": [
+      {
+        "id": "background-forastero-errante.choose_language",
+        "type": "choose_language",
+        "name": "Idiomas del trasfondo · Forastero Errante",
+        "amount": 1,
+        "options": [],
+        "required": true,
+        "source": {
+          "page": 411,
+          "endPage": 413,
+          "title": "Trasfondos Extras"
+        }
+      },
+      {
+        "id": "background-forastero-errante.choose_tool",
+        "type": "choose_tool",
+        "name": "Competencia con herramientas · Forastero Errante",
+        "amount": 1,
+        "options": [
+          {
+            "id": "Caramillo",
+            "name": "Caramillo",
+            "effects": [
+              {
+                "type": "proficiency",
+                "value": "Caramillo",
+                "category": "instrument"
+              }
+            ]
+          },
+          {
+            "id": "Cuerno",
+            "name": "Cuerno",
+            "effects": [
+              {
+                "type": "proficiency",
+                "value": "Cuerno",
+                "category": "instrument"
+              }
+            ]
+          },
+          {
+            "id": "Dulcimer",
+            "name": "Dulcimer",
+            "effects": [
+              {
+                "type": "proficiency",
+                "value": "Dulcimer",
+                "category": "instrument"
+              }
+            ]
+          },
+          {
+            "id": "Flauta",
+            "name": "Flauta",
+            "effects": [
+              {
+                "type": "proficiency",
+                "value": "Flauta",
+                "category": "instrument"
+              }
+            ]
+          },
+          {
+            "id": "Flauta de pan",
+            "name": "Flauta de pan",
+            "effects": [
+              {
+                "type": "proficiency",
+                "value": "Flauta de pan",
+                "category": "instrument"
+              }
+            ]
+          },
+          {
+            "id": "Gaita",
+            "name": "Gaita",
+            "effects": [
+              {
+                "type": "proficiency",
+                "value": "Gaita",
+                "category": "instrument"
+              }
+            ]
+          },
+          {
+            "id": "Laúd",
+            "name": "Laúd",
+            "effects": [
+              {
+                "type": "proficiency",
+                "value": "Laúd",
+                "category": "instrument"
+              }
+            ]
+          },
+          {
+            "id": "Lira",
+            "name": "Lira",
+            "effects": [
+              {
+                "type": "proficiency",
+                "value": "Lira",
+                "category": "instrument"
+              }
+            ]
+          },
+          {
+            "id": "Tambor",
+            "name": "Tambor",
+            "effects": [
+              {
+                "type": "proficiency",
+                "value": "Tambor",
+                "category": "instrument"
+              }
+            ]
+          },
+          {
+            "id": "Viola",
+            "name": "Viola",
+            "effects": [
+              {
+                "type": "proficiency",
+                "value": "Viola",
+                "category": "instrument"
+              }
+            ]
+          },
+          {
+            "id": "Set de ajedrez de dragón",
+            "name": "Set de ajedrez de dragón",
+            "effects": [
+              {
+                "type": "proficiency",
+                "value": "Set de ajedrez de dragón",
+                "category": "game"
+              }
+            ]
+          },
+          {
+            "id": "Set de baraja de cartas",
+            "name": "Set de baraja de cartas",
+            "effects": [
+              {
+                "type": "proficiency",
+                "value": "Set de baraja de cartas",
+                "category": "game"
+              }
+            ]
+          },
+          {
+            "id": "Set de dados",
+            "name": "Set de dados",
+            "effects": [
+              {
+                "type": "proficiency",
+                "value": "Set de dados",
+                "category": "game"
+              }
+            ]
+          },
+          {
+            "id": "Set de tres dragones",
+            "name": "Set de tres dragones",
+            "effects": [
+              {
+                "type": "proficiency",
+                "value": "Set de tres dragones",
+                "category": "game"
+              }
+            ]
+          }
+        ],
+        "required": true,
+        "source": {
+          "page": 411,
+          "endPage": 413,
+          "title": "Trasfondos Extras"
+        }
+      }
+    ],
     "featureIds": [],
     "sourceFields": {
       "competencias en habilidades": "Percepción, Perspicacia.",
@@ -920,8 +3337,9 @@
       "equipo": "una muda de ropas de viaje, un instrumento o Juego con el que tengas competencia, mapas trazados toscamente en tu patria que muestran el lugar en el que te encuentras en Faerun, una pequeña joya que vale 10 po y está creada con el estilo de artesanía de tu lugar de origen, y una bolsa con 5 po. ¿Qué Haces Aquí? Un forastero errante puede haber iniciado un viaje por una serie de razones. Dejar atrás su patria puede haber sido un acto voluntario o involuntario. Para determinar por qué estás tan lejos de tu hogar, haz una tirada usando la tabla que se presenta a continuación o escoge una de las opciones que se te ofrecen. El apartado siguiente p"
     },
     "automationNotes": [
-      "Equipo inicial, herramientas e idiomas elegibles se conservan en la descripción; revisa las decisiones que no tengan selector estructurado."
-    ]
+      "Las competencias fijas y las elecciones de habilidades, herramientas e idiomas están estructuradas. El equipo inicial se elige por separado; poseer un objeto no concede competencia."
+    ],
+    "toolProficiencies": []
   },
   {
     "id": "background-guardia-de-ciudad",
@@ -937,7 +3355,21 @@
       "insight"
     ],
     "languages": [],
-    "choices": [],
+    "choices": [
+      {
+        "id": "background-guardia-de-ciudad.choose_language",
+        "type": "choose_language",
+        "name": "Idiomas del trasfondo · Guardia de Ciudad",
+        "amount": 2,
+        "options": [],
+        "required": true,
+        "source": {
+          "page": 414,
+          "endPage": 414,
+          "title": "Trasfondos Extras"
+        }
+      }
+    ],
     "featureIds": [],
     "sourceFields": {
       "competencias en habilidades": "Atletismo, Perspicacia.",
@@ -945,8 +3377,9 @@
       "equipo": "Uniforme como el que lleva tu unidad y que indique tu rango, un cuerno para pedir ayuda, un juego de esposas y una bolsa con 10 po. Rasgo: Ojo de Guardian Debido a tu experiencia haciendo cumplirlas leyes y lidiando con malhechores, tienes cierta intuición para entender la legislación y los criminales de una zona. Puedes encontrar sin mayores problemas el puesto fronterizo de la guardia o una organización parecida en cualquier lugar, así como los escondrijos de la actividad criminal de una comunidad con la misma facilidad, aunque es más probable que seas mejor acogido entre los guardias que entre los ladrones. Variante: Investigador Los inves"
     },
     "automationNotes": [
-      "Equipo inicial, herramientas e idiomas elegibles se conservan en la descripción; revisa las decisiones que no tengan selector estructurado."
-    ]
+      "Las competencias fijas y las elecciones de habilidades, herramientas e idiomas están estructuradas. El equipo inicial se elige por separado; poseer un objeto no concede competencia."
+    ],
+    "toolProficiencies": []
   },
   {
     "id": "background-investigador",
@@ -962,7 +3395,21 @@
       "insight"
     ],
     "languages": [],
-    "choices": [],
+    "choices": [
+      {
+        "id": "background-investigador.choose_language",
+        "type": "choose_language",
+        "name": "Idiomas del trasfondo · Investigador",
+        "amount": 2,
+        "options": [],
+        "required": true,
+        "source": {
+          "page": 414,
+          "endPage": 414,
+          "title": "Trasfondos Extras"
+        }
+      }
+    ],
     "featureIds": [],
     "sourceFields": {
       "competencias en habilidades": "Atletismo, Perspicacia.",
@@ -970,11 +3417,11 @@
       "equipo": "Uniforme como el que lleva tu unidad y que indique tu rango, un cuerno para pedir ayuda, un juego de esposas y una bolsa con 10 po. Rasgo: Ojo de Guardian Debido a tu experiencia haciendo cumplirlas leyes y lidiando con malhechores, tienes cierta intuición para entender la legislación y los criminales de una zona. Puedes encontrar sin mayores problemas el puesto fronterizo de la guardia o una organización parecida en cualquier lugar, así como los escondrijos de la actividad criminal de una comunidad con la misma facilidad, aunque es más probable que seas mejor acogido entre los guardias que entre los ladrones. Variante: Investigador Los inves"
     },
     "automationNotes": [
-      "Equipo inicial, herramientas e idiomas elegibles se conservan en la descripción; revisa las decisiones que no tengan selector estructurado.",
-      "Variante del trasfondo Guardia de Ciudad. Revisa los cambios de equipo y rasgo en su descripción."
+      "Las competencias fijas y las elecciones de habilidades, herramientas e idiomas están estructuradas. El equipo inicial se elige por separado; poseer un objeto no concede competencia."
     ],
     "parentId": "background-guardia-de-ciudad",
-    "version": "Variante"
+    "version": "Variante",
+    "toolProficiencies": []
   },
   {
     "id": "background-heredero",
@@ -1028,6 +3475,187 @@
           }
         ],
         "required": true
+      },
+      {
+        "id": "background-heredero.choose_language",
+        "type": "choose_language",
+        "name": "Idiomas del trasfondo · Heredero",
+        "amount": 1,
+        "options": [],
+        "required": true,
+        "source": {
+          "page": 414,
+          "endPage": 415,
+          "title": "Trasfondos Extras"
+        }
+      },
+      {
+        "id": "background-heredero.choose_tool",
+        "type": "choose_tool",
+        "name": "Competencia con herramientas · Heredero",
+        "amount": 1,
+        "options": [
+          {
+            "id": "Caramillo",
+            "name": "Caramillo",
+            "effects": [
+              {
+                "type": "proficiency",
+                "value": "Caramillo",
+                "category": "instrument"
+              }
+            ]
+          },
+          {
+            "id": "Cuerno",
+            "name": "Cuerno",
+            "effects": [
+              {
+                "type": "proficiency",
+                "value": "Cuerno",
+                "category": "instrument"
+              }
+            ]
+          },
+          {
+            "id": "Dulcimer",
+            "name": "Dulcimer",
+            "effects": [
+              {
+                "type": "proficiency",
+                "value": "Dulcimer",
+                "category": "instrument"
+              }
+            ]
+          },
+          {
+            "id": "Flauta",
+            "name": "Flauta",
+            "effects": [
+              {
+                "type": "proficiency",
+                "value": "Flauta",
+                "category": "instrument"
+              }
+            ]
+          },
+          {
+            "id": "Flauta de pan",
+            "name": "Flauta de pan",
+            "effects": [
+              {
+                "type": "proficiency",
+                "value": "Flauta de pan",
+                "category": "instrument"
+              }
+            ]
+          },
+          {
+            "id": "Gaita",
+            "name": "Gaita",
+            "effects": [
+              {
+                "type": "proficiency",
+                "value": "Gaita",
+                "category": "instrument"
+              }
+            ]
+          },
+          {
+            "id": "Laúd",
+            "name": "Laúd",
+            "effects": [
+              {
+                "type": "proficiency",
+                "value": "Laúd",
+                "category": "instrument"
+              }
+            ]
+          },
+          {
+            "id": "Lira",
+            "name": "Lira",
+            "effects": [
+              {
+                "type": "proficiency",
+                "value": "Lira",
+                "category": "instrument"
+              }
+            ]
+          },
+          {
+            "id": "Tambor",
+            "name": "Tambor",
+            "effects": [
+              {
+                "type": "proficiency",
+                "value": "Tambor",
+                "category": "instrument"
+              }
+            ]
+          },
+          {
+            "id": "Viola",
+            "name": "Viola",
+            "effects": [
+              {
+                "type": "proficiency",
+                "value": "Viola",
+                "category": "instrument"
+              }
+            ]
+          },
+          {
+            "id": "Set de ajedrez de dragón",
+            "name": "Set de ajedrez de dragón",
+            "effects": [
+              {
+                "type": "proficiency",
+                "value": "Set de ajedrez de dragón",
+                "category": "game"
+              }
+            ]
+          },
+          {
+            "id": "Set de baraja de cartas",
+            "name": "Set de baraja de cartas",
+            "effects": [
+              {
+                "type": "proficiency",
+                "value": "Set de baraja de cartas",
+                "category": "game"
+              }
+            ]
+          },
+          {
+            "id": "Set de dados",
+            "name": "Set de dados",
+            "effects": [
+              {
+                "type": "proficiency",
+                "value": "Set de dados",
+                "category": "game"
+              }
+            ]
+          },
+          {
+            "id": "Set de tres dragones",
+            "name": "Set de tres dragones",
+            "effects": [
+              {
+                "type": "proficiency",
+                "value": "Set de tres dragones",
+                "category": "game"
+              }
+            ]
+          }
+        ],
+        "required": true,
+        "source": {
+          "page": 414,
+          "endPage": 415,
+          "title": "Trasfondos Extras"
+        }
       }
     ],
     "featureIds": [],
@@ -1038,8 +3666,9 @@
       "equipo": "tu herencia, una muda de ropas de viaje, cualquier objeto con el que tengas competencia y una bolsa con 15 po. Rasgo: Herencia Escoge o determina aleatoriamente tu herencia a partir de las posibilidades de la tabla que hay a continuación. Para definir los detalles colabora con tu Dungeon Master, ¿Por qué te es tan importante y cuál es la historia que hay tras ella? Tal vez prefieras que el DM invente esos datos como parte de juego, lo que te permite ir averiguando aspectos de tu herencia a medida que lo hace tu personaje. El Dungeon Master puede usar tu herencia como gancho para una historia. Puede hacerte cumplir misiones para destapar su hi"
     },
     "automationNotes": [
-      "Equipo inicial, herramientas e idiomas elegibles se conservan en la descripción; revisa las decisiones que no tengan selector estructurado."
-    ]
+      "Las competencias fijas y las elecciones de habilidades, herramientas e idiomas están estructuradas. El equipo inicial se elige por separado; poseer un objeto no concede competencia."
+    ],
+    "toolProficiencies": []
   },
   {
     "id": "background-mercenario-veterano",
@@ -1055,7 +3684,66 @@
       "persuasion"
     ],
     "languages": [],
-    "choices": [],
+    "choices": [
+      {
+        "id": "background-mercenario-veterano.choose_tool",
+        "type": "choose_tool",
+        "name": "Competencia con herramientas · Mercenario Veterano",
+        "amount": 1,
+        "options": [
+          {
+            "id": "Set de ajedrez de dragón",
+            "name": "Set de ajedrez de dragón",
+            "effects": [
+              {
+                "type": "proficiency",
+                "value": "Set de ajedrez de dragón",
+                "category": "game"
+              }
+            ]
+          },
+          {
+            "id": "Set de baraja de cartas",
+            "name": "Set de baraja de cartas",
+            "effects": [
+              {
+                "type": "proficiency",
+                "value": "Set de baraja de cartas",
+                "category": "game"
+              }
+            ]
+          },
+          {
+            "id": "Set de dados",
+            "name": "Set de dados",
+            "effects": [
+              {
+                "type": "proficiency",
+                "value": "Set de dados",
+                "category": "game"
+              }
+            ]
+          },
+          {
+            "id": "Set de tres dragones",
+            "name": "Set de tres dragones",
+            "effects": [
+              {
+                "type": "proficiency",
+                "value": "Set de tres dragones",
+                "category": "game"
+              }
+            ]
+          }
+        ],
+        "required": true,
+        "source": {
+          "page": 415,
+          "endPage": 416,
+          "title": "Trasfondos Extras"
+        }
+      }
+    ],
     "featureIds": [],
     "sourceFields": {
       "competencias en habilidades": "Atletismo, Persuasión.",
@@ -1063,7 +3751,10 @@
       "equipo": "el uniforme de tu compañía (ropas de viaje de calidad), la insignia con tu rango, las piezas de un juego que escojas y una bolsa que contiene lo que queda de tu última paga (10 po). Rasgo: Vida Mercenaria Conoces la vida mercenaria como solo puede hacerlo quien la ha vivido. Eres capaz de identificar a las compañías de mercenarios por sus emblemas y sabes un poco sobre cualquiera de ella, incluyendo los nombres y la reputación de sus comandantes y líderes, así como quién los ha contratado últimamente. Puedes hallar las tabernas y los salones donde moran los mercenarios en cualquier lugar, siempre que hables el idioma de esa zona. Encuentras e"
     },
     "automationNotes": [
-      "Equipo inicial, herramientas e idiomas elegibles se conservan en la descripción; revisa las decisiones que no tengan selector estructurado."
+      "Las competencias fijas y las elecciones de habilidades, herramientas e idiomas están estructuradas. El equipo inicial se elige por separado; poseer un objeto no concede competencia."
+    ],
+    "toolProficiencies": [
+      "Vehículos terrestres"
     ]
   },
   {
@@ -1080,7 +3771,332 @@
       "survival"
     ],
     "languages": [],
-    "choices": [],
+    "choices": [
+      {
+        "id": "background-miembro-de-una-tribu-uthgardt.choose_language",
+        "type": "choose_language",
+        "name": "Idiomas del trasfondo · Miembro de Una Tribu Uthgardt",
+        "amount": 1,
+        "options": [],
+        "required": true,
+        "source": {
+          "page": 416,
+          "endPage": 417,
+          "title": "Trasfondos Extras"
+        }
+      },
+      {
+        "id": "background-miembro-de-una-tribu-uthgardt.choose_tool",
+        "type": "choose_tool",
+        "name": "Competencia con herramientas · Miembro de Una Tribu Uthgardt",
+        "amount": 1,
+        "options": [
+          {
+            "id": "Herramientas de carpintero",
+            "name": "Herramientas de carpintero",
+            "effects": [
+              {
+                "type": "proficiency",
+                "value": "Herramientas de carpintero",
+                "category": "artisan"
+              }
+            ]
+          },
+          {
+            "id": "Herramientas de cartógrafo",
+            "name": "Herramientas de cartógrafo",
+            "effects": [
+              {
+                "type": "proficiency",
+                "value": "Herramientas de cartógrafo",
+                "category": "artisan"
+              }
+            ]
+          },
+          {
+            "id": "Herramientas de zapatero",
+            "name": "Herramientas de zapatero",
+            "effects": [
+              {
+                "type": "proficiency",
+                "value": "Herramientas de zapatero",
+                "category": "artisan"
+              }
+            ]
+          },
+          {
+            "id": "Herramientas de alfarero",
+            "name": "Herramientas de alfarero",
+            "effects": [
+              {
+                "type": "proficiency",
+                "value": "Herramientas de alfarero",
+                "category": "artisan"
+              }
+            ]
+          },
+          {
+            "id": "Herramientas de herrero",
+            "name": "Herramientas de herrero",
+            "effects": [
+              {
+                "type": "proficiency",
+                "value": "Herramientas de herrero",
+                "category": "artisan"
+              }
+            ]
+          },
+          {
+            "id": "Herramientas de hojalatero",
+            "name": "Herramientas de hojalatero",
+            "effects": [
+              {
+                "type": "proficiency",
+                "value": "Herramientas de hojalatero",
+                "category": "artisan"
+              }
+            ]
+          },
+          {
+            "id": "Herramientas de tejedor",
+            "name": "Herramientas de tejedor",
+            "effects": [
+              {
+                "type": "proficiency",
+                "value": "Herramientas de tejedor",
+                "category": "artisan"
+              }
+            ]
+          },
+          {
+            "id": "Herramientas de tallista",
+            "name": "Herramientas de tallista",
+            "effects": [
+              {
+                "type": "proficiency",
+                "value": "Herramientas de tallista",
+                "category": "artisan"
+              }
+            ]
+          },
+          {
+            "id": "Herramientas de soplador de vidrio",
+            "name": "Herramientas de soplador de vidrio",
+            "effects": [
+              {
+                "type": "proficiency",
+                "value": "Herramientas de soplador de vidrio",
+                "category": "artisan"
+              }
+            ]
+          },
+          {
+            "id": "Herramientas de joyero",
+            "name": "Herramientas de joyero",
+            "effects": [
+              {
+                "type": "proficiency",
+                "value": "Herramientas de joyero",
+                "category": "artisan"
+              }
+            ]
+          },
+          {
+            "id": "Herramientas de peletero",
+            "name": "Herramientas de peletero",
+            "effects": [
+              {
+                "type": "proficiency",
+                "value": "Herramientas de peletero",
+                "category": "artisan"
+              }
+            ]
+          },
+          {
+            "id": "Herramientas de albañil",
+            "name": "Herramientas de albañil",
+            "effects": [
+              {
+                "type": "proficiency",
+                "value": "Herramientas de albañil",
+                "category": "artisan"
+              }
+            ]
+          },
+          {
+            "id": "Materiales de pintor",
+            "name": "Materiales de pintor",
+            "effects": [
+              {
+                "type": "proficiency",
+                "value": "Materiales de pintor",
+                "category": "artisan"
+              }
+            ]
+          },
+          {
+            "id": "Materiales alquímicos",
+            "name": "Materiales alquímicos",
+            "effects": [
+              {
+                "type": "proficiency",
+                "value": "Materiales alquímicos",
+                "category": "artisan"
+              }
+            ]
+          },
+          {
+            "id": "Materiales de cervecería",
+            "name": "Materiales de cervecería",
+            "effects": [
+              {
+                "type": "proficiency",
+                "value": "Materiales de cervecería",
+                "category": "artisan"
+              }
+            ]
+          },
+          {
+            "id": "Materiales de caligrafía",
+            "name": "Materiales de caligrafía",
+            "effects": [
+              {
+                "type": "proficiency",
+                "value": "Materiales de caligrafía",
+                "category": "artisan"
+              }
+            ]
+          },
+          {
+            "id": "Utensilios de cocina",
+            "name": "Utensilios de cocina",
+            "effects": [
+              {
+                "type": "proficiency",
+                "value": "Utensilios de cocina",
+                "category": "artisan"
+              }
+            ]
+          },
+          {
+            "id": "Caramillo",
+            "name": "Caramillo",
+            "effects": [
+              {
+                "type": "proficiency",
+                "value": "Caramillo",
+                "category": "instrument"
+              }
+            ]
+          },
+          {
+            "id": "Cuerno",
+            "name": "Cuerno",
+            "effects": [
+              {
+                "type": "proficiency",
+                "value": "Cuerno",
+                "category": "instrument"
+              }
+            ]
+          },
+          {
+            "id": "Dulcimer",
+            "name": "Dulcimer",
+            "effects": [
+              {
+                "type": "proficiency",
+                "value": "Dulcimer",
+                "category": "instrument"
+              }
+            ]
+          },
+          {
+            "id": "Flauta",
+            "name": "Flauta",
+            "effects": [
+              {
+                "type": "proficiency",
+                "value": "Flauta",
+                "category": "instrument"
+              }
+            ]
+          },
+          {
+            "id": "Flauta de pan",
+            "name": "Flauta de pan",
+            "effects": [
+              {
+                "type": "proficiency",
+                "value": "Flauta de pan",
+                "category": "instrument"
+              }
+            ]
+          },
+          {
+            "id": "Gaita",
+            "name": "Gaita",
+            "effects": [
+              {
+                "type": "proficiency",
+                "value": "Gaita",
+                "category": "instrument"
+              }
+            ]
+          },
+          {
+            "id": "Laúd",
+            "name": "Laúd",
+            "effects": [
+              {
+                "type": "proficiency",
+                "value": "Laúd",
+                "category": "instrument"
+              }
+            ]
+          },
+          {
+            "id": "Lira",
+            "name": "Lira",
+            "effects": [
+              {
+                "type": "proficiency",
+                "value": "Lira",
+                "category": "instrument"
+              }
+            ]
+          },
+          {
+            "id": "Tambor",
+            "name": "Tambor",
+            "effects": [
+              {
+                "type": "proficiency",
+                "value": "Tambor",
+                "category": "instrument"
+              }
+            ]
+          },
+          {
+            "id": "Viola",
+            "name": "Viola",
+            "effects": [
+              {
+                "type": "proficiency",
+                "value": "Viola",
+                "category": "instrument"
+              }
+            ]
+          }
+        ],
+        "required": true,
+        "source": {
+          "page": 416,
+          "endPage": 417,
+          "title": "Trasfondos Extras"
+        }
+      }
+    ],
     "featureIds": [],
     "sourceFields": {
       "competencias en habilidades": "Atletismo, Supervivencia.",
@@ -1089,8 +4105,9 @@
       "equipo": "una trampa para cazar, un símbolo de tótem o un conjunto de tatuajes que marquen tu lealtad a Uthgar y al tótem de tu tribu, una muda de ropas de viaje y una bolsa con 10 po. Rasgo: Linaje Uthgardt No solo tienes un conocimiento excelente del territorio de tu tribu, sino que también conoces el terreno y los recursos naturales del resto del Norte. Estás lo suficientemente familiarizado con cualquier zona de naturaleza salvaje como para encontrar el doble de comida y agua de la que conseguirías forrajeando. Además, puedes recurrir a la hospitalidad de tu pueblo y de los aliados de tu tribu, lo que a menudo incluye a miembros de círculos druídic"
     },
     "automationNotes": [
-      "Equipo inicial, herramientas e idiomas elegibles se conservan en la descripción; revisa las decisiones que no tengan selector estructurado."
-    ]
+      "Las competencias fijas y las elecciones de habilidades, herramientas e idiomas están estructuradas. El equipo inicial se elige por separado; poseer un objeto no concede competencia."
+    ],
+    "toolProficiencies": []
   },
   {
     "id": "background-noble-de-waterdeep",
@@ -1106,7 +4123,189 @@
       "persuasion"
     ],
     "languages": [],
-    "choices": [],
+    "choices": [
+      {
+        "id": "background-noble-de-waterdeep.choose_language",
+        "type": "choose_language",
+        "name": "Idiomas del trasfondo · Noble de Waterdeep",
+        "amount": 1,
+        "options": [],
+        "required": true,
+        "source": {
+          "page": 417,
+          "endPage": 417,
+          "title": "Trasfondos Extras"
+        }
+      },
+      {
+        "id": "background-noble-de-waterdeep.choose_tool",
+        "type": "choose_tool",
+        "name": "Competencia con herramientas · Noble de Waterdeep",
+        "amount": 1,
+        "options": [
+          {
+            "id": "Caramillo",
+            "name": "Caramillo",
+            "effects": [
+              {
+                "type": "proficiency",
+                "value": "Caramillo",
+                "category": "instrument"
+              }
+            ]
+          },
+          {
+            "id": "Cuerno",
+            "name": "Cuerno",
+            "effects": [
+              {
+                "type": "proficiency",
+                "value": "Cuerno",
+                "category": "instrument"
+              }
+            ]
+          },
+          {
+            "id": "Dulcimer",
+            "name": "Dulcimer",
+            "effects": [
+              {
+                "type": "proficiency",
+                "value": "Dulcimer",
+                "category": "instrument"
+              }
+            ]
+          },
+          {
+            "id": "Flauta",
+            "name": "Flauta",
+            "effects": [
+              {
+                "type": "proficiency",
+                "value": "Flauta",
+                "category": "instrument"
+              }
+            ]
+          },
+          {
+            "id": "Flauta de pan",
+            "name": "Flauta de pan",
+            "effects": [
+              {
+                "type": "proficiency",
+                "value": "Flauta de pan",
+                "category": "instrument"
+              }
+            ]
+          },
+          {
+            "id": "Gaita",
+            "name": "Gaita",
+            "effects": [
+              {
+                "type": "proficiency",
+                "value": "Gaita",
+                "category": "instrument"
+              }
+            ]
+          },
+          {
+            "id": "Laúd",
+            "name": "Laúd",
+            "effects": [
+              {
+                "type": "proficiency",
+                "value": "Laúd",
+                "category": "instrument"
+              }
+            ]
+          },
+          {
+            "id": "Lira",
+            "name": "Lira",
+            "effects": [
+              {
+                "type": "proficiency",
+                "value": "Lira",
+                "category": "instrument"
+              }
+            ]
+          },
+          {
+            "id": "Tambor",
+            "name": "Tambor",
+            "effects": [
+              {
+                "type": "proficiency",
+                "value": "Tambor",
+                "category": "instrument"
+              }
+            ]
+          },
+          {
+            "id": "Viola",
+            "name": "Viola",
+            "effects": [
+              {
+                "type": "proficiency",
+                "value": "Viola",
+                "category": "instrument"
+              }
+            ]
+          },
+          {
+            "id": "Set de ajedrez de dragón",
+            "name": "Set de ajedrez de dragón",
+            "effects": [
+              {
+                "type": "proficiency",
+                "value": "Set de ajedrez de dragón",
+                "category": "game"
+              }
+            ]
+          },
+          {
+            "id": "Set de baraja de cartas",
+            "name": "Set de baraja de cartas",
+            "effects": [
+              {
+                "type": "proficiency",
+                "value": "Set de baraja de cartas",
+                "category": "game"
+              }
+            ]
+          },
+          {
+            "id": "Set de dados",
+            "name": "Set de dados",
+            "effects": [
+              {
+                "type": "proficiency",
+                "value": "Set de dados",
+                "category": "game"
+              }
+            ]
+          },
+          {
+            "id": "Set de tres dragones",
+            "name": "Set de tres dragones",
+            "effects": [
+              {
+                "type": "proficiency",
+                "value": "Set de tres dragones",
+                "category": "game"
+              }
+            ]
+          }
+        ],
+        "required": true,
+        "source": {
+          "page": 417,
+          "endPage": 417,
+          "title": "Trasfondos Extras"
+        }
+      }
+    ],
     "featureIds": [],
     "sourceFields": {
       "competencias en habilidades": "Historia, Persuasión.",
@@ -1115,7 +4314,8 @@
       "equipo": "una muda de ropas elegantes, un anillo de sellar o un broche, un pergamino que marca tu genealogía, una bota de buen zzar o de vino y un monedero con 20 po. Rasgo: Atendido Como Corresponde Mientras te encuentres en Waterdeep o en cualquier parte del Norte tu linaje se ocupa de tus necesidades diarias. Tu nombre y sello bastan para cubrir la mayoría de tus gastos. Las posadas, tabernas y salas de fiestas que frecuentas suelen estar encantadas de anotar tu deuda y enviarla factura a tu casa familiar en Waterdeep para que se les abone lo que debes. Esta ventaja te permite asumir un nivel de vida cómodo sin pagar 2 po al día por ello o bien redu"
     },
     "automationNotes": [
-      "Equipo inicial, herramientas e idiomas elegibles se conservan en la descripción; revisa las decisiones que no tengan selector estructurado."
-    ]
+      "Las competencias fijas y las elecciones de habilidades, herramientas e idiomas están estructuradas. El equipo inicial se elige por separado; poseer un objeto no concede competencia."
+    ],
+    "toolProficiencies": []
   }
 ]

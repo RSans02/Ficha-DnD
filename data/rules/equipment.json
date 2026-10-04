@@ -515,7 +515,6 @@
     "properties": [
       "A dos manos",
       "Munición (distancia 80/320)",
-      "",
       "Carga"
     ],
     "weaponCategory": "Armas simples a distancia",
@@ -968,7 +967,6 @@
     "properties": [
       "A dos manos",
       "Munición (distancia 150/600)",
-      "",
       "Pesada"
     ],
     "weaponCategory": "Armas marciales a distancia",
@@ -1015,7 +1013,6 @@
     "properties": [
       "A dos manos",
       "Munición (distancia 100/400)",
-      "",
       "Pesada",
       "Carga"
     ],
@@ -2547,12 +2544,13 @@
       "title": "Equipo"
     },
     "description": "Tienda de campaña para dos personas 2 po Lb",
-    "weight": null,
+    "weight": 20,
     "cost": "2 po",
     "equipmentType": "Equipo de aventura",
     "weightText": "Lb",
     "automationNotes": [
-      "El PDF no especifica la cifra del peso; solo imprime «Lb»."
+      "El PDF no especifica la cifra del peso; solo imprime «Lb».",
+      "Reglas 2014: peso de 20 lb, verificado en SRD 5.1 (inglés), p. 69. El valor original ausente permanece en weightText y en la descripción."
     ]
   },
   {
@@ -2937,7 +2935,7 @@
     "description": "Herramientas de ladrón 25 po 1 lb.",
     "weight": 1.0,
     "cost": "25 po",
-    "equipmentType": "Herramientas de artesano",
+    "equipmentType": "Herramientas especializadas",
     "weightText": "1 lb.",
     "detailReferencePages": [
       428,
@@ -2956,7 +2954,7 @@
     "description": "Herramientas de navegación 25 po 2 lb.",
     "weight": 2.0,
     "cost": "25 po",
-    "equipmentType": "Herramientas de artesano",
+    "equipmentType": "Herramientas especializadas",
     "weightText": "2 lb.",
     "detailReferencePages": [
       428,

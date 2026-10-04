@@ -27,29 +27,32 @@ Detén el servidor de desarrollo antes de iniciar producción en el mismo puerto
 - **Mis personajes:** crear, abrir, duplicar, borrar y transferir fichas mediante JSON.
 - **Creación:** elegir raza y versión, clase, características, competencias, opciones, conjuros, identidad y equipo; revisar elecciones pendientes antes de guardar.
 - **Ficha:** consultar desgloses, registrar daño y curación, PG temporales, dados de golpe, recursos, condiciones, ataques, conjuros conocidos/preparados y espacios gastados. Incluye inventario, monedas, notas, biografía y vista de impresión.
+- **Navegación de la ficha:** ocho pestañas dentro de una ficha de ancho limitado, con PG, CA, inspiración y descansos siempre a mano. Las flechas del teclado cambian de pestaña; en móvil la barra se desplaza horizontalmente. Los colores y el emblema se adaptan a la primera clase del personaje.
 - **Progresión:** trabajar sobre una copia, elegir clase y decisiones de nivel, revisar los cambios y confirmar. Se conserva una instantánea para deshacer la última subida; restaurarla también revierte los cambios posteriores a esa instantánea.
 - **Compendio:** buscar razas, clases, subclases, conjuros, dotes, trasfondos y equipo con texto y páginas de procedencia.
 
-Los valores calculados muestran su desglose. Las sustituciones manuales se identifican y pueden restaurarse. Las acciones de descanso recuperan únicamente los recursos cuya regla estructurada indica esa recuperación; los ajustes restantes corresponden al jugador.
+Los valores calculados muestran su desglose. Las sustituciones manuales se identifican y pueden restaurarse. Los descansos siguen 2014: el corto permite gastar dados de golpe y el largo recupera PG y hasta la mitad de los dados (mínimo uno), además de recursos y espacios compatibles. Los efectos contextuales siguen bajo control del jugador.
 
 ## Reglas y fuente
 
 La fuente del catálogo es **Manual para Casi Todo de D&D 5e (V30.03.25).pdf**, de 633 páginas. La base es **D&D 5e 2014 y el contenido posterior recopilado en ese PDF**. Las variantes y versiones se conservan separadas; no se aplican las reglas revisadas de 2024.
 
-- Paladín y Explorador empiezan a lanzar conjuros a nivel 2. Se conservan las progresiones de espacios del PDF; ese inicio no se considera una discrepancia.
+- Paladín y Explorador empiezan a lanzar conjuros a nivel 2. Se conservan las progresiones que coinciden con 2014; ese inicio no es una discrepancia. Los espacios de nivel 4 de lanzadores completos a niveles 9–17 se corrigen a tres conforme al SRD 5.1.
 - En multiclase, el Artificiero aporta la mitad de sus niveles **redondeando hacia arriba**, conforme a la excepción de su apartado en la página 105. La fórmula general de la página 452 no lo enumera. Magia de Pacto se mantiene separada.
 - Las 65 ampliaciones de listas de Tasha requieren activación explícita por clase. No forman parte de las listas base por defecto.
-- Las reglas ausentes o ambiguas no se completan silenciosamente con otras publicaciones. Los registros incluyen notas y referencias para revisar la decisión.
+- El [SRD 5.1 oficial](https://media.dndbeyond.com/compendium-images/srd/5.1/SRD_CC_v5.1_ES.pdf) y las [reglas básicas de 2014](https://www.dndbeyond.com/sources/dnd/basic-rules-2014) completan reglas generales y corrigen erratas del PDF. La extracción original se conserva y las correcciones están documentadas en [la auditoría de 2014](docs/rules-2014-audit.md).
+- La creación permite matriz estándar, compra opcional de 27 puntos, tiradas de 4d6 descartando el menor o entrada manual. Las bonificaciones raciales se aplican después.
+- Las 13 clases y los 31 trasfondos tienen equipo inicial estructurado. Elegir oro sustituye los objetos y monedas iniciales de ambos. El equipo adicional se añade por buscador con cantidad; no descuenta dinero automáticamente. Los objetos homebrew permiten cantidad, peso, notas y CA configurable.
 
 El catálogo contiene 126 registros raciales —82 raíces y 44 subrazas o variantes—, 13 clases, 127 subclases, 1.436 entradas de rasgos y referencias, 501 conjuros, 83 dotes, 31 trasfondos con variantes y 221 entradas de equipo. Estos recuentos describen la cobertura del catálogo, no el porcentaje de mecánicas automatizadas.
 
 ## Límites actuales
 
-El texto importado y el motor tienen coberturas diferentes. Parte de las maniobras, transformaciones, elecciones de subclase, dotes complejas, hechizos raciales, formas de movimiento y efectos condicionales requieren consulta del rasgo y ajuste manual. No todas las opciones de herramientas, idiomas y equipo de los trasfondos se han convertido en decisiones ejecutables.
+El texto importado y el motor tienen coberturas diferentes. Parte de las maniobras, transformaciones, elecciones de subclase, dotes complejas, hechizos raciales, formas de movimiento y efectos condicionales requieren consulta del rasgo y ajuste manual. Las decisiones narrativas de los trasfondos se conservan en su descripción.
 
-El PDF no presenta reglas generales completas de compra de puntos, matriz estándar, experiencia o recuperación de descansos. Las características y las tiradas de PG se introducen manualmente; no hay progresión automática por experiencia. Los contadores de condiciones y salvaciones contra muerte no sustituyen sus reglas de resolución.
+La subida de nivel se confirma por decisión del jugador o del DM; no se fuerza por experiencia. El agotamiento registra seis niveles de 2014 y aplica sus límites de velocidad y PG. Las desventajas, las condiciones contextuales y las salvaciones contra muerte requieren aplicar las reglas al resolver las tiradas.
 
-Dos conjuros conservan un conflicto interno de nivel y quedan fuera de la selección automática hasta resolverlo: **Tormenta de Bolas de Nieve de Snilloc** (p. 588) y **Libertad de los Vientos** (p. 632). Algunas tablas insertadas como imagen dentro de los rasgos pueden no estar disponibles como texto; las tablas principales de progresión sí se transcribieron y contrastaron. El peso de la tienda de campaña para dos personas está ausente en el PDF y requiere entrada manual si se desea incluirlo en el total.
+Se resolvieron con fuentes oficiales los conflictos de nivel de **Tormenta de Bolas de Nieve de Snilloc** (nivel 2) y **Libertad de los Vientos** (nivel 5), conservando los valores originales para la auditoría. El peso de la tienda de campaña para dos personas se completó con las 20 lb del SRD 5.1. Algunas tablas insertadas como imagen dentro de los rasgos pueden no estar disponibles como texto; las tablas principales de progresión sí se transcribieron y contrastaron.
 
 La creación en curso se conserva al cambiar de paso, pero no es un borrador persistente tras recargar la página. La sincronización entre dispositivos, autenticación y base de datos remota no están implementadas.
 
@@ -104,6 +107,7 @@ python scripts/audit_source.py
 python scripts/extract_spell_links.py
 python scripts/import_reference_catalogs.py
 python scripts/import_equipment.py
+python scripts/import_background_equipment.py
 python scripts/extract_races.py
 python scripts/extract_classes.py
 python scripts/validate_catalogs.py
@@ -124,3 +128,9 @@ Para desplegarlo manualmente en Vercel:
 5. Importa en ese dominio los personajes que quieras trasladar desde la instalación local.
 
 Estas instrucciones no configuran una cuenta ni implican que exista ya un despliegue público.
+
+## Atribución SRD 5.1
+
+This work includes material taken from the System Reference Document 5.1 ("SRD 5.1") by Wizards of the Coast LLC and available at https://dnd.wizards.com/resources/systems-reference-document. The SRD 5.1 is licensed under the Creative Commons Attribution 4.0 International License available at https://creativecommons.org/licenses/by/4.0/legalcode.
+
+Las correcciones de reglas, automatizaciones e interfaz son adaptaciones de esta aplicación. Esta atribución cubre el material SRD; el compendio aportado por el usuario conserva sus propias referencias.

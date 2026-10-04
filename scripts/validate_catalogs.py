@@ -55,7 +55,9 @@ for row in lists:
   assert row["classId"]in spell["availableToClasses"],entry
   if entry["optionalTasha"]:assert row["classId"]in spell["optionalForClasses"],entry
 assert sum(entry["optionalTasha"]for row in lists for entry in row["entries"])==65
-assert sum(s["level"]is None for s in spells)==2
+assert all(s["level"]is not None for s in spells)
+assert next(s for s in spells if s["id"]=="spell-tormenta-de-bolas-de-nieve-de-snilloc")["level"]==2
+assert next(s for s in spells if s["id"]=="spell-libertad-de-los-vientos")["level"]==5
 for name in ["Agua","Aire","Tierra","Fuego"]:
  child=next(r for r in races if r["name"]==name and r["version"]=="Multiverso")
  parent=next(r for r in races if r["id"]==child["parentId"])
@@ -67,19 +69,19 @@ assert next(r for r in races if r["name"]=="Linaje Customizado")["senses"]==[]
 assert next(r for r in races if r["name"]=="Sangre de Dragon o Draconblood")["parentId"]=="race-draconido"
 assert next(b for b in backgrounds if b["name"]=="Acólito")["skillProficiencies"]==["insight","religion"]
 assert next(b for b in backgrounds if b["name"]=="Cazarrecompensas Urbano")["choices"][0]["amount"]==2
-assert next(e for e in equipment if e["name"]=="Tienda de campaña para dos personas")["weight"]is None
+assert next(e for e in equipment if e["name"]=="Tienda de campaña para dos personas")["weight"]==20
 assert next(e for e in equipment if e["name"]=="Daga")["damage"]=="1d4"
 assert next(e for e in equipment if e["name"]=="Escudo")["shieldBonus"]==2
 issues=read("reference-import-issues.json")+read("equipment-import-issues.json")
 limitations=[
  "El texto completo extraído no equivale a automatización de todas sus mecánicas.",
- "Dos hechizos tienen conflicto interno de nivel y quedan en modo manual: Tormenta de Bolas de Nieve de Snilloc (p588) y Libertad de los Vientos (p632).",
+ "Se resuelven con sus publicaciones originales los niveles contradictorios de Tormenta de Bolas de Nieve de Snilloc (nivel 2) y Libertad de los Vientos (nivel 5); se conservan los valores impresos del PDF.",
  "Dunamancia solo tiene acceso automático documentado para Magia Cronúrgica/Gravitúrgica; otras clases requieren consentimiento del DM.",
  "Las 65 ampliaciones opcionales de Tasha conservan su condición opcional por clase; no equivalen a acceso base.",
- "El PDF omite reglas generales completas de compra de puntos, matriz estándar, experiencia, condiciones y descanso. No se incorporan reglas externas.",
+ "La base de reglas generales de 2014 se completa con SRD 5.1 y Basic Rules (2014). La experiencia y algunos efectos contextuales de condiciones se registran manualmente.",
  "Dotes complejas, transformaciones raciales, recursos condicionales, linajes con sustituciones y parte de las elecciones de rasgos siguen siendo texto y ajuste manual.",
- "Los 25 trasfondos y 6 variantes preservan narrativa y competencias; herramientas/idiomas/equipo elegibles no están todos convertidos en decisiones ejecutables.",
- "El peso de Tienda de campaña para dos personas está ausente en el PDF. Los pesos numéricos de equipo se expresan en lb.",
+ "Los 25 trasfondos y 6 variantes incluyen competencias, idiomas, herramientas y equipo inicial estructurados; las decisiones narrativas y efectos contextuales conservan su texto para consulta.",
+ "El peso de Tienda de campaña para dos personas, ausente en el PDF, se completa con 20 lb según SRD 5.1. Los pesos numéricos de equipo se expresan en lb.",
  "La CA especial, vuelo/nado/escalada, armas naturales y hechizos raciales no están automatizados de manera exhaustiva; consultar el rasgo y los overrides.",
  "Las variantes agregadas de Tiefling y la ascendencia de Semielfo Variante precisan resolver las opciones y sustituciones manualmente. Sus descripciones completas permanecen accesibles.",
  "Los efectos por nivel y requisitos de subclase no expresados inequívocamente por tablas/cabeceras permanecen explícitamente pendientes o manuales.",
@@ -87,7 +89,7 @@ limitations=[
 coverage={"sourceFile":manifest["sourceFile"],"sourceSha256":manifest["sourceSha256"],"pages":633,"pagesExtracted":633,"blankPages":[211,232],"outlineEntries":len(sections),
  "counts":{"races":len(races),"rootRaces":sum(not r["parentId"]for r in races),"subracesAndVariants":sum(bool(r["parentId"])for r in races),"classes":len(classes),"subclasses":sum(len(c["subclasses"])for c in classes),"features":len(features),"racialFeatures":len(read("racial-features.json")),"classFeatures":len(read("class-features.json")),"spells":len(spells),"spellLists":len(lists),"spellListEntries":sum(len(row["entries"])for row in lists),"optionalTashaRelations":65,"feats":len(feats),"backgrounds":len(backgrounds),"baseBackgrounds":25,"backgroundVariants":6,"equipment":len(equipment)},
  "sourceEntityCoverage":{"indexedSpells":{"expected":501,"imported":501},"indexedFeats":{"expected":83,"imported":83},"indexedBaseBackgrounds":{"expected":25,"imported":25}},
- "spellHeadersComplete":sum(all(s[k]for k in ["school","castingTime","range","components","duration"])for s in spells),"spellLevelConflicts":2,"unresolvedSpellListReferences":0,
+ "spellHeadersComplete":sum(all(s[k]for k in ["school","castingTime","range","components","duration"])for s in spells),"spellLevelConflicts":sum(s["level"]is None for s in spells),"resolvedSpellLevelConflicts":2,"unresolvedSpellListReferences":0,
  "featAutomation":{"withEffectsOrChoices":sum(bool(f["effects"]or f["choices"])for f in feats),"textOnly":sum(not(f["effects"]or f["choices"])for f in feats)},
  "equipmentCategories":dict(Counter(e["category"]for e in equipment)),"equipmentWeightUnit":"lb","sourceIssues":dict(Counter(i["type"]for i in issues)),"limitations":limitations,
  "validation":{"stableIdsUnique":True,"spellClassReferencesValid":True,"spellSubclassReferencesValid":True,"spellListsResolved":True,"raceFeatureReferencesValid":True,"multiverseGenasiInheritsOnce":True,"allEntityDescriptionsPresent":True}}
@@ -97,15 +99,15 @@ report+="La fuente tiene **633 páginas**. Se conserva texto íntegro y proceden
 report+="## Registros importados\n\n| Catálogo | Registros |\n|---|---:|\n"
 for key,value in coverage["counts"].items():report+=f"| {key} | {value} |\n"
 report+="\n## Verificación\n\n"
-report+="- Los 501 hechizos del índice tienen descripción completa y las cinco cabeceras estructuradas. Dos niveles contradictorios están en `null`, con los valores impresos y de sección conservados.\n"
+report+="- Los 501 hechizos del índice tienen descripción completa, nivel y las cinco cabeceras estructuradas. Dos niveles contradictorios se resuelven con las publicaciones originales; los valores impresos y de sección permanecen conservados.\n"
 report+="- Las 9 listas contienen 1.317 relaciones únicas. Se contrastaron 1.318 hipervínculos originales: uno está duplicado. Las 65 ampliaciones Tasha se identifican con el color del PDF, no por inferencia.\n"
 report+="- Se auditaron siete vínculos erróneos del PDF y se preservaron las relaciones determinadas por el nombre exacto. Los 38 alias de traducción entre listas y títulos se justifican con el vínculo del PDF. No quedan referencias de listas sin resolver.\n"
 report+="- Los 83 dotes y los 25 trasfondos principales coinciden con el índice. Hay 6 variantes adicionales. Solo se generan efectos cuantificables con evidencia literal; se mantiene el texto de todos los demás.\n"
-report+="- Equipo incluye 13 armaduras/escudo y 37 armas. La tabla doble de aventura se separó por coordenadas. Pesos en libras; cifras ausentes no se sustituyen por valores oficiales externos.\n"
+report+="- Equipo incluye 13 armaduras/escudo y 37 armas. La tabla doble de aventura se separó por coordenadas. Pesos en libras; el peso de la tienda de dos personas se completa con SRD 5.1 (2014).\n"
 report+="- IDs únicos, descripciones no vacías, fuentes válidas y todas las referencias clase/subclase/rasgo/hechizo comprobadas por `scripts/validate_catalogs.py`.\n"
 report+="- Regresión racial: Genasi MPMM hereda un único conjunto de aumentos y un único idioma; Alto Elfo +1 INT; Tritón legado +1 FUE/CON/CAR; linaje customizado no concede visión sin elegirla.\n"
 report+="\n## Correcciones de extracción racial\n\n"
-report+="Se reconocen aumentos de subrazas aunque no tengan bloque Tamaño/Edad, nombres completos y abreviados de características, velocidades descritas en prosa y títulos reales al inicio de línea. Se excluyen cabeceras/filas de tablas que antes aparecían como rasgos. Draconblood y Ravenite se clasifican como variantes de Wildemount con sustituciones documentadas; no reciben dos aumentos raciales. Semielfo Variante no obtiene simultáneamente el rasgo de habilidades que sustituye. No se corrigen mediante otras publicaciones las peculiaridades del PDF (por ejemplo +1 INT de Genasi del Agua legado).\n"
+report+="Se reconocen aumentos de subrazas aunque no tengan bloque Tamaño/Edad, nombres completos y abreviados de características, velocidades descritas en prosa y títulos reales al inicio de línea. Se excluyen cabeceras/filas de tablas que antes aparecían como rasgos. Draconblood y Ravenite se clasifican como variantes de Wildemount con sustituciones documentadas; no reciben dos aumentos raciales. Semielfo Variante no obtiene simultáneamente el rasgo de habilidades que sustituye. Genasi del Agua legado obtiene +1 SAB conforme a Elemental Evil Player’s Companion p. 10, corrigiendo el +1 INT del PDF.\n"
 report+="\n## Huecos concretos y trabajo manual\n\n"+"\n".join("- "+line for line in limitations)+"\n"
 report+="\n## Reproducibilidad\n\nEjecutar, en orden, `extract_source.py`, `segment_source.py`, `audit_source.py`, `extract_spell_links.py`, `import_reference_catalogs.py`, `import_equipment.py`, `extract_races.py`, el importador de clases y `validate_catalogs.py`. Los JSON de cobertura se regeneran desde los catálogos actuales. El PDF original y la extracción completa no se copian a `public`.\n"
 (ROOT/"docs"/"reference-coverage.md").write_text(report,encoding="utf-8")

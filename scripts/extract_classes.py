@@ -1,8 +1,9 @@
-"""Build the class catalog solely from the supplied manual and its extracted sections.
+"""Build the class catalog from the manual, applying documented 2014 corrections.
 
 Run after scripts/extract_source.py. Raster progression tables were transcribed
 from rendered pages; their page numbers and source inconsistencies are recorded
-below and in docs/classes-coverage.md. No online rules or SRD are imported.
+below and in docs/classes-coverage.md. The effective base rules use SRD 5.1;
+original PDF prose remains available for auditing. See docs/rules-2014-audit.md.
 """
 from pathlib import Path
 import bisect
@@ -88,10 +89,10 @@ def spellcasting(ability, mode, progression, formula=None):
 
 # Rows copied from the manual's class tables, in character-level order 1..20.
 # A dash in the original is represented as zero for slots and empty for features.
-# The supplied manual really prints TWO 4th-level slots at class levels 9..17
-# in all five full-caster tables. Preserve the PDF instead of silently importing
-# the commonly published progression with three; report this in automationNotes.
-FULL = [[int(x) for x in row] for row in ['200000000','300000000','420000000','430000000','432000000','433000000','433100000','433200000','433210000','433220000','433221000','433221000','433221100','433221100','433221110','433221110','433221111','433331111','433332111','433332211']]
+# SRD 5.1 (2014), Spanish pp. 11, 21, 25, 36 and 40. The manual prints two
+# fourth-level slots at class levels 9..17; retain that evidence in the audit,
+# while the effective progression correctly grants three fourth-level slots.
+FULL = [[int(x) for x in row] for row in ['200000000','300000000','420000000','430000000','432000000','433000000','433100000','433200000','433310000','433320000','433321000','433321000','433321100','433321100','433321110','433321110','433321111','433331111','433332111','433332211']]
 HALF = [[int(x) for x in row] for row in ['00000','20000','30000','30000','42000','42000','43000','43000','43200','43200','43300','43300','43310','43310','43320','43320','43331','43331','43332','43332']]
 THIRD = [[int(x) for x in row] for row in ['0000','0000','2000','3000','3000','3000','4200','4200','4200','4300','4300','4300','4320','4320','4320','4330','4330','4330','4331','4331']]
 ASI = 'Mejora de Puntuación de Característica'
@@ -113,15 +114,15 @@ TABLES = {
 }
 
 SKILLS = 'acrobatics animal-handling arcana athletics deception history insight intimidation investigation medicine nature perception performance persuasion religion sleight-of-hand stealth survival'.split()
-# Values below are the class proficiency paragraphs, normalized without replacing
-# printed peculiarities (e.g. the druid weapon list includes estoques).
+# Values below normalize the class proficiency paragraphs. The druid weapon
+# list corrects the manual's rapier typo to sickle using SRD 5.1, Spanish p. 25.
 META = {
  'artificiero': (8, 'int', 'con int', 'light medium shield', 'simple', ['Herramientas de ladrón', 'Una herramienta de artesano de tu elección'], 2, 'arcana history investigation medicine nature perception sleight-of-hand', 3, spellcasting('int','prepared','half','halfLevel+ability')),
  'barbaro': (12, 'str', 'str con', 'light medium shield', 'simple martial', [], 2, 'athletics intimidation nature perception survival animal-handling', 3, None),
  'bardo': (8, 'cha', 'dex cha', 'light', 'simple hand-crossbow longsword rapier shortsword', ['Tres instrumentos musicales de tu elección'], 3, '*', 3, spellcasting('cha','known','full')),
  'brujo': (8, 'cha', 'wis cha', 'light', 'simple', [], 2, 'arcana deception history intimidation investigation nature religion', 1, spellcasting('cha','pact','pact')),
  'clerigo': (8, 'wis', 'wis cha', 'light medium shield', 'simple', [], 2, 'insight history medicine persuasion religion', 1, spellcasting('wis','prepared','full','level+ability')),
- 'druida': (8, 'wis', 'int wis', 'light medium shield', 'quarterstaff scimitar club dagger dart rapier sling javelin spear mace', ['Kit de herboristería'], 2, 'arcana insight medicine nature perception religion survival animal-handling', 2, spellcasting('wis','prepared','full','level+ability')),
+ 'druida': (8, 'wis', 'int wis', 'light medium shield', 'quarterstaff scimitar club dagger dart sickle sling javelin spear mace', ['Kit de herboristería'], 2, 'arcana insight medicine nature perception religion survival animal-handling', 2, spellcasting('wis','prepared','full','level+ability')),
  'explorador': (10, 'dex wis', 'str dex', 'light medium shield', 'simple martial', [], 3, 'athletics insight investigation animal-handling nature perception stealth survival', 3, spellcasting('wis','known','half')),
  'guerrero': (10, 'str dex', 'str con', 'light medium heavy shield', 'simple martial', [], 2, 'acrobatics athletics insight history intimidation animal-handling perception survival', 3, None),
  'hechicero': (6, 'cha', 'con cha', '', 'dagger dart sling quarterstaff light-crossbow', [], 2, 'arcana insight deception intimidation persuasion religion', 1, spellcasting('cha','known','full')),
@@ -386,19 +387,19 @@ def main():
             c['automationNotes'].append('Multiclase: suma la mitad de niveles de artificiero redondeada hacia arriba (p. 105). La tabla llama Ingeniería Mágica al rasgo Arreglo Mágico.')
         if k=='barbaro':c['automationNotes'].append('Furia de nivel 20: usos ilimitados, representados por -1. La tabla concede Senda a nivel 10, omitido en el encabezado del rasgo. Juggernaut: Golpe Huracanado dice nivel 6 en encabezado y nivel 10 en texto; se conserva la discrepancia sin corregir el manual.')
         if k=='bardo':c['automationNotes'].append('Inspiración recupera usos con descanso corto a partir de nivel 5 mediante Fuente de Inspiración; el recurso base conserva recuperación larga.')
-        if k=='druida':c['automationNotes'].append('La lista impresa de armas incluye estoques; no se sustituye por una lista externa. Restricción: ninguna armadura ni escudo de metal. Archidruida elimina el límite de Forma Salvaje a nivel 20.')
+        if k=='druida':c['automationNotes'].append('Reglas 2014: competencia con hoz, no con estoque (SRD 5.1, p. 25; errata del PDF). Restricción: ninguna armadura ni escudo de metal. Archidruida elimina el límite de Forma Salvaje a nivel 20.')
         if k=='explorador':c['automationNotes'].append('La cabecera de Mejora de Puntuación incluye nivel 14, pero la tabla y el cuerpo del rasgo no lo incluyen. La progresión sigue la tabla. Las opciones de Tasha que reemplazan rasgos requieren elección explícita.')
-        if k in ('bardo','clerigo','druida','hechicero','mago'):c['automationNotes'].append('La tabla del PDF imprime 2 espacios de conjuro de nivel 4 entre los niveles de clase 9 y 17. Se conserva literalmente ese valor; a nivel 18 pasa a 3. No se sustituye por tablas de otras fuentes.')
+        if k in ('bardo','clerigo','druida','hechicero','mago'):c['automationNotes'].append('Reglas 2014 (SRD 5.1): 3 espacios de conjuro de nivel 4 desde el nivel de clase 9. El PDF imprime 2 entre los niveles 9 y 17; se corrige la progresión efectiva y se conserva la fuente original para consulta.')
         for sub in subclasses:
             if sub['name'] in ('Caballero Arcano','Bribón Arcano'):
                 sub['spellcasting']=spellcasting('int','known','third')
                 sub['progression']=[]
                 for i in range(20):
                     level=i+1;kn=[0,0,3,4,4,4,5,6,6,7,8,8,9,10,10,11,11,11,12,13][i]
-                    can=0 if level<3 else (2 if level<9 else 3) if sub['name']=='Caballero Arcano' else (3 if level<10 else 4)
+                    can=0 if level<3 else (2 if level<10 else 3) if sub['name']=='Caballero Arcano' else (3 if level<10 else 4)
                     sub['progression'].append({'level':level,'proficiencyBonus':2+i//4,'featureIds':[f['id'] for f in fs if f['originId']==sub['id'] and f['level']==level],'featureNames':[],'slots':THIRD[i][:],'cantrips':can,'knownSpells':kn,'resources':{},'source':{'page':259 if sub['name']=='Caballero Arcano' else 382}})
                 sub['automationNotes']=['Solo conjuros de mago y restricciones de escuela detalladas en Lanzamiento de Hechizos.']
-                if sub['name']=='Caballero Arcano':sub['automationNotes'].append('La tabla impresa concede el tercer truco a nivel 9; el texto dice nivel 10. Se conserva la tabla y se advierte la discrepancia.')
+                if sub['name']=='Caballero Arcano':sub['automationNotes'].append('El tercer truco se aprende a nivel 10, como indica el texto de Lanzamiento de Hechizos (2014). Se corrige la errata de la tabla del PDF, que lo adelanta al nivel 9.')
         c['automationNotes'].append('Los efectos contextuales, criaturas invocadas, tablas aleatorias y decisiones narrativas se conservan íntegros en las descripciones; no se aplican automáticamente. Las opciones marcadas optional requieren activación explícita.')
         # Source ownText includes all feature prose; the full hierarchical text is
         # also retained in data/source/sections.json for a lossless source view.
@@ -414,9 +415,9 @@ def main():
     for filename, value in [('classes.json',classes),('class-features.json',allfeatures)]:
         path=ROOT/'data/rules'/filename;path.parent.mkdir(parents=True,exist_ok=True);path.write_text(json.dumps(value,ensure_ascii=False,indent=2)+'\n',encoding='utf-8')
     (ROOT/'data/rules/class-source-repairs.json').write_text(json.dumps(anchor_repairs,ensure_ascii=False,indent=2)+'\n',encoding='utf-8')
-    coverage=['# Cobertura de clases del manual','', 'Fuente exclusiva: Manual para Casi Todo de D&D 5e (V30.03.25).pdf, páginas físicas 102–393.','',f'{len(classes)} clases, {sum(len(c["subclasses"]) for c in classes)} subclases, {len(allfeatures)} entradas de rasgos y referencias; 260 filas de progresión de clase y 40 filas de progresión de subclase.','', '| Clase | Páginas | Subclases | Rasgos de clase/opcionales | Tabla |','|---|---|---:|---:|---:|']
+    coverage=['# Cobertura de clases del manual','', 'Fuente de contenido: Manual para Casi Todo de D&D 5e (V30.03.25).pdf, páginas físicas 102–393. La base mecánica se contrasta con SRD 5.1 (reglas 2014); véase [auditoría de 2014](rules-2014-audit.md).','',f'{len(classes)} clases, {sum(len(c["subclasses"]) for c in classes)} subclases, {len(allfeatures)} entradas de rasgos y referencias; 260 filas de progresión de clase y 40 filas de progresión de subclase.','', '| Clase | Páginas | Subclases | Rasgos de clase/opcionales | Tabla |','|---|---|---:|---:|---:|']
     for c in classes:coverage.append(f'| {c["name"]} | {c["source"]["page"]}–{c["source"]["endPage"]} | {len(c["subclasses"])} | {len(c["featureIds"])} | {TABLES[slug(c["name"])][0]} |')
-    coverage+=['','## Método y auditoría','', 'El extractor consume todas las secciones de nivel 1, 2 y 3 del capítulo, con texto segmentado por columnas y marcadores del PDF. Conserva íntegro cada rasgo en description y la referencia física de página. Los encabezados accidentales de párrafos en las páginas 137 y 157 se excluyen como entidades, pero sus textos permanecen en la fuente y la introducción de subclase. Infusiones, invocaciones, opciones de Tasha y referencias de Xanathar se distinguen para impedir concesiones automáticas de opciones.','', 'Las tablas rasterizadas de las páginas 104, 140, 159, 185, 213, 234, 281, 305 y 329, y las tablas de subclase de 259 y 382, se renderizaron y revisaron visualmente. Sus valores se transcriben en constantes explícitas del extractor. Las tablas de 121, 256, 351 y 376 tienen texto extraíble. No se han importado datos de internet, SRD ni otras ediciones.','', 'Comprobaciones reproducibles: 13 clases, 20 niveles consecutivos por clase, unicidad de identificadores y referencias de rasgo resueltas. Los campos null indican que el dato no aplica o que el encabezado no especifica nivel; nunca se inventa un nivel.','', '## Notas de fuente y límites de automatización','']
+    coverage+=['','## Método y auditoría','', 'El extractor consume todas las secciones de nivel 1, 2 y 3 del capítulo, con texto segmentado por columnas y marcadores del PDF. Conserva íntegro cada rasgo en description y la referencia física de página. Los encabezados accidentales de párrafos en las páginas 137 y 157 se excluyen como entidades, pero sus textos permanecen en la fuente y la introducción de subclase. Infusiones, invocaciones, opciones de Tasha y referencias de Xanathar se distinguen para impedir concesiones automáticas de opciones.','', 'Las tablas rasterizadas de las páginas 104, 140, 159, 185, 213, 234, 281, 305 y 329, y las tablas de subclase de 259 y 382, se renderizaron y revisaron visualmente. Sus valores se transcriben en constantes explícitas del extractor. Las tablas de 121, 256, 351 y 376 tienen texto extraíble. Las correcciones mecánicas documentadas usan SRD 5.1 (2014); no se incorporan las reglas revisadas de 2024.','', 'Comprobaciones reproducibles: 13 clases, 20 niveles consecutivos por clase, unicidad de identificadores y referencias de rasgo resueltas. Los campos null indican que el dato no aplica o que el encabezado no especifica nivel; nunca se inventa un nivel.','', '## Notas de fuente y límites de automatización','']
     for c in classes:
         for n in c['automationNotes'][:-1]:coverage.append(f'- {c["name"]}: {n}')
     coverage+=['', '## Encabezados repetidos verificados', '',
@@ -435,7 +436,7 @@ def main():
                '| 372 | Represión Vigilante | Represalia, nivel 15 / transformación, nivel 20 |',
                '| 388 | Maniobra Elegante | Acrobacia o Atletismo, nivel 13 / repetir ataque, nivel 17 |', '',
                '## Opciones y límites restantes', '']
-    coverage+=['- Caballero Arcano: tercer truco a nivel 9 en tabla, nivel 10 en prosa. Se mantiene la tabla.', '- Se estructuran como elecciones: 16 infusiones, 54 invocaciones, 4 pactos, 10 opciones de metamagia, estilos de combate y pericias de bardo/pícaro. Los cupos de infusiones e invocaciones se vinculan a la progresión mediante dynamicAmountResource. Los requisitos para multiclase proceden de la tabla de la página 450; Guerrero permite Fuerza O Destreza.', '- No se automatizan todavía todas las decisiones contenidas en prosa (maniobras, modelos de armadura, tótems, escuelas y rasgos con selección de hechizos). Su texto íntegro está disponible. Las elecciones catalogadas no aplican por defecto.', '- Las tablas insertadas como imagen dentro de rasgos (listas de hechizos, resultados aleatorios, estadísticas de compañeros) pueden no aparecer como texto en la extracción; la referencia de página y el PDF completo son la autoridad. Las tablas principales de progresión sí se transcribieron completas.','', '## Reproducir','', 'Ejecutar primero el extractor de fuentes que genera data/source/sections.json y después `python scripts/extract_classes.py`. Los archivos JSON se regeneran de forma determinista.','']
+    coverage+=['- Caballero Arcano: tercer truco a nivel 10 según la prosa de 2014; se corrige la errata de nivel 9 de la tabla.', '- Se estructuran como elecciones: 16 infusiones, 54 invocaciones, 4 pactos, 10 opciones de metamagia, estilos de combate y pericias de bardo/pícaro. Los cupos de infusiones e invocaciones se vinculan a la progresión mediante dynamicAmountResource. Los requisitos para multiclase proceden de la tabla de la página 450; Guerrero permite Fuerza O Destreza.', '- No se automatizan todavía todas las decisiones contenidas en prosa (maniobras, modelos de armadura, tótems, escuelas y rasgos con selección de hechizos). Su texto íntegro está disponible. Las elecciones catalogadas no aplican por defecto.', '- Las tablas insertadas como imagen dentro de rasgos (listas de hechizos, resultados aleatorios, estadísticas de compañeros) pueden no aparecer como texto en la extracción; la referencia de página y el PDF completo son la autoridad. Las tablas principales de progresión sí se transcribieron completas.','', '## Reproducir','', 'Ejecutar primero el extractor de fuentes que genera data/source/sections.json y después `python scripts/extract_classes.py`. Los archivos JSON se regeneran de forma determinista.','']
     (ROOT/'docs/classes-coverage.md').write_text('\n'.join(coverage),encoding='utf-8')
     print(json.dumps({'classes':len(classes),'subclasses':sum(len(c['subclasses']) for c in classes),'features':len(allfeatures),'optional':sum(bool(f.get('optional')) for f in allfeatures),'nullLevels':sum(f['level'] is None and f.get('kind') in ('class','subclass') for f in allfeatures)},ensure_ascii=False))
 

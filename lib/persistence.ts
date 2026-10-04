@@ -57,6 +57,26 @@ export function validateCharacterData(input: unknown, catalog?: Catalog, snapsho
   if (typeof c.color === 'string' && !/^#[0-9a-f]{3,8}$/i.test(c.color)) fail('color', 'color hexadecimal inválido');
   ['createdAt', 'updatedAt'].forEach(key => { str(c[key], key, 100, false); if (typeof c[key] === 'string' && !Number.isFinite(Date.parse(c[key]))) fail(key, 'fecha inválida'); });
   bool(c.isDemo, 'isDemo'); bool(c.inspiration, 'inspiration');
+  if (own(c, 'exhaustionLevel')) num(c.exhaustionLevel, 'exhaustionLevel', 0, 6);
+  if (own(c, 'abilityGeneration')) {
+    const generation = object(c.abilityGeneration, 'abilityGeneration');
+    if (!['manual', 'standard', 'point-buy', 'rolled'].includes(String(generation.method))) fail('abilityGeneration.method', 'método desconocido');
+    if (own(generation, 'rolls')) arr(generation.rolls, 'abilityGeneration.rolls', 6).forEach((roll, index) => {
+      const dice = arr(roll, `abilityGeneration.rolls[${index}]`, 4);
+      if (dice.length !== 4) fail('abilityGeneration.rolls', 'cada tirada requiere cuatro dados');
+      dice.forEach(die => num(die, 'abilityGeneration.rolls.die', 1, 6));
+    });
+  }
+  if (own(c, 'startingEquipment')) {
+    const equipment = object(c.startingEquipment, 'startingEquipment');
+    ['classId', 'backgroundId'].forEach(key => str(equipment[key], `startingEquipment.${key}`, 200));
+    if (!['equipment', 'gold'].includes(String(equipment.mode))) fail('startingEquipment.mode', 'modo desconocido');
+    records(equipment.selections, 'startingEquipment.selections', (v, path) => str(v, path, 300), 100);
+    records(equipment.picks, 'startingEquipment.picks', (v, path) => arr(v, path, 100).forEach((value, index) => str(value, `${path}[${index}]`, 300)), 100);
+    strings(equipment.verified, 'startingEquipment.verified', 100, 500);
+    if (own(equipment, 'goldRoll')) num(equipment.goldRoll, 'startingEquipment.goldRoll', 0, 1000);
+    if (own(equipment, 'applied')) bool(equipment.applied, 'startingEquipment.applied');
+  }
   const classes = arr(c.classes, 'classes', 13).map((v, i) => {
     const cl = object(v, `classes[${i}]`); str(cl.classId, `classes[${i}].classId`, 150, false); num(cl.level, `classes[${i}].level`, 1, 20);
     if (own(cl, 'subclassId')) str(cl.subclassId, `classes[${i}].subclassId`, 200);
@@ -102,12 +122,15 @@ export function validateCharacterData(input: unknown, catalog?: Catalog, snapsho
     const a = object(v, `attacks[${i}]`); ['id', 'name', 'damage', 'damageType', 'range'].forEach(k => str(a[k], `attacks[${i}].${k}`, 500)); str(a.notes, `attacks[${i}].notes`, 20_000);
     if (!ABILITIES.some(b => b.id === a.ability)) fail(`attacks[${i}].ability`, 'característica inválida');
     num(a.bonus, `attacks[${i}].bonus`, -100, 100); bool(a.proficient, `attacks[${i}].proficient`); bool(a.favorite, `attacks[${i}].favorite`);
+    if (own(a, 'damageBonus')) num(a.damageBonus, `attacks[${i}].damageBonus`, -100, 100);
   });
   arr(c.inventory, 'inventory', 2000).forEach((v, i) => {
     const item = object(v, `inventory[${i}]`); ['id', 'name'].forEach(k => str(item[k], `inventory[${i}].${k}`, 500)); ['description', 'notes'].forEach(k => str(item[k], `inventory[${i}].${k}`, 50_000));
     if (!['Armas', 'Armaduras', 'Equipo', 'Objetos'].includes(String(item.category))) fail(`inventory[${i}].category`, 'categoría inválida');
     num(item.quantity, `inventory[${i}].quantity`, 0, 1_000_000); num(item.weight, `inventory[${i}].weight`, 0, 1_000_000, false);
     bool(item.equipped, `inventory[${i}].equipped`); bool(item.attuned, `inventory[${i}].attuned`);
+    if (own(item, 'homebrew')) bool(item.homebrew, `inventory[${i}].homebrew`);
+    if (own(item, 'startingEquipmentOrigin')) str(item.startingEquipmentOrigin, `inventory[${i}].startingEquipmentOrigin`, 200);
     ['armorBase', 'dexCap', 'shieldBonus'].forEach(k => { if (own(item, k)) num(item[k], `inventory[${i}].${k}`, 0, 100); });
     if (own(item, 'equipmentId')) { str(item.equipmentId, `inventory[${i}].equipmentId`, 200); if (catalog && item.equipmentId && !catalog.equipment.some(e => e.id === item.equipmentId)) fail(`inventory[${i}].equipmentId`, 'equipo desconocido'); }
   });
@@ -161,6 +184,9 @@ export function validateCharacterData(input: unknown, catalog?: Catalog, snapsho
       else if (catalog.classes.some(cl => `skills.${cl.id}` === id)) valid = v => SKILLS.some(s => s.id === v);
       else if (catalog.classes.some(cl => `subclass.${cl.id}` === id)) valid = v => catalog.classes.some(cl => cl.subclasses.some(s => s.id === v));
       else if (catalog.classes.some(cl => `instrument.${cl.id}` === id)) valid = v => typeof v === 'string' && !!v.trim();
+      else if (catalog.classes.some(cl => cl.toolProficiencies.filter(name => /elecci[oó]n/.test(name)).some((_,index) => `tools.${cl.id}.${index}` === id))) valid = v => catalog.equipment.some(item => item.name === v && /instrument|artesano/i.test(item.equipmentType ?? ''));
+      else if (SKILLS.some(skill => `replacement.background.skill.${skill.id}` === id)) valid = v => SKILLS.some(skill => skill.id === v);
+      else if (id.startsWith('replacement.background.tool.') && /^[a-z0-9-]+$/.test(id.slice('replacement.background.tool.'.length))) valid = v => catalog.equipment.some(item => item.name === v && /herramientas|instrumentos|kits|set de juego/i.test(item.equipmentType ?? ''));
       else if (catalog.classes.some(cl => id.startsWith(`asi.${cl.id}.`) && /^\d+$/.test(id.slice(`asi.${cl.id}.`.length)) && Number(id.split('.').at(-1)) >= 1 && Number(id.split('.').at(-1)) <= 20)) valid = v => ABILITIES.some(a => `ability:${a.id}` === v) || catalog.feats.some(f => `feat:${f.id}` === v);
       else { fail('choices', `elección desconocida: ${id}`); return; }
       values.forEach(v => { if (!valid(v)) fail(`choices.${id}`, `referencia de opción desconocida: ${v}`); });

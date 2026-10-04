@@ -248,10 +248,10 @@
         "options": [
           {
             "id": "herramientas-lira",
-            "name": "Lira",
+            "name": "Laúd",
             "items": [
               {
-                "equipmentId": "equipment-herramientas-lira",
+                "equipmentId": "equipment-herramientas-laud",
                 "quantity": 1
               }
             ]
@@ -277,7 +277,10 @@
       "dieSides": 4,
       "multiplier": 10,
       "text": "Renunciar al equipo inicial de clase y de trasfondo y comenzar con 5d4 × 10 po para comprar equipo."
-    }
+    },
+    "notes": [
+      "Reglas 2014: la opción de instrumento nombrada es un laúd (SRD 5.1, p. 11). La alternativa permite elegir cualquier otro instrumento, incluida la lira que nombra el PDF."
+    ]
   },
   "class-brujo": {
     "source": {
@@ -696,14 +699,14 @@
           },
           {
             "id": "ranged-simple",
-            "name": "Cualquier arma simple a distancia",
+            "name": "Cualquier arma simple cuerpo a cuerpo",
             "items": [],
             "picks": [
               {
                 "id": "ranged-simple",
-                "name": "Cualquier arma simple a distancia",
+                "name": "Cualquier arma simple cuerpo a cuerpo",
                 "quantity": 1,
-                "category": "simple-ranged-weapon"
+                "category": "simple-melee-weapon"
               }
             ]
           }
@@ -763,7 +766,8 @@
       "text": "Renunciar al equipo inicial de clase y de trasfondo y comenzar con 2d4 × 10 po para comprar equipo."
     },
     "notes": [
-      "Se conserva literalmente la opción «arma simple a distancia» de la página 214."
+      "Se conserva literalmente la opción «arma simple a distancia» de la página 214.",
+      "Reglas 2014: la alternativa a la cimitarra es un arma simple cuerpo a cuerpo (SRD 5.1, p. 25). Se corrige el texto a distancia del PDF, conservado arriba como referencia."
     ]
   },
   "class-explorador": {

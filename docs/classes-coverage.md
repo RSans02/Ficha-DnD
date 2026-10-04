@@ -1,6 +1,6 @@
 # Cobertura de clases del manual
 
-Fuente exclusiva: Manual para Casi Todo de D&D 5e (V30.03.25).pdf, páginas físicas 102–393.
+Fuente de contenido: Manual para Casi Todo de D&D 5e (V30.03.25).pdf, páginas físicas 102–393. La base mecánica se contrasta con SRD 5.1 (reglas 2014); véase [auditoría de 2014](rules-2014-audit.md).
 
 13 clases, 127 subclases, 1001 entradas de rasgos y referencias; 260 filas de progresión de clase y 40 filas de progresión de subclase.
 
@@ -24,7 +24,7 @@ Fuente exclusiva: Manual para Casi Todo de D&D 5e (V30.03.25).pdf, páginas fís
 
 El extractor consume todas las secciones de nivel 1, 2 y 3 del capítulo, con texto segmentado por columnas y marcadores del PDF. Conserva íntegro cada rasgo en description y la referencia física de página. Los encabezados accidentales de párrafos en las páginas 137 y 157 se excluyen como entidades, pero sus textos permanecen en la fuente y la introducción de subclase. Infusiones, invocaciones, opciones de Tasha y referencias de Xanathar se distinguen para impedir concesiones automáticas de opciones.
 
-Las tablas rasterizadas de las páginas 104, 140, 159, 185, 213, 234, 281, 305 y 329, y las tablas de subclase de 259 y 382, se renderizaron y revisaron visualmente. Sus valores se transcriben en constantes explícitas del extractor. Las tablas de 121, 256, 351 y 376 tienen texto extraíble. No se han importado datos de internet, SRD ni otras ediciones.
+Las tablas rasterizadas de las páginas 104, 140, 159, 185, 213, 234, 281, 305 y 329, y las tablas de subclase de 259 y 382, se renderizaron y revisaron visualmente. Sus valores se transcriben en constantes explícitas del extractor. Las tablas de 121, 256, 351 y 376 tienen texto extraíble. Las correcciones mecánicas documentadas usan SRD 5.1 (2014); no se incorporan las reglas revisadas de 2024.
 
 Comprobaciones reproducibles: 13 clases, 20 niveles consecutivos por clase, unicidad de identificadores y referencias de rasgo resueltas. Los campos null indican que el dato no aplica o que el encabezado no especifica nivel; nunca se inventa un nivel.
 
@@ -33,13 +33,13 @@ Comprobaciones reproducibles: 13 clases, 20 niveles consecutivos por clase, unic
 - Artificiero: Multiclase: suma la mitad de niveles de artificiero redondeada hacia arriba (p. 105). La tabla llama Ingeniería Mágica al rasgo Arreglo Mágico.
 - Bárbaro: Furia de nivel 20: usos ilimitados, representados por -1. La tabla concede Senda a nivel 10, omitido en el encabezado del rasgo. Juggernaut: Golpe Huracanado dice nivel 6 en encabezado y nivel 10 en texto; se conserva la discrepancia sin corregir el manual.
 - Bardo: Inspiración recupera usos con descanso corto a partir de nivel 5 mediante Fuente de Inspiración; el recurso base conserva recuperación larga.
-- Bardo: La tabla del PDF imprime 2 espacios de conjuro de nivel 4 entre los niveles de clase 9 y 17. Se conserva literalmente ese valor; a nivel 18 pasa a 3. No se sustituye por tablas de otras fuentes.
-- Clérigo: La tabla del PDF imprime 2 espacios de conjuro de nivel 4 entre los niveles de clase 9 y 17. Se conserva literalmente ese valor; a nivel 18 pasa a 3. No se sustituye por tablas de otras fuentes.
-- Druida: La lista impresa de armas incluye estoques; no se sustituye por una lista externa. Restricción: ninguna armadura ni escudo de metal. Archidruida elimina el límite de Forma Salvaje a nivel 20.
-- Druida: La tabla del PDF imprime 2 espacios de conjuro de nivel 4 entre los niveles de clase 9 y 17. Se conserva literalmente ese valor; a nivel 18 pasa a 3. No se sustituye por tablas de otras fuentes.
+- Bardo: Reglas 2014 (SRD 5.1): 3 espacios de conjuro de nivel 4 desde el nivel de clase 9. El PDF imprime 2 entre los niveles 9 y 17; se corrige la progresión efectiva y se conserva la fuente original para consulta.
+- Clérigo: Reglas 2014 (SRD 5.1): 3 espacios de conjuro de nivel 4 desde el nivel de clase 9. El PDF imprime 2 entre los niveles 9 y 17; se corrige la progresión efectiva y se conserva la fuente original para consulta.
+- Druida: Reglas 2014: competencia con hoz, no con estoque (SRD 5.1, p. 25; errata del PDF). Restricción: ninguna armadura ni escudo de metal. Archidruida elimina el límite de Forma Salvaje a nivel 20.
+- Druida: Reglas 2014 (SRD 5.1): 3 espacios de conjuro de nivel 4 desde el nivel de clase 9. El PDF imprime 2 entre los niveles 9 y 17; se corrige la progresión efectiva y se conserva la fuente original para consulta.
 - Explorador: La cabecera de Mejora de Puntuación incluye nivel 14, pero la tabla y el cuerpo del rasgo no lo incluyen. La progresión sigue la tabla. Las opciones de Tasha que reemplazan rasgos requieren elección explícita.
-- Hechicero: La tabla del PDF imprime 2 espacios de conjuro de nivel 4 entre los niveles de clase 9 y 17. Se conserva literalmente ese valor; a nivel 18 pasa a 3. No se sustituye por tablas de otras fuentes.
-- Mago: La tabla del PDF imprime 2 espacios de conjuro de nivel 4 entre los niveles de clase 9 y 17. Se conserva literalmente ese valor; a nivel 18 pasa a 3. No se sustituye por tablas de otras fuentes.
+- Hechicero: Reglas 2014 (SRD 5.1): 3 espacios de conjuro de nivel 4 desde el nivel de clase 9. El PDF imprime 2 entre los niveles 9 y 17; se corrige la progresión efectiva y se conserva la fuente original para consulta.
+- Mago: Reglas 2014 (SRD 5.1): 3 espacios de conjuro de nivel 4 desde el nivel de clase 9. El PDF imprime 2 entre los niveles 9 y 17; se corrige la progresión efectiva y se conserva la fuente original para consulta.
 
 ## Encabezados repetidos verificados
 
@@ -61,7 +61,7 @@ Se separan 11 pares de marcadores con el mismo título impreso en una página. L
 
 ## Opciones y límites restantes
 
-- Caballero Arcano: tercer truco a nivel 9 en tabla, nivel 10 en prosa. Se mantiene la tabla.
+- Caballero Arcano: tercer truco a nivel 10 según la prosa de 2014; se corrige la errata de nivel 9 de la tabla.
 - Se estructuran como elecciones: 16 infusiones, 54 invocaciones, 4 pactos, 10 opciones de metamagia, estilos de combate y pericias de bardo/pícaro. Los cupos de infusiones e invocaciones se vinculan a la progresión mediante dynamicAmountResource. Los requisitos para multiclase proceden de la tabla de la página 450; Guerrero permite Fuerza O Destreza.
 - No se automatizan todavía todas las decisiones contenidas en prosa (maniobras, modelos de armadura, tótems, escuelas y rasgos con selección de hechizos). Su texto íntegro está disponible. Las elecciones catalogadas no aplican por defecto.
 - Las tablas insertadas como imagen dentro de rasgos (listas de hechizos, resultados aleatorios, estadísticas de compañeros) pueden no aparecer como texto en la extracción; la referencia de página y el PDF completo son la autoridad. Las tablas principales de progresión sí se transcribieron completas.

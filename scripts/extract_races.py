@@ -141,6 +141,9 @@ for s in selected:
 
 # Human variant replaces ability increase only; inherit unaffected metadata explicitly.
 for race in races:
+    if race['name']=='Genasi del Agua' and race['version']=='Legado':
+        race['abilityBonuses']={'wis':1}
+        race['automationNotes'].append('Reglas de la edición 2014: el Genasi del Agua legado obtiene +1 Sabiduría, no Inteligencia (Elemental Evil Player’s Companion, p. 10). Se conserva la errata del PDF en el texto original.')
     if race['name']=='Humano Variante':
         parent=next(r for r in races if r['id']==race['parentId'])
         for field in ['speed','size','languages']: race[field]=parent[field]

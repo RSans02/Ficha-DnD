@@ -7984,7 +7984,7 @@
     "size": null,
     "speed": null,
     "abilityBonuses": {
-      "int": 1
+      "wis": 1
     },
     "languages": [],
     "senses": [],
@@ -8002,7 +8002,8 @@
     "effects": [],
     "replacesParent": false,
     "automationNotes": [
-      "Los efectos condicionados y las decisiones no estructuradas se conservan en su descripción completa."
+      "Los efectos condicionados y las decisiones no estructuradas se conservan en su descripción completa.",
+      "Reglas de la edición 2014: el Genasi del Agua legado obtiene +1 Sabiduría, no Inteligencia (Elemental Evil Player’s Companion, p. 10). Se conserva la errata del PDF en el texto original."
     ]
   },
   {

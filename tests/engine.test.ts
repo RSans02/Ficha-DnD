@@ -1,7 +1,7 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import { ABILITIES, MULTICLASS_SLOTS } from '../lib/constants';
-import { applyDamage, applyHealing, applyLevelUp, applyRest, checkPrerequisites, createCharacter, deriveAttack, deriveCharacter, getAllChoices, getGrantedSpells, getPendingChoices, planLevelUp, selectedFeatIds, spellbookMinimum, summarizeLevelUp, undoLevelUp, validSpells, validateCharacter } from '../lib/engine';
+import { applyDamage, applyHealing, applyLevelUp, applyRest, checkPrerequisites, createCharacter, deriveAttack, deriveCharacter, getAllChoices, getGrantedSpells, getPendingChoices, longRestHitDiceRecovery, planLevelUp, restPreview, selectedFeatIds, spellbookMinimum, spendHitDie, summarizeLevelUp, undoLevelUp, validSpells, validateCharacter } from '../lib/engine';
 import { exportJSON, importJSON, LocalCharacterRepository, validateCharacterData } from '../lib/persistence';
 import type { Catalog, Character, CharacterClass, Feature, Race, Spell } from '../lib/types';
 
@@ -149,11 +149,12 @@ test('damage consumes temp HP first and healing respects derived maximum without
   assert.equal(applyHealing(hurt, 100, catalog).hp.current, 12); assert.throws(() => applyDamage(c, NaN), /cantidad/); assert.throws(() => applyHealing(c, -1, catalog), /cantidad/);
 });
 
-test('rests recover only resources with explicit metadata, not HP, manual resources or hit dice', () => {
+test('2014 long rest restores HP and one hit die at first level but preserves manual resources', () => {
   const feature = (id: string, recovery: 'long' | 'short' | 'manual'): Feature => ({ id, name: id, description: '', source, originId: 'class-guerrero', level: 1, resource: { max: 2, recovery } });
   const cls = structuredClone(fighter); cls.featureIds = ['short', 'long', 'manual'];
   const cat = { ...catalog, classes: [cls], features: [feature('short', 'short'), feature('long', 'long'), feature('manual', 'manual')] }, c = character(); c.resourcesSpent = { short: 1, long: 2, manual: 1 }; c.hp.hitDiceUsed = { 'class-guerrero': 1 }; c.hp.current = 1;
-  const rested = applyRest(c, 'long', cat); assert.deepEqual(rested.resourcesSpent, { short: 0, long: 0, manual: 1 }); assert.equal(rested.hp.current, 1); assert.deepEqual(rested.hp.hitDiceUsed, c.hp.hitDiceUsed); assert.equal(c.resourcesSpent.short, 1);
+  c.hp.temp = 5;
+  const rested = applyRest(c, 'long', cat); assert.deepEqual(rested.resourcesSpent, { short: 0, long: 0, manual: 1 }); assert.equal(rested.hp.current, 12); assert.deepEqual(rested.hp.hitDiceUsed, { 'class-guerrero': 0 }); assert.equal(rested.hp.temp, 0); assert.equal(c.resourcesSpent.short, 1); assert.equal(c.hp.hitDiceUsed['class-guerrero'], 1);
 });
 
 test('equipped armor applies dex cap and shield while attacks expose trace', () => {
@@ -238,4 +239,107 @@ test('attack override is traceable and restoring automation returns the formula'
   assert.equal(overridden.breakdown.reduce((sum, row) => sum + row.value, 0), 9);
   delete c.manualOverrides['attack.sword'];
   assert.equal(deriveAttack(c, attack, catalog).attack.value, 5);
+});
+
+test('2014 unarmored AC uses 10 plus Dexterity and never adds a second AC formula', () => {
+  const c = character();
+  assert.equal(deriveCharacter(c, catalog).ac.value, 13);
+  assert.equal(deriveCharacter(c, catalog).ac.mode, 'auto');
+  const defense: Feature = { id: 'defense', originId: fighter.id, name: 'Defensa sin armadura', level: 1, description: '', source, effects: [{ type: 'unarmoredDefense', abilities: ['dex', 'con'], shieldAllowed: true }] };
+  c.manual.features = [defense]; c.abilities.con = 8;
+  assert.equal(deriveCharacter(c, catalog).ac.value, 13, 'ordinary AC is better with a negative Constitution modifier');
+  c.abilities.con = 16;
+  assert.equal(deriveCharacter(c, catalog).ac.value, 16);
+  c.inventory = [{ id: 'shield', name: 'Escudo', category: 'Armaduras', quantity: 1, weight: 6, equipped: true, attuned: false, description: '', notes: '', shieldBonus: 2 }];
+  assert.equal(deriveCharacter(c, catalog).ac.value, 18);
+});
+
+test('2014 later levels grant at least one HP with a very low Constitution score', () => {
+  const c = character('class-guerrero', 3); c.abilities.con = 1;
+  c.hp.rolls = [{ classId: fighter.id, value: 1 }, { classId: fighter.id, value: 4 }];
+  const hp = deriveCharacter(c, catalog).hpMax;
+  assert.equal(hp.value, 7); // First level 10 − 5; each later level gains 1.
+  assert.equal(hp.breakdown.reduce((sum, row) => sum + row.value, 0), 7);
+});
+
+test('2014 multiclass contributions round each half or third caster down before adding', () => {
+  const paladin = { ...structuredClone(ranger), id: 'class-paladin', name: 'Paladín' };
+  const cat = { ...catalog, classes: [...catalog.classes, paladin] }, c = character(ranger.id, 3);
+  c.classes.push({ classId: paladin.id, level: 3 });
+  assert.deepEqual(deriveCharacter(c, cat).slots, MULTICLASS_SLOTS[2]);
+  const thirdOne = { ...structuredClone(ranger), id: 'third-one', name: 'Tercio uno', spellcasting: { ...ranger.spellcasting!, progression: 'third' as const } };
+  const thirdTwo = { ...structuredClone(thirdOne), id: 'third-two', name: 'Tercio dos' };
+  c.classes = [{ classId: thirdOne.id, level: 5 }, { classId: thirdTwo.id, level: 5 }];
+  assert.deepEqual(deriveCharacter(c, { ...catalog, classes: [thirdOne, thirdTwo] }).slots, MULTICLASS_SLOTS[2]);
+  c.classes = [{ classId: paladin.id, level: 5 }, { classId: ranger.id, level: 1 }];
+  assert.deepEqual(deriveCharacter(c, cat).slots, paladin.progression[4].slots, 'ranger level one has no Spellcasting to combine');
+});
+
+test('artificer prepared spells still use floor half-level while multiclass slots use ceiling', () => {
+  const artificer = classFixture('class-artificiero', 'Artificiero', { spellcasting: { ability: 'int', mode: 'prepared', progression: 'half', preparedFormula: 'halfLevel+ability', recovery: 'long' } });
+  artificer.progression = artificer.progression.map(row => ({ ...row, slots: MULTICLASS_SLOTS[Math.ceil(row.level / 2)] }));
+  const cat = { ...catalog, classes: [...catalog.classes, artificer] }, c = character(artificer.id, 3);
+  assert.equal(deriveCharacter(c, cat).spellcasting[0].preparedLimit, 4);
+  c.classes.push({ classId: wizard.id, level: 1 });
+  assert.deepEqual(deriveCharacter(c, cat).slots, MULTICLASS_SLOTS[3]);
+});
+
+test('long rest restores floor half of total hit dice, with a player-selected multiclass allocation', () => {
+  const c = character(fighter.id, 3); c.classes.push({ classId: wizard.id, level: 2 });
+  c.hp.hitDiceUsed = { [fighter.id]: 3, [wizard.id]: 2 };
+  assert.deepEqual(longRestHitDiceRecovery(c, catalog), { [fighter.id]: 2, [wizard.id]: 0 });
+  const rested = applyRest(c, 'long', catalog, { [fighter.id]: 0, [wizard.id]: 2 });
+  assert.deepEqual(rested.hp.hitDiceUsed, { [fighter.id]: 3, [wizard.id]: 0 });
+  assert.throws(() => applyRest(c, 'long', catalog, { [fighter.id]: 2, [wizard.id]: 1 }), /como máximo/);
+  assert.throws(() => applyRest(c, 'long', catalog, { [wizard.id]: 3 }), /gastados/);
+  assert.throws(() => applyRest(c, 'long', catalog, { [wizard.id]: -1 }), /gastados/);
+  c.hp.current = 0;
+  assert.throws(() => applyRest(c, 'long', catalog), /al menos 1 PG/);
+  assert(restPreview(c, 'long', catalog)[0].includes('al menos 1 PG'));
+});
+
+test('short rest healing spends one actual hit die and adds Constitution, with zero as minimum', () => {
+  const c = character(); c.hp.current = 1; c.hp.temp = 4;
+  const healed = spendHitDie(c, fighter.id, 4, catalog);
+  assert.equal(healed.hp.current, 7); assert.equal(healed.hp.hitDiceUsed[fighter.id], 1);
+  assert.equal(healed.hp.temp, 4); assert.equal(c.hp.current, 1);
+  assert.throws(() => spendHitDie(healed, fighter.id, 4, catalog), /No quedan/);
+  assert.throws(() => spendHitDie(c, fighter.id, 11, catalog), /tirada válida/);
+  const rested = applyRest(healed, 'short', catalog);
+  assert.equal(rested.hp.current, 7); assert.equal(rested.hp.hitDiceUsed[fighter.id], 1);
+  c.abilities.con = 1;
+  assert.equal(spendHitDie(c, fighter.id, 1, catalog).hp.current, 1);
+});
+
+test('2014 exhaustion applies cumulative numeric effects and long rest requires food and water to remove a level', () => {
+  const c = character(fighter.id, 5), base = deriveCharacter(c, catalog);
+  c.exhaustionLevel = 2; c.conditions = ['Agotamiento'];
+  let d = deriveCharacter(c, catalog); assert.equal(d.speed.value, 15); assert.equal(d.hpMax.value, base.hpMax.value); assert.equal(d.passivePerception.value, base.passivePerception.value - 5);
+  c.exhaustionLevel = 4; d = deriveCharacter(c, catalog);
+  assert.equal(d.hpMax.value, Math.floor(base.hpMax.value / 2));
+  assert.equal(applyRest(c, 'long', catalog).exhaustionLevel, 4);
+  const rested = applyRest(c, 'long', catalog, undefined, { foodAndWater: true });
+  assert.equal(rested.exhaustionLevel, 3); assert.equal(rested.hp.current, base.hpMax.value);
+  c.exhaustionLevel = 5; assert.equal(deriveCharacter(c, catalog).speed.value, 0);
+  c.exhaustionLevel = 1; const recovered = applyRest(c, 'long', catalog, undefined, { foodAndWater: true });
+  assert.equal(recovered.exhaustionLevel, 0); assert(!recovered.conditions.includes('Agotamiento'));
+});
+
+test('heavy armor Strength requirement reduces speed by ten feet, while dwarves retain their speed', () => {
+  const c = character();
+  c.inventory = [{ id: 'plate', equipmentId: 'plate', name: 'Placas', category: 'Armaduras', quantity: 1, weight: 65, equipped: true, attuned: false, description: '', notes: '', armorBase: 18, dexCap: 0 }];
+  const cat = { ...catalog, equipment: [{ id: 'plate', name: 'Placas', category: 'Armaduras', description: '', source, armorCategory: 'Armaduras pesadas', strengthRequirement: 15 }] };
+  assert.equal(deriveCharacter(c, cat).speed.value, 20);
+  const dwarf = { ...race, name: 'Enano', speed: 25 };
+  assert.equal(deriveCharacter(c, { ...cat, races: [dwarf] }).speed.value, 25);
+  c.abilities.str = 15; assert.equal(deriveCharacter(c, cat).speed.value, 30);
+  c.conditions = ['Agarrado']; assert.equal(deriveCharacter(c, cat).speed.value, 0);
+});
+
+test('healing resets death saves only after HP are actually regained and attack damage can be explicitly set to zero', () => {
+  const c = character(); c.hp.current = 0; c.deathSaves = { successes: 1, failures: 2 };
+  assert.deepEqual(applyHealing(c, 0, catalog).deathSaves, c.deathSaves);
+  assert.deepEqual(applyHealing(c, 1, catalog).deathSaves, { successes: 0, failures: 0 });
+  const attack = { id: 'off-hand', name: 'Segunda arma', ability: 'str' as const, proficient: true, bonus: 0, damage: '1d6', damageType: '', range: '', notes: '', favorite: false, damageBonus: 0 };
+  assert.equal(deriveAttack(c, attack, catalog).damageBonus, 0);
 });
