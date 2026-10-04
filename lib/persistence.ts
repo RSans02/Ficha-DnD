@@ -227,6 +227,19 @@ export function validateCharacterData(input: unknown, catalog?: Catalog, snapsho
       }
     }
   }
+  if (own(c, 'lastLevelAppliedSnapshot')) {
+    if (snapshot || !own(c, 'lastLevelSnapshot')) fail('lastLevelAppliedSnapshot', 'resultado de subida sin instantánea anterior');
+    else {
+      str(c.lastLevelAppliedSnapshot, 'lastLevelAppliedSnapshot', MAX_JSON / 2, false);
+      if (typeof c.lastLevelAppliedSnapshot === 'string' && c.lastLevelAppliedSnapshot.length <= MAX_JSON / 2) {
+        try {
+          const applied: unknown = JSON.parse(c.lastLevelAppliedSnapshot); const issues = validateCharacterData(applied, catalog, true);
+          if (issues.length) fail('lastLevelAppliedSnapshot', issues[0]);
+          else if (plain(applied) && (applied.id !== c.id || (applied.classes as { level: number }[]).reduce((sum, cl) => sum + cl.level, 0) !== level)) fail('lastLevelAppliedSnapshot', 'el resultado no es de esta subida');
+        } catch { fail('lastLevelAppliedSnapshot', 'JSON inválido'); }
+      }
+    }
+  }
   return errors;
 }
 

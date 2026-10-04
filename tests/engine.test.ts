@@ -1,7 +1,9 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import { ABILITIES, MULTICLASS_SLOTS } from '../lib/constants';
-import { applyDamage, applyHealing, applyLevelUp, applyRest, checkPrerequisites, createCharacter, deriveAttack, deriveCharacter, getAllChoices, getFixedClassCantrips, getGrantedSpells, getPendingChoices, isAttackSpell, longRestHitDiceRecovery, planLevelUp, restPreview, selectedFeatIds, spellbookMinimum, spendHitDie, summarizeLevelUp, undoLevelUp, validSpells, validateCharacter } from '../lib/engine';
+import { applyDamage, applyHealing, applyLevelUp, applyRest, checkPrerequisites, createCharacter, deriveAttack, deriveCharacter, getAllChoices, getClassGrantedSpells, getFixedClassCantrips, getGrantedSpells, getPendingChoices, isAttackSpell, longRestHitDiceRecovery, planLevelUp, restPreview, selectedFeatIds, spellbookMinimum, spendHitDie, summarizeLevelUp, undoLevelUp, validSpells, validateCharacter } from '../lib/engine';
+import subclassSpellGrants from '../data/rules/subclass-spell-grants.json';
+import subclassSpellAccess from '../data/rules/subclass-spell-access.json';
 
 test('attack spell detection excludes spells that only modify another attack', () => {
   const named=(name:string)=>rawSpells.find(spell=>spell.name===name) as unknown as Spell;
@@ -43,6 +45,50 @@ test('Bribón Arcano gains Mano de Mago as a fixed cantrip and only chooses two 
   assert.ok(getGrantedSpells(c,fixture).some(s=>s.id==='spell-mano-de-mago'));
   c.spellSelections['class-picaro']={known:['trick-one','trick-two'],prepared:[]};
   assert.equal(getPendingChoices(c,fixture).some(ch=>ch.id==='cantrips.class-picaro'),false);
+});
+
+test('subclass tables grant every fixed spell at its class level', () => {
+  const fixture = { ...catalog, classes: rawClasses as unknown as CharacterClass[], features: rawFeatures as unknown as Feature[], spells: rawSpells as unknown as Spell[] };
+  for (const [featureId, grants] of Object.entries(subclassSpellGrants)) {
+    const feature = fixture.features.find(item => item.id === featureId)!;
+    const cls = fixture.classes.find(item => item.subclasses.some(sub => sub.id === feature.originId))!;
+    const c = character(cls.id, 20);
+    c.classes[0].subclassId = feature.originId;
+    for (const grant of grants) {
+      c.classes[0].level = grant.level;
+      assert.ok(getClassGrantedSpells(c, cls.id, fixture).some(spell => spell.id === grant.spellId), `${featureId}: ${grant.spellId} at ${grant.level}`);
+    }
+  }
+});
+
+test('Circle of the Land follows the chosen terrain and warlock expanded lists remain choices', () => {
+  const fixture = { ...catalog, classes: rawClasses as unknown as CharacterClass[], features: rawFeatures as unknown as Feature[], spells: rawSpells as unknown as Spell[] };
+  const druid = character('class-druida', 3); druid.classes[0].subclassId = 'subclass-druida-circulo-de-la-tierra';
+  assert.ok(getAllChoices(druid, fixture).some(choice => choice.id === 'subclass-land.druid' && choice.options.length === 8));
+  druid.choices['subclass-land.druid'] = ['bosque'];
+  assert.ok(getClassGrantedSpells(druid, 'class-druida', fixture).some(spell => spell.name === 'Piel Robliza'));
+  assert.ok(!getClassGrantedSpells(druid, 'class-druida', fixture).some(spell => spell.name === 'Imagen Múltiple'));
+  const warlock = character('class-brujo', 3); warlock.classes[0].subclassId = 'subclass-brujo-el-archi-feerico';
+  const expanded = subclassSpellAccess['subclass-brujo-el-archi-feerico'][0];
+  assert.ok(validSpells(warlock, 'class-brujo', fixture).some(spell => spell.id === expanded));
+  assert.ok(!getClassGrantedSpells(warlock, 'class-brujo', fixture).some(spell => spell.id === expanded));
+  const genie = character('class-brujo', 5); genie.classes[0].subclassId = 'subclass-brujo-el-genio';
+  genie.choices['subclass-genie.warlock'] = ['dao'];
+  assert.ok(validSpells(genie, 'class-brujo', fixture).some(spell => spell.id === 'spell-brote-de-espinas'));
+  assert.ok(!validSpells(genie, 'class-brujo', fixture).some(spell => spell.id === 'spell-bola-de-fuego'));
+  assert.ok(!getClassGrantedSpells(genie, 'class-brujo', fixture).some(spell => spell.id === 'spell-brote-de-espinas'));
+});
+
+test('Moon sorcerer receives Shield without spending a known-spell choice', () => {
+  const fixture = { ...catalog, classes: rawClasses as unknown as CharacterClass[], features: rawFeatures as unknown as Feature[], spells: rawSpells as unknown as Spell[] };
+  const c = character('class-hechicero', 1); c.classes[0].subclassId = 'subclass-hechicero-hechicero-de-la-luna';
+  assert.ok(getClassGrantedSpells(c, 'class-hechicero', fixture).some(spell => spell.id === 'spell-escudo'));
+  const limit = deriveCharacter(c, fixture).spellcasting.find(caster => caster.classId === 'class-hechicero')!.knownLimit!;
+  const choices = validSpells(c, 'class-hechicero', fixture).filter(spell => spell.level === 1 && spell.id !== 'spell-escudo').slice(0, limit).map(spell => spell.id);
+  c.spellSelections['class-hechicero'] = { known: choices, prepared: [] };
+  assert.ok(!getPendingChoices(c, fixture).some(choice => choice.id === 'known.class-hechicero'));
+  c.spellSelections['class-hechicero'].known.push('spell-escudo');
+  assert.ok(!getPendingChoices(c, fixture).some(choice => choice.id === 'known.class-hechicero'));
 });
 
 test('expertise does not create a background proficiency replacement, while a real overlap names its sources', () => {
@@ -165,6 +211,18 @@ test('level-up is a validated immutable draft and can undo exactly once', () => 
   plan.next.hp.rolls[0].value = 6; const leveled = applyLevelUp(c, plan.next, catalog);
   assert.equal(leveled.classes[0].level, 2); assert(leveled.lastLevelSnapshot); assert(!JSON.parse(leveled.lastLevelSnapshot).lastLevelSnapshot);
   const undone = undoLevelUp(leveled); assert.equal(undone.classes[0].level, 1); assert.equal(undone.hp.rolls.length, 0); assert.equal(undone.lastLevelSnapshot, undefined); assert.equal(undoLevelUp(undone), undone);
+});
+
+test('undoing a level preserves later inventory, money, notes and combat changes', () => {
+  const c=character();const plan=planLevelUp(c,'class-guerrero',catalog);plan.next.hp.rolls[0].value=6;
+  const leveled=applyLevelUp(c,plan.next,catalog);
+  leveled.inventory.push({id:'later-item',name:'Botín',category:'Objetos',quantity:1,weight:1,equipped:false,attuned:false,description:'',notes:''});
+  leveled.money.po=37;leveled.hp.current=4;leveled.notes.push({id:'later-note',title:'Pista',category:'Sesión',content:'Después de subir',date:'2026-10-04'});
+  const undone=undoLevelUp(leveled,catalog);
+  assert.equal(undone.classes[0].level,1);assert.equal(undone.hp.rolls.length,0);
+  assert.equal(undone.inventory[0].name,'Botín');assert.equal(undone.money.po,37);assert.equal(undone.hp.current,4);assert.equal(undone.notes[0].title,'Pista');
+  const legacy={...leveled,lastLevelAppliedSnapshot:undefined};
+  assert.throws(()=>undoLevelUp(legacy,catalog),/antes del deshacer seguro/);
 });
 
 test('multiclass entry checks old and new classes and fighter accepts DEX or STR', () => {

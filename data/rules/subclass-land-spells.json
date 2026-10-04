@@ -1,0 +1,274 @@
+{
+  "bosque": [
+    {
+      "level": 3,
+      "spellId": "spell-piel-robliza"
+    },
+    {
+      "level": 3,
+      "spellId": "spell-trepar-cual-aracnido"
+    },
+    {
+      "level": 5,
+      "spellId": "spell-crecimiento-vegetal"
+    },
+    {
+      "level": 5,
+      "spellId": "spell-llamar-al-relampago"
+    },
+    {
+      "level": 7,
+      "spellId": "spell-adivinacion"
+    },
+    {
+      "level": 7,
+      "spellId": "spell-libertad-de-movimiento"
+    },
+    {
+      "level": 9,
+      "spellId": "spell-comunion-con-la-naturaleza"
+    },
+    {
+      "level": 9,
+      "spellId": "spell-zancada-arborea"
+    }
+  ],
+  "costa": [
+    {
+      "level": 3,
+      "spellId": "spell-imagen-multiple"
+    },
+    {
+      "level": 3,
+      "spellId": "spell-paso-brumoso"
+    },
+    {
+      "level": 5,
+      "spellId": "spell-caminar-sobre-las-aguas"
+    },
+    {
+      "level": 5,
+      "spellId": "spell-respiracion-acuatica"
+    },
+    {
+      "level": 7,
+      "spellId": "spell-libertad-de-movimiento"
+    },
+    {
+      "level": 7,
+      "spellId": "spell-controlar-el-agua"
+    },
+    {
+      "level": 9,
+      "spellId": "spell-escudrinamiento"
+    },
+    {
+      "level": 9,
+      "spellId": "spell-conjurar-elemental"
+    }
+  ],
+  "desierto": [
+    {
+      "level": 3,
+      "spellId": "spell-contorno-borroso"
+    },
+    {
+      "level": 3,
+      "spellId": "spell-silencio"
+    },
+    {
+      "level": 5,
+      "spellId": "spell-crear-comida-y-bebida"
+    },
+    {
+      "level": 5,
+      "spellId": "spell-proteccion-contra-la-energia"
+    },
+    {
+      "level": 7,
+      "spellId": "spell-invisibilidad-mayor"
+    },
+    {
+      "level": 7,
+      "spellId": "spell-transformar-piedra"
+    },
+    {
+      "level": 9,
+      "spellId": "spell-nube-aniquiladora"
+    },
+    {
+      "level": 9,
+      "spellId": "spell-plaga-de-insectos"
+    }
+  ],
+  "underdark": [
+    {
+      "level": 3,
+      "spellId": "spell-trepar-cual-aracnido"
+    },
+    {
+      "level": 3,
+      "spellId": "spell-telarana"
+    },
+    {
+      "level": 5,
+      "spellId": "spell-forma-gaseosa"
+    },
+    {
+      "level": 5,
+      "spellId": "spell-nube-apestosa"
+    },
+    {
+      "level": 7,
+      "spellId": "spell-invisibilidad-mayor"
+    },
+    {
+      "level": 7,
+      "spellId": "spell-transformar-piedra"
+    },
+    {
+      "level": 9,
+      "spellId": "spell-nube-aniquiladora"
+    },
+    {
+      "level": 9,
+      "spellId": "spell-plaga-de-insectos"
+    }
+  ],
+  "montana": [
+    {
+      "level": 3,
+      "spellId": "spell-trepar-cual-aracnido"
+    },
+    {
+      "level": 3,
+      "spellId": "spell-brote-de-espinas"
+    },
+    {
+      "level": 5,
+      "spellId": "spell-fundirse-con-la-piedra"
+    },
+    {
+      "level": 5,
+      "spellId": "spell-relampago"
+    },
+    {
+      "level": 7,
+      "spellId": "spell-transformar-piedra"
+    },
+    {
+      "level": 7,
+      "spellId": "spell-piel-petrea"
+    },
+    {
+      "level": 9,
+      "spellId": "spell-muro-de-piedra"
+    },
+    {
+      "level": 9,
+      "spellId": "spell-pasamiento"
+    }
+  ],
+  "pantano": [
+    {
+      "level": 3,
+      "spellId": "spell-oscuridad"
+    },
+    {
+      "level": 3,
+      "spellId": "spell-flecha-acida-de-melf"
+    },
+    {
+      "level": 5,
+      "spellId": "spell-nube-apestosa"
+    },
+    {
+      "level": 5,
+      "spellId": "spell-caminar-sobre-las-aguas"
+    },
+    {
+      "level": 7,
+      "spellId": "spell-libertad-de-movimiento"
+    },
+    {
+      "level": 7,
+      "spellId": "spell-localizar-criatura"
+    },
+    {
+      "level": 9,
+      "spellId": "spell-plaga-de-insectos"
+    },
+    {
+      "level": 9,
+      "spellId": "spell-escudrinamiento"
+    }
+  ],
+  "pradera": [
+    {
+      "level": 3,
+      "spellId": "spell-invisibilidad"
+    },
+    {
+      "level": 3,
+      "spellId": "spell-pasar-sin-dejar-rastro"
+    },
+    {
+      "level": 5,
+      "spellId": "spell-acelerar"
+    },
+    {
+      "level": 5,
+      "spellId": "spell-luz-del-dia"
+    },
+    {
+      "level": 7,
+      "spellId": "spell-adivinacion"
+    },
+    {
+      "level": 7,
+      "spellId": "spell-libertad-de-movimiento"
+    },
+    {
+      "level": 9,
+      "spellId": "spell-plaga-de-insectos"
+    },
+    {
+      "level": 9,
+      "spellId": "spell-mensaje-onirico"
+    }
+  ],
+  "artico": [
+    {
+      "level": 3,
+      "spellId": "spell-inmovilizar-persona"
+    },
+    {
+      "level": 3,
+      "spellId": "spell-brote-de-espinas"
+    },
+    {
+      "level": 5,
+      "spellId": "spell-tormenta-de-granizo"
+    },
+    {
+      "level": 5,
+      "spellId": "spell-ralentizar"
+    },
+    {
+      "level": 7,
+      "spellId": "spell-libertad-de-movimiento"
+    },
+    {
+      "level": 7,
+      "spellId": "spell-tormenta-de-hielo"
+    },
+    {
+      "level": 9,
+      "spellId": "spell-comunion-con-la-naturaleza"
+    },
+    {
+      "level": 9,
+      "spellId": "spell-cono-de-frio"
+    }
+  ]
+}

@@ -389,7 +389,6 @@ def main():
         if k=='bardo':c['automationNotes'].append('Inspiración recupera usos con descanso corto a partir de nivel 5 mediante Fuente de Inspiración; el recurso base conserva recuperación larga.')
         if k=='druida':c['automationNotes'].append('Reglas 2014: competencia con hoz, no con estoque (SRD 5.1, p. 25; errata del PDF). Restricción: ninguna armadura ni escudo de metal. Archidruida elimina el límite de Forma Salvaje a nivel 20.')
         if k=='explorador':c['automationNotes'].append('La cabecera de Mejora de Puntuación incluye nivel 14, pero la tabla y el cuerpo del rasgo no lo incluyen. La progresión sigue la tabla. Las opciones de Tasha que reemplazan rasgos requieren elección explícita.')
-        if k in ('bardo','clerigo','druida','hechicero','mago'):c['automationNotes'].append('Reglas 2014 (SRD 5.1): 3 espacios de conjuro de nivel 4 desde el nivel de clase 9. El PDF imprime 2 entre los niveles 9 y 17; se corrige la progresión efectiva y se conserva la fuente original para consulta.')
         for sub in subclasses:
             if sub['name'] in ('Caballero Arcano','Bribón Arcano'):
                 sub['spellcasting']=spellcasting('int','known','third')
@@ -400,7 +399,6 @@ def main():
                     sub['progression'].append({'level':level,'proficiencyBonus':2+i//4,'featureIds':[f['id'] for f in fs if f['originId']==sub['id'] and f['level']==level],'featureNames':[],'slots':THIRD[i][:],'cantrips':can,'knownSpells':kn,'resources':{},'source':{'page':259 if sub['name']=='Caballero Arcano' else 382}})
                 sub['automationNotes']=['Solo conjuros de mago y restricciones de escuela detalladas en Lanzamiento de Hechizos.']
                 if sub['name']=='Caballero Arcano':sub['automationNotes'].append('El tercer truco se aprende a nivel 10, como indica el texto de Lanzamiento de Hechizos (2014). Se corrige la errata de la tabla del PDF, que lo adelanta al nivel 9.')
-        c['automationNotes'].append('Los efectos contextuales, criaturas invocadas, tablas aleatorias y decisiones narrativas se conservan íntegros en las descripciones; no se aplican automáticamente. Las opciones marcadas optional requieren activación explícita.')
         # Source ownText includes all feature prose; the full hierarchical text is
         # also retained in data/source/sections.json for a lossless source view.
         classes.append(c);allfeatures.extend(fs)

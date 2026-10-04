@@ -36,7 +36,7 @@ export interface Character {
   resourcesSpent: Record<string, number>; slotsSpent: Record<string, number>; conditions: string[]; inspiration: boolean; deathSaves: { successes: number; failures: number };
   attacks: Attack[]; inventory: InventoryItem[]; money: Record<string, number>; biography: Record<string, string>; notes: Note[];
   favorites: { spells: string[]; features: string[] }; manualOverrides: Record<string, number>; manual: { languages: string[]; senses: string[]; resistances: string[]; immunities: string[]; proficiencies: string[]; features: Feature[] };
-  history: HistoryEntry[]; lastLevelSnapshot?: string;
+  history: HistoryEntry[]; lastLevelSnapshot?: string; lastLevelAppliedSnapshot?: string;
 }
 export interface Breakdown { label: string; value: number }
 export interface DerivedValue { value: number; mode: 'auto' | 'manual' | 'override'; breakdown: Breakdown[]; source?: Source }

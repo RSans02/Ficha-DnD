@@ -18,9 +18,7 @@
     ],
     "effects": [],
     "choices": [],
-    "automationNotes": [
-      "Efectos conservados íntegramente como texto; requieren aplicación manual cuando sean condicionales o no estén estructurados."
-    ]
+    "automationNotes": []
   },
   {
     "id": "feat-actor",
@@ -60,9 +58,7 @@
     ],
     "effects": [],
     "choices": [],
-    "automationNotes": [
-      "Efectos conservados íntegramente como texto; requieren aplicación manual cuando sean condicionales o no estén estructurados."
-    ]
+    "automationNotes": []
   },
   {
     "id": "feat-adepto-elemental",
@@ -81,9 +77,7 @@
     ],
     "effects": [],
     "choices": [],
-    "automationNotes": [
-      "Efectos conservados íntegramente como texto; requieren aplicación manual cuando sean condicionales o no estén estructurados."
-    ]
+    "automationNotes": []
   },
   {
     "id": "feat-adepto-marcial",
@@ -98,9 +92,7 @@
     "prerequisites": [],
     "effects": [],
     "choices": [],
-    "automationNotes": [
-      "Efectos conservados íntegramente como texto; requieren aplicación manual cuando sean condicionales o no estén estructurados."
-    ]
+    "automationNotes": []
   },
   {
     "id": "feat-adepto-metamagico-tasha",
@@ -119,9 +111,7 @@
     ],
     "effects": [],
     "choices": [],
-    "automationNotes": [
-      "Efectos conservados íntegramente como texto; requieren aplicación manual cuando sean condicionales o no estén estructurados."
-    ]
+    "automationNotes": []
   },
   {
     "id": "feat-afortunado",
@@ -136,9 +126,7 @@
     "prerequisites": [],
     "effects": [],
     "choices": [],
-    "automationNotes": [
-      "Efectos conservados íntegramente como texto; requieren aplicación manual cuando sean condicionales o no estén estructurados."
-    ]
+    "automationNotes": []
   },
   {
     "id": "feat-agil",
@@ -246,9 +234,7 @@
     ],
     "effects": [],
     "choices": [],
-    "automationNotes": [
-      "Efectos conservados íntegramente como texto; requieren aplicación manual cuando sean condicionales o no estén estructurados."
-    ]
+    "automationNotes": []
   },
   {
     "id": "feat-artillero-tasha",
@@ -284,9 +270,7 @@
     "prerequisites": [],
     "effects": [],
     "choices": [],
-    "automationNotes": [
-      "Efectos conservados íntegramente como texto; requieren aplicación manual cuando sean condicionales o no estén estructurados."
-    ]
+    "automationNotes": []
   },
   {
     "id": "feat-asesino-de-magos",
@@ -301,9 +285,7 @@
     "prerequisites": [],
     "effects": [],
     "choices": [],
-    "automationNotes": [
-      "Efectos conservados íntegramente como texto; requieren aplicación manual cuando sean condicionales o no estén estructurados."
-    ]
+    "automationNotes": []
   },
   {
     "id": "feat-atacante-salvaje",
@@ -318,9 +300,7 @@
     "prerequisites": [],
     "effects": [],
     "choices": [],
-    "automationNotes": [
-      "Efectos conservados íntegramente como texto; requieren aplicación manual cuando sean condicionales o no estén estructurados."
-    ]
+    "automationNotes": []
   },
   {
     "id": "feat-atleta",
@@ -382,9 +362,7 @@
     "prerequisites": [],
     "effects": [],
     "choices": [],
-    "automationNotes": [
-      "Efectos conservados íntegramente como texto; requieren aplicación manual cuando sean condicionales o no estén estructurados."
-    ]
+    "automationNotes": []
   },
   {
     "id": "feat-centinela",
@@ -399,9 +377,7 @@
     "prerequisites": [],
     "effects": [],
     "choices": [],
-    "automationNotes": [
-      "Efectos conservados íntegramente como texto; requieren aplicación manual cuando sean condicionales o no estén estructurados."
-    ]
+    "automationNotes": []
   },
   {
     "id": "feat-chef-tasha",
@@ -463,9 +439,7 @@
     "prerequisites": [],
     "effects": [],
     "choices": [],
-    "automationNotes": [
-      "Efectos conservados íntegramente como texto; requieren aplicación manual cuando sean condicionales o no estén estructurados."
-    ]
+    "automationNotes": []
   },
   {
     "id": "feat-conjurador-de-guerra",
@@ -484,9 +458,7 @@
     ],
     "effects": [],
     "choices": [],
-    "automationNotes": [
-      "Efectos conservados íntegramente como texto; requieren aplicación manual cuando sean condicionales o no estén estructurados."
-    ]
+    "automationNotes": []
   },
   {
     "id": "feat-desgarrador-tasha",
@@ -601,9 +573,7 @@
     ],
     "effects": [],
     "choices": [],
-    "automationNotes": [
-      "Efectos conservados íntegramente como texto; requieren aplicación manual cuando sean condicionales o no estén estructurados."
-    ]
+    "automationNotes": []
   },
   {
     "id": "feat-duro",
@@ -639,9 +609,7 @@
     "prerequisites": [],
     "effects": [],
     "choices": [],
-    "automationNotes": [
-      "Efectos conservados íntegramente como texto; requieren aplicación manual cuando sean condicionales o no estén estructurados."
-    ]
+    "automationNotes": []
   },
   {
     "id": "feat-experto-en-armadura-media",
@@ -661,9 +629,7 @@
     ],
     "effects": [],
     "choices": [],
-    "automationNotes": [
-      "Efectos conservados íntegramente como texto; requieren aplicación manual cuando sean condicionales o no estén estructurados."
-    ]
+    "automationNotes": []
   },
   {
     "id": "feat-experto-en-armadura-pesada",
@@ -751,9 +717,7 @@
     "prerequisites": [],
     "effects": [],
     "choices": [],
-    "automationNotes": [
-      "Efectos conservados íntegramente como texto; requieren aplicación manual cuando sean condicionales o no estén estructurados."
-    ]
+    "automationNotes": []
   },
   {
     "id": "feat-experto-en-ballestas",
@@ -768,9 +732,7 @@
     "prerequisites": [],
     "effects": [],
     "choices": [],
-    "automationNotes": [
-      "Efectos conservados íntegramente como texto; requieren aplicación manual cuando sean condicionales o no estén estructurados."
-    ]
+    "automationNotes": []
   },
   {
     "id": "feat-experto-en-escudos",
@@ -785,9 +747,7 @@
     "prerequisites": [],
     "effects": [],
     "choices": [],
-    "automationNotes": [
-      "Efectos conservados íntegramente como texto; requieren aplicación manual cuando sean condicionales o no estén estructurados."
-    ]
+    "automationNotes": []
   },
   {
     "id": "feat-experto-en-varias-habilidades-tasha",
@@ -1379,9 +1339,7 @@
     "prerequisites": [],
     "effects": [],
     "choices": [],
-    "automationNotes": [
-      "Efectos conservados íntegramente como texto; requieren aplicación manual cuando sean condicionales o no estén estructurados."
-    ]
+    "automationNotes": []
   },
   {
     "id": "feat-francotirador",
@@ -1396,9 +1354,7 @@
     "prerequisites": [],
     "effects": [],
     "choices": [],
-    "automationNotes": [
-      "Efectos conservados íntegramente como texto; requieren aplicación manual cuando sean condicionales o no estén estructurados."
-    ]
+    "automationNotes": []
   },
   {
     "id": "feat-francotirador-de-conjuros",
@@ -1417,9 +1373,7 @@
     ],
     "effects": [],
     "choices": [],
-    "automationNotes": [
-      "Efectos conservados íntegramente como texto; requieren aplicación manual cuando sean condicionales o no estén estructurados."
-    ]
+    "automationNotes": []
   },
   {
     "id": "feat-fuertemente-acorazado",
@@ -1460,9 +1414,7 @@
     "prerequisites": [],
     "effects": [],
     "choices": [],
-    "automationNotes": [
-      "Efectos conservados íntegramente como texto; requieren aplicación manual cuando sean condicionales o no estén estructurados."
-    ]
+    "automationNotes": []
   },
   {
     "id": "feat-habilidoso",
@@ -1477,9 +1429,7 @@
     "prerequisites": [],
     "effects": [],
     "choices": [],
-    "automationNotes": [
-      "Efectos conservados íntegramente como texto; requieren aplicación manual cuando sean condicionales o no estén estructurados."
-    ]
+    "automationNotes": []
   },
   {
     "id": "feat-iniciado-en-la-lucha-tasha",
@@ -1499,9 +1449,7 @@
     ],
     "effects": [],
     "choices": [],
-    "automationNotes": [
-      "Efectos conservados íntegramente como texto; requieren aplicación manual cuando sean condicionales o no estén estructurados."
-    ]
+    "automationNotes": []
   },
   {
     "id": "feat-iniciado-en-la-magia",
@@ -1516,9 +1464,7 @@
     "prerequisites": [],
     "effects": [],
     "choices": [],
-    "automationNotes": [
-      "Efectos conservados íntegramente como texto; requieren aplicación manual cuando sean condicionales o no estén estructurados."
-    ]
+    "automationNotes": []
   },
   {
     "id": "feat-lider-inspirador",
@@ -1539,9 +1485,7 @@
     ],
     "effects": [],
     "choices": [],
-    "automationNotes": [
-      "Efectos conservados íntegramente como texto; requieren aplicación manual cuando sean condicionales o no estén estructurados."
-    ]
+    "automationNotes": []
   },
   {
     "id": "feat-ligeramente-acorazado",
@@ -1624,9 +1568,7 @@
     "prerequisites": [],
     "effects": [],
     "choices": [],
-    "automationNotes": [
-      "Efectos conservados íntegramente como texto; requieren aplicación manual cuando sean condicionales o no estén estructurados."
-    ]
+    "automationNotes": []
   },
   {
     "id": "feat-mente-aguda",
@@ -1948,9 +1890,7 @@
     ],
     "effects": [],
     "choices": [],
-    "automationNotes": [
-      "Efectos conservados íntegramente como texto; requieren aplicación manual cuando sean condicionales o no estén estructurados."
-    ]
+    "automationNotes": []
   },
   {
     "id": "feat-sanador",
@@ -1965,9 +1905,7 @@
     "prerequisites": [],
     "effects": [],
     "choices": [],
-    "automationNotes": [
-      "Efectos conservados íntegramente como texto; requieren aplicación manual cuando sean condicionales o no estén estructurados."
-    ]
+    "automationNotes": []
   },
   {
     "id": "feat-telepatia-tasha",
@@ -2507,9 +2445,7 @@
     ],
     "effects": [],
     "choices": [],
-    "automationNotes": [
-      "Efectos conservados íntegramente como texto; requieren aplicación manual cuando sean condicionales o no estén estructurados."
-    ]
+    "automationNotes": []
   },
   {
     "id": "feat-magia-de-elfo-del-bosque",
@@ -2529,9 +2465,7 @@
     ],
     "effects": [],
     "choices": [],
-    "automationNotes": [
-      "Efectos conservados íntegramente como texto; requieren aplicación manual cuando sean condicionales o no estén estructurados."
-    ]
+    "automationNotes": []
   },
   {
     "id": "feat-piel-de-dragon",
@@ -2688,9 +2622,7 @@
     ],
     "effects": [],
     "choices": [],
-    "automationNotes": [
-      "Efectos conservados íntegramente como texto; requieren aplicación manual cuando sean condicionales o no estén estructurados."
-    ]
+    "automationNotes": []
   },
   {
     "id": "feat-segunda-oportunidad",
@@ -2773,9 +2705,7 @@
     ],
     "effects": [],
     "choices": [],
-    "automationNotes": [
-      "Efectos conservados íntegramente como texto; requieren aplicación manual cuando sean condicionales o no estén estructurados."
-    ]
+    "automationNotes": []
   },
   {
     "id": "feat-teletransportacion-feerica",
@@ -2847,9 +2777,7 @@
     ],
     "effects": [],
     "choices": [],
-    "automationNotes": [
-      "Efectos conservados íntegramente como texto; requieren aplicación manual cuando sean condicionales o no estén estructurados."
-    ]
+    "automationNotes": []
   },
   {
     "id": "feat-bendicion-del-dragon-cromatico",
@@ -2864,9 +2792,7 @@
     "prerequisites": [],
     "effects": [],
     "choices": [],
-    "automationNotes": [
-      "Efectos conservados íntegramente como texto; requieren aplicación manual cuando sean condicionales o no estén estructurados."
-    ]
+    "automationNotes": []
   },
   {
     "id": "feat-bendicion-del-dragon-gematico",
@@ -2939,9 +2865,7 @@
     "prerequisites": [],
     "effects": [],
     "choices": [],
-    "automationNotes": [
-      "Efectos conservados íntegramente como texto; requieren aplicación manual cuando sean condicionales o no estén estructurados."
-    ]
+    "automationNotes": []
   },
   {
     "id": "feat-cartomagico",
@@ -2964,9 +2888,7 @@
     ],
     "effects": [],
     "choices": [],
-    "automationNotes": [
-      "Efectos conservados íntegramente como texto; requieren aplicación manual cuando sean condicionales o no estén estructurados."
-    ]
+    "automationNotes": []
   },
   {
     "id": "feat-conflujo-mistico",
@@ -2981,9 +2903,7 @@
     "prerequisites": [],
     "effects": [],
     "choices": [],
-    "automationNotes": [
-      "Efectos conservados íntegramente como texto; requieren aplicación manual cuando sean condicionales o no estén estructurados."
-    ]
+    "automationNotes": []
   },
   {
     "id": "feat-cruel",
@@ -2998,9 +2918,7 @@
     "prerequisites": [],
     "effects": [],
     "choices": [],
-    "automationNotes": [
-      "Efectos conservados íntegramente como texto; requieren aplicación manual cuando sean condicionales o no estén estructurados."
-    ]
+    "automationNotes": []
   },
   {
     "id": "feat-generahechizos",
@@ -3023,9 +2941,7 @@
     ],
     "effects": [],
     "choices": [],
-    "automationNotes": [
-      "Efectos conservados íntegramente como texto; requieren aplicación manual cuando sean condicionales o no estén estructurados."
-    ]
+    "automationNotes": []
   },
   {
     "id": "feat-maestro-del-lanzamiento-de-armas",
@@ -3094,9 +3010,7 @@
     ],
     "effects": [],
     "choices": [],
-    "automationNotes": [
-      "Efectos conservados íntegramente como texto; requieren aplicación manual cuando sean condicionales o no estén estructurados."
-    ]
+    "automationNotes": []
   },
   {
     "id": "feat-recuperacion-notable",
@@ -3132,8 +3046,6 @@
     "prerequisites": [],
     "effects": [],
     "choices": [],
-    "automationNotes": [
-      "Efectos conservados íntegramente como texto; requieren aplicación manual cuando sean condicionales o no estén estructurados."
-    ]
+    "automationNotes": []
   }
 ]

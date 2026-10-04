@@ -1,0 +1,98 @@
+{
+  "subclass-brujo-el-archi-feerico": [
+    "spell-fuego-feerico",
+    "spell-dormir",
+    "spell-calmar-emociones",
+    "spell-fuerza-fantasmal",
+    "spell-intermitencia",
+    "spell-crecimiento-vegetal",
+    "spell-dominar-bestia",
+    "spell-invisibilidad-mayor",
+    "spell-dominar-persona",
+    "spell-similitud"
+  ],
+  "subclass-brujo-el-infernal": [
+    "spell-manos-ardientes",
+    "spell-orden-imperiosa",
+    "spell-ceguera-sordera",
+    "spell-rayo-abrasador",
+    "spell-bola-de-fuego",
+    "spell-nube-apestosa",
+    "spell-escudo-de-fuego",
+    "spell-muro-de-fuego",
+    "spell-descarga-flamigera",
+    "spell-sacralizar"
+  ],
+  "subclass-brujo-el-primigenio": [
+    "spell-susurros-disonantes",
+    "spell-risa-horrible-de-tasha",
+    "spell-detectar-pensamientos",
+    "spell-fuerza-fantasmal",
+    "spell-clarividencia",
+    "spell-recado",
+    "spell-dominar-bestia",
+    "spell-tentaculos-negros-de-evard",
+    "spell-dominar-persona",
+    "spell-telequinesia"
+  ],
+  "subclass-brujo-el-inmortal": [
+    "spell-falsa-vida",
+    "spell-rayo-nauseabundo",
+    "spell-ceguera-sordera",
+    "spell-silencio",
+    "spell-fingir-muerte",
+    "spell-hablar-con-los-muertos",
+    "spell-aura-de-vida",
+    "spell-custodia-contra-la-muerte",
+    "spell-conocimiento-de-leyendas",
+    "spell-contagio"
+  ],
+  "subclass-brujo-el-no-muerto": [
+    "spell-falsa-vida",
+    "spell-perdicion",
+    "spell-ceguera-sordera",
+    "spell-fuerza-fantasmal",
+    "spell-corcel-fantasmal",
+    "spell-hablar-con-los-muertos",
+    "spell-custodia-contra-la-muerte",
+    "spell-invisibilidad-mayor",
+    "spell-nube-aniquiladora",
+    "spell-caparazon-antivida"
+  ],
+  "subclass-brujo-el-celestial": [
+    "spell-curar-heridas",
+    "spell-saeta-guiada",
+    "spell-esfera-flamigera",
+    "spell-restablecimiento-menor",
+    "spell-luz-del-dia",
+    "spell-revivir",
+    "spell-guardian-de-la-fe",
+    "spell-muro-de-fuego",
+    "spell-restablecimiento-mayor",
+    "spell-descarga-flamigera"
+  ],
+  "subclass-brujo-el-hexblade": [
+    "spell-escudo",
+    "spell-castigo-furioso",
+    "spell-contorno-borroso",
+    "spell-castigo-marcador",
+    "spell-intermitencia",
+    "spell-arma-elemental",
+    "spell-asesino-fantasmal",
+    "spell-castigo-abrumador",
+    "spell-castigo-desterrador",
+    "spell-cono-de-frio"
+  ],
+  "subclass-brujo-el-insondable": [
+    "spell-crear-o-destruir-agua",
+    "spell-ola-atronadora",
+    "spell-rafaga-de-viento",
+    "spell-silencio",
+    "spell-relampago",
+    "spell-tormenta-de-granizo",
+    "spell-invocar-elemental",
+    "spell-controlar-el-agua",
+    "spell-la-mano-de-bigby",
+    "spell-cono-de-frio"
+  ]
+}

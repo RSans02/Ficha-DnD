@@ -914,8 +914,7 @@
       "feature-artificiero-reference-infusiones-de-artificiero"
     ],
     "automationNotes": [
-      "Multiclase: suma la mitad de niveles de artificiero redondeada hacia arriba (p. 105). La tabla llama Ingeniería Mágica al rasgo Arreglo Mágico.",
-      "Los efectos contextuales, criaturas invocadas, tablas aleatorias y decisiones narrativas se conservan íntegros en las descripciones; no se aplican automáticamente. Las opciones marcadas optional requieren activación explícita."
+      "Multiclase: suma la mitad de niveles de artificiero redondeada hacia arriba (p. 105). La tabla llama Ingeniería Mágica al rasgo Arreglo Mágico."
     ],
     "multiclassRequirements": [
       {
@@ -1578,8 +1577,7 @@
       "feature-barbaro-reference-opciones-de-tasha-para-el-barbaro"
     ],
     "automationNotes": [
-      "Furia de nivel 20: usos ilimitados, representados por -1. La tabla concede Senda a nivel 10, omitido en el encabezado del rasgo. Juggernaut: Golpe Huracanado dice nivel 6 en encabezado y nivel 10 en texto; se conserva la discrepancia sin corregir el manual.",
-      "Los efectos contextuales, criaturas invocadas, tablas aleatorias y decisiones narrativas se conservan íntegros en las descripciones; no se aplican automáticamente. Las opciones marcadas optional requieren activación explícita."
+      "Furia de nivel 20: usos ilimitados, representados por -1. La tabla concede Senda a nivel 10, omitido en el encabezado del rasgo. Juggernaut: Golpe Huracanado dice nivel 6 en encabezado y nivel 10 en texto; se conserva la discrepancia sin corregir el manual."
     ],
     "multiclassRequirements": [
       {
@@ -2827,9 +2825,7 @@
       "feature-bardo-reference-opciones-de-tasha-para-el-bardo"
     ],
     "automationNotes": [
-      "Inspiración recupera usos con descanso corto a partir de nivel 5 mediante Fuente de Inspiración; el recurso base conserva recuperación larga.",
-      "Reglas 2014 (SRD 5.1): 3 espacios de conjuro de nivel 4 desde el nivel de clase 9. El PDF imprime 2 entre los niveles 9 y 17; se corrige la progresión efectiva y se conserva la fuente original para consulta.",
-      "Los efectos contextuales, criaturas invocadas, tablas aleatorias y decisiones narrativas se conservan íntegros en las descripciones; no se aplican automáticamente. Las opciones marcadas optional requieren activación explícita."
+      "Inspiración recupera usos con descanso corto a partir de nivel 5 mediante Fuente de Inspiración; el recurso base conserva recuperación larga."
     ],
     "multiclassRequirements": [
       {
@@ -4623,9 +4619,7 @@
       "feature-brujo-reference-invocaciones-sobrenaturales-de-xanathar",
       "feature-brujo-reference-invocaciones-sobrenaturales-de-tasha"
     ],
-    "automationNotes": [
-      "Los efectos contextuales, criaturas invocadas, tablas aleatorias y decisiones narrativas se conservan íntegros en las descripciones; no se aplican automáticamente. Las opciones marcadas optional requieren activación explícita."
-    ],
+    "automationNotes": [],
     "multiclassRequirements": [
       {
         "ability": "cha",
@@ -5579,10 +5573,7 @@
       "feature-clerigo-reference-informacion-del-clerigo-en-xanathar",
       "feature-clerigo-reference-opciones-de-tasha-para-el-clerigo"
     ],
-    "automationNotes": [
-      "Reglas 2014 (SRD 5.1): 3 espacios de conjuro de nivel 4 desde el nivel de clase 9. El PDF imprime 2 entre los niveles 9 y 17; se corrige la progresión efectiva y se conserva la fuente original para consulta.",
-      "Los efectos contextuales, criaturas invocadas, tablas aleatorias y decisiones narrativas se conservan íntegros en las descripciones; no se aplican automáticamente. Las opciones marcadas optional requieren activación explícita."
-    ],
+    "automationNotes": [],
     "multiclassRequirements": [
       {
         "ability": "wis",
@@ -6342,9 +6333,7 @@
       "feature-druida-reference-opciones-de-tasha-para-el-druida"
     ],
     "automationNotes": [
-      "Reglas 2014: competencia con hoz, no con estoque (SRD 5.1, p. 25; errata del PDF). Restricción: ninguna armadura ni escudo de metal. Archidruida elimina el límite de Forma Salvaje a nivel 20.",
-      "Reglas 2014 (SRD 5.1): 3 espacios de conjuro de nivel 4 desde el nivel de clase 9. El PDF imprime 2 entre los niveles 9 y 17; se corrige la progresión efectiva y se conserva la fuente original para consulta.",
-      "Los efectos contextuales, criaturas invocadas, tablas aleatorias y decisiones narrativas se conservan íntegros en las descripciones; no se aplican automáticamente. Las opciones marcadas optional requieren activación explícita."
+      "Reglas 2014: competencia con hoz, no con estoque (SRD 5.1, p. 25; errata del PDF). Restricción: ninguna armadura ni escudo de metal. Archidruida elimina el límite de Forma Salvaje a nivel 20."
     ],
     "multiclassRequirements": [
       {
@@ -7140,8 +7129,7 @@
       "feature-explorador-reference-opciones-del-senor-de-las-bestias"
     ],
     "automationNotes": [
-      "La cabecera de Mejora de Puntuación incluye nivel 14, pero la tabla y el cuerpo del rasgo no lo incluyen. La progresión sigue la tabla. Las opciones de Tasha que reemplazan rasgos requieren elección explícita.",
-      "Los efectos contextuales, criaturas invocadas, tablas aleatorias y decisiones narrativas se conservan íntegros en las descripciones; no se aplican automáticamente. Las opciones marcadas optional requieren activación explícita."
+      "La cabecera de Mejora de Puntuación incluye nivel 14, pero la tabla y el cuerpo del rasgo no lo incluyen. La progresión sigue la tabla. Las opciones de Tasha que reemplazan rasgos requieren elección explícita."
     ],
     "multiclassRequirements": [
       {
@@ -8332,9 +8320,7 @@
       "feature-guerrero-reference-informacion-del-guerrero-xanathar",
       "feature-guerrero-reference-opciones-de-tasha-para-el-guerrero"
     ],
-    "automationNotes": [
-      "Los efectos contextuales, criaturas invocadas, tablas aleatorias y decisiones narrativas se conservan íntegros en las descripciones; no se aplican automáticamente. Las opciones marcadas optional requieren activación explícita."
-    ],
+    "automationNotes": [],
     "multiclassRequirements": [
       {
         "ability": "str",
@@ -9516,10 +9502,7 @@
       "feature-hechicero-reference-informacion-del-hechicero-xanathar",
       "feature-hechicero-reference-opciones-de-tasha-para-el-hechicero"
     ],
-    "automationNotes": [
-      "Reglas 2014 (SRD 5.1): 3 espacios de conjuro de nivel 4 desde el nivel de clase 9. El PDF imprime 2 entre los niveles 9 y 17; se corrige la progresión efectiva y se conserva la fuente original para consulta.",
-      "Los efectos contextuales, criaturas invocadas, tablas aleatorias y decisiones narrativas se conservan íntegros en las descripciones; no se aplican automáticamente. Las opciones marcadas optional requieren activación explícita."
-    ],
+    "automationNotes": [],
     "multiclassRequirements": [
       {
         "ability": "cha",
@@ -10348,10 +10331,7 @@
       "feature-mago-reference-informacion-del-mago-xanathar",
       "feature-mago-reference-opciones-de-tasha-para-el-mago"
     ],
-    "automationNotes": [
-      "Reglas 2014 (SRD 5.1): 3 espacios de conjuro de nivel 4 desde el nivel de clase 9. El PDF imprime 2 entre los niveles 9 y 17; se corrige la progresión efectiva y se conserva la fuente original para consulta.",
-      "Los efectos contextuales, criaturas invocadas, tablas aleatorias y decisiones narrativas se conservan íntegros en las descripciones; no se aplican automáticamente. Las opciones marcadas optional requieren activación explícita."
-    ],
+    "automationNotes": [],
     "multiclassRequirements": [
       {
         "ability": "int",
@@ -11059,9 +11039,7 @@
       "feature-monje-reference-informacion-del-monje-xanathar",
       "feature-monje-reference-opciones-de-tasha-para-el-monje"
     ],
-    "automationNotes": [
-      "Los efectos contextuales, criaturas invocadas, tablas aleatorias y decisiones narrativas se conservan íntegros en las descripciones; no se aplican automáticamente. Las opciones marcadas optional requieren activación explícita."
-    ],
+    "automationNotes": [],
     "multiclassRequirements": [
       {
         "ability": "dex",
@@ -11887,9 +11865,7 @@
       "feature-paladin-reference-informacion-del-paladin-xanathar",
       "feature-paladin-reference-opciones-de-tasha-para-el-paladin"
     ],
-    "automationNotes": [
-      "Los efectos contextuales, criaturas invocadas, tablas aleatorias y decisiones narrativas se conservan íntegros en las descripciones; no se aplican automáticamente. Las opciones marcadas optional requieren activación explícita."
-    ],
+    "automationNotes": [],
     "multiclassRequirements": [
       {
         "ability": "str",
@@ -13311,9 +13287,7 @@
       "feature-picaro-reference-informacion-del-picaro-xanathar",
       "feature-picaro-reference-opciones-de-tasha-para-el-picaro"
     ],
-    "automationNotes": [
-      "Los efectos contextuales, criaturas invocadas, tablas aleatorias y decisiones narrativas se conservan íntegros en las descripciones; no se aplican automáticamente. Las opciones marcadas optional requieren activación explícita."
-    ],
+    "automationNotes": [],
     "multiclassRequirements": [
       {
         "ability": "dex",

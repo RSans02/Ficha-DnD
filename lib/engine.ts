@@ -1,5 +1,10 @@
 import { ABILITIES, SKILLS, MULTICLASS_SLOTS, MULTICLASS_PROFICIENCIES } from './constants';
 import type { Ability, Attack, Catalog, Character, Choice, ChoiceOption, DerivedCharacter, DerivedValue, Effect, Feature, Prerequisite, Source, Spell } from './types';
+import subclassSpellGrants from '../data/rules/subclass-spell-grants.json';
+import subclassSpellAccess from '../data/rules/subclass-spell-access.json';
+import subclassLandSpells from '../data/rules/subclass-land-spells.json';
+import genieExpandedSpells from '../data/rules/genie-expanded-spells.json';
+import subclassDirectSpellGrants from '../data/rules/subclass-direct-spell-grants.json';
 
 export const abilityModifier = (score: number) => Math.floor((score - 10) / 2);
 export const totalLevel = (c: Character) => c.classes.reduce((sum, cl) => sum + cl.level, 0);
@@ -84,6 +89,8 @@ export function getAllChoices(c: Character, catalog: Catalog): Choice[] {
   const features = activeFeatures(c, catalog);
   const background = catalog.backgrounds.find(b => b.id === c.backgroundId);
   const choices: Choice[] = [...races(c, catalog).flatMap(r => r.choices), ...(catalog.backgrounds.find(b => b.id === c.backgroundId)?.choices ?? []), ...features.flatMap(f => f.choices ?? []), ...catalog.feats.filter(f => selectedFeatIds(c, catalog).includes(f.id)).flatMap(f => f.choices)];
+  if (c.classes.some(entry => entry.subclassId === 'subclass-druida-circulo-de-la-tierra' && entry.level >= 3)) choices.push({ id: 'subclass-land.druid', type: 'subclass_land', name: 'Tierra del Círculo', amount: 1, required: true, classId: 'class-druida', level: 3, source: catalog.features.find(feature => feature.id === 'feature-druida-circulo-de-la-tierra-hechizos-del-circulo')?.source, options: Object.keys(subclassLandSpells).map(id => ({ id, name: ({ artico: 'Ártico', montana: 'Montaña', pradera: 'Pradera', underdark: 'Underdark' } as Record<string, string>)[id] ?? id[0].toUpperCase() + id.slice(1) })) });
+  if (c.classes.some(entry => entry.subclassId === 'subclass-brujo-el-genio')) choices.push({ id: 'subclass-genie.warlock', type: 'subclass_genie', name: 'Tipo de genio', amount: 1, required: true, classId: 'class-brujo', level: 1, source: catalog.features.find(feature => feature.id === 'feature-brujo-el-genio-lista-de-hechizos-expandida')?.source, options: Object.keys(genieExpandedSpells).filter(id => id !== 'common').map(id => ({ id, name: ({ dao: 'Dao', djinni: 'Djinni', efreeti: 'Efreeti', marid: 'Marid' } as Record<string, string>)[id] })) });
   classData(c, catalog).forEach(({ cls, entry }, index) => {
     choices.push(...(cls.choices ?? []).filter(ch => !ch.level || ch.level <= entry.level).map(ch => ({ ...ch, classId: cls.id, amount: typeof ch.dynamicAmountResource === 'string' ? cls.progression.find(row => row.level === entry.level)?.resources[ch.dynamicAmountResource] ?? ch.amount : ch.amount })));
     const multiclassSkill = /bardo|explorador|picaro/.test(norm(cls.name));
@@ -316,14 +323,30 @@ function spellClassAllowed(spell: Spell, classId: string, c: Character, catalog:
   const metadata = spell as Spell & { optionalForClasses?: string[]; availableToSubclasses?: string[]; dmAccessForClasses?: string[] };
   const optional = metadata.optionalForClasses ?? [], subclass = c.classes.find(cl => cl.classId === classId)?.subclassId;
   const direct = spell.availableToClasses.some(id => id === classId || (cls && norm(id) === norm(cls.name)));
-  const subclassAccess = !!subclass && metadata.availableToSubclasses?.includes(subclass);
+  const genieAccess = subclass === 'subclass-brujo-el-genio' && (genieExpandedSpells.common.includes(spell.id) || (genieExpandedSpells as Record<string, string[]>)[c.choices['subclass-genie.warlock']?.[0]]?.includes(spell.id));
+  const subclassAccess = !!subclass && (metadata.availableToSubclasses?.includes(subclass) || (subclassSpellAccess as Record<string, string[]>)[subclass]?.includes(spell.id) || genieAccess);
   const dmAccess = metadata.dmAccessForClasses?.includes(classId) && c.choices[`optional-spells.${classId}`]?.includes('enabled');
   return !!(direct || subclassAccess || dmAccess) && (!optional.includes(classId) || !!c.choices[`optional-spells.${classId}`]?.includes('enabled'));
 }
 
 /** Racial and selected feat cantrips remain separate from class known/prepared limits. */
 export function getGrantedSpells(c: Character, catalog: Catalog): Spell[] {
-  const ids = effectsFor(c, catalog, activeFeatures(c, catalog)).filter(x => ['grant_spell', 'spell'].includes(x.effect.type)).map(x => x.effect.spellId);
+  const ids = [...effectsFor(c, catalog, activeFeatures(c, catalog)).filter(x => ['grant_spell', 'spell'].includes(x.effect.type)).map(x => x.effect.spellId), ...c.classes.flatMap(entry => {
+    const subclass = catalog.classes.find(cls => cls.id === entry.classId)?.subclasses.find(sub => sub.id === entry.subclassId);
+    return (subclass?.featureIds ?? []).flatMap(id => [...((subclassSpellGrants as Record<string, {level:number;spellId:string}[]>)[id] ?? []), ...((subclassDirectSpellGrants as Record<string, {level:number;spellId:string}[]>)[id] ?? [])].filter(grant => grant.level <= entry.level).map(grant => grant.spellId));
+  }), ...c.classes.filter(entry => entry.subclassId === 'subclass-druida-circulo-de-la-tierra').flatMap(entry => (subclassLandSpells as Record<string, {level:number;spellId:string}[]>)[c.choices['subclass-land.druid']?.[0]]?.filter(grant => grant.level <= entry.level).map(grant => grant.spellId) ?? [])];
+  return catalog.spells.filter(spell => ids.includes(spell.id));
+}
+
+export function getClassGrantedSpells(c: Character, classId: string, catalog: Catalog): Spell[] {
+  const entry = c.classes.find(cl => cl.classId === classId);
+  const subclass = catalog.classes.find(cls => cls.id === classId)?.subclasses.find(sub => sub.id === entry?.subclassId);
+  if (!entry || !subclass) return [];
+  const ids = [...subclass.featureIds.flatMap(id => {
+    const feature = catalog.features.find(item => item.id === id);
+    if (feature?.level !== null && feature?.level !== undefined && feature.level > entry.level) return [];
+    return [...(feature?.effects ?? []).filter(effect => ['grant_spell', 'spell'].includes(effect.type) && (!effect.level || effect.level <= entry.level)).map(effect => effect.spellId), ...[...((subclassSpellGrants as Record<string, {level:number;spellId:string}[]>)[id] ?? []), ...((subclassDirectSpellGrants as Record<string, {level:number;spellId:string}[]>)[id] ?? [])].filter(grant => grant.level <= entry.level).map(grant => grant.spellId)];
+  }), ...(subclass.id === 'subclass-druida-circulo-de-la-tierra' ? (subclassLandSpells as Record<string, {level:number;spellId:string}[]>)[c.choices['subclass-land.druid']?.[0]]?.filter(grant => grant.level <= entry.level).map(grant => grant.spellId) ?? [] : [])];
   return catalog.spells.filter(spell => ids.includes(spell.id));
 }
 
@@ -459,9 +482,10 @@ export function getPendingChoices(c: Character, catalog: Catalog): Choice[] {
   for (const caster of d.spellcasting) {
     const selection = c.spellSelections[caster.classId] ?? { known: [], prepared: [] };
     const options = validSpells(c, caster.classId, catalog);
+    const grantedIds = new Set(getClassGrantedSpells(c, caster.classId, catalog).map(spell => spell.id));
     const fixedCantrips = getFixedClassCantrips(c, caster.classId, catalog);
     if (caster.cantrips !== null && unique([...selection.known.filter(id => catalog.spells.find(s => s.id === id)?.level === 0), ...fixedCantrips.map(s => s.id)]).length !== caster.cantrips) pending.push({ id: `cantrips.${caster.classId}`, type: 'cantrips', name: 'Trucos conocidos', amount: caster.cantrips, classId: caster.classId, required: true, options: options.filter(s => s.level === 0 && !fixedCantrips.some(fixed => fixed.id === s.id)).map(s => ({ id: s.id, name: s.name })) });
-    if (caster.knownLimit !== null && selection.known.filter(id => (catalog.spells.find(s => s.id === id)?.level ?? 0) > 0).length !== caster.knownLimit) pending.push({ id: `known.${caster.classId}`, type: 'spells', name: 'Conjuros conocidos', amount: caster.knownLimit, classId: caster.classId, required: true, options: options.filter(s => s.level! > 0).map(s => ({ id: s.id, name: s.name })) });
+    if (caster.knownLimit !== null && selection.known.filter(id => !grantedIds.has(id) && (catalog.spells.find(s => s.id === id)?.level ?? 0) > 0).length !== caster.knownLimit) pending.push({ id: `known.${caster.classId}`, type: 'spells', name: 'Conjuros conocidos', amount: caster.knownLimit, classId: caster.classId, required: true, options: options.filter(s => s.level! > 0 && !grantedIds.has(s.id)).map(s => ({ id: s.id, name: s.name })) });
     const bookMinimum = spellbookMinimum(c, caster.classId, catalog);
     if (bookMinimum !== null && selection.known.filter(id => (catalog.spells.find(s => s.id === id)?.level ?? 0) > 0).length < bookMinimum) pending.push({ id: `book.${caster.classId}`, type: 'spells', name: 'Conjuros en el libro (mínimo)', amount: bookMinimum, minimum: true, classId: caster.classId, required: true, source: { page: 307, endPage: 308 }, options: options.filter(s => s.level! > 0).map(s => ({ id: s.id, name: s.name })) });
     if (caster.preparedLimit !== null && !selection.prepared.length && caster.preparedLimit > 0) pending.push({ id: `prepared.${caster.classId}`, type: 'prepared', name: 'Conjuros preparados', amount: caster.preparedLimit, classId: caster.classId, required: false, options: options.filter(s => s.level! > 0).map(s => ({ id: s.id, name: s.name })) });
@@ -514,7 +538,7 @@ export function validateCharacter(c: Character, catalog: Catalog): string[] {
   Object.entries(c.spellSelections).forEach(([classId, selection]) => {
     const caster = d.spellcasting.find(sc => sc.classId === classId);
     if (!caster) { if (selection.known.length || selection.prepared.length) errors.push(`La clase ${classId} no dispone de lanzamiento de conjuros a este nivel.`); return; }
-    const valid = new Set(validSpells(c, classId, catalog).map(s => s.id));
+    const valid = new Set([...validSpells(c, classId, catalog), ...getClassGrantedSpells(c, classId, catalog)].map(s => s.id));
     unique([...selection.known, ...selection.prepared]).forEach(id => { if (!valid.has(id)) errors.push(`Conjuro no disponible para clase y nivel: ${catalog.spells.find(s => s.id === id)?.name ?? id}.`); });
     if (new Set(selection.known).size !== selection.known.length || new Set(selection.prepared).size !== selection.prepared.length) errors.push('No se pueden repetir conjuros en una misma lista.');
     if (selection.prepared.some(id => catalog.spells.find(s => s.id === id)?.level === 0)) errors.push('Los trucos se conocen, no se preparan.');
@@ -563,19 +587,70 @@ export function applyLevelUp(original: Character, draft: Character, catalog: Cat
   if (differences.length !== 1 || differences[0].level !== (original.classes.find(cl => cl.classId === differences[0].classId)?.level ?? 0) + 1 || original.classes.some(cl => !draft.classes.some(next => next.classId === cl.classId))) throw new Error('La subida solo puede incrementar una clase.');
   const errors = validateCharacter(draft, catalog);
   if (errors.length) throw new Error(errors.join('\n'));
-  const previous = clone(original); delete previous.lastLevelSnapshot;
+  const previous = clone(original); delete previous.lastLevelSnapshot; delete previous.lastLevelAppliedSnapshot;
   const next = clone(draft);
+  delete next.lastLevelSnapshot; delete next.lastLevelAppliedSnapshot;
+  next.lastLevelAppliedSnapshot = JSON.stringify(next);
   next.lastLevelSnapshot = JSON.stringify(previous);
   return withHistory(next, `Subió a nivel ${totalLevel(next)} · ${catalog.classes.find(cl => cl.id === differences[0].classId)?.name ?? differences[0].classId} ${differences[0].level}`);
 }
 
-export function undoLevelUp(c: Character): Character {
+export function undoLevelUp(c: Character, catalog?: Catalog): Character {
   if (!c.lastLevelSnapshot) return c;
   let previous: Character;
   try { previous = JSON.parse(c.lastLevelSnapshot) as Character; } catch { throw new Error('No se puede leer la instantánea de nivel.'); }
   if (previous.schemaVersion !== 1 || previous.id !== c.id || !Array.isArray(previous.classes) || totalLevel(previous) !== totalLevel(c) - 1) throw new Error('La instantánea de nivel no es válida.');
-  delete previous.lastLevelSnapshot;
-  return withHistory(previous, 'Se deshizo la última subida de nivel.');
+  if (!c.lastLevelAppliedSnapshot) throw new Error('Esta subida se guardó antes del deshacer seguro. No se puede restaurar sin riesgo de borrar cambios posteriores.');
+  let applied: Character;
+  try { applied = JSON.parse(c.lastLevelAppliedSnapshot) as Character; } catch { throw new Error('No se puede leer el resultado de la subida.'); }
+  if (applied.id !== c.id || totalLevel(applied) !== totalLevel(c)) throw new Error('El resultado de la subida no coincide con este personaje.');
+  const same = (a: unknown, b: unknown) => JSON.stringify(a) === JSON.stringify(b);
+  const isRecord = (value: unknown): value is Record<string, unknown> => !!value && typeof value === 'object' && !Array.isArray(value);
+  const merge = (before: unknown, after: unknown, now: unknown, path = ''): unknown => {
+    if (same(before, after)) return now;
+    if (path === 'classes') {
+      const oldClasses = before as Character['classes'], newClasses = after as Character['classes'];
+      const current = clone(now as Character['classes']);
+      const leveled = newClasses.find(entry => entry.level !== (oldClasses.find(old => old.classId === entry.classId)?.level ?? 0));
+      if (!leveled) throw new Error('No se identifica la clase de la subida.');
+      const old = oldClasses.find(entry => entry.classId === leveled.classId);
+      if (!old) return current.filter(entry => entry.classId !== leveled.classId);
+      const entry = current.find(item => item.classId === leveled.classId);
+      if (!entry || entry.level !== leveled.level) throw new Error('La clase cambió después de la subida; revísala antes de deshacer.');
+      entry.level = old.level;
+      if (old.subclassId !== leveled.subclassId) entry.subclassId = old.subclassId;
+      return current;
+    }
+    if (path === 'hp.rolls') return (now as Character['hp']['rolls']).slice(0, (before as Character['hp']['rolls']).length);
+    if (Array.isArray(after) && Array.isArray(now)) {
+      const old = Array.isArray(before) ? before : [];
+      if (path === 'featIds' || /^spellSelections\.[^.]+\.(known|prepared)$/.test(path)) {
+        const added = after.filter(value => !old.includes(value));
+        return [...old.filter(value => !after.includes(value)), ...now.filter(value => !added.includes(value))];
+      }
+      return same(now, after) ? before : now;
+    }
+    if (isRecord(before) || isRecord(after)) {
+      const old = isRecord(before) ? before : {}, result: Record<string, unknown> = isRecord(now) ? clone(now) : {};
+      const newer = isRecord(after) ? after : {};
+      for (const key of new Set([...Object.keys(old), ...Object.keys(newer)])) {
+        if (same(old[key], newer[key])) continue;
+        const childPath = path ? `${path}.${key}` : key;
+        if (path === 'choices' && !(key in old)) { delete result[key]; continue; }
+        const merged = merge(old[key], newer[key], result[key], childPath);
+        if (merged === undefined) delete result[key]; else result[key] = merged;
+      }
+      return result;
+    }
+    return same(now, after) ? before : now;
+  };
+  const result = merge(previous, applied, c) as Character;
+  delete result.lastLevelSnapshot; delete result.lastLevelAppliedSnapshot;
+  if (catalog) {
+    const issues = validateCharacter(result, catalog);
+    if (issues.length) throw new Error(`La ficha necesita revisión antes de deshacer el nivel: ${issues[0]}`);
+  }
+  return withHistory(result, 'Se deshizo la última subida de nivel, conservando los cambios posteriores compatibles.');
 }
 
 export function applyDamage(c: Character, amount: number, _catalog?: Catalog): Character {

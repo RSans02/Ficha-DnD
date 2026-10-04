@@ -335,9 +335,7 @@
     ],
     "effects": [],
     "replacesParent": false,
-    "automationNotes": [
-      "Los efectos condicionados y las decisiones no estructuradas se conservan en su descripción completa."
-    ]
+    "automationNotes": []
   },
   {
     "id": "race-enano",
@@ -423,9 +421,7 @@
     ],
     "effects": [],
     "replacesParent": false,
-    "automationNotes": [
-      "Los efectos condicionados y las decisiones no estructuradas se conservan en su descripción completa."
-    ]
+    "automationNotes": []
   },
   {
     "id": "race-enano-de-la-colina",
@@ -459,9 +455,7 @@
       }
     ],
     "replacesParent": false,
-    "automationNotes": [
-      "Los efectos condicionados y las decisiones no estructuradas se conservan en su descripción completa."
-    ]
+    "automationNotes": []
   },
   {
     "id": "race-enano-de-la-montana",
@@ -490,9 +484,7 @@
     "choices": [],
     "effects": [],
     "replacesParent": false,
-    "automationNotes": [
-      "Los efectos condicionados y las decisiones no estructuradas se conservan en su descripción completa."
-    ]
+    "automationNotes": []
   },
   {
     "id": "race-duergar-o-enano-gris-legado",
@@ -532,9 +524,7 @@
       }
     ],
     "replacesParent": false,
-    "automationNotes": [
-      "Los efectos condicionados y las decisiones no estructuradas se conservan en su descripción completa."
-    ]
+    "automationNotes": []
   },
   {
     "id": "race-elfo",
@@ -570,9 +560,7 @@
     "choices": [],
     "effects": [],
     "replacesParent": false,
-    "automationNotes": [
-      "Los efectos condicionados y las decisiones no estructuradas se conservan en su descripción completa."
-    ]
+    "automationNotes": []
   },
   {
     "id": "race-alto-elfo",
@@ -628,9 +616,7 @@
     ],
     "effects": [],
     "replacesParent": false,
-    "automationNotes": [
-      "Los efectos condicionados y las decisiones no estructuradas se conservan en su descripción completa."
-    ]
+    "automationNotes": []
   },
   {
     "id": "race-elfo-de-los-bosques",
@@ -661,9 +647,7 @@
     "choices": [],
     "effects": [],
     "replacesParent": false,
-    "automationNotes": [
-      "Los efectos condicionados y las decisiones no estructuradas se conservan en su descripción completa."
-    ]
+    "automationNotes": []
   },
   {
     "id": "race-elfo-oscuro-o-drow",
@@ -719,9 +703,7 @@
       }
     ],
     "replacesParent": false,
-    "automationNotes": [
-      "Los efectos condicionados y las decisiones no estructuradas se conservan en su descripción completa."
-    ]
+    "automationNotes": []
   },
   {
     "id": "race-elfo-del-mar-legado",
@@ -752,9 +734,7 @@
     "choices": [],
     "effects": [],
     "replacesParent": false,
-    "automationNotes": [
-      "Los efectos condicionados y las decisiones no estructuradas se conservan en su descripción completa."
-    ]
+    "automationNotes": []
   },
   {
     "id": "race-shadar-kai-legado",
@@ -786,9 +766,7 @@
     "choices": [],
     "effects": [],
     "replacesParent": false,
-    "automationNotes": [
-      "Los efectos condicionados y las decisiones no estructuradas se conservan en su descripción completa."
-    ]
+    "automationNotes": []
   },
   {
     "id": "race-eladrin-legado",
@@ -817,9 +795,7 @@
     "choices": [],
     "effects": [],
     "replacesParent": false,
-    "automationNotes": [
-      "Los efectos condicionados y las decisiones no estructuradas se conservan en su descripción completa."
-    ]
+    "automationNotes": []
   },
   {
     "id": "race-elfo-palido-exandria",
@@ -849,9 +825,7 @@
     "choices": [],
     "effects": [],
     "replacesParent": false,
-    "automationNotes": [
-      "Los efectos condicionados y las decisiones no estructuradas se conservan en su descripción completa."
-    ]
+    "automationNotes": []
   },
   {
     "id": "race-humano",
@@ -900,9 +874,7 @@
     ],
     "effects": [],
     "replacesParent": false,
-    "automationNotes": [
-      "Los efectos condicionados y las decisiones no estructuradas se conservan en su descripción completa."
-    ]
+    "automationNotes": []
   },
   {
     "id": "race-humano-variante",
@@ -1420,9 +1392,7 @@
     ],
     "effects": [],
     "replacesParent": true,
-    "automationNotes": [
-      "Los efectos condicionados y las decisiones no estructuradas se conservan en su descripción completa."
-    ]
+    "automationNotes": []
   },
   {
     "id": "race-mediano",
@@ -1456,9 +1426,7 @@
     "choices": [],
     "effects": [],
     "replacesParent": false,
-    "automationNotes": [
-      "Los efectos condicionados y las decisiones no estructuradas se conservan en su descripción completa."
-    ]
+    "automationNotes": []
   },
   {
     "id": "race-mediano-piesligeros",
@@ -1487,9 +1455,7 @@
     "choices": [],
     "effects": [],
     "replacesParent": false,
-    "automationNotes": [
-      "Los efectos condicionados y las decisiones no estructuradas se conservan en su descripción completa."
-    ]
+    "automationNotes": []
   },
   {
     "id": "race-mediano-fornido",
@@ -1518,9 +1484,7 @@
     "choices": [],
     "effects": [],
     "replacesParent": false,
-    "automationNotes": [
-      "Los efectos condicionados y las decisiones no estructuradas se conservan en su descripción completa."
-    ]
+    "automationNotes": []
   },
   {
     "id": "race-mediano-fantasagaz",
@@ -1549,9 +1513,7 @@
     "choices": [],
     "effects": [],
     "replacesParent": false,
-    "automationNotes": [
-      "Los efectos condicionados y las decisiones no estructuradas se conservan en su descripción completa."
-    ]
+    "automationNotes": []
   },
   {
     "id": "race-mediano-de-lotusden",
@@ -1581,9 +1543,7 @@
     "choices": [],
     "effects": [],
     "replacesParent": false,
-    "automationNotes": [
-      "Los efectos condicionados y las decisiones no estructuradas se conservan en su descripción completa."
-    ]
+    "automationNotes": []
   },
   {
     "id": "race-draconido",
@@ -1617,9 +1577,7 @@
     "choices": [],
     "effects": [],
     "replacesParent": false,
-    "automationNotes": [
-      "Los efectos condicionados y las decisiones no estructuradas se conservan en su descripción completa."
-    ]
+    "automationNotes": []
   },
   {
     "id": "race-sangre-de-dragon-o-draconblood",
@@ -1657,7 +1615,6 @@
     "effects": [],
     "replacesParent": true,
     "automationNotes": [
-      "Los efectos condicionados y las decisiones no estructuradas se conservan en su descripción completa.",
       "Hereda rasgos del Dracónido salvo aumento de características y resistencia al daño, reemplazados explícitamente en pp12–13."
     ]
   },
@@ -1697,7 +1654,6 @@
     "effects": [],
     "replacesParent": true,
     "automationNotes": [
-      "Los efectos condicionados y las decisiones no estructuradas se conservan en su descripción completa.",
       "Hereda rasgos del Dracónido salvo aumento de características y resistencia al daño, reemplazados explícitamente en pp12–13."
     ]
   },
@@ -2658,9 +2614,7 @@
     ],
     "effects": [],
     "replacesParent": false,
-    "automationNotes": [
-      "Los efectos condicionados y las decisiones no estructuradas se conservan en su descripción completa."
-    ]
+    "automationNotes": []
   },
   {
     "id": "race-draconidos-gematicos",
@@ -3621,9 +3575,7 @@
     ],
     "effects": [],
     "replacesParent": false,
-    "automationNotes": [
-      "Los efectos condicionados y las decisiones no estructuradas se conservan en su descripción completa."
-    ]
+    "automationNotes": []
   },
   {
     "id": "race-draconidos-metalicos",
@@ -4583,9 +4535,7 @@
     ],
     "effects": [],
     "replacesParent": false,
-    "automationNotes": [
-      "Los efectos condicionados y las decisiones no estructuradas se conservan en su descripción completa."
-    ]
+    "automationNotes": []
   },
   {
     "id": "race-gnomos",
@@ -4619,9 +4569,7 @@
     "choices": [],
     "effects": [],
     "replacesParent": false,
-    "automationNotes": [
-      "Los efectos condicionados y las decisiones no estructuradas se conservan en su descripción completa."
-    ]
+    "automationNotes": []
   },
   {
     "id": "race-gnomo-del-bosque",
@@ -4651,9 +4599,7 @@
     "choices": [],
     "effects": [],
     "replacesParent": false,
-    "automationNotes": [
-      "Los efectos condicionados y las decisiones no estructuradas se conservan en su descripción completa."
-    ]
+    "automationNotes": []
   },
   {
     "id": "race-gnomo-de-las-rocas",
@@ -4682,9 +4628,7 @@
     "choices": [],
     "effects": [],
     "replacesParent": false,
-    "automationNotes": [
-      "Los efectos condicionados y las decisiones no estructuradas se conservan en su descripción completa."
-    ]
+    "automationNotes": []
   },
   {
     "id": "race-gnomo-de-las-profundidades-legado",
@@ -4719,9 +4663,7 @@
     "choices": [],
     "effects": [],
     "replacesParent": false,
-    "automationNotes": [
-      "Los efectos condicionados y las decisiones no estructuradas se conservan en su descripción completa."
-    ]
+    "automationNotes": []
   },
   {
     "id": "race-semielfo",
@@ -5153,9 +5095,7 @@
     ],
     "effects": [],
     "replacesParent": false,
-    "automationNotes": [
-      "Los efectos condicionados y las decisiones no estructuradas se conservan en su descripción completa."
-    ]
+    "automationNotes": []
   },
   {
     "id": "race-semielfo-variante",
@@ -5381,7 +5321,6 @@
     "effects": [],
     "replacesParent": true,
     "automationNotes": [
-      "Los efectos condicionados y las decisiones no estructuradas se conservan en su descripción completa.",
       "Esta variante sustituye Versatilidad en Habilidades. La ascendencia y su opción deben registrarse manualmente; no recibe automáticamente las dos competencias sustituidas."
     ]
   },
@@ -5427,9 +5366,7 @@
       }
     ],
     "replacesParent": false,
-    "automationNotes": [
-      "Los efectos condicionados y las decisiones no estructuradas se conservan en su descripción completa."
-    ]
+    "automationNotes": []
   },
   {
     "id": "race-tiefling",
@@ -5466,9 +5403,7 @@
     "choices": [],
     "effects": [],
     "replacesParent": false,
-    "automationNotes": [
-      "Los efectos condicionados y las decisiones no estructuradas se conservan en su descripción completa."
-    ]
+    "automationNotes": []
   },
   {
     "id": "race-linaje-de-asmodeus",
@@ -5497,9 +5432,7 @@
     "choices": [],
     "effects": [],
     "replacesParent": false,
-    "automationNotes": [
-      "Los efectos condicionados y las decisiones no estructuradas se conservan en su descripción completa."
-    ]
+    "automationNotes": []
   },
   {
     "id": "race-linaje-de-baalzebul",
@@ -5528,9 +5461,7 @@
     "choices": [],
     "effects": [],
     "replacesParent": false,
-    "automationNotes": [
-      "Los efectos condicionados y las decisiones no estructuradas se conservan en su descripción completa."
-    ]
+    "automationNotes": []
   },
   {
     "id": "race-linaje-de-dispater",
@@ -5559,9 +5490,7 @@
     "choices": [],
     "effects": [],
     "replacesParent": false,
-    "automationNotes": [
-      "Los efectos condicionados y las decisiones no estructuradas se conservan en su descripción completa."
-    ]
+    "automationNotes": []
   },
   {
     "id": "race-linaje-de-fierna",
@@ -5590,9 +5519,7 @@
     "choices": [],
     "effects": [],
     "replacesParent": false,
-    "automationNotes": [
-      "Los efectos condicionados y las decisiones no estructuradas se conservan en su descripción completa."
-    ]
+    "automationNotes": []
   },
   {
     "id": "race-linaje-de-glasya",
@@ -5621,9 +5548,7 @@
     "choices": [],
     "effects": [],
     "replacesParent": false,
-    "automationNotes": [
-      "Los efectos condicionados y las decisiones no estructuradas se conservan en su descripción completa."
-    ]
+    "automationNotes": []
   },
   {
     "id": "race-linaje-de-levistus",
@@ -5652,9 +5577,7 @@
     "choices": [],
     "effects": [],
     "replacesParent": false,
-    "automationNotes": [
-      "Los efectos condicionados y las decisiones no estructuradas se conservan en su descripción completa."
-    ]
+    "automationNotes": []
   },
   {
     "id": "race-linaje-de-mammon",
@@ -5683,9 +5606,7 @@
     "choices": [],
     "effects": [],
     "replacesParent": false,
-    "automationNotes": [
-      "Los efectos condicionados y las decisiones no estructuradas se conservan en su descripción completa."
-    ]
+    "automationNotes": []
   },
   {
     "id": "race-linaje-de-mephistopheles",
@@ -5714,9 +5635,7 @@
     "choices": [],
     "effects": [],
     "replacesParent": false,
-    "automationNotes": [
-      "Los efectos condicionados y las decisiones no estructuradas se conservan en su descripción completa."
-    ]
+    "automationNotes": []
   },
   {
     "id": "race-linaje-de-zariel",
@@ -5745,9 +5664,7 @@
     "choices": [],
     "effects": [],
     "replacesParent": false,
-    "automationNotes": [
-      "Los efectos condicionados y las decisiones no estructuradas se conservan en su descripción completa."
-    ]
+    "automationNotes": []
   },
   {
     "id": "race-variantes-de-tiefling",
@@ -5777,9 +5694,7 @@
     "choices": [],
     "effects": [],
     "replacesParent": false,
-    "automationNotes": [
-      "Los efectos condicionados y las decisiones no estructuradas se conservan en su descripción completa."
-    ]
+    "automationNotes": []
   },
   {
     "id": "race-bugbear-u-osgo-legado",
@@ -5824,9 +5739,7 @@
       }
     ],
     "replacesParent": false,
-    "automationNotes": [
-      "Los efectos condicionados y las decisiones no estructuradas se conservan en su descripción completa."
-    ]
+    "automationNotes": []
   },
   {
     "id": "race-goblin-legado",
@@ -5863,9 +5776,7 @@
     "choices": [],
     "effects": [],
     "replacesParent": false,
-    "automationNotes": [
-      "Los efectos condicionados y las decisiones no estructuradas se conservan en su descripción completa."
-    ]
+    "automationNotes": []
   },
   {
     "id": "race-grung",
@@ -5910,9 +5821,7 @@
       }
     ],
     "replacesParent": false,
-    "automationNotes": [
-      "Los efectos condicionados y las decisiones no estructuradas se conservan en su descripción completa."
-    ]
+    "automationNotes": []
   },
   {
     "id": "race-hobgoblin-legado",
@@ -5949,9 +5858,7 @@
     "choices": [],
     "effects": [],
     "replacesParent": false,
-    "automationNotes": [
-      "Los efectos condicionados y las decisiones no estructuradas se conservan en su descripción completa."
-    ]
+    "automationNotes": []
   },
   {
     "id": "race-kobold-legado",
@@ -5987,9 +5894,7 @@
     "choices": [],
     "effects": [],
     "replacesParent": false,
-    "automationNotes": [
-      "Los efectos condicionados y las decisiones no estructuradas se conservan en su descripción completa."
-    ]
+    "automationNotes": []
   },
   {
     "id": "race-lizardfolk-legado",
@@ -6026,9 +5931,7 @@
     "choices": [],
     "effects": [],
     "replacesParent": false,
-    "automationNotes": [
-      "Los efectos condicionados y las decisiones no estructuradas se conservan en su descripción completa."
-    ]
+    "automationNotes": []
   },
   {
     "id": "race-orco-legado",
@@ -6066,9 +5969,7 @@
     "choices": [],
     "effects": [],
     "replacesParent": false,
-    "automationNotes": [
-      "Los efectos condicionados y las decisiones no estructuradas se conservan en su descripción completa."
-    ]
+    "automationNotes": []
   },
   {
     "id": "race-yuan-ti-sangre-pura-legado",
@@ -6108,9 +6009,7 @@
     "choices": [],
     "effects": [],
     "replacesParent": false,
-    "automationNotes": [
-      "Los efectos condicionados y las decisiones no estructuradas se conservan en su descripción completa."
-    ]
+    "automationNotes": []
   },
   {
     "id": "race-aarakocra-legado",
@@ -6144,9 +6043,7 @@
     "choices": [],
     "effects": [],
     "replacesParent": false,
-    "automationNotes": [
-      "Los efectos condicionados y las decisiones no estructuradas se conservan en su descripción completa."
-    ]
+    "automationNotes": []
   },
   {
     "id": "race-aasimar-legado",
@@ -6185,9 +6082,7 @@
     "choices": [],
     "effects": [],
     "replacesParent": false,
-    "automationNotes": [
-      "Los efectos condicionados y las decisiones no estructuradas se conservan en su descripción completa."
-    ]
+    "automationNotes": []
   },
   {
     "id": "race-aasimar-protector",
@@ -6216,9 +6111,7 @@
     "choices": [],
     "effects": [],
     "replacesParent": false,
-    "automationNotes": [
-      "Los efectos condicionados y las decisiones no estructuradas se conservan en su descripción completa."
-    ]
+    "automationNotes": []
   },
   {
     "id": "race-aasimar-atormentado",
@@ -6247,9 +6140,7 @@
     "choices": [],
     "effects": [],
     "replacesParent": false,
-    "automationNotes": [
-      "Los efectos condicionados y las decisiones no estructuradas se conservan en su descripción completa."
-    ]
+    "automationNotes": []
   },
   {
     "id": "race-aasimar-caido",
@@ -6278,9 +6169,7 @@
     "choices": [],
     "effects": [],
     "replacesParent": false,
-    "automationNotes": [
-      "Los efectos condicionados y las decisiones no estructuradas se conservan en su descripción completa."
-    ]
+    "automationNotes": []
   },
   {
     "id": "race-buhonido-o-owlin",
@@ -6825,9 +6714,7 @@
       }
     ],
     "replacesParent": false,
-    "automationNotes": [
-      "Los efectos condicionados y las decisiones no estructuradas se conservan en su descripción completa."
-    ]
+    "automationNotes": []
   },
   {
     "id": "race-conejido-o-harengon-legado",
@@ -7791,9 +7678,7 @@
       }
     ],
     "replacesParent": false,
-    "automationNotes": [
-      "Los efectos condicionados y las decisiones no estructuradas se conservan en su descripción completa."
-    ]
+    "automationNotes": []
   },
   {
     "id": "race-firbolg-legado",
@@ -7830,9 +7715,7 @@
     "choices": [],
     "effects": [],
     "replacesParent": false,
-    "automationNotes": [
-      "Los efectos condicionados y las decisiones no estructuradas se conservan en su descripción completa."
-    ]
+    "automationNotes": []
   },
   {
     "id": "race-genasi-legado",
@@ -7864,9 +7747,7 @@
     "choices": [],
     "effects": [],
     "replacesParent": false,
-    "automationNotes": [
-      "Los efectos condicionados y las decisiones no estructuradas se conservan en su descripción completa."
-    ]
+    "automationNotes": []
   },
   {
     "id": "race-genasi-del-aire",
@@ -7896,9 +7777,7 @@
     "choices": [],
     "effects": [],
     "replacesParent": false,
-    "automationNotes": [
-      "Los efectos condicionados y las decisiones no estructuradas se conservan en su descripción completa."
-    ]
+    "automationNotes": []
   },
   {
     "id": "race-genasi-de-la-tierra",
@@ -7928,9 +7807,7 @@
     "choices": [],
     "effects": [],
     "replacesParent": false,
-    "automationNotes": [
-      "Los efectos condicionados y las decisiones no estructuradas se conservan en su descripción completa."
-    ]
+    "automationNotes": []
   },
   {
     "id": "race-genasi-del-fuego",
@@ -7965,9 +7842,7 @@
     "choices": [],
     "effects": [],
     "replacesParent": false,
-    "automationNotes": [
-      "Los efectos condicionados y las decisiones no estructuradas se conservan en su descripción completa."
-    ]
+    "automationNotes": []
   },
   {
     "id": "race-genasi-del-agua",
@@ -8002,7 +7877,6 @@
     "effects": [],
     "replacesParent": false,
     "automationNotes": [
-      "Los efectos condicionados y las decisiones no estructuradas se conservan en su descripción completa.",
       "Reglas de la edición 2014: el Genasi del Agua legado obtiene +1 Sabiduría, no Inteligencia (Elemental Evil Player’s Companion, p. 10). Se conserva la errata del PDF en el texto original."
     ]
   },
@@ -8036,9 +7910,7 @@
     "choices": [],
     "effects": [],
     "replacesParent": false,
-    "automationNotes": [
-      "Los efectos condicionados y las decisiones no estructuradas se conservan en su descripción completa."
-    ]
+    "automationNotes": []
   },
   {
     "id": "race-githyanki",
@@ -8069,9 +7941,7 @@
     "choices": [],
     "effects": [],
     "replacesParent": false,
-    "automationNotes": [
-      "Los efectos condicionados y las decisiones no estructuradas se conservan en su descripción completa."
-    ]
+    "automationNotes": []
   },
   {
     "id": "race-githzerai",
@@ -8101,9 +7971,7 @@
     "choices": [],
     "effects": [],
     "replacesParent": false,
-    "automationNotes": [
-      "Los efectos condicionados y las decisiones no estructuradas se conservan en su descripción completa."
-    ]
+    "automationNotes": []
   },
   {
     "id": "race-goliath-legado",
@@ -8147,9 +8015,7 @@
       }
     ],
     "replacesParent": false,
-    "automationNotes": [
-      "Los efectos condicionados y las decisiones no estructuradas se conservan en su descripción completa."
-    ]
+    "automationNotes": []
   },
   {
     "id": "race-hada-o-fairy-legado",
@@ -9105,9 +8971,7 @@
     ],
     "effects": [],
     "replacesParent": false,
-    "automationNotes": [
-      "Los efectos condicionados y las decisiones no estructuradas se conservan en su descripción completa."
-    ]
+    "automationNotes": []
   },
   {
     "id": "race-kenku-legado",
@@ -9141,9 +9005,7 @@
     "choices": [],
     "effects": [],
     "replacesParent": false,
-    "automationNotes": [
-      "Los efectos condicionados y las decisiones no estructuradas se conservan en su descripción completa."
-    ]
+    "automationNotes": []
   },
   {
     "id": "race-locathah",
@@ -9179,9 +9041,7 @@
     "choices": [],
     "effects": [],
     "replacesParent": false,
-    "automationNotes": [
-      "Los efectos condicionados y las decisiones no estructuradas se conservan en su descripción completa."
-    ]
+    "automationNotes": []
   },
   {
     "id": "race-tabaxi-legado",
@@ -9218,9 +9078,7 @@
     "choices": [],
     "effects": [],
     "replacesParent": false,
-    "automationNotes": [
-      "Los efectos condicionados y las decisiones no estructuradas se conservan en su descripción completa."
-    ]
+    "automationNotes": []
   },
   {
     "id": "race-tortuga-legado",
@@ -9263,9 +9121,7 @@
       }
     ],
     "replacesParent": false,
-    "automationNotes": [
-      "Los efectos condicionados y las decisiones no estructuradas se conservan en su descripción completa."
-    ]
+    "automationNotes": []
   },
   {
     "id": "race-triton-legado",
@@ -9307,9 +9163,7 @@
     "choices": [],
     "effects": [],
     "replacesParent": false,
-    "automationNotes": [
-      "Los efectos condicionados y las decisiones no estructuradas se conservan en su descripción completa."
-    ]
+    "automationNotes": []
   },
   {
     "id": "race-verdan",
@@ -9364,9 +9218,7 @@
       }
     ],
     "replacesParent": false,
-    "automationNotes": [
-      "Los efectos condicionados y las decisiones no estructuradas se conservan en su descripción completa."
-    ]
+    "automationNotes": []
   },
   {
     "id": "race-aarakocra",
@@ -10323,9 +10175,7 @@
     ],
     "effects": [],
     "replacesParent": false,
-    "automationNotes": [
-      "Los efectos condicionados y las decisiones no estructuradas se conservan en su descripción completa."
-    ]
+    "automationNotes": []
   },
   {
     "id": "race-aasimar",
@@ -11291,9 +11141,7 @@
     ],
     "effects": [],
     "replacesParent": false,
-    "automationNotes": [
-      "Los efectos condicionados y las decisiones no estructuradas se conservan en su descripción completa."
-    ]
+    "automationNotes": []
   },
   {
     "id": "race-bugbear-u-osgo",
@@ -12262,9 +12110,7 @@
       }
     ],
     "replacesParent": false,
-    "automationNotes": [
-      "Los efectos condicionados y las decisiones no estructuradas se conservan en su descripción completa."
-    ]
+    "automationNotes": []
   },
   {
     "id": "race-centauro",
@@ -13222,9 +13068,7 @@
     ],
     "effects": [],
     "replacesParent": false,
-    "automationNotes": [
-      "Los efectos condicionados y las decisiones no estructuradas se conservan en su descripción completa."
-    ]
+    "automationNotes": []
   },
   {
     "id": "race-cambiaformas-o-shifter",
@@ -14187,9 +14031,7 @@
     ],
     "effects": [],
     "replacesParent": false,
-    "automationNotes": [
-      "Los efectos condicionados y las decisiones no estructuradas se conservan en su descripción completa."
-    ]
+    "automationNotes": []
   },
   {
     "id": "race-cambiante-o-changeling",
@@ -15145,9 +14987,7 @@
     ],
     "effects": [],
     "replacesParent": false,
-    "automationNotes": [
-      "Los efectos condicionados y las decisiones no estructuradas se conservan en su descripción completa."
-    ]
+    "automationNotes": []
   },
   {
     "id": "race-duergar",
@@ -16109,9 +15949,7 @@
     ],
     "effects": [],
     "replacesParent": false,
-    "automationNotes": [
-      "Los efectos condicionados y las decisiones no estructuradas se conservan en su descripción completa."
-    ]
+    "automationNotes": []
   },
   {
     "id": "race-eladrin",
@@ -17082,9 +16920,7 @@
       }
     ],
     "replacesParent": false,
-    "automationNotes": [
-      "Los efectos condicionados y las decisiones no estructuradas se conservan en su descripción completa."
-    ]
+    "automationNotes": []
   },
   {
     "id": "race-elfo-de-mar",
@@ -18055,9 +17891,7 @@
       }
     ],
     "replacesParent": false,
-    "automationNotes": [
-      "Los efectos condicionados y las decisiones no estructuradas se conservan en su descripción completa."
-    ]
+    "automationNotes": []
   },
   {
     "id": "race-firbolg",
@@ -19015,9 +18849,7 @@
     ],
     "effects": [],
     "replacesParent": false,
-    "automationNotes": [
-      "Los efectos condicionados y las decisiones no estructuradas se conservan en su descripción completa."
-    ]
+    "automationNotes": []
   },
   {
     "id": "race-genasi",
@@ -19972,9 +19804,7 @@
     ],
     "effects": [],
     "replacesParent": false,
-    "automationNotes": [
-      "Los efectos condicionados y las decisiones no estructuradas se conservan en su descripción completa."
-    ]
+    "automationNotes": []
   },
   {
     "id": "race-agua",
@@ -20010,9 +19840,7 @@
     "choices": [],
     "effects": [],
     "replacesParent": false,
-    "automationNotes": [
-      "Los efectos condicionados y las decisiones no estructuradas se conservan en su descripción completa."
-    ]
+    "automationNotes": []
   },
   {
     "id": "race-aire",
@@ -20046,9 +19874,7 @@
     "choices": [],
     "effects": [],
     "replacesParent": false,
-    "automationNotes": [
-      "Los efectos condicionados y las decisiones no estructuradas se conservan en su descripción completa."
-    ]
+    "automationNotes": []
   },
   {
     "id": "race-tierra",
@@ -20081,9 +19907,7 @@
     "choices": [],
     "effects": [],
     "replacesParent": false,
-    "automationNotes": [
-      "Los efectos condicionados y las decisiones no estructuradas se conservan en su descripción completa."
-    ]
+    "automationNotes": []
   },
   {
     "id": "race-fuego",
@@ -20118,9 +19942,7 @@
     "choices": [],
     "effects": [],
     "replacesParent": false,
-    "automationNotes": [
-      "Los efectos condicionados y las decisiones no estructuradas se conservan en su descripción completa."
-    ]
+    "automationNotes": []
   },
   {
     "id": "race-githyanki-razas-del-multiverso",
@@ -21079,9 +20901,7 @@
     ],
     "effects": [],
     "replacesParent": false,
-    "automationNotes": [
-      "Los efectos condicionados y las decisiones no estructuradas se conservan en su descripción completa."
-    ]
+    "automationNotes": []
   },
   {
     "id": "race-githzerai-razas-del-multiverso",
@@ -22040,9 +21860,7 @@
     ],
     "effects": [],
     "replacesParent": false,
-    "automationNotes": [
-      "Los efectos condicionados y las decisiones no estructuradas se conservan en su descripción completa."
-    ]
+    "automationNotes": []
   },
   {
     "id": "race-gnomo-de-las-profundidades",
@@ -23002,9 +22820,7 @@
     ],
     "effects": [],
     "replacesParent": false,
-    "automationNotes": [
-      "Los efectos condicionados y las decisiones no estructuradas se conservan en su descripción completa."
-    ]
+    "automationNotes": []
   },
   {
     "id": "race-goblin",
@@ -23964,9 +23780,7 @@
     ],
     "effects": [],
     "replacesParent": false,
-    "automationNotes": [
-      "Los efectos condicionados y las decisiones no estructuradas se conservan en su descripción completa."
-    ]
+    "automationNotes": []
   },
   {
     "id": "race-goliath",
@@ -24931,9 +24745,7 @@
       }
     ],
     "replacesParent": false,
-    "automationNotes": [
-      "Los efectos condicionados y las decisiones no estructuradas se conservan en su descripción completa."
-    ]
+    "automationNotes": []
   },
   {
     "id": "race-hada",
@@ -25889,9 +25701,7 @@
     ],
     "effects": [],
     "replacesParent": false,
-    "automationNotes": [
-      "Los efectos condicionados y las decisiones no estructuradas se conservan en su descripción completa."
-    ]
+    "automationNotes": []
   },
   {
     "id": "race-harengon",
@@ -26855,9 +26665,7 @@
       }
     ],
     "replacesParent": false,
-    "automationNotes": [
-      "Los efectos condicionados y las decisiones no estructuradas se conservan en su descripción completa."
-    ]
+    "automationNotes": []
   },
   {
     "id": "race-hobgoblin",
@@ -27820,9 +27628,7 @@
     ],
     "effects": [],
     "replacesParent": false,
-    "automationNotes": [
-      "Los efectos condicionados y las decisiones no estructuradas se conservan en su descripción completa."
-    ]
+    "automationNotes": []
   },
   {
     "id": "race-kenku",
@@ -28779,9 +28585,7 @@
     ],
     "effects": [],
     "replacesParent": false,
-    "automationNotes": [
-      "Los efectos condicionados y las decisiones no estructuradas se conservan en su descripción completa."
-    ]
+    "automationNotes": []
   },
   {
     "id": "race-kobold",
@@ -29743,9 +29547,7 @@
     ],
     "effects": [],
     "replacesParent": false,
-    "automationNotes": [
-      "Los efectos condicionados y las decisiones no estructuradas se conservan en su descripción completa."
-    ]
+    "automationNotes": []
   },
   {
     "id": "race-lizardfolk-u-hombres-lagarto",
@@ -30705,9 +30507,7 @@
     ],
     "effects": [],
     "replacesParent": false,
-    "automationNotes": [
-      "Los efectos condicionados y las decisiones no estructuradas se conservan en su descripción completa."
-    ]
+    "automationNotes": []
   },
   {
     "id": "race-minotauro",
@@ -31665,9 +31465,7 @@
     ],
     "effects": [],
     "replacesParent": false,
-    "automationNotes": [
-      "Los efectos condicionados y las decisiones no estructuradas se conservan en su descripción completa."
-    ]
+    "automationNotes": []
   },
   {
     "id": "race-orco",
@@ -32627,9 +32425,7 @@
     ],
     "effects": [],
     "replacesParent": false,
-    "automationNotes": [
-      "Los efectos condicionados y las decisiones no estructuradas se conservan en su descripción completa."
-    ]
+    "automationNotes": []
   },
   {
     "id": "race-satiro",
@@ -33587,9 +33383,7 @@
     ],
     "effects": [],
     "replacesParent": false,
-    "automationNotes": [
-      "Los efectos condicionados y las decisiones no estructuradas se conservan en su descripción completa."
-    ]
+    "automationNotes": []
   },
   {
     "id": "race-shadar-kai",
@@ -34558,9 +34352,7 @@
       }
     ],
     "replacesParent": false,
-    "automationNotes": [
-      "Los efectos condicionados y las decisiones no estructuradas se conservan en su descripción completa."
-    ]
+    "automationNotes": []
   },
   {
     "id": "race-tabaxi",
@@ -35520,9 +35312,7 @@
     ],
     "effects": [],
     "replacesParent": false,
-    "automationNotes": [
-      "Los efectos condicionados y las decisiones no estructuradas se conservan en su descripción completa."
-    ]
+    "automationNotes": []
   },
   {
     "id": "race-tortuga",
@@ -36481,9 +36271,7 @@
     ],
     "effects": [],
     "replacesParent": false,
-    "automationNotes": [
-      "Los efectos condicionados y las decisiones no estructuradas se conservan en su descripción completa."
-    ]
+    "automationNotes": []
   },
   {
     "id": "race-triton",
@@ -37446,9 +37234,7 @@
     ],
     "effects": [],
     "replacesParent": false,
-    "automationNotes": [
-      "Los efectos condicionados y las decisiones no estructuradas se conservan en su descripción completa."
-    ]
+    "automationNotes": []
   },
   {
     "id": "race-yuan-ti",
@@ -38410,9 +38196,7 @@
     ],
     "effects": [],
     "replacesParent": false,
-    "automationNotes": [
-      "Los efectos condicionados y las decisiones no estructuradas se conservan en su descripción completa."
-    ]
+    "automationNotes": []
   },
   {
     "id": "race-leonido",
@@ -38449,9 +38233,7 @@
     "choices": [],
     "effects": [],
     "replacesParent": false,
-    "automationNotes": [
-      "Los efectos condicionados y las decisiones no estructuradas se conservan en su descripción completa."
-    ]
+    "automationNotes": []
   },
   {
     "id": "race-satiros",
@@ -38487,9 +38269,7 @@
     "choices": [],
     "effects": [],
     "replacesParent": false,
-    "automationNotes": [
-      "Los efectos condicionados y las decisiones no estructuradas se conservan en su descripción completa."
-    ]
+    "automationNotes": []
   },
   {
     "id": "race-centauro-razas-de-ravnica",
@@ -38525,9 +38305,7 @@
     "choices": [],
     "effects": [],
     "replacesParent": false,
-    "automationNotes": [
-      "Los efectos condicionados y las decisiones no estructuradas se conservan en su descripción completa."
-    ]
+    "automationNotes": []
   },
   {
     "id": "race-loxodon",
@@ -38563,9 +38341,7 @@
     "choices": [],
     "effects": [],
     "replacesParent": false,
-    "automationNotes": [
-      "Los efectos condicionados y las decisiones no estructuradas se conservan en su descripción completa."
-    ]
+    "automationNotes": []
   },
   {
     "id": "race-minotauro-razas-de-ravnica",
@@ -38601,9 +38377,7 @@
     "choices": [],
     "effects": [],
     "replacesParent": false,
-    "automationNotes": [
-      "Los efectos condicionados y las decisiones no estructuradas se conservan en su descripción completa."
-    ]
+    "automationNotes": []
   },
   {
     "id": "race-simic-hibrido",
@@ -38720,9 +38494,7 @@
     ],
     "effects": [],
     "replacesParent": false,
-    "automationNotes": [
-      "Los efectos condicionados y las decisiones no estructuradas se conservan en su descripción completa."
-    ]
+    "automationNotes": []
   },
   {
     "id": "race-vedalken",
@@ -38757,9 +38529,7 @@
     "choices": [],
     "effects": [],
     "replacesParent": false,
-    "automationNotes": [
-      "Los efectos condicionados y las decisiones no estructuradas se conservan en su descripción completa."
-    ]
+    "automationNotes": []
   },
   {
     "id": "race-dhampiro",
@@ -39722,9 +39492,7 @@
     ],
     "effects": [],
     "replacesParent": false,
-    "automationNotes": [
-      "Los efectos condicionados y las decisiones no estructuradas se conservan en su descripción completa."
-    ]
+    "automationNotes": []
   },
   {
     "id": "race-sangre-maldita-o-hexblood",
@@ -40686,9 +40454,7 @@
     ],
     "effects": [],
     "replacesParent": false,
-    "automationNotes": [
-      "Los efectos condicionados y las decisiones no estructuradas se conservan en su descripción completa."
-    ]
+    "automationNotes": []
   },
   {
     "id": "race-renacido",
@@ -41649,9 +41415,7 @@
     ],
     "effects": [],
     "replacesParent": false,
-    "automationNotes": [
-      "Los efectos condicionados y las decisiones no estructuradas se conservan en su descripción completa."
-    ]
+    "automationNotes": []
   },
   {
     "id": "race-elfo-astral",
@@ -42619,9 +42383,7 @@
       }
     ],
     "replacesParent": false,
-    "automationNotes": [
-      "Los efectos condicionados y las decisiones no estructuradas se conservan en su descripción completa."
-    ]
+    "automationNotes": []
   },
   {
     "id": "race-autognomo",
@@ -43584,9 +43346,7 @@
     ],
     "effects": [],
     "replacesParent": false,
-    "automationNotes": [
-      "Los efectos condicionados y las decisiones no estructuradas se conservan en su descripción completa."
-    ]
+    "automationNotes": []
   },
   {
     "id": "race-giff",
@@ -44543,9 +44303,7 @@
     ],
     "effects": [],
     "replacesParent": false,
-    "automationNotes": [
-      "Los efectos condicionados y las decisiones no estructuradas se conservan en su descripción completa."
-    ]
+    "automationNotes": []
   },
   {
     "id": "race-hadozee",
@@ -45502,9 +45260,7 @@
     ],
     "effects": [],
     "replacesParent": false,
-    "automationNotes": [
-      "Los efectos condicionados y las decisiones no estructuradas se conservan en su descripción completa."
-    ]
+    "automationNotes": []
   },
   {
     "id": "race-plasmoide",
@@ -46467,9 +46223,7 @@
     ],
     "effects": [],
     "replacesParent": false,
-    "automationNotes": [
-      "Los efectos condicionados y las decisiones no estructuradas se conservan en su descripción completa."
-    ]
+    "automationNotes": []
   },
   {
     "id": "race-thri-kreen",
@@ -47430,8 +47184,6 @@
     ],
     "effects": [],
     "replacesParent": false,
-    "automationNotes": [
-      "Los efectos condicionados y las decisiones no estructuradas se conservan en su descripción completa."
-    ]
+    "automationNotes": []
   }
 ]

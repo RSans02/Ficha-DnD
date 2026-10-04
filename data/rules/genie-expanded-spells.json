@@ -1,0 +1,7 @@
+{
+  "common": ["spell-detectar-el-bien-y-el-mal", "spell-fuerza-fantasmal", "spell-crear-comida-y-bebida", "spell-asesino-fantasmal", "spell-creacion"],
+  "dao": ["spell-santuario", "spell-brote-de-espinas", "spell-fundirse-con-la-piedra", "spell-transformar-piedra", "spell-muro-de-piedra"],
+  "djinni": ["spell-ola-atronadora", "spell-rafaga-de-viento", "spell-muro-de-viento", "spell-invisibilidad-mayor", "spell-similitud"],
+  "efreeti": ["spell-manos-ardientes", "spell-rayo-abrasador", "spell-bola-de-fuego", "spell-escudo-de-fuego", "spell-descarga-flamigera"],
+  "marid": ["spell-nube-de-oscurecimiento", "spell-contorno-borroso", "spell-tormenta-de-granizo", "spell-controlar-el-agua", "spell-cono-de-frio"]
+}

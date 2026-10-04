@@ -268,7 +268,6 @@ def import_feats():
                 {"id":"feat-experto-en-varias-habilidades-tasha-skill","type":"choose_skill","name":"Competencia adicional","amount":1,"required":True,"options":[{"id":skill,"name":name.title(),"effects":[{"type":"skill_proficiency","skill":skill}]}for skill,name in {s:n for n,s in SKILLS.items()}.items()]},
                 {"id":"feat-experto-en-varias-habilidades-tasha-expertise","type":"choose_skill","name":"Pericia (elige una habilidad competente)","amount":1,"required":True,"options":[{"id":skill,"name":name.title(),"effects":[{"type":"skill_expertise","skill":skill}],"prerequisites":[{"type":"skill_proficiency","value":skill}]}for skill,name in {s:n for n,s in SKILLS.items()}.items()]}
             ])
-        if not effects and not choices:notes.append("Efectos conservados íntegramente como texto; requieren aplicación manual cuando sean condicionales o no estén estructurados.")
         feats.append({"id":"feat-"+slug(section["title"]),"name":section["title"],"source":source(section),"description":text,"prerequisiteText":req,"prerequisites":prereqs,"effects":effects,"choices":choices,"automationNotes":notes})
     return feats
 

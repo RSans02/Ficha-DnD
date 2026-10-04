@@ -1,0 +1,1580 @@
+{
+  "feature-artificiero-alquimista-hechizos-de-alquimista": [
+    {
+      "level": 3,
+      "spellId": "spell-curar-heridas"
+    },
+    {
+      "level": 3,
+      "spellId": "spell-rayo-nauseabundo"
+    },
+    {
+      "level": 5,
+      "spellId": "spell-esfera-flamigera"
+    },
+    {
+      "level": 5,
+      "spellId": "spell-flecha-acida-de-melf"
+    },
+    {
+      "level": 9,
+      "spellId": "spell-forma-gaseosa"
+    },
+    {
+      "level": 9,
+      "spellId": "spell-curar-heridas-en-masa"
+    },
+    {
+      "level": 13,
+      "spellId": "spell-marchitar"
+    },
+    {
+      "level": 13,
+      "spellId": "spell-custodia-contra-la-muerte"
+    },
+    {
+      "level": 17,
+      "spellId": "spell-nube-aniquiladora"
+    },
+    {
+      "level": 17,
+      "spellId": "spell-revivir-a-los-muertos"
+    }
+  ],
+  "feature-artificiero-blindado-hechizos-del-blindado": [
+    {
+      "level": 3,
+      "spellId": "spell-proyectil-magico"
+    },
+    {
+      "level": 3,
+      "spellId": "spell-ola-atronadora"
+    },
+    {
+      "level": 5,
+      "spellId": "spell-imagen-multiple"
+    },
+    {
+      "level": 5,
+      "spellId": "spell-hacer-anicos"
+    },
+    {
+      "level": 9,
+      "spellId": "spell-patron-hipnotico"
+    },
+    {
+      "level": 9,
+      "spellId": "spell-relampago"
+    },
+    {
+      "level": 13,
+      "spellId": "spell-escudo-de-fuego"
+    },
+    {
+      "level": 13,
+      "spellId": "spell-invisibilidad-mayor"
+    },
+    {
+      "level": 17,
+      "spellId": "spell-muro-de-fuerza"
+    },
+    {
+      "level": 17,
+      "spellId": "spell-pasamiento"
+    }
+  ],
+  "feature-artificiero-artillero-hechizos-de-artillero": [
+    {
+      "level": 3,
+      "spellId": "spell-escudo"
+    },
+    {
+      "level": 3,
+      "spellId": "spell-ola-atronadora"
+    },
+    {
+      "level": 5,
+      "spellId": "spell-rayo-de-debilitamiento"
+    },
+    {
+      "level": 5,
+      "spellId": "spell-hacer-anicos"
+    },
+    {
+      "level": 9,
+      "spellId": "spell-bola-de-fuego"
+    },
+    {
+      "level": 9,
+      "spellId": "spell-muro-de-viento"
+    },
+    {
+      "level": 13,
+      "spellId": "spell-tormenta-de-hielo"
+    },
+    {
+      "level": 13,
+      "spellId": "spell-muro-de-fuego"
+    },
+    {
+      "level": 17,
+      "spellId": "spell-muro-de-fuerza"
+    },
+    {
+      "level": 17,
+      "spellId": "spell-cono-de-frio"
+    }
+  ],
+  "feature-artificiero-herrero-de-batalla-hechizos-de-herrero-de-batalla": [
+    {
+      "level": 3,
+      "spellId": "spell-heroismo"
+    },
+    {
+      "level": 3,
+      "spellId": "spell-escudo"
+    },
+    {
+      "level": 5,
+      "spellId": "spell-castigo-marcador"
+    },
+    {
+      "level": 5,
+      "spellId": "spell-vinculo-protector"
+    },
+    {
+      "level": 9,
+      "spellId": "spell-aura-de-vitalidad"
+    },
+    {
+      "level": 9,
+      "spellId": "spell-conjurar-bombardeo"
+    },
+    {
+      "level": 13,
+      "spellId": "spell-aura-de-pureza"
+    },
+    {
+      "level": 13,
+      "spellId": "spell-escudo-de-fuego"
+    },
+    {
+      "level": 17,
+      "spellId": "spell-castigo-desterrador"
+    },
+    {
+      "level": 17,
+      "spellId": "spell-curar-heridas-en-masa"
+    }
+  ],
+  "feature-clerigo-dominio-del-conocimiento-hechizos-del-dominio-del-conocimiento": [
+    {
+      "level": 1,
+      "spellId": "spell-identificar"
+    },
+    {
+      "level": 1,
+      "spellId": "spell-orden-imperiosa"
+    },
+    {
+      "level": 3,
+      "spellId": "spell-augurio"
+    },
+    {
+      "level": 3,
+      "spellId": "spell-sugestion"
+    },
+    {
+      "level": 5,
+      "spellId": "spell-indetectable"
+    },
+    {
+      "level": 5,
+      "spellId": "spell-hablar-con-los-muertos"
+    },
+    {
+      "level": 7,
+      "spellId": "spell-ojo-arcano"
+    },
+    {
+      "level": 7,
+      "spellId": "spell-confusion"
+    },
+    {
+      "level": 9,
+      "spellId": "spell-conocimiento-de-leyendas"
+    },
+    {
+      "level": 9,
+      "spellId": "spell-escudrinamiento"
+    }
+  ],
+  "feature-clerigo-dominio-de-la-guerra-hechizos-del-dominio-de-la-guerra": [
+    {
+      "level": 1,
+      "spellId": "spell-escudo-de-fe"
+    },
+    {
+      "level": 1,
+      "spellId": "spell-favor-divino"
+    },
+    {
+      "level": 3,
+      "spellId": "spell-arma-espiritual"
+    },
+    {
+      "level": 3,
+      "spellId": "spell-arma-magica"
+    },
+    {
+      "level": 5,
+      "spellId": "spell-manto-del-cruzado"
+    },
+    {
+      "level": 5,
+      "spellId": "spell-espiritus-guardianes"
+    },
+    {
+      "level": 7,
+      "spellId": "spell-libertad-de-movimiento"
+    },
+    {
+      "level": 7,
+      "spellId": "spell-piel-petrea"
+    },
+    {
+      "level": 9,
+      "spellId": "spell-descarga-flamigera"
+    },
+    {
+      "level": 9,
+      "spellId": "spell-inmovilizar-monstruo"
+    }
+  ],
+  "feature-clerigo-dominio-de-luz-hechizos-del-dominio-de-luz": [
+    {
+      "level": 1,
+      "spellId": "spell-manos-ardientes"
+    },
+    {
+      "level": 1,
+      "spellId": "spell-fuego-feerico"
+    },
+    {
+      "level": 3,
+      "spellId": "spell-esfera-flamigera"
+    },
+    {
+      "level": 3,
+      "spellId": "spell-rayo-abrasador"
+    },
+    {
+      "level": 5,
+      "spellId": "spell-luz-del-dia"
+    },
+    {
+      "level": 5,
+      "spellId": "spell-bola-de-fuego"
+    },
+    {
+      "level": 7,
+      "spellId": "spell-guardian-de-la-fe"
+    },
+    {
+      "level": 7,
+      "spellId": "spell-muro-de-fuego"
+    },
+    {
+      "level": 9,
+      "spellId": "spell-descarga-flamigera"
+    },
+    {
+      "level": 9,
+      "spellId": "spell-escudrinamiento"
+    }
+  ],
+  "feature-clerigo-dominio-de-la-naturaleza-hechizos-del-dominio-de-la-naturaleza": [
+    {
+      "level": 1,
+      "spellId": "spell-encantar-animal"
+    },
+    {
+      "level": 1,
+      "spellId": "spell-hablar-con-los-animales"
+    },
+    {
+      "level": 3,
+      "spellId": "spell-piel-robliza"
+    },
+    {
+      "level": 3,
+      "spellId": "spell-brote-de-espinas"
+    },
+    {
+      "level": 5,
+      "spellId": "spell-crecimiento-vegetal"
+    },
+    {
+      "level": 5,
+      "spellId": "spell-muro-de-viento"
+    },
+    {
+      "level": 7,
+      "spellId": "spell-dominar-bestia"
+    },
+    {
+      "level": 7,
+      "spellId": "spell-hiedras-atrapadoras"
+    },
+    {
+      "level": 9,
+      "spellId": "spell-plaga-de-insectos"
+    },
+    {
+      "level": 9,
+      "spellId": "spell-zancada-arborea"
+    }
+  ],
+  "feature-clerigo-dominio-de-la-tempestad-hechizos-del-dominio-de-la-tempestad": [
+    {
+      "level": 1,
+      "spellId": "spell-nube-de-oscurecimiento"
+    },
+    {
+      "level": 1,
+      "spellId": "spell-ola-atronadora"
+    },
+    {
+      "level": 3,
+      "spellId": "spell-rafaga-de-viento"
+    },
+    {
+      "level": 3,
+      "spellId": "spell-hacer-anicos"
+    },
+    {
+      "level": 5,
+      "spellId": "spell-llamar-al-relampago"
+    },
+    {
+      "level": 5,
+      "spellId": "spell-tormenta-de-granizo"
+    },
+    {
+      "level": 7,
+      "spellId": "spell-controlar-el-agua"
+    },
+    {
+      "level": 7,
+      "spellId": "spell-tormenta-de-hielo"
+    },
+    {
+      "level": 9,
+      "spellId": "spell-plaga-de-insectos"
+    },
+    {
+      "level": 9,
+      "spellId": "spell-onda-destructiva"
+    }
+  ],
+  "feature-clerigo-dominio-del-engano-hechizos-del-dominio-del-engano": [
+    {
+      "level": 1,
+      "spellId": "spell-hechizar-persona"
+    },
+    {
+      "level": 1,
+      "spellId": "spell-disfrazarse"
+    },
+    {
+      "level": 3,
+      "spellId": "spell-imagen-silenciosa"
+    },
+    {
+      "level": 3,
+      "spellId": "spell-pasar-sin-dejar-rastro"
+    },
+    {
+      "level": 5,
+      "spellId": "spell-intermitencia"
+    },
+    {
+      "level": 5,
+      "spellId": "spell-disipar-magia"
+    },
+    {
+      "level": 7,
+      "spellId": "spell-puerta-dimensional"
+    },
+    {
+      "level": 7,
+      "spellId": "spell-polimorfar"
+    },
+    {
+      "level": 9,
+      "spellId": "spell-dominar-persona"
+    },
+    {
+      "level": 9,
+      "spellId": "spell-modificar-recuerdo"
+    }
+  ],
+  "feature-clerigo-dominio-de-la-vida-hechizos-del-dominio-de-la-vida": [
+    {
+      "level": 1,
+      "spellId": "spell-bendecir"
+    },
+    {
+      "level": 1,
+      "spellId": "spell-curar-heridas"
+    },
+    {
+      "level": 3,
+      "spellId": "spell-restablecimiento-menor"
+    },
+    {
+      "level": 3,
+      "spellId": "spell-arma-espiritual"
+    },
+    {
+      "level": 5,
+      "spellId": "spell-faro-de-esperanza"
+    },
+    {
+      "level": 5,
+      "spellId": "spell-revivir"
+    },
+    {
+      "level": 7,
+      "spellId": "spell-custodia-contra-la-muerte"
+    },
+    {
+      "level": 7,
+      "spellId": "spell-guardian-de-la-fe"
+    },
+    {
+      "level": 9,
+      "spellId": "spell-curar-heridas-en-masa"
+    },
+    {
+      "level": 9,
+      "spellId": "spell-revivir-a-los-muertos"
+    }
+  ],
+  "feature-clerigo-dominio-de-la-forja-hechizos-del-dominio-de-la-forja": [
+    {
+      "level": 1,
+      "spellId": "spell-castigo-abrasador"
+    },
+    {
+      "level": 1,
+      "spellId": "spell-identificar"
+    },
+    {
+      "level": 3,
+      "spellId": "spell-calentar-metal"
+    },
+    {
+      "level": 3,
+      "spellId": "spell-arma-magica"
+    },
+    {
+      "level": 5,
+      "spellId": "spell-arma-elemental"
+    },
+    {
+      "level": 5,
+      "spellId": "spell-proteccion-contra-la-energia"
+    },
+    {
+      "level": 7,
+      "spellId": "spell-elaborar"
+    },
+    {
+      "level": 7,
+      "spellId": "spell-muro-de-fuego"
+    },
+    {
+      "level": 9,
+      "spellId": "spell-animar-los-objetos"
+    },
+    {
+      "level": 9,
+      "spellId": "spell-creacion"
+    }
+  ],
+  "feature-clerigo-dominio-de-la-tumba-hechizos-del-dominio-de-la-tumba": [
+    {
+      "level": 1,
+      "spellId": "spell-perdicion"
+    },
+    {
+      "level": 1,
+      "spellId": "spell-falsa-vida"
+    },
+    {
+      "level": 3,
+      "spellId": "spell-dulce-descanso"
+    },
+    {
+      "level": 3,
+      "spellId": "spell-rayo-de-debilitamiento"
+    },
+    {
+      "level": 5,
+      "spellId": "spell-revivir"
+    },
+    {
+      "level": 5,
+      "spellId": "spell-toque-vampirico"
+    },
+    {
+      "level": 7,
+      "spellId": "spell-marchitar"
+    },
+    {
+      "level": 7,
+      "spellId": "spell-custodia-contra-la-muerte"
+    },
+    {
+      "level": 9,
+      "spellId": "spell-caparazon-antivida"
+    },
+    {
+      "level": 9,
+      "spellId": "spell-revivir-a-los-muertos"
+    }
+  ],
+  "feature-clerigo-dominio-del-saber-arcano-hechizos-del-dominio-del-saber-arcano": [
+    {
+      "level": 1,
+      "spellId": "spell-detectar-magia"
+    },
+    {
+      "level": 1,
+      "spellId": "spell-proyectil-magico"
+    },
+    {
+      "level": 3,
+      "spellId": "spell-arma-magica"
+    },
+    {
+      "level": 3,
+      "spellId": "spell-aura-magica-de-nystul"
+    },
+    {
+      "level": 5,
+      "spellId": "spell-disipar-magia"
+    },
+    {
+      "level": 5,
+      "spellId": "spell-circulo-magico"
+    },
+    {
+      "level": 7,
+      "spellId": "spell-ojo-arcano"
+    },
+    {
+      "level": 7,
+      "spellId": "spell-cofre-secreto-de-leomund"
+    },
+    {
+      "level": 9,
+      "spellId": "spell-ligadura-de-los-planos"
+    },
+    {
+      "level": 9,
+      "spellId": "spell-circulo-de-teletransporte"
+    }
+  ],
+  "feature-clerigo-dominio-de-la-muerte-hechizos-del-dominio-de-la-muerte": [
+    {
+      "level": 1,
+      "spellId": "spell-falsa-vida"
+    },
+    {
+      "level": 1,
+      "spellId": "spell-rayo-nauseabundo"
+    },
+    {
+      "level": 3,
+      "spellId": "spell-ceguera-sordera"
+    },
+    {
+      "level": 3,
+      "spellId": "spell-rayo-de-debilitamiento"
+    },
+    {
+      "level": 5,
+      "spellId": "spell-reanimar-a-los-muertos"
+    },
+    {
+      "level": 5,
+      "spellId": "spell-toque-vampirico"
+    },
+    {
+      "level": 7,
+      "spellId": "spell-marchitar"
+    },
+    {
+      "level": 7,
+      "spellId": "spell-custodia-contra-la-muerte"
+    },
+    {
+      "level": 9,
+      "spellId": "spell-caparazon-antivida"
+    },
+    {
+      "level": 9,
+      "spellId": "spell-nube-aniquiladora"
+    }
+  ],
+  "feature-clerigo-dominio-del-orden-hechizos-del-dominio-de-la-orden": [
+    {
+      "level": 1,
+      "spellId": "spell-orden-imperiosa"
+    },
+    {
+      "level": 1,
+      "spellId": "spell-heroismo"
+    },
+    {
+      "level": 3,
+      "spellId": "spell-inmovilizar-persona"
+    },
+    {
+      "level": 3,
+      "spellId": "spell-zona-de-la-verdad"
+    },
+    {
+      "level": 5,
+      "spellId": "spell-palabra-curativa-en-masa"
+    },
+    {
+      "level": 5,
+      "spellId": "spell-ralentizar"
+    },
+    {
+      "level": 7,
+      "spellId": "spell-compulsion"
+    },
+    {
+      "level": 7,
+      "spellId": "spell-localizar-criatura"
+    },
+    {
+      "level": 9,
+      "spellId": "spell-comunion"
+    },
+    {
+      "level": 9,
+      "spellId": "spell-dominar-persona"
+    }
+  ],
+  "feature-clerigo-dominio-de-la-paz-hechizos-del-dominio-de-la-paz": [
+    {
+      "level": 1,
+      "spellId": "spell-heroismo"
+    },
+    {
+      "level": 1,
+      "spellId": "spell-santuario"
+    },
+    {
+      "level": 3,
+      "spellId": "spell-auxilio-divino"
+    },
+    {
+      "level": 3,
+      "spellId": "spell-vinculo-protector"
+    },
+    {
+      "level": 5,
+      "spellId": "spell-faro-de-esperanza"
+    },
+    {
+      "level": 5,
+      "spellId": "spell-recado"
+    },
+    {
+      "level": 7,
+      "spellId": "spell-aura-de-pureza"
+    },
+    {
+      "level": 7,
+      "spellId": "spell-esfera-elastica-de-otiluke"
+    },
+    {
+      "level": 9,
+      "spellId": "spell-restablecimiento-mayor"
+    },
+    {
+      "level": 9,
+      "spellId": "spell-ligadura-telepatica-de-rary"
+    }
+  ],
+  "feature-clerigo-dominio-del-crepusculo-hechizos-del-dominio-del-crepusculo": [
+    {
+      "level": 1,
+      "spellId": "spell-fuego-feerico"
+    },
+    {
+      "level": 1,
+      "spellId": "spell-dormir"
+    },
+    {
+      "level": 3,
+      "spellId": "spell-rayo-de-luna"
+    },
+    {
+      "level": 3,
+      "spellId": "spell-ver-lo-invisible"
+    },
+    {
+      "level": 5,
+      "spellId": "spell-aura-de-vitalidad"
+    },
+    {
+      "level": 5,
+      "spellId": "spell-pequena-choza-de-leomund"
+    },
+    {
+      "level": 7,
+      "spellId": "spell-aura-de-vida"
+    },
+    {
+      "level": 7,
+      "spellId": "spell-invisibilidad-mayor"
+    },
+    {
+      "level": 9,
+      "spellId": "spell-circulo-de-poder"
+    },
+    {
+      "level": 9,
+      "spellId": "spell-doble-enganoso"
+    }
+  ],
+  "feature-clerigo-dominio-de-la-sangre-hechizos-del-dominio-de-la-sangre": [
+    {
+      "level": 1,
+      "spellId": "spell-falsa-vida"
+    },
+    {
+      "level": 1,
+      "spellId": "spell-dormir"
+    },
+    {
+      "level": 3,
+      "spellId": "spell-inmovilizar-persona"
+    },
+    {
+      "level": 3,
+      "spellId": "spell-rayo-de-debilitamiento"
+    },
+    {
+      "level": 5,
+      "spellId": "spell-acelerar"
+    },
+    {
+      "level": 5,
+      "spellId": "spell-ralentizar"
+    },
+    {
+      "level": 7,
+      "spellId": "spell-marchitar"
+    },
+    {
+      "level": 7,
+      "spellId": "spell-piel-petrea"
+    },
+    {
+      "level": 9,
+      "spellId": "spell-dominar-persona"
+    },
+    {
+      "level": 9,
+      "spellId": "spell-inmovilizar-monstruo"
+    }
+  ],
+  "feature-clerigo-dominio-de-la-luna-hechizos-del-dominio-de-la-luna": [
+    {
+      "level": 1,
+      "spellId": "spell-fuego-feerico"
+    },
+    {
+      "level": 1,
+      "spellId": "spell-imagen-silenciosa"
+    },
+    {
+      "level": 3,
+      "spellId": "spell-invisibilidad"
+    },
+    {
+      "level": 3,
+      "spellId": "spell-rayo-de-luna"
+    },
+    {
+      "level": 5,
+      "spellId": "spell-patron-hipnotico"
+    },
+    {
+      "level": 5,
+      "spellId": "spell-imagen-mayor"
+    },
+    {
+      "level": 7,
+      "spellId": "spell-invisibilidad-mayor"
+    },
+    {
+      "level": 7,
+      "spellId": "spell-terreno-alucinatorio"
+    },
+    {
+      "level": 9,
+      "spellId": "spell-mensaje-onirico"
+    },
+    {
+      "level": 9,
+      "spellId": "spell-pasamiento"
+    }
+  ],
+  "feature-druida-circulo-de-las-esporas-companero-salvaje": [
+    {
+      "level": 2,
+      "spellId": "spell-toque-helado"
+    },
+    {
+      "level": 3,
+      "spellId": "spell-ceguera-sordera"
+    },
+    {
+      "level": 3,
+      "spellId": "spell-dulce-descanso"
+    },
+    {
+      "level": 5,
+      "spellId": "spell-reanimar-a-los-muertos"
+    },
+    {
+      "level": 5,
+      "spellId": "spell-forma-gaseosa"
+    },
+    {
+      "level": 7,
+      "spellId": "spell-marchitar"
+    },
+    {
+      "level": 7,
+      "spellId": "spell-confusion"
+    },
+    {
+      "level": 9,
+      "spellId": "spell-nube-aniquiladora"
+    },
+    {
+      "level": 9,
+      "spellId": "spell-contagio"
+    }
+  ],
+  "feature-druida-circulo-del-fuego-fatuo-hechizos-del-circulo": [
+    {
+      "level": 2,
+      "spellId": "spell-manos-ardientes"
+    },
+    {
+      "level": 2,
+      "spellId": "spell-curar-heridas"
+    },
+    {
+      "level": 3,
+      "spellId": "spell-esfera-flamigera"
+    },
+    {
+      "level": 3,
+      "spellId": "spell-rayo-abrasador"
+    },
+    {
+      "level": 5,
+      "spellId": "spell-crecimiento-vegetal"
+    },
+    {
+      "level": 5,
+      "spellId": "spell-revivir"
+    },
+    {
+      "level": 7,
+      "spellId": "spell-aura-de-vida"
+    },
+    {
+      "level": 7,
+      "spellId": "spell-escudo-de-fuego"
+    },
+    {
+      "level": 9,
+      "spellId": "spell-descarga-flamigera"
+    },
+    {
+      "level": 9,
+      "spellId": "spell-curar-heridas-en-masa"
+    }
+  ],
+  "feature-explorador-acechador-de-la-penumbra-magia-del-acechador-de-la-penumbra": [
+    {
+      "level": 3,
+      "spellId": "spell-disfrazarse"
+    },
+    {
+      "level": 5,
+      "spellId": "spell-truco-de-la-cuerda"
+    },
+    {
+      "level": 9,
+      "spellId": "spell-miedo"
+    },
+    {
+      "level": 13,
+      "spellId": "spell-invisibilidad-mayor"
+    },
+    {
+      "level": 17,
+      "spellId": "spell-similitud"
+    }
+  ],
+  "feature-explorador-el-caminante-del-horizonte-magia-del-caminante-del-horizonte": [
+    {
+      "level": 3,
+      "spellId": "spell-proteccion-contra-el-bien-y-el-mal"
+    },
+    {
+      "level": 5,
+      "spellId": "spell-paso-brumoso"
+    },
+    {
+      "level": 9,
+      "spellId": "spell-acelerar"
+    },
+    {
+      "level": 13,
+      "spellId": "spell-destierro"
+    },
+    {
+      "level": 17,
+      "spellId": "spell-circulo-de-teletransporte"
+    }
+  ],
+  "feature-explorador-asesino-de-monstruos-magia-del-asesino-de-monstruos": [
+    {
+      "level": 3,
+      "spellId": "spell-proteccion-contra-el-bien-y-el-mal"
+    },
+    {
+      "level": 5,
+      "spellId": "spell-zona-de-la-verdad"
+    },
+    {
+      "level": 9,
+      "spellId": "spell-circulo-magico"
+    },
+    {
+      "level": 13,
+      "spellId": "spell-destierro"
+    },
+    {
+      "level": 17,
+      "spellId": "spell-inmovilizar-monstruo"
+    }
+  ],
+  "feature-explorador-guardian-del-enjambre-magia-del-guardian-del-enjambre": [
+    {
+      "level": 3,
+      "spellId": "spell-mano-de-mago"
+    },
+    {
+      "level": 5,
+      "spellId": "spell-telarana"
+    },
+    {
+      "level": 9,
+      "spellId": "spell-forma-gaseosa"
+    },
+    {
+      "level": 13,
+      "spellId": "spell-ojo-arcano"
+    },
+    {
+      "level": 17,
+      "spellId": "spell-plaga-de-insectos"
+    }
+  ],
+  "feature-hechicero-mente-aberrante-hechizos-psionicos": [
+    {
+      "level": 1,
+      "spellId": "spell-brazos-de-hadar"
+    },
+    {
+      "level": 1,
+      "spellId": "spell-susurros-disonantes"
+    },
+    {
+      "level": 1,
+      "spellId": "spell-astilla-mental"
+    },
+    {
+      "level": 3,
+      "spellId": "spell-calmar-emociones"
+    },
+    {
+      "level": 3,
+      "spellId": "spell-detectar-pensamientos"
+    },
+    {
+      "level": 5,
+      "spellId": "spell-hambre-de-hadar"
+    },
+    {
+      "level": 5,
+      "spellId": "spell-recado"
+    },
+    {
+      "level": 7,
+      "spellId": "spell-tentaculos-negros-de-evard"
+    },
+    {
+      "level": 7,
+      "spellId": "spell-invocar-aberracion"
+    },
+    {
+      "level": 9,
+      "spellId": "spell-ligadura-telepatica-de-rary"
+    },
+    {
+      "level": 9,
+      "spellId": "spell-telequinesia"
+    }
+  ],
+  "feature-hechicero-alma-mecanica-hechizos-mecanicos": [
+    {
+      "level": 1,
+      "spellId": "spell-proteccion-contra-el-bien-y-el-mal"
+    },
+    {
+      "level": 1,
+      "spellId": "spell-alarma"
+    },
+    {
+      "level": 3,
+      "spellId": "spell-auxilio-divino"
+    },
+    {
+      "level": 3,
+      "spellId": "spell-restablecimiento-menor"
+    },
+    {
+      "level": 5,
+      "spellId": "spell-proteccion-contra-la-energia"
+    },
+    {
+      "level": 5,
+      "spellId": "spell-disipar-magia"
+    },
+    {
+      "level": 7,
+      "spellId": "spell-libertad-de-movimiento"
+    },
+    {
+      "level": 7,
+      "spellId": "spell-invocar-constructo"
+    },
+    {
+      "level": 9,
+      "spellId": "spell-restablecimiento-mayor"
+    },
+    {
+      "level": 9,
+      "spellId": "spell-muro-de-fuerza"
+    }
+  ],
+  "feature-hechicero-hechicero-de-la-luna-encarnacion-de-la-luna": [
+    {
+      "level": 1,
+      "spellId": "spell-escudo"
+    },
+    {
+      "level": 1,
+      "spellId": "spell-rayo-nauseabundo"
+    },
+    {
+      "level": 1,
+      "spellId": "spell-rociada-de-color"
+    },
+    {
+      "level": 3,
+      "spellId": "spell-restablecimiento-menor"
+    },
+    {
+      "level": 3,
+      "spellId": "spell-ceguera-sordera"
+    },
+    {
+      "level": 3,
+      "spellId": "spell-alterar-el-propio-aspecto"
+    },
+    {
+      "level": 5,
+      "spellId": "spell-disipar-magia"
+    },
+    {
+      "level": 5,
+      "spellId": "spell-toque-vampirico"
+    },
+    {
+      "level": 5,
+      "spellId": "spell-corcel-fantasmal"
+    },
+    {
+      "level": 7,
+      "spellId": "spell-custodia-contra-la-muerte"
+    },
+    {
+      "level": 7,
+      "spellId": "spell-confusion"
+    },
+    {
+      "level": 7,
+      "spellId": "spell-terreno-alucinatorio"
+    },
+    {
+      "level": 9,
+      "spellId": "spell-ligadura-telepatica-de-rary"
+    },
+    {
+      "level": 9,
+      "spellId": "spell-inmovilizar-monstruo"
+    },
+    {
+      "level": 9,
+      "spellId": "spell-doble-enganoso"
+    }
+  ],
+  "feature-paladin-juramento-de-devocion-hechizos-de-juramento": [
+    {
+      "level": 3,
+      "spellId": "spell-proteccion-contra-el-bien-y-el-mal"
+    },
+    {
+      "level": 3,
+      "spellId": "spell-santuario"
+    },
+    {
+      "level": 5,
+      "spellId": "spell-restablecimiento-menor"
+    },
+    {
+      "level": 5,
+      "spellId": "spell-zona-de-la-verdad"
+    },
+    {
+      "level": 9,
+      "spellId": "spell-faro-de-esperanza"
+    },
+    {
+      "level": 9,
+      "spellId": "spell-disipar-magia"
+    },
+    {
+      "level": 13,
+      "spellId": "spell-guardian-de-la-fe"
+    },
+    {
+      "level": 13,
+      "spellId": "spell-libertad-de-movimiento"
+    },
+    {
+      "level": 17,
+      "spellId": "spell-comunion"
+    },
+    {
+      "level": 17,
+      "spellId": "spell-descarga-flamigera"
+    }
+  ],
+  "feature-paladin-juramento-de-los-ancestros-hechizos-de-juramento": [
+    {
+      "level": 3,
+      "spellId": "spell-impacto-enmaranador"
+    },
+    {
+      "level": 3,
+      "spellId": "spell-hablar-con-los-animales"
+    },
+    {
+      "level": 5,
+      "spellId": "spell-rayo-de-luna"
+    },
+    {
+      "level": 5,
+      "spellId": "spell-paso-brumoso"
+    },
+    {
+      "level": 9,
+      "spellId": "spell-crecimiento-vegetal"
+    },
+    {
+      "level": 9,
+      "spellId": "spell-proteccion-contra-la-energia"
+    },
+    {
+      "level": 13,
+      "spellId": "spell-tormenta-de-hielo"
+    },
+    {
+      "level": 13,
+      "spellId": "spell-piel-petrea"
+    },
+    {
+      "level": 17,
+      "spellId": "spell-comunion-con-la-naturaleza"
+    },
+    {
+      "level": 17,
+      "spellId": "spell-zancada-arborea"
+    }
+  ],
+  "feature-paladin-juramento-de-la-venganza-hechizos-de-juramento": [
+    {
+      "level": 3,
+      "spellId": "spell-perdicion"
+    },
+    {
+      "level": 3,
+      "spellId": "spell-marca-del-cazador"
+    },
+    {
+      "level": 5,
+      "spellId": "spell-inmovilizar-persona"
+    },
+    {
+      "level": 5,
+      "spellId": "spell-paso-brumoso"
+    },
+    {
+      "level": 9,
+      "spellId": "spell-acelerar"
+    },
+    {
+      "level": 9,
+      "spellId": "spell-proteccion-contra-la-energia"
+    },
+    {
+      "level": 13,
+      "spellId": "spell-destierro"
+    },
+    {
+      "level": 13,
+      "spellId": "spell-puerta-dimensional"
+    },
+    {
+      "level": 17,
+      "spellId": "spell-inmovilizar-monstruo"
+    },
+    {
+      "level": 17,
+      "spellId": "spell-escudrinamiento"
+    }
+  ],
+  "feature-paladin-paladin-rompejuramentos-hechizos-de-rompejuramentos": [
+    {
+      "level": 3,
+      "spellId": "spell-represion-infernal"
+    },
+    {
+      "level": 3,
+      "spellId": "spell-infligir-heridas"
+    },
+    {
+      "level": 5,
+      "spellId": "spell-corona-de-la-locura"
+    },
+    {
+      "level": 5,
+      "spellId": "spell-oscuridad"
+    },
+    {
+      "level": 9,
+      "spellId": "spell-reanimar-a-los-muertos"
+    },
+    {
+      "level": 9,
+      "spellId": "spell-lanzar-maldicion"
+    },
+    {
+      "level": 13,
+      "spellId": "spell-marchitar"
+    },
+    {
+      "level": 13,
+      "spellId": "spell-confusion"
+    },
+    {
+      "level": 17,
+      "spellId": "spell-dominar-persona"
+    },
+    {
+      "level": 17,
+      "spellId": "spell-contagio"
+    }
+  ],
+  "feature-paladin-juramento-de-la-corona-hechizos-de-juramento": [
+    {
+      "level": 3,
+      "spellId": "spell-duelo-forzado"
+    },
+    {
+      "level": 3,
+      "spellId": "spell-orden-imperiosa"
+    },
+    {
+      "level": 5,
+      "spellId": "spell-zona-de-la-verdad"
+    },
+    {
+      "level": 5,
+      "spellId": "spell-vinculo-protector"
+    },
+    {
+      "level": 9,
+      "spellId": "spell-aura-de-vitalidad"
+    },
+    {
+      "level": 9,
+      "spellId": "spell-espiritus-guardianes"
+    },
+    {
+      "level": 13,
+      "spellId": "spell-destierro"
+    },
+    {
+      "level": 13,
+      "spellId": "spell-guardian-de-la-fe"
+    },
+    {
+      "level": 17,
+      "spellId": "spell-circulo-de-poder"
+    },
+    {
+      "level": 17,
+      "spellId": "spell-geas"
+    }
+  ],
+  "feature-paladin-juramento-de-conquista-hechizos-de-juramento": [
+    {
+      "level": 3,
+      "spellId": "spell-orden-imperiosa"
+    },
+    {
+      "level": 3,
+      "spellId": "spell-armadura-de-agathys"
+    },
+    {
+      "level": 5,
+      "spellId": "spell-inmovilizar-persona"
+    },
+    {
+      "level": 5,
+      "spellId": "spell-arma-magica"
+    },
+    {
+      "level": 9,
+      "spellId": "spell-lanzar-maldicion"
+    },
+    {
+      "level": 9,
+      "spellId": "spell-miedo"
+    },
+    {
+      "level": 13,
+      "spellId": "spell-dominar-bestia"
+    },
+    {
+      "level": 13,
+      "spellId": "spell-piel-petrea"
+    },
+    {
+      "level": 17,
+      "spellId": "spell-nube-aniquiladora"
+    },
+    {
+      "level": 17,
+      "spellId": "spell-dominar-persona"
+    }
+  ],
+  "feature-paladin-juramento-de-redencion-hechizos-de-juramento": [
+    {
+      "level": 3,
+      "spellId": "spell-santuario"
+    },
+    {
+      "level": 3,
+      "spellId": "spell-dormir"
+    },
+    {
+      "level": 5,
+      "spellId": "spell-calmar-emociones"
+    },
+    {
+      "level": 5,
+      "spellId": "spell-inmovilizar-persona"
+    },
+    {
+      "level": 9,
+      "spellId": "spell-contrahechizo"
+    },
+    {
+      "level": 9,
+      "spellId": "spell-patron-hipnotico"
+    },
+    {
+      "level": 13,
+      "spellId": "spell-esfera-elastica-de-otiluke"
+    },
+    {
+      "level": 13,
+      "spellId": "spell-piel-petrea"
+    },
+    {
+      "level": 17,
+      "spellId": "spell-inmovilizar-monstruo"
+    },
+    {
+      "level": 17,
+      "spellId": "spell-muro-de-fuerza"
+    }
+  ],
+  "feature-paladin-juramento-de-gloria-hechizos-de-juramento": [
+    {
+      "level": 3,
+      "spellId": "spell-saeta-guiada"
+    },
+    {
+      "level": 3,
+      "spellId": "spell-heroismo"
+    },
+    {
+      "level": 5,
+      "spellId": "spell-arma-magica"
+    },
+    {
+      "level": 5,
+      "spellId": "spell-aumentar-caracteristica"
+    },
+    {
+      "level": 9,
+      "spellId": "spell-acelerar"
+    },
+    {
+      "level": 9,
+      "spellId": "spell-proteccion-contra-la-energia"
+    },
+    {
+      "level": 13,
+      "spellId": "spell-compulsion"
+    },
+    {
+      "level": 13,
+      "spellId": "spell-libertad-de-movimiento"
+    },
+    {
+      "level": 17,
+      "spellId": "spell-descarga-flamigera"
+    },
+    {
+      "level": 17,
+      "spellId": "spell-comunion"
+    }
+  ],
+  "feature-paladin-juramento-de-los-vigilantes-hechizos-de-juramento": [
+    {
+      "level": 3,
+      "spellId": "spell-alarma"
+    },
+    {
+      "level": 3,
+      "spellId": "spell-detectar-magia"
+    },
+    {
+      "level": 5,
+      "spellId": "spell-rayo-de-luna"
+    },
+    {
+      "level": 5,
+      "spellId": "spell-ver-lo-invisible"
+    },
+    {
+      "level": 9,
+      "spellId": "spell-contrahechizo"
+    },
+    {
+      "level": 9,
+      "spellId": "spell-indetectable"
+    },
+    {
+      "level": 13,
+      "spellId": "spell-aura-de-pureza"
+    },
+    {
+      "level": 13,
+      "spellId": "spell-destierro"
+    },
+    {
+      "level": 17,
+      "spellId": "spell-escudrinamiento"
+    },
+    {
+      "level": 17,
+      "spellId": "spell-inmovilizar-monstruo"
+    }
+  ],
+  "feature-paladin-juramento-del-mar-abierto-hechizos-de-juramento": [
+    {
+      "level": 3,
+      "spellId": "spell-crear-o-destruir-agua"
+    },
+    {
+      "level": 3,
+      "spellId": "spell-retirada-expeditiva"
+    },
+    {
+      "level": 5,
+      "spellId": "spell-augurio"
+    },
+    {
+      "level": 5,
+      "spellId": "spell-paso-brumoso"
+    },
+    {
+      "level": 9,
+      "spellId": "spell-llamar-al-relampago"
+    },
+    {
+      "level": 9,
+      "spellId": "spell-libertad-de-las-olas"
+    },
+    {
+      "level": 13,
+      "spellId": "spell-controlar-el-agua"
+    },
+    {
+      "level": 13,
+      "spellId": "spell-libertad-de-movimiento"
+    },
+    {
+      "level": 17,
+      "spellId": "spell-comunion-con-la-naturaleza"
+    },
+    {
+      "level": 17,
+      "spellId": "spell-libertad-de-los-vientos"
+    }
+  ]
+}
