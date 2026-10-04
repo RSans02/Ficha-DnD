@@ -1,10 +1,11 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import { catalog } from '../lib/catalog';
-import { createCharacter, deriveCharacter, validSpells } from '../lib/engine';
+import { createCharacter, deriveCharacter, getAllChoices, validSpells } from '../lib/engine';
 import { validateCharacterData } from '../lib/persistence';
 import { mergeCatalog, template, validateBooks, type HomebrewBook } from '../lib/homebrew';
-import type { CharacterClass, Race, Spell } from '../lib/types';
+import type { CharacterClass, Feature, Race, Spell } from '../lib/types';
+import { applyEntryDraft, duplicateEntry, entryIssues, type EntryDraft } from '../lib/homebrew-editor';
 
 test('homebrew race and spell work in the creator and survive character validation', () => {
   const race = { ...template('races'), name: 'Astral', abilityBonuses: { int: 2 }, languages: ['Común'] } as Race;
@@ -29,4 +30,60 @@ test('homebrew class progression can be selected and calculated at level one', (
   character.classes = [{ classId: cls.id, level: 1 }];
   assert.equal(validateCharacterData(character, merged).length, 0);
   assert.equal(deriveCharacter(character, merged).level, 1);
+});
+
+test('inline traits and player choices save atomically and calculate after export/import', () => {
+  const race = { ...template('races'), name: 'Aurora' } as Race;
+  const feature = { ...template('features'), name: 'Ojos estelares', originId: race.id, effects: [{ type: 'skill_proficiency', skill: 'perception' }], choices: [{ id: 'homebrew-choice-language', name: 'Otro idioma', type: 'choose_language', amount: 1, required: true, options: [] }] } as Feature;
+  race.featureIds = [feature.id];
+  const draft: EntryDraft = { bookId: 'aurora', type: 'races', entry: race, features: [feature], step: 3 };
+  const books = applyEntryDraft([{ id: 'aurora', name: 'Aurora', entries: {} }], draft);
+  const reloaded = validateBooks(JSON.parse(JSON.stringify(books)), catalog);
+  const combined = mergeCatalog(catalog, reloaded);
+  const character = createCharacter();
+  character.raceId = race.id;
+  character.classes = [{ classId: catalog.classes[0].id, level: 1 }];
+  character.choices['homebrew-choice-language'] = ['Celestial'];
+  assert.deepEqual(entryIssues(race, 'races', [feature]), []);
+  assert.equal(validateCharacterData(character, combined).length, 0);
+  assert(getAllChoices(character, combined).some(choice => choice.id === 'homebrew-choice-language'));
+  const derived = deriveCharacter(character, combined);
+  assert(derived.features.some(item => item.id === feature.id));
+  assert(derived.languages.includes('Celestial'));
+  assert(derived.skills.perception.breakdown.some(row => row.label === 'Competencia' && row.value === 2));
+});
+
+test('copying a race creates independent trait and choice identities', () => {
+  const original = catalog.races.find(race => race.featureIds.length && race.choices.length)!;
+  const copy = duplicateEntry('races', original, catalog);
+  const race = copy.entry as Race;
+  assert.notEqual(race.id, original.id);
+  assert.notEqual(race.choices[0].id, original.choices[0].id);
+  assert(race.featureIds.every(id => copy.features.some(feature => feature.id === id)));
+  assert(copy.features.every(feature => !original.featureIds.includes(feature.id)));
+  const saved = applyEntryDraft([{ id: 'copy', name: 'Copias', entries: {} }], { ...copy, bookId: 'copy', type: 'races', step: 3 });
+  assert.doesNotThrow(() => validateBooks(saved, catalog));
+});
+
+test('a class copied from the wizard retains spell access through its selected reference list', () => {
+  const wizard = catalog.classes.find(cls => cls.name === 'Mago')!;
+  const copy = duplicateEntry('classes', wizard, catalog);
+  const cls = copy.entry as CharacterClass;
+  assert.equal(cls.spellListClassId, wizard.id);
+  assert(cls.subclasses.every(sub => !wizard.subclasses.some(original => original.id === sub.id)));
+  const saved = applyEntryDraft([{ id: 'copy', name: 'Copias', entries: {} }], { ...copy, bookId: 'copy', type: 'classes', step: 3 });
+  const combined = mergeCatalog(catalog, validateBooks(saved, catalog));
+  const character = createCharacter();
+  character.classes = [{ classId: cls.id, level: 1 }];
+  const officialCharacter = { ...character, classes: [{ classId: wizard.id, level: 1 }] };
+  assert.deepEqual(validSpells(character, cls.id, combined).map(spell => spell.id), validSpells(officialCharacter, wizard.id, catalog).map(spell => spell.id));
+});
+
+test('editor rejects impossible class choices and unfinished granted spells', () => {
+  const cls = { ...template('classes'), name: 'Guardián', skillChoices: { amount: 3, options: ['arcana'] } } as CharacterClass;
+  assert(entryIssues(cls, 'classes').some(issue => issue.includes('habilidades')));
+  const feature = { ...template('features'), name: 'Magia', effects: [{ type: 'grant_spell', spellId: '' }] } as Feature;
+  assert(entryIssues(feature, 'features').some(issue => issue.includes('hechizo')));
+  const book = { id: 'bad', name: 'Incompleto', entries: { features: [feature] } };
+  assert.throws(() => validateBooks([book], catalog), /Hechizo concedido/);
 });

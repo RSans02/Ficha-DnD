@@ -323,10 +323,12 @@ function spellClassAllowed(spell: Spell, classId: string, c: Character, catalog:
   const metadata = spell as Spell & { optionalForClasses?: string[]; availableToSubclasses?: string[]; dmAccessForClasses?: string[] };
   const optional = metadata.optionalForClasses ?? [], subclass = c.classes.find(cl => cl.classId === classId)?.subclassId;
   const direct = spell.availableToClasses.some(id => id === classId || (cls && norm(id) === norm(cls.name)));
+  const referenceClass = cls?.spellListClassId ? catalog.classes.find(item => item.id === cls.spellListClassId) : undefined;
+  const referenceAccess = referenceClass && spell.availableToClasses.some(id => id === referenceClass.id || norm(id) === norm(referenceClass.name)) && (!optional.includes(referenceClass.id) || !!c.choices[`optional-spells.${classId}`]?.includes('enabled'));
   const genieAccess = subclass === 'subclass-brujo-el-genio' && (genieExpandedSpells.common.includes(spell.id) || (genieExpandedSpells as Record<string, string[]>)[c.choices['subclass-genie.warlock']?.[0]]?.includes(spell.id));
   const subclassAccess = !!subclass && (metadata.availableToSubclasses?.includes(subclass) || (subclassSpellAccess as Record<string, string[]>)[subclass]?.includes(spell.id) || genieAccess);
   const dmAccess = metadata.dmAccessForClasses?.includes(classId) && c.choices[`optional-spells.${classId}`]?.includes('enabled');
-  return !!(direct || subclassAccess || dmAccess) && (!optional.includes(classId) || !!c.choices[`optional-spells.${classId}`]?.includes('enabled'));
+  return !!(direct || referenceAccess || subclassAccess || dmAccess) && (!optional.includes(classId) || !!c.choices[`optional-spells.${classId}`]?.includes('enabled'));
 }
 
 /** Racial and selected feat cantrips remain separate from class known/prepared limits. */
