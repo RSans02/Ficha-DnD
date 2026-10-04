@@ -4,7 +4,7 @@ import { catalog } from '../lib/catalog';
 import { createCharacter, deriveCharacter, validSpells } from '../lib/engine';
 import { validateCharacterData } from '../lib/persistence';
 import { mergeCatalog, template, validateBooks, type HomebrewBook } from '../lib/homebrew';
-import type { Race, Spell } from '../lib/types';
+import type { CharacterClass, Race, Spell } from '../lib/types';
 
 test('homebrew race and spell work in the creator and survive character validation', () => {
   const race = { ...template('races'), name: 'Astral', abilityBonuses: { int: 2 }, languages: ['Común'] } as Race;
@@ -22,7 +22,7 @@ test('homebrew race and spell work in the creator and survive character validati
 });
 
 test('homebrew class progression can be selected and calculated at level one', () => {
-  const cls = { ...template('classes'), name: 'Guardián', savingThrows: ['str', 'con'] };
+  const cls = { ...template('classes'), name: 'Guardián', savingThrows: ['str', 'con'] } as CharacterClass;
   const book: HomebrewBook = { id: 'book-class', name: 'Clases propias', entries: { classes: [cls] } };
   const merged = mergeCatalog(catalog, validateBooks([book], catalog));
   const character = createCharacter();
