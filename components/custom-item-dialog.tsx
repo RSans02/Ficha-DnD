@@ -4,6 +4,7 @@ import { useState, type FormEvent } from 'react';
 import { Shield, Sparkles } from 'lucide-react';
 import type { Ability, InventoryItem } from '@/lib/types';
 import { Button, Field, Modal } from '@/components/ui';
+import './custom-item-dialog.css';
 
 const CATEGORIES: InventoryItem['category'][] = ['Armas', 'Armaduras', 'Equipo', 'Objetos'];
 const validNumber = (value: number, fallback = 0) => Number.isFinite(value) ? value : fallback;
@@ -82,6 +83,6 @@ function ItemForm({ item, onClose, onSave }: Omit<Props, 'item' | 'title'> & { i
     <div className="panel stack"><label className="flex"><input type="checkbox" checked={!!draft.attack} onChange={e=>setDraft({...draft,attack:e.target.checked?{ability:'str',proficient:true,bonus:0,damage:'1d6',damageType:'',range:'Cuerpo a cuerpo',notes:''}:undefined})}/>Este objeto tiene un ataque</label>{draft.attack&&<div className="grid-2"><Field label="Dados de daño"><input value={draft.attack.damage} onChange={e=>setDraft({...draft,attack:{...draft.attack!,damage:e.target.value}})}/></Field><Field label="Tipo de daño"><input value={draft.attack.damageType} onChange={e=>setDraft({...draft,attack:{...draft.attack!,damageType:e.target.value}})}/></Field><Field label="Característica"><select value={draft.attack.ability} onChange={e=>setDraft({...draft,attack:{...draft.attack!,ability:e.target.value as Ability}})}>{[['str','Fuerza'],['dex','Destreza'],['int','Inteligencia'],['wis','Sabiduría'],['cha','Carisma']].map(([id,label])=><option key={id} value={id}>{label}</option>)}</select></Field><Field label="Bonificador adicional"><input type="number" value={draft.attack.bonus} onChange={e=>setDraft({...draft,attack:{...draft.attack!,bonus:validNumber(e.target.valueAsNumber)}})}/></Field><Field label="Alcance"><input value={draft.attack.range} onChange={e=>setDraft({...draft,attack:{...draft.attack!,range:e.target.value}})}/></Field><label className="flex"><input type="checkbox" checked={draft.attack.proficient} onChange={e=>setDraft({...draft,attack:{...draft.attack!,proficient:e.target.checked}})}/>Competente</label></div>}</div>
     <Field label="Descripción"><textarea rows={4} placeholder="Aspecto, propiedades y efectos del objeto…" value={draft.description} onChange={e => setDraft({ ...draft, description: e.target.value })} /></Field>
     <Field label="Notas personales"><textarea rows={3} placeholder="Dónde lo encontraste, cargas restantes, acuerdos con el director…" value={draft.notes} onChange={e => setDraft({ ...draft, notes: e.target.value })} /></Field>
-    <div className="modal-footer"><Button type="button" onClick={onClose}>Cancelar</Button><Button type="submit" variant="primary">Guardar objeto</Button></div>
+    <div className="modal-footer custom-item-footer"><Button type="button" onClick={onClose}>Cancelar</Button><Button type="submit" variant="primary">Guardar objeto</Button></div>
   </form>;
 }

@@ -9,20 +9,31 @@ import { Logo, Button, ClassIcon, Modal, SourceTag, Empty, cleanDescription, dow
 import { CharacterWizard } from './wizard';
 import { CharacterSheet } from './sheet';
 import { CatalogView, RaceDetails } from './reference';
-import { HomebrewEditor } from './homebrew';
-import { loadBooks, mergeCatalog, saveBooks, type HomeType, type HomebrewBook } from '@/lib/homebrew';
+import { HomebrewDetails, HomebrewEditor, type BookSubclass } from './homebrew';
+import { HOME_TYPES, loadBooks, mergeCatalog, saveBooks, type HomebrewSection, type HomebrewBook } from '@/lib/homebrew';
+import type { HomebrewEntry } from '@/lib/homebrew-editor';
+import { compendiumSearchEntries, searchCompendium } from '@/lib/compendium-search';
 import { backgroundParentName } from '@/lib/background-label';
 
 export const SHEET_SECTIONS=[{id:'Resumen',icon:LayoutGrid},{id:'Combate',icon:Swords},{id:'Habilidades',icon:Shield},{id:'Rasgos',icon:Sparkles},{id:'Inventario',icon:Backpack},{id:'Hechizos',icon:WandSparkles},{id:'Biografía',icon:Feather},{id:'Notas',icon:FileText},{id:'Progresión',icon:Mountain}];
 const REFERENCE_SECTIONS=[{id:'Razas y linajes',icon:Users},{id:'Clases',icon:Swords},{id:'Hechizos',icon:WandSparkles},{id:'Dotes',icon:Sparkles},{id:'Trasfondos',icon:ScrollText},{id:'Equipo',icon:Backpack}];
-const HOMEBREW_SECTIONS:{type:HomeType;label:string;icon:typeof BookOpen}[]=[{type:'races',label:'Razas y subrazas',icon:Users},{type:'classes',label:'Clases y subclases',icon:Swords},{type:'features',label:'Rasgos',icon:Sparkles},{type:'spells',label:'Hechizos',icon:WandSparkles},{type:'feats',label:'Dotes',icon:Sparkles},{type:'backgrounds',label:'Trasfondos',icon:ScrollText},{type:'equipment',label:'Equipo',icon:Backpack}];
+const HOMEBREW_SECTIONS:{type:HomebrewSection;label:string;icon:typeof BookOpen}[]=[{type:'races',label:'Razas y subrazas',icon:Users},{type:'classes',label:'Clases',icon:Swords},{type:'subclasses',label:'Subclases',icon:Swords},{type:'features',label:'Rasgos',icon:Sparkles},{type:'spells',label:'Hechizos',icon:WandSparkles},{type:'feats',label:'Dotes',icon:Sparkles},{type:'backgrounds',label:'Trasfondos',icon:ScrollText},{type:'equipment',label:'Equipo',icon:Backpack}];
 type View='library'|'wizard'|'sheet'|'catalog'|'source'|'homebrew';
+
+function findHomebrewDetail(id:string,books:HomebrewBook[]):{kind:HomebrewSection;entry:HomebrewEntry|BookSubclass;compendium:string}|null{
+  for(const book of books){
+    for(const kind of HOME_TYPES){const entry=book.entries[kind]?.find(item=>item.id===id);if(entry)return {kind,entry:entry as HomebrewEntry,compendium:book.name}}
+    const sub=book.entries.subclasses?.find(item=>item.id===id);if(sub)return {kind:'subclasses',entry:sub,compendium:book.name};
+    for(const cls of book.entries.classes??[]){const nested=cls.subclasses.find(item=>item.id===id);if(nested)return {kind:'subclasses',entry:{...nested,classId:cls.id},compendium:book.name}}
+  }
+  return null;
+}
 
 export function GrimorioApp(){
   const [catalog,setCatalog]=useState<Catalog|null>(null),[characters,setCharacters]=useState<Character[]>([]),[view,setView]=useState<View>('library'),[activeId,setActiveId]=useState(''),[section,setSection]=useState('Resumen'),[reference,setReference]=useState('Razas y linajes'),[mobile,setMobile]=useState(false),[saved,setSaved]=useState<'saved'|'saving'|'error'>('saved');
   const [official,setOfficial]=useState<Catalog|null>(null),[books,setBooks]=useState<HomebrewBook[]>([]);
   const [homebrewBookId,setHomebrewBookId]=useState('');
-  const [homebrewType,setHomebrewType]=useState<HomeType>('races');
+  const [homebrewType,setHomebrewType]=useState<HomebrewSection>('races');
   const [sidebarMenu,setSidebarMenu]=useState<'official'|'custom'|null>('official');
   const [openBookId,setOpenBookId]=useState('');
   const [loadError,setLoadError]=useState(''),[toast,setToast]=useState<{text:string;error?:boolean}|null>(null),[deleteId,setDeleteId]=useState(''),[deleteDraftId,setDeleteDraftId]=useState(''),[searchOpen,setSearchOpen]=useState(false),[globalQuery,setGlobalQuery]=useState(''),[detail,setDetail]=useState<Entity|null>(null),[draft,setDraft]=useState<CharacterDraft|null>(null),[drafts,setDrafts]=useState<CharacterDraft[]>([]);
@@ -53,8 +64,10 @@ export function GrimorioApp(){
   if(loadError)return <div className="loading"><Logo/><div className="error-box">{loadError}</div><Button onClick={()=>window.location.reload()}>Volver a intentar</Button></div>;
   if(!catalog)return <div className="loading"><Logo/><div className="loading-line"/><p>Abriendo tu grimorio…</p></div>;
   const currentDerived=active?deriveCharacter(active,catalog):null;
-  const searchItems:Entity[]=active&&view==='sheet'?[...currentDerived!.features,...catalog.spells.filter(s=>Object.values(active.spellSelections).some(x=>x.known.includes(s.id))),...catalog.feats.filter(f=>active.featIds.includes(f.id)),...active.inventory.map(x=>({...x,source:{page:0},description:x.description+'\n'+x.notes})),...active.notes.map(n=>({id:n.id,name:n.title,description:n.content,source:{page:0}}))]:[...catalog.races,...catalog.classes,...catalog.feats,...catalog.spells,...catalog.backgrounds,...catalog.equipment];
-  const results=globalQuery.trim()?searchItems.filter(i=>(i.name+' '+i.description).toLocaleLowerCase('es').includes(globalQuery.toLocaleLowerCase('es'))).slice(0,30):[];
+  const compendiumEntries=compendiumSearchEntries(catalog,books);
+  const searchItems=active&&view==='sheet'?[...currentDerived!.features,...catalog.spells.filter(s=>Object.values(active.spellSelections).some(x=>x.known.includes(s.id))),...catalog.feats.filter(f=>active.featIds.includes(f.id)),...active.inventory.map(x=>({...x,source:{page:0},description:x.description+'\n'+x.notes})),...active.notes.map(n=>({id:n.id,name:n.title,description:n.content,source:{page:0}}))].map(item=>compendiumEntries.find(entry=>entry.item.id===item.id)??{item}):compendiumEntries;
+  const results=searchCompendium(searchItems,globalQuery);
+  const homebrewDetail=detail?findHomebrewDetail(detail.id,books):null;
   const title=view==='library'?'Mis personajes':view==='wizard'?'Crear personaje':view==='sheet'?(active?.name||'Personaje'):view==='source'?'Acerca de la fuente':view==='homebrew'?'Compendios homebrew':reference;
   return <>
     {mobile&&<div className="sidebar-backdrop" onClick={()=>setMobile(false)}/>}
@@ -78,8 +91,8 @@ export function GrimorioApp(){
     <input ref={importInput} type="file" accept="application/json,.json" hidden onChange={e=>void importFile(e.target.files?.[0])}/>
     <Modal open={!!deleteId} onClose={()=>setDeleteId('')} title="Eliminar personaje" description="Esta acción elimina el personaje de este navegador. Puedes exportar una copia antes de continuar."><p>¿Eliminar a <strong>{characters.find(c=>c.id===deleteId)?.name}</strong>?</p><div className="modal-footer"><Button onClick={()=>setDeleteId('')}>Cancelar</Button><Button variant="danger" onClick={async()=>{try{await repo.current!.delete(deleteId);setCharacters(cs=>cs.filter(c=>c.id!==deleteId));setDeleteId('');notify('Personaje eliminado.')}catch(e){notify(String(e),true)}}}><Trash2 size={15}/>Eliminar personaje</Button></div></Modal>
     <Modal open={!!deleteDraftId} onClose={()=>setDeleteDraftId('')} title="Eliminar borrador"><p>¿Eliminar el borrador de <strong>{drafts.find(item=>item.character.id===deleteDraftId)?.character.name||'Personaje sin nombre'}</strong>? Se perderá el progreso de creación.</p><div className="modal-footer"><Button onClick={()=>setDeleteDraftId('')}>Cancelar</Button><Button variant="danger" onClick={()=>{try{draftRepo.current!.delete(deleteDraftId);setDrafts(current=>current.filter(item=>item.character.id!==deleteDraftId));if(draft?.character.id===deleteDraftId)setDraft(null);setDeleteDraftId('');notify('Borrador eliminado.')}catch(e){notify(e instanceof Error?e.message:'No se pudo eliminar el borrador.',true)}}}><Trash2 size={15}/>Eliminar borrador</Button></div></Modal>
-    <Modal open={searchOpen} onClose={()=>setSearchOpen(false)} title={view==='sheet'?'Buscar en tu personaje':'Buscar en el compendio'} wide><div className="search-field"><Search size={17}/><input autoFocus placeholder="Rasgos, hechizos, dotes, objetos, notas…" value={globalQuery} onChange={e=>setGlobalQuery(e.target.value)}/></div><div className="stack" style={{marginTop:18,gap:8}}>{results.map(item=><button key={item.id} className="check-option" onClick={()=>{setSearchOpen(false);setDetail(item)}}><BookOpen size={17}/><span><strong>{item.name}</strong><small>{cleanDescription(item.description,110)}</small></span></button>)}{globalQuery&&!results.length&&<Empty title="No hay coincidencias" description="Prueba con otro nombre o fragmento de texto."/>}{!globalQuery&&<p className="subtle">Escribe para buscar entre {searchItems.length} entradas.</p>}</div></Modal>
-    <Modal open={!!detail} onClose={()=>setDetail(null)} title={detail?.name||''} wide>{detail&&(catalog.races.some(r=>r.id===detail!.id)?<RaceDetails race={catalog.races.find(r=>r.id===detail!.id)!} catalog={catalog}/>:<>{catalog.backgrounds.some(background=>background.id===detail.id&&background.parentId)&&<p className="subtle">Variante de {backgroundParentName(catalog.backgrounds.find(background=>background.id===detail.id)!,catalog)}</p>}<SourceTag source={detail.source.page?detail.source:undefined}/><p className="source-prose">{detail.description}</p>{detail.automationNotes?.map((n,i)=><div key={i} className="info-box" style={{marginTop:18}}>{n}</div>)}</>)}</Modal>
+    <Modal open={searchOpen} onClose={()=>setSearchOpen(false)} title={view==='sheet'?'Buscar en tu personaje':'Buscar en el compendio'} wide><div className="search-field"><Search size={17}/><input autoFocus placeholder="Rasgos, hechizos, dotes, objetos, notas o compendios…" value={globalQuery} onChange={e=>setGlobalQuery(e.target.value)}/></div><div className="stack" style={{marginTop:18,gap:8}}>{results.map(({item,compendium})=><button key={item.id} className="check-option" onClick={()=>{setSearchOpen(false);setDetail(item)}}><BookOpen size={17}/><span><strong>{item.name}</strong>{compendium&&<small>Compendio: {compendium}</small>}<small>{cleanDescription(item.description,110)}</small></span></button>)}{globalQuery&&!results.length&&<Empty title="No hay coincidencias" description="Prueba con otro nombre o fragmento de texto."/>}{!globalQuery&&<p className="subtle">Escribe para buscar entre {searchItems.length} entradas.</p>}</div></Modal>
+    <Modal open={!!detail} onClose={()=>setDetail(null)} title={detail?.name||''} wide>{detail&&(homebrewDetail?<><p className="subtle">Compendio: {homebrewDetail.compendium}</p><HomebrewDetails kind={homebrewDetail.kind} entry={homebrewDetail.entry} catalog={catalog}/></>:catalog.races.some(r=>r.id===detail!.id)?<RaceDetails race={catalog.races.find(r=>r.id===detail!.id)!} catalog={catalog}/>:<>{catalog.backgrounds.some(background=>background.id===detail.id&&background.parentId)&&<p className="subtle">Variante de {backgroundParentName(catalog.backgrounds.find(background=>background.id===detail.id)!,catalog)}</p>}<SourceTag source={detail.source.page||detail.source.book?detail.source:undefined}/><p className="source-prose">{detail.description}</p>{detail.automationNotes?.map((n,i)=><div key={i} className="info-box" style={{marginTop:18}}>{n}</div>)}</>)}</Modal>
     {toast&&<div className={`toast ${toast.error?'error':''}`} role={toast.error?'alert':'status'}>{toast.error?<CircleHelp size={17}/>:<Check size={17}/>} {toast.text}<button className="icon-button" onClick={()=>setToast(null)} aria-label="Cerrar aviso"><X size={15}/></button></div>}
   </>
 }

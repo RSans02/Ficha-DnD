@@ -15,6 +15,8 @@ const skillId = (s: string) => ({ animalHandling: 'animal-handling', sleightOfHa
 const abilityId = (s: string) => ABILITIES.find(a => a.id === s || norm(a.label) === norm(s))?.id;
 const optionId = (o: ChoiceOption | string) => typeof o === 'string' ? o : o.id;
 const numeric = (e: Effect) => typeof e.value === 'number' && Number.isFinite(e.value) ? e.value : 0;
+const GRIMOIRE_FEATURE_ID = 'homebrew-feature-brujo-grimorio-profundo';
+const GRIMOIRE_SLOT_GAINS = [{ level: 1, slot: 1 }, { level: 3, slot: 2 }, { level: 5, slot: 3 }, { level: 7, slot: 4 }, { level: 9, slot: 5 }, { level: 11, slot: 5 }];
 const PROFICIENCY_LABELS: Record<string, string> = { light: 'Armaduras ligeras', medium: 'Armaduras medias', heavy: 'Armaduras pesadas', shield: 'Escudos', simple: 'Armas sencillas', martial: 'Armas marciales', 'thieves-tools': 'Herramientas de ladrón', 'hand-crossbow': 'Ballesta de mano', 'light-crossbow': 'Ballesta ligera', longsword: 'Espada larga', shortsword: 'Espada corta', rapier: 'Estoque', quarterstaff: 'Bastón', scimitar: 'Cimitarra', sickle: 'Hoz', club: 'Garrote', dagger: 'Daga', dart: 'Dardo', sling: 'Honda', javelin: 'Jabalina', spear: 'Lanza', mace: 'Maza' };
 const proficiencyLabel = (name: string) => PROFICIENCY_LABELS[name] ?? name;
 const proficiencyName = (name: string) => norm(proficiencyLabel(name));
@@ -308,6 +310,10 @@ export function deriveCharacter(c: Character, catalog: Catalog): DerivedCharacte
   }
   slots = Array.from({ length: Math.max(slots.length, ...Object.keys(c.manualOverrides).filter(k => /^slotMax\.\d$/.test(k)).map(k => Number(k.slice(8))), 0) }, (_, i) => c.manualOverrides[`slotMax.${i + 1}`] ?? slots[i] ?? 0);
   const pactSlots = spellcasting.filter(s => s.pact).map(s => ({ classId: s.classId, level: s.maxSpellLevel, max: s.slots[s.maxSpellLevel - 1] ?? 0 }));
+  const warlockLevel = c.classes.find(entry => entry.classId === 'class-brujo')?.level ?? 0;
+  const grimoireSlots = features.some(feature => feature.id === GRIMOIRE_FEATURE_ID)
+    ? Array.from({ length: 5 }, (_, index) => GRIMOIRE_SLOT_GAINS.filter(gain => gain.level <= warlockLevel && gain.slot === index + 1).length)
+    : [];
   const strings = (kind: 'languages' | 'senses' | 'resistances' | 'immunities', effect: string) => unique([...raceData.flatMap(r => r[kind]), ...c.manual[kind], ...effectRows(effect).flatMap(x => typeof x.effect.value === 'string' ? [x.effect.value] : [])]);
   const first = classes[0]?.cls;
   const proficiencies = unique([...(first ? [...first.armorProficiencies, ...first.weaponProficiencies, ...first.toolProficiencies.filter(name => !/elecci[oó]n/.test(name))] : []), ...(background?.toolProficiencies ?? []), ...classes.slice(1).flatMap(cl => MULTICLASS_PROFICIENCIES[norm(cl.cls.name)] ?? []), ...c.manual.proficiencies, ...effectRows('proficiency').flatMap(x => typeof x.effect.value === 'string' ? [x.effect.value] : [])].map(proficiencyLabel));
@@ -315,7 +321,7 @@ export function deriveCharacter(c: Character, catalog: Catalog): DerivedCharacte
   // Channel Divinity multiclass p.451 grants new effects, never additive uses.
   const divinity = resources.filter(r => norm(r.name) === 'canalizar divinidad');
   const mergedResources = divinity.length > 1 ? resources.filter(r => !divinity.slice(1).some(other => other.id === r.id)).map(r => r.id === divinity[0].id ? { ...r, max: Math.max(...divinity.map(x => x.max)), spent: Math.max(...divinity.map(x => x.spent)) } : r) : resources;
-  return { level, proficiency, abilities, saves, skills, hpMax, ac, initiative, speed, passivePerception, features, resources: mergedResources, spellcasting, slots, pactSlots, languages: unique([...strings('languages', 'language'), ...(background?.languages ?? [])]), senses: strings('senses', 'sense'), resistances: strings('resistances', 'resistance'), immunities: strings('immunities', 'immunity'), proficiencies, warnings: unique(warnings) };
+  return { level, proficiency, abilities, saves, skills, hpMax, ac, initiative, speed, passivePerception, features, resources: mergedResources, spellcasting, slots, pactSlots, grimoireSlots, languages: unique([...strings('languages', 'language'), ...(background?.languages ?? [])]), senses: strings('senses', 'sense'), resistances: strings('resistances', 'resistance'), immunities: strings('immunities', 'immunity'), proficiencies, warnings: unique(warnings) };
 }
 
 function spellClassAllowed(spell: Spell, classId: string, c: Character, catalog: Catalog) {
@@ -326,7 +332,8 @@ function spellClassAllowed(spell: Spell, classId: string, c: Character, catalog:
   const referenceClass = cls?.spellListClassId ? catalog.classes.find(item => item.id === cls.spellListClassId) : undefined;
   const referenceAccess = referenceClass && spell.availableToClasses.some(id => id === referenceClass.id || norm(id) === norm(referenceClass.name)) && (!optional.includes(referenceClass.id) || !!c.choices[`optional-spells.${classId}`]?.includes('enabled'));
   const genieAccess = subclass === 'subclass-brujo-el-genio' && (genieExpandedSpells.common.includes(spell.id) || (genieExpandedSpells as Record<string, string[]>)[c.choices['subclass-genie.warlock']?.[0]]?.includes(spell.id));
-  const subclassAccess = !!subclass && (metadata.availableToSubclasses?.includes(subclass) || (subclassSpellAccess as Record<string, string[]>)[subclass]?.includes(spell.id) || genieAccess);
+  const expanded = cls?.subclasses.find(item => item.id === subclass)?.expandedSpellIds;
+  const subclassAccess = !!subclass && (metadata.availableToSubclasses?.includes(subclass) || (subclassSpellAccess as Record<string, string[]>)[subclass]?.includes(spell.id) || expanded?.includes(spell.id) || genieAccess);
   const dmAccess = metadata.dmAccessForClasses?.includes(classId) && c.choices[`optional-spells.${classId}`]?.includes('enabled');
   return !!(direct || referenceAccess || subclassAccess || dmAccess) && (!optional.includes(classId) || !!c.choices[`optional-spells.${classId}`]?.includes('enabled'));
 }
@@ -414,7 +421,7 @@ export function checkPrerequisites(reqs: Prerequisite[], c: Character, catalog: 
         return matches ? [] : [`Requiere ${r.value}.`];
       }
       case 'feat': return selectedFeatIds(c, catalog).includes(String(r.value)) ? [] : [`Requiere dote ${r.value}.`];
-      case 'feature': return d.features.some(f => f.id === r.value) ? [] : [`Requiere rasgo ${r.value}.`];
+      case 'feature': return d.features.some(f => f.id === r.value || norm(f.name) === norm(String(r.value))) ? [] : [`Requiere rasgo ${catalog.features.find(f => f.id === r.value)?.name ?? r.value}.`];
       case 'spell': return Object.values(c.spellSelections).some(s => s.known.includes(String(r.value)) || s.prepared.includes(String(r.value))) || getGrantedSpells(c, catalog).some(s => s.id === r.value) ? [] : [`Requiere conocer el conjuro ${r.value}.`];
       case 'requires_manual_verification': return typeof r.verificationChoiceId === 'string' && c.choices[r.verificationChoiceId]?.includes('confirmed') ? [] : [`Requiere verificar en el manual: ${r.value ?? r.description ?? 'requisito sin estructurar'}.`];
       // Unknown requirements must never authorize an option silently.
@@ -583,6 +590,13 @@ export function summarizeLevelUp(c: Character, next: Character, catalog: Catalog
   return changes;
 }
 
+/** A level increases current HP by the same amount as maximum HP, preserving damage. */
+export function levelUpCurrentHp(original: Character, draft: Character, catalog: Catalog): number {
+  const previousMax = deriveCharacter(original, catalog).hpMax.value;
+  const newMax = deriveCharacter(draft, catalog).hpMax.value;
+  return Math.max(0, Math.min(newMax, original.hp.current + newMax - previousMax));
+}
+
 export function applyLevelUp(original: Character, draft: Character, catalog: Catalog): Character {
   if (original.id !== draft.id || totalLevel(draft) !== totalLevel(original) + 1) throw new Error('La subida debe conservar el personaje y añadir exactamente un nivel.');
   const differences = draft.classes.filter(cl => cl.level !== (original.classes.find(old => old.classId === cl.classId)?.level ?? 0));
@@ -591,6 +605,8 @@ export function applyLevelUp(original: Character, draft: Character, catalog: Cat
   if (errors.length) throw new Error(errors.join('\n'));
   const previous = clone(original); delete previous.lastLevelSnapshot; delete previous.lastLevelAppliedSnapshot;
   const next = clone(draft);
+  next.hp.current = levelUpCurrentHp(original, draft, catalog);
+  if (original.hp.current === 0 && next.hp.current > 0) next.deathSaves = { successes: 0, failures: 0 };
   delete next.lastLevelSnapshot; delete next.lastLevelAppliedSnapshot;
   next.lastLevelAppliedSnapshot = JSON.stringify(next);
   next.lastLevelSnapshot = JSON.stringify(previous);
@@ -674,7 +690,7 @@ function restTargets(c: Character, type: 'short' | 'long', catalog: Catalog) {
   const d = deriveCharacter(c, catalog);
   const resources = d.resources.filter(r => r.recovery !== 'manual' && (r.recovery === type || type === 'long' && r.recovery === 'short') && r.spent > 0);
   const casters = classData(c, catalog).filter(x => x.casting?.recovery === type || type === 'long' && x.casting?.recovery === 'short');
-  const keys = unique(casters.flatMap(cl => cl.casting?.mode === 'pact' ? [`pact.${cl.cls.id}`] : d.slots.map((_, i) => String(i + 1))));
+  const keys = unique([...casters.flatMap(cl => cl.casting?.mode === 'pact' ? [`pact.${cl.cls.id}`] : d.slots.map((_, i) => String(i + 1))), ...(type === 'long' ? d.grimoireSlots.map((_, i) => `grimoire.${i + 1}`) : [])]);
   return { resources, keys: keys.filter(key => (c.slotsSpent[key] ?? 0) > 0) };
 }
 
@@ -718,7 +734,7 @@ export function restPreview(c: Character, type: 'short' | 'long', catalog: Catal
   if ((c.exhaustionLevel ?? 0) >= 6) return ['El agotamiento de nivel 6 causa la muerte. Un descanso no resucita al personaje.'];
   if (type === 'long' && c.hp.current < 1) return ['Necesitas al menos 1 PG al comenzar un descanso largo para obtener sus beneficios.'];
   const { resources, keys } = restTargets(c, type, catalog);
-  const rows = [...resources.map(r => `${r.name}: recupera ${r.max === -1 ? r.spent : Math.min(r.spent, r.max)} usos.`), ...keys.map(key => key.startsWith('pact.') ? 'Recupera los espacios de magia de pacto.' : `Recupera los espacios de conjuro de nivel ${key}.`)];
+  const rows = [...resources.map(r => `${r.name}: recupera ${r.max === -1 ? r.spent : Math.min(r.spent, r.max)} usos.`), ...keys.map(key => key.startsWith('pact.') ? 'Recupera los espacios de magia de pacto.' : key.startsWith('grimoire.') ? `Recupera las ranuras de Grimorio Profundo de nivel ${key.slice(9)}.` : `Recupera los espacios de conjuro de nivel ${key}.`)];
   if (type === 'short') return [...rows, 'Descanso corto: al menos 1 hora. Puedes gastar dados de golpe para recuperar PG; no recuperas los dados gastados.'];
   const recovered = recoveredHitDice ?? longRestHitDiceRecovery(c, catalog);
   return [...rows, 'Recupera todos los PG perdidos. Los PG temporales expiran, salvo que su rasgo establezca otra duración.', `Recupera ${Object.values(recovered).reduce((sum, n) => sum + n, 0)} dados de golpe (máximo ${Math.max(1, Math.floor(totalLevel(c) / 2))}).`, ...((c.exhaustionLevel ?? 0) > 0 ? [options.foodAndWater ? 'Reduce el agotamiento en 1 nivel al haber comido y bebido lo necesario.' : 'El agotamiento requiere comida y agua suficientes para reducirse.'] : []), 'Confirma que se ha completado el descanso: normalmente 8 horas, salvo un rasgo específico, y como máximo uno con beneficios cada 24 horas.'];

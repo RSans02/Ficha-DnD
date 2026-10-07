@@ -1,0 +1,21 @@
+.custom-item-footer {
+  position: sticky;
+  bottom: -26px;
+  z-index: 1;
+  margin: 25px -26px -26px;
+  padding: 20px 26px 26px;
+  background: var(--paper);
+  box-shadow: 0 -8px 18px #211c120d;
+}
+
+@media (max-width: 720px) {
+  .custom-item-footer {
+    bottom: -21px;
+    margin-right: -21px;
+    margin-bottom: -21px;
+    margin-left: -21px;
+    padding-right: 21px;
+    padding-bottom: 21px;
+    padding-left: 21px;
+  }
+}

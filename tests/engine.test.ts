@@ -209,8 +209,27 @@ test('level-up is a validated immutable draft and can undo exactly once', () => 
   const c = character(), serialized = JSON.stringify(c), plan = planLevelUp(c, 'class-guerrero', catalog);
   assert.equal(JSON.stringify(c), serialized); assert.equal(plan.next.hp.rolls[0].value, 0); assert.throws(() => applyLevelUp(c, plan.next, catalog), /tirada válida/);
   plan.next.hp.rolls[0].value = 6; const leveled = applyLevelUp(c, plan.next, catalog);
+  assert.equal(deriveCharacter(leveled, catalog).hpMax.value, 20);
+  assert.equal(leveled.hp.current, 18);
   assert.equal(leveled.classes[0].level, 2); assert(leveled.lastLevelSnapshot); assert(!JSON.parse(leveled.lastLevelSnapshot).lastLevelSnapshot);
-  const undone = undoLevelUp(leveled); assert.equal(undone.classes[0].level, 1); assert.equal(undone.hp.rolls.length, 0); assert.equal(undone.lastLevelSnapshot, undefined); assert.equal(undoLevelUp(undone), undone);
+  const undone = undoLevelUp(leveled); assert.equal(undone.classes[0].level, 1); assert.equal(undone.hp.rolls.length, 0); assert.equal(undone.hp.current, 10); assert.equal(undone.lastLevelSnapshot, undefined); assert.equal(undoLevelUp(undone), undone);
+});
+
+test('level-up adds gained HP to current HP without removing existing damage', () => {
+  const full = character();
+  full.hp.current = deriveCharacter(full, catalog).hpMax.value;
+  const plan = planLevelUp(full, 'class-guerrero', catalog);
+  plan.next.hp.rolls[0].value = 6;
+  const leveled = applyLevelUp(full, plan.next, catalog);
+  assert.equal(leveled.hp.current, deriveCharacter(leveled, catalog).hpMax.value);
+  const unconscious = character();
+  unconscious.hp.current = 0;
+  unconscious.deathSaves = { successes: 1, failures: 2 };
+  const secondPlan = planLevelUp(unconscious, 'class-guerrero', catalog);
+  secondPlan.next.hp.rolls[0].value = 6;
+  const recovered = applyLevelUp(unconscious, secondPlan.next, catalog);
+  assert.equal(recovered.hp.current, 8);
+  assert.deepEqual(recovered.deathSaves, { successes: 0, failures: 0 });
 });
 
 test('undoing a level preserves later inventory, money, notes and combat changes', () => {

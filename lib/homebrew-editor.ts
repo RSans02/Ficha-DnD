@@ -68,6 +68,7 @@ export function duplicateEntry(type: HomeType, original: HomebrewEntry, catalog:
 export function entryIssues(entry: HomebrewEntry, type: HomeType, features: Feature[] = []): string[] {
   const errors: string[] = [];
   if (!entry.name.trim()) errors.push('Escribe un nombre para la entrada.');
+  if (entry.source.url && !/^https?:\/\/[^\s]+$/i.test(entry.source.url)) errors.push('El enlace de la fuente debe empezar por https:// o http://.');
   const bounded = (value: number | null | undefined, min: number, max: number, label: string, integer = true) => {
     if (value !== null && value !== undefined && (!Number.isFinite(value) || value < min || value > max || (integer && !Number.isInteger(value)))) errors.push(`${label}: usa un valor entre ${min} y ${max}.`);
   };

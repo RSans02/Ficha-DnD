@@ -1,0 +1,40 @@
+.invocation-filters {
+  margin: 12px 0 14px;
+}
+
+.invocation-filters .inline-tabs {
+  margin-bottom: 10px;
+}
+
+.invocation-filter-selects {
+  display: flex;
+  gap: 10px;
+}
+
+.invocation-filter-selects select {
+  flex: 1;
+  min-width: 0;
+}
+
+.invocation-filter-summary {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  margin-top: 9px;
+}
+
+.invocation-filter-summary button {
+  border: 0;
+  background: transparent;
+  color: var(--green);
+  padding: 2px 0;
+  white-space: nowrap;
+  text-decoration: underline;
+}
+
+@media (max-width: 600px) {
+  .invocation-filter-selects {
+    flex-direction: column;
+  }
+}

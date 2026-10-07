@@ -1,0 +1,31 @@
+[
+  {
+    "id": "homebrew-book-strixhaven-un-plan-de-estudios-caotico",
+    "name": "Strixhaven: Un Plan de Estudios Caótico",
+    "description": "Contenido de D&D 5e (2014) procedente de Strixhaven: Un Plan de Estudios Caótico.",
+    "entries": {
+      "spells": [
+        {
+          "id": "homebrew-spell-puas-plateadas",
+          "name": "Púas plateadas",
+          "description": "Cuando una criatura que puedas ver a 60 pies o menos tiene éxito en una tirada de ataque, prueba de característica o tirada de salvación, la distraes mágicamente. Debe repetir el d20 y usar el resultado más bajo. Después puedes elegir a otra criatura que veas dentro del alcance, incluido tú mismo. Esa criatura tiene ventaja en la siguiente tirada de ataque, prueba de característica o tirada de salvación que realice durante el próximo minuto. Una criatura solo puede beneficiarse de una aplicación de este conjuro a la vez.",
+          "source": {
+            "page": 0,
+            "book": "Strixhaven: Un Plan de Estudios Caótico",
+            "url": "https://nivel20.com/games/dnd-5/spells/9726-puas-plateadas"
+          },
+          "level": 1,
+          "school": "Encantamiento",
+          "castingTime": "1 reacción, cuando una criatura que puedas ver a 60 pies o menos tiene éxito en una tirada de ataque, prueba de característica o tirada de salvación",
+          "range": "60 pies",
+          "components": "V",
+          "duration": "Instantáneo",
+          "concentration": false,
+          "ritual": false,
+          "higherLevels": "",
+          "availableToClasses": ["class-bardo", "class-mago", "class-hechicero"]
+        }
+      ]
+    }
+  }
+]

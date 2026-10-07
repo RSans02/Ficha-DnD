@@ -1,0 +1,219 @@
+[
+  {
+    "id": "homebrew-book-tales-and-taverns",
+    "name": "Tales & Taverns",
+    "description": "Razas de Tales & Taverns. Incluye a los Omi del documento Los Omi ESP, páginas 22 y 23.",
+    "entries": {
+      "races": [
+        {
+          "id": "homebrew-race-omi",
+          "name": "Omi",
+          "description": "Los omi son seres pequeños y mágicos, emparentados con los medianos. Viven en pequeños grupos nómadas, suelen criarse en los bosques y sienten una curiosidad casi ilimitada. Son amistosos, leales y no entienden la propiedad privada como otras culturas; toman prestado lo que creen que nadie necesita y regalan aquello que ya no usan. Suelen ser buenos y legales según su propia idea de la ley, aunque carecen de sentido del peligro. Se desconoce su origen y no se reproducen; se cree que la naturaleza los invoca. No suelen usar nombres comunes, sino nombres de objetos o cosas que les llaman la atención, como Cerilla, Lluvia, Daga, Flautín, Ganzúa o Mochila.\n\nMejora de característica: Destreza +2, Carisma +2 y Constitución -2. Tamaño: Pequeño (el texto indica que son menores que los medianos y rara vez superan los 100 cm). Velocidad: 25 pies. Idiomas: común y otro a tu elección. Alineamiento: generalmente buenos y legales, aunque interpretan de otro modo la propiedad, el peligro y algunas normas sociales.",
+          "source": { "page": 22, "endPage": 23, "book": "Tales & Taverns", "title": "Los Omi" },
+          "automationNotes": [
+            "Intrépido distingue entre miedo mágico y no mágico; comprueba esa excepción durante la partida.",
+            "Dotados registra la elección en los niveles 1, 6, 9 y 11. Las dotes se aplican manualmente: el PDF no aporta sus reglas y dos de sus nombres no tienen ficha en el catálogo actual.",
+            "Hijos de la Naturaleza concede Encantar animal sin límite diario, pero solo permite mantener encantada a una criatura a la vez; lleva este límite durante la partida."
+          ],
+          "parentId": null,
+          "kind": "race",
+          "version": "D&D 5e (2014)",
+          "category": "Tales & Taverns",
+          "size": "Pequeño",
+          "speed": 25,
+          "abilityBonuses": { "dex": 2, "cha": 2, "con": -2 },
+          "languages": ["Común"],
+          "senses": [],
+          "resistances": [],
+          "immunities": [],
+          "featureIds": [
+            "homebrew-feature-omi-agilidad",
+            "homebrew-feature-omi-intrepido",
+            "homebrew-feature-omi-hijos-naturaleza",
+            "homebrew-feature-omi-ninos-siempre",
+            "homebrew-feature-omi-competencia",
+            "homebrew-feature-omi-dotados-1",
+            "homebrew-feature-omi-dotados-6",
+            "homebrew-feature-omi-dotados-9",
+            "homebrew-feature-omi-dotados-11"
+          ],
+          "choices": [
+            {
+              "id": "homebrew-choice-omi-idioma",
+              "type": "choose_language",
+              "name": "Idioma adicional de los Omi",
+              "amount": 1,
+              "required": true,
+              "options": [],
+              "source": { "page": 22, "book": "Tales & Taverns", "title": "Los Omi" }
+            }
+          ],
+          "effects": []
+        }
+      ],
+      "features": [
+        {
+          "id": "homebrew-feature-omi-agilidad",
+          "name": "Agilidad de lo Chiquito",
+          "description": "Puedes moverte por el espacio de cualquier criatura de tamaño mayor que el tuyo.",
+          "source": { "page": 22, "book": "Tales & Taverns", "title": "Los Omi" },
+          "originId": "homebrew-race-omi",
+          "level": 1,
+          "choices": [],
+          "effects": []
+        },
+        {
+          "id": "homebrew-feature-omi-intrepido",
+          "name": "Intrépido",
+          "description": "Eres inmune al estado asustado salvo cuando este se impone de forma mágica.",
+          "source": { "page": 23, "book": "Tales & Taverns", "title": "Los Omi" },
+          "originId": "homebrew-race-omi",
+          "level": 1,
+          "choices": [],
+          "effects": []
+        },
+        {
+          "id": "homebrew-feature-omi-hijos-naturaleza",
+          "name": "Hijos de la Naturaleza",
+          "description": "Desde nivel 1 conoces Encantar animal. Puedes lanzarlo sin límite de usos diarios, pero solo puedes mantener encantada a una criatura a la vez mediante este rasgo.",
+          "source": { "page": 23, "book": "Tales & Taverns", "title": "Los Omi" },
+          "originId": "homebrew-race-omi",
+          "level": 1,
+          "choices": [],
+          "effects": [{ "type": "grant_spell", "spellId": "spell-encantar-animal" }]
+        },
+        {
+          "id": "homebrew-feature-omi-ninos-siempre",
+          "name": "Niños para Siempre",
+          "description": "Los omi conservan aspecto infantil o adolescente toda su vida. Pueden vivir hasta 100 años y de media no superan los 100 cm de altura.",
+          "source": { "page": 23, "book": "Tales & Taverns", "title": "Los Omi" },
+          "originId": "homebrew-race-omi",
+          "level": 1,
+          "choices": [],
+          "effects": []
+        },
+        {
+          "id": "homebrew-feature-omi-competencia",
+          "name": "Competencia Omi",
+          "description": "Elige dos habilidades entre Acrobacias, Juego de Manos, Naturaleza, Sigilo y Trato con Animales.",
+          "source": { "page": 23, "book": "Tales & Taverns", "title": "Los Omi" },
+          "originId": "homebrew-race-omi",
+          "level": 1,
+          "choices": [
+            {
+              "id": "homebrew-choice-omi-habilidades",
+              "type": "choose_skill",
+              "name": "Dos habilidades Omi",
+              "amount": 2,
+              "required": true,
+              "options": [
+                { "id": "acrobatics", "name": "Acrobacias", "effects": [{ "type": "skill_proficiency", "skill": "acrobatics" }] },
+                { "id": "sleight-of-hand", "name": "Juego de Manos", "effects": [{ "type": "skill_proficiency", "skill": "sleight-of-hand" }] },
+                { "id": "nature", "name": "Naturaleza", "effects": [{ "type": "skill_proficiency", "skill": "nature" }] },
+                { "id": "stealth", "name": "Sigilo", "effects": [{ "type": "skill_proficiency", "skill": "stealth" }] },
+                { "id": "animal-handling", "name": "Trato con Animales", "effects": [{ "type": "skill_proficiency", "skill": "animal-handling" }] }
+              ]
+            }
+          ],
+          "effects": []
+        },
+        {
+          "id": "homebrew-feature-omi-dotados-1",
+          "name": "Dotados (nivel 1)",
+          "description": "Elige una dote entre Explorador de mazmorras, Habilidoso, Experto en Habilidades y Amigo de los animales. El PDF solo enumera estas dotes; no incluye sus reglas.",
+          "source": { "page": 23, "book": "Tales & Taverns", "title": "Los Omi" },
+          "originId": "homebrew-race-omi",
+          "level": 1,
+          "choices": [
+            {
+              "id": "homebrew-choice-omi-dote-1",
+              "type": "choose_option",
+              "name": "Dote Omi del nivel 1 (aplicación manual)",
+              "amount": 1,
+              "required": true,
+              "options": [
+                { "id": "explorador-de-mazmorras", "name": "Explorador de mazmorras" },
+                { "id": "habilidoso", "name": "Habilidoso" },
+                { "id": "experto-en-habilidades", "name": "Experto en Habilidades" },
+                { "id": "amigo-de-los-animales", "name": "Amigo de los animales" }
+              ]
+            }
+          ],
+          "effects": []
+        },
+        {
+          "id": "homebrew-feature-omi-dotados-6",
+          "name": "Dotados (nivel 6)",
+          "description": "Al alcanzar el nivel 6, elige otra dote entre Explorador de mazmorras, Habilidoso, Experto en Habilidades y Amigo de los animales. Aplica manualmente sus reglas.",
+          "source": { "page": 23, "book": "Tales & Taverns", "title": "Los Omi" },
+          "originId": "homebrew-race-omi",
+          "level": 6,
+          "choices": [
+            {
+              "id": "homebrew-choice-omi-dote-6",
+              "type": "choose_option",
+              "name": "Dote Omi del nivel 6 (aplicación manual)",
+              "amount": 1,
+              "required": true,
+              "options": [
+                { "id": "explorador-de-mazmorras", "name": "Explorador de mazmorras" },
+                { "id": "habilidoso", "name": "Habilidoso" },
+                { "id": "experto-en-habilidades", "name": "Experto en Habilidades" },
+                { "id": "amigo-de-los-animales", "name": "Amigo de los animales" }
+              ]
+            }
+          ],
+          "effects": []
+        },
+        {
+          "id": "homebrew-feature-omi-dotados-9",
+          "name": "Dotados (nivel 9)",
+          "description": "Al alcanzar el nivel 9, elige otra dote entre Explorador de mazmorras, Habilidoso, Experto en Habilidades y Amigo de los animales. Aplica manualmente sus reglas.",
+          "source": { "page": 23, "book": "Tales & Taverns", "title": "Los Omi" },
+          "originId": "homebrew-race-omi",
+          "level": 9,
+          "choices": [
+            {
+              "id": "homebrew-choice-omi-dote-9",
+              "type": "choose_option",
+              "name": "Dote Omi del nivel 9 (aplicación manual)",
+              "amount": 1,
+              "required": true,
+              "options": [
+                { "id": "explorador-de-mazmorras", "name": "Explorador de mazmorras" },
+                { "id": "habilidoso", "name": "Habilidoso" },
+                { "id": "experto-en-habilidades", "name": "Experto en Habilidades" },
+                { "id": "amigo-de-los-animales", "name": "Amigo de los animales" }
+              ]
+            }
+          ],
+          "effects": []
+        },
+        {
+          "id": "homebrew-feature-omi-dotados-11",
+          "name": "Dotados (nivel 11)",
+          "description": "Al alcanzar el nivel 11, elige otra dote entre Explorador de mazmorras, Habilidoso, Experto en Habilidades y Amigo de los animales. Aplica manualmente sus reglas.",
+          "source": { "page": 23, "book": "Tales & Taverns", "title": "Los Omi" },
+          "originId": "homebrew-race-omi",
+          "level": 11,
+          "choices": [
+            {
+              "id": "homebrew-choice-omi-dote-11",
+              "type": "choose_option",
+              "name": "Dote Omi del nivel 11 (aplicación manual)",
+              "amount": 1,
+              "required": true,
+              "options": [
+                { "id": "explorador-de-mazmorras", "name": "Explorador de mazmorras" },
+                { "id": "habilidoso", "name": "Habilidoso" },
+                { "id": "experto-en-habilidades", "name": "Experto en Habilidades" },
+                { "id": "amigo-de-los-animales", "name": "Amigo de los animales" }
+              ]
+            }
+          ],
+          "effects": []
+        }
+      ]
+    }
+  }
+]

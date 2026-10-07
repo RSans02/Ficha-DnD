@@ -1,0 +1,209 @@
+[
+  {
+    "id": "homebrew-book-cruzadas-de-los-panteones",
+    "name": "Cruzadas de los panteones",
+    "description": "Contenido de D&D 5e (2014) basado en el libro homónimo de Nivel20.",
+    "entries": {
+      "subclasses": [
+        {
+          "id": "homebrew-subclass-brujo-ente-cautivado",
+          "classId": "class-brujo",
+          "name": "Ente cautivado",
+          "description": "Tu patrón es una entidad poderosa que te ama y te concede magia nacida de ese vínculo. Puede ser una deidad, un espíritu, un ser feérico u otra criatura sobrenatural; su afecto te protege y fortalece.",
+          "source": {
+            "page": 0,
+            "book": "Cruzadas de los panteones",
+            "url": "https://nivel20.com/games/dnd-5/archetypes/8990-ente-cautivado"
+          },
+          "featureIds": [
+            "homebrew-feature-ente-cautivado-dulce-cortejo",
+            "homebrew-feature-ente-cautivado-lista-expandida",
+            "homebrew-feature-ente-cautivado-arrebato-romantico",
+            "homebrew-feature-ente-cautivado-devocion-indiscreta",
+            "homebrew-feature-ente-cautivado-consejo-sin-pudor",
+            "homebrew-feature-ente-cautivado-amparo-carinoso",
+            "homebrew-feature-ente-cautivado-negacion-inagotable",
+            "homebrew-feature-ente-cautivado-union-eterna"
+          ],
+          "expandedSpellIds": [
+            "spell-hechizar-persona",
+            "spell-curar-heridas",
+            "spell-auxilio-divino",
+            "spell-detectar-pensamientos",
+            "spell-circulo-magico",
+            "spell-acelerar",
+            "spell-custodia-contra-la-muerte",
+            "spell-comunion",
+            "spell-circulo-de-teletransporte"
+          ]
+        }
+      ],
+      "features": [
+        {
+          "id": "homebrew-feature-ente-cautivado-dulce-cortejo",
+          "name": "Dulce Cortejo",
+          "description": "Desde nivel 1, al lanzar un truco o conjuro puedes sumar tu modificador de Carisma a una tirada de daño o curación de ese conjuro. También aprendes un truco adicional de la lista de brujo; no cuenta para tu límite de trucos conocidos de la clase.",
+          "source": { "page": 0, "book": "Cruzadas de los panteones", "url": "https://nivel20.com/games/dnd-5/archetypes/8990-ente-cautivado/profession_traits/64542-dulce-cortejo" },
+          "originId": "homebrew-subclass-brujo-ente-cautivado",
+          "level": 1,
+          "choices": [
+            { "id": "homebrew-choice-ente-cautivado-truco", "name": "Truco adicional de brujo", "type": "choose_cantrip", "amount": 1, "classId": "class-brujo", "required": true, "options": [] }
+          ],
+          "effects": []
+        },
+        {
+          "id": "homebrew-feature-ente-cautivado-lista-expandida",
+          "name": "Lista de conjuros expandida",
+          "description": "Añade a las opciones de conjuros de brujo: nivel de conjuro 1, Hechizar persona y Curar heridas; nivel 2, Auxilio y Detectar pensamientos; nivel 3, Círculo mágico y Acelerar; nivel 4, Guardia contra la muerte y Fosa maldita; nivel 5, Comunión y Círculo de teletransportación. En el catálogo, Auxilio figura como Auxilio Divino, Guardia contra la muerte como Custodia Contra la Muerte y Círculo de teletransportación como Círculo de Teletransporte. Fosa maldita no existe en el catálogo y requiere una ficha de conjuro aportada por la mesa.",
+          "source": { "page": 0, "book": "Cruzadas de los panteones", "url": "https://nivel20.com/games/dnd-5/archetypes/8990-ente-cautivado/profession_traits/64543-lista-de-conjuros-expandida" },
+          "originId": "homebrew-subclass-brujo-ente-cautivado",
+          "level": 1,
+          "choices": [],
+          "effects": []
+        },
+        {
+          "id": "homebrew-feature-ente-cautivado-arrebato-romantico",
+          "name": "Arrebato romántico",
+          "description": "Puedes gastar un uso para lanzar un conjuro de la lista expandida sin emplear espacio (a su nivel mínimo), o para lanzar como acción adicional uno de tus conjuros. Tienes un número de usos igual a la mitad de tu bonificador por competencia, redondeado hacia arriba. Recuperas todos los usos al terminar un descanso largo.",
+          "source": { "page": 0, "book": "Cruzadas de los panteones", "url": "https://nivel20.com/games/dnd-5/archetypes/8990-ente-cautivado/profession_traits/64544-arrebato-romantico" },
+          "originId": "homebrew-subclass-brujo-ente-cautivado",
+          "level": 1,
+          "choices": [],
+          "effects": [],
+          "resource": { "max": { "byLevel": [1, 1, 1, 1, 2, 2, 2, 2, 2, 2, 2, 2, 3, 3, 3, 3, 3, 3, 3, 3] }, "recovery": "long" }
+        },
+        {
+          "id": "homebrew-feature-ente-cautivado-devocion-indiscreta",
+          "name": "Devoción indiscreta",
+          "description": "Desde nivel 6, cuando recibes daño puedes gastar un uso, sin emplear una acción, para reducirlo en tu nivel de brujo más tu modificador de Carisma. Tienes tantos usos como tu modificador de Carisma (mínimo uno) y los recuperas tras un descanso largo.",
+          "source": { "page": 0, "book": "Cruzadas de los panteones", "url": "https://nivel20.com/games/dnd-5/archetypes/8990-ente-cautivado/profession_traits/64545-devocion-indiscreta" },
+          "originId": "homebrew-subclass-brujo-ente-cautivado",
+          "level": 6,
+          "choices": [],
+          "effects": [],
+          "resource": { "max": { "ability": "cha", "min": 1 }, "recovery": "long" }
+        },
+        {
+          "id": "homebrew-feature-ente-cautivado-consejo-sin-pudor",
+          "name": "Consejo sin pudor",
+          "description": "Desde nivel 6, sumas 1d6 a tus tiradas de salvación de Sabiduría.",
+          "source": { "page": 0, "book": "Cruzadas de los panteones", "url": "https://nivel20.com/games/dnd-5/archetypes/8990-ente-cautivado/profession_traits/64548-consejo-sin-pudor" },
+          "originId": "homebrew-subclass-brujo-ente-cautivado",
+          "level": 6,
+          "choices": [],
+          "effects": []
+        },
+        {
+          "id": "homebrew-feature-ente-cautivado-amparo-carinoso",
+          "name": "Amparo cariñoso",
+          "description": "Desde nivel 10, tienes ventaja en las salvaciones contra quedar encantado o asustado. Si fallas cualquier tirada de salvación, puedes usar tu reacción para repetirla, debiendo conservar el nuevo resultado. Recuperas este uso después de un descanso corto o largo.",
+          "source": { "page": 0, "book": "Cruzadas de los panteones", "url": "https://nivel20.com/games/dnd-5/archetypes/8990-ente-cautivado/profession_traits/64546-amparo-carinoso" },
+          "originId": "homebrew-subclass-brujo-ente-cautivado",
+          "level": 10,
+          "choices": [],
+          "effects": [],
+          "resource": { "max": 1, "recovery": "short" }
+        },
+        {
+          "id": "homebrew-feature-ente-cautivado-negacion-inagotable",
+          "name": "Negación Inagotable",
+          "description": "Desde nivel 10, eres inmune al daño psíquico.",
+          "source": { "page": 0, "book": "Cruzadas de los panteones", "url": "https://nivel20.com/games/dnd-5/archetypes/8990-ente-cautivado/profession_traits/64549-negacion-inagotable" },
+          "originId": "homebrew-subclass-brujo-ente-cautivado",
+          "level": 10,
+          "choices": [],
+          "effects": [{ "type": "immunity", "value": "psíquico" }]
+        },
+        {
+          "id": "homebrew-feature-ente-cautivado-union-eterna",
+          "name": "Unión Eterna",
+          "description": "Desde nivel 14, como acción invocas durante 1 minuto una manifestación de tu patrón que afecta a tus aliados y a ti dentro de 30 pies. Mientras dure, reciben +2 a la CA, recuperan al inicio de cada uno de tus turnos puntos de golpe iguales al doble de tu modificador de Carisma y tienen ventaja al atacar a criaturas que te hayan atacado desde tu último turno. Recuperas el uso tras un descanso largo.",
+          "source": { "page": 0, "book": "Cruzadas de los panteones", "url": "https://nivel20.com/games/dnd-5/archetypes/8990-ente-cautivado/profession_traits/64547-union-eterna" },
+          "originId": "homebrew-subclass-brujo-ente-cautivado",
+          "level": 14,
+          "choices": [],
+          "effects": [],
+          "resource": { "max": 1, "recovery": "long" }
+        },
+        {
+          "id": "homebrew-feature-brujo-cadena-de-conjuros-menores",
+          "name": "Cadena de conjuros menores",
+          "description": "Cuando gastas una ranura del Grimorio en un conjuro de nivel 1–3, puedes lanzar un truco de brujo como acción adicional ese mismo turno. Requiere el Pacto del Grimorio Profundo.",
+          "source": { "page": 0, "book": "Cruzadas de los panteones", "url": "https://nivel20.com/games/dnd-5/rulebooks/1028-cruzadas-de-los-panteones/profession_traits/116100-cadena-de-conjuros-menores" },
+          "originId": "class-brujo",
+          "level": 3,
+          "manualCategory": "Clase",
+          "optional": true,
+          "invocationPrerequisites": [
+            { "type": "class", "value": "class-brujo", "minimum": 3 },
+            { "type": "feature", "value": "homebrew-feature-brujo-grimorio-profundo" }
+          ],
+          "choices": [],
+          "effects": []
+        },
+        {
+          "id": "homebrew-feature-brujo-grimorio-profundo",
+          "name": "Grimorio Profundo",
+          "description": "Don del pacto de brujo que eliges al nivel 3. La fuente indica nivel necesario 1 para el rasgo; sus ranuras se acumulan según el nivel de brujo. Obtienes ranuras adicionales a tu Magia de pacto para lanzar únicamente conjuros de brujo que conozcas, recuperadas tras un descanso largo: una ranura de nivel 1 al nivel 1, una de nivel 2 al nivel 3, una de nivel 3 al nivel 5, una de nivel 4 al nivel 7, una de nivel 5 al nivel 9 y otra de nivel 5 al nivel 11.",
+          "source": { "page": 0, "book": "Cruzadas de los panteones", "url": "https://nivel20.com/games/dnd-5/professions/66-brujo/profession_traits/116091-grimorio-profundo" },
+          "originId": "class-brujo",
+          "level": 3,
+          "manualCategory": "Clase",
+          "optional": true,
+          "warlockPact": true,
+          "choices": [],
+          "effects": []
+        },
+        {
+          "id": "homebrew-feature-brujo-manto-benigno",
+          "name": "Manto benigno",
+          "description": "Una vez por turno, cada vez que recibas un ataque ya sea cuerpo a cuerpo, a distancia o en área, reduces el daño recibido en 1d6 + tu modificador de Carisma.",
+          "source": { "page": 0, "book": "Cruzadas de los panteones", "url": "https://nivel20.com/games/dnd-5/rulebooks/1028-cruzadas-de-los-panteones/profession_traits/109083-manto-benigno" },
+          "originId": "class-brujo",
+          "level": 3,
+          "manualCategory": "Clase",
+          "optional": true,
+          "invocationPrerequisites": [
+            { "type": "class", "value": "class-brujo", "minimum": 3 }
+          ],
+          "choices": [],
+          "effects": []
+        }
+      ],
+      "spells": [
+        {
+          "id": "homebrew-spell-saeta-maldita",
+          "name": "Saeta Maldita",
+          "description": "Lanzas un rayo de luz oscura hacia una criatura que elijas dentro del alcance. Haz un ataque de conjuro a distancia contra el objetivo. Si impactas, recibe 4d6 de daño necrótico. La próxima tirada de ataque que realice la criatura tiene desventaja por la oscuridad mística que la maldice.",
+          "source": { "page": 0, "book": "Cruzadas de los panteones", "url": "https://nivel20.com/games/dnd-5/spells/12821-saeta-maldita" },
+          "level": 1,
+          "school": "Abjuración",
+          "castingTime": "1 acción",
+          "range": "120 pies",
+          "components": "V, S",
+          "duration": "Instantáneo",
+          "concentration": false,
+          "ritual": false,
+          "higherLevels": "Al lanzar este conjuro con un espacio de nivel 2 o superior, el daño aumenta en 1d6 por cada nivel por encima de 1.",
+          "availableToClasses": ["class-brujo", "class-clerigo"]
+        },
+        {
+          "id": "homebrew-spell-hada-maligna",
+          "name": "Hada Maligna",
+          "description": "Invocas el espíritu de un hada malévola que ronda a una criatura que puedas ver dentro del alcance y le susurra palabras venenosas. El objetivo realiza una tirada de salvación de Sabiduría. Si falla, tiene desventaja en sus tiradas de ataque y en las tiradas de salvación contra efectos que causen miedo o encantamiento mientras dure el conjuro. Además, recibe 1d4 de daño psíquico al inicio de cada uno de sus turnos. El conjuro termina si el hada se aleja más de 30 pies del objetivo o si pierdes la concentración.",
+          "source": { "page": 0, "book": "Cruzadas de los panteones", "url": "https://nivel20.com/games/dnd-5/spells/10375-hada-maligna" },
+          "level": 1,
+          "school": "Encantamiento",
+          "castingTime": "1 acción",
+          "range": "30 pies",
+          "components": "V, S, M (una flor marchita)",
+          "duration": "Concentración, hasta 1 minuto",
+          "concentration": true,
+          "ritual": false,
+          "higherLevels": "El daño psíquico aumenta en 1d4 y puedes elegir un objetivo adicional por cada nivel de espacio por encima de 1.",
+          "availableToClasses": ["class-brujo", "class-mago", "class-hechicero"]
+        }
+      ]
+    }
+  }
+]

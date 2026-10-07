@@ -1,11 +1,12 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import { catalog } from '../lib/catalog';
-import { createCharacter, deriveCharacter, getAllChoices, validSpells } from '../lib/engine';
+import { applyRest, checkPrerequisites, createCharacter, deriveCharacter, getAllChoices, validSpells } from '../lib/engine';
 import { validateCharacterData } from '../lib/persistence';
 import { mergeCatalog, template, validateBooks, type HomebrewBook } from '../lib/homebrew';
 import type { CharacterClass, Feature, Race, Spell } from '../lib/types';
 import { applyEntryDraft, duplicateEntry, entryIssues, type EntryDraft } from '../lib/homebrew-editor';
+import crusades from '../imports/cruzadas-de-los-panteones.json';
 
 test('homebrew race and spell work in the creator and survive character validation', () => {
   const race = { ...template('races'), name: 'Astral', abilityBonuses: { int: 2 }, languages: ['Común'] } as Race;
@@ -30,6 +31,59 @@ test('homebrew class progression can be selected and calculated at level one', (
   character.classes = [{ classId: cls.id, level: 1 }];
   assert.equal(validateCharacterData(character, merged).length, 0);
   assert.equal(deriveCharacter(character, merged).level, 1);
+});
+
+test('imported subclass extends the official warlock with traits and spell access', () => {
+  const books = validateBooks(crusades, catalog);
+  const merged = mergeCatalog(catalog, books);
+  const warlock = merged.classes.find(cls => cls.id === 'class-brujo')!;
+  const subclass = warlock.subclasses.find(sub => sub.id === 'homebrew-subclass-brujo-ente-cautivado')!;
+  assert(subclass);
+  const character = createCharacter();
+  character.classes = [{ classId: warlock.id, level: 10, subclassId: subclass.id }];
+  const derived = deriveCharacter(character, merged);
+  assert(derived.features.some(feature => feature.name === 'Negación Inagotable'));
+  assert(derived.immunities.includes('psíquico'));
+  assert(validSpells(character, warlock.id, merged).some(spell => spell.id === 'spell-custodia-contra-la-muerte'));
+  assert(getAllChoices(character, merged).some(choice => choice.id === 'homebrew-choice-ente-cautivado-truco'));
+});
+
+test('Crusades invocations join the warlock choice and retain their requirements', () => {
+  const merged = mergeCatalog(catalog, validateBooks(crusades, catalog));
+  const character = createCharacter();
+  character.classes = [{ classId: 'class-brujo', level: 3 }];
+  const choice = getAllChoices(character, merged).find(item => item.id === 'choice-brujo-invocaciones');
+  assert(choice);
+  const manto = choice.options.find(option => typeof option !== 'string' && option.name === 'Manto benigno');
+  const cadena = choice.options.find(option => typeof option !== 'string' && option.name === 'Cadena de conjuros menores');
+  assert(manto && typeof manto !== 'string');
+  assert(cadena && typeof cadena !== 'string');
+  assert.deepEqual(checkPrerequisites(manto.prerequisites ?? [], character, merged), []);
+  assert(checkPrerequisites(cadena.prerequisites ?? [], character, merged).some(issue => issue.includes('Grimorio Profundo')));
+  character.choices['choice-brujo-don-de-pacto'] = ['homebrew-feature-brujo-grimorio-profundo'];
+  assert.deepEqual(checkPrerequisites(cadena.prerequisites ?? [], character, merged), []);
+  character.choices[choice.id] = [manto.id];
+  assert(deriveCharacter(character, merged).features.some(feature => feature.id === manto.id));
+});
+
+test('Grimorio Profundo is selected with the level-three pact and has long-rest slots', () => {
+  const merged = mergeCatalog(catalog, validateBooks(crusades, catalog));
+  const character = createCharacter();
+  character.classes = [{ classId: 'class-brujo', level: 1 }];
+  assert(!getAllChoices(character, merged).some(choice => choice.id === 'choice-brujo-don-de-pacto'));
+  assert.deepEqual(deriveCharacter(character, merged).grimoireSlots, []);
+  character.classes[0].level = 3;
+  const pactChoice = getAllChoices(character, merged).find(choice => choice.id === 'choice-brujo-don-de-pacto');
+  assert(pactChoice);
+  assert(pactChoice.options.some(option => typeof option !== 'string' && option.name === 'Grimorio Profundo'));
+  character.choices[pactChoice.id] = ['homebrew-feature-brujo-grimorio-profundo'];
+  assert.deepEqual(deriveCharacter(character, merged).grimoireSlots, [1, 1, 0, 0, 0]);
+  character.classes[0].level = 11;
+  assert.deepEqual(deriveCharacter(character, merged).grimoireSlots, [1, 1, 1, 1, 2]);
+  character.hp.current = 1;
+  character.slotsSpent['grimoire.1'] = 1;
+  assert.equal(applyRest(character, 'short', merged).slotsSpent['grimoire.1'], 1);
+  assert.equal(applyRest(character, 'long', merged).slotsSpent['grimoire.1'], 0);
 });
 
 test('inline traits and player choices save atomically and calculate after export/import', () => {
@@ -86,4 +140,14 @@ test('editor rejects impossible class choices and unfinished granted spells', ()
   assert(entryIssues(feature, 'features').some(issue => issue.includes('hechizo')));
   const book = { id: 'bad', name: 'Incompleto', entries: { features: [feature] } };
   assert.throws(() => validateBooks([book], catalog), /Hechizo concedido/);
+});
+
+test('source links entered in the editor survive export and reject unsafe protocols', () => {
+  const feature = { ...template('features'), name: 'Promesa celestial', source: { page: 12, book: 'Borrador', url: 'https://example.com/rasgo' } } as Feature;
+  const saved = applyEntryDraft([{ id: 'source-book', name: 'Panteones', entries: {} }], { bookId: 'source-book', type: 'features', entry: feature, features: [], step: 3 });
+  const [book] = validateBooks(JSON.parse(JSON.stringify(saved)), catalog);
+  assert.equal(book.entries.features?.[0].source.book, 'Panteones');
+  assert.equal(book.entries.features?.[0].source.url, 'https://example.com/rasgo');
+  assert(entryIssues({ ...feature, source: { ...feature.source, url: 'javascript:alert(1)' } }, 'features').some(issue => issue.includes('https://')));
+  assert.throws(() => validateBooks([{ ...book, entries: { features: [{ ...feature, source: { ...feature.source, url: 'javascript:alert(1)' } }] } }], catalog), /Entrada inválida/);
 });
