@@ -6,6 +6,16 @@ export type HomeType = typeof HOME_TYPES[number];
 export type HomebrewSection = HomeType | 'subclasses';
 export interface HomebrewBook { id: string; name: string; description?: string; entries: Partial<Pick<Catalog, HomeType>> & { subclasses?: (Subclass & { classId: string })[] } }
 export const emptyBook = (name: string): HomebrewBook => ({ id: crypto.randomUUID(), name, entries: {} });
+/** Remove references before deleting a reusable trait from a compendium. */
+export function withoutFeatureReferences(book: HomebrewBook, featureId: string): HomebrewBook {
+  const omit = (ids: string[]) => ids.filter(id => id !== featureId);
+  return { ...book, entries: { ...book.entries,
+    ...(book.entries.races ? { races: book.entries.races.map(race => ({ ...race, featureIds: omit(race.featureIds) })) } : {}),
+    ...(book.entries.classes ? { classes: book.entries.classes.map(cls => ({ ...cls, featureIds: omit(cls.featureIds), progression: cls.progression.map(row => ({ ...row, featureIds: omit(row.featureIds) })), subclasses: cls.subclasses.map(sub => ({ ...sub, featureIds: omit(sub.featureIds) })) })) } : {}),
+    ...(book.entries.subclasses ? { subclasses: book.entries.subclasses.map(sub => ({ ...sub, featureIds: omit(sub.featureIds) })) } : {}),
+    ...(book.entries.backgrounds ? { backgrounds: book.entries.backgrounds.map(background => ({ ...background, featureIds: omit(background.featureIds ?? []) })) } : {})
+  } };
+}
 const source = { page: 0, book: 'Homebrew' };
 const base = (type: HomeType) => ({ id: `homebrew-${type}-${crypto.randomUUID()}`, name: '', description: '', source });
 export function template(type: HomeType): Catalog[HomeType][number] {

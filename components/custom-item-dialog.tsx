@@ -2,11 +2,13 @@
 
 import { useState, type FormEvent } from 'react';
 import { Shield, Sparkles } from 'lucide-react';
-import type { Ability, InventoryItem } from '@/lib/types';
+import type { InventoryItem, ItemRarity } from '@/lib/types';
 import { Button, Field, Modal } from '@/components/ui';
+import { AttackFields } from './attack-fields';
 import './custom-item-dialog.css';
 
 const CATEGORIES: InventoryItem['category'][] = ['Armas', 'Armaduras', 'Equipo', 'Objetos'];
+const RARITIES: ItemRarity[] = ['Común', 'Poco común', 'Raro', 'Muy raro', 'Legendario', 'Artefacto'];
 const validNumber = (value: number, fallback = 0) => Number.isFinite(value) ? value : fallback;
 
 type Props = {
@@ -14,16 +16,17 @@ type Props = {
   onClose: () => void;
   onSave: (item: InventoryItem) => void;
   title?: string;
+  containers?: InventoryItem[];
 };
 
-export function CustomItemDialog({ item, onClose, onSave, title = 'Crear objeto homebrew' }: Props) {
+export function CustomItemDialog({ item, onClose, onSave, title = 'Crear objeto', containers = [] }: Props) {
   return <Modal open={Boolean(item)} onClose={onClose} title={title} wide>
-    {item && <ItemForm key={item.id} item={item} onClose={onClose} onSave={onSave} />}
+    {item && <ItemForm key={item.id} item={item} containers={containers} onClose={onClose} onSave={onSave} />}
   </Modal>;
 }
 
-function ItemForm({ item, onClose, onSave }: Omit<Props, 'item' | 'title'> & { item: InventoryItem }) {
-  const [draft, setDraft] = useState<InventoryItem>({ ...item });
+function ItemForm({ item, onClose, onSave, containers = [] }: Omit<Props, 'item' | 'title'> & { item: InventoryItem }) {
+  const [draft, setDraft] = useState<InventoryItem>({ ...item, requiresAttunement: item.requiresAttunement ?? item.attuned });
   const armorKind = draft.shieldBonus !== undefined ? 'shield' : draft.armorBase !== undefined ? 'armor' : 'none';
   const setArmorKind = (kind: string) => {
     const next = { ...draft };
@@ -56,6 +59,15 @@ function ItemForm({ item, onClose, onSave }: Omit<Props, 'item' | 'title'> & { i
     }
     if (saved.dexCap === undefined) delete saved.dexCap;
     if (saved.shieldBonus === undefined) delete saved.shieldBonus;
+    if (!saved.requiresAttunement) saved.attuned = false;
+    if (!saved.containerId || saved.isContainer) delete saved.containerId;
+    if (!saved.rarity) delete saved.rarity;
+    if (saved.attack) {
+      saved.attack = { ...saved.attack };
+      if (saved.attack.damageBonus === undefined) delete saved.attack.damageBonus;
+      if (saved.attack.magicBonus === undefined) delete saved.attack.magicBonus;
+      if (saved.attack.extraDamage === undefined) delete saved.attack.extraDamage;
+    }
     onSave(saved);
   };
 
@@ -64,12 +76,16 @@ function ItemForm({ item, onClose, onSave }: Omit<Props, 'item' | 'title'> & { i
     <div className="grid-2">
       <Field label="Nombre"><input required autoFocus maxLength={160} placeholder="Por ejemplo: Brújula de los ecos" value={draft.name} onChange={e => setDraft({ ...draft, name: e.target.value })} /></Field>
       <Field label="Categoría"><select value={draft.category} onChange={e => setDraft({ ...draft, category: e.target.value as InventoryItem['category'] })}>{CATEGORIES.map(value => <option key={value}>{value}</option>)}</select></Field>
-      <Field label="Cantidad"><input required type="number" min={1} max={1000000} step={1} value={draft.quantity} onChange={e => setDraft({ ...draft, quantity: validNumber(e.target.valueAsNumber, 1) })} /></Field>
+      <Field label="Cantidad" hint={draft.isContainer ? 'Cada unidad tendrá su propia pestaña.' : undefined}><input required type="number" min={1} max={draft.isContainer ? 50 : 1000000} step={1} value={draft.quantity} onChange={e => setDraft({ ...draft, quantity: validNumber(e.target.valueAsNumber, 1) })} /></Field>
       <Field label="Peso por unidad (lb)"><input required type="number" min={0} max={1000000} step="any" value={draft.weight} onChange={e => setDraft({ ...draft, weight: validNumber(e.target.valueAsNumber) })} /></Field>
+      <Field label="Rareza (opcional)"><select value={draft.rarity ?? ''} onChange={e => setDraft(current => { const next = { ...current }; if (e.target.value) next.rarity = e.target.value as ItemRarity; else delete next.rarity; return next; })}><option value="">Sin rareza</option>{RARITIES.map(rarity => <option key={rarity}>{rarity}</option>)}</select></Field>
+      {!draft.isContainer && containers.length > 0 && <Field label="Guardar dentro de"><select value={draft.containerId ?? ''} onChange={e => setDraft(current => { const next = { ...current }; if (e.target.value) next.containerId = e.target.value; else delete next.containerId; return next; })}><option value="">Sin contenedor</option>{containers.filter(container => container.id !== draft.id).map(container => <option key={container.id} value={container.id}>{container.name}</option>)}</select></Field>}
     </div>
     <div className="flex wrap">
       <label className="flex"><input type="checkbox" checked={draft.equipped} onChange={e => setDraft({ ...draft, equipped: e.target.checked })} />Equipado</label>
-      <label className="flex"><input type="checkbox" checked={draft.attuned} onChange={e => setDraft({ ...draft, attuned: e.target.checked })} />Vinculado</label>
+      <label className="flex"><input type="checkbox" checked={draft.isContainer ?? false} onChange={e => setDraft(current => { const next = { ...current, isContainer: e.target.checked }; if (next.isContainer) delete next.containerId; return next; })} />Es un contenedor</label>
+      <label className="flex"><input type="checkbox" checked={draft.requiresAttunement ?? false} onChange={e => setDraft({ ...draft, requiresAttunement: e.target.checked, attuned: e.target.checked ? draft.attuned : false })} />Requiere sintonización</label>
+      {draft.requiresAttunement && <label className="flex"><input type="checkbox" checked={draft.attuned} onChange={e => setDraft({ ...draft, attuned: e.target.checked })} />Sintonizado</label>}
     </div>
     {draft.category === 'Armaduras' && <div className="panel stack">
       <div className="flex subtle"><Shield size={16} />Protección</div>
@@ -80,7 +96,7 @@ function ItemForm({ item, onClose, onSave }: Omit<Props, 'item' | 'title'> & { i
       </div>}
       {armorKind === 'shield' && <Field label="Bonificación del escudo a la CA"><input required type="number" min={0} max={100} step={1} value={draft.shieldBonus ?? 2} onChange={e => setDraft({ ...draft, shieldBonus: Math.max(0, validNumber(e.target.valueAsNumber)) })} /></Field>}
     </div>}
-    <div className="panel stack"><label className="flex"><input type="checkbox" checked={!!draft.attack} onChange={e=>setDraft({...draft,attack:e.target.checked?{ability:'str',proficient:true,bonus:0,damage:'1d6',damageType:'',range:'Cuerpo a cuerpo',notes:''}:undefined})}/>Este objeto tiene un ataque</label>{draft.attack&&<div className="grid-2"><Field label="Dados de daño"><input value={draft.attack.damage} onChange={e=>setDraft({...draft,attack:{...draft.attack!,damage:e.target.value}})}/></Field><Field label="Tipo de daño"><input value={draft.attack.damageType} onChange={e=>setDraft({...draft,attack:{...draft.attack!,damageType:e.target.value}})}/></Field><Field label="Característica"><select value={draft.attack.ability} onChange={e=>setDraft({...draft,attack:{...draft.attack!,ability:e.target.value as Ability}})}>{[['str','Fuerza'],['dex','Destreza'],['int','Inteligencia'],['wis','Sabiduría'],['cha','Carisma']].map(([id,label])=><option key={id} value={id}>{label}</option>)}</select></Field><Field label="Bonificador adicional"><input type="number" value={draft.attack.bonus} onChange={e=>setDraft({...draft,attack:{...draft.attack!,bonus:validNumber(e.target.valueAsNumber)}})}/></Field><Field label="Alcance"><input value={draft.attack.range} onChange={e=>setDraft({...draft,attack:{...draft.attack!,range:e.target.value}})}/></Field><label className="flex"><input type="checkbox" checked={draft.attack.proficient} onChange={e=>setDraft({...draft,attack:{...draft.attack!,proficient:e.target.checked}})}/>Competente</label></div>}</div>
+    <div className="panel stack"><label className="flex"><input type="checkbox" checked={!!draft.attack} onChange={e=>setDraft({...draft,attack:e.target.checked?{ability:'str',proficient:true,bonus:0,magicBonus:0,damage:'1d6',damageType:'',range:'Cuerpo a cuerpo',notes:'',extraDamage:[]}:undefined})}/>Este objeto tiene un ataque</label>{draft.attack&&<AttackFields value={draft.attack} onChange={attack=>setDraft({...draft,attack})}/>}</div>
     <Field label="Descripción"><textarea rows={4} placeholder="Aspecto, propiedades y efectos del objeto…" value={draft.description} onChange={e => setDraft({ ...draft, description: e.target.value })} /></Field>
     <Field label="Notas personales"><textarea rows={3} placeholder="Dónde lo encontraste, cargas restantes, acuerdos con el director…" value={draft.notes} onChange={e => setDraft({ ...draft, notes: e.target.value })} /></Field>
     <div className="modal-footer custom-item-footer"><Button type="button" onClick={onClose}>Cancelar</Button><Button type="submit" variant="primary">Guardar objeto</Button></div>

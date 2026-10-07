@@ -18,11 +18,15 @@ export interface Background extends Entity { parentId?: string; version?: string
 export interface Equipment extends Entity { weaponCategory?: string; equipmentType?: string; category?: string; weight?: number | null; cost?: string; contentsText?: string; damage?: string; damageType?: string; armorClass?: number | null; dexterityCap?: number | null; shieldBonus?: number; armorCategory?: string; properties?: string[] }
 export interface Catalog { races: Race[]; classes: CharacterClass[]; features: Feature[]; spells: Spell[]; feats: Feat[]; backgrounds: Background[]; equipment: Equipment[]; startingEquipment?: Record<string, StartingEquipmentDefinition>; backgroundEquipment?: Record<string, StartingEquipmentDefinition> }
 export interface CharacterLevel { classId: string; level: number; subclassId?: string }
-export interface Attack { id: string; name: string; ability: Ability; proficient: boolean; bonus: number; damage: string; damageBonus?: number; damageType: string; range: string; notes: string; favorite: boolean }
-export interface InventoryItem { homebrew?: boolean; startingEquipmentOrigin?: string; attack?: Omit<Attack, 'id' | 'name' | 'favorite'>; id: string; equipmentId?: string; name: string; category: 'Armas' | 'Armaduras' | 'Equipo' | 'Objetos'; quantity: number; weight: number; equipped: boolean; attuned: boolean; description: string; notes: string; armorBase?: number; dexCap?: number; shieldBonus?: number }
+export interface ExtraDamage { dice: string; damageType: string; condition?: string }
+export interface Attack { id: string; name: string; ability: Ability | 'none'; proficient: boolean; bonus: number; magicBonus?: number; damage: string; damageBonus?: number; damageType: string; extraDamage?: ExtraDamage[]; range: string; notes: string; favorite: boolean }
+export type ItemRarity = 'Común' | 'Poco común' | 'Raro' | 'Muy raro' | 'Legendario' | 'Artefacto';
+export interface InventoryItem { homebrew?: boolean; startingEquipmentOrigin?: string; attack?: Omit<Attack, 'id' | 'name' | 'favorite'>; id: string; equipmentId?: string; name: string; category: 'Armas' | 'Armaduras' | 'Equipo' | 'Objetos'; quantity: number; weight: number; equipped: boolean; attuned: boolean; requiresAttunement?: boolean; rarity?: ItemRarity; isContainer?: boolean; containerId?: string; description: string; notes: string; armorBase?: number; dexCap?: number; shieldBonus?: number }
 export interface Note { id: string; title: string; category: string; content: string; date: string }
 export interface HistoryEntry { id: string; date: string; text: string }
 export interface Character {
+  hpMaxAdjustments?: { id: string; label: string; value: number }[];
+  featureOverrides?: Record<string, { name: string; description: string; manualCategory?: Feature['manualCategory'] }>;
   sheetSpellAttackIds?: string[];
   inventoryOptions?: { coinsHaveWeight: boolean };
   abilityGeneration?: { method: 'manual' | 'standard' | 'point-buy' | 'rolled'; rolls?: number[][] };

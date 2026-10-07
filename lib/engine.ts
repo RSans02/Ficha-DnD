@@ -83,7 +83,7 @@ function activeFeatures(c: Character, catalog: Catalog): Feature[] {
     if (!unlocked.length) break;
     unlocked.forEach(f => { active.push(f); seen.add(f.id); });
   }
-  return active;
+  return active.map(feature => c.featureOverrides?.[feature.id] ? { ...feature, ...c.featureOverrides[feature.id] } : feature);
 }
 
 /** Every applicable choice, including completed choices, for generic UI rendering. */
@@ -204,7 +204,7 @@ export function deriveCharacter(c: Character, catalog: Catalog): DerivedCharacte
   const firstDie = classes[0]?.cls.hitDie ?? 0;
   if (c.hp.rolls.length !== Math.max(0, level - 1)) warnings.push('Faltan tiradas de puntos de golpe de niveles posteriores al primero.');
   const minimumHp = c.hp.rolls.reduce((sum, roll) => sum + Math.max(0, 1 - (roll.value + abilities.con.modifier)), 0);
-  const hpRows = [{ label: 'Dado máximo del primer nivel', value: firstDie }, { label: 'PG elegidos en niveles posteriores', value: c.hp.rolls.reduce((sum, roll) => sum + roll.value, 0) }, { label: `Constitución × ${level} niveles`, value: abilities.con.modifier * level }, ...(minimumHp ? [{ label: 'Mínimo de 1 PG por nivel posterior al primero', value: minimumHp }] : []), ...effectRows('hp_per_level').map(x => ({ label: `${x.label} × ${level} niveles`, value: numeric(x.effect) * level })), ...effectRows('hp_bonus').map(x => ({ label: x.label, value: numeric(x.effect) }))];
+  const hpRows = [{ label: 'Dado máximo del primer nivel', value: firstDie }, { label: 'PG elegidos en niveles posteriores', value: c.hp.rolls.reduce((sum, roll) => sum + roll.value, 0) }, { label: `Constitución × ${level} niveles`, value: abilities.con.modifier * level }, ...(minimumHp ? [{ label: 'Mínimo de 1 PG por nivel posterior al primero', value: minimumHp }] : []), ...effectRows('hp_per_level').map(x => ({ label: `${x.label} × ${level} niveles`, value: numeric(x.effect) * level })), ...effectRows('hp_bonus').map(x => ({ label: x.label, value: numeric(x.effect) })), ...(c.hpMaxAdjustments ?? []).map(row => ({ label: row.label || 'Modificador de PG máximos', value: row.value }))];
   const exhaustion = c.exhaustionLevel ?? 0;
   if (exhaustion >= 4) hpRows.push({ label: 'Agotamiento: PG máximos a la mitad', value: -Math.ceil(hpRows.reduce((sum, row) => sum + row.value, 0) / 2) });
   const hpMax = value('hpMax', hpRows, !firstDie && level ? 'manual' : 'auto');
@@ -372,12 +372,12 @@ export function getFixedClassCantrips(c: Character, classId: string, catalog: Ca
 }
 
 export function deriveAttack(c: Character, attack: Attack, catalog: Catalog): { attack: DerivedValue; damageBonus: number } {
-  const d = deriveCharacter(c, catalog), modifier = d.abilities[attack.ability].modifier;
-  const breakdown = [{ label: ABILITIES.find(a => a.id === attack.ability)!.label, value: modifier }, { label: 'Competencia', value: attack.proficient ? d.proficiency.value : 0 }, { label: 'Bonificación adicional manual', value: attack.bonus }];
+  const d = deriveCharacter(c, catalog), modifier = attack.ability === 'none' ? 0 : d.abilities[attack.ability].modifier;
+  const breakdown = [{ label: attack.ability === 'none' ? 'Sin característica' : ABILITIES.find(a => a.id === attack.ability)!.label, value: modifier }, { label: 'Competencia', value: attack.proficient ? d.proficiency.value : 0 }, ...(attack.magicBonus ? [{ label: 'Bonificación mágica', value: attack.magicBonus }] : []), { label: 'Bonificación adicional manual', value: attack.bonus }];
   const automatic = breakdown.reduce((sum, row) => sum + row.value, 0), override = c.manualOverrides[`attack.${attack.id}`];
   const overridden = Number.isFinite(override);
   if (overridden) breakdown.push({ label: 'Sustitución manual (diferencia)', value: override - automatic });
-  return { attack: { value: overridden ? override : automatic, mode: overridden ? 'override' : 'auto', breakdown }, damageBonus: attack.damageBonus ?? modifier };
+  return { attack: { value: overridden ? override : automatic, mode: overridden ? 'override' : 'auto', breakdown }, damageBonus: (attack.damageBonus ?? modifier) + (attack.magicBonus ?? 0) };
 }
 
 /** Source p.307–308: six at first wizard level, two per later wizard level; copying has no maximum. */

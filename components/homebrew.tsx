@@ -2,7 +2,7 @@
 import { useEffect, useMemo, useState } from 'react';
 import { ArrowLeft, ArrowRight, Backpack, BookOpen, Check, CheckCircle2, Copy, Download, Feather, FolderPlus, Pencil, Plus, Save, Search, Sparkles, Swords, Trash2, Upload, Users, WandSparkles } from 'lucide-react';
 import type { Background, Catalog, CharacterClass, Equipment, Feat, Feature, Race, Subclass } from '@/lib/types';
-import { emptyBook, HOME_TYPES, mergeCatalog, template, type HomeType, type HomebrewSection, type HomebrewBook, validateBooks } from '@/lib/homebrew';
+import { emptyBook, HOME_TYPES, mergeCatalog, template, withoutFeatureReferences, type HomeType, type HomebrewSection, type HomebrewBook, validateBooks } from '@/lib/homebrew';
 import { applyEntryDraft, duplicateEntry, editorDraftKey, entryFeatureIds, entryIssues, entrySummary, type EntryDraft, type HomebrewEntry } from '@/lib/homebrew-editor';
 import { ChoiceFields, EntryRules, FormSection, NumberField, Picker, SelectField, Toggle, TraitFields, homebrewLabels as labels, homebrewSingular as singular } from './homebrew-fields';
 import { Button, Field, Modal, SourceTag, cleanDescription, downloadText } from './ui';
@@ -100,7 +100,10 @@ export function HomebrewEditor({ books, official, bookId, type, onBookIdChange, 
   };
   const remove = () => {
     if (!deleteTarget || (!deleteTarget.type && confirmation !== 'ELIMINAR')) return;
-    const next = deleteTarget.type ? books.map(book => book.id !== selected?.id ? book : { ...book, entries: { ...book.entries, [deleteTarget.type!]: (book.entries[deleteTarget.type!] ?? []).filter(item => item.id !== deleteTarget.id), ...(deleteTarget.type === 'subclasses' ? { features: (book.entries.features ?? []).filter(feature => feature.originId !== deleteTarget.id) } : {}) } }) : books.filter(book => book.id !== deleteTarget.id);
+    const next = deleteTarget.type ? books.map(book => {
+      const trimmed = deleteTarget.type === 'features' ? withoutFeatureReferences(book, deleteTarget.id) : book;
+      return book.id !== selected?.id ? trimmed : { ...trimmed, entries: { ...trimmed.entries, [deleteTarget.type!]: (trimmed.entries[deleteTarget.type!] ?? []).filter(item => item.id !== deleteTarget.id), ...(deleteTarget.type === 'subclasses' ? { features: (trimmed.entries.features ?? []).filter(feature => feature.originId !== deleteTarget.id) } : {}) } };
+    }) : books.filter(book => book.id !== deleteTarget.id);
     if (commit(next)) { setDeleteTarget(null); setConfirmation(''); if (!deleteTarget.type) onBookIdChange(''); }
   };
   const importFile = async (file?: File) => {

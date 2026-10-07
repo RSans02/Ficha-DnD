@@ -6,5 +6,21 @@
     "resolvedWeight": 20,
     "correctionSource": "SRD 5.1 (English), p. 69",
     "correctionUrl": "https://media.dndbeyond.com/compendium-images/srd/5.1/SRD_CC_v5.1.pdf"
+  },
+  {
+    "type": "missing-source-weight",
+    "id": "equipment-equipo-antorcha",
+    "page": 427,
+    "resolvedWeight": 1,
+    "correctionSource": "D&D Basic Rules (2014), Equipment",
+    "correctionUrl": "https://www.dndbeyond.com/sources/dnd/basic-rules-2014/equipment"
+  },
+  {
+    "type": "missing-source-weight",
+    "id": "equipment-vehiculos-bote-de-remos",
+    "page": 431,
+    "resolvedWeight": 100,
+    "correctionSource": "D&D Basic Rules (2014), Equipment",
+    "correctionUrl": "https://www.dndbeyond.com/sources/dnd/basic-rules-2014/equipment"
   }
 ]

@@ -14,7 +14,9 @@ import rawClasses from '../data/rules/classes.json';
 import rawFeatures from '../data/rules/class-features.json';
 import rawSpells from '../data/rules/spells.json';
 import { exportJSON, importJSON, LocalCharacterRepository, LocalDraftRepository, normalizeEquipmentLabels, validateCharacterData } from '../lib/persistence';
-import type { Catalog, Character, CharacterClass, Feature, Race, Spell } from '../lib/types';
+import { addOneEquipment, equipmentCountInScope, inventoryEntriesFromEquipment, removeOneEquipment, reorderContainerRows, separateContainerUnits, withoutContainerId } from '../lib/equipment';
+import rawEquipment from '../data/rules/equipment.json';
+import type { Catalog, Character, CharacterClass, Equipment, Feature, Race, Spell } from '../lib/types';
 
 const source = { page: 1 };
 const race: Race = { id: 'race-fixture', name: 'Raza de prueba', description: 'Datos controlados para pruebas, no contenido del juego.', source, parentId: null, kind: 'race', version: 'Prueba', category: 'Prueba', size: 'Mediano', speed: 30, abilityBonuses: { dex: 2 }, languages: ['Común'], senses: [], resistances: [], immunities: [], featureIds: [], choices: [], effects: [] };
@@ -270,6 +272,122 @@ test('equipped armor applies dex cap and shield while attacks expose trace', () 
   assert.equal(deriveCharacter(c, catalog).ac.value, 18);
   const attack = deriveAttack(c, { id: 'a', name: 'Prueba', ability: 'str', proficient: true, bonus: 1, damage: '1d8', damageType: '', range: '', notes: '', favorite: false }, catalog);
   assert.equal(attack.attack.value, 5); assert.equal(attack.damageBonus, 2); assert.equal(attack.attack.breakdown.length, 3);
+});
+
+test('manual attacks can omit ability and proficiency while a magic bonus affects hit and damage', () => {
+  const c = character();
+  const result = deriveAttack(c, { id: 'shadow', name: 'Dagas de Sombras', ability: 'none', proficient: false, bonus: 2, magicBonus: 1, damage: '2d4', damageType: 'perforante', extraDamage: [{ dice: '2d8', damageType: 'necrótico', condition: 'En oscuridad' }], range: '5 pies', notes: '', favorite: true }, catalog);
+  assert.equal(result.attack.value, 3);
+  assert.equal(result.damageBonus, 1);
+  assert(result.attack.breakdown.some(row => row.label === 'Bonificación mágica' && row.value === 1));
+});
+
+test('explorer pack produces an actual container with individually editable contents', () => {
+  const equipment = rawEquipment as Equipment[];
+  const pack = equipment.find(item => item.id === 'equipment-paquetes-equipo-de-explorador')!;
+  const entries = inventoryEntriesFromEquipment(pack, 1, { ...catalog, equipment });
+  assert(entries.length > 5);
+  assert.equal(entries[0].isContainer, true);
+  assert(entries.slice(1).every(item => item.containerId === entries[0].id));
+  assert(entries.some(item => item.name.toLocaleLowerCase('es').includes('antorcha') && item.quantity === 10));
+  const c = character(); c.inventory = entries;
+  assert.deepEqual(validateCharacterData(c, { ...catalog, equipment }), []);
+});
+
+test('2014 equipment weights correct explicit omissions without inventing values for dashes', () => {
+  const equipment = rawEquipment as Equipment[];
+  assert.equal(equipment.find(item => item.name === 'Antorcha')?.weight, 1);
+  assert.equal(equipment.find(item => item.name === 'Bote de remos')?.weight, 100);
+  assert.equal(equipment.find(item => item.name === 'Tinta (botella de 1 onza)')?.weight, null);
+  const pack = equipment.find(item => item.id === 'equipment-paquetes-equipo-de-erudito')!;
+  const entries = inventoryEntriesFromEquipment(pack, 1, { ...catalog, equipment });
+  assert.equal(entries[0].notes, '');
+  assert.equal(entries.find(item => item.name === 'Libro de conocimiento')?.weight, 0);
+  assert.match(entries.find(item => item.name === 'Libro de conocimiento')?.notes ?? '', /no indican un peso/);
+  const explorer = equipment.find(item => item.id === 'equipment-paquetes-equipo-de-explorador')!;
+  const contents = inventoryEntriesFromEquipment(explorer, 1, { ...catalog, equipment });
+  assert.equal(contents.find(item => item.name === 'Yesquero')?.weight, 1);
+  assert.equal(contents.find(item => item.name === 'Antorcha')?.weight, 1);
+});
+
+test('legacy missing-weight notes migrate only automatic values', () => {
+  const c = character();
+  c.inventory = [
+    { id: 'torch', name: 'Antorcha', equipmentId: 'equipment-equipo-antorcha', weight: 0, notes: 'Peso no disponible en la fuente; ajústalo si es necesario.' },
+    { id: 'custom-torch', name: 'Antorcha', equipmentId: 'equipment-equipo-antorcha', weight: 2, notes: 'Peso no disponible en la fuente; ajústalo si es necesario.' },
+    { id: 'ink', name: 'Tinta', weight: 0, notes: 'Contenido del paquete; peso no disponible en la fuente.' },
+    { id: 'tinderbox', name: 'Yesquero', weight: 0, notes: 'Contenido del paquete; peso no disponible en la fuente.' },
+  ] as Character['inventory'];
+  const result = normalizeEquipmentLabels(c).inventory;
+  assert.equal(result[0].weight, 1);
+  assert.equal(result[0].notes, '');
+  assert.equal(result[1].weight, 2);
+  assert.equal(result[1].notes, '');
+  assert.equal(result[2].weight, 0);
+  assert.match(result[2].notes, /no indican un peso/);
+  assert.equal(result[3].weight, 1);
+  assert.equal(c.inventory[0].weight, 0);
+});
+
+test('one-click equipment adds and right-click removal respect bags and pack contents', () => {
+  const equipment = rawEquipment as Equipment[];
+  const cat = { ...catalog, equipment };
+  const dagger = equipment.find(item => item.name === 'Daga')!;
+  const pack = equipment.find(item => item.id === 'equipment-paquetes-equipo-de-explorador')!;
+  const bag = { id: 'bag', name: 'Carcaj', category: 'Equipo' as const, quantity: 1, weight: 1, equipped: false, attuned: false, isContainer: true, description: '', notes: '' };
+  let items = addOneEquipment([bag], dagger, cat, bag.id);
+  items = addOneEquipment(items, dagger, cat, bag.id);
+  assert.equal(equipmentCountInScope(items, dagger.id, bag.id), 2);
+  assert.equal(equipmentCountInScope(items, dagger.id), 0);
+  assert.equal(items.find(item => item.equipmentId === dagger.id)?.containerId, bag.id);
+  items = removeOneEquipment(items, dagger.id, bag.id);
+  assert.equal(equipmentCountInScope(items, dagger.id, bag.id), 1);
+  items = addOneEquipment(items, pack, cat, bag.id);
+  const packRow = items.find(item => item.equipmentId === pack.id)!;
+  assert.equal(packRow.isContainer, true);
+  assert(items.some(item => item.containerId === packRow.id));
+  items = removeOneEquipment(items, pack.id, bag.id);
+  assert(!items.some(item => item.id === packRow.id || item.containerId === packRow.id));
+  assert.deepEqual(validateCharacterData({ ...character(), inventory: items }, cat), []);
+});
+
+test('removing an item from a container leaves valid inventory data', () => {
+  const c = character();
+  c.inventory = [{ id: 'bag', name: 'Bolsa', category: 'Equipo', quantity: 1, weight: 1, equipped: false, attuned: false, isContainer: true, description: '', notes: '' }, { id: 'gem', name: 'Gema', category: 'Objetos', quantity: 1, weight: 0, equipped: false, attuned: false, containerId: 'bag', description: '', notes: '' }];
+  c.inventory[1] = withoutContainerId(c.inventory[1]);
+  assert.equal(Object.hasOwn(c.inventory[1], 'containerId'), false);
+  assert.deepEqual(validateCharacterData(c, catalog), []);
+  assert.equal(importJSON(exportJSON(c), catalog).inventory[1].containerId, undefined);
+});
+
+test('multiple bags become separate containers with independent identities', () => {
+  const bag = { id: 'bag', name: 'Bolsa', category: 'Equipo' as const, quantity: 2, weight: 1, equipped: false, attuned: false, isContainer: true, description: '', notes: '' };
+  const units = separateContainerUnits(bag);
+  assert.equal(units.length, 2);
+  assert.equal(units[0].id, bag.id);
+  assert.notEqual(units[0].id, units[1].id);
+  assert(units.every(unit => unit.quantity === 1));
+  const c = character(); c.inventory = units;
+  assert.deepEqual(validateCharacterData(c, catalog), []);
+});
+
+test('reordering bags preserves their contents and all other inventory rows', () => {
+  const c = character();
+  const bag = (id: string) => ({ id, name: id, category: 'Equipo' as const, quantity: 1, weight: 1, equipped: false, attuned: false, isContainer: true, description: '', notes: '' });
+  c.inventory = [bag('a'), { ...bag('gem'), isContainer: false, containerId: 'a' }, bag('b'), bag('c')];
+  const reordered = reorderContainerRows(c.inventory, 'a', 'c');
+  assert.deepEqual(reordered.map(item => item.id), ['b', 'gem', 'c', 'a']);
+  assert.equal(reordered[1].containerId, 'a');
+  assert.deepEqual(validateCharacterData({ ...c, inventory: reordered }, catalog), []);
+  assert.equal(reorderContainerRows(reordered, 'missing', 'b'), reordered);
+});
+
+test('labeled maximum HP adjustments appear in the calculation and survive export', () => {
+  const c = character();
+  const initial = deriveCharacter(c, catalog).hpMax.value;
+  c.hpMaxAdjustments = [{ id: 'blessing', label: 'Bendición', value: 5 }];
+  assert.equal(deriveCharacter(c, catalog).hpMax.value, initial + 5);
+  assert.equal(importJSON(exportJSON(c), catalog).hpMaxAdjustments?.[0].label, 'Bendición');
 });
 
 test('feat prerequisites handle numeric alternatives, race text and plural proficiencies', () => {

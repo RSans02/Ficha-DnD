@@ -1213,11 +1213,14 @@
       "endPage": 427,
       "title": "Equipo"
     },
-    "description": "Antorcha 1 pc –",
-    "weight": null,
+    "description": "Antorcha 1 pc – Peso en las Reglas básicas oficiales de 2014: 1 lb.",
+    "weight": 1,
     "cost": "1 pc",
     "equipmentType": "Equipo de aventura",
     "weightText": "–",
+    "automationNotes": [
+      "Peso verificado en las Reglas básicas oficiales de D&D 2014; se conserva la transcripción original de la fuente."
+    ],
     "detailReferencePages": [
       424,
       425,
@@ -3545,10 +3548,13 @@
       "endPage": 431,
       "title": "Equipo"
     },
-    "description": "Bote de remos 50 po 1,5 millas/hora",
-    "weight": null,
+    "description": "Bote de remos 50 po 1,5 millas/hora Peso en las Reglas básicas oficiales de 2014: 100 lb.",
+    "weight": 100,
     "cost": "50 po",
-    "speedText": "1,5 millas/hora"
+    "speedText": "1,5 millas/hora",
+    "automationNotes": [
+      "Peso verificado en las Reglas básicas oficiales de D&D 2014; se conserva la transcripción original de la fuente."
+    ]
   },
   {
     "id": "equipment-vehiculos-chalupa",

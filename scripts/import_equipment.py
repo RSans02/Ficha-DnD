@@ -156,6 +156,17 @@ for row in rows:
   # text. Preserve the full table row and use source pages for complete text.
   row["detailReferencePages"]=[424,425,426]if row["source"]["page"]==427 else [428,429]
 
+# The Spanish source table omits these values, but the 2014 Basic Rules state
+# them explicitly (the rowboat weight appears in the waterborne vehicles prose).
+official_2014_weights={"equipment-equipo-antorcha":1,"equipment-vehiculos-bote-de-remos":100}
+official_2014_url="https://www.dndbeyond.com/sources/dnd/basic-rules-2014/equipment"
+for row in rows:
+ if row["id"] not in official_2014_weights:continue
+ row["weight"]=official_2014_weights[row["id"]]
+ row["description"]+=f" Peso en las Reglas básicas oficiales de 2014: {row['weight']} lb."
+ row.setdefault("automationNotes",[]).append("Peso verificado en las Reglas básicas oficiales de D&D 2014; se conserva la transcripción original de la fuente.")
+ issues.append({"type":"missing-source-weight","id":row["id"],"page":row["source"]["page"],"resolvedWeight":row["weight"],"correctionSource":"D&D Basic Rules (2014), Equipment","correctionUrl":official_2014_url})
+
 ids=Counter(row["id"]for row in rows)
 assert all(count==1 for count in ids.values()),ids
 assert sum(row["category"]=="Armaduras"for row in rows)==13

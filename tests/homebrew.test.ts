@@ -3,7 +3,7 @@ import assert from 'node:assert/strict';
 import { catalog } from '../lib/catalog';
 import { applyRest, checkPrerequisites, createCharacter, deriveCharacter, getAllChoices, validSpells } from '../lib/engine';
 import { validateCharacterData } from '../lib/persistence';
-import { mergeCatalog, template, validateBooks, type HomebrewBook } from '../lib/homebrew';
+import { mergeCatalog, template, validateBooks, withoutFeatureReferences, type HomebrewBook } from '../lib/homebrew';
 import type { CharacterClass, Feature, Race, Spell } from '../lib/types';
 import { applyEntryDraft, duplicateEntry, entryIssues, type EntryDraft } from '../lib/homebrew-editor';
 import crusades from '../imports/cruzadas-de-los-panteones.json';
@@ -150,4 +150,14 @@ test('source links entered in the editor survive export and reject unsafe protoc
   assert.equal(book.entries.features?.[0].source.url, 'https://example.com/rasgo');
   assert(entryIssues({ ...feature, source: { ...feature.source, url: 'javascript:alert(1)' } }, 'features').some(issue => issue.includes('https://')));
   assert.throws(() => validateBooks([{ ...book, entries: { features: [{ ...feature, source: { ...feature.source, url: 'javascript:alert(1)' } }] } }], catalog), /Entrada inválida/);
+});
+
+test('deleting a shared homebrew trait clears race references', () => {
+  const feature = { ...template('features'), name: 'Don del bosque' } as Feature;
+  const race = { ...template('races'), name: 'Habitante del bosque', featureIds: [feature.id] } as Race;
+  const book: HomebrewBook = { id: 'book-delete-feature', name: 'Bosque', entries: { features: [feature], races: [race] } };
+  const cleaned = withoutFeatureReferences(book, feature.id);
+  const withoutFeature = { ...cleaned, entries: { ...cleaned.entries, features: [] } };
+  assert.deepEqual(withoutFeature.entries.races?.[0].featureIds, []);
+  assert.doesNotThrow(() => validateBooks([withoutFeature], catalog));
 });

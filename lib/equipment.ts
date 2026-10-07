@@ -2,6 +2,40 @@ import type { Attack, Catalog, Character, Equipment, EquipmentPickCategory, Inve
 import { deriveCharacter } from './engine';
 
 export const foldEquipment = (text: string) => text.normalize('NFD').replace(/[\u0300-\u036f]/g, '').toLocaleLowerCase('es');
+export function withoutContainerId(item: InventoryItem): InventoryItem {
+  const next = { ...item };
+  delete next.containerId;
+  return next;
+}
+/** Each physical container needs its own identity so its contents can be managed separately. */
+export function separateContainerUnits(item: InventoryItem): InventoryItem[] {
+  if (!item.isContainer || item.quantity === 1) return [item];
+  if (!Number.isInteger(item.quantity) || item.quantity < 1 || item.quantity > 50) throw new Error('Crea entre 1 y 50 contenedores por vez.');
+  return Array.from({ length: item.quantity }, (_, index) => ({ ...item, id: index === 0 ? item.id : crypto.randomUUID(), quantity: 1 }));
+}
+/** Reorder container tabs while leaving every non-container inventory row intact. */
+export function reorderContainerRows(items: InventoryItem[], sourceId: string, targetId: string): InventoryItem[] {
+  const containers = items.filter(item => item.isContainer);
+  const from = containers.findIndex(item => item.id === sourceId);
+  const to = containers.findIndex(item => item.id === targetId);
+  if (from < 0 || to < 0 || from === to) return items;
+  const ordered = [...containers];
+  ordered.splice(to, 0, ordered.splice(from, 1)[0]);
+  let index = 0;
+  return items.map(item => item.isContainer ? ordered[index++] : item);
+}
+type PackPart = { id?: string; name?: string; quantity?: number };
+const part = (id: string, quantity = 1): PackPart => ({ id: `equipment-equipo-${id}`, quantity });
+const tinderbox: PackPart = { id: 'equipment-equipo-lata-de-yesca', name: 'Yesquero' };
+const PACK_CONTENTS: Record<string, PackPart[]> = {
+  'equipment-paquetes-equipo-de-ladron': [part('bolas-de-metal-bolsa-de-1000'), { name: 'Hilo (10 pies)' }, part('campana'), part('vela', 5), part('palanca'), part('martillo'), part('piton', 10), part('linterna-con-capuchon'), part('aceite-frasco', 2), part('raciones-1-dia', 5), tinderbox, part('odre'), part('cuerda-de-canamo-50-pies')],
+  'equipment-paquetes-equipo-de-diplomatico': [part('estuche-para-mapas-o-pergaminos', 2), part('ropa-fina'), part('tinta-botella-de-1-onza'), part('pluma-de-escritura'), part('lampara'), part('aceite-frasco', 2), part('papel-una-hoja', 5), part('perfume-vial'), part('lacre'), part('jabon')],
+  'equipment-paquetes-equipo-para-dungeons': [part('saco-de-dormir'), part('palanca'), part('martillo'), part('piton', 10), part('antorcha', 10), tinderbox, part('raciones-1-dia', 10), part('odre'), part('cuerda-de-canamo-50-pies')],
+  'equipment-paquetes-equipo-de-actor': [part('saco-de-dormir'), { id: 'equipment-equipo-ropa-de-disfraz', name: 'Traje', quantity: 2 }, part('vela', 5), part('raciones-1-dia', 5), part('odre'), { id: 'equipment-herramientas-kit-de-disfraz' }],
+  'equipment-paquetes-equipo-de-explorador': [part('saco-de-dormir'), { id: 'equipment-herramientas-utensilios-de-cocina' }, tinderbox, part('antorcha', 10), part('raciones-1-dia', 10), part('odre'), part('cuerda-de-canamo-50-pies')],
+  'equipment-paquetes-equipo-de-sacerdote': [part('manta'), part('vela', 10), tinderbox, { name: 'Caja de limosnas' }, { name: 'Barra de incienso', quantity: 2 }, { name: 'Incensario' }, { name: 'Vestimentas' }, part('raciones-1-dia', 2), part('odre')],
+  'equipment-paquetes-equipo-de-erudito': [{ name: 'Libro de conocimiento' }, part('tinta-botella-de-1-onza'), part('pluma-de-escritura'), part('pergamino-una-hoja', 10), { name: 'Bolsa pequeña de arena' }, { name: 'Cuchillo pequeño' }],
+};
 
 export function inventorySummary(c: Character) {
   const itemWeight = c.inventory.reduce((sum,item) => sum + item.quantity * item.weight,0);
@@ -32,10 +66,48 @@ export function inventoryFromEquipment(e: Equipment, quantity = 1): InventoryIte
   return {
     id: crypto.randomUUID(), equipmentId: e.id, name: e.name,
     category: e.category === 'Armaduras' ? 'Armaduras' : e.category === 'Armas' ? 'Armas' : 'Equipo',
-    quantity, weight: e.weight ?? 0, equipped: false, attuned: false,
-    description: e.description, notes: e.weight == null ? 'Peso no disponible en la fuente; ajústalo si es necesario.' : '',
+    quantity, weight: PACK_CONTENTS[e.id] ? 0 : e.weight ?? 0, equipped: false, attuned: false,
+    ...(PACK_CONTENTS[e.id] ? { isContainer: true } : {}),
+    description: e.description, notes: e.weight == null && !PACK_CONTENTS[e.id] ? 'Las reglas oficiales de 2014 no indican un peso fijo para este objeto.' : '',
     ...(e.shieldBonus ? { shieldBonus: e.shieldBonus } : typeof e.armorClass === 'number' ? { armorBase: e.armorClass, ...(typeof e.dexterityCap === 'number' ? { dexCap: e.dexterityCap } : {}) } : {}),
   };
+}
+
+/** Pack contents are real inventory rows kept inside their source pack. */
+export function inventoryEntriesFromEquipment(e: Equipment, quantity = 1, catalog?: Catalog): InventoryItem[] {
+  const contents = PACK_CONTENTS[e.id];
+  if (!contents) return [inventoryFromEquipment(e, quantity)];
+  return Array.from({ length: quantity }, () => {
+    const bag = inventoryFromEquipment(e);
+    const children = contents.map(entry => {
+      const source = catalog?.equipment.find(item => item.id === entry.id);
+      const child = source ? { ...inventoryFromEquipment(source, entry.quantity ?? 1), name: entry.name ?? source.name } : { id: crypto.randomUUID(), name: entry.name ?? 'Objeto del paquete', category: 'Equipo' as const, quantity: entry.quantity ?? 1, weight: 0, equipped: false, attuned: false, description: '', notes: 'Las reglas oficiales de 2014 no indican un peso para este componente del paquete.' };
+      return { ...child, containerId: bag.id };
+    });
+    return [bag, ...children];
+  }).flat();
+}
+
+export function equipmentCountInScope(items: InventoryItem[], equipmentId: string, containerId?: string): number {
+  return items.filter(item => item.equipmentId === equipmentId && (item.isContainer || (item.containerId ?? null) === (containerId ?? null))).reduce((total, item) => total + item.quantity, 0);
+}
+
+export function addOneEquipment(items: InventoryItem[], equipment: Equipment, catalog: Catalog, containerId?: string): InventoryItem[] {
+  const entries = inventoryEntriesFromEquipment(equipment, 1, catalog).map(item => containerId && !item.isContainer && !item.containerId ? { ...item, containerId } : item);
+  const root = entries[0];
+  if (!root.isContainer) {
+    const existing = items.findLastIndex(item => item.equipmentId === equipment.id && (item.containerId ?? null) === (containerId ?? null) && !item.isContainer && !item.homebrew && !item.equipped && !item.attuned && !item.attack && item.name === root.name && item.weight === root.weight && item.description === root.description && item.notes === root.notes);
+    if (existing >= 0) return items.map((item, index) => index === existing ? { ...item, quantity: item.quantity + 1 } : item);
+  }
+  return [...items, ...entries];
+}
+
+export function removeOneEquipment(items: InventoryItem[], equipmentId: string, containerId?: string): InventoryItem[] {
+  const index = items.findLastIndex(item => item.equipmentId === equipmentId && (item.isContainer || (item.containerId ?? null) === (containerId ?? null)));
+  if (index < 0) return items;
+  const target = items[index];
+  if (target.quantity > 1 && !target.isContainer) return items.map((item, row) => row === index ? { ...item, quantity: item.quantity - 1 } : item);
+  return items.filter(item => item.id !== target.id && (!target.isContainer || item.containerId !== target.id));
 }
 
 export function equipmentForPick(equipment: Equipment[], category: EquipmentPickCategory): Equipment[] {
@@ -123,12 +195,16 @@ export function resolveStartingEquipment(c: Character, catalog: Catalog): { item
     }
     grants.forEach((grant, index) => {
       const source = catalog.equipment.find(e => e.id === grant.equipmentId);
-      const item: InventoryItem = source ? inventoryFromEquipment(source, grant.quantity) : { id: '', name: grant.name ?? 'Objeto de origen', quantity: grant.quantity, category: 'Equipo', weight: 0, equipped: false, attuned: false, description: grant.description ?? '', notes: `Equipo inicial del manual, p. ${definition.source.page}. Peso por completar.` };
-      if (grant.name) item.name = grant.name;
-      if (grant.description) item.description = `${item.description}\n${grant.description}`.trim();
-      item.id = `${c.id}.starting.${id}.${index}`;
-      item.startingEquipmentOrigin = id;
-      items.push(item);
+      const entries: InventoryItem[] = source ? inventoryEntriesFromEquipment(source, grant.quantity, catalog) : [{ id: '', name: grant.name ?? 'Objeto de origen', quantity: grant.quantity, category: 'Equipo', weight: 0, equipped: false, attuned: false, description: grant.description ?? '', notes: `Equipo inicial del manual, p. ${definition.source.page}. Peso por completar.` }];
+      const stableIds = new Map(entries.map((item, entryIndex) => [item.id, `${c.id}.starting.${id}.${index}.${entryIndex}`]));
+      entries.forEach((item, entryIndex) => {
+        if (grant.name && entryIndex === 0) item.name = grant.name;
+        if (grant.description && entryIndex === 0) item.description = `${item.description}\n${grant.description}`.trim();
+        if (item.containerId) item.containerId = stableIds.get(item.containerId);
+        item.id = stableIds.get(item.id)!;
+        item.startingEquipmentOrigin = id;
+        items.push(item);
+      });
     });
   }
   return { items, coins };
