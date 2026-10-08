@@ -2,7 +2,7 @@
 
 import { useEffect, useId, useLayoutEffect, useMemo, useRef, useState, type FormEvent } from 'react';
 import { createPortal } from 'react-dom';
-import { ArrowDown, ArrowLeft, ArrowRight, ArrowUp, ArrowUpDown, Backpack, BookOpen, ChevronRight, Coins, FilePenLine, LayoutGrid, MoreHorizontal, NotebookPen, Plus, Search, Sparkles, Trash2, Weight } from 'lucide-react';
+import { ArrowDown, ArrowLeft, ArrowRight, ArrowUp, ArrowUpDown, Backpack, BookOpen, ChevronRight, Coins, FilePenLine, Hand, LayoutGrid, MoreHorizontal, NotebookPen, Plus, Search, Settings2, Sparkles, Trash2, Weight } from 'lucide-react';
 import type { Catalog, Character, InventoryItem, Note } from '@/lib/types';
 import { Button, Empty, Field, Modal } from '@/components/ui';
 import { EquipmentPicker } from './equipment-picker';
@@ -32,6 +32,7 @@ export function InventoryPanel({ character, catalog, onChange }: PanelProps) {
   const [openNotesId, setOpenNotesId] = useState<string | null>(null);
   const [draft, setDraft] = useState<InventoryItem | null>(null);
   const [catalogOpen, setCatalogOpen] = useState(false);
+  const [settingsOpen, setSettingsOpen] = useState(false);
   const [removing, setRemoving] = useState<InventoryItem | null>(null);
   const [containerMenu, setContainerMenu] = useState<{ id: string; x: number; y: number } | null>(null);
   const [draggedContainerId, setDraggedContainerId] = useState<string | null>(null);
@@ -55,8 +56,7 @@ export function InventoryPanel({ character, catalog, onChange }: PanelProps) {
     const closeOnEscape = (event: KeyboardEvent) => {
       if (event.key !== 'Escape') return;
       setContainerMenu(null);
-      const index = character.inventory.filter(item => item.isContainer).findIndex(item => item.id === containerMenu.id);
-      tabRefs.current[index + 1]?.focus({ preventScroll: true });
+      tabRefs.current[tabs.findIndex(tab => tab.id === containerMenu.id)]?.focus({ preventScroll: true });
     };
     document.addEventListener('pointerdown', closeOnOutsideClick);
     document.addEventListener('keydown', closeOnEscape);
@@ -67,14 +67,16 @@ export function InventoryPanel({ character, catalog, onChange }: PanelProps) {
     };
   }, [containerMenu, character.inventory]);
   const selectedContainer = containers.find(item => item.id === scope);
-  const activeScope = selectedContainer?.id ?? 'all';
+  const showAllTab = character.inventoryOptions?.showAllTab !== false;
+  const activeScope = selectedContainer?.id ?? (scope === 'all' && showAllTab ? 'all' : 'loose');
   const nameTotals = new Map<string, number>();
   containers.forEach(container => {
     const key = fold(container.name.trim() || 'Contenedor');
     nameTotals.set(key, (nameTotals.get(key) ?? 0) + 1);
   });
   const seenNames = new Map<string, number>();
-  const tabs = [{ id: 'all', label: 'Todo', count: character.inventory.length }, ...containers.map(container => {
+  const looseItems = character.inventory.filter(item => !item.isContainer && (!item.containerId || !containers.some(container => container.id === item.containerId)));
+  const tabs = [...(showAllTab ? [{ id: 'all', label: 'Todo', count: character.inventory.length }] : []), { id: 'loose', label: 'General', count: looseItems.length }, ...containers.map(container => {
     const name = container.name.trim() || 'Contenedor';
     const key = fold(name);
     const number = (seenNames.get(key) ?? 0) + 1;
@@ -85,8 +87,8 @@ export function InventoryPanel({ character, catalog, onChange }: PanelProps) {
     const previous = previousTabPositions.current;
     if (!previous) return;
     previousTabPositions.current = null;
-    containers.forEach((container, index) => {
-      const element = tabRefs.current[index + 1]?.parentElement;
+    containers.forEach(container => {
+      const element = tabRefs.current[tabs.findIndex(tab => tab.id === container.id)]?.parentElement;
       const before = previous.get(container.id);
       if (!element || !before || window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
       const after = element.getBoundingClientRect();
@@ -94,8 +96,7 @@ export function InventoryPanel({ character, catalog, onChange }: PanelProps) {
       if (x || y) element.animate([{ transform: `translate(${x}px, ${y}px)` }, { transform: 'translate(0, 0)' }], { duration: 260, easing: 'cubic-bezier(.22, 1, .36, 1)' });
     });
     if (focusAfterReorder.current) {
-      const index = containers.findIndex(item => item.id === focusAfterReorder.current);
-      tabRefs.current[index + 1]?.focus({ preventScroll: true });
+      tabRefs.current[tabs.findIndex(tab => tab.id === focusAfterReorder.current)]?.focus({ preventScroll: true });
       focusAfterReorder.current = null;
     }
   }, [character.inventory]);
@@ -103,8 +104,8 @@ export function InventoryPanel({ character, catalog, onChange }: PanelProps) {
   const reorderContainer = (sourceId: string, targetId: string, restoreFocus = false) => {
     const nextInventory = reorderContainerRows(character.inventory, sourceId, targetId);
     if (nextInventory === character.inventory) return;
-    previousTabPositions.current = new Map(containers.map((container, index) => {
-      const rect = tabRefs.current[index + 1]?.parentElement?.getBoundingClientRect();
+    previousTabPositions.current = new Map(containers.map(container => {
+      const rect = tabRefs.current[tabs.findIndex(tab => tab.id === container.id)]?.parentElement?.getBoundingClientRect();
       return [container.id, { left: rect?.left ?? 0, top: rect?.top ?? 0 }];
     }));
     if (restoreFocus) focusAfterReorder.current = sourceId;
@@ -116,7 +117,7 @@ export function InventoryPanel({ character, catalog, onChange }: PanelProps) {
   const moveItemToScope = (itemId: string, targetId: string) => {
     const item = character.inventory.find(entry => entry.id === itemId);
     if (!item || item.isContainer) return;
-    if (targetId === 'all') {
+    if (targetId === 'all' || targetId === 'loose') {
       if (!item.containerId) return;
       onChange({ ...character, inventory: character.inventory.map(entry => entry.id === itemId ? withoutContainerId(entry) : entry) });
       setReorderAnnouncement(`${item.name} sacado de la bolsa.`);
@@ -137,14 +138,14 @@ export function InventoryPanel({ character, catalog, onChange }: PanelProps) {
     tabRefs.current[next]?.focus();
     tabRefs.current[next]?.scrollIntoView({ block: 'nearest', inline: 'nearest' });
   };
-  const returnToAll = () => {
-    setScope('all');
+  const returnToRoot = () => {
+    setScope(showAllTab ? 'all' : 'loose');
     setContainerMenu(null);
     requestAnimationFrame(() => tabRefs.current[0]?.focus());
   };
   const items = useMemo(() => {
     const roots = character.inventory.filter(item => !item.containerId || !character.inventory.some(parent => parent.id === item.containerId));
-    const ordered = activeScope === 'all' ? roots.flatMap(root => [root, ...character.inventory.filter(item => item.containerId === root.id)]) : character.inventory.filter(item => item.containerId === activeScope);
+    const ordered = activeScope === 'all' ? roots.flatMap(root => [root, ...character.inventory.filter(item => item.containerId === root.id)]) : activeScope === 'loose' ? looseItems : character.inventory.filter(item => item.containerId === activeScope);
     const term = fold(query.trim());
     const matches = ordered.filter(item => (category === 'Todas' || item.category === category) && fold(`${item.name} ${item.description} ${item.notes}`).includes(term));
     if (sort) return matches.sort((a, b) => {
@@ -171,13 +172,14 @@ export function InventoryPanel({ character, catalog, onChange }: PanelProps) {
     const exists = character.inventory.some(item => item.id === saved.id);
     const [first, ...additional] = separateContainerUnits(saved);
     onChange({ ...character, inventory: exists ? [...character.inventory.map(item => item.id === saved.id ? first : !saved.isContainer && item.containerId === saved.id ? withoutContainerId(item) : item), ...additional] : [...character.inventory, first, ...additional] });
-    if (activeScope === saved.id && !saved.isContainer) returnToAll();
+    if (activeScope === saved.id && !saved.isContainer) returnToRoot();
     if (!exists && saved.isContainer) setScope(saved.id);
     setDraft(null);
   };
 
   return <div className="stack">
-    <div className="section-heading"><div><h2>Equipo de aventura</h2><p className="subtle">Todo lo que llevas en el camino.</p></div><div className="flex wrap"><Button onClick={() => setCatalogOpen(true)}><BookOpen size={16} />Buscar en el manual</Button><Button variant="primary" onClick={() => create()}><Sparkles size={16} />Crear objeto</Button></div></div>
+    <div className="section-heading"><div><h2>Equipo de aventura</h2><p className="subtle">Todo lo que llevas en el camino.</p></div><div className="flex wrap"><Button onClick={() => setCatalogOpen(true)}><BookOpen size={16} />Buscar en el manual</Button><Button variant="primary" onClick={() => create()}><Sparkles size={16} />Crear objeto</Button><button className="icon-button inventory-settings-trigger" type="button" aria-label="Ajustes de inventario" title="Ajustes de inventario" aria-expanded={settingsOpen} aria-controls={`${panelId}-settings`} onClick={() => setSettingsOpen(open => !open)}><Settings2 size={18} /></button></div></div>
+    {settingsOpen && <section id={`${panelId}-settings`} className="panel inventory-settings" aria-label="Ajustes de inventario"><h3>Ajustes de inventario</h3><label><input type="checkbox" checked={character.inventoryOptions?.coinsHaveWeight === false} onChange={e => onChange({ ...character, inventoryOptions: { ...character.inventoryOptions, coinsHaveWeight: !e.target.checked } })} />Las monedas no pesan</label><label><input type="checkbox" checked={showAllTab} onChange={e => { onChange({ ...character, inventoryOptions: { coinsHaveWeight: character.inventoryOptions?.coinsHaveWeight !== false, showAllTab: e.target.checked } }); if (!e.target.checked && activeScope === 'all') setScope('loose'); }} />Mostrar la pestaña «Todo»</label></section>}
     <section className="panel stack" aria-label="Inventario">
       <div className="between wrap"><div className="flex"><Backpack size={18} /><strong>{character.inventory.length} {character.inventory.length === 1 ? 'objeto' : 'objetos'}</strong></div><span className="flex subtle"><Weight size={16} />Peso total <strong>{decimal(weight)} lb</strong></span></div>
       <p className="subtle">Equipo: {decimal(summary.itemWeight)} lb · Monedas: {decimal(summary.coinWeight)} lb {character.inventoryOptions?.coinsHaveWeight === false ? '(sin peso)' : '(50 por libra)'}. Sintonización: {summary.attuned} / {summary.attunementLimit} objetos.</p>
@@ -185,20 +187,20 @@ export function InventoryPanel({ character, catalog, onChange }: PanelProps) {
       <div className="inventory-tabs">
         <div className="inventory-tab-list" role="tablist" aria-label="Ubicaciones del inventario">{tabs.map((tab, index) =>
           <div key={tab.id} className={`inventory-tab-item${draggedContainerId === tab.id ? ' is-dragging' : ''}${dropTargetId === tab.id ? ' is-drop-target' : ''}`} role="presentation"
-            onContextMenu={index ? event => { event.preventDefault(); showContainerMenu(tab.id, event.clientX, event.clientY); } : undefined}
-            onDragOver={event => { const item = character.inventory.find(entry => entry.id === draggedItemRef.current); if ((item && !item.isContainer && (index ? item.containerId !== tab.id : Boolean(item.containerId))) || (index > 0 && draggedContainerRef.current && draggedContainerRef.current !== tab.id)) { event.preventDefault(); event.dataTransfer.dropEffect = 'move'; setDropTargetId(tab.id); } }}
+            onContextMenu={containers.some(container => container.id === tab.id) ? event => { event.preventDefault(); showContainerMenu(tab.id, event.clientX, event.clientY); } : undefined}
+            onDragOver={event => { const item = character.inventory.find(entry => entry.id === draggedItemRef.current); if ((item && !item.isContainer && (tab.id === 'all' || tab.id === 'loose' ? Boolean(item.containerId) : item.containerId !== tab.id)) || (containers.some(container => container.id === tab.id) && draggedContainerRef.current && draggedContainerRef.current !== tab.id)) { event.preventDefault(); event.dataTransfer.dropEffect = 'move'; setDropTargetId(tab.id); } }}
             onDragLeave={event => { if (!event.currentTarget.contains(event.relatedTarget as Node)) setDropTargetId(current => current === tab.id ? null : current); }}
-            onDrop={event => { event.preventDefault(); if (draggedItemRef.current) { moveItemToScope(draggedItemRef.current, tab.id); if (tab.id === 'all') setScope('all'); clearItemDrag(); } else if (index > 0 && draggedContainerRef.current) { reorderContainer(draggedContainerRef.current, tab.id); draggedContainerRef.current = null; setDraggedContainerId(null); setDropTargetId(null); } }}>
+            onDrop={event => { event.preventDefault(); if (draggedItemRef.current) { moveItemToScope(draggedItemRef.current, tab.id); if (tab.id === 'all' || tab.id === 'loose') setScope(tab.id); clearItemDrag(); } else if (containers.some(container => container.id === tab.id) && draggedContainerRef.current) { reorderContainer(draggedContainerRef.current, tab.id); draggedContainerRef.current = null; setDraggedContainerId(null); setDropTargetId(null); } }}>
             <button ref={node => { tabRefs.current[index] = node; }} id={`${panelId}-tab-${index}`} type="button" role="tab"
-              draggable={index > 0} aria-label={`${tab.label}${'total' in tab && tab.total > 1 ? `, ${tab.number} de ${tab.total}` : ''}, ${tab.count} ${tab.count === 1 ? 'objeto' : 'objetos'}`}
-              title={index ? `${tab.label} · Suelta objetos aquí o arrastra la bolsa para reordenar` : 'Suelta aquí un objeto para sacarlo de su bolsa'} aria-selected={activeScope === tab.id} aria-controls={`${panelId}-items`} tabIndex={activeScope === tab.id ? 0 : -1} className="inventory-tab"
+              draggable={containers.some(container => container.id === tab.id)} aria-label={`${tab.label}${'total' in tab && tab.total > 1 ? `, ${tab.number} de ${tab.total}` : ''}, ${tab.count} ${tab.count === 1 ? 'objeto' : 'objetos'}`}
+              title={containers.some(container => container.id === tab.id) ? `${tab.label} · Suelta objetos aquí o arrastra la bolsa para reordenar` : 'Suelta aquí un objeto para sacarlo de su bolsa'} aria-selected={activeScope === tab.id} aria-controls={`${panelId}-items`} tabIndex={activeScope === tab.id ? 0 : -1} className="inventory-tab"
               onClick={() => { setScope(tab.id); setContainerMenu(null); }}
-              onDragStart={index ? event => { event.dataTransfer.effectAllowed = 'move'; event.dataTransfer.setData('text/plain', tab.id); event.dataTransfer.setDragImage(event.currentTarget, -12, -40); draggedItemRef.current = null; setDraggedItemId(null); draggedContainerRef.current = tab.id; setDraggedContainerId(tab.id); setContainerMenu(null); } : undefined}
+              onDragStart={containers.some(container => container.id === tab.id) ? event => { event.dataTransfer.effectAllowed = 'move'; event.dataTransfer.setData('text/plain', tab.id); event.dataTransfer.setDragImage(event.currentTarget, -12, -40); draggedItemRef.current = null; setDraggedItemId(null); draggedContainerRef.current = tab.id; setDraggedContainerId(tab.id); setContainerMenu(null); } : undefined}
               onDragEnd={() => { draggedContainerRef.current = null; setDraggedContainerId(null); setDropTargetId(null); }}
-              onKeyDown={event => { if (['ArrowLeft', 'ArrowRight', 'Home', 'End'].includes(event.key)) { event.preventDefault(); moveTab(index, event.key); setContainerMenu(null); } else if (index && (event.key === 'ContextMenu' || event.key === 'F10' && event.shiftKey)) { event.preventDefault(); const rect = event.currentTarget.getBoundingClientRect(); showContainerMenu(tab.id, rect.left, rect.bottom + 4); } }}>
-              {index === 0 ? <LayoutGrid size={15} aria-hidden="true"/> : <Backpack size={15} aria-hidden="true"/>}<span>{tab.label}</span>
+              onKeyDown={event => { if (['ArrowLeft', 'ArrowRight', 'Home', 'End'].includes(event.key)) { event.preventDefault(); moveTab(index, event.key); setContainerMenu(null); } else if (containers.some(container => container.id === tab.id) && (event.key === 'ContextMenu' || event.key === 'F10' && event.shiftKey)) { event.preventDefault(); const rect = event.currentTarget.getBoundingClientRect(); showContainerMenu(tab.id, rect.left, rect.bottom + 4); } }}>
+              {tab.id === 'all' ? <LayoutGrid size={15} aria-hidden="true"/> : tab.id === 'loose' ? <Hand size={15} style={{ transform: 'scaleX(.9333)' }} aria-hidden="true"/> : <Backpack size={15} aria-hidden="true"/>}<span>{tab.label}</span>
             </button>
-            {index > 0 && <button data-container-menu-trigger className="inventory-tab-options" type="button" aria-label={`Opciones de ${tab.label}${'total' in tab && tab.total > 1 ? `, ${tab.number} de ${tab.total}` : ''}`} aria-haspopup="menu" aria-expanded={containerMenu?.id === tab.id} aria-controls={containerMenu?.id === tab.id ? `${panelId}-container-menu` : undefined} onClick={event => { if (containerMenu?.id === tab.id) setContainerMenu(null); else { const rect = event.currentTarget.getBoundingClientRect(); showContainerMenu(tab.id, rect.left, rect.bottom + 4); } }}><MoreHorizontal size={17} aria-hidden="true"/></button>}
+            {containers.some(container => container.id === tab.id) && <button data-container-menu-trigger className="inventory-tab-options" type="button" aria-label={`Opciones de ${tab.label}${'total' in tab && tab.total > 1 ? `, ${tab.number} de ${tab.total}` : ''}`} aria-haspopup="menu" aria-expanded={containerMenu?.id === tab.id} aria-controls={containerMenu?.id === tab.id ? `${panelId}-container-menu` : undefined} onClick={event => { if (containerMenu?.id === tab.id) setContainerMenu(null); else { const rect = event.currentTarget.getBoundingClientRect(); showContainerMenu(tab.id, rect.left, rect.bottom + 4); } }}><MoreHorizontal size={17} aria-hidden="true"/></button>}
           </div>
         )}</div>
         <button className="inventory-add-container" type="button" aria-label="Añadir bolsa" title="Añadir bolsa" onClick={addContainer}><Plus size={18} aria-hidden="true"/></button>
@@ -229,13 +231,12 @@ export function InventoryPanel({ character, catalog, onChange }: PanelProps) {
       </div>
     </section>
     <section className="panel stack" aria-label="Dinero"><div className="panel-title flex"><Coins size={18} /><h3>Tu bolsa de monedas</h3></div><div className="money-grid">{COINS.map(coin => <Field key={coin.id} label={coin.label}><input aria-label={`Monedas de ${coin.label.toLowerCase()}`} type="number" min={0} step={1} value={character.money[coin.id] ?? 0} onChange={e => onChange({ ...character, money: { ...character.money, [coin.id]: Math.max(0, Math.floor(validNumber(e.target.valueAsNumber))) } })} /></Field>)}</div></section>
-    <section className="panel" aria-label="Opciones de inventario"><h3 style={{marginBottom:10}}>Opciones</h3><label className="flex" style={{gap:9}}><input type="checkbox" style={{width:16,minHeight:0}} checked={character.inventoryOptions?.coinsHaveWeight === false} onChange={e=>onChange({...character,inventoryOptions:{coinsHaveWeight:!e.target.checked}})}/>Las monedas no pesan</label></section>
 
     <CustomItemDialog item={draft} containers={character.inventory.filter(item => item.isContainer)} onClose={() => setDraft(null)} onSave={saveItem} title={draft && character.inventory.some(item => item.id === draft.id) ? 'Editar objeto' : 'Crear objeto'} />
     <Modal open={catalogOpen} onClose={() => setCatalogOpen(false)} title="Equipo del manual" description="Haz clic para añadir un objeto. Haz clic derecho para quitar uno." wide>
       <div className="stack"><EquipmentPicker character={character} catalog={catalog} onChange={onChange} containerId={selectedContainer?.id} showSelectedList={false}/>{selectedContainer && <p className="subtle">Los objetos sueltos se guardan en {selectedContainer.name}. Los paquetes del manual crean su propio contenedor.</p>}<div className="modal-footer"><Button onClick={() => setCatalogOpen(false)}>Cerrar</Button></div></div>
     </Modal>
-    <Modal open={Boolean(removing)} onClose={() => setRemoving(null)} title={removing?.isContainer ? 'Eliminar contenedor' : 'Eliminar objeto'} description={removing ? `¿Quieres quitar «${removing.name}» de tu inventario?${removing.isContainer ? ' Los objetos guardados dentro quedarán fuera.' : ''}` : undefined}><div className="modal-footer"><Button onClick={() => setRemoving(null)}>Cancelar</Button><Button variant="danger" onClick={() => { if (removing) { onChange({ ...character, inventory: character.inventory.filter(item => item.id !== removing.id).map(item => item.containerId === removing.id ? withoutContainerId(item) : item) }); if (activeScope === removing.id) returnToAll(); } setRemoving(null); }}><Trash2 size={16} />{removing?.isContainer ? 'Eliminar contenedor' : 'Eliminar objeto'}</Button></div></Modal>
+    <Modal open={Boolean(removing)} onClose={() => setRemoving(null)} title={removing?.isContainer ? 'Eliminar contenedor' : 'Eliminar objeto'} description={removing ? `¿Quieres quitar «${removing.name}» de tu inventario?${removing.isContainer ? ' Los objetos guardados dentro quedarán fuera.' : ''}` : undefined}><div className="modal-footer"><Button onClick={() => setRemoving(null)}>Cancelar</Button><Button variant="danger" onClick={() => { if (removing) { onChange({ ...character, inventory: character.inventory.filter(item => item.id !== removing.id).map(item => item.containerId === removing.id ? withoutContainerId(item) : item) }); if (activeScope === removing.id) returnToRoot(); } setRemoving(null); }}><Trash2 size={16} />{removing?.isContainer ? 'Eliminar contenedor' : 'Eliminar objeto'}</Button></div></Modal>
   </div>;
 }
 

@@ -28,7 +28,7 @@ export interface Character {
   hpMaxAdjustments?: { id: string; label: string; value: number }[];
   featureOverrides?: Record<string, { name: string; description: string; manualCategory?: Feature['manualCategory'] }>;
   sheetSpellAttackIds?: string[];
-  inventoryOptions?: { coinsHaveWeight: boolean };
+  inventoryOptions?: { coinsHaveWeight: boolean; showAllTab?: boolean };
   abilityGeneration?: { method: 'manual' | 'standard' | 'point-buy' | 'rolled'; rolls?: number[][] };
   exhaustionLevel?: number;
   startingEquipment?: StartingEquipmentSelection;

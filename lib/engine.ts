@@ -35,7 +35,7 @@ export function createCharacter(): Character {
 
 export function withHistory(c: Character, text: string): Character {
   const date = new Date().toISOString();
-  return { ...c, updatedAt: date, history: [...c.history, { id: newId(), date, text }].slice(-100) };
+  return { ...c, updatedAt: date, history: [...c.history, { id: newId(), date, text }].slice(-40) };
 }
 
 function races(c: Character, catalog: Catalog) {

@@ -458,6 +458,23 @@ test('repository isolates records and demo initialization never resurrects delet
   const other = new LocalCharacterRepository(catalog, storage, 'other-owner'); assert.deepEqual(await other.list(), []); await assert.rejects(other.save(c), /propietario/);
 });
 
+test('characters remain exportable when a referenced compendium is absent', async () => {
+  const storage = new MemoryStorage(), repo = new LocalCharacterRepository(catalog, storage);
+  const c = character(); c.featIds = ['homebrew-feat-missing'];
+  await repo.save(c);
+  const recovered = (await repo.get(c.id))!;
+  assert.deepEqual(recovered.featIds, c.featIds);
+  assert.equal(validateCharacterData(recovered, catalog).some(issue => issue.includes('dote desconocida')), true);
+  assert.equal(importJSON(exportJSON(recovered)).featIds[0], 'homebrew-feat-missing');
+});
+
+test('drafts remain stored when their compendium is absent', () => {
+  const storage = new MemoryStorage(), drafts = new LocalDraftRepository(catalog, storage);
+  const c = createCharacter(); c.featIds = ['homebrew-feat-missing'];
+  drafts.save({ character: c, step: 4 });
+  assert.deepEqual(new LocalDraftRepository(catalog, storage).list()[0].character.featIds, c.featIds);
+});
+
 test('corrupt storage and quota errors preserve the previous library', async () => {
   const storage = new MemoryStorage(), repo = new LocalCharacterRepository(catalog, storage), c = character();
   await repo.save(c); const [key, raw] = [...storage.data.entries()][0];
@@ -473,7 +490,13 @@ test('snapshot imports reject nested or foreign character snapshots', () => {
 });
 
 test('history is bounded during repeated play actions', () => {
-  let c = character(); for (let i = 0; i < 110; i++) c = applyDamage(c, 0); assert.equal(c.history.length, 100);
+  let c = character(); for (let i = 0; i < 110; i++) c = applyDamage(c, 0);
+  assert.equal(c.history.length, 40);
+  assert.equal(c.history[0].text, 'Recibió 0 puntos de daño.');
+  const legacy = { ...c, history: Array.from({ length: 100 }, (_, i) => ({ id: `entry-${i}`, date: c.createdAt, text: `Evento ${i}` })) };
+  const imported = importJSON(JSON.stringify(legacy));
+  assert.equal(imported.history.length, 40);
+  assert.equal(imported.history[0].text, 'Evento 60');
 });
 
 test('all six modifiers support odd and negative score modifiers', () => {

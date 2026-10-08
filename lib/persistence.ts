@@ -22,7 +22,7 @@ export function normalizeEquipmentLabels(character: Character): Character {
   const packPartWeights: Record<string, number> = { Yesquero: 1, Traje: 4 };
   const oldCatalogNote = 'Peso no disponible en la fuente; ajústalo si es necesario.';
   const oldPackNote = 'Contenido del paquete; peso no disponible en la fuente.';
-  return { ...character, inventory: character.inventory.map(item => {
+  return { ...character, history: character.history.slice(-40), inventory: character.inventory.map(item => {
     const next = { ...item, name: names[item.equipmentId ?? '']?.[item.name] ?? item.name };
     if (next.notes === oldCatalogNote) {
       const corrected = correctedWeights[next.equipmentId ?? ''];
@@ -185,6 +185,7 @@ export function validateCharacterData(input: unknown, catalog?: Catalog, snapsho
   if (own(c, 'inventoryOptions')) {
     const options = object(c.inventoryOptions, 'inventoryOptions');
     bool(options.coinsHaveWeight, 'inventoryOptions.coinsHaveWeight');
+    if (own(options, 'showAllTab')) bool(options.showAllTab, 'inventoryOptions.showAllTab');
   }
   records(c.biography, 'biography', (v, path) => str(v, path, 100_000), 100);
   arr(c.notes, 'notes', 2000).forEach((v, i) => { const note = object(v, `notes[${i}]`); ['id', 'title', 'category', 'date'].forEach(k => str(note[k], `notes[${i}].${k}`, 500)); str(note.content, `notes[${i}].content`, 100_000); });
@@ -286,7 +287,7 @@ export function importJSON(text: string, catalog?: Catalog): Character {
 export function exportJSON(character: Character): string {
   const errors = validateCharacterData(character);
   if (errors.length) throw new CharacterImportError(errors);
-  return JSON.stringify(character, null, 2);
+  return JSON.stringify({ ...character, history: character.history.slice(-40) }, null, 2);
 }
 
 export const importCharacter = importJSON;
@@ -311,7 +312,7 @@ export class LocalDraftRepository {
       if (!plain(data) || data.schemaVersion !== 1 || !Array.isArray(data.drafts) || data.drafts.length > 2000) throw new Error('Formato de borradores inválido.');
       const drafts = data.drafts.map((entry: unknown) => {
         if (!plain(entry) || !Number.isInteger(entry.step) || (entry.step as number) < 0 || (entry.step as number) > 9) throw new Error('Paso del borrador inválido.');
-        const errors = validateCharacterData(entry.character, this.catalog);
+        const errors = validateCharacterData(entry.character);
         if (errors.length) throw new Error(`Borrador inválido: ${errors.slice(0, 3).join('; ')}`);
         const character = entry.character as Character;
         if (character.ownerId !== this.ownerId) throw new Error('El propietario del borrador no coincide.');
@@ -323,7 +324,7 @@ export class LocalDraftRepository {
   }
   save(draft: CharacterDraft): void {
     if (!Number.isInteger(draft.step) || draft.step < 0 || draft.step > 9) throw new Error('Paso del borrador inválido.');
-    const errors = validateCharacterData(draft.character, this.catalog);
+    const errors = validateCharacterData(draft.character);
     if (errors.length) throw new Error(`No se pudo guardar el borrador: ${errors.slice(0, 3).join('; ')}`);
     if (draft.character.ownerId !== this.ownerId) throw new Error('El propietario del borrador no coincide.');
     const drafts = this.list(), index = drafts.findIndex(item => item.character.id === draft.character.id);
@@ -352,7 +353,9 @@ export class LocalCharacterRepository implements CharacterRepository {
       const data: unknown = JSON.parse(raw);
       if (!plain(data) || data.schemaVersion !== 1 || !Array.isArray(data.characters) || data.characters.length > 2000) throw new Error('Formato de biblioteca inválido.');
       const characters = data.characters.map(c => {
-        const errors = validateCharacterData(c, this.catalog);
+        // A missing compendium must not make the entire local library unreadable.
+        // Validate structure here; the UI checks catalog references before play.
+        const errors = validateCharacterData(c);
         if (errors.length) throw new CharacterImportError(errors);
         if ((c as Character).ownerId !== this.ownerId) throw new Error('El propietario del personaje no coincide.');
         return normalizeEquipmentLabels(c as Character);
@@ -371,7 +374,7 @@ export class LocalCharacterRepository implements CharacterRepository {
   async list(): Promise<Character[]> { return structuredClone(this.read()).sort((a, b) => b.updatedAt.localeCompare(a.updatedAt)); }
   async get(id: string): Promise<Character | null> { return structuredClone(this.read().find(c => c.id === id) ?? null); }
   async save(character: Character): Promise<void> {
-    const errors = validateCharacterData(character, this.catalog);
+    const errors = validateCharacterData(character);
     if (errors.length) throw new CharacterImportError(errors);
     if (character.ownerId !== this.ownerId) throw new Error('El propietario del personaje no coincide con el repositorio.');
     const list = this.read(), index = list.findIndex(c => c.id === character.id);

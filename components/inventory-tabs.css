@@ -1,14 +1,12 @@
 .inventory-tabs {
   display: flex;
   gap: 8px;
-  overflow-x: auto;
+  flex-wrap: wrap;
   padding: 9px 8px 10px;
   margin: -4px -8px 6px;
-  scrollbar-width: thin;
-  scroll-snap-type: x proximity;
 }
 
-.inventory-tab-list { display: flex; gap: 8px; flex: 0 0 auto; }
+.inventory-tab-list { display: flex; flex-wrap: wrap; gap: 8px; flex: 1 1 auto; min-width: 0; }
 .inventory-add-container { display: grid; place-items: center; flex: 0 0 42px; min-height: 42px; border: 1px dashed #a9b59a; border-radius: 6px; background: var(--surface); color: var(--green); cursor: pointer; scroll-snap-align: start; }
 .inventory-add-container:hover { border-style: solid; background: var(--soft); }
 .inventory-add-container:focus-visible { outline: 3px solid var(--gold); outline-offset: 2px; }
@@ -16,6 +14,11 @@
 .inventory-tab-item { display: inline-flex; align-items: stretch; flex: 0 0 auto; scroll-snap-align: start; }
 .inventory-tab-item.is-dragging { opacity: .45; }
 .inventory-tab-item.is-drop-target { outline: 2px dashed var(--gold); outline-offset: 3px; border-radius: 6px; }
+.inventory-settings-trigger { min-width: 40px; min-height: 40px; }
+.inventory-settings { display: grid; gap: 13px; margin-bottom: 18px; }
+.inventory-settings h3 { font-size: 18px; }
+.inventory-settings label { display: flex; align-items: center; gap: 9px; font-size: 13px; }
+.inventory-settings input { width: 16px; min-height: 0; }
 .inventory-tab {
   display: inline-flex;
   align-items: center;
