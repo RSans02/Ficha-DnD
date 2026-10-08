@@ -39,7 +39,7 @@ export function EquipmentPicker({ character, catalog, onChange, allowHomebrew = 
   const [detail, setDetail] = useState<Equipment | null>(null), [custom, setCustom] = useState<InventoryItem | null>(null), [lastAction, setLastAction] = useState('');
   const quick: QuickActions = {
     onAdd: item => {
-      onChange({ ...character, inventory: addOneEquipment(character.inventory, item, catalog, containerId) });
+      onChange({ ...character, inventory: addOneEquipment(character.inventory, item, catalog, containerId, character) });
       setLastAction(`${item.name} añadido.`);
     },
     onRemove: item => {

@@ -1,0 +1,61 @@
+.modal.spell-manager-modal {
+  display: flex;
+  flex-direction: column;
+  height: min(90dvh, 850px);
+  overflow: hidden;
+}
+
+.spell-manager-modal .modal-header,
+.spell-manager-modal > .modal-footer {
+  flex: none;
+}
+
+.spell-manager-scroll {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  min-height: 0;
+  overflow: hidden;
+}
+
+.spell-manager-main-tabs{display:flex;align-items:stretch;gap:4px;flex:none;border-bottom:1px solid var(--line);margin-bottom:17px}
+.spell-manager-main-tabs button{border:0;border-bottom:2px solid transparent;background:transparent;color:var(--muted);padding:10px 16px 11px;font-size:13px;cursor:pointer}
+.spell-manager-main-tabs button.active{border-bottom-color:var(--gold);color:var(--ink);font-weight:600}
+.spell-manager-main-tabs button:hover{color:var(--ink);background:var(--surface)}
+.spell-manager-subheading{display:block;flex:none;margin-bottom:8px}
+.spell-manager-scroll > .stack > .inline-tabs{min-height:34px}
+
+.spell-manager-scroll > .stack {
+  flex: 1;
+  min-height: 0;
+}
+
+.spell-manager-scroll .spell-picker-options {
+  flex: 1;
+  min-height: 0;
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  scrollbar-gutter: stable;
+  padding-right: 6px;
+}
+
+.spell-manager-scroll .inline-tabs,
+.spell-manager-scroll .library-tools {
+  margin-bottom: 0;
+}
+
+.spell-manager-modal > .modal-footer {
+  margin-top: 0;
+  padding-top: 16px;
+  background: var(--paper);
+}
+.spell-slot-editor{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px}
+@media(max-width:600px){.spell-slot-editor{grid-template-columns:repeat(2,minmax(0,1fr))}}
+.extra-spell-manager{display:flex;flex-direction:column;gap:14px;min-height:0;flex:1}
+.extra-spell-intro{display:flex;align-items:center;justify-content:space-between;gap:12px;min-height:22px}
+.extra-spell-results{display:grid;align-content:start;gap:8px;flex:1;min-height:0;overflow-y:auto;overscroll-behavior:contain;scrollbar-gutter:stable;padding-right:6px}
+.extra-spell-option{display:flex;align-items:center;gap:6px;padding:0 9px 0 0;border:1px solid var(--line);border-radius:5px;background:var(--surface)}
+.extra-spell-option.selected{border-color:#7b8c66;background:#f0f3e9;box-shadow:0 0 0 1px #7b8c6625}
+.extra-spell-option .check-option{flex:1;min-width:0;border:0;background:transparent;box-shadow:none}
+.extra-spell-option input{width:min(31%,270px);min-width:150px;background:#faf8f2;font-size:12px}
+@media(max-width:680px){.extra-spell-option{flex-wrap:wrap;padding-bottom:7px}.extra-spell-option .check-option{flex-basis:calc(100% - 45px)}.extra-spell-option input{order:3;margin-left:12px;width:calc(100% - 24px)}}

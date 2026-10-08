@@ -46,42 +46,51 @@ export function inventorySummary(c: Character) {
 }
 
 export function equippedAttacks(c: Character, catalog: Catalog): Attack[] {
-  const derived = deriveCharacter(c, catalog);
-  const proficiencies = derived.proficiencies.map(foldEquipment);
   return c.inventory.filter(item => item.equipped).flatMap(item => {
+    if (item.attackDisabled) return [];
     if (item.attack) return [{ ...item.attack, id: `item.${item.id}`, name: item.name, favorite: true }];
     const weapon = catalog.equipment.find(entry => entry.id === item.equipmentId);
-    if (!weapon?.damage) return [];
-    const category = foldEquipment(weapon.weaponCategory ?? '');
-    const properties = (weapon.properties ?? []).map(foldEquipment);
-    const ranged = category.includes('distancia');
-    const finesse = properties.some(property => property.includes('sutil'));
-    const ability = ranged || (finesse && derived.abilities.dex.modifier > derived.abilities.str.modifier) ? 'dex' : 'str';
-    const proficient = proficiencies.includes(foldEquipment(weapon.name)) || category.includes('simples') && proficiencies.includes('armas sencillas') || category.includes('marciales') && proficiencies.includes('armas marciales');
-    return [{ id: `item.${item.id}`, name: item.name, ability, proficient, bonus: 0, damage: weapon.damage, damageType: weapon.damageType ?? '', range: (weapon as Equipment & {range?:string}).range || (ranged ? 'A distancia' : 'Cuerpo a cuerpo'), notes: item.notes, favorite: true }];
+    const attack = weapon && attackFromEquipment(weapon, c, catalog);
+    return attack ? [{ ...attack, id: `item.${item.id}`, name: item.name, notes: item.notes, favorite: true }] : [];
   });
 }
 
-export function inventoryFromEquipment(e: Equipment, quantity = 1): InventoryItem {
+/** Build the editable attack from the weapon's compendium data and the character's proficiencies. */
+export function attackFromEquipment(e: Equipment, character?: Character, catalog?: Catalog): InventoryItem['attack'] {
+  if (e.category !== 'Armas' || !e.damage) return undefined;
+  const category = foldEquipment(e.weaponCategory ?? '');
+  const properties = (e.properties ?? []).map(foldEquipment);
+  const ranged = category.includes('distancia');
+  const finesse = properties.some(property => property.includes('sutil'));
+  const derived = character && catalog ? deriveCharacter(character, catalog) : undefined;
+  const proficiencies = derived?.proficiencies.map(foldEquipment) ?? [];
+  const ability = ranged || (finesse && !!derived && derived.abilities.dex.modifier > derived.abilities.str.modifier) ? 'dex' : 'str';
+  const proficient = proficiencies.includes(foldEquipment(e.name)) || category.includes('simples') && proficiencies.includes('armas sencillas') || category.includes('marciales') && proficiencies.includes('armas marciales');
+  return { ability, proficient, bonus: 0, damage: e.damage, damageType: e.damageType ?? '', range: (e as Equipment & { range?: string }).range || (ranged ? 'A distancia' : 'Cuerpo a cuerpo'), notes: '' };
+}
+
+export function inventoryFromEquipment(e: Equipment, quantity = 1, character?: Character, catalog?: Catalog): InventoryItem {
+  const attack = attackFromEquipment(e, character, catalog);
   return {
     id: crypto.randomUUID(), equipmentId: e.id, name: e.name,
     category: e.category === 'Armaduras' ? 'Armaduras' : e.category === 'Armas' ? 'Armas' : 'Equipo',
     quantity, weight: PACK_CONTENTS[e.id] ? 0 : e.weight ?? 0, equipped: false, attuned: false,
     ...(PACK_CONTENTS[e.id] ? { isContainer: true } : {}),
     description: e.description, notes: e.weight == null && !PACK_CONTENTS[e.id] ? 'Las reglas oficiales de 2014 no indican un peso fijo para este objeto.' : '',
+    ...(attack ? { attack } : {}),
     ...(e.shieldBonus ? { shieldBonus: e.shieldBonus } : typeof e.armorClass === 'number' ? { armorBase: e.armorClass, ...(typeof e.dexterityCap === 'number' ? { dexCap: e.dexterityCap } : {}) } : {}),
   };
 }
 
 /** Pack contents are real inventory rows kept inside their source pack. */
-export function inventoryEntriesFromEquipment(e: Equipment, quantity = 1, catalog?: Catalog): InventoryItem[] {
+export function inventoryEntriesFromEquipment(e: Equipment, quantity = 1, catalog?: Catalog, character?: Character): InventoryItem[] {
   const contents = PACK_CONTENTS[e.id];
-  if (!contents) return [inventoryFromEquipment(e, quantity)];
+  if (!contents) return [inventoryFromEquipment(e, quantity, character, catalog)];
   return Array.from({ length: quantity }, () => {
     const bag = inventoryFromEquipment(e);
     const children = contents.map(entry => {
       const source = catalog?.equipment.find(item => item.id === entry.id);
-      const child = source ? { ...inventoryFromEquipment(source, entry.quantity ?? 1), name: entry.name ?? source.name } : { id: crypto.randomUUID(), name: entry.name ?? 'Objeto del paquete', category: 'Equipo' as const, quantity: entry.quantity ?? 1, weight: 0, equipped: false, attuned: false, description: '', notes: 'Las reglas oficiales de 2014 no indican un peso para este componente del paquete.' };
+      const child = source ? { ...inventoryFromEquipment(source, entry.quantity ?? 1, character, catalog), name: entry.name ?? source.name } : { id: crypto.randomUUID(), name: entry.name ?? 'Objeto del paquete', category: 'Equipo' as const, quantity: entry.quantity ?? 1, weight: 0, equipped: false, attuned: false, description: '', notes: 'Las reglas oficiales de 2014 no indican un peso para este componente del paquete.' };
       return { ...child, containerId: bag.id };
     });
     return [bag, ...children];
@@ -92,11 +101,11 @@ export function equipmentCountInScope(items: InventoryItem[], equipmentId: strin
   return items.filter(item => item.equipmentId === equipmentId && (item.isContainer || (item.containerId ?? null) === (containerId ?? null))).reduce((total, item) => total + item.quantity, 0);
 }
 
-export function addOneEquipment(items: InventoryItem[], equipment: Equipment, catalog: Catalog, containerId?: string): InventoryItem[] {
-  const entries = inventoryEntriesFromEquipment(equipment, 1, catalog).map(item => containerId && !item.isContainer && !item.containerId ? { ...item, containerId } : item);
+export function addOneEquipment(items: InventoryItem[], equipment: Equipment, catalog: Catalog, containerId?: string, character?: Character): InventoryItem[] {
+  const entries = inventoryEntriesFromEquipment(equipment, 1, catalog, character).map(item => containerId && !item.isContainer && !item.containerId ? { ...item, containerId } : item);
   const root = entries[0];
   if (!root.isContainer) {
-    const existing = items.findLastIndex(item => item.equipmentId === equipment.id && (item.containerId ?? null) === (containerId ?? null) && !item.isContainer && !item.homebrew && !item.equipped && !item.attuned && !item.attack && item.name === root.name && item.weight === root.weight && item.description === root.description && item.notes === root.notes);
+    const existing = items.findLastIndex(item => item.equipmentId === equipment.id && (item.containerId ?? null) === (containerId ?? null) && !item.isContainer && !item.homebrew && !item.equipped && !item.attuned && !item.attackDisabled && JSON.stringify(item.attack) === JSON.stringify(root.attack) && item.name === root.name && item.weight === root.weight && item.description === root.description && item.notes === root.notes);
     if (existing >= 0) return items.map((item, index) => index === existing ? { ...item, quantity: item.quantity + 1 } : item);
   }
   return [...items, ...entries];
@@ -195,7 +204,7 @@ export function resolveStartingEquipment(c: Character, catalog: Catalog): { item
     }
     grants.forEach((grant, index) => {
       const source = catalog.equipment.find(e => e.id === grant.equipmentId);
-      const entries: InventoryItem[] = source ? inventoryEntriesFromEquipment(source, grant.quantity, catalog) : [{ id: '', name: grant.name ?? 'Objeto de origen', quantity: grant.quantity, category: 'Equipo', weight: 0, equipped: false, attuned: false, description: grant.description ?? '', notes: `Equipo inicial del manual, p. ${definition.source.page}. Peso por completar.` }];
+      const entries: InventoryItem[] = source ? inventoryEntriesFromEquipment(source, grant.quantity, catalog, c) : [{ id: '', name: grant.name ?? 'Objeto de origen', quantity: grant.quantity, category: 'Equipo', weight: 0, equipped: false, attuned: false, description: grant.description ?? '', notes: `Equipo inicial del manual, p. ${definition.source.page}. Peso por completar.` }];
       const stableIds = new Map(entries.map((item, entryIndex) => [item.id, `${c.id}.starting.${id}.${index}.${entryIndex}`]));
       entries.forEach((item, entryIndex) => {
         if (grant.name && entryIndex === 0) item.name = grant.name;

@@ -1,0 +1,10 @@
+.wizard-progress span.pending { background: #bd744b; }
+.wizard-steps button.has-pending { color: #86502f; background: #f7ece3; border-radius: 5px; }
+.wizard-step-count { display: inline-grid; place-items: center; min-width: 18px; height: 18px; padding: 0 4px; border-radius: 9px; background: #86502f; color: #fff; font-size: 10px; line-height: 1; }
+.wizard-pending-summary { display: flex; align-items: center; flex-wrap: wrap; gap: 10px 18px; padding: 12px 16px; margin: 0 0 22px; background: #f9f1e9; border: 1px solid #dfb897; border-radius: 6px; color: #78482b; font-size: 12px; }
+.wizard-pending-summary > div { display: flex; flex-wrap: wrap; gap: 6px; }
+.wizard-pending-summary button { display: inline-flex; align-items: center; gap: 7px; padding: 5px 9px; border: 1px solid #dfb897; border-radius: 4px; background: #fffaf5; color: #78482b; cursor: pointer; }
+.wizard-pending-summary button:hover, .wizard-pending-summary button:focus-visible { border-color: #86502f; background: #fff; }
+.wizard-pending-summary button span { font-weight: 700; }
+.wizard-input-pending { border-color: #b77248; }
+.wizard-choice-pending .choice-title .badge { color: #78482b; background: #f6e9dd; border-color: #dfb897; }

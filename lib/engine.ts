@@ -338,9 +338,9 @@ function spellClassAllowed(spell: Spell, classId: string, c: Character, catalog:
   return !!(direct || referenceAccess || subclassAccess || dmAccess) && (!optional.includes(classId) || !!c.choices[`optional-spells.${classId}`]?.includes('enabled'));
 }
 
-/** Racial and selected feat cantrips remain separate from class known/prepared limits. */
+/** Spells granted by traits or added to the sheet remain separate from class selections. */
 export function getGrantedSpells(c: Character, catalog: Catalog): Spell[] {
-  const ids = [...effectsFor(c, catalog, activeFeatures(c, catalog)).filter(x => ['grant_spell', 'spell'].includes(x.effect.type)).map(x => x.effect.spellId), ...c.classes.flatMap(entry => {
+  const ids = [...(c.extraSpells ?? []).map(entry => entry.spellId), ...effectsFor(c, catalog, activeFeatures(c, catalog)).filter(x => ['grant_spell', 'spell'].includes(x.effect.type)).map(x => x.effect.spellId), ...c.classes.flatMap(entry => {
     const subclass = catalog.classes.find(cls => cls.id === entry.classId)?.subclasses.find(sub => sub.id === entry.subclassId);
     return (subclass?.featureIds ?? []).flatMap(id => [...((subclassSpellGrants as Record<string, {level:number;spellId:string}[]>)[id] ?? []), ...((subclassDirectSpellGrants as Record<string, {level:number;spellId:string}[]>)[id] ?? [])].filter(grant => grant.level <= entry.level).map(grant => grant.spellId));
   }), ...c.classes.filter(entry => entry.subclassId === 'subclass-druida-circulo-de-la-tierra').flatMap(entry => (subclassLandSpells as Record<string, {level:number;spellId:string}[]>)[c.choices['subclass-land.druid']?.[0]]?.filter(grant => grant.level <= entry.level).map(grant => grant.spellId) ?? [])];
@@ -363,7 +363,7 @@ export function isAttackSpell(spell: Spell): boolean {
   return /(?:haz|realiza|realizar|efectúa|haces|realizas)\s+(?:un|una)\s+ataque(?:\s+\w+){0,5}\s+(?:de|con)\s+conjuro/i.test(spell.description) || /(?:haz|realiza|efectúa)\s+una\s+tirada\s+de\s+ataque\s+de\s+conjuro/i.test(spell.description);
 }
 
-/** Fixed subclass cantrips occupy one of that subclass's known-cantrip slots. */
+/** Fixed subclass cantrips are granted separately from the player's selections. */
 export function getFixedClassCantrips(c: Character, classId: string, catalog: Catalog): Spell[] {
   const subclassId = c.classes.find(entry => entry.classId === classId)?.subclassId;
   if (!subclassId) return [];
@@ -491,12 +491,11 @@ export function getPendingChoices(c: Character, catalog: Catalog): Choice[] {
   for (const caster of d.spellcasting) {
     const selection = c.spellSelections[caster.classId] ?? { known: [], prepared: [] };
     const options = validSpells(c, caster.classId, catalog);
-    const grantedIds = new Set(getClassGrantedSpells(c, caster.classId, catalog).map(spell => spell.id));
-    const fixedCantrips = getFixedClassCantrips(c, caster.classId, catalog);
-    if (caster.cantrips !== null && unique([...selection.known.filter(id => catalog.spells.find(s => s.id === id)?.level === 0), ...fixedCantrips.map(s => s.id)]).length !== caster.cantrips) pending.push({ id: `cantrips.${caster.classId}`, type: 'cantrips', name: 'Trucos conocidos', amount: caster.cantrips, classId: caster.classId, required: true, options: options.filter(s => s.level === 0 && !fixedCantrips.some(fixed => fixed.id === s.id)).map(s => ({ id: s.id, name: s.name })) });
+    const grantedIds = new Set([...getGrantedSpells({...c,extraSpells:[]}, catalog), ...getClassGrantedSpells(c, caster.classId, catalog)].map(spell => spell.id));
+    if (caster.cantrips !== null && unique(selection.known.filter(id => !grantedIds.has(id) && catalog.spells.find(s => s.id === id)?.level === 0)).length !== caster.cantrips) pending.push({ id: `cantrips.${caster.classId}`, type: 'cantrips', name: 'Trucos conocidos', amount: caster.cantrips, classId: caster.classId, required: true, options: options.filter(s => s.level === 0 && !grantedIds.has(s.id)).map(s => ({ id: s.id, name: s.name })) });
     if (caster.knownLimit !== null && selection.known.filter(id => !grantedIds.has(id) && (catalog.spells.find(s => s.id === id)?.level ?? 0) > 0).length !== caster.knownLimit) pending.push({ id: `known.${caster.classId}`, type: 'spells', name: 'Conjuros conocidos', amount: caster.knownLimit, classId: caster.classId, required: true, options: options.filter(s => s.level! > 0 && !grantedIds.has(s.id)).map(s => ({ id: s.id, name: s.name })) });
     const bookMinimum = spellbookMinimum(c, caster.classId, catalog);
-    if (bookMinimum !== null && selection.known.filter(id => (catalog.spells.find(s => s.id === id)?.level ?? 0) > 0).length < bookMinimum) pending.push({ id: `book.${caster.classId}`, type: 'spells', name: 'Conjuros en el libro (mínimo)', amount: bookMinimum, minimum: true, classId: caster.classId, required: true, source: { page: 307, endPage: 308 }, options: options.filter(s => s.level! > 0).map(s => ({ id: s.id, name: s.name })) });
+    if (bookMinimum !== null && selection.known.filter(id => !grantedIds.has(id) && (catalog.spells.find(s => s.id === id)?.level ?? 0) > 0).length < bookMinimum) pending.push({ id: `book.${caster.classId}`, type: 'spells', name: 'Conjuros en el libro (mínimo)', amount: bookMinimum, minimum: true, classId: caster.classId, required: true, source: { page: 307, endPage: 308 }, options: options.filter(s => s.level! > 0 && !grantedIds.has(s.id)).map(s => ({ id: s.id, name: s.name })) });
     if (caster.preparedLimit !== null && !selection.prepared.length && caster.preparedLimit > 0) pending.push({ id: `prepared.${caster.classId}`, type: 'prepared', name: 'Conjuros preparados', amount: caster.preparedLimit, classId: caster.classId, required: false, options: options.filter(s => s.level! > 0).map(s => ({ id: s.id, name: s.name })) });
   }
   return pending;
@@ -690,7 +689,7 @@ function restTargets(c: Character, type: 'short' | 'long', catalog: Catalog) {
   const d = deriveCharacter(c, catalog);
   const resources = d.resources.filter(r => r.recovery !== 'manual' && (r.recovery === type || type === 'long' && r.recovery === 'short') && r.spent > 0);
   const casters = classData(c, catalog).filter(x => x.casting?.recovery === type || type === 'long' && x.casting?.recovery === 'short');
-  const keys = unique([...casters.flatMap(cl => cl.casting?.mode === 'pact' ? [`pact.${cl.cls.id}`] : d.slots.map((_, i) => String(i + 1))), ...(type === 'long' ? d.grimoireSlots.map((_, i) => `grimoire.${i + 1}`) : [])]);
+  const keys = unique([...casters.flatMap(cl => cl.casting?.mode === 'pact' ? [`pact.${cl.cls.id}`] : d.slots.map((_, i) => String(i + 1))), ...(type === 'long' ? [...d.grimoireSlots.map((_, i) => `grimoire.${i + 1}`), ...Object.keys(c.manualOverrides).filter(key => /^slotMax\.[1-9]$/.test(key)).map(key => key.slice(8))] : [])]);
   return { resources, keys: keys.filter(key => (c.slotsSpent[key] ?? 0) > 0) };
 }
 

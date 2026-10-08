@@ -38,15 +38,44 @@ function caster(level = 1) {
   c.spellSelections['class-mago'] = { known: ['spark', ...Array.from({ length: 6 + (level - 1) * 2 }, (_, i) => `level1-${i}`)], prepared: ['level1-0'] }; return c;
 }
 
-test('Bribón Arcano gains Mano de Mago as a fixed cantrip and only chooses two others at level 3', () => {
+test('custom spell slots work on an existing noncaster and recover on a long rest', () => {
+  const c = character();
+  assert.deepEqual(deriveCharacter(c, catalog).slots, []);
+  c.manualOverrides['slotMax.3'] = 2;
+  c.slotsSpent['3'] = 1;
+  assert.deepEqual(deriveCharacter(c, catalog).slots, [0, 0, 2]);
+  assert.equal(validateCharacterData(c).length, 0);
+  assert.equal(applyRest(c, 'long', catalog).slotsSpent['3'], 0);
+  delete c.manualOverrides['slotMax.3'];
+  assert.deepEqual(deriveCharacter(c, catalog).slots, []);
+});
+
+test('extra compendium spells survive export and do not replace class spell choices', () => {
+  const c = character();
+  c.extraSpells = [{ spellId: 'spark', source: 'Varita encontrada' }, { spellId: 'level2', source: 'Rasgo' }];
+  assert.deepEqual(getGrantedSpells(c, catalog).map(spell => spell.id), ['spark', 'level2']);
+  assert.equal(validateCharacterData(c, catalog).length, 0);
+  assert.deepEqual(importJSON(exportJSON(c), catalog).extraSpells, c.extraSpells);
+  const mage = caster();
+  mage.extraSpells = [{ spellId: 'spark', source: 'Objeto' }];
+  assert.equal(getPendingChoices(mage, catalog).some(choice => choice.id === 'cantrips.class-mago'), false);
+  assert.ok(validateCharacterData({...c,extraSpells:[{spellId:'missing',source:''}]}, catalog).length > 0);
+});
+
+test('granted subclass cantrips do not use selected cantrip slots', () => {
   const rogue=rawClasses.find(cls=>cls.id==='class-picaro') as unknown as CharacterClass;
   const mageHand=rawSpells.find(s=>s.id==='spell-mano-de-mago') as unknown as Spell;
-  const fixture={...catalog,classes:[rogue],features:rawFeatures as unknown as Feature[],spells:[mageHand,spell('trick-one',0),spell('trick-two',0)]};
+  const fixture={...catalog,classes:[rogue],features:rawFeatures as unknown as Feature[],spells:[mageHand,spell('trick-one',0),spell('trick-two',0),spell('trick-three',0)]};
   const c=character('class-picaro',3);c.classes[0].subclassId='subclass-picaro-bribon-arcano';c.choices['skills.class-picaro']=[];
   assert.deepEqual(getFixedClassCantrips(c,'class-picaro',fixture).map(s=>s.id),['spell-mano-de-mago']);
   assert.ok(getGrantedSpells(c,fixture).some(s=>s.id==='spell-mano-de-mago'));
   c.spellSelections['class-picaro']={known:['trick-one','trick-two'],prepared:[]};
+  assert.equal(getPendingChoices(c,fixture).some(ch=>ch.id==='cantrips.class-picaro'),true);
+  c.spellSelections['class-picaro'].known.push('trick-three');
   assert.equal(getPendingChoices(c,fixture).some(ch=>ch.id==='cantrips.class-picaro'),false);
+  c.spellSelections['class-picaro'].known.push('spell-mano-de-mago');
+  assert.equal(getPendingChoices(c,fixture).some(ch=>ch.id==='cantrips.class-picaro'),false);
+  assert.ok(!validateCharacter(c,fixture).some(error=>error.includes('Trucos conocidos')));
 });
 
 test('subclass tables grant every fixed spell at its class level', () => {

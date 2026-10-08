@@ -21,10 +21,11 @@ export interface CharacterLevel { classId: string; level: number; subclassId?: s
 export interface ExtraDamage { dice: string; damageType: string; condition?: string }
 export interface Attack { id: string; name: string; ability: Ability | 'none'; proficient: boolean; bonus: number; magicBonus?: number; damage: string; damageBonus?: number; damageType: string; extraDamage?: ExtraDamage[]; range: string; notes: string; favorite: boolean }
 export type ItemRarity = 'Común' | 'Poco común' | 'Raro' | 'Muy raro' | 'Legendario' | 'Artefacto';
-export interface InventoryItem { homebrew?: boolean; startingEquipmentOrigin?: string; attack?: Omit<Attack, 'id' | 'name' | 'favorite'>; id: string; equipmentId?: string; name: string; category: 'Armas' | 'Armaduras' | 'Equipo' | 'Objetos'; quantity: number; weight: number; equipped: boolean; attuned: boolean; requiresAttunement?: boolean; rarity?: ItemRarity; isContainer?: boolean; containerId?: string; description: string; notes: string; armorBase?: number; dexCap?: number; shieldBonus?: number }
+export interface InventoryItem { homebrew?: boolean; startingEquipmentOrigin?: string; attack?: Omit<Attack, 'id' | 'name' | 'favorite'>; attackDisabled?: boolean; id: string; equipmentId?: string; name: string; category: 'Armas' | 'Armaduras' | 'Equipo' | 'Objetos'; quantity: number; weight: number; equipped: boolean; attuned: boolean; requiresAttunement?: boolean; rarity?: ItemRarity; isContainer?: boolean; containerId?: string; description: string; notes: string; armorBase?: number; dexCap?: number; shieldBonus?: number }
 export interface Note { id: string; title: string; category: string; content: string; date: string }
 export interface HistoryEntry { id: string; date: string; text: string }
 export interface Character {
+  extraSpells?: { spellId: string; source: string }[];
   hpMaxAdjustments?: { id: string; label: string; value: number }[];
   featureOverrides?: Record<string, { name: string; description: string; manualCategory?: Feature['manualCategory'] }>;
   sheetSpellAttackIds?: string[];

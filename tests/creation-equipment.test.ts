@@ -2,7 +2,7 @@ import test from 'node:test';
 import assert from 'node:assert/strict';
 import { catalog } from '../lib/catalog';
 import { createCharacter } from '../lib/engine';
-import { applyStartingEquipment, equippedAttacks, equipmentForPick, inventorySummary, resolveStartingEquipment, startingEquipmentIssues, startingEquipmentSelection } from '../lib/equipment';
+import { addOneEquipment, applyStartingEquipment, equippedAttacks, equipmentForPick, inventorySummary, resolveStartingEquipment, startingEquipmentIssues, startingEquipmentSelection } from '../lib/equipment';
 
 test('equipped weapons and custom attacking items appear as attacks only while equipped', () => {
   const c=createCharacter();c.classes=[{classId:'class-picaro',level:1}];
@@ -10,6 +10,30 @@ test('equipped weapons and custom attacking items appear as attacks only while e
   c.inventory=[{id:'dagger',equipmentId:dagger.id,name:'Daga',category:'Armas',quantity:1,weight:1,equipped:true,attuned:false,description:'',notes:''},{id:'staff',name:'Bastón propio',category:'Objetos',quantity:1,weight:2,equipped:true,attuned:false,description:'',notes:'',attack:{ability:'str',proficient:true,bonus:1,damage:'1d8',damageType:'contundente',range:'5 pies',notes:''}}];
   assert.deepEqual(equippedAttacks(c,catalog).map(attack=>attack.name),['Daga','Bastón propio']);
   c.inventory[0].equipped=false;assert.deepEqual(equippedAttacks(c,catalog).map(attack=>attack.name),['Bastón propio']);
+});
+
+test('compendium weapons arrive with an editable attack in starting gear and later additions', () => {
+  const c = createCharacter();
+  c.classes = [{ classId: 'class-picaro', level: 1 }];
+  const dagger = catalog.equipment.find(item => item.id === 'equipment-armas-daga')!;
+  const bow = catalog.equipment.find(item => item.id === 'equipment-armas-arco-largo')!;
+  c.inventory = addOneEquipment([], dagger, catalog, undefined, c);
+  assert.equal(c.inventory[0].attack?.damage, dagger.damage);
+  assert.equal(c.inventory[0].attack?.damageType, dagger.damageType);
+  assert.equal(c.inventory[0].attack?.proficient, true);
+  c.inventory = addOneEquipment(c.inventory, bow, catalog, undefined, c);
+  assert.equal(c.inventory[1].attack?.ability, 'dex');
+  assert.equal(c.inventory[1].attack?.proficient, false);
+  assert.equal(c.inventory[1].attack?.range, (bow as typeof bow & { range?: string }).range ?? 'A distancia');
+  c.inventory[1].equipped = true;
+  assert.equal(equippedAttacks(c, catalog)[0].damage, bow.damage);
+  c.inventory[1].attackDisabled = true;
+  assert.deepEqual(equippedAttacks(c, catalog), []);
+
+  const started = rogue();
+  const initialDaggers = applyStartingEquipment(started, catalog).inventory.find(item => item.equipmentId === dagger.id)!;
+  assert.equal(initialDaggers.attack?.damage, dagger.damage);
+  assert.equal(initialDaggers.attack?.proficient, true);
 });
 import { abilityGenerationIssues, abilityScoresFrom, pointBuyCost, rollScore, STANDARD_ARRAY } from '../lib/ability-generation';
 import { exportJSON, importJSON, validateCharacterData } from '../lib/persistence';

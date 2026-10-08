@@ -177,7 +177,7 @@ export function InventoryPanel({ character, catalog, onChange }: PanelProps) {
     setDraft(null);
   };
 
-  return <div className="stack">
+  return <div className="stack inventory-panel">
     <div className="section-heading"><div><h2>Equipo de aventura</h2><p className="subtle">Todo lo que llevas en el camino.</p></div><div className="flex wrap"><Button onClick={() => setCatalogOpen(true)}><BookOpen size={16} />Buscar en el manual</Button><Button variant="primary" onClick={() => create()}><Sparkles size={16} />Crear objeto</Button><button className="icon-button inventory-settings-trigger" type="button" aria-label="Ajustes de inventario" title="Ajustes de inventario" aria-expanded={settingsOpen} aria-controls={`${panelId}-settings`} onClick={() => setSettingsOpen(open => !open)}><Settings2 size={18} /></button></div></div>
     {settingsOpen && <section id={`${panelId}-settings`} className="panel inventory-settings" aria-label="Ajustes de inventario"><h3>Ajustes de inventario</h3><label><input type="checkbox" checked={character.inventoryOptions?.coinsHaveWeight === false} onChange={e => onChange({ ...character, inventoryOptions: { ...character.inventoryOptions, coinsHaveWeight: !e.target.checked } })} />Las monedas no pesan</label><label><input type="checkbox" checked={showAllTab} onChange={e => { onChange({ ...character, inventoryOptions: { coinsHaveWeight: character.inventoryOptions?.coinsHaveWeight !== false, showAllTab: e.target.checked } }); if (!e.target.checked && activeScope === 'all') setScope('loose'); }} />Mostrar la pestaña «Todo»</label></section>}
     <section className="panel stack" aria-label="Inventario">
@@ -186,7 +186,8 @@ export function InventoryPanel({ character, catalog, onChange }: PanelProps) {
       {summary.attuned>summary.attunementLimit&&<p className="error-box" role="alert">Superas tu límite de sintonización. Revisa los objetos vinculados; separa los objetos de una pila si solo uno está sintonizado.</p>}
       <div className="inventory-tabs">
         <div className="inventory-tab-list" role="tablist" aria-label="Ubicaciones del inventario">{tabs.map((tab, index) =>
-          <div key={tab.id} className={`inventory-tab-item${draggedContainerId === tab.id ? ' is-dragging' : ''}${dropTargetId === tab.id ? ' is-drop-target' : ''}`} role="presentation"
+          <div key={tab.id} className={index === tabs.length - 1 ? 'inventory-tab-end' : 'inventory-tab-wrap'} role="presentation">
+          <div className={`inventory-tab-item${draggedContainerId === tab.id ? ' is-dragging' : ''}${dropTargetId === tab.id ? ' is-drop-target' : ''}`} role="presentation"
             onContextMenu={containers.some(container => container.id === tab.id) ? event => { event.preventDefault(); showContainerMenu(tab.id, event.clientX, event.clientY); } : undefined}
             onDragOver={event => { const item = character.inventory.find(entry => entry.id === draggedItemRef.current); if ((item && !item.isContainer && (tab.id === 'all' || tab.id === 'loose' ? Boolean(item.containerId) : item.containerId !== tab.id)) || (containers.some(container => container.id === tab.id) && draggedContainerRef.current && draggedContainerRef.current !== tab.id)) { event.preventDefault(); event.dataTransfer.dropEffect = 'move'; setDropTargetId(tab.id); } }}
             onDragLeave={event => { if (!event.currentTarget.contains(event.relatedTarget as Node)) setDropTargetId(current => current === tab.id ? null : current); }}
@@ -202,8 +203,9 @@ export function InventoryPanel({ character, catalog, onChange }: PanelProps) {
             </button>
             {containers.some(container => container.id === tab.id) && <button data-container-menu-trigger className="inventory-tab-options" type="button" aria-label={`Opciones de ${tab.label}${'total' in tab && tab.total > 1 ? `, ${tab.number} de ${tab.total}` : ''}`} aria-haspopup="menu" aria-expanded={containerMenu?.id === tab.id} aria-controls={containerMenu?.id === tab.id ? `${panelId}-container-menu` : undefined} onClick={event => { if (containerMenu?.id === tab.id) setContainerMenu(null); else { const rect = event.currentTarget.getBoundingClientRect(); showContainerMenu(tab.id, rect.left, rect.bottom + 4); } }}><MoreHorizontal size={17} aria-hidden="true"/></button>}
           </div>
+          {index === tabs.length - 1 && <button className="inventory-add-container" type="button" aria-label="Añadir bolsa" title="Añadir bolsa" onClick={addContainer}><Plus size={18} aria-hidden="true"/></button>}
+          </div>
         )}</div>
-        <button className="inventory-add-container" type="button" aria-label="Añadir bolsa" title="Añadir bolsa" onClick={addContainer}><Plus size={18} aria-hidden="true"/></button>
       </div>
       {menuContainer && containerMenu && createPortal(<div ref={menuRef} id={`${panelId}-container-menu`} className="inventory-container-menu" role="menu" aria-label={`Opciones de ${menuContainer.name}`} style={{ left: containerMenu.x, top: containerMenu.y }} onKeyDown={event => { if (!['ArrowDown', 'ArrowUp', 'Home', 'End'].includes(event.key)) return; event.preventDefault(); const buttons = Array.from(event.currentTarget.querySelectorAll<HTMLButtonElement>('[role="menuitem"]:not(:disabled)')); const current = buttons.indexOf(document.activeElement as HTMLButtonElement); const next = event.key === 'Home' ? 0 : event.key === 'End' ? buttons.length - 1 : event.key === 'ArrowDown' ? (current + 1) % buttons.length : (current + buttons.length - 1) % buttons.length; buttons[next]?.focus(); }}>
         <button ref={firstMenuItemRef} type="button" role="menuitem" onClick={() => { setDraft({ ...menuContainer }); setContainerMenu(null); }}><FilePenLine size={15} aria-hidden="true"/>Editar contenedor</button>
@@ -232,7 +234,7 @@ export function InventoryPanel({ character, catalog, onChange }: PanelProps) {
     </section>
     <section className="panel stack" aria-label="Dinero"><div className="panel-title flex"><Coins size={18} /><h3>Tu bolsa de monedas</h3></div><div className="money-grid">{COINS.map(coin => <Field key={coin.id} label={coin.label}><input aria-label={`Monedas de ${coin.label.toLowerCase()}`} type="number" min={0} step={1} value={character.money[coin.id] ?? 0} onChange={e => onChange({ ...character, money: { ...character.money, [coin.id]: Math.max(0, Math.floor(validNumber(e.target.valueAsNumber))) } })} /></Field>)}</div></section>
 
-    <CustomItemDialog item={draft} containers={character.inventory.filter(item => item.isContainer)} onClose={() => setDraft(null)} onSave={saveItem} title={draft && character.inventory.some(item => item.id === draft.id) ? 'Editar objeto' : 'Crear objeto'} />
+    <CustomItemDialog item={draft} containers={character.inventory.filter(item => item.isContainer)} catalog={catalog} character={character} onClose={() => setDraft(null)} onSave={saveItem} title={draft && character.inventory.some(item => item.id === draft.id) ? 'Editar objeto' : 'Crear objeto'} />
     <Modal open={catalogOpen} onClose={() => setCatalogOpen(false)} title="Equipo del manual" description="Haz clic para añadir un objeto. Haz clic derecho para quitar uno." wide>
       <div className="stack"><EquipmentPicker character={character} catalog={catalog} onChange={onChange} containerId={selectedContainer?.id} showSelectedList={false}/>{selectedContainer && <p className="subtle">Los objetos sueltos se guardan en {selectedContainer.name}. Los paquetes del manual crean su propio contenedor.</p>}<div className="modal-footer"><Button onClick={() => setCatalogOpen(false)}>Cerrar</Button></div></div>
     </Modal>

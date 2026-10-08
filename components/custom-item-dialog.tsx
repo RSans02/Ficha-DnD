@@ -2,7 +2,8 @@
 
 import { useState, type FormEvent } from 'react';
 import { Shield, Sparkles } from 'lucide-react';
-import type { InventoryItem, ItemRarity } from '@/lib/types';
+import type { Catalog, Character, InventoryItem, ItemRarity } from '@/lib/types';
+import { attackFromEquipment } from '@/lib/equipment';
 import { Button, Field, Modal } from '@/components/ui';
 import { AttackFields } from './attack-fields';
 import './custom-item-dialog.css';
@@ -17,16 +18,20 @@ type Props = {
   onSave: (item: InventoryItem) => void;
   title?: string;
   containers?: InventoryItem[];
+  catalog?: Catalog;
+  character?: Character;
 };
 
-export function CustomItemDialog({ item, onClose, onSave, title = 'Crear objeto', containers = [] }: Props) {
+export function CustomItemDialog({ item, onClose, onSave, title = 'Crear objeto', containers = [], catalog, character }: Props) {
   return <Modal open={Boolean(item)} onClose={onClose} title={title} wide>
-    {item && <ItemForm key={item.id} item={item} containers={containers} onClose={onClose} onSave={onSave} />}
+    {item && <ItemForm key={item.id} item={item} containers={containers} catalog={catalog} character={character} onClose={onClose} onSave={onSave} />}
   </Modal>;
 }
 
-function ItemForm({ item, onClose, onSave, containers = [] }: Omit<Props, 'item' | 'title'> & { item: InventoryItem }) {
-  const [draft, setDraft] = useState<InventoryItem>({ ...item, requiresAttunement: item.requiresAttunement ?? item.attuned });
+function ItemForm({ item, onClose, onSave, containers = [], catalog, character }: Omit<Props, 'item' | 'title'> & { item: InventoryItem }) {
+  const compendiumWeapon = catalog?.equipment.find(entry => entry.id === item.equipmentId);
+  const defaultAttack = compendiumWeapon ? attackFromEquipment(compendiumWeapon, character, catalog) : undefined;
+  const [draft, setDraft] = useState<InventoryItem>({ ...item, requiresAttunement: item.requiresAttunement ?? item.attuned, attack: item.attackDisabled ? undefined : item.attack ?? defaultAttack });
   const armorKind = draft.shieldBonus !== undefined ? 'shield' : draft.armorBase !== undefined ? 'armor' : 'none';
   const setArmorKind = (kind: string) => {
     const next = { ...draft };
@@ -62,6 +67,7 @@ function ItemForm({ item, onClose, onSave, containers = [] }: Omit<Props, 'item'
     if (!saved.requiresAttunement) saved.attuned = false;
     if (!saved.containerId || saved.isContainer) delete saved.containerId;
     if (!saved.rarity) delete saved.rarity;
+    if (!saved.attackDisabled) delete saved.attackDisabled;
     if (saved.attack) {
       saved.attack = { ...saved.attack };
       if (saved.attack.damageBonus === undefined) delete saved.attack.damageBonus;
@@ -96,7 +102,7 @@ function ItemForm({ item, onClose, onSave, containers = [] }: Omit<Props, 'item'
       </div>}
       {armorKind === 'shield' && <Field label="Bonificación del escudo a la CA"><input required type="number" min={0} max={100} step={1} value={draft.shieldBonus ?? 2} onChange={e => setDraft({ ...draft, shieldBonus: Math.max(0, validNumber(e.target.valueAsNumber)) })} /></Field>}
     </div>}
-    <div className="panel stack"><label className="flex"><input type="checkbox" checked={!!draft.attack} onChange={e=>setDraft({...draft,attack:e.target.checked?{ability:'str',proficient:true,bonus:0,magicBonus:0,damage:'1d6',damageType:'',range:'Cuerpo a cuerpo',notes:'',extraDamage:[]}:undefined})}/>Este objeto tiene un ataque</label>{draft.attack&&<AttackFields value={draft.attack} onChange={attack=>setDraft({...draft,attack})}/>}</div>
+    <div className="panel stack"><label className="flex"><input type="checkbox" checked={!!draft.attack} onChange={e=>setDraft({...draft,attack:e.target.checked ? defaultAttack ?? {ability:'str',proficient:true,bonus:0,damage:'1d6',damageType:'',range:'Cuerpo a cuerpo',notes:''} : undefined, attackDisabled: !e.target.checked})}/>Este objeto tiene un ataque</label>{draft.attack&&<AttackFields value={draft.attack} onChange={attack=>setDraft({...draft,attack})}/>}</div>
     <Field label="Descripción"><textarea rows={4} placeholder="Aspecto, propiedades y efectos del objeto…" value={draft.description} onChange={e => setDraft({ ...draft, description: e.target.value })} /></Field>
     <Field label="Notas personales"><textarea rows={3} placeholder="Dónde lo encontraste, cargas restantes, acuerdos con el director…" value={draft.notes} onChange={e => setDraft({ ...draft, notes: e.target.value })} /></Field>
     <div className="modal-footer custom-item-footer"><Button type="button" onClick={onClose}>Cancelar</Button><Button type="submit" variant="primary">Guardar objeto</Button></div>

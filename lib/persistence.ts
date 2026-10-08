@@ -134,6 +134,20 @@ export function validateCharacterData(input: unknown, catalog?: Catalog, snapsho
     }
   }, 13);
   Object.keys(spells).forEach(id => { if (!classes.some(cl => cl.classId === id)) fail('spellSelections', `clase ajena al personaje: ${id}`); });
+  if (own(c, 'extraSpells')) {
+    const extra = arr(c.extraSpells, 'extraSpells', 500);
+    const ids = new Set<string>();
+    extra.forEach((entry, index) => {
+      const path = `extraSpells[${index}]`, row = object(entry, path);
+      str(row.spellId, `${path}.spellId`, 200, false);
+      str(row.source, `${path}.source`, 250);
+      if (typeof row.spellId === 'string') {
+        if (ids.has(row.spellId)) fail(path, 'conjuro repetido');
+        ids.add(row.spellId);
+        if (catalog && !catalog.spells.some(spell => spell.id === row.spellId)) fail(path, `conjuro desconocido: ${row.spellId}`);
+      }
+    });
+  }
   const hp = object(c.hp, 'hp'); num(hp.current, 'hp.current', 0, 1_000_000); num(hp.temp, 'hp.temp', 0, 1_000_000);
   arr(hp.rolls, 'hp.rolls', 19).forEach((v, i) => {
     const roll = object(v, `hp.rolls[${i}]`); str(roll.classId, `hp.rolls[${i}].classId`, 150, false); num(roll.value, `hp.rolls[${i}].value`, 0, 100);
@@ -161,6 +175,7 @@ export function validateCharacterData(input: unknown, catalog?: Catalog, snapsho
     num(item.quantity, `inventory[${i}].quantity`, 0, 1_000_000); num(item.weight, `inventory[${i}].weight`, 0, 1_000_000, false);
     bool(item.equipped, `inventory[${i}].equipped`); bool(item.attuned, `inventory[${i}].attuned`);
     if (own(item, 'homebrew')) bool(item.homebrew, `inventory[${i}].homebrew`);
+    if (own(item, 'attackDisabled')) bool(item.attackDisabled, `inventory[${i}].attackDisabled`);
     if (own(item, 'isContainer')) bool(item.isContainer, `inventory[${i}].isContainer`);
     if (own(item, 'requiresAttunement')) bool(item.requiresAttunement, `inventory[${i}].requiresAttunement`);
     if (own(item, 'containerId') && item.containerId !== undefined) str(item.containerId, `inventory[${i}].containerId`, 200);
