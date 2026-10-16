@@ -6,6 +6,7 @@ import type { Catalog, Character, InventoryItem, ItemRarity } from '@/lib/types'
 import { attackFromEquipment } from '@/lib/equipment';
 import { Button, Field, Modal } from '@/components/ui';
 import { AttackFields } from './attack-fields';
+import { ItemEffectsEditor } from './item-effects-editor';
 import './custom-item-dialog.css';
 
 const CATEGORIES: InventoryItem['category'][] = ['Armas', 'Armaduras', 'Equipo', 'Objetos'];
@@ -78,7 +79,7 @@ function ItemForm({ item, onClose, onSave, containers = [], catalog, character }
   };
 
   return <form className="stack" onSubmit={save}>
-    {draft.homebrew && <div className="info-box"><div className="flex"><Sparkles size={17} /><strong>Un objeto de tu propia aventura</strong></div><p>El peso, la CA y los ataques que definas se reflejan en la ficha.</p></div>}
+    {draft.homebrew && <div className="info-box"><div className="flex"><Sparkles size={17} /><strong>Un objeto de tu propia aventura</strong></div><p>El peso, la CA, los ataques y los efectos que definas se reflejan en la ficha.</p></div>}
     <div className="grid-2">
       <Field label="Nombre"><input required autoFocus maxLength={160} placeholder="Por ejemplo: Brújula de los ecos" value={draft.name} onChange={e => setDraft({ ...draft, name: e.target.value })} /></Field>
       <Field label="Categoría"><select value={draft.category} onChange={e => setDraft({ ...draft, category: e.target.value as InventoryItem['category'] })}>{CATEGORIES.map(value => <option key={value}>{value}</option>)}</select></Field>
@@ -102,6 +103,7 @@ function ItemForm({ item, onClose, onSave, containers = [], catalog, character }
       </div>}
       {armorKind === 'shield' && <Field label="Bonificación del escudo a la CA"><input required type="number" min={0} max={100} step={1} value={draft.shieldBonus ?? 2} onChange={e => setDraft({ ...draft, shieldBonus: Math.max(0, validNumber(e.target.valueAsNumber)) })} /></Field>}
     </div>}
+    <ItemEffectsEditor effects={draft.effects ?? []} onChange={effects => setDraft({ ...draft, effects })}/>
     <div className="panel stack"><label className="flex"><input type="checkbox" checked={!!draft.attack} onChange={e=>setDraft({...draft,attack:e.target.checked ? defaultAttack ?? {ability:'str',proficient:true,bonus:0,damage:'1d6',damageType:'',range:'Cuerpo a cuerpo',notes:''} : undefined, attackDisabled: !e.target.checked})}/>Este objeto tiene un ataque</label>{draft.attack&&<AttackFields value={draft.attack} onChange={attack=>setDraft({...draft,attack})}/>}</div>
     <Field label="Descripción"><textarea rows={4} placeholder="Aspecto, propiedades y efectos del objeto…" value={draft.description} onChange={e => setDraft({ ...draft, description: e.target.value })} /></Field>
     <Field label="Notas personales"><textarea rows={3} placeholder="Dónde lo encontraste, cargas restantes, acuerdos con el director…" value={draft.notes} onChange={e => setDraft({ ...draft, notes: e.target.value })} /></Field>

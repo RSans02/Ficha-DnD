@@ -51,6 +51,11 @@
 }
 .spell-slot-editor{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px}
 @media(max-width:600px){.spell-slot-editor{grid-template-columns:repeat(2,minmax(0,1fr))}}
+.spell-pact-editor{border-top:1px solid var(--line);margin-top:18px;padding-top:15px}
+.spell-pact-editor h3{font-size:18px;margin-bottom:4px}
+.spell-pact-row{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));align-items:end;gap:12px;margin-top:12px}
+.spell-pact-class{grid-column:1/-1;display:flex;align-items:center;justify-content:space-between;gap:8px}
+.spell-pact-editor>.button{margin-top:12px}
 .extra-spell-manager{display:flex;flex-direction:column;gap:14px;min-height:0;flex:1}
 .extra-spell-intro{display:flex;align-items:center;justify-content:space-between;gap:12px;min-height:22px}
 .extra-spell-results{display:grid;align-content:start;gap:8px;flex:1;min-height:0;overflow-y:auto;overscroll-behavior:contain;scrollbar-gutter:stable;padding-right:6px}
@@ -59,3 +64,8 @@
 .extra-spell-option .check-option{flex:1;min-width:0;border:0;background:transparent;box-shadow:none}
 .extra-spell-option input{width:min(31%,270px);min-width:150px;background:#faf8f2;font-size:12px}
 @media(max-width:680px){.extra-spell-option{flex-wrap:wrap;padding-bottom:7px}.extra-spell-option .check-option{flex-basis:calc(100% - 45px)}.extra-spell-option input{order:3;margin-left:12px;width:calc(100% - 24px)}}
+.roll-mode-badge{display:inline-flex;align-items:center;padding:2px 6px;border-radius:4px;background:#e5ede0;color:#46653d;font-size:10px;font-weight:650;white-space:nowrap}
+.roll-mode-badge.disadvantage{background:#f4e7de;color:#955548}
+.roll-mode-summary{margin-bottom:16px}
+.roll-mode-summary h3{font-size:17px;margin-bottom:12px}
+.roll-mode-entry{display:inline-flex;align-items:center;gap:6px;font-size:12px}

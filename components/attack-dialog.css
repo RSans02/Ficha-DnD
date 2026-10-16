@@ -1,0 +1,41 @@
+.modal.attack-modal {
+  display: flex;
+  flex-direction: column;
+  width: min(760px, 94vw);
+  max-height: 90dvh;
+  overflow: hidden;
+}
+
+.attack-modal > .modal-header,
+.attack-modal > .modal-footer {
+  flex: none;
+}
+
+.attack-modal-scroll {
+  flex: 1 1 auto;
+  min-height: 0;
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  scrollbar-gutter: stable;
+  scrollbar-width: thin;
+  padding: 8px;
+}
+
+.attack-modal > .modal-footer {
+  margin-top: 18px;
+  padding-top: 18px;
+  background: var(--paper);
+}
+
+@media (max-width: 640px) {
+  .attack-modal > .modal-footer {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    align-items: stretch;
+  }
+
+  .attack-modal > .modal-footer .button {
+    width: 100%;
+    white-space: normal;
+  }
+}

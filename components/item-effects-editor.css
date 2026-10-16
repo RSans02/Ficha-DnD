@@ -1,0 +1,11 @@
+.item-effects-editor { display: grid; gap: 13px; }
+.item-effects-heading { display: flex; align-items: flex-start; justify-content: space-between; gap: 16px; }
+.item-effects-heading h3 { font-size: 18px; margin-bottom: 5px; }
+.item-effects-heading p { font-size: 12px; line-height: 1.5; }
+.item-effects-heading .button { flex: none; }
+.item-effect-row { display: flex; align-items: end; gap: 9px; padding: 12px; border: 1px solid var(--line); border-radius: 6px; background: var(--surface); }
+.item-effect-row .field { flex: 1 1 130px; }
+.item-effect-row .field:first-child { flex-basis: 170px; }
+.item-effect-row .field:has(input[type=number]) { flex: 0 0 90px; }
+.item-effect-remove { flex: none; margin-bottom: 2px; }
+@media (max-width: 720px) { .item-effects-heading, .item-effect-row { flex-wrap: wrap; } .item-effects-heading .button { margin-left: auto; } }

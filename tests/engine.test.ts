@@ -1,7 +1,8 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import { ABILITIES, MULTICLASS_SLOTS } from '../lib/constants';
-import { applyDamage, applyHealing, applyLevelUp, applyRest, checkPrerequisites, createCharacter, deriveAttack, deriveCharacter, getAllChoices, getClassGrantedSpells, getFixedClassCantrips, getGrantedSpells, getPendingChoices, isAttackSpell, longRestHitDiceRecovery, planLevelUp, restPreview, selectedFeatIds, spellbookMinimum, spendHitDie, summarizeLevelUp, undoLevelUp, validSpells, validateCharacter } from '../lib/engine';
+import { getLevelUpIssues } from '../lib/level-up-progress';
+import { applyDamage, applyHealing, applyLevelUp, applyRest, checkPrerequisites, createCharacter, deriveAttack, deriveCharacter, getAllChoices, getClassGrantedSpells, getFixedClassCantrips, getGrantedSpells, getLevelUpChoices, getPendingChoices, isAttackSpell, longRestHitDiceRecovery, planLevelUp, restPreview, selectedFeatIds, spellbookMinimum, spendHitDie, summarizeLevelUp, undoLevelUp, validSpells, validateCharacter } from '../lib/engine';
 import subclassSpellGrants from '../data/rules/subclass-spell-grants.json';
 import subclassSpellAccess from '../data/rules/subclass-spell-access.json';
 
@@ -48,6 +49,55 @@ test('custom spell slots work on an existing noncaster and recover on a long res
   assert.equal(applyRest(c, 'long', catalog).slotsSpent['3'], 0);
   delete c.manualOverrides['slotMax.3'];
   assert.deepEqual(deriveCharacter(c, catalog).slots, []);
+});
+
+test('level-up progress identifies pending hit points, choices and spells by step', () => {
+  const original = caster(3);
+  const draft = planLevelUp(original, wizard.id, catalog).next;
+  const issues = getLevelUpIssues(original, draft, wizard.id, catalog);
+  assert(issues.some(issue => issue.step === 1 && issue.id === 'hp'));
+  assert(issues.some(issue => issue.step === 1 && issue.text.includes('Mejora de características')));
+  assert(issues.some(issue => issue.step === 2 && issue.text.includes('Conjuros en el libro')));
+  draft.hp.rolls.at(-1)!.value = 4;
+  assert(!getLevelUpIssues(original, draft, wizard.id, catalog).some(issue => issue.id === 'hp'));
+  assert(getLevelUpIssues(original, null, 'clase-desconocida', catalog).some(issue => issue.step === 0));
+});
+
+test('level-up does not offer an earlier ASI again but offers one gained by this class level', () => {
+  const priorAsi = character('class-guerrero', 4);
+  const oldChoiceId = 'asi.class-guerrero.4';
+  const next = planLevelUp(priorAsi, 'class-guerrero', catalog).next;
+  assert(!getLevelUpChoices(priorAsi, next, catalog).some(choice => choice.id === oldChoiceId));
+  assert(!getLevelUpIssues(priorAsi, next, 'class-guerrero', catalog).some(issue => issue.id === oldChoiceId));
+  assert(!planLevelUp(priorAsi, 'class-guerrero', catalog).choices.some(choice => choice.id === oldChoiceId));
+  next.hp.rolls.at(-1)!.value = 5;
+  assert.equal(applyLevelUp(priorAsi, next, catalog).classes[0].level, 5);
+  next.choices[oldChoiceId] = ['ability:str'];
+  assert.throws(() => applyLevelUp(priorAsi, next, catalog), /Mejora de características/);
+
+  const multiclass = character('class-guerrero', 3);
+  multiclass.classes.push({ classId: 'class-explorador', level: 1 });
+  multiclass.hp.rolls.push({ classId: 'class-explorador', value: 5 });
+  const gained = planLevelUp(multiclass, 'class-guerrero', catalog).next;
+  assert(getLevelUpChoices(multiclass, gained, catalog).some(choice => choice.id === oldChoiceId));
+  assert(getLevelUpIssues(multiclass, gained, 'class-guerrero', catalog).some(issue => issue.id === oldChoiceId));
+});
+
+test('manual pact slots do not depend on class and recover on a short rest', () => {
+  for (const c of [character(), caster()]) {
+    c.manualOverrides['pactMax.manual'] = 2;
+    c.manualOverrides['pactLevel.manual'] = 3;
+    c.slotsSpent['pact.manual'] = 1;
+    const derived = deriveCharacter(c, catalog);
+    assert.deepEqual(derived.pactSlots, [{ classId: 'manual', level: 3, max: 2 }]);
+    assert.equal(validateCharacterData(c, catalog).length, 0);
+    assert.equal(applyRest(c, 'short', catalog).slotsSpent['pact.manual'], 0);
+    assert.equal(applyRest(c, 'long', catalog).slotsSpent['pact.manual'], 0);
+    assert.deepEqual(deriveCharacter(importJSON(exportJSON(c), catalog), catalog).pactSlots, derived.pactSlots);
+    delete c.manualOverrides['pactMax.manual'];
+    delete c.manualOverrides['pactLevel.manual'];
+    assert.deepEqual(deriveCharacter(c, catalog).pactSlots, []);
+  }
 });
 
 test('extra compendium spells survive export and do not replace class spell choices', () => {
@@ -177,6 +227,27 @@ test('pact slots stay separate and recover on their own explicit rest rule', () 
   const cat = { ...catalog, classes: [...catalog.classes, warlock] }, c = caster(1); c.classes.push({ classId: warlock.id, level: 3 }); c.slotsSpent = { '1': 2, 'pact.class-brujo': 1 };
   const d = deriveCharacter(c, cat); assert.deepEqual(d.slots, [2]); assert.deepEqual(d.pactSlots, [{ classId: warlock.id, level: 2, max: 2 }]);
   const rested = applyRest(c, 'short', cat); assert.equal(rested.slotsSpent['1'], 2); assert.equal(rested.slotsSpent['pact.class-brujo'], 0);
+  c.manualOverrides['pactMax.class-brujo'] = 4;
+  c.manualOverrides['pactLevel.class-brujo'] = 3;
+  c.slotsSpent['pact.class-brujo'] = 3;
+  assert.deepEqual(deriveCharacter(c, cat).pactSlots, [{ classId: warlock.id, level: 3, max: 4 }]);
+  assert.equal(applyRest(c, 'short', cat).slotsSpent['pact.class-brujo'], 0);
+  assert.equal(validateCharacterData(c, cat).length, 0);
+});
+
+test('custom item charges appear as resources and follow their recovery rule', () => {
+  const c = character();
+  c.customResources = [
+    { id: 'custom-resource-wand', name: 'Cargas de la varita', max: 5, recovery: 'long', source: 'Varita' },
+    { id: 'custom-resource-ring', name: 'Cargas del anillo', max: 2, recovery: 'manual', source: 'Anillo' },
+  ];
+  c.resourcesSpent = { 'custom-resource-wand': 2, 'custom-resource-ring': 1 };
+  assert.deepEqual(deriveCharacter(c, catalog).resources.map(resource => [resource.name, resource.max, resource.spent]), [['Cargas de la varita', 5, 2], ['Cargas del anillo', 2, 1]]);
+  assert.equal(applyRest(c, 'short', catalog).resourcesSpent['custom-resource-wand'], 2);
+  const rested = applyRest(c, 'long', catalog);
+  assert.equal(rested.resourcesSpent['custom-resource-wand'], 0);
+  assert.equal(rested.resourcesSpent['custom-resource-ring'], 1);
+  assert.deepEqual(importJSON(exportJSON(c), catalog).customResources, c.customResources);
 });
 
 test('spell validation rejects class, level, count, duplicate and unowned prepared selections', () => {
@@ -301,6 +372,65 @@ test('equipped armor applies dex cap and shield while attacks expose trace', () 
   assert.equal(deriveCharacter(c, catalog).ac.value, 18);
   const attack = deriveAttack(c, { id: 'a', name: 'Prueba', ability: 'str', proficient: true, bonus: 1, damage: '1d8', damageType: '', range: '', notes: '', favorite: false }, catalog);
   assert.equal(attack.attack.value, 5); assert.equal(attack.damageBonus, 2); assert.equal(attack.attack.breakdown.length, 3);
+});
+
+test('configured item effects apply only while equipped and survive export', () => {
+  const c = character();
+  c.inventory = [{ id: 'charm', name: 'Talismán de prueba', category: 'Objetos', quantity: 1, weight: 0, equipped: true, attuned: false, description: '', notes: '', effects: [
+    { type: 'ability_bonus', ability: 'dex', value: 2 },
+    { type: 'skill_bonus', skill: 'stealth', value: 2 },
+    { type: 'skill_proficiency', skill: 'stealth' },
+    { type: 'save_proficiency', ability: 'dex' },
+    { type: 'proficiency', value: 'Herramientas de ladrón' },
+    { type: 'resistance', value: 'Fuego' },
+    { type: 'ac_bonus', value: 1 },
+    { type: 'roll_mode', scope: 'skill', target: 'stealth', mode: 'advantage' },
+    { type: 'roll_mode', scope: 'attack', mode: 'disadvantage' },
+  ] }];
+  const equipped = deriveCharacter(c, catalog);
+  assert.equal(equipped.abilities.dex.total, 18);
+  assert.equal(equipped.skills.stealth.value, 8);
+  assert.equal(equipped.saves.dex.value, 6);
+  assert.equal(equipped.ac.value, 15);
+  assert.ok(equipped.proficiencies.includes('Herramientas de ladrón'));
+  assert.ok(equipped.resistances.includes('Fuego'));
+  assert.equal(equipped.rollModes['skill.stealth'], 'advantage');
+  assert.equal(equipped.rollModes.attack, 'disadvantage');
+  assert.deepEqual(validateCharacterData(c, catalog), []);
+  assert.ok(validateCharacterData({ ...c, inventory: [{ ...c.inventory[0], effects: [{ type: 'roll_mode', scope: 'skill', target: 'unknown', mode: 'advantage' }] }] }, catalog).some(issue => issue.includes('effects[0].target')));
+  assert.deepEqual(importJSON(exportJSON(c), catalog).inventory[0].effects, c.inventory[0].effects);
+  c.inventory[0].equipped = false;
+  const unequipped = deriveCharacter(c, catalog);
+  assert.equal(unequipped.abilities.dex.total, 16);
+  assert.equal(unequipped.skills.stealth.value, 3);
+  assert.ok(!unequipped.resistances.includes('Fuego'));
+  assert.equal(unequipped.rollModes['skill.stealth'], undefined);
+  assert.equal(unequipped.rollModes.attack, undefined);
+});
+
+test('an equipped proficiency item grants the bonus to an equipped weapon attack', () => {
+  const c = character('class-mago');
+  const weapon = { id: 'sword', name: 'Espada de prueba', description: '', source, category: 'Armas', damage: '1d8', weaponCategory: 'Armas marciales' };
+  const cat = { ...catalog, equipment: [weapon] } as Catalog;
+  c.inventory = [
+    { id: 'sword-row', equipmentId: weapon.id, name: weapon.name, category: 'Armas', quantity: 1, weight: 1, equipped: true, attuned: false, description: '', notes: '', attack: { ability: 'str', proficient: false, bonus: 0, damage: '1d8', damageType: '', range: '', notes: '' } },
+    { id: 'badge', name: 'Insignia', category: 'Objetos', quantity: 1, weight: 0, equipped: true, attuned: false, description: '', notes: '', effects: [{ type: 'proficiency', value: 'Armas marciales' }] },
+  ];
+  const attack = { ...c.inventory[0].attack!, id: 'item.sword-row', name: weapon.name, favorite: true };
+  assert.equal(deriveAttack(c, attack, cat).attack.breakdown.find(row => row.label === 'Competencia')?.value, 2);
+  c.inventory[1].equipped = false;
+  assert.equal(deriveAttack(c, attack, cat).attack.breakdown.find(row => row.label === 'Competencia')?.value, 0);
+});
+
+test('item advantage and disadvantage cancel; perception advantage adjusts passive score', () => {
+  const c = character();
+  c.inventory = [{ id: 'lens', name: 'Lente', category: 'Objetos', quantity: 1, weight: 0, equipped: true, attuned: false, description: '', notes: '', effects: [{ type: 'roll_mode', scope: 'skill', target: 'perception', mode: 'advantage' }] }];
+  const advantage = deriveCharacter(c, catalog);
+  assert.equal(advantage.rollModes['skill.perception'], 'advantage');
+  assert.equal(advantage.passivePerception.value, 10 + advantage.skills.perception.value + 5);
+  c.inventory.push({ id: 'veil', name: 'Velo', category: 'Objetos', quantity: 1, weight: 0, equipped: true, attuned: false, description: '', notes: '', effects: [{ type: 'roll_mode', scope: 'skill', target: 'perception', mode: 'disadvantage' }] });
+  assert.equal(deriveCharacter(c, catalog).rollModes['skill.perception'], undefined);
+  assert.equal(deriveCharacter(c, catalog).passivePerception.value, 10 + advantage.skills.perception.value);
 });
 
 test('manual attacks can omit ability and proficiency while a magic bonus affects hit and damage', () => {

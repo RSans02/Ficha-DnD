@@ -3,6 +3,7 @@ import * as Dialog from '@radix-ui/react-dialog';
 import { X, Check, ChevronDown, BookOpen, Info, Sparkles, Shield, Swords, WandSparkles, Leaf, Music, Flame, Crosshair, Heart, Hand, Hexagon, Wrench, Sword, Zap } from 'lucide-react';
 import type { ReactNode } from 'react';
 import type { DerivedValue, Entity, Source } from '@/lib/types';
+import './modal-focus.css';
 
 export function Logo({small=false}:{small?:boolean}) {return <div className={`brand ${small?'small':''}`}><svg viewBox="0 0 40 44" aria-hidden="true"><path d="M20 2 37 12v20L20 42 3 32V12Z M20 2 10 28h20ZM3 12h34M3 32l7-4 10 14 10-14 7 4M20 2v10M10 28l-7-16M30 28l7-16" fill="none" stroke="currentColor" strokeWidth="1.25"/></svg>{!small&&<span>GRIMORIO<small>EL ARTE DE LA AVENTURA</small></span>}</div>}
 export function ClassIcon({id,size=24}:{id?:string;size?:number}) { const Icon = id?.includes('artificiero')?Wrench:id?.includes('picaro')?Sword:id?.includes('hechicero')?Zap:id?.includes('mago')?WandSparkles:id?.includes('guerrero')?Swords:id?.includes('paladin')?Shield:id?.includes('druida')?Leaf:id?.includes('bardo')?Music:id?.includes('barbaro')?Flame:id?.includes('explorador')?Crosshair:id?.includes('clerigo')?Heart:id?.includes('monje')?Hand:id?.includes('brujo')?Hexagon:Sparkles;return <Icon size={size}/> }

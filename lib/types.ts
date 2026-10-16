@@ -21,15 +21,24 @@ export interface CharacterLevel { classId: string; level: number; subclassId?: s
 export interface ExtraDamage { dice: string; damageType: string; condition?: string }
 export interface Attack { id: string; name: string; ability: Ability | 'none'; proficient: boolean; bonus: number; magicBonus?: number; damage: string; damageBonus?: number; damageType: string; extraDamage?: ExtraDamage[]; range: string; notes: string; favorite: boolean }
 export type ItemRarity = 'Común' | 'Poco común' | 'Raro' | 'Muy raro' | 'Legendario' | 'Artefacto';
-export interface InventoryItem { homebrew?: boolean; startingEquipmentOrigin?: string; attack?: Omit<Attack, 'id' | 'name' | 'favorite'>; attackDisabled?: boolean; id: string; equipmentId?: string; name: string; category: 'Armas' | 'Armaduras' | 'Equipo' | 'Objetos'; quantity: number; weight: number; equipped: boolean; attuned: boolean; requiresAttunement?: boolean; rarity?: ItemRarity; isContainer?: boolean; containerId?: string; description: string; notes: string; armorBase?: number; dexCap?: number; shieldBonus?: number }
+export type ItemEffect =
+  | { type: 'ability_bonus' | 'save_bonus'; ability: Ability; value: number }
+  | { type: 'skill_bonus'; skill: string; value: number }
+  | { type: 'skill_proficiency' | 'skill_expertise'; skill: string }
+  | { type: 'save_proficiency'; ability: Ability }
+  | { type: 'proficiency' | 'resistance' | 'immunity' | 'sense' | 'language'; value: string }
+  | { type: 'ac_bonus' | 'initiative_bonus' | 'speed_bonus' | 'hp_bonus'; value: number }
+  | { type: 'roll_mode'; scope: 'ability' | 'skill' | 'save' | 'attack'; target?: string; mode: 'advantage' | 'disadvantage' };
+export interface InventoryItem { homebrew?: boolean; startingEquipmentOrigin?: string; attack?: Omit<Attack, 'id' | 'name' | 'favorite'>; attackDisabled?: boolean; effects?: ItemEffect[]; id: string; equipmentId?: string; name: string; category: 'Armas' | 'Armaduras' | 'Equipo' | 'Objetos'; quantity: number; weight: number; equipped: boolean; attuned: boolean; requiresAttunement?: boolean; rarity?: ItemRarity; isContainer?: boolean; containerId?: string; description: string; notes: string; armorBase?: number; dexCap?: number; shieldBonus?: number }
 export interface Note { id: string; title: string; category: string; content: string; date: string }
 export interface HistoryEntry { id: string; date: string; text: string }
 export interface Character {
+  customResources?: { id: string; name: string; max: number; recovery: 'short' | 'long' | 'manual'; source: string }[];
   extraSpells?: { spellId: string; source: string }[];
   hpMaxAdjustments?: { id: string; label: string; value: number }[];
   featureOverrides?: Record<string, { name: string; description: string; manualCategory?: Feature['manualCategory'] }>;
   sheetSpellAttackIds?: string[];
-  inventoryOptions?: { coinsHaveWeight: boolean; showAllTab?: boolean };
+  inventoryOptions?: { coinsHaveWeight: boolean; showAllTab?: boolean; showElectrum?: boolean; showPlatinum?: boolean; showBank?: boolean };
   abilityGeneration?: { method: 'manual' | 'standard' | 'point-buy' | 'rolled'; rolls?: number[][] };
   exhaustionLevel?: number;
   startingEquipment?: StartingEquipmentSelection;
@@ -46,6 +55,7 @@ export interface Character {
 export interface Breakdown { label: string; value: number }
 export interface DerivedValue { value: number; mode: 'auto' | 'manual' | 'override'; breakdown: Breakdown[]; source?: Source }
 export interface DerivedCharacter {
+  rollModes: Record<string, 'advantage' | 'disadvantage'>;
   level: number; proficiency: DerivedValue; abilities: Record<Ability, { base: number; bonus: number; total: number; modifier: number }>;
   saves: Record<Ability, DerivedValue>; skills: Record<string, DerivedValue>; hpMax: DerivedValue; ac: DerivedValue; initiative: DerivedValue; speed: DerivedValue; passivePerception: DerivedValue;
   features: Feature[]; resources: { id: string; name: string; max: number; spent: number; recovery: 'short' | 'long' | 'manual'; source: Source }[];

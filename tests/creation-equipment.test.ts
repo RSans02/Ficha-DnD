@@ -99,7 +99,8 @@ test('every class and background can resolve every equipment alternative and its
 });
 
 test('inventory includes coin weight and the artificer-specific attunement limits',()=>{
-  const c=createCharacter();c.money.po=50;assert.equal(inventorySummary(c).coinWeight,1);assert.equal(inventorySummary(c).attunementLimit,3);
+  const c=createCharacter();c.money.po=50;c.money.pe=50;c.money.ppt=50;c.money.bank=500;assert.equal(inventorySummary(c).coinWeight,3);assert.equal(inventorySummary(c).attunementLimit,3);
+  c.inventoryOptions={coinsHaveWeight:true,showElectrum:false,showPlatinum:false};assert.equal(inventorySummary(c).coinWeight,1);
   c.inventoryOptions={coinsHaveWeight:false};assert.equal(inventorySummary(c).coinWeight,0);assert.equal(inventorySummary(c).totalWeight,inventorySummary(c).itemWeight);
   for(const [level,limit] of [[9,3],[10,4],[14,5],[18,6]]) {c.classes=[{classId:'class-artificiero',level}];assert.equal(inventorySummary(c).attunementLimit,limit);}
 });

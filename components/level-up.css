@@ -1,0 +1,56 @@
+.modal.level-up-modal {
+  display: flex;
+  flex-direction: column;
+  height: min(90dvh, 850px);
+  overflow: hidden;
+}
+
+.level-up-modal .modal-header,
+.level-up-steps,
+.level-up-modal > .modal-footer {
+  flex: none;
+}
+
+.level-up-stage-buttons {
+  flex-wrap: wrap;
+  overflow: visible;
+  padding: 0 0 14px;
+  margin-bottom: 0;
+  border: 0;
+}
+
+.level-up-stage-buttons button:hover,
+.level-up-stage-buttons button:focus-visible {
+  color: var(--ink);
+  background: var(--surface);
+  border-radius: 5px;
+}
+
+.level-up-scroll {
+  flex: 1;
+  min-height: 0;
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  scrollbar-gutter: stable;
+  padding-right: 6px;
+}
+
+.level-up-issue-list {
+  padding: 12px 16px;
+  border: 1px solid #dfb897;
+  border-radius: 6px;
+  background: #f9f1e9;
+  color: #78482b;
+  font-size: 12px;
+}
+
+.level-up-issue-list ul {
+  margin: 7px 0 0;
+  padding-left: 18px;
+}
+
+.level-up-modal > .modal-footer {
+  margin-top: 0;
+  padding-top: 16px;
+  background: var(--paper);
+}

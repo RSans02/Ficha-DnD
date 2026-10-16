@@ -1,0 +1,38 @@
+.attack-damage-row {
+  display: grid;
+  grid-template-columns: minmax(130px, 150px) minmax(0, 1fr);
+  align-items: start;
+  gap: 16px;
+}
+
+.attack-damage-type-controls {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 16px;
+  min-width: 0;
+}
+
+.attack-damage-type-controls > select,
+.attack-damage-type-controls > input {
+  min-width: 0;
+}
+
+.attack-damage-bonus {
+  width: calc((100% - 20px) / 2);
+}
+
+@media (max-width: 720px) {
+  .attack-damage-bonus {
+    width: 100%;
+  }
+}
+
+@media (max-width: 520px) {
+  .attack-damage-row {
+    grid-template-columns: 1fr;
+  }
+
+  .attack-damage-type-controls {
+    grid-template-columns: 1fr;
+  }
+}

@@ -19,6 +19,7 @@ export const SKILLS: { id: string; name: string; ability: Ability }[] = [
 export const STANDARD_LANGUAGES_2014 = ['Común', 'Enano', 'Élfico', 'Gigante', 'Gnómico', 'Goblin', 'Mediano', 'Orco'];
 export const EXOTIC_LANGUAGES_2014 = ['Abisal', 'Celestial', 'Dracónico', 'Habla profunda', 'Infernal', 'Primordial', 'Silvano', 'Infracomún'];
 export const CONDITIONS = ['Agarrado', 'Apresado', 'Asustado', 'Aturdido', 'Cegado', 'Derribado', 'Encantado', 'Envenenado', 'Incapacitado', 'Inconsciente', 'Invisible', 'Paralizado', 'Petrificado', 'Ensordecido', 'Agotamiento'];
+export const DAMAGE_TYPES = ['Ácido', 'Contundente', 'Cortante', 'Frío', 'Fuego', 'Fuerza', 'Necrótico', 'Perforante', 'Psíquico', 'Radiante', 'Relámpago', 'Trueno', 'Veneno'];
 
 /** Competencias al añadir una clase; tabla p.451. Las habilidades se resuelven mediante Choices. */
 export const MULTICLASS_PROFICIENCIES: Record<string, string[]> = {

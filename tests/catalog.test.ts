@@ -193,6 +193,20 @@ test('real catalog: curse requirement needs the spell or explicit source verific
   assert.deepEqual(checkPrerequisites(option.prerequisites!, c, catalog), []);
 });
 
+test('Hexblade curse satisfies both hex invocations without manual confirmation', () => {
+  const c = realCharacter('class-brujo', 7);
+  c.classes[0].subclassId = 'subclass-brujo-el-hexblade';
+  c.spellSelections['class-brujo'].known = c.spellSelections['class-brujo'].known.filter(id => id !== 'spell-mal-de-ojo');
+  delete c.choices['verify.feature-brujo-invocaciones-sobrenaturales-de-xanathar-maleficio-enloquecedor'];
+  delete c.choices['verify.feature-brujo-invocaciones-sobrenaturales-de-xanathar-maleficio-implacable'];
+  const options = catalog.classes.find(cls => cls.id === 'class-brujo')!.choices!.find(choice => choice.id === 'choice-brujo-invocaciones')!.options as ChoiceOption[];
+  for (const name of ['Maleficio Enloquecedor', 'Maleficio Implacable']) {
+    const option = options.find(item => item.name === name)!;
+    assert.deepEqual(checkPrerequisites(option.prerequisites!, c, catalog), []);
+  }
+  assert(!getAllChoices(c, catalog).some(choice => choice.name.startsWith('Revisar requisito: Maleficio')));
+});
+
 test('2014 source: paladin and ranger begin spellcasting at level two', () => {
   for (const id of ['class-paladin', 'class-explorador']) {
     assert.equal(deriveCharacter(realCharacter(id), catalog).spellcasting.length, 0);

@@ -5507,6 +5507,14 @@
             "value": "spell-mal-de-ojo"
           },
           {
+            "type": "feature",
+            "value": "feature-brujo-el-hexblade-maldicion-del-hexblade"
+          },
+          {
+            "type": "feature",
+            "value": "feature-brujo-invocaciones-sobrenaturales-senal-de-mal-aguero"
+          },
+          {
             "type": "requires_manual_verification",
             "value": "Un rasgo de brujo que maldiga: comprueba su descripción en el manual.",
             "verificationChoiceId": "verify.feature-brujo-invocaciones-sobrenaturales-de-xanathar-maleficio-enloquecedor"
@@ -5544,6 +5552,14 @@
           {
             "type": "spell",
             "value": "spell-mal-de-ojo"
+          },
+          {
+            "type": "feature",
+            "value": "feature-brujo-el-hexblade-maldicion-del-hexblade"
+          },
+          {
+            "type": "feature",
+            "value": "feature-brujo-invocaciones-sobrenaturales-senal-de-mal-aguero"
           },
           {
             "type": "requires_manual_verification",

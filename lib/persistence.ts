@@ -157,6 +157,21 @@ export function validateCharacterData(input: unknown, catalog?: Catalog, snapsho
   });
   records(hp.hitDiceUsed, 'hp.hitDiceUsed', (v, path) => num(v, path, 0, 20), 30);
   if (own(c, 'hpMaxAdjustments')) arr(c.hpMaxAdjustments, 'hpMaxAdjustments', 100).forEach((entry, i) => { const row = object(entry, `hpMaxAdjustments[${i}]`); str(row.id, `hpMaxAdjustments[${i}].id`, 200); str(row.label, `hpMaxAdjustments[${i}].label`, 250); num(row.value, `hpMaxAdjustments[${i}].value`, -100000, 100000); });
+  if (own(c, 'customResources')) {
+    const ids = new Set<string>();
+    arr(c.customResources, 'customResources', 100).forEach((entry, index) => {
+      const path = `customResources[${index}]`, row = object(entry, path);
+      str(row.id, `${path}.id`, 200, false);
+      str(row.name, `${path}.name`, 120, false);
+      str(row.source, `${path}.source`, 250);
+      num(row.max, `${path}.max`, 0, 1000);
+      if (!['short', 'long', 'manual'].includes(String(row.recovery))) fail(`${path}.recovery`, 'recuperación inválida');
+      if (typeof row.id === 'string') {
+        if (!row.id.startsWith('custom-resource-') || ids.has(row.id)) fail(`${path}.id`, 'identificador inválido o repetido');
+        ids.add(row.id);
+      }
+    });
+  }
   records(c.resourcesSpent, 'resourcesSpent', (v, path) => num(v, path, 0, 1_000_000));
   records(c.slotsSpent, 'slotsSpent', (v, path) => num(v, path, 0, 1000), 100);
   strings(c.conditions, 'conditions', 100);
@@ -180,6 +195,22 @@ export function validateCharacterData(input: unknown, catalog?: Catalog, snapsho
     if (own(item, 'requiresAttunement')) bool(item.requiresAttunement, `inventory[${i}].requiresAttunement`);
     if (own(item, 'containerId') && item.containerId !== undefined) str(item.containerId, `inventory[${i}].containerId`, 200);
     if (own(item, 'rarity') && item.rarity !== undefined && !['Común', 'Poco común', 'Raro', 'Muy raro', 'Legendario', 'Artefacto'].includes(String(item.rarity))) fail(`inventory[${i}].rarity`, 'rareza inválida');
+    if (own(item, 'effects')) arr(item.effects, `inventory[${i}].effects`, 50).forEach((entry, index) => {
+      const path = `inventory[${i}].effects[${index}]`, effect = object(entry, path);
+      const type = effect.type;
+      if (['ability_bonus', 'save_bonus', 'save_proficiency'].includes(String(type))) {
+        if (!ABILITIES.some(ability => ability.id === effect.ability)) fail(`${path}.ability`, 'característica inválida');
+      } else if (['skill_bonus', 'skill_proficiency', 'skill_expertise'].includes(String(type))) {
+        if (!SKILLS.some(skill => skill.id === effect.skill)) fail(`${path}.skill`, 'habilidad inválida');
+      } else if (['proficiency', 'resistance', 'immunity', 'sense', 'language'].includes(String(type))) str(effect.value, `${path}.value`, 120, false);
+      else if (type === 'roll_mode') {
+        if (!['ability', 'skill', 'save', 'attack'].includes(String(effect.scope))) fail(`${path}.scope`, 'tipo de tirada inválido');
+        if (!['advantage', 'disadvantage'].includes(String(effect.mode))) fail(`${path}.mode`, 'ventaja inválida');
+        if (effect.scope === 'ability' || effect.scope === 'save') { if (!ABILITIES.some(ability => ability.id === effect.target)) fail(`${path}.target`, 'característica inválida'); }
+        if (effect.scope === 'skill' && !SKILLS.some(skill => skill.id === effect.target)) fail(`${path}.target`, 'habilidad inválida');
+      } else if (!['ac_bonus', 'initiative_bonus', 'speed_bonus', 'hp_bonus'].includes(String(type))) fail(`${path}.type`, 'efecto desconocido');
+      if (['ability_bonus', 'save_bonus', 'skill_bonus', 'ac_bonus', 'initiative_bonus', 'speed_bonus', 'hp_bonus'].includes(String(type))) num(effect.value, `${path}.value`, -100, 100);
+    });
     if (own(item, 'attack') && item.attack !== undefined) {
       const attack = object(item.attack, `inventory[${i}].attack`);
       if (attack.ability !== 'none' && !ABILITIES.some(ability => ability.id === attack.ability)) fail(`inventory[${i}].attack.ability`, 'característica inválida');
@@ -201,12 +232,19 @@ export function validateCharacterData(input: unknown, catalog?: Catalog, snapsho
     const options = object(c.inventoryOptions, 'inventoryOptions');
     bool(options.coinsHaveWeight, 'inventoryOptions.coinsHaveWeight');
     if (own(options, 'showAllTab')) bool(options.showAllTab, 'inventoryOptions.showAllTab');
+    if (own(options, 'showElectrum')) bool(options.showElectrum, 'inventoryOptions.showElectrum');
+    if (own(options, 'showPlatinum')) bool(options.showPlatinum, 'inventoryOptions.showPlatinum');
+    if (own(options, 'showBank')) bool(options.showBank, 'inventoryOptions.showBank');
   }
   records(c.biography, 'biography', (v, path) => str(v, path, 100_000), 100);
   arr(c.notes, 'notes', 2000).forEach((v, i) => { const note = object(v, `notes[${i}]`); ['id', 'title', 'category', 'date'].forEach(k => str(note[k], `notes[${i}].${k}`, 500)); str(note.content, `notes[${i}].content`, 100_000); });
   const favorites = object(c.favorites, 'favorites');
   const favoriteSpells = strings(favorites.spells, 'favorites.spells', 1000), favoriteFeatures = strings(favorites.features, 'favorites.features', 2000);
-  records(c.manualOverrides, 'manualOverrides', (v, path) => num(v, path, -1_000_000, 1_000_000, false), 500);
+  const overrides = records(c.manualOverrides, 'manualOverrides', (v, path) => num(v, path, -1_000_000, 1_000_000, false), 500);
+  Object.entries(overrides).forEach(([key,value]) => {
+    if (key.startsWith('pactMax.')) num(value, `manualOverrides.${key}`, 0, 1000);
+    if (key.startsWith('pactLevel.')) num(value, `manualOverrides.${key}`, 1, 9);
+  });
   if (own(c, 'featureOverrides')) records(c.featureOverrides, 'featureOverrides', (entry, path) => { const row = object(entry, path); str(row.name, `${path}.name`, 250); str(row.description, `${path}.description`, 100_000); if (own(row, 'manualCategory') && !['Raciales', 'Clase', 'Subclase', 'Dotes', 'Otros'].includes(String(row.manualCategory))) fail(`${path}.manualCategory`, 'tipo de rasgo inválido'); }, 500);
   const manual = object(c.manual, 'manual'); ['languages', 'senses', 'resistances', 'immunities', 'proficiencies'].forEach(k => strings(manual[k], `manual.${k}`, 500, 1000));
   const manualFeatures = arr(manual.features, 'manual.features', 500).map((v, i) => {

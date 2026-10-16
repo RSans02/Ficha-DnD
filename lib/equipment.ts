@@ -39,7 +39,8 @@ const PACK_CONTENTS: Record<string, PackPart[]> = {
 
 export function inventorySummary(c: Character) {
   const itemWeight = c.inventory.reduce((sum,item) => sum + item.quantity * item.weight,0);
-  const coinWeight = c.inventoryOptions?.coinsHaveWeight === false ? 0 : ['pc','pp','pe','po','ppt'].reduce((sum,coin) => sum + (c.money[coin] ?? 0),0) / 50;
+  const visibleCoins = ['pc','pp',...(c.inventoryOptions?.showElectrum === false ? [] : ['pe']),'po',...(c.inventoryOptions?.showPlatinum === false ? [] : ['ppt'])];
+  const coinWeight = c.inventoryOptions?.coinsHaveWeight === false ? 0 : visibleCoins.reduce((sum,coin) => sum + (c.money[coin] ?? 0),0) / 50;
   const artificer = c.classes.find(cl => cl.classId === 'class-artificiero')?.level ?? 0;
   const attunementLimit = c.manualOverrides.attunementLimit ?? (artificer >= 18 ? 6 : artificer >= 14 ? 5 : artificer >= 10 ? 4 : 3);
   return { itemWeight, coinWeight, totalWeight:itemWeight+coinWeight, attuned:c.inventory.filter(item=>item.attuned).reduce((sum,item)=>sum+item.quantity,0), attunementLimit };
@@ -105,7 +106,7 @@ export function addOneEquipment(items: InventoryItem[], equipment: Equipment, ca
   const entries = inventoryEntriesFromEquipment(equipment, 1, catalog, character).map(item => containerId && !item.isContainer && !item.containerId ? { ...item, containerId } : item);
   const root = entries[0];
   if (!root.isContainer) {
-    const existing = items.findLastIndex(item => item.equipmentId === equipment.id && (item.containerId ?? null) === (containerId ?? null) && !item.isContainer && !item.homebrew && !item.equipped && !item.attuned && !item.attackDisabled && JSON.stringify(item.attack) === JSON.stringify(root.attack) && item.name === root.name && item.weight === root.weight && item.description === root.description && item.notes === root.notes);
+    const existing = items.findLastIndex(item => item.equipmentId === equipment.id && (item.containerId ?? null) === (containerId ?? null) && !item.isContainer && !item.homebrew && !item.equipped && !item.attuned && !item.attackDisabled && !item.effects?.length && JSON.stringify(item.attack) === JSON.stringify(root.attack) && item.name === root.name && item.weight === root.weight && item.description === root.description && item.notes === root.notes);
     if (existing >= 0) return items.map((item, index) => index === existing ? { ...item, quantity: item.quantity + 1 } : item);
   }
   return [...items, ...entries];
