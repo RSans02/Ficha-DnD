@@ -2,7 +2,7 @@
   {
     "id": "homebrew-book-tales-and-taverns",
     "name": "Tales & Taverns",
-    "description": "Razas de Tales & Taverns. Incluye a los Omi del documento Los Omi ESP, páginas 22 y 23.",
+    "description": "Razas de Tales & Taverns. Incluye a los Omi (Los Omi ESP, páginas 22 y 23) y a los Kastaya (Kastaya ESP, página 1).",
     "entries": {
       "races": [
         {
@@ -49,6 +49,69 @@
             }
           ],
           "effects": []
+        },
+        {
+          "id": "homebrew-race-kastaya",
+          "name": "Kastaya",
+          "description": "Originarios de los bosques de El Dorado, los kastaya son humanoides de apariencia animal que protegen sus clanes y los entornos naturales. Su aspecto depende de la región: hay kastaya con rasgos de aves, animales terrestres o criaturas marinas. Suelen ser sociables y bromistas, aunque se vuelven adversarios decididos cuando alguien amenaza su hogar. A menudo son bardos, exploradores o druidas. Alcanzan una altura similar a la humana y pueden vivir hasta 200 años. Su alineamiento suele seguir las leyes de la naturaleza y sus propias ideas del bien y del mal.\n\nRasgos raciales: velocidad de 30 pies; tamaño Mediano; Destreza +2 y Carisma +1; idiomas kastaya y común; visión en la oscuridad de 60 pies; competencia con armas sencillas y armaduras ligeras e intermedias. Elige una dote al nivel 1, un truco de cualquier lista de conjuros y tu entorno de origen (bosque, agua, montaña, desierto o nieve). Carisma es tu característica para lanzar ese truco.",
+          "source": { "page": 1, "book": "Tales & Taverns", "title": "Kastaya ESP" },
+          "parentId": null,
+          "kind": "race",
+          "version": "D&D 5e (2014)",
+          "category": "Tales & Taverns",
+          "size": "Mediano",
+          "speed": 30,
+          "abilityBonuses": { "dex": 2, "cha": 1 },
+          "languages": ["Kastaya", "Común"],
+          "senses": ["Visión en la oscuridad 60 pies"],
+          "resistances": [],
+          "immunities": [],
+          "featureIds": [
+            "homebrew-feature-kastaya-sonrisa",
+            "homebrew-feature-kastaya-naturaleza",
+            "homebrew-feature-kastaya-legado",
+            "homebrew-feature-kastaya-magia"
+          ],
+          "choices": [
+            {
+              "id": "homebrew-choice-kastaya-entorno",
+              "type": "choose_option",
+              "name": "Entorno de origen kastaya",
+              "amount": 1,
+              "required": true,
+              "options": [
+                { "id": "bosque", "name": "Bosque" },
+                { "id": "agua", "name": "Agua" },
+                { "id": "montana", "name": "Montaña" },
+                { "id": "desierto", "name": "Desierto" },
+                { "id": "nieve", "name": "Nieve" }
+              ],
+              "source": { "page": 1, "book": "Tales & Taverns", "title": "Kastaya ESP" }
+            },
+            {
+              "id": "homebrew-choice-kastaya-dote",
+              "type": "choose_feat",
+              "name": "Legado de sabiduría: una dote de nivel 1",
+              "amount": 1,
+              "required": true,
+              "options": [],
+              "source": { "page": 1, "book": "Tales & Taverns", "title": "Kastaya ESP" }
+            },
+            {
+              "id": "homebrew-choice-kastaya-truco",
+              "type": "choose_cantrip",
+              "name": "Magia innata: un truco de cualquier lista (Carisma)",
+              "amount": 1,
+              "required": true,
+              "options": [],
+              "source": { "page": 1, "book": "Tales & Taverns", "title": "Kastaya ESP" }
+            }
+          ],
+          "effects": [
+            { "type": "proficiency", "value": "Armas sencillas" },
+            { "type": "proficiency", "value": "Armaduras ligeras" },
+            { "type": "proficiency", "value": "Armaduras intermedias" }
+          ]
         }
       ],
       "features": [
@@ -211,6 +274,46 @@
               ]
             }
           ],
+          "effects": []
+        },
+        {
+          "id": "homebrew-feature-kastaya-sonrisa",
+          "name": "Sonrisa kastaya",
+          "description": "Tienes ventaja en la primera tirada de Persuasión (Carisma) que hagas hacia una criatura no hostil.",
+          "source": { "page": 1, "book": "Tales & Taverns", "title": "Kastaya ESP" },
+          "originId": "homebrew-race-kastaya",
+          "level": 1,
+          "choices": [],
+          "effects": []
+        },
+        {
+          "id": "homebrew-feature-kastaya-naturaleza",
+          "name": "Amante de la naturaleza",
+          "description": "Elige tu entorno de origen: bosque, agua, montaña, desierto o nieve. No matarías animales de ese entorno. Mientras te encuentres en él, puedes encontrar una ración para ti basada en bayas, frutas u otros alimentos similares una vez al día. Además, una vez por descanso largo puedes rastrear una milla de ese entorno para encontrar criaturas hostiles.",
+          "source": { "page": 1, "book": "Tales & Taverns", "title": "Kastaya ESP" },
+          "originId": "homebrew-race-kastaya",
+          "level": 1,
+          "choices": [],
+          "effects": []
+        },
+        {
+          "id": "homebrew-feature-kastaya-legado",
+          "name": "Legado de sabiduría",
+          "description": "Al crear tu personaje, puedes elegir cualquier dote de la lista de dotes a nivel 1.",
+          "source": { "page": 1, "book": "Tales & Taverns", "title": "Kastaya ESP" },
+          "originId": "homebrew-race-kastaya",
+          "level": 1,
+          "choices": [],
+          "effects": []
+        },
+        {
+          "id": "homebrew-feature-kastaya-magia",
+          "name": "Magia innata",
+          "description": "Conoces un truco de cualquier lista de conjuros. Carisma es tu característica para lanzarlo y determinar su CD de salvación.",
+          "source": { "page": 1, "book": "Tales & Taverns", "title": "Kastaya ESP" },
+          "originId": "homebrew-race-kastaya",
+          "level": 1,
+          "choices": [],
           "effects": []
         }
       ]

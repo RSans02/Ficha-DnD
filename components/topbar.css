@@ -1,0 +1,17 @@
+.mobile-character-title {
+  display: none;
+}
+
+@media (max-width: 900px) {
+  .mobile-character-title {
+    display: block;
+    flex: 1;
+    min-width: 0;
+    overflow: hidden;
+    color: var(--ink);
+    font-size: 13px;
+    font-weight: 600;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+}
