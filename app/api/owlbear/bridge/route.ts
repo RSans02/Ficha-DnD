@@ -7,7 +7,8 @@ export async function GET(request: Request) {
   const url = new URL(request.url);
   const token = url.searchParams.get('token');
   if (!validToken(token)) return json({ error: 'Código de enlace inválido.' }, 400);
-  return json(url.searchParams.get('role') === 'owlbear' ? { roll: claimRoll(token) } : sheetStatus(token));
+  if (url.searchParams.get('role') === 'owlbear') return json(claimRoll(token, url.searchParams.get('source') === 'panel' ? 'panel' : 'background'));
+  return json(sheetStatus(token));
 }
 
 export async function POST(request: Request) {

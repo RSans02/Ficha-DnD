@@ -39,7 +39,7 @@ Grimorio permite tirar **desde la ficha normal, abierta en otra pestaña**. La e
 
 1. Inicia `npm run dev` y deja el servidor abierto. Comprueba que `http://localhost:3000/owlbear-manifest.json` abre el manifiesto. En Owlbear Rodeo añade esa URL mediante **Add Extension** y activa también [Dice+](https://extensions.owlbear.rodeo/dice-plus) en la sala. Si ya tenías la extensión instalada, recárgala para que incorpore el nuevo proceso en segundo plano.
 2. Abre tu personaje en `http://localhost:3000` en otra pestaña del **mismo equipo y navegador**. Pulsa **Tirar en Owlbear** y copia el código de enlace.
-3. Abre la extensión Grimorio dentro de la sala de Owlbear, pega el código y pulsa **Vincular ficha**. Cuando la ficha indique «Owlbear conectado», ya puedes cerrar ese panel y lanzar desde la ficha.
+3. Abre la extensión Grimorio dentro de la sala de Owlbear, pega el código y pulsa **Vincular ficha**. Espera a que el panel diga «Puente activo» y la ficha indique «Owlbear conectado». El panel te dirá si puedes cerrarlo o debes dejarlo abierto; depende de que Owlbear haya activado la página en segundo plano de la extensión.
 
 El cuadro de tiradas de la ficha usa sus modificadores actuales para características, salvaciones, habilidades, iniciativa, ataques y daño. Aplica la ventaja o desventaja automática de la ficha, o permite elegir otro modo para la situación. Elige si la tirada se muestra a toda la sala, solo a ti o al DJ y a ti. Dice+ muestra sus dados y devuelve el resultado a la ficha. El daño adicional condicionado se lanza por separado cuando corresponda. Las fórmulas de daño que no se puedan interpretar con seguridad deben tirarse manualmente en Dice+.
 
