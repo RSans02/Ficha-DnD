@@ -122,6 +122,7 @@
 
 .desktop-sidebar-toggle{color:#6f7864}
 @media(min-width:901px){.sidebar{transition:transform .2s,visibility .2s}.sidebar.collapsed{transform:translateX(-100%);visibility:hidden}.app-main{transition:margin-left .2s}.app-main.sidebar-collapsed{margin-left:0}}
+@media(min-width:901px){.app-main.sidebar-collapsed .sheet-workspace{max-width:none}}
 @media(max-width:900px){.desktop-sidebar-toggle{display:none}}
 
 /* Align the wordmark with the character card across sidebar widths. */
@@ -135,10 +136,13 @@
 .character-sheet .ability-save-marker.trained{background:currentColor}
 
 /* Spell filter checkboxes use the same palette as the other controls. */
-.spell-filters{--spell-filter-check-fill:#c2d1b4;--spell-filter-check-border:#92a781;--spell-filter-check-mark:#293b2a}
+.spell-filters{--spell-filter-empty-fill:#f1f4ec;--spell-filter-empty-border:#a7b69b;--spell-filter-check-fill:#c2d1b4;--spell-filter-check-border:#92a781;--spell-filter-check-mark:#293b2a}
 .spell-filters label{cursor:pointer}
-.spell-filters input[type='checkbox']{appearance:none;position:relative;flex:0 0 16px;width:16px;height:16px;min-height:0;margin:0;padding:0;border:1px solid var(--line);border-radius:4px;background:var(--surface);cursor:pointer;transition:border-color .15s,background .15s}
+.spell-filters input[type='checkbox']{appearance:none;position:relative;flex:0 0 16px;width:16px;height:16px;min-height:0;margin:0;padding:0;border:1px solid var(--spell-filter-empty-border);border-radius:4px;background:var(--spell-filter-empty-fill);cursor:pointer;transition:border-color .15s,background .15s}
 .spell-filters input[type='checkbox']::after{content:'';position:absolute;left:5px;top:2px;width:4px;height:8px;border:solid var(--spell-filter-check-mark);border-width:0 2px 2px 0;transform:rotate(45deg);opacity:0}
 .spell-filters input[type='checkbox']:checked{background:var(--spell-filter-check-fill);border-color:var(--spell-filter-check-border)}
 .spell-filters input[type='checkbox']:checked::after{opacity:1}
 .spell-filters label:hover input[type='checkbox']:not(:checked){border-color:var(--green)}
+
+.character-sheet .hp-actions .button.heal{background:#e2eddf;border-color:#b7ceb4;color:#34583b}
+.character-sheet .hp-actions .button.heal:hover{background:#d2e5cf;border-color:#9cbc9b}
