@@ -1,7 +1,7 @@
 'use client';
 
 import { useState } from 'react';
-import { Check, Info, Minus, Plus, Search, Sparkles, Trash2 } from 'lucide-react';
+import { Check, FilePenLine, Info, Minus, Plus, Search, Sparkles, Trash2 } from 'lucide-react';
 import type { Catalog, Character, Equipment, InventoryItem } from '@/lib/types';
 import { addOneEquipment, equipmentCountInScope, foldEquipment, removeOneEquipment, separateContainerUnits, withoutContainerId } from '@/lib/equipment';
 import { Button, Modal, SourceTag } from './ui';
@@ -37,6 +37,15 @@ export function EquipmentSearch({ catalog, allowed = catalog.equipment, onSelect
 
 export function EquipmentPicker({ character, catalog, onChange, allowHomebrew = false, containerId, showSelectedList = true }: { character: Character; catalog: Catalog; onChange: (c: Character) => void; allowHomebrew?: boolean; containerId?: string; showSelectedList?: boolean }) {
   const [detail, setDetail] = useState<Equipment | null>(null), [custom, setCustom] = useState<InventoryItem | null>(null), [lastAction, setLastAction] = useState('');
+  const saveCustom = (saved: InventoryItem) => {
+    const exists = character.inventory.some(item => item.id === saved.id);
+    const [first, ...additional] = separateContainerUnits(saved);
+    const inventory = exists
+      ? [...character.inventory.map(item => item.id === saved.id ? first : !saved.isContainer && item.containerId === saved.id ? withoutContainerId(item) : item), ...additional]
+      : [...character.inventory, first, ...additional];
+    onChange({ ...character, inventory });
+    setCustom(null);
+  };
   const quick: QuickActions = {
     onAdd: item => {
       onChange({ ...character, inventory: addOneEquipment(character.inventory, item, catalog, containerId, character) });
@@ -55,12 +64,13 @@ export function EquipmentPicker({ character, catalog, onChange, allowHomebrew = 
     <EquipmentSearch catalog={catalog} quick={quick}/>
     {lastAction && <p role="status" className="subtle">{lastAction}</p>}
     {allowHomebrew && <Button onClick={() => setCustom({ id: crypto.randomUUID(), name: '', category: 'Objetos', quantity: 1, weight: 0, equipped: false, attuned: false, description: '', notes: '', homebrew: true })}><Sparkles size={16}/>Crear objeto</Button>}
-    {showSelectedList && !!character.inventory.length && <div className="stack" style={{ gap: 10 }} aria-label="Equipo adicional seleccionado">{character.inventory.map(item => <div className="equipment-selected-row" key={item.id}>
+    {showSelectedList && !!character.inventory.length && <div className="stack" style={{ gap: 10 }} aria-label="Equipo adicional seleccionado">{character.inventory.map(item => <div className="equipment-selected-row with-edit-action" key={item.id}>
       <span><strong>{item.name}</strong></span>
       <input aria-label={`Cantidad de ${item.name}`} type="number" min={1} max={1_000_000} step={1} disabled={item.isContainer} value={item.quantity} onChange={event => { const value = Number(event.target.value); if (Number.isInteger(value) && value >= 1 && value <= 1_000_000) onChange({ ...character, inventory: character.inventory.map(other => other.id === item.id ? { ...other, quantity: value } : other) }); }}/>
-      <button type="button" className="icon-button" aria-label={`Quitar ${item.name}`} onClick={() => onChange({ ...character, inventory: character.inventory.filter(other => other.id !== item.id).map(other => other.containerId === item.id ? withoutContainerId(other) : other) })}><Trash2 size={15}/></button>
+      <div className="equipment-selected-actions"><button type="button" className="icon-button" aria-label={`Editar ${item.name}`} title={`Editar ${item.name}`} onClick={() => setCustom({ ...item })}><FilePenLine size={15}/></button>
+      <button type="button" className="icon-button" aria-label={`Quitar ${item.name}`} onClick={() => onChange({ ...character, inventory: character.inventory.filter(other => other.id !== item.id).map(other => other.containerId === item.id ? withoutContainerId(other) : other) })}><Trash2 size={15}/></button></div>
     </div>)}</div>}
     <Modal open={!!detail} title={detail?.name ?? ''} onClose={() => setDetail(null)}>{detail && <><SourceTag source={detail.source}/><p className="source-prose">{detail.description}</p></>}</Modal>
-    <CustomItemDialog item={custom} onClose={() => setCustom(null)} onSave={item => { onChange({ ...character, inventory: [...character.inventory, ...separateContainerUnits(item)] }); setCustom(null); }}/>
+    <CustomItemDialog item={custom} containers={character.inventory.filter(item => item.isContainer)} catalog={catalog} character={character} onClose={() => setCustom(null)} onSave={saveCustom} title={custom && character.inventory.some(item => item.id === custom.id) ? 'Editar objeto' : 'Crear objeto'}/>
   </div>;
 }
