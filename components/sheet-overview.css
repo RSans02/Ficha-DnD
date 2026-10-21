@@ -1,0 +1,39 @@
+.character-sheet .sheet-overview-stats{gap:10px}
+.character-sheet .sheet-overview-stats>.stat,.character-sheet .sheet-overview-stats>.sheet-stat-roll{min-height:112px}
+.character-sheet .sheet-overview-stats .stat{display:flex;flex-direction:column;align-items:flex-start;justify-content:space-between;gap:4px;width:100%;height:100%;padding:13px 12px;text-align:left;border:1px solid #d8ddcf;border-top:2px solid var(--class-accent);border-radius:7px;background:#fffefa;box-shadow:0 2px 5px #1d2b1608}
+.character-sheet .sheet-overview-stats .stat:hover{border-color:var(--class-accent);background:#fff}
+.character-sheet .sheet-overview-stats .stat-label{justify-content:flex-start;align-content:flex-start;flex-wrap:nowrap;min-height:0;gap:6px;text-align:left;font-size:10px;font-weight:600;line-height:1.25;letter-spacing:.55px;color:#626f59}
+.character-sheet .sheet-overview-stats .stat-label svg{width:14px;height:14px;flex-shrink:0;color:var(--class-accent)}
+.character-sheet .sheet-overview-stats .stat strong{font-size:30px;line-height:1.1;color:var(--class-dark)}
+.character-sheet .sheet-overview-stats .stat strong small{font-size:11px}
+.character-sheet .sheet-overview-stats .stat-foot{justify-content:flex-start;gap:5px;margin-top:1px;font-size:10px;line-height:1.2;color:#687764}
+.character-sheet .sheet-overview-stats .stat-foot svg{width:12px;height:12px}
+.character-sheet .sheet-overview-stats .sheet-stat-roll>.stat{padding-right:45px}
+.character-sheet .sheet-overview-stats .sheet-stat-roll>.sheet-roll-inline{right:10px;bottom:10px;width:32px;height:32px;padding:0;background:var(--class-wash);border-color:#cbd4bf;color:var(--class-dark)}
+.character-sheet .sheet-overview-stats .sheet-stat-roll>.sheet-roll-inline:hover{background:#fff;border-color:var(--class-accent)}
+
+.character-sheet .sheet-overview-abilities{grid-template-columns:repeat(3,minmax(0,1fr));gap:10px}
+.character-sheet .sheet-overview-abilities .ability-box{display:flex;flex-direction:column;align-items:stretch;justify-content:space-between;gap:0;min-width:0;padding:13px 14px 12px;text-align:left;border:1px solid color-mix(in srgb,var(--class-accent) 28%,#d9ddcf);border-radius:7px;background:color-mix(in srgb,var(--class-wash) 35%,#fffefa);box-shadow:0 2px 5px #1d2b1608}
+.character-sheet .sheet-overview-abilities .ability-core{display:flex;align-items:flex-start;justify-content:space-between;gap:8px;min-height:68px}
+.character-sheet .sheet-overview-abilities .ability-primary{display:flex;flex-direction:column;align-items:flex-start}
+.character-sheet .sheet-overview-abilities .ability-name{font-size:11px;line-height:1.25;letter-spacing:1px;font-weight:700;text-transform:uppercase;color:var(--class-accent)}
+.character-sheet .sheet-overview-abilities .ability-primary strong{font-size:37px;line-height:1.2;font-weight:400;color:var(--class-dark)}
+.character-sheet .sheet-overview-abilities .ability-score{display:grid;place-items:center;min-width:40px;height:31px;padding:0 8px;border:1px solid #cfd7c4;border-radius:17px;background:#fffefa;color:#485a3f;font:600 13px 'Segoe UI',Arial,sans-serif}
+.character-sheet .sheet-overview-abilities .ability-actions{display:grid;grid-template-columns:1fr 1fr;gap:6px;padding-top:10px;border-top:1px solid #d9ddcf}
+.character-sheet .sheet-overview-abilities .sheet-ability-roll,.character-sheet .sheet-overview-abilities .ability-save{display:flex;align-items:center;justify-content:center;gap:5px;min-width:0;min-height:32px;margin:0;padding:6px 8px;border:1px solid #cbd4c2;border-radius:5px;background:#fffefa;color:#30442b;font-size:11px;font-weight:600;line-height:1.2;white-space:normal;text-align:center}
+.character-sheet .sheet-overview-abilities .sheet-ability-roll:hover,.character-sheet .sheet-overview-abilities .ability-save:hover{border-color:var(--class-accent);background:#fff;color:var(--class-dark)}
+.character-sheet .sheet-overview-abilities .ability-save-marker{flex:0 0 8px;width:8px;height:8px}
+
+@media(max-width:720px){
+  .character-sheet .sheet-overview-stats{grid-template-columns:repeat(2,minmax(0,1fr));gap:8px}
+  .character-sheet .sheet-overview-stats .stat{padding:11px 12px}
+  .character-sheet .sheet-overview-stats .stat-foot{display:flex}
+  .character-sheet .sheet-overview-abilities{grid-template-columns:repeat(2,minmax(0,1fr));gap:8px}
+  .character-sheet .sheet-overview-abilities .ability-box{padding:11px}
+  .character-sheet .sheet-overview-abilities .ability-actions{grid-template-columns:1fr}
+}
+@media print{
+  .character-sheet .sheet-overview-stats{grid-template-columns:repeat(6,minmax(0,1fr))}
+  .character-sheet .sheet-overview-abilities{grid-template-columns:repeat(3,minmax(0,1fr))}
+  .character-sheet .sheet-overview-abilities .ability-actions{grid-template-columns:1fr}
+}
