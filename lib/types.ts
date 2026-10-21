@@ -6,7 +6,7 @@ export interface Effect { type: string; ability?: Ability; value?: number | stri
 export interface Prerequisite { type: string; value?: string | number; ability?: Ability; minimum?: number; options?: Prerequisite[]; [key: string]: unknown }
 export interface ChoiceOption { id: string; name: string; description?: string; effects?: Effect[]; prerequisites?: Prerequisite[] }
 export interface Choice { id: string; type: string; name: string; amount: number; options: (ChoiceOption | string)[]; source?: Source; required?: boolean; distinctFrom?: string[]; classId?: string; level?: number; [key: string]: unknown }
-export interface Feature extends Entity { originId: string; level: number | null; manualCategory?: 'Raciales' | 'Clase' | 'Subclase' | 'Dotes' | 'Otros'; optional?: boolean; warlockPact?: boolean; invocationPrerequisites?: Prerequisite[]; choices?: Choice[]; effects?: Effect[]; resource?: { max: number | { ability: string; min: number } | { byLevel: number[] }; recovery: 'short' | 'long' | 'manual' } }
+export interface Feature extends Entity { originId: string; level: number | null; manualCategory?: 'Raciales' | 'Clase' | 'Subclase' | 'Dotes' | 'Otros'; optional?: boolean; defaultEnabled?: boolean; warlockPact?: boolean; invocationPrerequisites?: Prerequisite[]; choices?: Choice[]; effects?: Effect[]; resource?: { max: number | { ability: string; min: number } | { byLevel: number[] }; recovery: 'short' | 'long' | 'manual' } }
 export interface Race extends Entity { parentId: string | null; kind: 'race' | 'subrace' | 'lineage' | 'variant'; version: string; category: string; size: string | null; speed: number | null; abilityBonuses: Partial<AbilityScores>; languages: string[]; senses: string[]; resistances: string[]; immunities: string[]; featureIds: string[]; choices: Choice[]; effects: Effect[]; replacesParent?: boolean }
 export interface Progression { level: number; proficiencyBonus: number | null; featureIds: string[]; featureNames: string[]; slots: number[]; cantrips: number | null; knownSpells: number | null; resources: Record<string, number> }
 export interface Subclass extends Entity { featureIds: string[]; spellcasting?: Spellcasting; progression?: Progression[]; expandedSpellIds?: string[] }
@@ -33,8 +33,10 @@ export interface InventoryItem { homebrew?: boolean; startingEquipmentOrigin?: s
 export interface Note { id: string; title: string; category: string; content: string; date: string }
 export interface HistoryEntry { id: string; date: string; text: string }
 export interface Character {
+  skillOrder?: 'alphabetical' | 'ability';
   customResources?: { id: string; name: string; max: number; recovery: 'short' | 'long' | 'manual'; source: string }[];
   extraSpells?: { spellId: string; source: string }[];
+  customSpells?: Spell[];
   hpMaxAdjustments?: { id: string; label: string; value: number }[];
   featureOverrides?: Record<string, { name: string; description: string; manualCategory?: Feature['manualCategory'] }>;
   sheetSpellAttackIds?: string[];
@@ -49,7 +51,7 @@ export interface Character {
   hp: { current: number; temp: number; rolls: { classId: string; value: number }[]; hitDiceUsed: Record<string, number> };
   resourcesSpent: Record<string, number>; slotsSpent: Record<string, number>; conditions: string[]; inspiration: boolean; deathSaves: { successes: number; failures: number };
   attacks: Attack[]; inventory: InventoryItem[]; money: Record<string, number>; biography: Record<string, string>; notes: Note[];
-  favorites: { spells: string[]; features: string[] }; manualOverrides: Record<string, number>; manual: { languages: string[]; senses: string[]; resistances: string[]; immunities: string[]; proficiencies: string[]; features: Feature[] };
+  favorites: { spells: string[]; features: string[]; items?: string[] }; manualOverrides: Record<string, number>; manual: { languages: string[]; senses: string[]; resistances: string[]; immunities: string[]; proficiencies: string[]; features: Feature[] };
   history: HistoryEntry[]; lastLevelSnapshot?: string; lastLevelAppliedSnapshot?: string;
 }
 export interface Breakdown { label: string; value: number }

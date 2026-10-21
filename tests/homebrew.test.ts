@@ -1,9 +1,10 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import { catalog } from '../lib/catalog';
-import { applyRest, checkPrerequisites, createCharacter, deriveCharacter, getAllChoices, validSpells } from '../lib/engine';
-import { validateCharacterData } from '../lib/persistence';
-import { mergeCatalog, template, validateBooks, withoutFeatureReferences, type HomebrewBook } from '../lib/homebrew';
+import { applyRest, checkPrerequisites, createCharacter, deriveCharacter, getAllChoices, getGrantedSpells, validSpells } from '../lib/engine';
+import { exportJSON, importJSON, validateCharacterData } from '../lib/persistence';
+import { DEFAULT_BOOK_ID, DEFAULT_BOOK_NAME, mergeCatalog, template, validateBooks, withDefaultBook, withoutFeatureReferences, type HomebrewBook } from '../lib/homebrew';
+import { catalogForCharacter, retainSheetSpells } from '../lib/character-spells';
 import type { CharacterClass, Feature, Race, Spell } from '../lib/types';
 import { applyEntryDraft, duplicateEntry, entryIssues, type EntryDraft } from '../lib/homebrew-editor';
 import crusades from '../imports/cruzadas-de-los-panteones.json';
@@ -21,6 +22,40 @@ test('homebrew race and spell work in the creator and survive character validati
   assert.equal(deriveCharacter(character, merged).abilities.int.bonus, 2);
   assert(validSpells(character, spell.availableToClasses[0], merged).some(item => item.id === spell.id));
   assert.throws(() => validateBooks([book, book], catalog), /duplicado/);
+});
+
+test('a spell already on a sheet survives deletion from its compendium', () => {
+  const spell = { ...template('spells'), name: 'Llama estelar', description: 'Ilumina el camino.', level: 1 } as Spell;
+  const books = applyEntryDraft([{ id: 'grimorio-sheet-spells', name: 'Conjuros de la ficha', entries: {} }], { bookId: 'grimorio-sheet-spells', type: 'spells', entry: spell, features: [], step: 3 });
+  const character = createCharacter();
+  character.extraSpells = [{ spellId: spell.id, source: 'Creado en la ficha' }];
+  const retained = retainSheetSpells(character, books);
+  const withoutSpell = mergeCatalog(catalog, [{ ...books[0], entries: { spells: [] } }]);
+  const reloaded = importJSON(exportJSON(retained), withoutSpell);
+  assert.deepEqual(entryIssues(spell, 'spells'), []);
+  assert.deepEqual(validateCharacterData(reloaded, withoutSpell), []);
+  assert(getGrantedSpells(reloaded, withoutSpell).some(item => item.id === spell.id));
+  assert(catalogForCharacter(reloaded, withoutSpell).spells.some(item => item.id === spell.id));
+});
+
+test('a newly created sheet spell needs no compendium entry', () => {
+  const spell = { ...template('spells'), name: 'Niebla azul', description: 'Oculta la senda.' } as Spell;
+  const character = createCharacter();
+  character.customSpells = [spell];
+  character.extraSpells = [{ spellId: spell.id, source: 'Creado en la ficha' }];
+  const reloaded = importJSON(exportJSON(character), catalog);
+  assert.deepEqual(validateCharacterData(reloaded, catalog), []);
+  assert(getGrantedSpells(reloaded, catalog).some(item => item.id === spell.id));
+});
+
+test('the default compendium is first and preserves legacy spell entries', () => {
+  const spell = { ...template('spells'), name: 'Llama estelar', description: 'Ilumina el camino.' } as Spell;
+  const personal: HomebrewBook = { id: 'personal', name: 'Mi campaña', entries: {} };
+  const legacy: HomebrewBook = { id: DEFAULT_BOOK_ID, name: 'Conjuros de la ficha', entries: { spells: [spell] } };
+  assert.deepEqual(withDefaultBook([]).map(book => book.name), [DEFAULT_BOOK_NAME]);
+  const books = withDefaultBook([personal, legacy]);
+  assert.deepEqual(books.map(book => book.name), [DEFAULT_BOOK_NAME, 'Mi campaña']);
+  assert.deepEqual(books[0].entries.spells, [spell]);
 });
 
 test('homebrew class progression can be selected and calculated at level one', () => {

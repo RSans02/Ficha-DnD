@@ -2,6 +2,65 @@
   display: none;
 }
 
+.theme-control {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  color: var(--muted);
+  font-size: 12px;
+  white-space: nowrap;
+}
+
+.theme-control select {
+  appearance: none;
+  width: 94px;
+  min-height: 34px;
+  padding: 7px 27px 3px 11px;
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: 5px;
+  color: var(--ink);
+  font-size: 12px;
+  cursor: pointer;
+}
+
+.theme-control select:focus-visible { outline: 0; box-shadow: none; }
+.theme-control-chevron { position: absolute; right: 9px; pointer-events: none; }
+
+@supports (appearance: base-select) {
+  .theme-control select,
+  .theme-control select::picker(select) { appearance: base-select; }
+  .theme-control select::picker-icon,
+  .theme-control select option::checkmark { display: none; }
+  .theme-control select::picker(select) {
+    margin-top: 4px;
+    padding: 4px;
+    background: var(--surface);
+    border: 1px solid var(--line);
+    border-radius: 5px;
+    box-shadow: 0 10px 24px #0003;
+    color: var(--ink);
+  }
+  .theme-control select option {
+    padding: 7px 9px;
+    border-radius: 3px;
+    cursor: pointer;
+  }
+  .theme-control select option + option { margin-top: 4px; }
+  .theme-control select option:hover,
+  .theme-control select option:focus { background: var(--soft); color: var(--ink); }
+  .theme-control select option:focus-visible { outline: 0; }
+  .theme-control select option:checked { background: var(--theme-selected, var(--soft)); color: var(--ink); }
+}
+
+@media (max-width: 720px) {
+  .theme-control span { display: none; }
+  .theme-control select { width: 88px; }
+  .topbar-right { gap: 8px; }
+  .topbar-right .user-avatar { display: none; }
+}
+
 @media (max-width: 900px) {
   .mobile-character-title {
     display: block;

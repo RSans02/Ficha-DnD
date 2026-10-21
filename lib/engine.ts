@@ -1,5 +1,6 @@
 import { ABILITIES, SKILLS, MULTICLASS_SLOTS, MULTICLASS_PROFICIENCIES } from './constants';
 import type { Ability, Attack, Catalog, Character, Choice, ChoiceOption, DerivedCharacter, DerivedValue, Effect, Feature, Prerequisite, Source, Spell } from './types';
+import { catalogForCharacter } from './character-spells';
 import subclassSpellGrants from '../data/rules/subclass-spell-grants.json';
 import subclassSpellAccess from '../data/rules/subclass-spell-access.json';
 import subclassLandSpells from '../data/rules/subclass-land-spells.json';
@@ -29,7 +30,7 @@ export function createCharacter(): Character {
     createdAt: now, updatedAt: now, raceId: '', subraceId: '', backgroundId: '', classes: [],
     abilities: { str: 10, dex: 10, con: 10, int: 10, wis: 10, cha: 10 }, abilityIncreases: {}, skillRanks: {}, skillBonuses: {}, choices: {}, featIds: [], spellSelections: {},
     hp: { current: 0, temp: 0, rolls: [], hitDiceUsed: {} }, resourcesSpent: {}, slotsSpent: {}, conditions: [], inspiration: false, deathSaves: { successes: 0, failures: 0 },
-    attacks: [], inventory: [], inventoryOptions: { coinsHaveWeight: true, showAllTab: false }, money: { pc: 0, pp: 0, pe: 0, po: 0, ppt: 0 }, biography: {}, notes: [], favorites: { spells: [], features: [] }, manualOverrides: {},
+    attacks: [], inventory: [], inventoryOptions: { coinsHaveWeight: true, showAllTab: false }, money: { pc: 0, pp: 0, pe: 0, po: 0, ppt: 0 }, biography: {}, notes: [], favorites: { spells: [], features: [], items: [] }, manualOverrides: {},
     manual: { languages: [], senses: [], resistances: [], immunities: [], proficiencies: [], features: [] }, history: [] };
 }
 
@@ -73,7 +74,7 @@ function activeFeatures(c: Character, catalog: Catalog): Feature[] {
   }
   catalog.backgrounds.find(b => b.id === c.backgroundId)?.featureIds?.forEach(id => ids.add(id));
   const all = [...catalog.features, ...c.manual.features];
-  const active = all.filter(f => (ids.has(f.id) || c.manual.features.some(m => m.id === f.id)) && (f.level === null || f.level <= (levels.get(f.originId) ?? totalLevel(c))) && !(f as Feature & { selectionOnly?: boolean }).selectionOnly && !f.optional);
+  const active = all.filter(f => (ids.has(f.id) || c.manual.features.some(m => m.id === f.id)) && (f.level === null || f.level <= (levels.get(f.originId) ?? totalLevel(c))) && !(f as Feature & { selectionOnly?: boolean }).selectionOnly && (!f.optional || f.defaultEnabled));
   // Feature choices may unlock further choices. Bounded closure avoids loops in source references.
   const seen = new Set(active.map(f => f.id));
   for (let pass = 0; pass < 10; pass++) {
@@ -372,7 +373,7 @@ export function getGrantedSpells(c: Character, catalog: Catalog): Spell[] {
     const subclass = catalog.classes.find(cls => cls.id === entry.classId)?.subclasses.find(sub => sub.id === entry.subclassId);
     return (subclass?.featureIds ?? []).flatMap(id => [...((subclassSpellGrants as Record<string, {level:number;spellId:string}[]>)[id] ?? []), ...((subclassDirectSpellGrants as Record<string, {level:number;spellId:string}[]>)[id] ?? [])].filter(grant => grant.level <= entry.level).map(grant => grant.spellId));
   }), ...c.classes.filter(entry => entry.subclassId === 'subclass-druida-circulo-de-la-tierra').flatMap(entry => (subclassLandSpells as Record<string, {level:number;spellId:string}[]>)[c.choices['subclass-land.druid']?.[0]]?.filter(grant => grant.level <= entry.level).map(grant => grant.spellId) ?? [])];
-  return catalog.spells.filter(spell => ids.includes(spell.id));
+  return catalogForCharacter(c, catalog).spells.filter(spell => ids.includes(spell.id));
 }
 
 export function getClassGrantedSpells(c: Character, classId: string, catalog: Catalog): Spell[] {

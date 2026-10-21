@@ -1,3 +1,11 @@
+.spell-actions .button {
+  line-height: 1;
+}
+
+.spell-actions .button svg {
+  display: block;
+}
+
 .modal.spell-manager-modal {
   display: flex;
   flex-direction: column;

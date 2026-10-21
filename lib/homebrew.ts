@@ -1,11 +1,20 @@
 import type { Catalog, Subclass } from './types';
 
 export const HOMEBREW_KEY = 'grimorio.homebrew.v1';
+export const DEFAULT_BOOK_ID = 'grimorio-sheet-spells';
+export const DEFAULT_BOOK_NAME = 'Mis creaciones';
 export const HOME_TYPES = ['races', 'classes', 'features', 'spells', 'feats', 'backgrounds', 'equipment'] as const;
 export type HomeType = typeof HOME_TYPES[number];
 export type HomebrewSection = HomeType | 'subclasses';
 export interface HomebrewBook { id: string; name: string; description?: string; entries: Partial<Pick<Catalog, HomeType>> & { subclasses?: (Subclass & { classId: string })[] } }
 export const emptyBook = (name: string): HomebrewBook => ({ id: crypto.randomUUID(), name, entries: {} });
+export function withDefaultBook(books: HomebrewBook[]): HomebrewBook[] {
+  const existing = books.find(book => book.id === DEFAULT_BOOK_ID);
+  const first = existing
+    ? existing.name === 'Conjuros de la ficha' ? { ...existing, name: DEFAULT_BOOK_NAME } : existing
+    : { id: DEFAULT_BOOK_ID, name: DEFAULT_BOOK_NAME, entries: {} };
+  return [first, ...books.filter(book => book.id !== DEFAULT_BOOK_ID)];
+}
 /** Remove references before deleting a reusable trait from a compendium. */
 export function withoutFeatureReferences(book: HomebrewBook, featureId: string): HomebrewBook {
   const omit = (ids: string[]) => ids.filter(id => id !== featureId);
@@ -111,7 +120,7 @@ export function mergeCatalog(official: Catalog, books: HomebrewBook[]): Catalog 
 }
 export function loadBooks(official: Catalog): HomebrewBook[] {
   const text = globalThis.localStorage.getItem(HOMEBREW_KEY);
-  return text ? validateBooks(JSON.parse(text), official) : [];
+  return withDefaultBook(text ? validateBooks(JSON.parse(text), official) : []);
 }
 export function saveBooks(books: HomebrewBook[], official: Catalog): void {
   validateBooks(books, official);

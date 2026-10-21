@@ -19296,6 +19296,7 @@
     ],
     "kind": "option",
     "optional": true,
+    "defaultEnabled": true,
     "selectionOnly": false,
     "effects": [],
     "choices": []

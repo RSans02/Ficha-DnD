@@ -3,6 +3,7 @@ import assert from 'node:assert/strict';
 import { catalog } from '../lib/catalog';
 import { createDemo } from '../lib/demo';
 import { checkPrerequisites, createCharacter, deriveCharacter, eligibleExpertiseOptions, getAllChoices, getPendingChoices, spellbookMinimum, validSpells, validateCharacter } from '../lib/engine';
+import { featureCategory } from '../lib/feature-category';
 import type { Character, ChoiceOption } from '../lib/types';
 
 function realCharacter(classId: string, level = 1): Character {
@@ -63,6 +64,18 @@ test('real catalog: rogue expertise accepts the class-granted thieves tools', ()
   const c = realCharacter('class-picaro');
   c.choices['choice-picaro-experto-1'] = ['thieves-tools', c.choices['skills.class-picaro'][0]];
   assert.deepEqual(validateCharacter(c, catalog), []);
+});
+
+test('rogue gains Tasha Steady Aim as a class feature at level 3', () => {
+  const c = createCharacter();
+  c.classes = [{ classId: 'class-picaro', level: 2 }];
+  const featureId = 'feature-picaro-opciones-de-tasha-para-el-picaro-buena-punteria';
+  assert(!deriveCharacter(c, catalog).features.some(feature => feature.id === featureId));
+  c.classes[0].level = 3;
+  const feature = deriveCharacter(c, catalog).features.find(item => item.id === featureId);
+  assert(feature);
+  assert.equal(featureCategory(feature, catalog), 'Clase');
+  assert(!getAllChoices(c, catalog).some(choice => choice.id === 'choice-picaro-buena-punteria-tasha'));
 });
 
 test('expertise only offers proficiencies already granted to the character', () => {

@@ -1,0 +1,17 @@
+.attack-row.favorite-entry {
+  width: 100%;
+  border-top: 0;
+  border-right: 0;
+  border-left: 0;
+  background: none;
+  text-align: left;
+}
+
+.favorite-empty { padding: 12px 0; }
+
+.favorite-item-picker {
+  display: grid;
+  gap: 7px;
+  max-height: 50dvh;
+  overflow-y: auto;
+}

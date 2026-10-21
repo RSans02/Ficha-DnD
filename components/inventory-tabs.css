@@ -90,6 +90,8 @@
 .data-table th.inventory-sort-heading { padding: 0; }
 .inventory-sort-button { display: flex; align-items: center; gap: 5px; width: 100%; padding: 12px 13px; border: 0; background: transparent; color: inherit; font: inherit; font-weight: inherit; letter-spacing: inherit; white-space: nowrap; text-align: left; }
 .character-sheet .inventory-sort-button { padding: 9px 10px; }
+.inventory-panel .data-table th:nth-child(n+3):nth-child(-n+5) .inventory-sort-button { justify-content: center; }
+.inventory-panel .data-table td:nth-child(n+3):nth-child(-n+5) { text-align: center; }
 .inventory-sort-button:hover { background: #e8ebdc; }
 .inventory-sort-button:hover, .data-table th[aria-sort="ascending"] .inventory-sort-button, .data-table th[aria-sort="descending"] .inventory-sort-button { color: var(--green); }
 .inventory-sort-button svg { opacity: .7; }

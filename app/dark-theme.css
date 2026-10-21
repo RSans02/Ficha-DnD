@@ -1,0 +1,302 @@
+/* One dark palette for every view. Keep view-specific corrections below these tokens. */
+html[data-theme='light'] { color-scheme: light; }
+
+html[data-theme='dark'] {
+  color-scheme: dark;
+  --paper: #1b211d;
+  --surface: #29312a;
+  --ink: #d8dfd3;
+  --ink-strong: #f0eee5;
+  --muted: #a5b2a4;
+  --line: #405044;
+  --sidebar: #151c17;
+  --gold: #e4c685;
+  --red: #d98a7d;
+  --green: #b5c99e;
+  --olive: #b5c99e;
+  --soft: #344137;
+  --theme-raised: #242d26;
+  --theme-selected: #3b5040;
+  --theme-warm: #423a2c;
+  --theme-warm-line: #756349;
+  --theme-danger: #432d2c;
+}
+
+html[data-theme='dark'] h1,
+html[data-theme='dark'] h2,
+html[data-theme='dark'] h3,
+html[data-theme='dark'] h4 { color: var(--ink-strong); }
+
+/* App chrome and common controls */
+html[data-theme='dark'] .topbar { background: #222a23f2; }
+html[data-theme='dark'] .sidebar { color: #c6cfbe; border-right-color: #364238; }
+html[data-theme='dark'] .nav-button { color: #c5cebf; }
+html[data-theme='dark'] .nav-button:hover { background: #2a382c; }
+html[data-theme='dark'] .nav-button.active { background: #394a3b; border-color: #66775c; color: var(--ink-strong); }
+html[data-theme='dark'] .nav-label { color: #9fab99; }
+html[data-theme='dark'] .sidebar-character.active { background: #354234; border-color: #66755c; color: var(--ink); }
+html[data-theme='dark'] .sidebar-character small { color: var(--muted); }
+html[data-theme='dark'] .top-search,
+html[data-theme='dark'] .breadcrumbs,
+html[data-theme='dark'] .desktop-sidebar-toggle { color: var(--muted); }
+html[data-theme='dark'] .user-avatar { background: var(--theme-raised); border-color: var(--line); color: var(--ink); }
+html[data-theme='dark'] .button:hover,
+html[data-theme='dark'] .view-toggle button:hover,
+html[data-theme='dark'] .card-menu button:hover,
+html[data-theme='dark'] .inventory-sort-button:hover,
+html[data-theme='dark'] .equipment-result-icon:hover,
+html[data-theme='dark'] .equipment-result-main:hover { background: var(--soft); color: var(--ink); }
+html[data-theme='dark'] .button.primary { color: #171b19; }
+html[data-theme='dark'] .button.primary:hover { background: #dda396; }
+html[data-theme='dark'] .button.danger { color: #f2b1a7; background: var(--theme-danger); border-color: #84534d; }
+html[data-theme='dark'] .view-toggle button { color: var(--muted); }
+html[data-theme='dark'] .view-toggle button.active { background: var(--theme-selected); color: var(--ink); }
+html[data-theme='dark'] .search-field input,
+html[data-theme='dark'] .library-tools select,
+html[data-theme='dark'] .extra-spell-option input { background: var(--surface); }
+html[data-theme='dark'] .field > span { color: var(--ink); }
+html[data-theme='dark'] .field > small,
+html[data-theme='dark'] .source-prose,
+html[data-theme='dark'] .source-tag { color: var(--muted); }
+html[data-theme='dark'] .badge { background: var(--soft); border-color: var(--line); color: #c3d5b8; }
+html[data-theme='dark'] .badge.gold { background: var(--theme-warm); border-color: var(--theme-warm-line); color: #e8ca8d; }
+html[data-theme='dark'] .badge.red { background: var(--theme-danger); border-color: #84534d; color: #eeb0a6; }
+html[data-theme='dark'] .modal { border-color: var(--line); }
+html[data-theme='dark'] .info-box { background: var(--theme-warm); border-color: var(--theme-warm-line); color: #ecd5ac; }
+html[data-theme='dark'] .error-box { background: var(--theme-danger); border-color: #84534d; color: #f2b1a7; }
+html[data-theme='dark'] .empty-icon,
+html[data-theme='dark'] .quick-guide .guide-icon { background: var(--soft); color: var(--gold); }
+html[data-theme='dark'] .check-option.selected,
+html[data-theme='dark'] .option-card.selected,
+html[data-theme='dark'] .equipment-result.selected,
+html[data-theme='dark'] .extra-spell-option.selected { background: var(--theme-selected); border-color: #729776; }
+
+/* Library, wizard, and reference */
+html[data-theme='dark'] .character-card { border-color: var(--line); }
+html[data-theme='dark'] .character-type,
+html[data-theme='dark'] .card-stats span,
+html[data-theme='dark'] .library-footnote,
+html[data-theme='dark'] .catalog-card p,
+html[data-theme='dark'] .note-card p { color: var(--muted); }
+html[data-theme='dark'] .card-stats strong,
+html[data-theme='dark'] .card-open,
+html[data-theme='dark'] .source-stat strong,
+html[data-theme='dark'] .breakdown-row.total { color: var(--green); }
+html[data-theme='dark'] .new-character-card { background: #1d2925; border-color: #607461; color: var(--muted); }
+html[data-theme='dark'] .new-character-card:hover { background: var(--soft); }
+html[data-theme='dark'] .new-character-card > span { border-color: var(--line); }
+html[data-theme='dark'] .new-character-card h3 { color: var(--ink); }
+html[data-theme='dark'] .new-character-card p { color: var(--muted); }
+html[data-theme='dark'] .wizard-preview,
+html[data-theme='dark'] .selection-summary,
+html[data-theme='dark'] .ability-increase-slot-heading,
+html[data-theme='dark'] .ability-increase-slot,
+html[data-theme='dark'] .known-languages,
+html[data-theme='dark'] .background-parent { background: var(--theme-raised); border-color: var(--line); color: var(--ink); }
+html[data-theme='dark'] .wizard-preview p,
+html[data-theme='dark'] .wizard-preview dt,
+html[data-theme='dark'] .wizard-steps button,
+html[data-theme='dark'] .inline-tabs button,
+html[data-theme='dark'] .equipment-result small { color: var(--muted); }
+html[data-theme='dark'] .wizard-preview dl div { border-color: var(--line); }
+html[data-theme='dark'] .wizard-steps i,
+html[data-theme='dark'] .wizard-progress span { border-color: var(--line); background: var(--soft); }
+html[data-theme='dark'] .wizard-progress span.done,
+html[data-theme='dark'] .wizard-steps .active i { background: var(--green); color: #132018; }
+html[data-theme='dark'] .inline-tabs button.active,
+html[data-theme='dark'] .ability-patterns button.active,
+html[data-theme='dark'] .ability-increase-grid button.selected { background: var(--theme-selected); color: var(--ink); border-color: #729776; }
+html[data-theme='dark'] .ability-patterns button:not(:disabled):hover,
+html[data-theme='dark'] .ability-increase-grid button:not(:disabled):hover { background: var(--soft); }
+html[data-theme='dark'] .spell-detail .spell-meta-grid dt,
+html[data-theme='dark'] .background-facts dt,
+html[data-theme='dark'] .race-facts dt { color: var(--muted); }
+html[data-theme='dark'] .spell-detail .source-prose,
+html[data-theme='dark'] .feat-introduction,
+html[data-theme='dark'] .feat-benefits li,
+html[data-theme='dark'] .background-section > p,
+html[data-theme='dark'] .race-introduction,
+html[data-theme='dark'] .race-trait-grid p { color: var(--ink); }
+html[data-theme='dark'] .spell-detail .spell-higher-levels,
+html[data-theme='dark'] .feat-prerequisite,
+html[data-theme='dark'] .feat-catalog-card .feat-card-requirement,
+html[data-theme='dark'] .check-option-heading em { background: var(--theme-warm); border-color: var(--theme-warm-line); color: #ecd5ac; }
+html[data-theme='dark'] .feat-prerequisite h3,
+html[data-theme='dark'] .background-section-kicker,
+html[data-theme='dark'] .race-original summary { color: var(--gold); }
+html[data-theme='dark'] .feat-catalog-card .feat-card-summary,
+html[data-theme='dark'] .background-catalog-card .background-card-summary { color: var(--muted); }
+
+/* Character sheet: the class colors remain accents, while surfaces and text use the palette. */
+html[data-theme='dark'] .sheet-workspace { background: #171e19; }
+html[data-theme='dark'] .character-sheet {
+  --class-accent-ink: color-mix(in srgb, var(--class-accent) 45%, #f1eee2);
+  background: var(--paper);
+  color: var(--ink);
+  border-color: #4a594b;
+  box-shadow: none;
+}
+html[data-theme='dark'] .character-sheet .sheet-top { background: linear-gradient(105deg, color-mix(in srgb, var(--class-accent) 11%, #262e27), #202720 72%); }
+html[data-theme='dark'] .sheet-navigation,
+html[data-theme='dark'] .character-sheet .sheet-tabs,
+html[data-theme='dark'] .sheet-session-bar { background: var(--theme-raised); border-color: var(--line); }
+html[data-theme='dark'] .sheet-navigation { box-shadow: none; }
+html[data-theme='dark'] .character-sheet .sheet-tabs { background: #2b342c; }
+html[data-theme='dark'] .character-sheet .sheet-tabs button { color: var(--muted); }
+html[data-theme='dark'] .character-sheet .sheet-tabs button:hover { background: #364238; color: var(--ink); }
+html[data-theme='dark'] .character-sheet .sheet-tabs button.active { background: var(--paper); color: var(--ink); }
+html[data-theme='dark'] .character-sheet .sheet-tabs button,
+html[data-theme='dark'] .sheet-session-values > span,
+html[data-theme='dark'] .sheet-session-values small,
+html[data-theme='dark'] .character-sheet .sheet-identity p,
+html[data-theme='dark'] .character-sheet .subtle,
+html[data-theme='dark'] .session-button { color: var(--muted); }
+html[data-theme='dark'] .character-sheet .sheet-identity h1,
+html[data-theme='dark'] .sheet-session-values strong,
+html[data-theme='dark'] .character-sheet .stat strong,
+html[data-theme='dark'] .character-sheet .ability-box strong,
+html[data-theme='dark'] .character-sheet .hp-number,
+html[data-theme='dark'] .inventory-panel .inventory-item-name strong { color: var(--ink-strong); }
+html[data-theme='dark'] .character-sheet .sheet-identity .eyebrow,
+html[data-theme='dark'] .character-sheet .ability-box .ability-name,
+html[data-theme='dark'] .character-sheet .panel-title > svg,
+html[data-theme='dark'] .sheet-session-values svg { color: var(--class-accent-ink); }
+html[data-theme='dark'] .character-sheet .panel,
+html[data-theme='dark'] .character-sheet .stat,
+html[data-theme='dark'] .character-sheet .ability-box,
+html[data-theme='dark'] .character-sheet .slot-group,
+html[data-theme='dark'] .character-sheet .spell-expanded,
+html[data-theme='dark'] .character-sheet .data-table th,
+html[data-theme='dark'] .character-sheet .condition-chip,
+html[data-theme='dark'] .character-sheet .attack-bonus,
+html[data-theme='dark'] .character-sheet .skill-row > button { background: var(--surface); border-color: var(--line); color: var(--ink); }
+html[data-theme='dark'] .character-sheet .panel { box-shadow: inset 0 1px 0 #f0edda0a; }
+html[data-theme='dark'] .character-sheet .stat { background: #2d372e; }
+html[data-theme='dark'] .character-sheet .stat:hover { border-color: #859776; }
+html[data-theme='dark'] .character-sheet .ability-box { background: color-mix(in srgb, var(--class-accent) 7%, #2a322b); }
+html[data-theme='dark'] .character-sheet .ability-score { background: #19211b; border-color: #465548; color: var(--ink); }
+html[data-theme='dark'] .character-sheet .ability-save { border-top-color: #4a594b; color: var(--muted); }
+html[data-theme='dark'] .character-sheet .stat-label { color: var(--muted); font-size: 10px; }
+html[data-theme='dark'] .character-sheet .stat-foot { color: var(--muted); font-size: 10px; }
+html[data-theme='dark'] .character-sheet .ability-name { font-size: 10px; }
+html[data-theme='dark'] .character-sheet .ability-save { font-size: 10.5px; }
+html[data-theme='dark'] .character-sheet .panel .subtle { color: var(--muted); }
+html[data-theme='dark'] .character-sheet .resource-meta,
+html[data-theme='dark'] .character-sheet .attack-row p,
+html[data-theme='dark'] .character-sheet .data-table th,
+html[data-theme='dark'] .character-sheet .spell-name small,
+html[data-theme='dark'] .character-sheet .spell-row .spell-meta { color: var(--muted); }
+html[data-theme='dark'] .character-sheet .spell-level,
+html[data-theme='dark'] .character-sheet .condition-chip.active,
+html[data-theme='dark'] .character-sheet .data-table tr.current { background: var(--theme-selected); border-color: #729776; color: var(--ink); }
+html[data-theme='dark'] .character-sheet .hp-bar { background: #3b473c; }
+html[data-theme='dark'] .character-sheet .hp-bar span { background: #9eb888; }
+html[data-theme='dark'] .character-sheet .mini-fields { border-top-color: var(--line); color: var(--muted); }
+html[data-theme='dark'] .character-sheet .mini-fields > span,
+html[data-theme='dark'] .character-sheet .resource-meta { font-size: 10.5px; }
+html[data-theme='dark'] .character-sheet .death-row > div,
+html[data-theme='dark'] .character-sheet .condition-status { color: var(--muted); }
+html[data-theme='dark'] .sheet-session-values .sheet-session-name { border-left-color: #516052; }
+html[data-theme='dark'] .session-divider { background: #516052; }
+html[data-theme='dark'] .character-sheet .spell-summary { background: #263a2d; border-color: #4a624d; }
+html[data-theme='dark'] .character-sheet .sheet-controls .primary { background: var(--class-accent); border-color: var(--class-accent); color: #fff; }
+html[data-theme='dark'] .character-sheet .sheet-controls .icon-button { color: var(--muted); }
+html[data-theme='dark'] .character-sheet .sheet-controls .icon-button:hover,
+html[data-theme='dark'] .session-button:hover { background: var(--soft); color: var(--ink); }
+html[data-theme='dark'] .inventory-tabs,
+html[data-theme='dark'] .inventory-coin,
+html[data-theme='dark'] .inventory-coin-bank,
+html[data-theme='dark'] .hb-preview,
+html[data-theme='dark'] .hb-tip,
+html[data-theme='dark'] .hb-effect,
+html[data-theme='dark'] .hb-toggle { background: var(--surface); border-color: var(--line); color: var(--ink); }
+html[data-theme='dark'] .inventory-coin-mark { background: var(--soft); color: var(--gold); }
+html[data-theme='dark'] .inventory-coin-bank .inventory-coin-mark { background: var(--theme-selected); }
+
+/* Inventory keeps the light view's quiet table rhythm and distinct coin labels. */
+html[data-theme='dark'] .inventory-panel .inventory-coin-mark { border-right-color: var(--line); }
+html[data-theme='dark'] .inventory-panel .inventory-coin-pc .inventory-coin-mark { background: #3d322b; color: #e1b18e; }
+html[data-theme='dark'] .inventory-panel .inventory-coin-pp .inventory-coin-mark { background: #303a3b; color: #c2d0ce; }
+html[data-theme='dark'] .inventory-panel .inventory-coin-pe .inventory-coin-mark { background: #2a3b35; color: #b0d0ae; }
+html[data-theme='dark'] .inventory-panel .inventory-coin-po .inventory-coin-mark { background: #403825; color: #e8c87b; }
+html[data-theme='dark'] .inventory-panel .inventory-coin-ppt .inventory-coin-mark { background: #333646; color: #c5c6e3; }
+html[data-theme='dark'] .inventory-panel .inventory-coin-bank .inventory-coin-mark { background: #2e3b31; color: #b8d0a8; }
+html[data-theme='dark'] .inventory-panel .inventory-tab[aria-selected='true'],
+html[data-theme='dark'] .inventory-panel .inventory-tab-item:has(.inventory-tab[aria-selected='true']) .inventory-tab-options {
+  background: #455e46;
+  border-color: #779074;
+  color: #f6f8f1;
+}
+html[data-theme='dark'] .inventory-panel .inventory-tab-item:has(.inventory-tab[aria-selected='true']) .inventory-tab-options:hover { background: #557057; }
+html[data-theme='dark'] .inventory-panel .data-table th { background: #303a31; border-bottom-color: #4a594b; color: #c1cfbf; }
+html[data-theme='dark'] .inventory-panel .data-table td { border-bottom-color: #405044; }
+html[data-theme='dark'] .inventory-panel .data-table input[type='number'] { background: #1d261f; border-color: #4a594b; }
+html[data-theme='dark'] .inventory-panel .data-table input[type='checkbox'] {
+  appearance: none;
+  width: 16px;
+  height: 16px;
+  padding: 0;
+  border: 1px solid #8fa08e;
+  border-radius: 3px;
+  background: #1b241d;
+  vertical-align: middle;
+}
+html[data-theme='dark'] .inventory-panel .data-table input[type='checkbox']:checked {
+  border-color: #a2c294;
+  background-color: #a2c294;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Cpath fill='none' stroke='%2315221c' stroke-width='2' stroke-linecap='round' stroke-linejoin='round' d='m3 8 3.2 3.2L13 4.5'/%3E%3C/svg%3E");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: 14px;
+}
+html[data-theme='dark'] .inventory-panel .data-table input[type='checkbox']:disabled { opacity: .45; }
+
+/* Homebrew, equipment, and secondary dialogs */
+html[data-theme='dark'] .hb-welcome,
+html[data-theme='dark'] .hb-empty { background: linear-gradient(140deg, var(--theme-raised), var(--surface)); border-color: var(--line); }
+html[data-theme='dark'] .hb-entry-icon,
+html[data-theme='dark'] .hb-book-icon,
+html[data-theme='dark'] .hb-steps > button[aria-current=step] { background: var(--soft); border-color: var(--line); }
+html[data-theme='dark'] .hb-toggle:has(input:checked) { background: var(--theme-selected); border-color: #729776; }
+html[data-theme='dark'] .hb-picker > legend { color: var(--ink); }
+html[data-theme='dark'] .hb-resume,
+html[data-theme='dark'] .wizard-pending-summary { background: var(--theme-warm); border-color: var(--theme-warm-line); color: #ecd5ac; }
+html[data-theme='dark'] .wizard-pending-summary button { background: var(--surface); border-color: var(--theme-warm-line); color: #ecd5ac; }
+html[data-theme='dark'] .roll-mode-badge { background: var(--theme-selected); color: #c5e7bb; }
+html[data-theme='dark'] .roll-mode-badge.disadvantage { background: var(--theme-danger); color: #eeb0a6; }
+html[data-theme='dark'] .equipment-result-count { background: var(--theme-selected); color: #c5e7bb; }
+
+@media print {
+  html[data-theme='dark'] {
+    color-scheme: light;
+    --paper: #fff;
+    --surface: #fff;
+    --ink: #30372e;
+    --ink-strong: #30372e;
+    --muted: #666e60;
+    --line: #ccc;
+  }
+  html[data-theme='dark'] .sheet-workspace { background: white; }
+  html[data-theme='dark'] .character-sheet { background: white; color: #30372e; box-shadow: none; border-color: #ccc; }
+  html[data-theme='dark'] .character-sheet .sheet-top { background: white; }
+  html[data-theme='dark'] .character-sheet .panel,
+  html[data-theme='dark'] .character-sheet .stat,
+  html[data-theme='dark'] .character-sheet .ability-box { background: white; color: #30372e; }
+  html[data-theme='dark'] .character-sheet .panel { box-shadow: none; }
+  html[data-theme='dark'] .character-sheet .ability-score { background: white; color: #30372e; border-color: #ccc; }
+  html[data-theme='dark'] .character-sheet .ability-save { border-top-color: #ccc; color: #30372e; }
+  html[data-theme='dark'] .character-sheet .stat-label,
+  html[data-theme='dark'] .character-sheet .stat-foot,
+  html[data-theme='dark'] .character-sheet .ability-name,
+  html[data-theme='dark'] .character-sheet .panel .subtle,
+  html[data-theme='dark'] .character-sheet .mini-fields,
+  html[data-theme='dark'] .character-sheet .death-row > div,
+  html[data-theme='dark'] .character-sheet .condition-status { color: #4d594b; }
+  html[data-theme='dark'] .character-sheet .sheet-identity h1,
+  html[data-theme='dark'] .character-sheet .stat strong,
+  html[data-theme='dark'] .character-sheet .ability-box strong { color: #30372e; }
+  html[data-theme='dark'] .inventory-panel .data-table th,
+  html[data-theme='dark'] .inventory-panel .data-table input[type='number'] { background: white; color: #30372e; }
+  html[data-theme='dark'] .inventory-panel .data-table td { border-bottom-color: #ccc; }
+  html[data-theme='dark'] .inventory-panel .data-table input[type='checkbox'] { appearance: auto; background: white; }
+}

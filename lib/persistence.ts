@@ -1,5 +1,5 @@
 import { ABILITIES, SKILLS } from './constants';
-import type { Catalog, Character } from './types';
+import type { Catalog, Character, Spell } from './types';
 
 export interface CharacterRepository {
   list(): Promise<Character[]>;
@@ -79,6 +79,7 @@ export function validateCharacterData(input: unknown, catalog?: Catalog, snapsho
   if (!plain(input)) return ['El archivo debe contener un objeto de personaje.'];
   const c = input;
   if (c.schemaVersion !== 1) fail('schemaVersion', 'versión no compatible; se requiere 1');
+  if (own(c, 'skillOrder') && !['alphabetical', 'ability'].includes(String(c.skillOrder))) fail('skillOrder', 'orden de habilidades desconocido');
   ['id', 'ownerId'].forEach(key => str(c[key], key, 150, false));
   ['name', 'raceId', 'subraceId', 'backgroundId'].forEach(key => str(c[key], key, 200));
   str(c.concept, 'concept', 20_000); str(c.portrait, 'portrait', 3_000_000);
@@ -126,6 +127,33 @@ export function validateCharacterData(input: unknown, catalog?: Catalog, snapsho
   [...Object.keys(ranks), ...Object.keys(bonuses)].forEach(key => { if (!SKILLS.some(s => s.id === key) && !['animalHandling', 'sleightOfHand'].includes(key)) fail('skills', `habilidad desconocida: ${key}`); });
   records(c.choices, 'choices', (v, path) => strings(v, path, 100, 300, false));
   const featIds = strings(c.featIds, 'featIds', 100);
+  if (own(c, 'customSpells')) {
+    const localSpells: Spell[] = [];
+    const ids = new Set<string>();
+    arr(c.customSpells, 'customSpells', 500).forEach((entry, index) => {
+      const path = `customSpells[${index}]`, row = object(entry, path);
+      str(row.id, `${path}.id`, 200, false);
+      str(row.name, `${path}.name`, 120, false);
+      str(row.description, `${path}.description`, 10_000);
+      num(row.level, `${path}.level`, 0, 9);
+      for (const key of ['school', 'castingTime', 'range', 'components', 'duration', 'higherLevels']) str(row[key], `${path}.${key}`, 2000);
+      bool(row.concentration, `${path}.concentration`);
+      bool(row.ritual, `${path}.ritual`);
+      strings(row.availableToClasses, `${path}.availableToClasses`, 100, 200);
+      const source = object(row.source, `${path}.source`);
+      num(source.page, `${path}.source.page`, 0, 100_000);
+      for (const key of ['book', 'title', 'url']) if (own(source, key)) str(source[key], `${path}.source.${key}`, key === 'url' ? 2048 : 200);
+      if (typeof row.id === 'string') {
+        if (ids.has(row.id)) fail(path, 'conjuro repetido');
+        ids.add(row.id);
+        localSpells.push(row as unknown as Spell);
+      }
+    });
+    if (catalog && localSpells.length) {
+      const ownIds = new Set(localSpells.map(spell => spell.id));
+      catalog = { ...catalog, spells: [...localSpells, ...catalog.spells.filter(spell => !ownIds.has(spell.id))] };
+    }
+  }
   const spells = records(c.spellSelections, 'spellSelections', (v, path) => {
     const selection = object(v, path);
     for (const type of ['known', 'prepared']) {
@@ -240,6 +268,7 @@ export function validateCharacterData(input: unknown, catalog?: Catalog, snapsho
   arr(c.notes, 'notes', 2000).forEach((v, i) => { const note = object(v, `notes[${i}]`); ['id', 'title', 'category', 'date'].forEach(k => str(note[k], `notes[${i}].${k}`, 500)); str(note.content, `notes[${i}].content`, 100_000); });
   const favorites = object(c.favorites, 'favorites');
   const favoriteSpells = strings(favorites.spells, 'favorites.spells', 1000), favoriteFeatures = strings(favorites.features, 'favorites.features', 2000);
+  if (own(favorites, 'items')) strings(favorites.items, 'favorites.items', 2000);
   const overrides = records(c.manualOverrides, 'manualOverrides', (v, path) => num(v, path, -1_000_000, 1_000_000, false), 500);
   Object.entries(overrides).forEach(([key,value]) => {
     if (key.startsWith('pactMax.')) num(value, `manualOverrides.${key}`, 0, 1000);
@@ -288,6 +317,7 @@ export function validateCharacterData(input: unknown, catalog?: Catalog, snapsho
         else if (!choice.options.length && ['choose_language', 'choose_tool'].includes(choice.type)) valid = v => typeof v === 'string' && !!v.trim();
         else valid = v => choice.options.some(o => (typeof o === 'string' ? o : o.id) === v);
       } else if (catalog.classes.some(cl => `optional-spells.${cl.id}` === id)) valid = v => v === 'enabled';
+      else if (id === 'choice-picaro-buena-punteria-tasha') valid = v => v === 'feature-picaro-opciones-de-tasha-para-el-picaro-buena-punteria';
       else if (catalog.classes.some(cl => `skills.${cl.id}` === id)) valid = v => SKILLS.some(s => s.id === v);
       else if (catalog.classes.some(cl => `subclass.${cl.id}` === id)) valid = v => catalog.classes.some(cl => cl.subclasses.some(s => s.id === v));
       else if (catalog.classes.some(cl => `instrument.${cl.id}` === id)) valid = v => typeof v === 'string' && !!v.trim();

@@ -123,3 +123,13 @@
 .desktop-sidebar-toggle{color:#6f7864}
 @media(min-width:901px){.sidebar{transition:transform .2s,visibility .2s}.sidebar.collapsed{transform:translateX(-100%);visibility:hidden}.app-main{transition:margin-left .2s}.app-main.sidebar-collapsed{margin-left:0}}
 @media(max-width:900px){.desktop-sidebar-toggle{display:none}}
+
+/* Align the wordmark with the character card across sidebar widths. */
+.sidebar .brand{justify-content:space-between;gap:9px;width:100%;max-width:100%;padding-inline:9px;margin:0 0 41px}
+.sidebar .brand svg{width:30px;height:38px;flex-shrink:0}
+.sidebar .brand>span{min-width:0;font-size:21px;letter-spacing:2.4px;white-space:nowrap}
+.sidebar .brand small{letter-spacing:1.5px}
+
+.character-sheet .ability-save{display:flex;align-items:center;justify-content:center;gap:3px}
+.character-sheet .ability-save-marker{display:block;flex:0 0 7px;width:7px;height:7px;border:1px solid currentColor;border-radius:50%}
+.character-sheet .ability-save-marker.trained{background:currentColor}

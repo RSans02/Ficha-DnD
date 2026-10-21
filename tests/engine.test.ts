@@ -565,6 +565,24 @@ test('JSON round trips and rejects corruption without leaking TypeErrors', () =>
   assert(validateCharacterData({ ...c, manualOverrides: { ac: NaN } }).length > 0);
 });
 
+test('skill order preference survives export and import', () => {
+  const c = character();
+  c.skillOrder = 'ability';
+  assert.equal(importJSON(exportJSON(c), catalog).skillOrder, 'ability');
+  assert(validateCharacterData({ ...c, skillOrder: 'unknown' }).some(issue => issue.includes('skillOrder')));
+});
+
+test('favorite inventory objects survive export and older favorites remain valid', () => {
+  const c = character();
+  const item = { id: 'favorite-potion', name: 'Poción', category: 'Objetos' as const, quantity: 2, weight: 0.5, equipped: false, attuned: false, description: '', notes: '' };
+  c.inventory.push(item);
+  c.favorites.items = [item.id];
+  assert.deepEqual(importJSON(exportJSON(c), catalog).favorites.items, [item.id]);
+  assert.deepEqual(validateCharacterData(c, catalog), []);
+  delete c.favorites.items;
+  assert.deepEqual(validateCharacterData(c, catalog), []);
+});
+
 class MemoryStorage {
   readonly data = new Map<string, string>();
   getItem(key: string) { return this.data.get(key) ?? null; }
