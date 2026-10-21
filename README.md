@@ -35,7 +35,7 @@ Los valores calculados muestran su desglose. Las sustituciones manuales se ident
 
 ### Tiradas en Owlbear Rodeo
 
-Grimorio incluye un panel compacto en `/owlbear` y un manifiesto de extensión en `/owlbear-manifest.json`. Para probarlo en local, inicia `npm run dev` e instala `http://localhost:3000/owlbear-manifest.json` desde **Add Extension** en el perfil de Owlbear Rodeo. Para usarlo con otras personas, despliega la aplicación y usa `https://TU-DOMINIO/owlbear-manifest.json`. Activa la extensión de Grimorio y [Dice+](https://extensions.owlbear.rodeo/dice-plus) en la misma sala.
+Grimorio incluye un panel compacto en `/owlbear` y un manifiesto de extensión en `/owlbear-manifest.json`. Para probarlo en local, inicia `npm run dev` y comprueba que `http://localhost:3000/owlbear-manifest.json` abre el JSON en tu navegador antes de pegar esa URL en **Add Extension** del perfil de Owlbear Rodeo. El servidor debe permanecer abierto mientras uses la extensión local. Para usarlo con otras personas, despliega la aplicación y usa `https://TU-DOMINIO/owlbear-manifest.json`. Activa la extensión de Grimorio y [Dice+](https://extensions.owlbear.rodeo/dice-plus) en la misma sala.
 
 El panel ofrece tiradas de características, salvaciones, habilidades, iniciativa, ataques y daño. Aplica los modificadores calculados por la ficha y su ventaja o desventaja automática; el selector d20 permite elegir una situación distinta. Cada tirada puede mostrarse a toda la sala, solo al jugador o al DJ y al jugador. El panel recibe el resultado de Dice+ y también muestra su ventana de resultado.
 
