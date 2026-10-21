@@ -33,6 +33,14 @@ Detén el servidor de desarrollo antes de iniciar producción en el mismo puerto
 
 Los valores calculados muestran su desglose. Las sustituciones manuales se identifican y pueden restaurarse. Los descansos siguen 2014: el corto permite gastar dados de golpe y el largo recupera PG y hasta la mitad de los dados (mínimo uno), además de recursos y espacios compatibles. Los efectos contextuales siguen bajo control del jugador.
 
+### Tiradas en Owlbear Rodeo
+
+Grimorio incluye un panel compacto en `/owlbear` y un manifiesto de extensión en `/owlbear-manifest.json`. Para probarlo en local, inicia `npm run dev` e instala `http://localhost:3000/owlbear-manifest.json` desde **Add Extension** en el perfil de Owlbear Rodeo. Para usarlo con otras personas, despliega la aplicación y usa `https://TU-DOMINIO/owlbear-manifest.json`. Activa la extensión de Grimorio y [Dice+](https://extensions.owlbear.rodeo/dice-plus) en la misma sala.
+
+El panel ofrece tiradas de características, salvaciones, habilidades, iniciativa, ataques y daño. Aplica los modificadores calculados por la ficha y su ventaja o desventaja automática; el selector d20 permite elegir una situación distinta. Cada tirada puede mostrarse a toda la sala, solo al jugador o al DJ y al jugador. El panel recibe el resultado de Dice+ y también muestra su ventana de resultado.
+
+El panel lee los personajes locales si el navegador comparte el almacenamiento de Grimorio en ese contexto; usa «Actualizar biblioteca» tras cambiar la ficha. Si la biblioteca aparece vacía, exporta el personaje como JSON desde la aplicación e impórtalo en el panel. Algunos navegadores aíslan o bloquean el almacenamiento de una página incrustada; en ese caso, la importación sirve para la sesión actual. Los cambios entre almacenamientos aislados no se sincronizan automáticamente: vuelve a importar el JSON cuando cambien los modificadores. Las fórmulas de daño con texto descriptivo se dejan para gestión manual, y el daño adicional condicionado tiene un botón separado para que el jugador decida cuándo aplicarlo.
+
 ## Reglas y fuente
 
 La fuente del catálogo es **Manual para Casi Todo de D&D 5e (V30.03.25).pdf**, de 633 páginas. La base es **D&D 5e 2014 y el contenido posterior recopilado en ese PDF**. Las variantes y versiones se conservan separadas; no se aplican las reglas revisadas de 2024.

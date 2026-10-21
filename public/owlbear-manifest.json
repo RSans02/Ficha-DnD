@@ -1,0 +1,12 @@
+{
+  "name": "Grimorio: tiradas de personaje",
+  "version": "1.0.0",
+  "manifest_version": 1,
+  "action": {
+    "title": "Grimorio",
+    "icon": "/favicon.svg",
+    "popover": "/owlbear",
+    "width": 420,
+    "height": 680
+  }
+}
