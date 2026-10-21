@@ -35,11 +35,15 @@ Los valores calculados muestran su desglose. Las sustituciones manuales se ident
 
 ### Tiradas en Owlbear Rodeo
 
-Grimorio incluye un panel compacto en `/owlbear` y un manifiesto de extensión en `/owlbear-manifest.json`. Para probarlo en local, inicia `npm run dev` y comprueba que `http://localhost:3000/owlbear-manifest.json` abre el JSON en tu navegador antes de pegar esa URL en **Add Extension** del perfil de Owlbear Rodeo. El servidor debe permanecer abierto mientras uses la extensión local. Para usarlo con otras personas, despliega la aplicación y usa `https://TU-DOMINIO/owlbear-manifest.json`. Activa la extensión de Grimorio y [Dice+](https://extensions.owlbear.rodeo/dice-plus) en la misma sala.
+Grimorio permite tirar **desde la ficha normal, abierta en otra pestaña**. La extensión de Owlbear solo enlaza las dos pestañas; no necesita importar personajes ni acceder al almacenamiento de la ficha.
 
-El panel ofrece tiradas de características, salvaciones, habilidades, iniciativa, ataques y daño. Aplica los modificadores calculados por la ficha y su ventaja o desventaja automática; el selector d20 permite elegir una situación distinta. Cada tirada puede mostrarse a toda la sala, solo al jugador o al DJ y al jugador. El panel recibe el resultado de Dice+ y también muestra su ventana de resultado.
+1. Inicia `npm run dev` y deja el servidor abierto. Comprueba que `http://localhost:3000/owlbear-manifest.json` abre el manifiesto. En Owlbear Rodeo añade esa URL mediante **Add Extension** y activa también [Dice+](https://extensions.owlbear.rodeo/dice-plus) en la sala. Si ya tenías la extensión instalada, recárgala para que incorpore el nuevo proceso en segundo plano.
+2. Abre tu personaje en `http://localhost:3000` en otra pestaña del **mismo equipo y navegador**. Pulsa **Tirar en Owlbear** y copia el código de enlace.
+3. Abre la extensión Grimorio dentro de la sala de Owlbear, pega el código y pulsa **Vincular ficha**. Cuando la ficha indique «Owlbear conectado», ya puedes cerrar ese panel y lanzar desde la ficha.
 
-El panel lee los personajes locales si el navegador comparte el almacenamiento de Grimorio en ese contexto; usa «Actualizar biblioteca» tras cambiar la ficha. Si la biblioteca aparece vacía, exporta el personaje como JSON desde la aplicación e impórtalo en el panel. Algunos navegadores aíslan o bloquean el almacenamiento de una página incrustada; en ese caso, la importación sirve para la sesión actual. Los cambios entre almacenamientos aislados no se sincronizan automáticamente: vuelve a importar el JSON cuando cambien los modificadores. Las fórmulas de daño con texto descriptivo se dejan para gestión manual, y el daño adicional condicionado tiene un botón separado para que el jugador decida cuándo aplicarlo.
+El cuadro de tiradas de la ficha usa sus modificadores actuales para características, salvaciones, habilidades, iniciativa, ataques y daño. Aplica la ventaja o desventaja automática de la ficha, o permite elegir otro modo para la situación. Elige si la tirada se muestra a toda la sala, solo a ti o al DJ y a ti. Dice+ muestra sus dados y devuelve el resultado a la ficha. El daño adicional condicionado se lanza por separado cuando corresponda. Las fórmulas de daño que no se puedan interpretar con seguridad deben tirarse manualmente en Dice+.
+
+El puente de tiradas conserva solicitudes recientes en memoria del proceso Node.js que sirve Grimorio. Reiniciar el servidor exige volver a esperar la conexión; el código de enlace permanece en el navegador. Para usar esta función en un despliegue distribuido o sin servidor hay que sustituir ese almacén en memoria por uno compartido. `localhost` solo es accesible en el equipo donde corre el servidor.
 
 ## Reglas y fuente
 
