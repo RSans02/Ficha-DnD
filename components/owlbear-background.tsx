@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from 'react';
 import { connectOwlbear } from '@/lib/owlbear-client';
+import { configureOwlbearAction } from '@/lib/owlbear-action';
 import { runOwlbearBridge } from '@/lib/owlbear-bridge-worker';
 import './owlbear-panel.css';
 
@@ -10,7 +11,7 @@ export function OwlbearBackground() {
   useEffect(() => {
     let live = true;
     let stop: (() => void) | undefined;
-    void connectOwlbear().then(obr => { if (live) stop = runOwlbearBridge(obr, 'background', value => setStatus(value.message)); })
+    void connectOwlbear().then(obr => { if (live) { configureOwlbearAction(obr); stop = runOwlbearBridge(obr, 'background', value => setStatus(value.message)); } })
       .catch(error => { if (live) setStatus(error instanceof Error ? error.message : 'Owlbear no disponible.'); });
     return () => { live = false; stop?.(); };
   }, []);
