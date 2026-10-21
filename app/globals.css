@@ -133,3 +133,12 @@
 .character-sheet .ability-save{display:flex;align-items:center;justify-content:center;gap:3px}
 .character-sheet .ability-save-marker{display:block;flex:0 0 7px;width:7px;height:7px;border:1px solid currentColor;border-radius:50%}
 .character-sheet .ability-save-marker.trained{background:currentColor}
+
+/* Spell filter checkboxes use the same palette as the other controls. */
+.spell-filters{--spell-filter-check-fill:#c2d1b4;--spell-filter-check-border:#92a781;--spell-filter-check-mark:#293b2a}
+.spell-filters label{cursor:pointer}
+.spell-filters input[type='checkbox']{appearance:none;position:relative;flex:0 0 16px;width:16px;height:16px;min-height:0;margin:0;padding:0;border:1px solid var(--line);border-radius:4px;background:var(--surface);cursor:pointer;transition:border-color .15s,background .15s}
+.spell-filters input[type='checkbox']::after{content:'';position:absolute;left:5px;top:2px;width:4px;height:8px;border:solid var(--spell-filter-check-mark);border-width:0 2px 2px 0;transform:rotate(45deg);opacity:0}
+.spell-filters input[type='checkbox']:checked{background:var(--spell-filter-check-fill);border-color:var(--spell-filter-check-border)}
+.spell-filters input[type='checkbox']:checked::after{opacity:1}
+.spell-filters label:hover input[type='checkbox']:not(:checked){border-color:var(--green)}

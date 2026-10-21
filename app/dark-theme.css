@@ -27,6 +27,12 @@ html[data-theme='dark'] h2,
 html[data-theme='dark'] h3,
 html[data-theme='dark'] h4 { color: var(--ink-strong); }
 
+html[data-theme='dark'] .spell-filters {
+  --spell-filter-check-fill: var(--green);
+  --spell-filter-check-border: var(--green);
+  --spell-filter-check-mark: #1b211d;
+}
+
 /* App chrome and common controls */
 html[data-theme='dark'] .topbar { background: #222a23f2; }
 html[data-theme='dark'] .sidebar { color: #c6cfbe; border-right-color: #364238; }
