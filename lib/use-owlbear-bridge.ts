@@ -9,10 +9,7 @@ type Audience = 'everyone' | 'self' | 'dm';
 export function useOwlbearBridge(onNotify: (message: string, error?: boolean) => void) {
   const [token, setToken] = useState('');
   const [connected, setConnected] = useState(false);
-  const [last, setLast] = useState<BridgeResult | null>(null);
   const [pending, setPending] = useState<string | null>(null);
-  const [pairing, setPairing] = useState(false);
-  const [audience, setAudience] = useState<Audience>('everyone');
   const lastSeen = useRef('');
   const initialized = useRef(false);
   const notify = useRef(onNotify);
@@ -33,7 +30,6 @@ export function useOwlbearBridge(onNotify: (message: string, error?: boolean) =>
         setConnected(data.connected);
         if (data.result && data.result.id !== lastSeen.current) {
           lastSeen.current = data.result.id;
-          setLast(data.result);
           setPending(current => current === data.result?.id ? null : current);
           if (initialized.current) notify.current(`${data.result.label}: ${data.result.text}`, data.result.error);
         }
@@ -49,14 +45,32 @@ export function useOwlbearBridge(onNotify: (message: string, error?: boolean) =>
     const timer = setTimeout(() => { setPending(current => current === pending ? null : current); notify.current('La tirada no ha recibido respuesta de Owlbear.', true); }, 30_000);
     return () => clearTimeout(timer);
   }, [pending]);
+  const copyCode = async () => {
+    if (!token) { notify.current('El código de enlace aún se está preparando.', true); return; }
+    let copied = false;
+    try { await navigator.clipboard.writeText(token); copied = true; }
+    catch {
+      const field = document.createElement('textarea');
+      try {
+        field.value = token;
+        field.style.position = 'fixed';
+        field.style.opacity = '0';
+        document.body.appendChild(field);
+        field.select();
+        copied = document.execCommand('copy');
+      } catch { copied = false; }
+      finally { field.remove(); }
+    }
+    notify.current(copied ? 'Código de Owlbear copiado. Pégalo en la extensión Grimorio.' : `Copia este código para Owlbear: ${token}`, !copied);
+  };
   const roll = async (label: string, notation: string, character: string) => {
-    if (!connected) { setPairing(true); notify.current('Vincula la ficha con Owlbear antes de tirar.', true); return; }
+    if (!connected) { await copyCode(); return; }
     const id = crypto.randomUUID();
     setPending(id);
     try {
-      const response = await fetch('/api/owlbear/bridge', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ token, action: 'roll', roll: { id, label, notation, audience, character } }) });
+      const response = await fetch('/api/owlbear/bridge', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ token, action: 'roll', roll: { id, label, notation, audience: 'everyone' satisfies Audience, character } }) });
       if (!response.ok) throw new Error((await response.json() as { error?: string }).error || 'No se pudo enviar la tirada.');
     } catch (error) { setPending(null); notify.current(error instanceof Error ? error.message : 'No se pudo enviar la tirada.', true); }
   };
-  return { token, connected, last, pending, pairing, setPairing, audience, setAudience, roll };
+  return { connected, copyCode, roll };
 }
