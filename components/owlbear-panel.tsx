@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from 'react';
 import { connectOwlbear, type OwlbearSdk } from '@/lib/owlbear-client';
+import { configureOwlbearAction } from '@/lib/owlbear-action';
 import { BRIDGE_METADATA_KEY, runOwlbearBridge, type BridgeWorkerStatus } from '@/lib/owlbear-bridge-worker';
 import './owlbear-panel.css';
 
@@ -16,6 +17,7 @@ export function OwlbearPanel() {
   useEffect(() => {
     let live = true;
     void connectOwlbear().then(async sdk => {
+      configureOwlbearAction(sdk);
       const metadata = await sdk.player.getMetadata();
       if (!live) return;
       setObr(sdk);
@@ -35,7 +37,7 @@ export function OwlbearPanel() {
     catch (error) { setBridge(null); setMessage(error instanceof Error ? error.message : 'No se pudo guardar el enlace.'); }
   };
   return <main className="owlbear-panel"><div className="owlbear-header"><div><span>GRIMORIO · OWLBEAR</span><h1>Conectar ficha</h1></div></div>
-    <p className="owlbear-hint">Abre tu ficha de Grimorio en otra pestaña. Pulsa «Conectar Owlbear» y copia el código de enlace.</p>
+    {!token && <p className="owlbear-hint">Abre tu ficha de Grimorio en otra pestaña. Pulsa «Copiar código Owlbear» y pega aquí el código de enlace.</p>}
     <label>Código de la ficha<input value={draft} onChange={event => setDraft(event.target.value)} placeholder="xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx" /></label>
     <button className="owlbear-save" onClick={() => void save()} disabled={!obr || !TOKEN.test(draft.trim())}>Vincular ficha</button>
     <p className="owlbear-status" role="status">{bridge?.active ? 'Puente activo. La ficha debería indicar «Owlbear conectado».' : bridge?.message ?? message}</p>
