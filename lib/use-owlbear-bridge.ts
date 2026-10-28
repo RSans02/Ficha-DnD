@@ -47,7 +47,7 @@ export function useOwlbearBridge(onNotify: (message: string, error?: boolean) =>
           if (request) {
             requested.current.delete(data.result.id);
             setPending(current => current === data.result?.id ? null : current);
-            if (now - request.started < 30_000) notify.current(`${request.label}: ${data.result.text}`, data.result.error);
+            if (data.result.error && now - request.started < 30_000) notify.current(`${request.label}: ${data.result.text}`, true);
           }
         }
       } catch { updateConnection(false); }
