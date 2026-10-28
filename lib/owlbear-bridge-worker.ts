@@ -1,6 +1,6 @@
 import type { OwlbearSdk } from './owlbear-client';
 import type { BridgeRoll, BridgeSource } from './owlbear-bridge-store';
-import { labeledNotation } from './owlbear-rolls';
+import { dicePlusNotation } from './owlbear-rolls';
 
 export const BRIDGE_METADATA_KEY = 'com.grimorio.sheet/bridge';
 const SOURCE = 'grimorio.character-sheet';
@@ -39,7 +39,7 @@ async function execute(obr: OwlbearSdk, roll: BridgeRoll): Promise<{ text: strin
     });
     timer = setTimeout(() => finish('Dice+ no devolvió un resultado.', true), 20_000);
     void Promise.all([obr.player.getId(), obr.player.getName()]).then(([playerId, playerName]) =>
-      obr.broadcast.sendMessage('dice-plus/roll-request', { rollId: roll.id, playerId, playerName, rollTarget: roll.audience, diceNotation: labeledNotation(roll.notation, roll.label), showResults: true, timestamp: Date.now(), source: SOURCE }, { destination: 'ALL' })
+      obr.broadcast.sendMessage('dice-plus/roll-request', { rollId: roll.id, playerId, playerName, rollTarget: roll.audience, diceNotation: dicePlusNotation(roll), showResults: true, timestamp: Date.now(), source: SOURCE }, { destination: 'ALL' })
     ).catch(error => finish(error instanceof Error ? error.message : 'No se pudo enviar la tirada.', true));
   });
 }

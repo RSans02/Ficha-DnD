@@ -2,6 +2,7 @@
 
 import { useEffect, useRef, useState } from 'react';
 import type { BridgeResult } from './owlbear-bridge-store';
+import type { RollEntry } from './owlbear-rolls';
 
 const STORAGE_KEY = 'grimorio.owlbear.bridge-token';
 type Audience = 'everyone' | 'self' | 'dm';
@@ -63,14 +64,17 @@ export function useOwlbearBridge(onNotify: (message: string, error?: boolean) =>
     }
     notify.current(copied ? 'Código de Owlbear copiado. Pégalo en la extensión Grimorio.' : `Copia este código para Owlbear: ${token}`, !copied);
   };
-  const roll = async (label: string, notation: string, character: string) => {
-    if (!connected) { await copyCode(); return; }
+  const submit = async (label: string, notation: string, character: string, entries?: RollEntry[]): Promise<boolean> => {
+    if (!connected) { await copyCode(); return false; }
     const id = crypto.randomUUID();
     setPending(id);
     try {
-      const response = await fetch('/api/owlbear/bridge', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ token, action: 'roll', roll: { id, label, notation, audience: 'everyone' satisfies Audience, character } }) });
+      const response = await fetch('/api/owlbear/bridge', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ token, action: 'roll', roll: { id, label, notation, entries, audience: 'everyone' satisfies Audience, character } }) });
       if (!response.ok) throw new Error((await response.json() as { error?: string }).error || 'No se pudo enviar la tirada.');
-    } catch (error) { setPending(null); notify.current(error instanceof Error ? error.message : 'No se pudo enviar la tirada.', true); }
+      return true;
+    } catch (error) { setPending(null); notify.current(error instanceof Error ? error.message : 'No se pudo enviar la tirada.', true); return false; }
   };
-  return { connected, copyCode, roll };
+  const roll = (label: string, notation: string, character: string) => submit(label, notation, character);
+  const rollBatch = (entries: RollEntry[], character: string) => submit('Tirada preparada', entries.map(entry => entry.notation).join(', '), character, entries);
+  return { connected, copyCode, roll, rollBatch, pending: Boolean(pending) };
 }

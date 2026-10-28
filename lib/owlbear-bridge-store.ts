@@ -1,4 +1,6 @@
-export type BridgeRoll = { id: string; label: string; notation: string; audience: 'everyone' | 'self' | 'dm'; character: string };
+import type { RollEntry } from './owlbear-rolls';
+
+export type BridgeRoll = { id: string; label: string; notation: string; entries?: RollEntry[]; audience: 'everyone' | 'self' | 'dm'; character: string };
 export type BridgeResult = { id: string; label: string; text: string; error: boolean; at: number };
 export type BridgeSource = 'background' | 'panel';
 type Session = { heartbeat: Record<BridgeSource, number>; queue: BridgeRoll[]; result: BridgeResult | null; touched: number };
