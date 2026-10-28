@@ -1,6 +1,6 @@
 import assert from 'node:assert/strict';
 import test from 'node:test';
-import { claimRoll, queueRoll, sheetStatus } from '../lib/owlbear-bridge-store';
+import { claimRoll, finishRoll, queueRoll, sheetStatus } from '../lib/owlbear-bridge-store';
 
 test('the visible Owlbear panel can connect the sheet without a background page', () => {
   const token = crypto.randomUUID();
@@ -25,4 +25,14 @@ test('sessions retained by Next dev from the previous bridge are migrated', () =
   state.__grimorioBridge?.set(token, { heartbeat: Date.now(), queue: [], result: null, touched: Date.now() });
   assert.equal(claimRoll(token, 'panel').roll, null);
   assert.equal(sheetStatus(token).connected, true);
+});
+
+test('completed rolls stop appearing in sheet polling after thirty seconds', () => {
+  const token = crypto.randomUUID();
+  const result = { id: crypto.randomUUID(), label: 'Pit · Daga', text: '17', error: false, at: Date.now() };
+  finishRoll(token, result);
+  assert.deepEqual(sheetStatus(token).result, result);
+  finishRoll(token, { ...result, at: Date.now() - 31_000 });
+  assert.equal(sheetStatus(token).result, null);
+  assert.equal(sheetStatus(token).result, null);
 });

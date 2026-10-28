@@ -11,8 +11,7 @@ export function useOwlbearBridge(onNotify: (message: string, error?: boolean) =>
   const [token, setToken] = useState('');
   const [connected, setConnected] = useState(false);
   const [pending, setPending] = useState<string | null>(null);
-  const lastSeen = useRef('');
-  const initialized = useRef(false);
+  const requested = useRef(new Map<string, number>());
   const notify = useRef(onNotify);
   useEffect(() => { notify.current = onNotify; }, [onNotify]);
   useEffect(() => {
@@ -29,12 +28,16 @@ export function useOwlbearBridge(onNotify: (message: string, error?: boolean) =>
         const data = await response.json() as { connected: boolean; result: BridgeResult | null };
         if (!live) return;
         setConnected(data.connected);
-        if (data.result && data.result.id !== lastSeen.current) {
-          lastSeen.current = data.result.id;
-          setPending(current => current === data.result?.id ? null : current);
-          if (initialized.current) notify.current(`${data.result.label}: ${data.result.text}`, data.result.error);
+        const now = Date.now();
+        for (const [id, started] of requested.current) if (now - started >= 60_000) requested.current.delete(id);
+        if (data.result) {
+          const started = requested.current.get(data.result.id);
+          if (started !== undefined) {
+            requested.current.delete(data.result.id);
+            setPending(current => current === data.result?.id ? null : current);
+            if (now - started < 30_000) notify.current(`${data.result.label}: ${data.result.text}`, data.result.error);
+          }
         }
-        initialized.current = true;
       } catch { if (live) setConnected(false); }
     };
     void poll();
@@ -43,7 +46,7 @@ export function useOwlbearBridge(onNotify: (message: string, error?: boolean) =>
   }, [token]);
   useEffect(() => {
     if (!pending) return;
-    const timer = setTimeout(() => { setPending(current => current === pending ? null : current); notify.current('La tirada no ha recibido respuesta de Owlbear.', true); }, 30_000);
+    const timer = setTimeout(() => { const timedOut = requested.current.delete(pending); setPending(current => current === pending ? null : current); if (timedOut) notify.current('La tirada no ha recibido respuesta de Owlbear.', true); }, 30_000);
     return () => clearTimeout(timer);
   }, [pending]);
   const copyCode = async () => {
@@ -67,12 +70,13 @@ export function useOwlbearBridge(onNotify: (message: string, error?: boolean) =>
   const submit = async (label: string, notation: string, character: string, entries?: RollEntry[]): Promise<boolean> => {
     if (!connected) { await copyCode(); return false; }
     const id = crypto.randomUUID();
+    requested.current.set(id, Date.now());
     setPending(id);
     try {
       const response = await fetch('/api/owlbear/bridge', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ token, action: 'roll', roll: { id, label, notation, entries, audience: 'everyone' satisfies Audience, character } }) });
       if (!response.ok) throw new Error((await response.json() as { error?: string }).error || 'No se pudo enviar la tirada.');
       return true;
-    } catch (error) { setPending(null); notify.current(error instanceof Error ? error.message : 'No se pudo enviar la tirada.', true); return false; }
+    } catch (error) { requested.current.delete(id); setPending(current => current === id ? null : current); notify.current(error instanceof Error ? error.message : 'No se pudo enviar la tirada.', true); return false; }
   };
   const roll = (label: string, notation: string, character: string) => submit(label, notation, character);
   const rollBatch = (entries: RollEntry[], character: string) => submit('Tirada preparada', entries.map(entry => entry.notation).join(', '), character, entries);
