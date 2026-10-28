@@ -46,14 +46,17 @@ export function SheetRollTray({ pending, mode, onMode, accumulating, onAccumulat
     return () => window.removeEventListener('resize', update);
   }, []);
   useEffect(() => {
-    if (rolls.length > previousCount.current) setPage(Math.ceil(rolls.length / pageSize) - 1);
+    if (rolls.length > previousCount.current) {
+      setPage(Math.ceil(rolls.length / pageSize) - 1);
+      if (accumulating) setCollapsed(false);
+    }
     previousCount.current = rolls.length;
-  }, [rolls.length, pageSize]);
+  }, [rolls.length, pageSize, accumulating]);
 
   return <aside className={`sheet-roll-tray no-print${collapsed ? ' is-collapsed' : ''}`} aria-label="Mesa de tiradas de Owlbear">
-    <button type="button" className="sheet-roll-tray-heading" aria-expanded={!collapsed} aria-label={`${collapsed ? 'Mostrar' : 'Ocultar'} mesa de tiradas de Owlbear`} onClick={() => setCollapsed(!collapsed)}>
+    <button type="button" className="sheet-roll-tray-heading" aria-expanded={!collapsed} aria-label={`${collapsed ? 'Mostrar' : 'Ocultar'} mesa de tiradas de Owlbear${collapsed && rolls.length ? `, ${rolls.length} tiradas preparadas` : ''}`} title={collapsed ? 'Abrir tiradas Owlbear' : undefined} onClick={() => setCollapsed(!collapsed)}>
       <Dice5 size={17}/><span className="sheet-roll-tray-title">Tiradas Owlbear</span>
-      <span className="sheet-roll-tray-count" aria-live="polite">{rolls.length}</span>
+      <span className="sheet-roll-tray-count" data-count={rolls.length} aria-live="polite">{rolls.length}</span>
       <ChevronDown size={15} className="sheet-roll-tray-chevron"/>
     </button>
     {!collapsed && <div className="sheet-roll-tray-body">
