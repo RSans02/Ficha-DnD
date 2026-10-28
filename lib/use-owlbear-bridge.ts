@@ -2,7 +2,7 @@
 
 import { useEffect, useRef, useState } from 'react';
 import type { BridgeResult } from './owlbear-bridge-store';
-import type { RollEntry } from './owlbear-rolls';
+import { dicePlusNotation, type RollEntry } from './owlbear-rolls';
 
 const STORAGE_KEY = 'grimorio.owlbear.bridge-token';
 type Audience = 'everyone' | 'self' | 'dm';
@@ -11,7 +11,7 @@ export function useOwlbearBridge(onNotify: (message: string, error?: boolean) =>
   const [token, setToken] = useState('');
   const [connected, setConnected] = useState(false);
   const [pending, setPending] = useState<string | null>(null);
-  const requested = useRef(new Map<string, number>());
+  const requested = useRef(new Map<string, { started: number; label: string }>());
   const notify = useRef(onNotify);
   useEffect(() => { notify.current = onNotify; }, [onNotify]);
   useEffect(() => {
@@ -29,13 +29,13 @@ export function useOwlbearBridge(onNotify: (message: string, error?: boolean) =>
         if (!live) return;
         setConnected(data.connected);
         const now = Date.now();
-        for (const [id, started] of requested.current) if (now - started >= 60_000) requested.current.delete(id);
+        for (const [id, request] of requested.current) if (now - request.started >= 60_000) requested.current.delete(id);
         if (data.result) {
-          const started = requested.current.get(data.result.id);
-          if (started !== undefined) {
+          const request = requested.current.get(data.result.id);
+          if (request) {
             requested.current.delete(data.result.id);
             setPending(current => current === data.result?.id ? null : current);
-            if (now - started < 30_000) notify.current(`${data.result.label}: ${data.result.text}`, data.result.error);
+            if (now - request.started < 30_000) notify.current(`${request.label}: ${data.result.text}`, data.result.error);
           }
         }
       } catch { if (live) setConnected(false); }
@@ -67,10 +67,10 @@ export function useOwlbearBridge(onNotify: (message: string, error?: boolean) =>
     }
     notify.current(copied ? 'Código de Owlbear copiado. Pégalo en la extensión Grimorio.' : `Copia este código para Owlbear: ${token}`, !copied);
   };
-  const submit = async (label: string, notation: string, character: string, entries?: RollEntry[]): Promise<boolean> => {
+  const submit = async (label: string, notation: string, character: string, entries?: RollEntry[], displayLabel = label): Promise<boolean> => {
     if (!connected) { await copyCode(); return false; }
     const id = crypto.randomUUID();
-    requested.current.set(id, Date.now());
+    requested.current.set(id, { started: Date.now(), label: `${character} · ${displayLabel}` });
     setPending(id);
     try {
       const response = await fetch('/api/owlbear/bridge', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ token, action: 'roll', roll: { id, label, notation, entries, audience: 'everyone' satisfies Audience, character } }) });
@@ -79,6 +79,7 @@ export function useOwlbearBridge(onNotify: (message: string, error?: boolean) =>
     } catch (error) { requested.current.delete(id); setPending(current => current === id ? null : current); notify.current(error instanceof Error ? error.message : 'No se pudo enviar la tirada.', true); return false; }
   };
   const roll = (label: string, notation: string, character: string) => submit(label, notation, character);
-  const rollBatch = (entries: RollEntry[], character: string) => submit('Tirada preparada', entries.map(entry => entry.notation).join(', '), character, entries);
+  // The notation carries each label so an already-open older Owlbear bridge can forward it unchanged.
+  const rollBatch = (entries: RollEntry[], character: string) => submit('', dicePlusNotation({ label: '', notation: '', entries }), character, entries, entries.map(entry => entry.label).join(' + '));
   return { connected, copyCode, roll, rollBatch, pending: Boolean(pending) };
 }

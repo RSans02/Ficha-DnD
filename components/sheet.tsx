@@ -215,7 +215,7 @@ function AttackPanel({character:c,catalog,onChange,inspect,rollD20,rollDamage}:P
           {attack.notes&&<p>{attack.notes}</p>}
         </div>
         {hasAttackRoll&&<button className="attack-bonus" onClick={()=>inspect(`attack.${attack.id}`,`Ataque: ${attack.name}`,derived.attack)}>{sign(derived.attack.value)}</button>}
-        {hasAttackRoll&&<button className="sheet-roll-inline no-print" aria-label={`Tirar ataque de ${attack.name} en Owlbear`} onClick={()=>rollD20(`Ataque con ${attack.name}`,derived.attack.value,attackMode)}><Dice5 size={15}/></button>}
+        {hasAttackRoll&&<button className="sheet-roll-inline no-print" aria-label={`Tirar ataque de ${attack.name} en Owlbear`} onClick={()=>rollD20(`Ataque con ${attack.name}`,derived.attack.value,attackMode)}><Dice5 size={15}/>Ataque</button>}
         <button className="sheet-roll-inline no-print" aria-label={`Tirar daño de ${attack.name} en Owlbear`} onClick={()=>rollDamage(`Daño de ${attack.name}`,attack.damage,derived.damageBonus)}>Daño</button>
       </div>;
     })}
