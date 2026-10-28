@@ -132,7 +132,7 @@
 .sidebar .brand small{letter-spacing:1.5px}
 
 .character-sheet .ability-save{display:flex;align-items:center;justify-content:center;gap:3px}
-.character-sheet .ability-save-marker{display:block;flex:0 0 7px;width:7px;height:7px;border:1px solid currentColor;border-radius:50%}
+.character-sheet .ability-save-marker{display:block;flex:0 0 7px;width:7px;height:7px;border:1px solid currentColor;border-radius:50%;transform:translateY(1px)}
 .character-sheet .ability-save-marker.trained{background:currentColor}
 
 /* Spell filter checkboxes use the same palette as the other controls. */
