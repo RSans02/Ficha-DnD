@@ -19,6 +19,18 @@ test('a background worker is reported separately and claims queued rolls', () =>
   assert.equal(sheetStatus(token).backgroundConnected, true);
 });
 
+test('the sheet stays connected while the bridge waits for Dice+ to finish a roll', () => {
+  const token = crypto.randomUUID();
+  claimRoll(token, 'background');
+  const state = globalThis as typeof globalThis & { __grimorioBridge?: Map<string, { heartbeat: { background: number; panel: number } }> };
+  const session = state.__grimorioBridge?.get(token);
+  assert.ok(session);
+  session.heartbeat.background = Date.now() - 21_000;
+  assert.equal(sheetStatus(token).connected, true);
+  session.heartbeat.background = Date.now() - 31_000;
+  assert.equal(sheetStatus(token).connected, false);
+});
+
 test('sessions retained by Next dev from the previous bridge are migrated', () => {
   const token = crypto.randomUUID();
   const state = globalThis as typeof globalThis & { __grimorioBridge?: Map<string, unknown> };

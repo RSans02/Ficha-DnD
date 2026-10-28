@@ -21,13 +21,25 @@ export function useOwlbearBridge(onNotify: (message: string, error?: boolean) =>
   useEffect(() => {
     if (!token) return;
     let live = true;
+    let disconnectTimer: ReturnType<typeof setTimeout> | undefined;
+    const updateConnection = (online: boolean) => {
+      if (!live) return;
+      if (online) {
+        if (disconnectTimer) clearTimeout(disconnectTimer);
+        disconnectTimer = undefined;
+        setConnected(true);
+      } else if (!disconnectTimer) {
+        // A single failed poll does not mean the Owlbear room has closed.
+        disconnectTimer = setTimeout(() => { disconnectTimer = undefined; if (live) setConnected(false); }, 10_000);
+      }
+    };
     const poll = async () => {
       try {
         const response = await fetch(`/api/owlbear/bridge?token=${encodeURIComponent(token)}`, { cache: 'no-store' });
         if (!response.ok) throw new Error();
         const data = await response.json() as { connected: boolean; result: BridgeResult | null };
         if (!live) return;
-        setConnected(data.connected);
+        updateConnection(data.connected);
         const now = Date.now();
         for (const [id, request] of requested.current) if (now - request.started >= 60_000) requested.current.delete(id);
         if (data.result) {
@@ -38,11 +50,11 @@ export function useOwlbearBridge(onNotify: (message: string, error?: boolean) =>
             if (now - request.started < 30_000) notify.current(`${request.label}: ${data.result.text}`, data.result.error);
           }
         }
-      } catch { if (live) setConnected(false); }
+      } catch { updateConnection(false); }
     };
     void poll();
     const timer = setInterval(() => void poll(), 1500);
-    return () => { live = false; clearInterval(timer); };
+    return () => { live = false; clearInterval(timer); if (disconnectTimer) clearTimeout(disconnectTimer); };
   }, [token]);
   useEffect(() => {
     if (!pending) return;
