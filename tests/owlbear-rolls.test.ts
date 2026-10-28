@@ -1,6 +1,12 @@
 import assert from 'node:assert/strict';
 import { test } from 'node:test';
-import { d20Notation, damageNotation } from '../lib/owlbear-rolls';
+import { d20Notation, damageNotation, labeledNotation } from '../lib/owlbear-rolls';
+
+test('Dice+ roll descriptions identify attacks and damage without changing the dice expression', () => {
+  assert.equal(labeledNotation('1d20+8', 'Ataque con daga'), '1d20+8 # Ataque con daga');
+  assert.equal(labeledNotation('1d4+5', 'Daño de daga'), '1d4+5 # Daño de daga');
+  assert.equal(labeledNotation('2d6+6', 'Daño: daga + fuego, extra'), '2d6+6 # Daño daga fuego extra');
+});
 
 test('d20 notation covers ordinary rolls, advantage, disadvantage and signed modifiers', () => {
   assert.equal(d20Notation(5), '1d20+5');

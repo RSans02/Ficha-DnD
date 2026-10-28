@@ -1,5 +1,11 @@
 export type RollMode = 'normal' | 'advantage' | 'disadvantage';
 
+/** Dice+ displays a trailing # description alongside the roll result. */
+export function labeledNotation(notation: string, label: string): string {
+  const description = label.replace(/[^\p{L}\p{N} ]/gu, ' ').replace(/\s+/g, ' ').trim().slice(0, 80).trim();
+  return description ? `${notation} # ${description}` : notation;
+}
+
 export function d20Notation(modifier: number, mode: RollMode = 'normal'): string {
   if (!Number.isInteger(modifier) || Math.abs(modifier) > 10000) throw new Error('Bonificador de tirada inválido.');
   const die = mode === 'advantage' ? '2d20kh1' : mode === 'disadvantage' ? '2d20kl1' : '1d20';

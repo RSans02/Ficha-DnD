@@ -201,12 +201,12 @@ function AttackPanel({character:c,catalog,onChange,inspect,rollD20,rollDamage}:P
       return <div className="attack-row" key={attack.id}>
         <Swords size={18}/>
         <div className="attack-info"><h4><button style={{border:0,padding:0,textAlign:'left',background:'none',color:'inherit'}} onClick={()=>edit(attack)}>{attack.name}</button></h4><p>{damage}</p>{attackMode&&<p><RollModeBadge mode={attackMode}/> en ataques</p>}
-          {attack.extraDamage?.map((extra,index)=><p key={index}>+ {extra.dice} {extra.damageType}{extra.condition?` · ${extra.condition}`:''} <button className="sheet-extra-roll no-print" aria-label={`Tirar daño adicional de ${attack.name} en Owlbear`} onClick={()=>rollDamage(`Daño adicional: ${attack.name}`,extra.dice)}><Dice5 size={12}/>Tirar</button></p>)}
+          {attack.extraDamage?.map((extra,index)=><p key={index}>+ {extra.dice} {extra.damageType}{extra.condition?` · ${extra.condition}`:''} <button className="sheet-extra-roll no-print" aria-label={`Tirar daño adicional de ${attack.name} en Owlbear`} onClick={()=>rollDamage(`Daño adicional de ${attack.name}`,extra.dice)}><Dice5 size={12}/>Tirar</button></p>)}
           {attack.notes&&<p>{attack.notes}</p>}
         </div>
         {hasAttackRoll&&<button className="attack-bonus" onClick={()=>inspect(`attack.${attack.id}`,`Ataque: ${attack.name}`,derived.attack)}>{sign(derived.attack.value)}</button>}
-        {hasAttackRoll&&<button className="sheet-roll-inline no-print" aria-label={`Tirar ataque de ${attack.name} en Owlbear`} onClick={()=>rollD20(`Ataque: ${attack.name}`,derived.attack.value,attackMode)}><Dice5 size={15}/></button>}
-        <button className="sheet-roll-inline no-print" aria-label={`Tirar daño de ${attack.name} en Owlbear`} onClick={()=>rollDamage(`Daño: ${attack.name}`,attack.damage,derived.damageBonus)}>Daño</button>
+        {hasAttackRoll&&<button className="sheet-roll-inline no-print" aria-label={`Tirar ataque de ${attack.name} en Owlbear`} onClick={()=>rollD20(`Ataque con ${attack.name}`,derived.attack.value,attackMode)}><Dice5 size={15}/></button>}
+        <button className="sheet-roll-inline no-print" aria-label={`Tirar daño de ${attack.name} en Owlbear`} onClick={()=>rollDamage(`Daño de ${attack.name}`,attack.damage,derived.damageBonus)}>Daño</button>
       </div>;
     })}
     {spellAttacks.map(spell=>{
